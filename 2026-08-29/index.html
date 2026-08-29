@@ -7,19 +7,359 @@
   <link rel="icon" href="data:," />
   <title>HN Daily — 2026-08-29</title>
   <style>
-    :root { --bg:#f4f5f2;--paper:#fff;--ink:#171916;--muted:#5c625c;--line:#cfd3cd;--line-strong:#1f231f;--accent:#e14a20;--accent-ink:#9c2c0d;--code-bg:#eaede8;--comment-bg:#f0f2ed;--shadow:0 18px 50px rgba(23,25,22,.08) }
-    @media (prefers-color-scheme:dark){:root{--bg:#0d100d;--paper:#151915;--ink:#f1f3ed;--muted:#a8afa6;--line:#353b35;--line-strong:#e1e6dc;--accent:#ff6a3d;--accent-ink:#ff8b68;--code-bg:#202620;--comment-bg:#1c211c;--shadow:none}}
-    html[data-theme="light"]{--bg:#f4f5f2;--paper:#fff;--ink:#171916;--muted:#5c625c;--line:#cfd3cd;--line-strong:#1f231f;--accent:#e14a20;--accent-ink:#9c2c0d;--code-bg:#eaede8;--comment-bg:#f0f2ed;--shadow:0 18px 50px rgba(23,25,22,.08)}
-    html[data-theme="dark"]{--bg:#0d100d;--paper:#151915;--ink:#f1f3ed;--muted:#a8afa6;--line:#353b35;--line-strong:#e1e6dc;--accent:#ff6a3d;--accent-ink:#ff8b68;--code-bg:#202620;--comment-bg:#1c211c;--shadow:none}
-    *{box-sizing:border-box} html{scroll-behavior:smooth} body{margin:0;min-width:0;color:var(--ink);background:linear-gradient(var(--line) 1px,transparent 1px),var(--bg);background-size:100% 34px;font-family:ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.62;transition:color .18s ease,background-color .18s ease} a{color:var(--accent-ink);text-underline-offset:3px;text-decoration-thickness:1px} a:hover{text-decoration-thickness:2px} button,a{-webkit-tap-highlight-color:transparent} button:focus-visible,a:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
-    .page{width:min(1060px,calc(100% - 32px));margin:0 auto;padding:clamp(34px,6vw,74px) 0 46px}.masthead{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:24px;align-items:end;padding:0 0 25px;border-bottom:3px solid var(--line-strong);margin-bottom:10px}.edition{margin:0 0 8px;color:var(--accent-ink);font:700 12px/1.2 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;letter-spacing:.12em;text-transform:uppercase}h1{margin:0;max-width:760px;font:800 clamp(32px,6vw,68px)/.98 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;letter-spacing:-.065em}.deck{margin:18px 0 0;max-width:760px;color:var(--muted);font-size:clamp(16px,2vw,19px)}
-    .theme-toggle{align-self:start;display:inline-flex;align-items:center;gap:9px;border:1px solid var(--line-strong);border-radius:2px;padding:9px 12px;color:var(--ink);background:var(--paper);font:700 12px/1 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;cursor:pointer;box-shadow:3px 3px 0 var(--line-strong)}.theme-toggle:active{transform:translate(2px,2px);box-shadow:1px 1px 0 var(--line-strong)}.theme-dot{width:10px;height:10px;border:2px solid currentColor;border-radius:50%;background:var(--accent)}
-    .story-list{counter-reset:story}.story{counter-increment:story;display:grid;grid-template-columns:64px minmax(0,1fr);gap:clamp(18px,4vw,38px);padding:clamp(34px,6vw,66px) 0;border-bottom:1px solid var(--line)}.story::before{content:counter(story,decimal-leading-zero);color:var(--accent);font:800 19px/1 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;letter-spacing:-.04em;padding-top:7px}.story-main{min-width:0}.tagline{margin:0;max-width:850px;font:800 clamp(23px,3.2vw,38px)/1.15 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;letter-spacing:-.04em}.summary{margin:18px 0 0;max-width:790px;font-size:clamp(16px,1.8vw,18px)}
-    .story-bar{display:flex;flex-wrap:wrap;align-items:center;gap:10px 18px;margin-top:22px;color:var(--muted);font:700 12px/1.45 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}.metric{color:var(--ink);background:var(--code-bg);padding:6px 9px;border-radius:2px}.story-link{display:inline-flex;align-items:center;gap:5px;font-weight:800}.story-link::after{content:"↗";font-size:11px}.copy-button{margin-left:auto;border:1px solid var(--line);border-radius:2px;padding:7px 10px;color:var(--ink);background:transparent;font:inherit;font-weight:800;cursor:pointer}.copy-button:hover{border-color:var(--ink);background:var(--code-bg)}
-    .commentary{margin-top:24px;padding:18px 20px;background:var(--comment-bg);border-top:2px solid var(--line-strong)}.commentary h3{margin:0 0 8px;color:var(--ink);font:800 12px/1.3 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;letter-spacing:.02em}.commentary p{margin:0;color:var(--muted);font-size:15px}footer{display:flex;justify-content:space-between;gap:16px;align-items:center;padding-top:28px;color:var(--muted);font:700 12px/1.5 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}.archive-link{color:var(--ink);font-weight:800}
-    .toast{position:fixed;right:max(18px,env(safe-area-inset-right));bottom:max(18px,env(safe-area-inset-bottom));z-index:10;padding:11px 14px;color:var(--paper);background:var(--ink);border:1px solid var(--line-strong);font:800 12px/1.3 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;opacity:0;transform:translateY(8px);pointer-events:none;transition:opacity .16s ease,transform .16s ease}.toast.show{opacity:1;transform:translateY(0)}
-    @media(max-width:680px){.page{width:min(100% - 24px,1060px);padding-top:26px}.masthead{grid-template-columns:1fr;align-items:start;gap:18px}.theme-toggle{grid-row:1;justify-self:end}.masthead-copy{grid-row:2}h1{font-size:clamp(31px,11vw,48px)}.story{grid-template-columns:1fr;gap:12px;padding:38px 0}.story::before{font-size:15px}.story-bar{align-items:stretch}.metric{width:100%}.copy-button{margin-left:0}.commentary{padding:16px}footer{align-items:flex-start;flex-direction:column}}
-    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{transition-duration:.01ms!important}}@media print{body{background:#fff;color:#000}.page{width:100%;padding:0}.theme-toggle,.copy-button,.toast{display:none}.story{break-inside:avoid;padding:24px 0}}
+    :root {
+      --bg: #f3f1eb;
+      --surface: #fffdf8;
+      --ink: #141414;
+      --muted: #595952;
+      --line: #c8c5bb;
+      --soft-line: #dedbd2;
+      --accent: #d84a16;
+      --accent-ink: #8e2804;
+      --focus: #1464d2;
+      --key-bg: #e5e1d7;
+      --shadow: rgba(20, 20, 20, .08);
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #111210;
+        --surface: #191a17;
+        --ink: #f4f1e8;
+        --muted: #aaa99f;
+        --line: #494b43;
+        --soft-line: #30312c;
+        --accent: #ff6a2b;
+        --accent-ink: #ff9a6d;
+        --focus: #75adff;
+        --key-bg: #292a26;
+        --shadow: rgba(0, 0, 0, .3);
+      }
+    }
+
+    html[data-theme="light"] {
+      color-scheme: light;
+      --bg: #f3f1eb;
+      --surface: #fffdf8;
+      --ink: #141414;
+      --muted: #595952;
+      --line: #c8c5bb;
+      --soft-line: #dedbd2;
+      --accent: #d84a16;
+      --accent-ink: #8e2804;
+      --focus: #1464d2;
+      --key-bg: #e5e1d7;
+      --shadow: rgba(20, 20, 20, .08);
+    }
+
+    html[data-theme="dark"] {
+      color-scheme: dark;
+      --bg: #111210;
+      --surface: #191a17;
+      --ink: #f4f1e8;
+      --muted: #aaa99f;
+      --line: #494b43;
+      --soft-line: #30312c;
+      --accent: #ff6a2b;
+      --accent-ink: #ff9a6d;
+      --focus: #75adff;
+      --key-bg: #292a26;
+      --shadow: rgba(0, 0, 0, .3);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      min-width: 280px;
+      background:
+        linear-gradient(var(--soft-line) 1px, transparent 1px) 0 0 / 100% 32px,
+        var(--bg);
+      color: var(--ink);
+      font-family: ui-monospace, "SFMono-Regular", "Cascadia Code", "Liberation Mono", Menlo, monospace;
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+      transition: color 160ms ease, background-color 160ms ease;
+    }
+
+    button, a { -webkit-tap-highlight-color: transparent; }
+    a { color: inherit; }
+    a:focus-visible, button:focus-visible {
+      outline: 3px solid var(--focus);
+      outline-offset: 4px;
+    }
+
+    .page {
+      width: min(1080px, calc(100% - 48px));
+      margin: 0 auto;
+      padding: 68px 0 40px;
+    }
+
+    .masthead {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 28px;
+      align-items: start;
+      padding-bottom: 34px;
+      border-bottom: 2px solid var(--ink);
+    }
+
+    .masthead-copy { max-width: 820px; }
+    .edition {
+      margin: 0 0 14px;
+      color: var(--accent-ink);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .13em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 0;
+      max-width: 790px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(44px, 7.3vw, 84px);
+      line-height: .94;
+      letter-spacing: -.052em;
+      font-weight: 700;
+    }
+
+    .deck {
+      margin: 23px 0 0;
+      color: var(--muted);
+      font-size: clamp(14px, 2vw, 17px);
+      max-width: 690px;
+    }
+
+    .theme-toggle {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      border: 1px solid var(--line);
+      border-radius: 3px;
+      padding: 9px 11px;
+      background: var(--surface);
+      color: var(--ink);
+      font: inherit;
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 3px 3px 0 var(--shadow);
+    }
+    .theme-toggle:hover { border-color: var(--ink); }
+    .theme-dot {
+      width: 10px;
+      height: 10px;
+      border: 1px solid currentColor;
+      border-radius: 50%;
+      background: var(--ink);
+      box-shadow: inset 4px 0 0 var(--surface);
+    }
+
+    .story-list {
+      counter-reset: story;
+      display: grid;
+      gap: 18px;
+      padding: 38px 0 0;
+    }
+
+    .story {
+      counter-increment: story;
+      display: grid;
+      grid-template-columns: 72px minmax(0, 1fr);
+      gap: 24px;
+      padding: 30px 32px 32px;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      box-shadow: 4px 4px 0 var(--shadow);
+      transition: transform 120ms ease, border-color 120ms ease, box-shadow 120ms ease;
+    }
+    .story:hover {
+      transform: translate(2px, 2px);
+      border-color: var(--ink);
+      box-shadow: 2px 2px 0 var(--shadow);
+    }
+    .story::before {
+      content: counter(story, decimal-leading-zero);
+      color: var(--accent);
+      font-size: 19px;
+      line-height: 1;
+      font-weight: 900;
+      letter-spacing: -.04em;
+      padding-top: 8px;
+    }
+    .story-main { min-width: 0; }
+
+    .tagline {
+      margin: 0;
+      max-width: 840px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(25px, 3.4vw, 40px);
+      font-weight: 700;
+      line-height: 1.08;
+      letter-spacing: -.035em;
+    }
+
+    .summary {
+      margin: 17px 0 0;
+      max-width: 820px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(17px, 2vw, 20px);
+      line-height: 1.55;
+    }
+
+    .story-bar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 10px 18px;
+      margin-top: 23px;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+    }
+    .metric {
+      padding: 6px 9px;
+      color: var(--ink);
+      background: var(--key-bg);
+      border: 1px solid var(--soft-line);
+      border-radius: 3px;
+      white-space: nowrap;
+    }
+    .story-link {
+      min-height: 36px;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      color: var(--accent-ink);
+      font-weight: 800;
+      text-decoration: underline;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 4px;
+      touch-action: manipulation;
+    }
+    .story-link:hover { text-decoration-thickness: 2px; }
+    .story-link::after { content: "↗"; font-size: 11px; }
+
+    .copy-button {
+      min-height: 36px;
+      margin-left: auto;
+      border: 1px solid var(--line);
+      border-radius: 3px;
+      padding: 7px 10px;
+      color: var(--ink);
+      background: transparent;
+      font: inherit;
+      font-size: 12px;
+      font-weight: 800;
+      cursor: pointer;
+    }
+    .copy-button:hover { border-color: var(--ink); background: var(--key-bg); }
+
+    .commentary {
+      margin-top: 24px;
+      padding: 18px 0 0;
+      border-top: 2px solid var(--ink);
+    }
+    .commentary h3 {
+      margin: 0 0 9px;
+      color: var(--ink);
+      font-size: 12px;
+      line-height: 1.3;
+      font-weight: 800;
+    }
+    .commentary p {
+      margin: 0;
+      max-width: 840px;
+      color: var(--muted);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 16px;
+      line-height: 1.55;
+    }
+    code {
+      padding: .08em .3em;
+      background: var(--key-bg);
+      color: var(--ink);
+      font-family: inherit;
+      font-size: .85em;
+    }
+
+    footer {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 28px;
+      align-items: center;
+      margin-top: 72px;
+      padding-top: 20px;
+      border-top: 2px solid var(--ink);
+      color: var(--muted);
+      font-size: 12px;
+    }
+    .footer-links { display: flex; flex-wrap: wrap; gap: 10px 20px; }
+    .archive-link {
+      color: var(--ink);
+      font-weight: 800;
+      text-underline-offset: 4px;
+    }
+    .published-link { color: var(--accent-ink); }
+
+    .toast {
+      position: fixed;
+      right: max(18px, env(safe-area-inset-right));
+      bottom: max(18px, env(safe-area-inset-bottom));
+      z-index: 10;
+      padding: 11px 14px;
+      color: var(--surface);
+      background: var(--ink);
+      border: 1px solid var(--ink);
+      font-size: 12px;
+      font-weight: 800;
+      opacity: 0;
+      transform: translateY(8px);
+      pointer-events: none;
+      transition: opacity 160ms ease, transform 160ms ease;
+    }
+    .toast.show { opacity: 1; transform: translateY(0); }
+
+    @media (max-width: 720px) {
+      .page { width: min(100% - 30px, 1080px); padding-top: 38px; }
+      .masthead { gap: 18px; }
+      .theme-toggle { padding: 9px; }
+      .theme-label { display: none; }
+      h1 { font-size: clamp(42px, 13vw, 64px); }
+      .story-list { padding-top: 28px; gap: 14px; }
+      .story { grid-template-columns: 48px minmax(0, 1fr); gap: 14px; padding: 24px 20px 26px; }
+      .story::before { font-size: 16px; padding-top: 5px; }
+      .story-bar { align-items: stretch; gap: 8px 14px; }
+      .metric { flex-basis: 100%; width: max-content; }
+      .copy-button { margin-left: 0; }
+      footer { grid-template-columns: 1fr; gap: 14px; margin-top: 58px; }
+    }
+
+    @media (max-width: 410px) {
+      h1 { font-size: 42px; }
+      .deck { font-size: 13px; }
+      .story { grid-template-columns: 1fr; gap: 10px; padding: 22px 16px 24px; }
+      .story::before { padding-top: 0; }
+      .tagline { font-size: 26px; }
+      .summary { font-size: 17px; }
+      .story-link, .copy-button { flex: 1 1 auto; justify-content: center; }
+      .copy-button { min-width: 100%; }
+      .commentary p { font-size: 15px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition: none !important; }
+    }
+
+    @media print {
+      body { background: #fff; color: #000; }
+      .page { width: 100%; padding: 0; }
+      .theme-toggle, .copy-button, .toast { display: none; }
+      .story { break-inside: avoid; box-shadow: none; }
+    }
   </style>
 </head>
 <body>
@@ -37,11 +377,93 @@
     <article class="story" data-source="https://github.com/Lakr233/vphone-cli" data-hn="https://news.ycombinator.com/item?id=49485267"><div class="story-main"><h2 class="tagline">A virtual iPhone is not the Simulator</h2><p class="summary">vphone-cli boots an iPhone environment through Apple’s Virtualization.framework using Apple-provided system components and user-space patches. That opens useful testing and research paths, but it is not a drop-in physical device: services, detection, and platform rules still differ.</p><div class="story-bar"><span class="metric">265 pts / 74 comments</span><a class="story-link" href="https://github.com/Lakr233/vphone-cli" target="_blank" rel="noopener">Source</a><a class="story-link" href="https://news.ycombinator.com/item?id=49485267" target="_blank" rel="noopener">Discuss on HN</a><button class="copy-button" type="button">Copy for Threads</button></div><aside class="commentary"><h3>What HN commenters are saying:</h3><p>Commenters distinguish this from both emulation and Simulator: Apple supplies an iOS kernel in PCC or cloudOS images for Virtualization.framework, paired with user-space patches. Proposed uses include security research, kernel debugging, Network Extensions, Metal or camera testing, and click farms. Limits include no App Store or iCloud and a detectable VM. A side discussion covers alternative-store checks in the EU and Japan.</p></aside></div></article>
     <article class="story" data-source="https://www.osnews.com/story/145883/easyeffects-should-be-part-of-every-linux-distribution-and-desktop-environment-to-massively-improve-laptop-speaker-sound-quality/" data-hn="https://news.ycombinator.com/item?id=49479924"><div class="story-main"><h2 class="tagline">Linux laptop speakers can sound much better</h2><p class="summary">EasyEffects can improve weak Linux laptop audio with equalization and limiting. Device-specific correction works better than a generic preset. Start with a trusted profile, measure if possible, and keep levels safe.</p><div class="story-bar"><span class="metric">152 pts / 56 comments</span><a class="story-link" href="https://www.osnews.com/story/145883/easyeffects-should-be-part-of-every-linux-distribution-and-desktop-environment-to-massively-improve-laptop-speaker-sound-quality/" target="_blank" rel="noopener">Source</a><a class="story-link" href="https://news.ycombinator.com/item?id=49479924" target="_blank" rel="noopener">Discuss on HN</a><button class="copy-button" type="button">Copy for Threads</button></div><aside class="commentary"><h3>What HN commenters are saying:</h3><p>Linux laptop owners—especially Framework users—report a night-and-day improvement from EasyEffects EQ and share presets, while warning that Framework 13 and 13 Pro profiles differ. The discussion contrasts generic correction with per-device measurement through Room EQ Wizard. Commenters also debate a flat target versus personal preference, and propose automatic tuning with an omnidirectional electret microphone.</p></aside></div></article>
   </section>
-  <footer><a class="archive-link" href="../">← Archive home</a><span>2026-08-29 · 10 stories</span></footer>
+  <footer><div class="footer-links"><a class="archive-link" href="../">← Daily archive</a><a class="archive-link published-link" href="../" target="_blank" rel="noopener">Published archive ↗</a></div><span>2026-08-29 · 10 stories</span></footer>
 </main>
 <div class="toast" role="status" aria-live="polite"></div>
 <script>
-(()=>{const root=document.documentElement,toggle=document.querySelector('.theme-toggle'),label=document.querySelector('.theme-label'),modes=['auto','light','dark'];let mode='auto';function applyTheme(next){mode=next;if(mode==='auto')root.removeAttribute('data-theme');else root.dataset.theme=mode;label.textContent=`theme: ${mode}`;toggle.setAttribute('aria-pressed',mode!=='auto'?'true':'false');toggle.setAttribute('aria-label',`Color theme is ${mode}. Switch to ${modes[(modes.indexOf(mode)+1)%modes.length]}`)}toggle.addEventListener('click',()=>applyTheme(modes[(modes.indexOf(mode)+1)%modes.length]));const toast=document.querySelector('.toast');let toastTimer;function showToast(message){toast.textContent=message;toast.classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>toast.classList.remove('show'),1800)}async function copyText(text){if(navigator.clipboard&&window.isSecureContext){await navigator.clipboard.writeText(text);return}const area=document.createElement('textarea');area.value=text;area.setAttribute('readonly','');area.style.position='fixed';area.style.opacity='0';document.body.appendChild(area);area.select();const ok=document.execCommand('copy');area.remove();if(!ok)throw new Error('Copy failed')}document.querySelectorAll('.copy-button').forEach((button,index)=>{button.addEventListener('click',async()=>{const story=button.closest('.story'),tagline=story.querySelector('.tagline').textContent.trim(),summary=story.querySelector('.summary').textContent.trim(),metric=story.querySelector('.metric').textContent.trim(),text=`${index+1}. ${tagline}\n${summary}\n${story.dataset.source}\n${story.dataset.hn}\n${metric}`;try{await copyText(text);button.textContent='Copied';showToast(`Story ${index+1} copied for Threads`);setTimeout(()=>{button.textContent='Copy for Threads'},1600)}catch(_){showToast('Copy was blocked by this browser')}})})})();
+(() => {
+  const root = document.documentElement;
+  const toggle = document.querySelector('.theme-toggle');
+  const label = document.querySelector('.theme-label');
+
+  function currentTheme() {
+    if (root.dataset.theme) return root.dataset.theme;
+    return matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  }
+
+  function setTheme(theme, persist = true) {
+    root.dataset.theme = theme;
+    const next = theme === 'dark' ? 'light' : 'dark';
+    label.textContent = `theme: ${theme}`;
+    toggle.setAttribute('aria-label', `Switch to ${next} theme`);
+    toggle.setAttribute('aria-pressed', theme === 'dark' ? 'true' : 'false');
+    toggle.title = `Switch to ${next} theme`;
+    if (persist) {
+      try { localStorage.setItem('hn-daily-theme', theme); } catch (_) {}
+    }
+  }
+
+  function flipTheme() {
+    setTheme(currentTheme() === 'dark' ? 'light' : 'dark');
+  }
+
+  try {
+    const savedTheme = localStorage.getItem('hn-daily-theme');
+    setTheme(savedTheme === 'light' || savedTheme === 'dark' ? savedTheme : currentTheme(), false);
+  } catch (_) {
+    setTheme(currentTheme(), false);
+  }
+
+  toggle.addEventListener('click', flipTheme);
+
+  const toast = document.querySelector('.toast');
+  let toastTimer;
+  function showToast(message) {
+    toast.textContent = message;
+    toast.classList.add('show');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => toast.classList.remove('show'), 1800);
+  }
+
+  async function copyText(text) {
+    if (navigator.clipboard && window.isSecureContext) {
+      await navigator.clipboard.writeText(text);
+      return;
+    }
+    const area = document.createElement('textarea');
+    area.value = text;
+    area.setAttribute('readonly', '');
+    area.style.position = 'fixed';
+    area.style.opacity = '0';
+    document.body.appendChild(area);
+    area.select();
+    const ok = document.execCommand('copy');
+    area.remove();
+    if (!ok) throw new Error('Copy failed');
+  }
+
+  document.querySelectorAll('.copy-button').forEach((button, index) => {
+    button.addEventListener('click', async () => {
+      const story = button.closest('.story');
+      const tagline = story.querySelector('.tagline').textContent.trim();
+      const summary = story.querySelector('.summary').textContent.trim();
+      const metric = story.querySelector('.metric').textContent.trim();
+      const text = `${index + 1}. ${tagline}
+${summary}
+${story.dataset.source}
+${story.dataset.hn}
+${metric}`;
+      try {
+        await copyText(text);
+        button.textContent = 'Copied';
+        showToast(`Story ${index + 1} copied for Threads`);
+        setTimeout(() => { button.textContent = 'Copy for Threads'; }, 1600);
+      } catch (_) {
+        showToast('Copy was blocked by this browser');
+      }
+    });
+  });
+})();
 </script>
 </body>
 </html>
