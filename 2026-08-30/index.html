@@ -1,0 +1,438 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="color-scheme" content="light dark" />
+  <link rel="icon" href="data:," />
+  <title>HN Daily — August 30, 2026</title>
+  <style>
+    :root {
+      --paper: #f7f7f3;
+      --panel: #ffffff;
+      --ink: #151713;
+      --muted: #596055;
+      --line: #c8ccc3;
+      --line-strong: #7a8175;
+      --accent: #c44915;
+      --accent-soft: #f3dfd4;
+      --code-bg: #eceee8;
+      --focus: #006bd6;
+      --shadow: 0 7px 20px rgba(24, 28, 22, 0.06);
+      --serif: Georgia, "Times New Roman", serif;
+      --mono: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --paper: #10120f;
+        --panel: #181b17;
+        --ink: #f0f2ec;
+        --muted: #abb3a5;
+        --line: #383e35;
+        --line-strong: #71796c;
+        --accent: #ff7a45;
+        --accent-soft: #45271c;
+        --code-bg: #242821;
+        --focus: #7fbcff;
+        --shadow: 0 8px 22px rgba(0, 0, 0, 0.24);
+      }
+    }
+    html[data-theme="light"] {
+      --paper: #f7f7f3;
+      --panel: #ffffff;
+      --ink: #151713;
+      --muted: #596055;
+      --line: #c8ccc3;
+      --line-strong: #7a8175;
+      --accent: #c44915;
+      --accent-soft: #f3dfd4;
+      --code-bg: #eceee8;
+      --focus: #006bd6;
+      --shadow: 0 7px 20px rgba(24, 28, 22, 0.06);
+    }
+    html[data-theme="dark"] {
+      --paper: #10120f;
+      --panel: #181b17;
+      --ink: #f0f2ec;
+      --muted: #abb3a5;
+      --line: #383e35;
+      --line-strong: #71796c;
+      --accent: #ff7a45;
+      --accent-soft: #45271c;
+      --code-bg: #242821;
+      --focus: #7fbcff;
+      --shadow: 0 8px 22px rgba(0, 0, 0, 0.24);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      min-width: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--serif);
+      font-size: 17px;
+      line-height: 1.55;
+      transition: background-color 160ms ease, color 160ms ease;
+    }
+    a { color: inherit; }
+    a:hover { color: var(--accent); }
+    button, a { -webkit-tap-highlight-color: transparent; }
+    :focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }
+    .skip-link {
+      position: fixed;
+      top: 8px;
+      left: 8px;
+      z-index: 20;
+      transform: translateY(-150%);
+      background: var(--ink);
+      color: var(--paper);
+      padding: 8px 12px;
+      font: 700 13px/1 var(--mono);
+    }
+    .skip-link:focus { transform: translateY(0); }
+    .page {
+      width: min(1180px, calc(100% - 40px));
+      margin: 0 auto;
+      padding: 34px 0 44px;
+    }
+    .masthead {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 22px;
+      align-items: end;
+      padding-bottom: 25px;
+      border-bottom: 2px solid var(--ink);
+    }
+    .edition {
+      margin: 0 0 9px;
+      color: var(--accent);
+      font: 700 12px/1.2 var(--mono);
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+    h1 {
+      max-width: 760px;
+      margin: 0;
+      font-size: clamp(2.2rem, 5vw, 4.5rem);
+      line-height: .98;
+      letter-spacing: -.045em;
+      font-weight: 700;
+      text-wrap: balance;
+    }
+    .header-side {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 14px;
+      padding-bottom: 2px;
+    }
+    .date {
+      margin: 0;
+      font: 700 13px/1.35 var(--mono);
+      color: var(--muted);
+      white-space: nowrap;
+    }
+    .theme-toggle {
+      appearance: none;
+      border: 1px solid var(--line-strong);
+      border-radius: 3px;
+      background: var(--panel);
+      color: var(--ink);
+      padding: 9px 11px;
+      font: 700 12px/1 var(--mono);
+      cursor: pointer;
+    }
+    .theme-toggle:hover { border-color: var(--accent); color: var(--accent); }
+    .dek {
+      max-width: 760px;
+      margin: 19px 0 0;
+      color: var(--muted);
+      font-size: 1.08rem;
+    }
+    .statusline {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 18px;
+      margin: 25px 0 18px;
+      padding: 10px 0;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      color: var(--muted);
+      font: 600 12px/1.4 var(--mono);
+    }
+    .statusline span::before { content: "> "; color: var(--accent); }
+    .stories {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+      counter-reset: story;
+    }
+    .story {
+      counter-increment: story;
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      padding: 24px;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+    }
+    .story-top {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 14px;
+      align-items: start;
+    }
+    .story-number {
+      display: grid;
+      place-items: center;
+      width: 34px;
+      height: 34px;
+      background: var(--ink);
+      color: var(--paper);
+      font: 800 13px/1 var(--mono);
+    }
+    .story-number::before { content: counter(story, decimal-leading-zero); }
+    h2 {
+      margin: 0;
+      font-size: clamp(1.2rem, 2.2vw, 1.55rem);
+      line-height: 1.18;
+      letter-spacing: -.018em;
+      text-wrap: balance;
+    }
+    .body-copy { margin: 18px 0 0; }
+    .meta-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 9px 13px;
+      margin-top: 21px;
+      padding-top: 15px;
+      border-top: 1px solid var(--line);
+      font: 700 12px/1.35 var(--mono);
+    }
+    .score { color: var(--accent); }
+    .story-links { display: flex; flex-wrap: wrap; gap: 8px 13px; }
+    .story-links a { text-underline-offset: 3px; }
+    .copy-button {
+      margin-left: auto;
+      appearance: none;
+      border: 0;
+      border-radius: 2px;
+      background: var(--code-bg);
+      color: var(--ink);
+      padding: 8px 10px;
+      font: 700 11px/1 var(--mono);
+      cursor: pointer;
+    }
+    .copy-button:hover { background: var(--accent-soft); color: var(--accent); }
+    .copy-button[data-state="copied"] { background: var(--accent); color: #fff; }
+    .commentary {
+      margin-top: 24px;
+      padding-top: 18px;
+      border-top: 1px dashed var(--line-strong);
+    }
+    .commentary h3 {
+      margin: 0 0 9px;
+      color: var(--muted);
+      font: 800 11px/1.3 var(--mono);
+      letter-spacing: .04em;
+      text-transform: uppercase;
+    }
+    .commentary p { margin: 0; color: var(--muted); font-size: .94rem; }
+    footer {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      margin-top: 34px;
+      padding-top: 22px;
+      border-top: 2px solid var(--ink);
+      color: var(--muted);
+      font: 700 12px/1.5 var(--mono);
+    }
+    .archive-links { display: flex; flex-wrap: wrap; gap: 10px 18px; }
+    .archive-links a { color: var(--ink); text-underline-offset: 3px; }
+    @media (max-width: 760px) {
+      .page { width: min(100% - 24px, 600px); padding-top: 20px; }
+      .masthead { grid-template-columns: 1fr; align-items: start; gap: 16px; }
+      .header-side { width: 100%; flex-direction: row; justify-content: space-between; align-items: center; }
+      .stories { grid-template-columns: 1fr; }
+      .story { padding: 20px; }
+      .meta-row { align-items: flex-start; }
+      .copy-button { width: 100%; margin: 5px 0 0; padding: 11px 12px; }
+      footer { flex-direction: column; }
+    }
+    @media (max-width: 390px) {
+      body { font-size: 16px; }
+      .story-top { gap: 11px; }
+      .story { padding: 18px 16px; }
+      .story-number { width: 30px; height: 30px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      body { transition: none; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#stories">Skip to stories</a>
+  <main class="page">
+    <header class="masthead">
+      <div>
+        <p class="edition">Daily top 10</p>
+        <h1>Signal from Hacker News</h1>
+        <p class="dek">Open-source turns, surveillance tradeoffs, strange glacier biology, and the infrastructure beneath modern software.</p>
+      </div>
+      <div class="header-side">
+        <p class="date"><time datetime="2026-08-30">2026-08-30</time> / SUNDAY</p>
+        <button class="theme-toggle" type="button" aria-pressed="false" aria-label="Switch color theme">THEME: AUTO</button>
+      </div>
+    </header>
+
+    <div class="statusline" aria-label="Edition summary">
+      <span>10 stories</span><span>3,182 points</span><span>1,394 comments</span>
+    </div>
+
+    <section class="stories" id="stories" aria-label="Top stories">
+      <article class="story">
+        <div class="story-top"><span class="story-number" aria-label="Story 1"></span><h2>Linux gets native iMessage bridge via reverse-engineered relay</h2></div>
+        <p class="body-copy">Open-source relay uses ANCS to bridge iMessage/SMS to Linux desktops. Fixes long-standing integration gap for Linux phone/desktop users. Author relicensed to MIT after HN license feedback.</p>
+        <div class="meta-row"><span class="score">490 pts / 193 comments</span><span class="story-links"><a class="source" href="https://zackbartel.com/blog/2026/08/tether/" target="_blank" rel="noopener noreferrer">Source ↗</a><a class="hn-link" href="https://news.ycombinator.com/item?id=49415386" target="_blank" rel="noopener noreferrer">HN Discuss ↗</a></span><button class="copy-button" type="button">COPY</button></div>
+        <div class="commentary"><h3>What HN commenters are saying</h3><p>HN liked the fast license change from copyleft to MIT; debated LGPL as middle ground; one contrarian argued licensing tweaks distract from bigger global issues. Consensus positive, implementation-driven.</p></div>
+      </article>
+
+      <article class="story">
+        <div class="story-top"><span class="story-number" aria-label="Story 2"></span><h2>California carves out open-source from age-verification law</h2></div>
+        <p class="body-copy">Bill exempts GPL/MIT/BSD/Apache software from age-verification mandates. Prevents Linux distros and open tools from forced age-gating. EFF and Linux Foundation pushed.</p>
+        <div class="meta-row"><span class="score">452 pts / 205 comments</span><span class="story-links"><a class="source" href="https://www.tomshardware.com/software/linux/california-lawmakers-unanimously-pass-linux-exemption-from-age-verification-law-software-distributed-under-the-gpl-mit-bsd-and-apache-licenses-are-exempt" target="_blank" rel="noopener noreferrer">Source ↗</a><a class="hn-link" href="https://news.ycombinator.com/item?id=49495372" target="_blank" rel="noopener noreferrer">HN Discuss ↗</a></span><button class="copy-button" type="button">COPY</button></div>
+        <div class="commentary"><h3>What HN commenters are saying</h3><p>Surprise at a win against corporate capture; credit to EFF/Linux Foundation. Critics note Android still covered, law itself is contradictory and authoritarian trend continues. Debate over praising lawmakers.</p></div>
+      </article>
+
+      <article class="story">
+        <div class="story-top"><span class="story-number" aria-label="Story 3"></span><h2>Tencent open-sources Hy4, claims massive token throughput</h2></div>
+        <p class="body-copy">Tencent releases Hy4 preview, open-source MoE with rapid OpenRouter adoption. 5% cache cost undercuts 10–20% norms. Adds Chinese model to competitive field.</p>
+        <div class="meta-row"><span class="score">352 pts / 211 comments</span><span class="story-links"><a class="source" href="https://www.tencent.com/tencent-releases-and-open-sources-tencent-hy4-preview/" target="_blank" rel="noopener noreferrer">Source ↗</a><a class="hn-link" href="https://news.ycombinator.com/item?id=49492632" target="_blank" rel="noopener noreferrer">HN Discuss ↗</a></span><button class="copy-button" type="button">COPY</button></div>
+        <div class="commentary"><h3>What HN commenters are saying</h3><p>Ludicrous OpenRouter volume (trillions tokens) noted; cheap caching seen as driver. Suspicion that publishers pay for exposure and game rankings; capitalism critique and lobbying mentions.</p></div>
+      </article>
+
+      <article class="story">
+        <div class="story-top"><span class="story-number" aria-label="Story 4"></span><h2>Texas $1 insurance fee quietly funded 3,200 Flock surveillance cameras</h2></div>
+        <p class="body-copy">Texas raised auto insurance $1 to fight catalytic converter theft; Motor Vehicle Crime Prevention Authority used it for 3,200+ Flock ALPR cameras. Shows fee diversion into surveillance.</p>
+        <div class="meta-row"><span class="score">345 pts / 217 comments</span><span class="story-links"><a class="source" href="https://www.texastribune.org/2026/08/28/texas-flock-cameras-auto-insurance-fee-mvcpa-grants/" target="_blank" rel="noopener noreferrer">Source ↗</a><a class="hn-link" href="https://news.ycombinator.com/item?id=49494182" target="_blank" rel="noopener noreferrer">HN Discuss ↗</a></span><button class="copy-button" type="button">COPY</button></div>
+        <div class="commentary"><h3>What HN commenters are saying</h3><p>Fee diversion called out; Texas property defense law discussion — deadly force allowed for theft prevention. Debate surveillance vs crime, EV batteries as next target.</p></div>
+      </article>
+
+      <article class="story">
+        <div class="story-top"><span class="story-number" aria-label="Story 5"></span><h2>Glacier mice: rolling moss colonies that move together</h2></div>
+        <p class="body-copy">Moss balls roll across glaciers, moving collectively without a single organism. Emergent coordination from physics + simple biology. Reminds that complex motion needs no central control.</p>
+        <div class="meta-row"><span class="score">318 pts / 64 comments</span><span class="story-links"><a class="source" href="https://en.wikipedia.org/wiki/Glacier_mice" target="_blank" rel="noopener noreferrer">Source ↗</a><a class="hn-link" href="https://news.ycombinator.com/item?id=49424320" target="_blank" rel="noopener noreferrer">HN Discuss ↗</a></span><button class="copy-button" type="button">COPY</button></div>
+        <div class="commentary"><h3>What HN commenters are saying</h3><p>TIL reactions; life as basic physics + state machine; emergence amazement; ice worms mentioned as similar oddity.</p></div>
+      </article>
+
+      <article class="story">
+        <div class="story-top"><span class="story-number" aria-label="Story 6"></span><h2>Bug blindness: why users stop seeing software defects</h2></div>
+        <p class="body-copy">Users adapt workflows around bugs and stop reporting. Devs lose signal, bad UX persists. Explains why defects normalize.</p>
+        <div class="meta-row"><span class="score">317 pts / 192 comments</span><span class="story-links"><a class="source" href="https://danluu.com/bug-blind/" target="_blank" rel="noopener noreferrer">Source ↗</a><a class="hn-link" href="https://news.ycombinator.com/item?id=49494520" target="_blank" rel="noopener noreferrer">HN Discuss ↗</a></span><button class="copy-button" type="button">COPY</button></div>
+        <div class="commentary"><h3>What HN commenters are saying</h3><p>Agree majority of users find workarounds; devs don't care critique; docs vs code blame; irony that blog has no max-width, lines grow infinitely — bug in post about bugs.</p></div>
+      </article>
+
+      <article class="story">
+        <div class="story-top"><span class="story-number" aria-label="Story 7"></span><h2>Roman Space Telescope readies wide-field infrared survey</h2></div>
+        <p class="body-copy">NASA's Roman designed for wide-field IR, 100x Hubble's view. Will map dark energy, exoplanets, complement narrow deep fields. 1.5TB/day downlink via 500Mbps.</p>
+        <div class="meta-row"><span class="score">238 pts / 85 comments</span><span class="story-links"><a class="source" href="https://science.nasa.gov/mission/roman-space-telescope/" target="_blank" rel="noopener noreferrer">Source ↗</a><a class="hn-link" href="https://news.ycombinator.com/item?id=49490870" target="_blank" rel="noopener noreferrer">HN Discuss ↗</a></span><button class="copy-button" type="button">COPY</button></div>
+        <div class="commentary"><h3>What HN commenters are saying</h3><p>Field-of-view critical for surveys; Hubble famous deep field contrasted as narrow/far vs wide/shallow volume. Excitement tempered by launch risk on Falcon Heavy and politics.</p></div>
+      </article>
+
+      <article class="story">
+        <div class="story-top"><span class="story-number" aria-label="Story 8"></span><h2>CPython officially supports RISC-V as Tier 3 platform</h2></div>
+        <p class="body-copy">CPython lists RISC-V as Tier 3. Signals maturing toolchain but allows breakage without blocking release. Tier 1/2 still short list of major platforms.</p>
+        <div class="meta-row"><span class="score">233 pts / 42 comments</span><span class="story-links"><a class="source" href="https://blog.python.org/2026/08/riscv-now-officially-supported/" target="_blank" rel="noopener noreferrer">Source ↗</a><a class="hn-link" href="https://news.ycombinator.com/item?id=49425252" target="_blank" rel="noopener noreferrer">HN Discuss ↗</a></span><button class="copy-button" type="button">COPY</button></div>
+        <div class="commentary"><h3>What HN commenters are saying</h3><p>Tier 3 is low support caveat; list of Tier 1 (Windows x64/i686, Linux x64/ARM, macOS ARM) and Tier 2 noted; surprise Windows i686 still Tier1; RISC-V seen as experimental, hardware scarcity bottleneck.</p></div>
+      </article>
+
+      <article class="story">
+        <div class="story-top"><span class="story-number" aria-label="Story 9"></span><h2>SQLite as document DB still holds up in 2026</h2></div>
+        <p class="body-copy">Pattern using SQLite JSON1/jsonb with generated columns, indexes, CDC timestamps. Avoids separate document DB for side projects. Virtual vs stored tradeoff.</p>
+        <div class="meta-row"><span class="score">226 pts / 54 comments</span><span class="story-links"><a class="source" href="https://dgl.cx/2020/06/sqlite-json-support" target="_blank" rel="noopener noreferrer">Source ↗</a><a class="hn-link" href="https://news.ycombinator.com/item?id=49426995" target="_blank" rel="noopener noreferrer">HN Discuss ↗</a></span><button class="copy-button" type="button">COPY</button></div>
+        <div class="commentary"><h3>What HN commenters are saying</h3><p>Long-term users confirm practical; custom repo with blobs separate, jsonb functions same; generated columns indexable unlike views; NOT NULL fails at insert; game save state example using indexed key + JSONB.</p></div>
+      </article>
+
+      <article class="story">
+        <div class="story-top"><span class="story-number" aria-label="Story 10"></span><h2>UK public pushes back on private-message scanning plans</h2></div>
+        <p class="body-copy">UK poll/opposition to scanning private messages under Online Safety Act push. Privacy vs safety tension. Shows strong preference for private comms.</p>
+        <div class="meta-row"><span class="score">211 pts / 131 comments</span><span class="story-links"><a class="source" href="https://www.theregister.com/security/2026/08/30/turns-out-brits-would-quite-like-their-private-messages-to-stay-private/" target="_blank" rel="noopener noreferrer">Source ↗</a><a class="hn-link" href="https://news.ycombinator.com/item?id=49497063" target="_blank" rel="noopener noreferrer">HN Discuss ↗</a></span><button class="copy-button" type="button">COPY</button></div>
+        <div class="commentary"><h3>What HN commenters are saying</h3><p>Privacy consensus but thread derailed into Brexit/migration and whether democracy is real; intra-elite conflicts, vague cynicism, claims voters didn't know what they voted for.</p></div>
+      </article>
+    </section>
+
+    <footer>
+      <span>END OF EDITION / 2026-08-30</span>
+      <nav class="archive-links" aria-label="Archive navigation"><a href="../">Home</a><a href="../">Browse archive</a></nav>
+    </footer>
+  </main>
+
+  <script>
+    (() => {
+      const root = document.documentElement;
+      const toggle = document.querySelector('.theme-toggle');
+      const systemDark = window.matchMedia('(prefers-color-scheme: dark)');
+      let mode = 'auto';
+
+      const renderTheme = () => {
+        if (mode === 'auto') root.removeAttribute('data-theme');
+        else root.dataset.theme = mode;
+        toggle.textContent = `THEME: ${mode.toUpperCase()}`;
+        toggle.setAttribute('aria-pressed', String(mode !== 'auto'));
+        toggle.setAttribute('aria-label', `Color theme is ${mode}. Activate to change theme.`);
+      };
+
+      toggle.addEventListener('click', () => {
+        mode = mode === 'auto' ? (systemDark.matches ? 'light' : 'dark') : mode === 'dark' ? 'light' : 'auto';
+        renderTheme();
+      });
+      renderTheme();
+
+      const writeClipboard = async (text) => {
+        if (navigator.clipboard && window.isSecureContext) {
+          await navigator.clipboard.writeText(text);
+          return;
+        }
+        const field = document.createElement('textarea');
+        field.value = text;
+        field.setAttribute('readonly', '');
+        field.style.cssText = 'position:fixed;left:-9999px;top:0';
+        document.body.appendChild(field);
+        field.select();
+        document.execCommand('copy');
+        field.remove();
+      };
+
+      document.querySelectorAll('.story').forEach((card, index) => {
+        const button = card.querySelector('.copy-button');
+        button.setAttribute('aria-label', `Copy story ${index + 1}`);
+        button.addEventListener('click', async () => {
+          const title = card.querySelector('h2').textContent.trim();
+          const body = card.querySelector('.body-copy').textContent.trim();
+          const score = card.querySelector('.score').textContent.trim();
+          const source = card.querySelector('.source').href;
+          const hn = card.querySelector('.hn-link').href;
+          const text = `${index + 1}. ${title}\n\n${body}\n\nSource: ${source}\nHN Discuss: ${hn}\n${score}`;
+          try {
+            await writeClipboard(text);
+            button.textContent = 'COPIED';
+            button.dataset.state = 'copied';
+            setTimeout(() => {
+              button.textContent = 'COPY';
+              delete button.dataset.state;
+            }, 1600);
+          } catch (_) {
+            button.textContent = 'COPY FAILED';
+            setTimeout(() => { button.textContent = 'COPY'; }, 1800);
+          }
+        });
+      });
+    })();
+  </script>
+</body>
+</html>
