@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
+<meta name="color-scheme" content="light dark"/>
+<link rel="icon" href="data:,"/>
+<title>HN Daily — Monday 2026-08-31 — 10 hottest at 07:00 PT</title>
+<style>
+:root {
+  --bg:#f3f1eb;
+  --surface:#fffdf8;
+  --ink:#141414;
+  --muted:#595952;
+  --line:#c8c5bb;
+  --soft-line:#dedbd2;
+  --accent:#d84a16;
+  --accent-ink:#8e2804;
+  --focus:#1464d2;
+  --key-bg:#e5e1d7;
+  --shadow:rgba(20,20,20,.08);
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg:#111210;
+    --surface:#191a17;
+    --ink:#f4f1e8;
+    --muted:#aaa99f;
+    --line:#494b43;
+    --soft-line:#30312c;
+    --accent:#ff6a2b;
+    --accent-ink:#ff9a6d;
+    --focus:#75adff;
+    --key-bg:#292a26;
+    --shadow:rgba(0,0,0,.3);
+  }
+}
+html[data-theme="light"]{color-scheme:light;--bg:#f3f1eb;--surface:#fffdf8;--ink:#141414;--muted:#595952;--line:#c8c5bb;--soft-line:#dedbd2;--accent:#d84a16;--accent-ink:#8e2804;--focus:#1464d2;--key-bg:#e5e1d7;--shadow:rgba(20,20,20,.08);}
+html[data-theme="dark"]{color-scheme:dark;--bg:#111210;--surface:#191a17;--ink:#f4f1e8;--muted:#aaa99f;--line:#494b43;--soft-line:#30312c;--accent:#ff6a2b;--accent-ink:#ff9a6d;--focus:#75adff;--key-bg:#292a26;--shadow:rgba(0,0,0,.3);}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;min-width:280px;background:linear-gradient(var(--soft-line) 1px, transparent 1px) 0 0 / 100% 32px,var(--bg);color:var(--ink);font-family:ui-monospace,"SFMono-Regular","Cascadia Code","Liberation Mono",Menlo,monospace;line-height:1.55;-webkit-font-smoothing:antialiased;}
+a{color:inherit}a:focus-visible,button:focus-visible{outline:3px solid var(--focus);outline-offset:4px}
+.page{width:min(1080px,calc(100% - 48px));margin:0 auto;padding:68px 0 40px;}
+.masthead{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:28px;align-items:start;padding-bottom:34px;border-bottom:2px solid var(--ink);}
+.title-wrap{max-width:760px}.edition{margin:0 0 14px;color:var(--accent-ink);font-size:12px;font-weight:800;letter-spacing:.13em;text-transform:uppercase;}
+h1{margin:0;max-width:760px;font-family:Georgia,"Times New Roman",serif;font-size:clamp(32px,5vw,56px);line-height:.95;letter-spacing:-.04em;font-weight:700;}
+.description{margin:18px 0 0;color:var(--muted);font-size:15px;max-width:660px;}
+.theme-toggle{display:inline-flex;align-items:center;gap:9px;border:1px solid var(--line);border-radius:3px;padding:9px 11px;background:var(--surface);color:var(--ink);font:inherit;font-size:12px;font-weight:700;cursor:pointer;box-shadow:3px 3px 0 var(--shadow);min-height:36px;}
+.card{display:grid;grid-template-columns:72px minmax(0,1fr);gap:18px;padding:26px 0;border-bottom:1px solid var(--soft-line);}
+.num{font-family:Georgia,serif;font-weight:800;font-size:42px;line-height:1;color:var(--accent);}
+.tagline{font-family:Georgia,serif;font-size:22px;font-weight:700;line-height:1.15;margin:0 0 10px;}
+.body{font-size:14.5px;line-height:1.6;margin:0 0 12px;max-width:720px;}
+.meta{font-size:12.5px;color:var(--muted);margin:8px 0;word-break:break-word;}
+.meta a{color:var(--ink);text-decoration:underline;text-underline-offset:3px;}
+.hn-comments{margin-top:12px;padding:12px 14px;background:var(--key-bg);border:1px solid var(--line);border-radius:4px;font-size:13px;line-height:1.55;}
+.copy-btn{margin-top:8px;border:1px solid var(--line);background:var(--surface);color:var(--ink);font:inherit;font-size:12px;font-weight:700;padding:8px 12px;cursor:pointer;min-height:36px;min-width:72px;border-radius:3px;}
+.copy-btn:active{transform:translate(1px,1px)}
+.footer{margin-top:40px;padding-top:18px;border-top:2px solid var(--ink);font-size:12.5px;color:var(--muted);}
+.footer a{color:var(--ink)}
+</style>
+</head>
+<body>
+<div class="page">
+<div class="masthead">
+<div class="title-wrap">
+<p class="edition"><time datetime="2026-08-31">2026-08-31</time> · Monday · 07:00 PT · 10 stories</p>
+<h1>HN Daily — Monday 2026-08-31</h1>
+<p class="description">10 hottest Hacker News stories at 07:00 PT. Direct, low-fluff, pragmatic engineer take. No tracking, static.</p>
+<p class="description"><a href="../">← Archive</a> · <a href="https://tk3369.github.io/hn-daily/">tk3369.github.io/hn-daily/</a></p>
+</div>
+<button class="theme-toggle" id="theme-toggle" aria-label="Toggle light/dark"><span class="theme-dot"></span><span id="theme-label">Theme</span></button>
+</div>
+
+<div class="card" id="s1">
+<div class="num">01</div>
+<div>
+<h2 class="tagline">1. AI crawlers burn 14 cores to re-render kernel commits</h2>
+<p class="body">Kernel.org tracks AI scrapers rendering git commits as HTML instead of cloning. At any time 14 cores across 5 nodes render commits, costing more CPU than all legitimate git clones combined. 1.48M commits in linux.git, 922 forks. Shows inefficiency of LLM data collection.</p>
+<p class="meta">Source: <a href="https://people.kernel.org/monsieuricon/creepy-crawlies" target="_blank" rel="noopener">https://people.kernel.org/monsieuricon/creepy-crawlies</a> · Discuss: <a href="https://news.ycombinator.com/item?id=49491791" target="_blank" rel="noopener">https://news.ycombinator.com/item?id=49491791</a> — 1269 pts / 635 comments</p>
+<button class="copy-btn" onclick="navigator.clipboard.writeText(&quot;1. AI crawlers burn 14 cores to re-render kernel commits\nKernel.org tracks AI scrapers rendering git commits as HTML instead of cloning. At any time 14 cores across 5 nodes render commits, costing more CPU than all legitimate git clones combined. 1.48M commits in linux.git, 922 forks. Shows inefficiency of LLM data collection.\nSource: https://people.kernel.org/monsieuricon/creepy-crawlies\nDiscuss: https://news.ycombinator.com/item?id=49491791 — 1269 pts / 635 comments&quot;).then(()=>{this.textContent='Copied!';setTimeout(()=>this.textContent='Copy Threads',1200)})">Copy Threads</button>
+<div class="hn-comments"><strong>What HN commenters are saying:</strong> Commenters debate plot tools (xkcd-gnuplot, matplotlib), argue AI scraping costs are externalized onto open infra, some note investors subsidize it similar to Uber rides. Consensus: scraping HTML instead of cloning is wasteful; disagreement on whether to block or rate-limit versus educate.</div>
+</div>
+</div>
+
+<div class="card" id="s2">
+<div class="num">02</div>
+<div>
+<h2 class="tagline">2. Monospace typesetting fixed by word choice, not CSS</h2>
+<p class="body">Marcin Wichary dissects monospace typesetting — right align, center, full justification break in fixed width. Hyphenation draws attention, spaces too large. He solves layout by choosing words carefully to avoid widows/orphans.</p>
+<p class="meta">Source: <a href="https://unsung.aresluna.org/i-just-chose-words-carefully/" target="_blank" rel="noopener">https://unsung.aresluna.org/i-just-chose-words-carefully/</a> · Discuss: <a href="https://news.ycombinator.com/item?id=49503601" target="_blank" rel="noopener">https://news.ycombinator.com/item?id=49503601</a> — 991 pts / 261 comments</p>
+<button class="copy-btn" onclick="navigator.clipboard.writeText(&quot;2. Monospace typesetting fixed by word choice, not CSS\nMarcin Wichary dissects monospace typesetting — right align, center, full justification break in fixed width. Hyphenation draws attention, spaces too large. He solves layout by choosing words carefully to avoid widows/orphans.\nSource: https://unsung.aresluna.org/i-just-chose-words-carefully/\nDiscuss: https://news.ycombinator.com/item?id=49503601 — 991 pts / 261 comments&quot;).then(()=>{this.textContent='Copied!';setTimeout(()=>this.textContent='Copy Threads',1200)})">Copy Threads</button>
+<div class="hn-comments"><strong>What HN commenters are saying:</strong> Discussion links to X-Files anecdote where Chris Carter wrote dialog to avoid widows for distinctive cadence, some verify scripts show it may be apocryphal. Others share personal habit of avoiding widows unconsciously. Consensus: craft matters; disagreement on whether story is embellished.</div>
+</div>
+</div>
+
+<div class="card" id="s3">
+<div class="num">03</div>
+<div>
+<h2 class="tagline">3. OpenShot 4.0 adds built-in recording and pro color tools</h2>
+<p class="body">OpenShot 4.0 adds integrated screen/webcam/mic/system-audio recording, new Color View with wheels, curves, LUTs, scopes, and local ML subject isolation. Also audio visualizations and film looks. Major step toward all-in-one open editor.</p>
+<p class="meta">Source: <a href="https://www.openshot.org/blog/2026/08/30/openshot-40-record-edit-color-like-never-before/" target="_blank" rel="noopener">https://www.openshot.org/blog/2026/08/30/openshot-40-record-edit-color-like-never-before/</a> · Discuss: <a href="https://news.ycombinator.com/item?id=49507822" target="_blank" rel="noopener">https://news.ycombinator.com/item?id=49507822</a> — 252 pts / 67 comments</p>
+<button class="copy-btn" onclick="navigator.clipboard.writeText(&quot;3. OpenShot 4.0 adds built-in recording and pro color tools\nOpenShot 4.0 adds integrated screen/webcam/mic/system-audio recording, new Color View with wheels, curves, LUTs, scopes, and local ML subject isolation. Also audio visualizations and film looks. Major step toward all-in-one open editor.\nSource: https://www.openshot.org/blog/2026/08/30/openshot-40-record-edit-color-like-never-before/\nDiscuss: https://news.ycombinator.com/item?id=49507822 — 252 pts / 67 comments&quot;).then(()=>{this.textContent='Copied!';setTimeout(()=>this.textContent='Copy Threads',1200)})">Copy Threads</button>
+<div class="hn-comments"><strong>What HN commenters are saying:</strong> Users ask for hue-vs-hue/sat and vectorscope workflows for multi-cam matching vs DaVinci Resolve on Linux. Others complain about .org cookie banner with 210 partners for an open-source project. Consensus: nice upgrades; disagreement on whether it replaces Resolve.</div>
+</div>
+</div>
+
+<div class="card" id="s4">
+<div class="num">04</div>
+<div>
+<h2 class="tagline">4. ChatGPT Work is two products, both paid-only</h2>
+<p class="body">Simon Willison untangles ChatGPT Work: Work Cloud (runs in cloud via chatgpt.com) vs Work Local (desktop app accessing local files like Codex re-skinned). Paid-only ($20+), tab UI, features beyond Chat. Clarifies billing vs Codex allowance.</p>
+<p class="meta">Source: <a href="https://simonwillison.net/2026/Aug/30/understanding-chatgpt-work/" target="_blank" rel="noopener">https://simonwillison.net/2026/Aug/30/understanding-chatgpt-work/</a> · Discuss: <a href="https://news.ycombinator.com/item?id=49504625" target="_blank" rel="noopener">https://news.ycombinator.com/item?id=49504625</a> — 246 pts / 133 comments</p>
+<button class="copy-btn" onclick="navigator.clipboard.writeText(&quot;4. ChatGPT Work is two products, both paid-only\nSimon Willison untangles ChatGPT Work: Work Cloud (runs in cloud via chatgpt.com) vs Work Local (desktop app accessing local files like Codex re-skinned). Paid-only ($20+), tab UI, features beyond Chat. Clarifies billing vs Codex allowance.\nSource: https://simonwillison.net/2026/Aug/30/understanding-chatgpt-work/\nDiscuss: https://news.ycombinator.com/item?id=49504625 — 246 pts / 133 comments&quot;).then(()=>{this.textContent='Copied!';setTimeout(()=>this.textContent='Copy Threads',1200)})">Copy Threads</button>
+<div class="hn-comments"><strong>What HN commenters are saying:</strong> Commenters report remote desktop browser feature freezing, confusion over Codex quota billing making Work DOA for heavy Codex users, worry OpenAI will merge quotas. Some praise computer-use for email/docs automation. Consensus: powerful but confusing pricing and stability.</div>
+</div>
+</div>
+
+<div class="card" id="s5">
+<div class="num">05</div>
+<div>
+<h2 class="tagline">5. 12TB Steam leak preserves decade of cut Valve history</h2>
+<p class="body">12TB leak from Steam archives surfaces cut Portal 2 content, Half-Life 2: Episode 3 hints, decade of prototypes. Hosted at steam2.download with torrent. Raises preservation vs copyright tension.</p>
+<p class="meta">Source: <a href="https://arstechnica.com/gaming/2026/08/a-12tb-steam-teraleak-spills-more-than-a-decade-of-lost-pc-gaming-history/" target="_blank" rel="noopener">https://arstechnica.com/gaming/2026/08/a-12tb-steam-teraleak-spills-more-than-a-decade-of-lost-pc-gaming-history/</a> · Discuss: <a href="https://news.ycombinator.com/item?id=49506182" target="_blank" rel="noopener">https://news.ycombinator.com/item?id=49506182</a> — 242 pts / 41 comments</p>
+<button class="copy-btn" onclick="navigator.clipboard.writeText(&quot;5. 12TB Steam leak preserves decade of cut Valve history\n12TB leak from Steam archives surfaces cut Portal 2 content, Half-Life 2: Episode 3 hints, decade of prototypes. Hosted at steam2.download with torrent. Raises preservation vs copyright tension.\nSource: https://arstechnica.com/gaming/2026/08/a-12tb-steam-teraleak-spills-more-than-a-decade-of-lost-pc-gaming-history/\nDiscuss: https://news.ycombinator.com/item?id=49506182 — 242 pts / 41 comments&quot;).then(()=>{this.textContent='Copied!';setTimeout(()=>this.textContent='Copy Threads',1200)})">Copy Threads</button>
+<div class="hn-comments"><strong>What HN commenters are saying:</strong> Thread marked as dupe, discussion split across items. Users ask how host avoids lawsuit, others advise grabbing torrent before takedown. Consensus: huge preservation value; disagreement on legal risk and whether to combine threads.</div>
+</div>
+</div>
+
+<div class="card" id="s6">
+<div class="num">06</div>
+<div>
+<h2 class="tagline">6. Tiny cafe build: 40k patience, macro lens payoff</h2>
+<p class="body">Builder documents Rolife miniature cafe build — wooden poppable pieces that snap, first-grade curses, hours with 007 and Warhammer streams, finished tiny cafe photos. Celebrates craft, focus, and scale appreciation.</p>
+<p class="meta">Source: <a href="https://sandyuraz.com/blogs/tiny-cafe/" target="_blank" rel="noopener">https://sandyuraz.com/blogs/tiny-cafe/</a> · Discuss: <a href="https://news.ycombinator.com/item?id=49481141" target="_blank" rel="noopener">https://news.ycombinator.com/item?id=49481141</a> — 233 pts / 39 comments</p>
+<button class="copy-btn" onclick="navigator.clipboard.writeText(&quot;6. Tiny cafe build: 40k patience, macro lens payoff\nBuilder documents Rolife miniature cafe build — wooden poppable pieces that snap, first-grade curses, hours with 007 and Warhammer streams, finished tiny cafe photos. Celebrates craft, focus, and scale appreciation.\nSource: https://sandyuraz.com/blogs/tiny-cafe/\nDiscuss: https://news.ycombinator.com/item?id=49481141 — 233 pts / 39 comments&quot;).then(()=>{this.textContent='Copied!';setTimeout(()=>this.textContent='Copy Threads',1200)})">Copy Threads</button>
+<div class="hn-comments"><strong>What HN commenters are saying:</strong> Parents share similar hobby with daughters using Rolife kits and 105mm macro lenses, note dust/hair looks huge at scale needing cleanroom. Others ask for banana-for-scale, note manga tankobon behind model as 17cm reference. Consensus: charming, relatable craft.</div>
+</div>
+</div>
+
+<div class="card" id="s7">
+<div class="num">07</div>
+<div>
+<h2 class="tagline">7. PCB business card runs 21 LEDs off phone NFC</h2>
+<p class="body">Rice EE student builds battery-free PCB business card harvesting NFC energy to power MCU and 21 animated LEDs from phone tap. Cheap BOM, NXP NTAG harvesting, full repo with permissive license. Learned KiCad.</p>
+<p class="meta">Source: <a href="https://wilsonharper.net/projects/businesscard/" target="_blank" rel="noopener">https://wilsonharper.net/projects/businesscard/</a> · Discuss: <a href="https://news.ycombinator.com/item?id=49478426" target="_blank" rel="noopener">https://news.ycombinator.com/item?id=49478426</a> — 199 pts / 22 comments</p>
+<button class="copy-btn" onclick="navigator.clipboard.writeText(&quot;7. PCB business card runs 21 LEDs off phone NFC\nRice EE student builds battery-free PCB business card harvesting NFC energy to power MCU and 21 animated LEDs from phone tap. Cheap BOM, NXP NTAG harvesting, full repo with permissive license. Learned KiCad.\nSource: https://wilsonharper.net/projects/businesscard/\nDiscuss: https://news.ycombinator.com/item?id=49478426 — 199 pts / 22 comments&quot;).then(()=>{this.textContent='Copied!';setTimeout(()=>this.textContent='Copy Threads',1200)})">Copy Threads</button>
+<div class="hn-comments"><strong>What HN commenters are saying:</strong> Praise for well-documented write-up and permissive license as student project, American Psycho card meme, suggestions for piezo buzzer playing dial-up audio, requests for cheap custom packs. Consensus: excellent execution.</div>
+</div>
+</div>
+
+<div class="card" id="s8">
+<div class="num">08</div>
+<div>
+<h2 class="tagline">8. Claude Opus 5 Auto Mode bypassed with 60-80% success</h2>
+<p class="body">Research shows simple website summary request hijacks Claude Code Opus 5 Auto Mode with 60-80% code execution success, versus vendor claim of 0% indirect prompt injection. Auto Mode replaced human approval with classifier since mid-August, now default.</p>
+<p class="meta">Source: <a href="https://embracethered.com/blog/posts/2026/breaking-claude-code-opus-5-and-automode/" target="_blank" rel="noopener">https://embracethered.com/blog/posts/2026/breaking-claude-code-opus-5-and-automode/</a> · Discuss: <a href="https://news.ycombinator.com/item?id=49506819" target="_blank" rel="noopener">https://news.ycombinator.com/item?id=49506819</a> — 188 pts / 61 comments</p>
+<button class="copy-btn" onclick="navigator.clipboard.writeText(&quot;8. Claude Opus 5 Auto Mode bypassed with 60-80% success\nResearch shows simple website summary request hijacks Claude Code Opus 5 Auto Mode with 60-80% code execution success, versus vendor claim of 0% indirect prompt injection. Auto Mode replaced human approval with classifier since mid-August, now default.\nSource: https://embracethered.com/blog/posts/2026/breaking-claude-code-opus-5-and-automode/\nDiscuss: https://news.ycombinator.com/item?id=49506819 — 188 pts / 61 comments&quot;).then(()=>{this.textContent='Copied!';setTimeout(()=>this.textContent='Copy Threads',1200)})">Copy Threads</button>
+<div class="hn-comments"><strong>What HN commenters are saying:</strong> Commenters alarmed, note attack resembles tailored trojan exploiting Claude habits, question why not seen more in wild, suggest --dangerously-skip-permissions workflow plus network isolation, debate whether auto mode mild failures go unnoticed. Consensus: concerning gap vs marketing claims.</div>
+</div>
+</div>
+
+<div class="card" id="s9">
+<div class="num">09</div>
+<div>
+<h2 class="tagline">9. 240M domain autocomplete in 0ms* with keyDown trick</h2>
+<p class="body">Wirewiki builds next-frame autocomplete for 240M domains by prefetching on keyDown and rendering on keyUp. Clever perceived-latency trick with * asterisk. Trie weighted by popularity, client-side JS.</p>
+<p class="meta">Source: <a href="https://ruurtjan.com/articles/p99-0ms-autocomplete-for-240-million-domain-names" target="_blank" rel="noopener">https://ruurtjan.com/articles/p99-0ms-autocomplete-for-240-million-domain-names</a> · Discuss: <a href="https://news.ycombinator.com/item?id=49505219" target="_blank" rel="noopener">https://news.ycombinator.com/item?id=49505219</a> — 173 pts / 70 comments</p>
+<button class="copy-btn" onclick="navigator.clipboard.writeText(&quot;9. 240M domain autocomplete in 0ms* with keyDown trick\nWirewiki builds next-frame autocomplete for 240M domains by prefetching on keyDown and rendering on keyUp. Clever perceived-latency trick with * asterisk. Trie weighted by popularity, client-side JS.\nSource: https://ruurtjan.com/articles/p99-0ms-autocomplete-for-240-million-domain-names\nDiscuss: https://news.ycombinator.com/item?id=49505219 — 173 pts / 70 comments&quot;).then(()=>{this.textContent='Copied!';setTimeout(()=>this.textContent='Copy Threads',1200)})">Copy Threads</button>
+<div class="hn-comments"><strong>What HN commenters are saying:</strong> Critics say not how latency is measured, perceived latency starts at keydown not keyup, delaying display worsens perception. Others note Australia latency still poor, propose residual prediction weighted by prefix coverage. Consensus: clever UX hack; disagreement on validity.</div>
+</div>
+</div>
+
+<div class="card" id="s10">
+<div class="num">10</div>
+<div>
+<h2 class="tagline">10. Matrox from $20k Video RAM to broadcast SDI workhorse</h2>
+<p class="body">History of Matrox from 1976 founding by Lorne Trottier and Branko Matić in Dorval, Quebec, $20k orders from Electronics magazine for MTX-1632 Video RAM, Millennium cards known for stable analog signal, still in broadcast with X.mio/DSX SDI I/O.</p>
+<p class="meta">Source: <a href="https://www.abortretry.fail/p/matrox" target="_blank" rel="noopener">https://www.abortretry.fail/p/matrox</a> · Discuss: <a href="https://news.ycombinator.com/item?id=49503934" target="_blank" rel="noopener">https://news.ycombinator.com/item?id=49503934</a> — 152 pts / 52 comments</p>
+<button class="copy-btn" onclick="navigator.clipboard.writeText(&quot;10. Matrox from $20k Video RAM to broadcast SDI workhorse\nHistory of Matrox from 1976 founding by Lorne Trottier and Branko Matić in Dorval, Quebec, $20k orders from Electronics magazine for MTX-1632 Video RAM, Millennium cards known for stable analog signal, still in broadcast with X.mio/DSX SDI I/O.\nSource: https://www.abortretry.fail/p/matrox\nDiscuss: https://news.ycombinator.com/item?id=49503934 — 152 pts / 52 comments&quot;).then(()=>{this.textContent='Copied!';setTimeout(()=>this.textContent='Copy Threads',1200)})">Copy Threads</button>
+<div class="hn-comments"><strong>What HN commenters are saying:</strong> Nostalgia for Millennium G200 vs RIVA TNT choice, late-90s Linux 1600x1200 24-bit with 8MB, paid X servers, dual-monitor dreams, current broadcast users note X.mio5 with 12G-SDI and 25GbE ST 2110 still common. Consensus: respected niche survivor.</div>
+</div>
+</div>
+
+<div class="footer">
+<p>Auto-updates daily at 7am PT · Daily pages independent · Static archive — no tracking · <a href="../">Archive home</a> · <a href="https://tk3369.github.io/hn-daily/">https://tk3369.github.io/hn-daily/</a></p>
+<p>Footer uses relative ../ and absolute https://tk3369.github.io/hn-daily/ links. No agent.meta.ai mentions.</p>
+</div>
+</div>
+<script>
+(function(){
+  const key='hn-daily-theme';
+  const btn=document.getElementById('theme-toggle');
+  const label=document.getElementById('theme-label');
+  function apply(t){document.documentElement.setAttribute('data-theme',t); localStorage.setItem(key,t); label.textContent=t;}
+  const saved=localStorage.getItem(key);
+  if(saved){apply(saved);} else if(window.matchMedia('(prefers-color-scheme: dark)').matches){apply('dark');} else {apply('light');}
+  btn.addEventListener('click',()=>{const cur=document.documentElement.getAttribute('data-theme')==='dark'?'light':'dark'; apply(cur);});
+})();
+</script>
+</body>
+</html>
