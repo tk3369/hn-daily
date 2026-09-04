@@ -179,19 +179,17 @@
     field.remove();
     if (!ok) throw new Error('copy failed');
   }
+  const pageUrl = "https://tk3369.github.io/hn-daily/2026-09-02/";
   document.querySelectorAll('.copy-button').forEach((button, index) => {
     button.addEventListener('click', async () => {
       const story = button.closest('.story');
-      const number = String(index + 1);
+      const number = index + 1;
       const tagline = story.querySelector('.tagline').textContent.trim();
-      const summary = story.querySelector('.summary').textContent.trim();
-      const text = `${number}. ${tagline}\n${summary}\nhttps://tk3369.github.io/hn-daily/2026-09-02/#story-${number}`;
+      const body = story.querySelector('.summary').textContent.trim();
+      const text = `${number}. ${tagline}\n${body}\n${pageUrl}#story-${number}`;
       try {
         await copyText(text);
-        const orig = button.textContent;
-        button.textContent = 'Copied';
         showToast(`Story ${number} copied`);
-        setTimeout(() => { button.textContent = orig; }, 1600);
       } catch (_) {
         showToast('Copy was blocked by this browser');
       }
