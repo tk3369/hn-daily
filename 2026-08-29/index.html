@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <meta name="color-scheme" content="light dark" />
   <link rel="icon" href="data:," />
-  <title>HN Daily — 2026-08-29</title>
+  <title>HN Daily — Saturday 2026-08-29</title>
   <style>
     :root {
       --bg: #f3f1eb;
@@ -146,6 +146,7 @@
       font-weight: 700;
       cursor: pointer;
       box-shadow: 3px 3px 0 var(--shadow);
+      min-height: 36px;
     }
     .theme-toggle:hover { border-color: var(--ink); }
     .theme-dot {
@@ -209,72 +210,69 @@
       line-height: 1.55;
     }
 
-    .story-bar {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      gap: 10px 18px;
-      margin-top: 23px;
-      color: var(--muted);
+    .meta-line {
+      margin-top: 20px;
+      font-family: ui-monospace, "SFMono-Regular", "Cascadia Code", "Liberation Mono", Menlo, monospace;
       font-size: 12px;
-      font-weight: 700;
+      line-height: 1.6;
+      color: var(--muted);
+      font-weight: 600;
+      word-break: break-word;
     }
-    .metric {
-      padding: 6px 9px;
+    .meta-line a {
       color: var(--ink);
-      background: var(--key-bg);
-      border: 1px solid var(--soft-line);
-      border-radius: 3px;
-      white-space: nowrap;
-    }
-    .story-link {
-      min-height: 36px;
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
-      color: var(--accent-ink);
       font-weight: 800;
       text-decoration: underline;
       text-decoration-thickness: 1px;
-      text-underline-offset: 4px;
-      touch-action: manipulation;
+      text-underline-offset: 3px;
+      min-height: 36px;
+      display: inline-flex;
+      align-items: center;
     }
-    .story-link:hover { text-decoration-thickness: 2px; }
-    .story-link::after { content: "↗"; font-size: 11px; }
+    .meta-line a:hover { text-decoration-thickness: 2px; }
+    .meta-sep { margin: 0 6px; opacity: .7; }
+    .meta-points { color: var(--muted); font-weight: 600; }
 
     .copy-button {
+      display: block;
+      width: 100%;
       min-height: 36px;
-      margin-left: auto;
+      margin-top: 16px;
       border: 1px solid var(--line);
       border-radius: 3px;
-      padding: 7px 10px;
+      padding: 10px 12px;
       color: var(--ink);
-      background: transparent;
+      background: var(--key-bg);
       font: inherit;
       font-size: 12px;
       font-weight: 800;
       cursor: pointer;
+      text-align: center;
+      touch-action: manipulation;
     }
-    .copy-button:hover { border-color: var(--ink); background: var(--key-bg); }
+    .copy-button:hover { border-color: var(--ink); }
+    .copy-button:active { transform: translateY(1px); }
 
     .commentary {
-      margin-top: 24px;
-      padding: 18px 0 0;
-      border-top: 2px solid var(--ink);
+      margin-top: 20px;
+      padding: 16px 0 0;
+      border-top: 1px dashed var(--soft-line);
     }
     .commentary h3 {
       margin: 0 0 9px;
       color: var(--ink);
-      font-size: 12px;
+      font-size: 11px;
       line-height: 1.3;
       font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .06em;
     }
     .commentary p {
       margin: 0;
       max-width: 840px;
       color: var(--muted);
       font-family: Georgia, "Times New Roman", serif;
-      font-size: 16px;
+      font-size: 15px;
       line-height: 1.55;
     }
     code {
@@ -301,6 +299,9 @@
       color: var(--ink);
       font-weight: 800;
       text-underline-offset: 4px;
+      min-height: 36px;
+      display: inline-flex;
+      align-items: center;
     }
     .published-link { color: var(--accent-ink); }
 
@@ -331,9 +332,6 @@
       .story-list { padding-top: 28px; gap: 14px; }
       .story { grid-template-columns: 48px minmax(0, 1fr); gap: 14px; padding: 24px 20px 26px; }
       .story::before { font-size: 16px; padding-top: 5px; }
-      .story-bar { align-items: stretch; gap: 8px 14px; }
-      .metric { flex-basis: 100%; width: max-content; }
-      .copy-button { margin-left: 0; }
       footer { grid-template-columns: 1fr; gap: 14px; margin-top: 58px; }
     }
 
@@ -344,9 +342,7 @@
       .story::before { padding-top: 0; }
       .tagline { font-size: 26px; }
       .summary { font-size: 17px; }
-      .story-link, .copy-button { flex: 1 1 auto; justify-content: center; }
-      .copy-button { min-width: 100%; }
-      .commentary p { font-size: 15px; }
+      .commentary p { font-size: 14px; }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -364,20 +360,20 @@
 </head>
 <body>
 <main class="page">
-  <header class="masthead"><div class="masthead-copy"><p class="edition">Daily brief · 2026-08-29</p><h1>Ten stories worth your attention.</h1><p class="deck">The Hacker News front page, compressed into practical context — plus the strongest arguments from the threads.</p></div><button class="theme-toggle" type="button" aria-label="Switch color theme" aria-pressed="false"><span class="theme-dot" aria-hidden="true"></span><span class="theme-label">theme: auto</span></button></header>
+  <header class="masthead"><div class="masthead-copy"><p class="edition">Daily brief · Saturday 2026-08-29</p><h1>Ten stories worth your attention.</h1><p class="deck">The Hacker News front page, compressed into practical context — plus the strongest arguments from the threads.</p></div><button class="theme-toggle" type="button" aria-label="Switch color theme" aria-pressed="false"><span class="theme-dot" aria-hidden="true"></span><span class="theme-label">theme: auto</span></button></header>
   <section class="story-list" aria-label="Top 10 Hacker News stories">
-    <article class="story" data-source="https://ckardaris.com/blog/2026/08/28/keyboard-driven-guis.html" data-hn="https://news.ycombinator.com/item?id=49479837"><div class="story-main"><h2 class="tagline">Your mouse is slowing everyone down</h2><p class="summary">The case for keyboard-driven GUIs is bigger than speed: every action needs a discoverable keyboard path. Build on native controls, preserve logical tab order, expose shortcuts, and treat any task that traps keyboard users as a product bug.</p><div class="story-bar"><span class="metric">795 pts / 403 comments</span><a class="story-link" href="https://ckardaris.com/blog/2026/08/28/keyboard-driven-guis.html" target="_blank" rel="noopener">Source</a><a class="story-link" href="https://news.ycombinator.com/item?id=49479837" target="_blank" rel="noopener">Discuss on HN</a><button class="copy-button" type="button">Copy for Threads</button></div><aside class="commentary"><h3>What HN commenters are saying:</h3><p>Keyboard support is widely framed as a curb-cut effect: it serves accessibility, power users, and temporary or situational limitations. Commenters recommend testing with both keyboard and screen reader, leaning on native web standards and ARIA patterns, and treating broken tab order as a bug. The disagreement is over native GUIs versus TUIs, and whether keyboard-driven automatically means accessible—it does not.</p></aside></div></article>
-    <article class="story" data-source="https://huggingface.co/zai-org/GLM-5.3" data-hn="https://news.ycombinator.com/item?id=49479878"><div class="story-main"><h2 class="tagline">A frontier model you can actually own</h2><p class="summary">GLM-5.3 is available as open weights, giving teams a path to self-hosting, controlled deployment, and task-specific evaluation without an API dependency. The practical test is still your workload: license, quality, latency, hardware cost, and operational effort.</p><div class="story-bar"><span class="metric">691 pts / 232 comments</span><a class="story-link" href="https://huggingface.co/zai-org/GLM-5.3" target="_blank" rel="noopener">Source</a><a class="story-link" href="https://news.ycombinator.com/item?id=49479878" target="_blank" rel="noopener">Discuss on HN</a><button class="copy-button" type="button">Copy for Threads</button></div><aside class="commentary"><h3>What HN commenters are saying:</h3><p>Many see GLM-5.3 as a strong runnable open model that is less touchy than some U.S. models and easier to use than Kimi. The main debate is economic: cloud often wins on pure cost, while local deployment earns its place through privacy, control, compliance, version pinning, and independence. Hardware reports range from two DGX Sparks at roughly 170 tok/s concurrently to a roughly $6,000 rig near 14 tok/s; the payback math is disputed.</p></aside></div></article>
-    <article class="story" data-source="https://four.htmx.org/announcements/2026-08-28-htmx-4.0.0-is-released" data-hn="https://news.ycombinator.com/item?id=49478178"><div class="story-main"><h2 class="tagline">The anti-framework ships its biggest update</h2><p class="summary">Htmx 4.0 keeps the server-rendered model: return HTML and swap fragments instead of building a JavaScript application around every screen. It fits forms, lists, and internal tools well; complex offline behavior or rich client state still calls for a different architecture.</p><div class="story-bar"><span class="metric">649 pts / 164 comments</span><a class="story-link" href="https://four.htmx.org/announcements/2026-08-28-htmx-4.0.0-is-released" target="_blank" rel="noopener">Source</a><a class="story-link" href="https://news.ycombinator.com/item?id=49478178" target="_blank" rel="noopener">Discuss on HN</a><button class="copy-button" type="button">Copy for Threads</button></div><aside class="commentary"><h3>What HN commenters are saying:</h3><p>Fans praise stacks such as Go or Django with SQLite or Postgres and HTMX—sometimes called HUGS or GOSH—for avoiding a frontend build, and several say Claude Code handles the pattern well. Critics find it awkward once client state becomes complex or the product behaves like an SPA. The rough consensus: excellent for bounded interactivity and internal tools, but do not force it everywhere. The usual jokes about the “CEO of HTMX” continue.</p></aside></div></article>
-    <article class="story" data-source="https://www.inventati.org/" data-hn="https://news.ycombinator.com/item?id=49477854"><div class="story-main"><h2 class="tagline">When infrastructure becomes the target</h2><p class="summary">U.S. sanctions against the A/I Collective turn an infrastructure provider into the policy subject. The technical takeaway is not partisan: hosting, identity, mirrors, backups, and DNS are part of the threat model when political or legal pressure can remove a dependency.</p><div class="story-bar"><span class="metric">591 pts / 575 comments</span><a class="story-link" href="https://www.inventati.org/" target="_blank" rel="noopener">Source</a><a class="story-link" href="https://news.ycombinator.com/item?id=49477854" target="_blank" rel="noopener">Discuss on HN</a><button class="copy-button" type="button">Copy for Threads</button></div><aside class="commentary"><h3>What HN commenters are saying:</h3><p>The strongest concern is precedent: labeling an infrastructure provider as terrorism-connected could reach privacy networks, secure messaging, cryptographic tools, and hosting. Commenters disagree over whether the move is unprecedented, where a provider's responsibility ends, and how sanctions differ from ordinary legal compliance. Some also speculate that the service could be a honeypot, without settling that claim.</p></aside></div></article>
-    <article class="story" data-source="https://openai.com/index/our-decision-on-cursor-following-its-acquisition-by-spacex/" data-hn="https://news.ycombinator.com/item?id=49486172"><div class="story-main"><h2 class="tagline">Cursor’s acquisition puts model access on the line</h2><p class="summary">OpenAI’s response to Cursor’s acquisition by SpaceX shows how quickly an AI coding tool can inherit platform risk. Teams should keep prompts, evaluations, and editor workflows portable; a provider dispute can change model access faster than the codebase can adapt.</p><div class="story-bar"><span class="metric">513 pts / 275 comments</span><a class="story-link" href="https://openai.com/index/our-decision-on-cursor-following-its-acquisition-by-spacex/" target="_blank" rel="noopener">Source</a><a class="story-link" href="https://news.ycombinator.com/item?id=49486172" target="_blank" rel="noopener">Discuss on HN</a><button class="copy-button" type="button">Copy for Threads</button></div><aside class="commentary"><h3>What HN commenters are saying:</h3><p>The decision is framed around alleged distillation and terms-of-service violations. Many commenters call it hypocritical to protect model outputs after training on scraped copyrighted material. Others argue that providers can enforce contracts as written. A practical worry is that Cursor could lose both GPT and Claude access, deepening vendor lock-in; Anthropic's earlier ban of xAI is cited as precedent.</p></aside></div></article>
-    <article class="story" data-source="https://www.orbify.eu/demo/" data-hn="https://news.ycombinator.com/item?id=49477564"><div class="story-main"><h2 class="tagline">This map bends the road before you turn</h2><p class="summary">Orbify curves the map surface to bring upcoming turns into view, reducing the mental jump between a flat route and the road ahead. The demo is a useful interface experiment, but navigation has a hard constraint: visual novelty cannot compete with safe, stable prediction.</p><div class="story-bar"><span class="metric">499 pts / 171 comments</span><a class="story-link" href="https://www.orbify.eu/demo/" target="_blank" rel="noopener">Source</a><a class="story-link" href="https://news.ycombinator.com/item?id=49477564" target="_blank" rel="noopener">Discuss on HN</a><button class="copy-button" type="button">Copy for Threads</button></div><aside class="commentary"><h3>What HN commenters are saying:</h3><p>Commenters surface substantial prior art: BERG's 2009 “Here and There,” a 1976 Saab view, patents, and Animal Crossing's 2005 rolling-log world. The demo looks promising, but sharp or consecutive turns can hide the road, prediction distance shifts, and the effect may distract or cause nausea. Suggested fixes include smoother orientation, dynamic zoom, and aiming a few seconds ahead rather than a fixed distance.</p></aside></div></article>
-    <article class="story" data-source="https://anil.recoil.org/notes/rumour-is-the-exploit" data-hn="https://news.ycombinator.com/item?id=49480466"><div class="story-main"><h2 class="tagline">A bug rumor now creates its own exploit wave</h2><p class="summary">AI-assisted researchers can turn a vague hint into a flood of plausible vulnerability reports. Maintainers now face a scaling problem: triage quality, disclosure coordination, CVE latency, and patch throughput matter as much as finding the original bug.</p><div class="story-bar"><span class="metric">316 pts / 111 comments</span><a class="story-link" href="https://anil.recoil.org/notes/rumour-is-the-exploit" target="_blank" rel="noopener">Source</a><a class="story-link" href="https://news.ycombinator.com/item?id=49480466" target="_blank" rel="noopener">Discuss on HN</a><button class="copy-button" type="button">Copy for Threads</button></div><aside class="commentary"><h3>What HN commenters are saying:</h3><p>Maintainers describe being flooded: rclone saw 20 disclosures in ten years, then 40 in one month. Roughly 75% contain a useful nugget, but the required configurations grow increasingly unlikely. GitHub CVE assignment reportedly moved from two or three days to three or four weeks, forcing “CVE-PENDING.” Suggestions include batching about ten fixes per branch, donated GPU pools, and better AI triage; the debate is whether the bottleneck is will, money, or QA that no longer scales.</p></aside></div></article>
-    <article class="story" data-source="https://12factor.net/" data-hn="https://news.ycombinator.com/item?id=49472216"><div class="story-main"><h2 class="tagline">The Twelve-Factor App still holds up—except one chapter</h2><p class="summary">The 2025 Twelve-Factor App remains a strong baseline for disposable processes, attached services, and logs as streams. The disputed part is configuration: environment variables are simple and portable, but teams should choose a secret-delivery path based on the actual leak surface.</p><div class="story-bar"><span class="metric">266 pts / 150 comments</span><a class="story-link" href="https://12factor.net/" target="_blank" rel="noopener">Source</a><a class="story-link" href="https://news.ycombinator.com/item?id=49472216" target="_blank" rel="noopener">Discuss on HN</a><button class="copy-button" type="button">Copy for Threads</button></div><aside class="commentary"><h3>What HN commenters are saying:</h3><p>The methodology is still considered relevant, but its Config chapter draws fire. Critics note that environment variables leak through logs, crash reporters, <code>printenv</code>, and subprocess inheritance; they prefer files, stdin, systemd credentials, <code>/dev/shm</code>, vaults, workload identity, or SOPS. Defenders answer that environment values do not persist by default and files leak too. One point lands cleanly: do not put secrets in <code>~/.bashrc</code>.</p></aside></div></article>
-    <article class="story" data-source="https://github.com/Lakr233/vphone-cli" data-hn="https://news.ycombinator.com/item?id=49485267"><div class="story-main"><h2 class="tagline">A virtual iPhone is not the Simulator</h2><p class="summary">vphone-cli boots an iPhone environment through Apple’s Virtualization.framework using Apple-provided system components and user-space patches. That opens useful testing and research paths, but it is not a drop-in physical device: services, detection, and platform rules still differ.</p><div class="story-bar"><span class="metric">265 pts / 74 comments</span><a class="story-link" href="https://github.com/Lakr233/vphone-cli" target="_blank" rel="noopener">Source</a><a class="story-link" href="https://news.ycombinator.com/item?id=49485267" target="_blank" rel="noopener">Discuss on HN</a><button class="copy-button" type="button">Copy for Threads</button></div><aside class="commentary"><h3>What HN commenters are saying:</h3><p>Commenters distinguish this from both emulation and Simulator: Apple supplies an iOS kernel in PCC or cloudOS images for Virtualization.framework, paired with user-space patches. Proposed uses include security research, kernel debugging, Network Extensions, Metal or camera testing, and click farms. Limits include no App Store or iCloud and a detectable VM. A side discussion covers alternative-store checks in the EU and Japan.</p></aside></div></article>
-    <article class="story" data-source="https://www.osnews.com/story/145883/easyeffects-should-be-part-of-every-linux-distribution-and-desktop-environment-to-massively-improve-laptop-speaker-sound-quality/" data-hn="https://news.ycombinator.com/item?id=49479924"><div class="story-main"><h2 class="tagline">Linux laptop speakers can sound much better</h2><p class="summary">EasyEffects can improve weak Linux laptop audio with equalization and limiting. Device-specific correction works better than a generic preset. Start with a trusted profile, measure if possible, and keep levels safe.</p><div class="story-bar"><span class="metric">152 pts / 56 comments</span><a class="story-link" href="https://www.osnews.com/story/145883/easyeffects-should-be-part-of-every-linux-distribution-and-desktop-environment-to-massively-improve-laptop-speaker-sound-quality/" target="_blank" rel="noopener">Source</a><a class="story-link" href="https://news.ycombinator.com/item?id=49479924" target="_blank" rel="noopener">Discuss on HN</a><button class="copy-button" type="button">Copy for Threads</button></div><aside class="commentary"><h3>What HN commenters are saying:</h3><p>Linux laptop owners—especially Framework users—report a night-and-day improvement from EasyEffects EQ and share presets, while warning that Framework 13 and 13 Pro profiles differ. The discussion contrasts generic correction with per-device measurement through Room EQ Wizard. Commenters also debate a flat target versus personal preference, and propose automatic tuning with an omnidirectional electret microphone.</p></aside></div></article>
+    <article id="story-1" class="story" data-source="https://ckardaris.com/blog/2026/08/28/keyboard-driven-guis.html" data-hn="https://news.ycombinator.com/item?id=49479837"><div class="story-main"><h2 class="tagline">Your mouse is slowing everyone down</h2><p class="summary">The case for keyboard-driven GUIs is bigger than speed: every action needs a discoverable keyboard path. Build on native controls, preserve logical tab order, expose shortcuts, and treat any task that traps keyboard users as a product bug.</p><div class="meta-line">Source: <a href="https://ckardaris.com/blog/2026/08/28/keyboard-driven-guis.html" target="_blank" rel="noopener">ckardaris.com</a> <span class="meta-sep">·</span> <a href="https://news.ycombinator.com/item?id=49479837" target="_blank" rel="noopener">HN Discuss</a> <span class="meta-sep">·</span> <span class="meta-points">795 pts / 403 comments</span></div><button class="copy-button" type="button">Copy for Threads</button><aside class="commentary"><h3>What HN commenters are saying:</h3><p>Keyboard support is widely framed as a curb-cut effect: it serves accessibility, power users, and temporary or situational limitations. Commenters recommend testing with both keyboard and screen reader, leaning on native web standards and ARIA patterns, and treating broken tab order as a bug. The disagreement is over native GUIs versus TUIs, and whether keyboard-driven automatically means accessible—it does not.</p></aside></div></article>
+    <article id="story-2" class="story" data-source="https://huggingface.co/zai-org/GLM-5.3" data-hn="https://news.ycombinator.com/item?id=49479878"><div class="story-main"><h2 class="tagline">A frontier model you can actually own</h2><p class="summary">GLM-5.3 is available as open weights, giving teams a path to self-hosting, controlled deployment, and task-specific evaluation without an API dependency. The practical test is still your workload: license, quality, latency, hardware cost, and operational effort.</p><div class="meta-line">Source: <a href="https://huggingface.co/zai-org/GLM-5.3" target="_blank" rel="noopener">huggingface.co</a> <span class="meta-sep">·</span> <a href="https://news.ycombinator.com/item?id=49479878" target="_blank" rel="noopener">HN Discuss</a> <span class="meta-sep">·</span> <span class="meta-points">691 pts / 232 comments</span></div><button class="copy-button" type="button">Copy for Threads</button><aside class="commentary"><h3>What HN commenters are saying:</h3><p>Many see GLM-5.3 as a strong runnable open model that is less touchy than some U.S. models and easier to use than Kimi. The main debate is economic: cloud often wins on pure cost, while local deployment earns its place through privacy, control, compliance, version pinning, and independence. Hardware reports range from two DGX Sparks at roughly 170 tok/s concurrently to a roughly $6,000 rig near 14 tok/s; the payback math is disputed.</p></aside></div></article>
+    <article id="story-3" class="story" data-source="https://four.htmx.org/announcements/2026-08-28-htmx-4.0.0-is-released" data-hn="https://news.ycombinator.com/item?id=49478178"><div class="story-main"><h2 class="tagline">The anti-framework ships its biggest update</h2><p class="summary">Htmx 4.0 keeps the server-rendered model: return HTML and swap fragments instead of building a JavaScript application around every screen. It fits forms, lists, and internal tools well; complex offline behavior or rich client state still calls for a different architecture.</p><div class="meta-line">Source: <a href="https://four.htmx.org/announcements/2026-08-28-htmx-4.0.0-is-released" target="_blank" rel="noopener">four.htmx.org</a> <span class="meta-sep">·</span> <a href="https://news.ycombinator.com/item?id=49478178" target="_blank" rel="noopener">HN Discuss</a> <span class="meta-sep">·</span> <span class="meta-points">649 pts / 164 comments</span></div><button class="copy-button" type="button">Copy for Threads</button><aside class="commentary"><h3>What HN commenters are saying:</h3><p>Fans praise stacks such as Go or Django with SQLite or Postgres and HTMX—sometimes called HUGS or GOSH—for avoiding a frontend build, and several say Claude Code handles the pattern well. Critics find it awkward once client state becomes complex or the product behaves like an SPA. The rough consensus: excellent for bounded interactivity and internal tools, but do not force it everywhere. The usual jokes about the “CEO of HTMX” continue.</p></aside></div></article>
+    <article id="story-4" class="story" data-source="https://www.inventati.org/" data-hn="https://news.ycombinator.com/item?id=49477854"><div class="story-main"><h2 class="tagline">When infrastructure becomes the target</h2><p class="summary">U.S. sanctions against the A/I Collective turn an infrastructure provider into the policy subject. The technical takeaway is not partisan: hosting, identity, mirrors, backups, and DNS are part of the threat model when political or legal pressure can remove a dependency.</p><div class="meta-line">Source: <a href="https://www.inventati.org/" target="_blank" rel="noopener">inventati.org</a> <span class="meta-sep">·</span> <a href="https://news.ycombinator.com/item?id=49477854" target="_blank" rel="noopener">HN Discuss</a> <span class="meta-sep">·</span> <span class="meta-points">591 pts / 575 comments</span></div><button class="copy-button" type="button">Copy for Threads</button><aside class="commentary"><h3>What HN commenters are saying:</h3><p>The strongest concern is precedent: labeling an infrastructure provider as terrorism-connected could reach privacy networks, secure messaging, cryptographic tools, and hosting. Commenters disagree over whether the move is unprecedented, where a provider's responsibility ends, and how sanctions differ from ordinary legal compliance. Some also speculate that the service could be a honeypot, without settling that claim.</p></aside></div></article>
+    <article id="story-5" class="story" data-source="https://openai.com/index/our-decision-on-cursor-following-its-acquisition-by-spacex/" data-hn="https://news.ycombinator.com/item?id=49486172"><div class="story-main"><h2 class="tagline">Cursor’s acquisition puts model access on the line</h2><p class="summary">OpenAI’s response to Cursor’s acquisition by SpaceX shows how quickly an AI coding tool can inherit platform risk. Teams should keep prompts, evaluations, and editor workflows portable; a provider dispute can change model access faster than the codebase can adapt.</p><div class="meta-line">Source: <a href="https://openai.com/index/our-decision-on-cursor-following-its-acquisition-by-spacex/" target="_blank" rel="noopener">openai.com</a> <span class="meta-sep">·</span> <a href="https://news.ycombinator.com/item?id=49486172" target="_blank" rel="noopener">HN Discuss</a> <span class="meta-sep">·</span> <span class="meta-points">513 pts / 275 comments</span></div><button class="copy-button" type="button">Copy for Threads</button><aside class="commentary"><h3>What HN commenters are saying:</h3><p>The decision is framed around alleged distillation and terms-of-service violations. Many commenters call it hypocritical to protect model outputs after training on scraped copyrighted material. Others argue that providers can enforce contracts as written. A practical worry is that Cursor could lose both GPT and Claude access, deepening vendor lock-in; Anthropic's earlier ban of xAI is cited as precedent.</p></aside></div></article>
+    <article id="story-6" class="story" data-source="https://www.orbify.eu/demo/" data-hn="https://news.ycombinator.com/item?id=49477564"><div class="story-main"><h2 class="tagline">This map bends the road before you turn</h2><p class="summary">Orbify curves the map surface to bring upcoming turns into view, reducing the mental jump between a flat route and the road ahead. The demo is a useful interface experiment, but navigation has a hard constraint: visual novelty cannot compete with safe, stable prediction.</p><div class="meta-line">Source: <a href="https://www.orbify.eu/demo/" target="_blank" rel="noopener">orbify.eu</a> <span class="meta-sep">·</span> <a href="https://news.ycombinator.com/item?id=49477564" target="_blank" rel="noopener">HN Discuss</a> <span class="meta-sep">·</span> <span class="meta-points">499 pts / 171 comments</span></div><button class="copy-button" type="button">Copy for Threads</button><aside class="commentary"><h3>What HN commenters are saying:</h3><p>Commenters surface substantial prior art: BERG's 2009 “Here and There,” a 1976 Saab view, patents, and Animal Crossing's 2005 rolling-log world. The demo looks promising, but sharp or consecutive turns can hide the road, prediction distance shifts, and the effect may distract or cause nausea. Suggested fixes include smoother orientation, dynamic zoom, and aiming a few seconds ahead rather than a fixed distance.</p></aside></div></article>
+    <article id="story-7" class="story" data-source="https://anil.recoil.org/notes/rumour-is-the-exploit" data-hn="https://news.ycombinator.com/item?id=49480466"><div class="story-main"><h2 class="tagline">A bug rumor now creates its own exploit wave</h2><p class="summary">AI-assisted researchers can turn a vague hint into a flood of plausible vulnerability reports. Maintainers now face a scaling problem: triage quality, disclosure coordination, CVE latency, and patch throughput matter as much as finding the original bug.</p><div class="meta-line">Source: <a href="https://anil.recoil.org/notes/rumour-is-the-exploit" target="_blank" rel="noopener">anil.recoil.org</a> <span class="meta-sep">·</span> <a href="https://news.ycombinator.com/item?id=49480466" target="_blank" rel="noopener">HN Discuss</a> <span class="meta-sep">·</span> <span class="meta-points">316 pts / 111 comments</span></div><button class="copy-button" type="button">Copy for Threads</button><aside class="commentary"><h3>What HN commenters are saying:</h3><p>Maintainers describe being flooded: rclone saw 20 disclosures in ten years, then 40 in one month. Roughly 75% contain a useful nugget, but the required configurations grow increasingly unlikely. GitHub CVE assignment reportedly moved from two or three days to three or four weeks, forcing “CVE-PENDING.” Suggestions include batching about ten fixes per branch, donated GPU pools, and better AI triage; the debate is whether the bottleneck is will, money, or QA that no longer scales.</p></aside></div></article>
+    <article id="story-8" class="story" data-source="https://12factor.net/" data-hn="https://news.ycombinator.com/item?id=49472216"><div class="story-main"><h2 class="tagline">The Twelve-Factor App still holds up—except one chapter</h2><p class="summary">The 2025 Twelve-Factor App remains a strong baseline for disposable processes, attached services, and logs as streams. The disputed part is configuration: environment variables are simple and portable, but teams should choose a secret-delivery path based on the actual leak surface.</p><div class="meta-line">Source: <a href="https://12factor.net/" target="_blank" rel="noopener">12factor.net</a> <span class="meta-sep">·</span> <a href="https://news.ycombinator.com/item?id=49472216" target="_blank" rel="noopener">HN Discuss</a> <span class="meta-sep">·</span> <span class="meta-points">266 pts / 150 comments</span></div><button class="copy-button" type="button">Copy for Threads</button><aside class="commentary"><h3>What HN commenters are saying:</h3><p>The methodology is still considered relevant, but its Config chapter draws fire. Critics note that environment variables leak through logs, crash reporters, <code>printenv</code>, and subprocess inheritance; they prefer files, stdin, systemd credentials, <code>/dev/shm</code>, vaults, workload identity, or SOPS. Defenders answer that environment values do not persist by default and files leak too. One point lands cleanly: do not put secrets in <code>~/.bashrc</code>.</p></aside></div></article>
+    <article id="story-9" class="story" data-source="https://github.com/Lakr233/vphone-cli" data-hn="https://news.ycombinator.com/item?id=49485267"><div class="story-main"><h2 class="tagline">A virtual iPhone is not the Simulator</h2><p class="summary">vphone-cli boots an iPhone environment through Apple’s Virtualization.framework using Apple-provided system components and user-space patches. That opens useful testing and research paths, but it is not a drop-in physical device: services, detection, and platform rules still differ.</p><div class="meta-line">Source: <a href="https://github.com/Lakr233/vphone-cli" target="_blank" rel="noopener">github.com</a> <span class="meta-sep">·</span> <a href="https://news.ycombinator.com/item?id=49485267" target="_blank" rel="noopener">HN Discuss</a> <span class="meta-sep">·</span> <span class="meta-points">265 pts / 74 comments</span></div><button class="copy-button" type="button">Copy for Threads</button><aside class="commentary"><h3>What HN commenters are saying:</h3><p>Commenters distinguish this from both emulation and Simulator: Apple supplies an iOS kernel in PCC or cloudOS images for Virtualization.framework, paired with user-space patches. Proposed uses include security research, kernel debugging, Network Extensions, Metal or camera testing, and click farms. Limits include no App Store or iCloud and a detectable VM. A side discussion covers alternative-store checks in the EU and Japan.</p></aside></div></article>
+    <article id="story-10" class="story" data-source="https://www.osnews.com/story/145883/easyeffects-should-be-part-of-every-linux-distribution-and-desktop-environment-to-massively-improve-laptop-speaker-sound-quality/" data-hn="https://news.ycombinator.com/item?id=49479924"><div class="story-main"><h2 class="tagline">Linux laptop speakers can sound much better</h2><p class="summary">EasyEffects can improve weak Linux laptop audio with equalization and limiting. Device-specific correction works better than a generic preset. Start with a trusted profile, measure if possible, and keep levels safe.</p><div class="meta-line">Source: <a href="https://www.osnews.com/story/145883/easyeffects-should-be-part-of-every-linux-distribution-and-desktop-environment-to-massively-improve-laptop-speaker-sound-quality/" target="_blank" rel="noopener">osnews.com</a> <span class="meta-sep">·</span> <a href="https://news.ycombinator.com/item?id=49479924" target="_blank" rel="noopener">HN Discuss</a> <span class="meta-sep">·</span> <span class="meta-points">152 pts / 56 comments</span></div><button class="copy-button" type="button">Copy for Threads</button><aside class="commentary"><h3>What HN commenters are saying:</h3><p>Linux laptop owners—especially Framework users—report a night-and-day improvement from EasyEffects EQ and share presets, while warning that Framework 13 and 13 Pro profiles differ. The discussion contrasts generic correction with per-device measurement through Room EQ Wizard. Commenters also debate a flat target versus personal preference, and propose automatic tuning with an omnidirectional electret microphone.</p></aside></div></article>
   </section>
-  <footer><div class="footer-links"><a class="archive-link" href="../">← Daily archive</a><a class="archive-link published-link" href="../" target="_blank" rel="noopener">Published archive ↗</a></div><span>2026-08-29 · 10 stories</span></footer>
+  <footer><div class="footer-links"><a class="archive-link" href="../">← Daily archive</a><a class="archive-link published-link" href="https://tk3369.github.io/hn-daily/" target="_blank" rel="noopener">Published archive ↗</a></div><span>Saturday 2026-08-29 · 10 stories</span></footer>
 </main>
 <div class="toast" role="status" aria-live="polite"></div>
 <script>
@@ -394,7 +390,7 @@
   function setTheme(theme, persist = true) {
     root.dataset.theme = theme;
     const next = theme === 'dark' ? 'light' : 'dark';
-    label.textContent = `theme: ${theme}`;
+    if (label) label.textContent = `theme: ${theme}`;
     toggle.setAttribute('aria-label', `Switch to ${next} theme`);
     toggle.setAttribute('aria-pressed', theme === 'dark' ? 'true' : 'false');
     toggle.title = `Switch to ${next} theme`;
@@ -442,21 +438,19 @@
     if (!ok) throw new Error('Copy failed');
   }
 
+  const pageUrl = "https://tk3369.github.io/hn-daily/2026-08-29/";
+
   document.querySelectorAll('.copy-button').forEach((button, index) => {
     button.addEventListener('click', async () => {
       const story = button.closest('.story');
+      const number = index + 1;
       const tagline = story.querySelector('.tagline').textContent.trim();
-      const summary = story.querySelector('.summary').textContent.trim();
-      const metric = story.querySelector('.metric').textContent.trim();
-      const text = `${index + 1}. ${tagline}
-${summary}
-${story.dataset.source}
-${story.dataset.hn}
-${metric}`;
+      const body = story.querySelector('.summary').textContent.trim();
+      const text = `${number}. ${tagline}\n${body}\n${pageUrl}#story-${number}`;
       try {
         await copyText(text);
         button.textContent = 'Copied';
-        showToast(`Story ${index + 1} copied for Threads`);
+        showToast(`Story ${number} copied for Threads`);
         setTimeout(() => { button.textContent = 'Copy for Threads'; }, 1600);
       } catch (_) {
         showToast('Copy was blocked by this browser');
