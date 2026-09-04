@@ -6,14 +6,6 @@
   <meta name="color-scheme" content="light dark">
   <link rel="icon" href="data:,">
   <title>HN Daily — Tuesday 2026-09-01</title>
-  <script>
-    (() => {
-      try {
-        const saved = localStorage.getItem('hn-daily-theme');
-        if (saved === 'light' || saved === 'dark') document.documentElement.dataset.theme = saved;
-      } catch (_) {}
-    })();
-  </script>
   <style>
     :root {
       --bg: #f3f1eb;
@@ -109,7 +101,6 @@
   toggle.addEventListener('click', () => {
     const theme = activeTheme() === 'dark' ? 'light' : 'dark';
     root.dataset.theme = theme;
-    try { localStorage.setItem('hn-daily-theme', theme); } catch (_) {}
     renderTheme();
   });
   if (media.addEventListener) media.addEventListener('change', () => { if (!root.dataset.theme) renderTheme(); });
@@ -138,13 +129,14 @@
     field.remove();
     if (!ok) throw new Error('copy failed');
   }
+  const pageUrl = "https://tk3369.github.io/hn-daily/2026-09-01/";
   document.querySelectorAll('.copy-button').forEach((button, index) => {
     button.addEventListener('click', async () => {
       const story = button.closest('.story');
-      const number = String(index + 1);
+      const number = index + 1;
       const tagline = story.querySelector('.tagline').textContent.trim();
-      const summary = story.querySelector('.summary').textContent.trim();
-      const text = `${number}. ${tagline}\n${summary}\nhttps://tk3369.github.io/hn-daily/2026-09-01/#story-${number}`;
+      const body = story.querySelector('.summary').textContent.trim();
+      const text = `${number}. ${tagline}\n${body}\n${pageUrl}#story-${number}`;
       try {
         await copyText(text);
         const orig = button.textContent;
