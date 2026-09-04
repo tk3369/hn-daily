@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <meta name="color-scheme" content="light dark" />
   <link rel="icon" href="data:," />
-  <title>HN Daily — August 30, 2026</title>
+  <title>HN Daily — Sunday 2026-08-30</title>
   <style>
     :root {
       --bg: #f3f1eb;
@@ -91,21 +91,23 @@
     }
 
     .skip-link {
-      position: fixed;
-      top: 8px;
-      left: 8px;
-      z-index: 20;
-      transform: translateY(-150%);
-      min-height: 36px;
-      display: inline-flex;
-      align-items: center;
+      position: absolute;
+      left: -9999px;
+      top: auto;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+    }
+    .skip-link:focus {
+      left: 12px;
+      top: 12px;
+      width: auto;
+      height: auto;
       padding: 8px 12px;
       background: var(--ink);
-      color: var(--surface);
-      font-size: 12px;
-      font-weight: 800;
+      color: var(--bg);
+      z-index: 20;
     }
-    .skip-link:focus { transform: translateY(0); }
 
     .page {
       width: min(1080px, calc(100% - 48px));
@@ -153,7 +155,6 @@
       display: inline-flex;
       align-items: center;
       gap: 9px;
-      min-height: 36px;
       border: 1px solid var(--line);
       border-radius: 3px;
       padding: 9px 11px;
@@ -164,6 +165,7 @@
       font-weight: 700;
       cursor: pointer;
       box-shadow: 3px 3px 0 var(--shadow);
+      min-height: 36px;
     }
     .theme-toggle:hover { border-color: var(--ink); }
     .theme-dot {
@@ -227,73 +229,76 @@
       line-height: 1.55;
     }
 
-    .story-bar {
+    .meta-line {
       display: flex;
       flex-wrap: wrap;
       align-items: center;
-      gap: 10px 18px;
-      margin-top: 23px;
+      gap: 8px;
+      margin-top: 18px;
       color: var(--muted);
+      font-family: ui-monospace, "SFMono-Regular", monospace;
       font-size: 12px;
-      font-weight: 700;
+      font-weight: 600;
+      line-height: 1.4;
     }
-    .metric {
-      padding: 6px 9px;
-      color: var(--ink);
-      background: var(--key-bg);
-      border: 1px solid var(--soft-line);
-      border-radius: 3px;
-      white-space: nowrap;
-    }
-    .story-link {
+    .meta-line a {
+      color: var(--accent-ink);
+      text-decoration: underline;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 3px;
       min-height: 36px;
       display: inline-flex;
       align-items: center;
-      gap: 5px;
-      color: var(--accent-ink);
-      font-weight: 800;
-      text-decoration: underline;
-      text-decoration-thickness: 1px;
-      text-underline-offset: 4px;
-      touch-action: manipulation;
     }
-    .story-link:hover { text-decoration-thickness: 2px; }
-    .story-link::after { content: "↗"; font-size: 11px; }
+    .meta-line a:hover { text-decoration-thickness: 2px; }
+    .meta-dot { color: var(--line); }
 
     .copy-button {
+      width: 100%;
       min-height: 36px;
-      margin-left: auto;
+      margin-top: 16px;
       border: 1px solid var(--line);
       border-radius: 3px;
-      padding: 7px 10px;
+      padding: 10px 12px;
       color: var(--ink);
-      background: transparent;
+      background: var(--key-bg);
       font: inherit;
+      font-family: ui-monospace, monospace;
       font-size: 12px;
       font-weight: 800;
+      letter-spacing: .04em;
+      text-transform: uppercase;
       cursor: pointer;
+      touch-action: manipulation;
     }
-    .copy-button:hover { border-color: var(--ink); background: var(--key-bg); }
+    .copy-button:hover { border-color: var(--ink); background: var(--surface); }
+    .copy-button[data-copied="true"] {
+      background: var(--ink);
+      color: var(--surface);
+      border-color: var(--ink);
+    }
 
     .commentary {
-      margin-top: 24px;
-      padding: 18px 0 0;
-      border-top: 2px solid var(--ink);
+      margin-top: 20px;
+      padding: 16px 0 0;
+      border-top: 1px dashed var(--soft-line);
     }
     .commentary h3 {
-      margin: 0 0 9px;
+      margin: 0 0 8px;
       color: var(--ink);
-      font-size: 12px;
+      font-size: 11px;
       line-height: 1.3;
       font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .06em;
     }
     .commentary p {
       margin: 0;
       max-width: 840px;
       color: var(--muted);
       font-family: Georgia, "Times New Roman", serif;
-      font-size: 16px;
-      line-height: 1.55;
+      font-size: 15px;
+      line-height: 1.5;
     }
 
     footer {
@@ -345,9 +350,7 @@
       .story-list { padding-top: 28px; gap: 14px; }
       .story { grid-template-columns: 48px minmax(0, 1fr); gap: 14px; padding: 24px 20px 26px; }
       .story::before { font-size: 16px; padding-top: 5px; }
-      .story-bar { align-items: stretch; gap: 8px 14px; }
-      .metric { flex-basis: 100%; width: max-content; }
-      .copy-button { margin-left: 0; }
+      .meta-line { gap: 6px 10px; }
       footer { grid-template-columns: 1fr; gap: 14px; margin-top: 58px; }
     }
 
@@ -355,12 +358,11 @@
       h1 { font-size: 42px; }
       .deck { font-size: 13px; }
       .story { grid-template-columns: 1fr; gap: 10px; padding: 22px 16px 24px; }
-      .story::before { padding-top: 0; }
+      .story::before { padding-top: 0; content: counter(story, decimal-leading-zero) " —"; }
       .tagline { font-size: 26px; }
       .summary { font-size: 17px; }
-      .story-link, .copy-button { flex: 1 1 auto; justify-content: center; }
-      .copy-button { min-width: 100%; }
-      .commentary p { font-size: 15px; }
+      .copy-button { width: 100%; }
+      .commentary p { font-size: 14px; }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -381,7 +383,7 @@
 <main class="page">
   <header class="masthead">
     <div class="masthead-copy">
-      <p class="edition">Daily brief · <time datetime="2026-08-30">Sunday, August 30, 2026</time></p>
+      <p class="edition">Daily brief · <time datetime="2026-08-30">Sunday 2026-08-30</time></p>
       <h1>Ten stories worth your attention.</h1>
       <p class="deck">The Hacker News front page, compressed into practical context — plus the strongest arguments from the threads.</p>
     </div>
@@ -392,164 +394,94 @@
   </header>
 
   <section class="story-list" id="stories" aria-label="Top 10 Hacker News stories">
-    <article class="story" data-source="https://zackbartel.com/blog/2026/08/tether/" data-hn="https://news.ycombinator.com/item?id=49415386">
+    <article class="story" id="story-1" data-source="https://zackbartel.com/blog/2026/08/tether/" data-hn="https://news.ycombinator.com/item?id=49415386">
       <div class="story-main">
         <h2 class="tagline">Linux gets native iMessage bridge via reverse-engineered relay</h2>
         <p class="summary">Open-source relay uses ANCS to bridge iMessage/SMS to Linux desktops. Fixes long-standing integration gap for Linux phone/desktop users. Author relicensed to MIT after HN license feedback.</p>
-        <div class="story-bar">
-          <span class="metric">490 pts / 193 comments</span>
-          <a class="story-link" href="https://zackbartel.com/blog/2026/08/tether/" target="_blank" rel="noopener noreferrer">Source</a>
-          <a class="story-link" href="https://news.ycombinator.com/item?id=49415386" target="_blank" rel="noopener noreferrer">Discuss on HN</a>
-          <button class="copy-button" type="button">Copy for Threads</button>
-        </div>
-        <aside class="commentary">
-          <h3>What HN commenters are saying:</h3>
-          <p>HN liked the fast license change from copyleft to MIT; debated LGPL as middle ground; one contrarian argued licensing tweaks distract from bigger global issues. Consensus positive, implementation-driven.</p>
-        </aside>
+        <div class="meta-line">Source: <a href="https://zackbartel.com/blog/2026/08/tether/" target="_blank" rel="noopener noreferrer">zackbartel.com</a> <span class="meta-dot">·</span> <a href="https://news.ycombinator.com/item?id=49415386" target="_blank" rel="noopener noreferrer">HN Discuss</a> <span class="meta-dot">·</span> <span>490 pts / 193 comments</span></div>
+        <button class="copy-button" type="button">Copy for Threads</button>
+        <aside class="commentary"><h3>What HN commenters are saying:</h3><p>HN liked the fast license change from copyleft to MIT; debated LGPL as middle ground; one contrarian argued licensing tweaks distract from bigger global issues. Consensus positive, implementation-driven.</p></aside>
       </div>
     </article>
-    <article class="story" data-source="https://www.tomshardware.com/software/linux/california-lawmakers-unanimously-pass-linux-exemption-from-age-verification-law-software-distributed-under-the-gpl-mit-bsd-and-apache-licenses-are-exempt" data-hn="https://news.ycombinator.com/item?id=49495372">
+    <article class="story" id="story-2" data-source="https://www.tomshardware.com/software/linux/california-lawmakers-unanimously-pass-linux-exemption-from-age-verification-law-software-distributed-under-the-gpl-mit-bsd-and-apache-licenses-are-exempt" data-hn="https://news.ycombinator.com/item?id=49495372">
       <div class="story-main">
         <h2 class="tagline">California carves out open-source from age-verification law</h2>
         <p class="summary">Bill exempts GPL/MIT/BSD/Apache software from age-verification mandates. Prevents Linux distros and open tools from forced age-gating. EFF and Linux Foundation pushed.</p>
-        <div class="story-bar">
-          <span class="metric">452 pts / 205 comments</span>
-          <a class="story-link" href="https://www.tomshardware.com/software/linux/california-lawmakers-unanimously-pass-linux-exemption-from-age-verification-law-software-distributed-under-the-gpl-mit-bsd-and-apache-licenses-are-exempt" target="_blank" rel="noopener noreferrer">Source</a>
-          <a class="story-link" href="https://news.ycombinator.com/item?id=49495372" target="_blank" rel="noopener noreferrer">Discuss on HN</a>
-          <button class="copy-button" type="button">Copy for Threads</button>
-        </div>
-        <aside class="commentary">
-          <h3>What HN commenters are saying:</h3>
-          <p>Surprise at a win against corporate capture; credit to EFF/Linux Foundation. Critics note Android still covered, law itself is contradictory and authoritarian trend continues. Debate over praising lawmakers.</p>
-        </aside>
+        <div class="meta-line">Source: <a href="https://www.tomshardware.com/software/linux/california-lawmakers-unanimously-pass-linux-exemption-from-age-verification-law-software-distributed-under-the-gpl-mit-bsd-and-apache-licenses-are-exempt" target="_blank" rel="noopener noreferrer">tomshardware.com</a> <span class="meta-dot">·</span> <a href="https://news.ycombinator.com/item?id=49495372" target="_blank" rel="noopener noreferrer">HN Discuss</a> <span class="meta-dot">·</span> <span>452 pts / 205 comments</span></div>
+        <button class="copy-button" type="button">Copy for Threads</button>
+        <aside class="commentary"><h3>What HN commenters are saying:</h3><p>Surprise at a win against corporate capture; credit to EFF/Linux Foundation. Critics note Android still covered, law itself is contradictory and authoritarian trend continues. Debate over praising lawmakers.</p></aside>
       </div>
     </article>
-    <article class="story" data-source="https://www.tencent.com/tencent-releases-and-open-sources-tencent-hy4-preview/" data-hn="https://news.ycombinator.com/item?id=49492632">
+    <article class="story" id="story-3" data-source="https://www.tencent.com/tencent-releases-and-open-sources-tencent-hy4-preview/" data-hn="https://news.ycombinator.com/item?id=49492632">
       <div class="story-main">
         <h2 class="tagline">Tencent open-sources Hy4, claims massive token throughput</h2>
         <p class="summary">Tencent releases Hy4 preview, open-source MoE with rapid OpenRouter adoption. 5% cache cost undercuts 10–20% norms. Adds Chinese model to competitive field.</p>
-        <div class="story-bar">
-          <span class="metric">352 pts / 211 comments</span>
-          <a class="story-link" href="https://www.tencent.com/tencent-releases-and-open-sources-tencent-hy4-preview/" target="_blank" rel="noopener noreferrer">Source</a>
-          <a class="story-link" href="https://news.ycombinator.com/item?id=49492632" target="_blank" rel="noopener noreferrer">Discuss on HN</a>
-          <button class="copy-button" type="button">Copy for Threads</button>
-        </div>
-        <aside class="commentary">
-          <h3>What HN commenters are saying:</h3>
-          <p>Ludicrous OpenRouter volume (trillions tokens) noted; cheap caching seen as driver. Suspicion that publishers pay for exposure and game rankings; capitalism critique and lobbying mentions.</p>
-        </aside>
+        <div class="meta-line">Source: <a href="https://www.tencent.com/tencent-releases-and-open-sources-tencent-hy4-preview/" target="_blank" rel="noopener noreferrer">tencent.com</a> <span class="meta-dot">·</span> <a href="https://news.ycombinator.com/item?id=49492632" target="_blank" rel="noopener noreferrer">HN Discuss</a> <span class="meta-dot">·</span> <span>352 pts / 211 comments</span></div>
+        <button class="copy-button" type="button">Copy for Threads</button>
+        <aside class="commentary"><h3>What HN commenters are saying:</h3><p>Ludicrous OpenRouter volume (trillions tokens) noted; cheap caching seen as driver. Suspicion that publishers pay for exposure and game rankings; capitalism critique and lobbying mentions.</p></aside>
       </div>
     </article>
-    <article class="story" data-source="https://www.texastribune.org/2026/08/28/texas-flock-cameras-auto-insurance-fee-mvcpa-grants/" data-hn="https://news.ycombinator.com/item?id=49494182">
+    <article class="story" id="story-4" data-source="https://www.texastribune.org/2026/08/28/texas-flock-cameras-auto-insurance-fee-mvcpa-grants/" data-hn="https://news.ycombinator.com/item?id=49494182">
       <div class="story-main">
         <h2 class="tagline">Texas $1 insurance fee quietly funded 3,200 Flock surveillance cameras</h2>
         <p class="summary">Texas raised auto insurance $1 to fight catalytic converter theft; Motor Vehicle Crime Prevention Authority used it for 3,200+ Flock ALPR cameras. Shows fee diversion into surveillance.</p>
-        <div class="story-bar">
-          <span class="metric">345 pts / 217 comments</span>
-          <a class="story-link" href="https://www.texastribune.org/2026/08/28/texas-flock-cameras-auto-insurance-fee-mvcpa-grants/" target="_blank" rel="noopener noreferrer">Source</a>
-          <a class="story-link" href="https://news.ycombinator.com/item?id=49494182" target="_blank" rel="noopener noreferrer">Discuss on HN</a>
-          <button class="copy-button" type="button">Copy for Threads</button>
-        </div>
-        <aside class="commentary">
-          <h3>What HN commenters are saying:</h3>
-          <p>Fee diversion called out; Texas property defense law discussion — deadly force allowed for theft prevention. Debate surveillance vs crime, EV batteries as next target.</p>
-        </aside>
+        <div class="meta-line">Source: <a href="https://www.texastribune.org/2026/08/28/texas-flock-cameras-auto-insurance-fee-mvcpa-grants/" target="_blank" rel="noopener noreferrer">texastribune.org</a> <span class="meta-dot">·</span> <a href="https://news.ycombinator.com/item?id=49494182" target="_blank" rel="noopener noreferrer">HN Discuss</a> <span class="meta-dot">·</span> <span>345 pts / 217 comments</span></div>
+        <button class="copy-button" type="button">Copy for Threads</button>
+        <aside class="commentary"><h3>What HN commenters are saying:</h3><p>Fee diversion called out; Texas property defense law discussion — deadly force allowed for theft prevention. Debate surveillance vs crime, EV batteries as next target.</p></aside>
       </div>
     </article>
-    <article class="story" data-source="https://en.wikipedia.org/wiki/Glacier_mice" data-hn="https://news.ycombinator.com/item?id=49424320">
+    <article class="story" id="story-5" data-source="https://en.wikipedia.org/wiki/Glacier_mice" data-hn="https://news.ycombinator.com/item?id=49424320">
       <div class="story-main">
         <h2 class="tagline">Glacier mice: rolling moss colonies that move together</h2>
         <p class="summary">Moss balls roll across glaciers, moving collectively without a single organism. Emergent coordination from physics + simple biology. Reminds that complex motion needs no central control.</p>
-        <div class="story-bar">
-          <span class="metric">318 pts / 64 comments</span>
-          <a class="story-link" href="https://en.wikipedia.org/wiki/Glacier_mice" target="_blank" rel="noopener noreferrer">Source</a>
-          <a class="story-link" href="https://news.ycombinator.com/item?id=49424320" target="_blank" rel="noopener noreferrer">Discuss on HN</a>
-          <button class="copy-button" type="button">Copy for Threads</button>
-        </div>
-        <aside class="commentary">
-          <h3>What HN commenters are saying:</h3>
-          <p>TIL reactions; life as basic physics + state machine; emergence amazement; ice worms mentioned as similar oddity.</p>
-        </aside>
+        <div class="meta-line">Source: <a href="https://en.wikipedia.org/wiki/Glacier_mice" target="_blank" rel="noopener noreferrer">wikipedia.org</a> <span class="meta-dot">·</span> <a href="https://news.ycombinator.com/item?id=49424320" target="_blank" rel="noopener noreferrer">HN Discuss</a> <span class="meta-dot">·</span> <span>318 pts / 64 comments</span></div>
+        <button class="copy-button" type="button">Copy for Threads</button>
+        <aside class="commentary"><h3>What HN commenters are saying:</h3><p>TIL reactions; life as basic physics + state machine; emergence amazement; ice worms mentioned as similar oddity.</p></aside>
       </div>
     </article>
-    <article class="story" data-source="https://danluu.com/bug-blind/" data-hn="https://news.ycombinator.com/item?id=49494520">
+    <article class="story" id="story-6" data-source="https://danluu.com/bug-blind/" data-hn="https://news.ycombinator.com/item?id=49494520">
       <div class="story-main">
         <h2 class="tagline">Bug blindness: why users stop seeing software defects</h2>
         <p class="summary">Users adapt workflows around bugs and stop reporting. Devs lose signal, bad UX persists. Explains why defects normalize.</p>
-        <div class="story-bar">
-          <span class="metric">317 pts / 192 comments</span>
-          <a class="story-link" href="https://danluu.com/bug-blind/" target="_blank" rel="noopener noreferrer">Source</a>
-          <a class="story-link" href="https://news.ycombinator.com/item?id=49494520" target="_blank" rel="noopener noreferrer">Discuss on HN</a>
-          <button class="copy-button" type="button">Copy for Threads</button>
-        </div>
-        <aside class="commentary">
-          <h3>What HN commenters are saying:</h3>
-          <p>Agree majority of users find workarounds; devs don&#x27;t care critique; docs vs code blame; irony that blog has no max-width, lines grow infinitely — bug in post about bugs.</p>
-        </aside>
+        <div class="meta-line">Source: <a href="https://danluu.com/bug-blind/" target="_blank" rel="noopener noreferrer">danluu.com</a> <span class="meta-dot">·</span> <a href="https://news.ycombinator.com/item?id=49494520" target="_blank" rel="noopener noreferrer">HN Discuss</a> <span class="meta-dot">·</span> <span>317 pts / 192 comments</span></div>
+        <button class="copy-button" type="button">Copy for Threads</button>
+        <aside class="commentary"><h3>What HN commenters are saying:</h3><p>Agree majority of users find workarounds; devs don't care critique; docs vs code blame; irony that blog has no max-width, lines grow infinitely — bug in post about bugs.</p></aside>
       </div>
     </article>
-    <article class="story" data-source="https://science.nasa.gov/mission/roman-space-telescope/" data-hn="https://news.ycombinator.com/item?id=49490870">
+    <article class="story" id="story-7" data-source="https://science.nasa.gov/mission/roman-space-telescope/" data-hn="https://news.ycombinator.com/item?id=49490870">
       <div class="story-main">
         <h2 class="tagline">Roman Space Telescope readies wide-field infrared survey</h2>
-        <p class="summary">NASA&#x27;s Roman designed for wide-field IR, 100x Hubble&#x27;s view. Will map dark energy, exoplanets, complement narrow deep fields. 1.5TB/day downlink via 500Mbps.</p>
-        <div class="story-bar">
-          <span class="metric">238 pts / 85 comments</span>
-          <a class="story-link" href="https://science.nasa.gov/mission/roman-space-telescope/" target="_blank" rel="noopener noreferrer">Source</a>
-          <a class="story-link" href="https://news.ycombinator.com/item?id=49490870" target="_blank" rel="noopener noreferrer">Discuss on HN</a>
-          <button class="copy-button" type="button">Copy for Threads</button>
-        </div>
-        <aside class="commentary">
-          <h3>What HN commenters are saying:</h3>
-          <p>Field-of-view critical for surveys; Hubble famous deep field contrasted as narrow/far vs wide/shallow volume. Excitement tempered by launch risk on Falcon Heavy and politics.</p>
-        </aside>
+        <p class="summary">NASA's Roman designed for wide-field IR, 100x Hubble's view. Will map dark energy, exoplanets, complement narrow deep fields. 1.5TB/day downlink via 500Mbps.</p>
+        <div class="meta-line">Source: <a href="https://science.nasa.gov/mission/roman-space-telescope/" target="_blank" rel="noopener noreferrer">nasa.gov</a> <span class="meta-dot">·</span> <a href="https://news.ycombinator.com/item?id=49490870" target="_blank" rel="noopener noreferrer">HN Discuss</a> <span class="meta-dot">·</span> <span>238 pts / 85 comments</span></div>
+        <button class="copy-button" type="button">Copy for Threads</button>
+        <aside class="commentary"><h3>What HN commenters are saying:</h3><p>Field-of-view critical for surveys; Hubble famous deep field contrasted as narrow/far vs wide/shallow volume. Excitement tempered by launch risk on Falcon Heavy and politics.</p></aside>
       </div>
     </article>
-    <article class="story" data-source="https://blog.python.org/2026/08/riscv-now-officially-supported/" data-hn="https://news.ycombinator.com/item?id=49425252">
+    <article class="story" id="story-8" data-source="https://blog.python.org/2026/08/riscv-now-officially-supported/" data-hn="https://news.ycombinator.com/item?id=49425252">
       <div class="story-main">
         <h2 class="tagline">CPython officially supports RISC-V as Tier 3 platform</h2>
         <p class="summary">CPython lists RISC-V as Tier 3. Signals maturing toolchain but allows breakage without blocking release. Tier 1/2 still short list of major platforms.</p>
-        <div class="story-bar">
-          <span class="metric">233 pts / 42 comments</span>
-          <a class="story-link" href="https://blog.python.org/2026/08/riscv-now-officially-supported/" target="_blank" rel="noopener noreferrer">Source</a>
-          <a class="story-link" href="https://news.ycombinator.com/item?id=49425252" target="_blank" rel="noopener noreferrer">Discuss on HN</a>
-          <button class="copy-button" type="button">Copy for Threads</button>
-        </div>
-        <aside class="commentary">
-          <h3>What HN commenters are saying:</h3>
-          <p>Tier 3 is low support caveat; list of Tier 1 (Windows x64/i686, Linux x64/ARM, macOS ARM) and Tier 2 noted; surprise Windows i686 still Tier1; RISC-V seen as experimental, hardware scarcity bottleneck.</p>
-        </aside>
+        <div class="meta-line">Source: <a href="https://blog.python.org/2026/08/riscv-now-officially-supported/" target="_blank" rel="noopener noreferrer">python.org</a> <span class="meta-dot">·</span> <a href="https://news.ycombinator.com/item?id=49425252" target="_blank" rel="noopener noreferrer">HN Discuss</a> <span class="meta-dot">·</span> <span>233 pts / 42 comments</span></div>
+        <button class="copy-button" type="button">Copy for Threads</button>
+        <aside class="commentary"><h3>What HN commenters are saying:</h3><p>Tier 3 is low support caveat; list of Tier 1 (Windows x64/i686, Linux x64/ARM, macOS ARM) and Tier 2 noted; surprise Windows i686 still Tier1; RISC-V seen as experimental, hardware scarcity bottleneck.</p></aside>
       </div>
     </article>
-    <article class="story" data-source="https://dgl.cx/2020/06/sqlite-json-support" data-hn="https://news.ycombinator.com/item?id=49426995">
+    <article class="story" id="story-9" data-source="https://dgl.cx/2020/06/sqlite-json-support" data-hn="https://news.ycombinator.com/item?id=49426995">
       <div class="story-main">
         <h2 class="tagline">SQLite as document DB still holds up in 2026</h2>
         <p class="summary">Pattern using SQLite JSON1/jsonb with generated columns, indexes, CDC timestamps. Avoids separate document DB for side projects. Virtual vs stored tradeoff.</p>
-        <div class="story-bar">
-          <span class="metric">226 pts / 54 comments</span>
-          <a class="story-link" href="https://dgl.cx/2020/06/sqlite-json-support" target="_blank" rel="noopener noreferrer">Source</a>
-          <a class="story-link" href="https://news.ycombinator.com/item?id=49426995" target="_blank" rel="noopener noreferrer">Discuss on HN</a>
-          <button class="copy-button" type="button">Copy for Threads</button>
-        </div>
-        <aside class="commentary">
-          <h3>What HN commenters are saying:</h3>
-          <p>Long-term users confirm practical; custom repo with blobs separate, jsonb functions same; generated columns indexable unlike views; NOT NULL fails at insert; game save state example using indexed key + JSONB.</p>
-        </aside>
+        <div class="meta-line">Source: <a href="https://dgl.cx/2020/06/sqlite-json-support" target="_blank" rel="noopener noreferrer">dgl.cx</a> <span class="meta-dot">·</span> <a href="https://news.ycombinator.com/item?id=49426995" target="_blank" rel="noopener noreferrer">HN Discuss</a> <span class="meta-dot">·</span> <span>226 pts / 54 comments</span></div>
+        <button class="copy-button" type="button">Copy for Threads</button>
+        <aside class="commentary"><h3>What HN commenters are saying:</h3><p>Long-term users confirm practical; custom repo with blobs separate, jsonb functions same; generated columns indexable unlike views; NOT NULL fails at insert; game save state example using indexed key + JSONB.</p></aside>
       </div>
     </article>
-    <article class="story" data-source="https://www.theregister.com/security/2026/08/30/turns-out-brits-would-quite-like-their-private-messages-to-stay-private/" data-hn="https://news.ycombinator.com/item?id=49497063">
+    <article class="story" id="story-10" data-source="https://www.theregister.com/security/2026/08/30/turns-out-brits-would-quite-like-their-private-messages-to-stay-private/" data-hn="https://news.ycombinator.com/item?id=49497063">
       <div class="story-main">
         <h2 class="tagline">UK public pushes back on private-message scanning plans</h2>
         <p class="summary">UK poll/opposition to scanning private messages under Online Safety Act push. Privacy vs safety tension. Shows strong preference for private comms.</p>
-        <div class="story-bar">
-          <span class="metric">211 pts / 131 comments</span>
-          <a class="story-link" href="https://www.theregister.com/security/2026/08/30/turns-out-brits-would-quite-like-their-private-messages-to-stay-private/" target="_blank" rel="noopener noreferrer">Source</a>
-          <a class="story-link" href="https://news.ycombinator.com/item?id=49497063" target="_blank" rel="noopener noreferrer">Discuss on HN</a>
-          <button class="copy-button" type="button">Copy for Threads</button>
-        </div>
-        <aside class="commentary">
-          <h3>What HN commenters are saying:</h3>
-          <p>Privacy consensus but thread derailed into Brexit/migration and whether democracy is real; intra-elite conflicts, vague cynicism, claims voters didn&#x27;t know what they voted for.</p>
-        </aside>
+        <div class="meta-line">Source: <a href="https://www.theregister.com/security/2026/08/30/turns-out-brits-would-quite-like-their-private-messages-to-stay-private/" target="_blank" rel="noopener noreferrer">theregister.com</a> <span class="meta-dot">·</span> <a href="https://news.ycombinator.com/item?id=49497063" target="_blank" rel="noopener noreferrer">HN Discuss</a> <span class="meta-dot">·</span> <span>211 pts / 131 comments</span></div>
+        <button class="copy-button" type="button">Copy for Threads</button>
+        <aside class="commentary"><h3>What HN commenters are saying:</h3><p>Privacy consensus but thread derailed into Brexit/migration and whether democracy is real; intra-elite conflicts, vague cynicism, claims voters didn't know what they voted for.</p></aside>
       </div>
     </article>
   </section>
@@ -559,7 +491,7 @@
       <a class="archive-link" href="../">← Daily archive</a>
       <a class="archive-link published-link" href="https://tk3369.github.io/hn-daily/" target="_blank" rel="noopener noreferrer">Published archive ↗</a>
     </div>
-    <span><time datetime="2026-08-30">Sunday, August 30, 2026</time> · 10 stories</span>
+    <span><time datetime="2026-08-30">Sunday 2026-08-30</time> · 10 stories</span>
   </footer>
 </main>
 <div class="toast" role="status" aria-live="polite"></div>
@@ -568,6 +500,7 @@
   const root = document.documentElement;
   const toggle = document.querySelector('.theme-toggle');
   const label = document.querySelector('.theme-label');
+  const pageUrl = "https://tk3369.github.io/hn-daily/2026-08-30/";
 
   function currentTheme() {
     if (root.dataset.theme) return root.dataset.theme;
@@ -625,23 +558,23 @@
     if (!ok) throw new Error('Copy failed');
   }
 
-  document.querySelectorAll('.copy-button').forEach((button, index) => {
-    button.setAttribute('aria-label', `Copy story ${index + 1} for Threads`);
+  document.querySelectorAll('.story').forEach((article, index) => {
+    const button = article.querySelector('.copy-button');
+    const number = index + 1;
+    button.setAttribute('aria-label', `Copy story ${number} for Threads`);
     button.addEventListener('click', async () => {
-      const story = button.closest('.story');
-      const tagline = story.querySelector('.tagline').textContent.trim();
-      const summary = story.querySelector('.summary').textContent.trim();
-      const metric = story.querySelector('.metric').textContent.trim();
-      const text = `${index + 1}. ${tagline}
-${summary}
-Source: ${story.dataset.source}
-Discuss: ${story.dataset.hn}
-${metric}`;
+      const tagline = article.querySelector('.tagline').textContent.trim();
+      const body = article.querySelector('.summary').textContent.trim();
+      const text = `${number}. ${tagline}\n${body}\n${pageUrl}#story-${number}`;
       try {
         await copyText(text);
         button.textContent = 'Copied';
-        showToast(`Story ${index + 1} copied for Threads`);
-        setTimeout(() => { button.textContent = 'Copy for Threads'; }, 1600);
+        button.dataset.copied = 'true';
+        showToast(`Story ${number} copied for Threads`);
+        setTimeout(() => {
+          button.textContent = 'Copy for Threads';
+          delete button.dataset.copied;
+        }, 1600);
       } catch (_) {
         showToast('Copy was blocked by this browser');
       }
