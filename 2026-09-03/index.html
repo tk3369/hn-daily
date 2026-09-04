@@ -200,10 +200,22 @@
   </main>
   <script>
     (()=>{
-      const root=document.documentElement,toggle=document.querySelector('.theme-toggle'),params=new URLSearchParams(location.search),savedTheme=params.get('theme');
-      let theme=savedTheme==='dark'||savedTheme==='light'?savedTheme:(window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');
-      function applyTheme(next,persist=false){theme=next;root.dataset.theme=next;toggle.textContent=next==='dark'?'Light':'Dark';toggle.setAttribute('aria-label',`Switch to ${next==='dark'?'light':'dark'} theme`);if(persist){params.set('theme',next);history.replaceState(null,'',`${location.pathname}?${params.toString()}${location.hash}`)}}
-      applyTheme(theme);toggle.addEventListener('click',()=>applyTheme(theme==='dark'?'light':'dark',true));
+      const root=document.documentElement,toggle=document.querySelector('.theme-toggle'),themeKey='hn-daily-theme';
+      let savedTheme=null;
+      try{savedTheme=localStorage.getItem(themeKey)}catch(_){}
+      let theme=savedTheme==='dark'||savedTheme==='light'
+        ?savedTheme
+        :(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');
+      function applyTheme(next,persist=false){
+        theme=next;
+        const opposite=next==='dark'?'light':'dark';
+        root.dataset.theme=next;
+        toggle.textContent=opposite==='light'?'Light':'Dark';
+        toggle.setAttribute('aria-label',`Switch to ${opposite} theme`);
+        if(persist){try{localStorage.setItem(themeKey,next)}catch(_){}}
+      }
+      applyTheme(theme);
+      toggle.addEventListener('click',()=>applyTheme(theme==='dark'?'light':'dark',true));
       const stories=[...document.querySelectorAll('.story')];let activeIndex=Math.max(0,stories.findIndex(story=>`#${story.id}`===location.hash));
       function go(delta){activeIndex=Math.min(stories.length-1,Math.max(0,activeIndex+delta));stories[activeIndex].scrollIntoView({behavior:'smooth',block:'start'});history.replaceState(null,'',`#${stories[activeIndex].id}`)}
       document.addEventListener('keydown',event=>{if(event.target.matches('button,a,input,textarea,select'))return;if(event.key.toLowerCase()==='j')go(1);if(event.key.toLowerCase()==='k')go(-1);if(event.key.toLowerCase()==='t')toggle.click()});
