@@ -19,6 +19,9 @@
       --focus: #1464d2;
       --key-bg: #e5e1d7;
       --shadow: rgba(20, 20, 20, .08);
+      --paper: var(--surface);
+      --hairline: var(--line);
+      --mono: ui-monospace, "SFMono-Regular", "Cascadia Code", "Liberation Mono", Menlo, monospace;
     }
 
     @media (prefers-color-scheme: dark) {
@@ -134,31 +137,33 @@
     }
 
     .theme-toggle {
+      align-self: start;
+      min-width: 86px;
+      min-height: 40px;
+      padding: 9px 13px;
+      border: 1px solid var(--hairline);
+      border-radius: 4px;
+      color: var(--ink);
+      background: var(--paper);
+      cursor: pointer;
+      font: 700 12px/1 var(--mono);
       display: inline-flex;
       align-items: center;
-      gap: 9px;
-      border: 1px solid var(--line);
-      border-radius: 3px;
-      padding: 9px 11px;
-      background: var(--surface);
-      color: var(--ink);
-      font: inherit;
-      font-size: 12px;
-      font-weight: 700;
-      cursor: pointer;
-      box-shadow: 3px 3px 0 var(--shadow);
+      gap: 8px;
     }
 
-    .theme-toggle:hover { border-color: var(--ink); }
+    .theme-toggle:hover { border-color: var(--accent); color: var(--accent); }
 
     .theme-dot {
       width: 10px;
       height: 10px;
-      border: 1px solid currentColor;
       border-radius: 50%;
-      background: var(--ink);
-      box-shadow: inset 4px 0 0 var(--surface);
+      background: var(--accent);
+      display: inline-block;
+      flex-shrink: 0;
     }
+
+    .theme-text { line-height: 1; }
 
     .latest {
       display: grid;
@@ -355,8 +360,6 @@
     @media (max-width: 720px) {
       .page { width: min(100% - 30px, 1080px); padding-top: 38px; }
       .masthead { gap: 18px; }
-      .theme-toggle { padding: 9px; }
-      .theme-text { display: none; }
 
       .latest {
         grid-template-columns: 48px minmax(0, 1fr);
@@ -403,10 +406,7 @@
         <h1>HN Daily Archive</h1>
         <p class="description">Direct, low-fluff top 10 from Hacker News, daily at 7am PT</p>
       </div>
-      <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch color theme" title="Toggle theme (T)">
-        <span class="theme-dot" aria-hidden="true"></span>
-        <span class="theme-text">Theme</span>
-      </button>
+      <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch color theme" title="Toggle theme (T)"><span class="theme-dot" aria-hidden="true"></span><span class="theme-text">Dark</span></button>
     </header>
 
     <a class="latest" id="latest-link" href="https://tk3369.github.io/hn-daily/2026-09-03/" data-local-href="2026-09-03/" target="_blank" rel="noopener" onclick="return openBrief(event, this)" aria-label="Open latest brief for Thursday 2026-09-03">
@@ -524,8 +524,8 @@
 
         if (root.dataset.theme !== nextTheme) root.dataset.theme = nextTheme;
         toggle.querySelector('.theme-text').textContent = oppositeTheme;
-        toggle.setAttribute('aria-label', `Switch to ${oppositeTheme.toLowerCase()} theme`);
-        toggle.title = `Switch to ${oppositeTheme.toLowerCase()} theme (T)`;
+        toggle.setAttribute('aria-label', `Switch to ${oppositeTheme} theme (T)`);
+        toggle.title = `Switch to ${oppositeTheme} theme (T)`;
 
         try {
           localStorage.setItem('hn-daily-theme', nextTheme);
