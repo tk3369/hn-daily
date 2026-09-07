@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="color-scheme" content="light dark" />
+  <link rel="icon" href="data:," />
+  <title>HN Daily — Monday 2026-09-07</title>
+  <style>
+:root { --page:#f1eadb; --paper:#fffaf0; --ink:#20201c; --muted:#6f695f; --hairline:#d9cebc; --accent:#ff5a1f; --comment:#f6efe3; --shadow:0 2px 0 rgba(57,45,25,.08),0 14px 36px rgba(57,45,25,.06); --serif:Georgia,"Times New Roman",serif; --sans:ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; --mono:"SFMono-Regular",Consolas,"Liberation Mono",monospace; }
+html[data-theme="dark"] { --page:#111312; --paper:#191c1a; --ink:#f1eee6; --muted:#aba69b; --hairline:#393b36; --accent:#ff7139; --comment:#222520; --shadow:0 2px 0 rgba(0,0,0,.22),0 18px 42px rgba(0,0,0,.22); }
+* { box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body { margin:0; min-width:280px; color:var(--ink); background:var(--page); font-family:var(--sans); line-height:1.55; -webkit-font-smoothing:antialiased; }
+a { color:inherit; text-underline-offset:3px; text-decoration-thickness:1px; }
+a:hover { color:var(--accent); }
+button,a { -webkit-tap-highlight-color:transparent; }
+button { font:inherit; }
+a:focus-visible,button:focus-visible { outline:3px solid var(--accent); outline-offset:3px; }
+.page { width:min(1080px,calc(100% - 36px)); margin:0 auto; padding:28px 0 72px; }
+.issue-header { display:grid; grid-template-columns:1fr auto; gap:24px; align-items:end; padding:8px 0 26px; border-bottom:3px solid var(--ink); }
+.edition { margin:0 0 9px; color:var(--accent); font:700 12px/1.3 var(--mono); letter-spacing:.09em; text-transform:uppercase; }
+.archive-nav { display:flex; flex-wrap:wrap; gap:8px 20px; margin-bottom:16px; font:700 12px/1 var(--mono); }
+.archive-nav a { min-height:36px; display:inline-flex; align-items:center; color:var(--muted); }
+.archive-nav a:hover { color:var(--accent); }
+h1 { max-width:820px; margin:0; font:700 clamp(34px,5.5vw,62px)/.98 var(--serif); letter-spacing:-.038em; }
+.deck { max-width:730px; margin:17px 0 0; color:var(--muted); font:17px/1.55 var(--sans); }
+.theme-toggle { align-self:start; min-width:86px; min-height:40px; padding:9px 13px; border:1px solid var(--hairline); border-radius:4px; color:var(--ink); background:var(--paper); cursor:pointer; font:700 12px/1 var(--mono); display:inline-flex; align-items:center; gap:8px; }
+.theme-toggle:hover { border-color:var(--accent); color:var(--accent); }
+.theme-dot { width:10px; height:10px; border-radius:50%; background:var(--accent); display:inline-block; flex-shrink:0; }
+.theme-text { line-height:1; }
+.story-list { display:grid; gap:20px; list-style:none; margin:26px 0 0; padding:0; counter-reset:story; }
+.story { counter-increment:story; display:grid; grid-template-columns:72px minmax(0,1fr); gap:26px; padding:26px 30px 28px; background:var(--paper); border-top:4px solid var(--ink); box-shadow:var(--shadow); scroll-margin-top:24px; }
+.story-number { color:var(--accent); font:900 22px/1 var(--mono); letter-spacing:-.04em; padding-top:6px; }
+.story-number::before { content:counter(story,decimal-leading-zero); }
+.tagline { margin:0; max-width:840px; font:700 clamp(24px,3vw,36px)/1.1 var(--serif); letter-spacing:-.028em; }
+.exec { margin:14px 0 0; max-width:840px; font:17px/1.58 var(--sans); }
+.cat-lists { margin:14px 0 0; padding:0; list-style:none; display:grid; gap:10px; max-width:840px; }
+.cat-lists li.cat { font:15px/1.6 var(--sans); }
+.cat-lists .cat-label { font:700 12px/1.6 var(--mono); letter-spacing:.06em; text-transform:uppercase; color:var(--accent); }
+.cat-lists ul { margin:4px 0 0; padding-left:20px; }
+.cat-lists ul li { margin:3px 0; }
+.meta-line { margin:16px 0 0; color:var(--muted); font:700 12px/1.9 var(--mono); overflow-wrap:anywhere; }
+.meta-line a { color:var(--ink); font-weight:800; }
+.meta-line .metrics { color:var(--ink); white-space:nowrap; }
+.story-bar { display:flex; align-items:flex-start; gap:14px; margin-top:4px; }
+.copy-button { flex:0 0 auto; align-self:flex-start; min-height:36px; padding:9px 12px; border:1px solid var(--hairline); border-radius:4px; background:var(--paper); color:var(--ink); cursor:pointer; font:700 12px/1 var(--mono); }
+.copy-button:hover { border-color:var(--accent); color:var(--accent); }
+.hn-comments { margin:18px 0 0; padding:14px 18px; background:var(--comment); border:1px solid var(--hairline); font:15px/1.62 var(--serif); color:var(--ink); }
+.hn-comments strong { font:700 12px/1.6 var(--mono); color:var(--accent); display:block; margin-bottom:6px; }
+.page-footer { display:flex; justify-content:space-between; flex-wrap:wrap; gap:14px; margin-top:64px; padding-top:12px; border-top:1px solid var(--hairline); color:var(--muted); font:12px/1.6 var(--mono); }
+.footer-links { display:flex; flex-wrap:wrap; gap:8px 20px; }
+.footer-links a { min-height:36px; display:inline-flex; align-items:center; color:var(--ink); font-weight:800; }
+.footer-links a:hover { color:var(--accent); }
+.shortcut-bar { display:flex; flex-wrap:wrap; gap:18px; margin-top:28px; color:var(--muted); font:11px/1.5 var(--mono); }
+kbd { display:inline-grid; place-items:center; min-width:22px; height:22px; margin-right:6px; padding:0 6px; border:1px solid var(--hairline); border-bottom-width:2px; border-radius:3px; background:var(--comment); color:var(--ink); font:inherit; font-weight:700; }
+.toast { position:fixed; right:max(18px,env(safe-area-inset-right)); bottom:max(18px,env(safe-area-inset-bottom)); z-index:10; padding:11px 14px; color:var(--paper); background:var(--ink); border:1px solid var(--ink); font:700 12px/1 var(--mono); opacity:0; transform:translateY(8px); pointer-events:none; transition:opacity 160ms ease,transform 160ms ease; }
+.toast.show { opacity:1; transform:translateY(0); }
+@media (max-width:760px) {
+  .page { width:min(100% - 22px,1080px); padding-top:16px; }
+  .issue-header { grid-template-columns:1fr auto; gap:12px; padding-bottom:20px; }
+  h1 { font-size:clamp(34px,10vw,48px); }
+  .deck { grid-column:1 / -1; margin-top:3px; font-size:15px; }
+  .theme-toggle { grid-column:2; grid-row:1; min-width:72px; }
+  .story { grid-template-columns:44px minmax(0,1fr); gap:14px; padding:20px 18px 22px; }
+  .story-number { font-size:16px; padding-top:4px; }
+  .story-bar { flex-direction:column; align-items:stretch; }
+  .copy-button { align-self:flex-start; }
+  .page-footer { display:block; }
+}
+@media (max-width:420px) {
+  .page { width:calc(100% - 16px); }
+  .story { grid-template-columns:1fr; gap:8px; padding:20px 16px 22px; }
+  .story-number { padding-top:0; }
+  .copy-button { width:100%; }
+}
+@media (prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } *,*::before,*::after { transition:none !important; } }
+@media print { :root { --page:#fff;--paper:#fff;--ink:#000;--muted:#444;--hairline:#bbb;--comment:#f5f5f5;--shadow:none; } .page{width:100%;padding:0}.theme-toggle,.copy-button,.toast,.shortcut-bar{display:none}.story{break-inside:avoid;box-shadow:none} }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="issue-header">
+      <div>
+        <nav class="archive-nav" aria-label="HN Daily archive links"><a href="../">← Archive</a><a href="https://tk3369.github.io/hn-daily/" target="_blank" rel="noopener">Published archive ↗</a></nav>
+        <p class="edition"><time datetime="2026-09-07">2026-09-07</time> · Daily brief · Pacific time</p>
+        <h1>HN Daily</h1>
+        <p class="deck">Direct, low-fluff top 10 from Hacker News, daily at 7am PT — hottest by points</p>
+      </div>
+      <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch color theme" title="Toggle theme (T)"><span class="theme-dot" aria-hidden="true"></span><span class="theme-text">Dark</span></button>
+    </header>
+
+    <ol class="story-list" aria-label="Top 10 Hacker News stories">
+<article class="story" id="story-1" data-story="1" data-source="https://github.com/zedeus/nitter/commit/1428b4c2b4246f92a7e5b2673438e5fb39fcc4a3" data-hn="https://news.ycombinator.com/item?id=49588988" data-metric="820 pts / 350 comments" tabindex="0" aria-label="Story 1: Nitter refuses X&#x27;s takedown demand and lives on">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">Nitter refuses X&#x27;s takedown demand and lives on</h2>
+<p class="exec">On 24 August 2026 X Corp sent cease-and-desist letters demanding the permanent takedown of Nitter instances and the project&#x27;s repository. Following legal advice, the README now states the Nitter project will continue. The privacy-first alternative Twitter frontend survives — and XCancel is back too.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">What happened</span><ul><li>X Corp demanded a permanent takedown of both the Nitter repo and independent Nitter instances.</li><li>Two weeks later, a single README commit — “Nitter lives” — says legal advice backs continued operation.</li></ul></li><li class="cat"><span class="cat-label">Why it matters</span><ul><li>Crucial public-service information (Paris metro outage feeds) is posted only to X; alt frontends are infrastructure, not nostalgia.</li><li>A legal win here sets the template for every scraping-alternative under platform pressure.</li></ul></li><li class="cat"><span class="cat-label">HN take</span><ul><li>Relief mixed with an awkward question: do alt frontends just prolong X&#x27;s life by making it usable without an account?</li><li>The &quot;agent-first API&quot; hope gets mocked — platforms need no APIs to drown in botspam.</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://github.com/zedeus/nitter/commit/1428b4c2b4246f92a7e5b2673438e5fb39fcc4a3" target="_blank" rel="noopener">github.com</a> · Discuss: <a href="https://news.ycombinator.com/item?id=49588988" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">820 pts / 350 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>Relief dominates, but the most interesting tension is whether Nitter helps or harms: without it, commenters argue, users would get fed up with X faster and move on — alt frontends may only extend the platform&#x27;s life. The strongest case for Nitter is infrastructural, not nostalgic: Paris transit outages are reliably posted only to X accounts, so the frontend is how non-users get critical information. That spins into a law-and-policy thread: should public services be required to publish on open, registration-free websites instead of walled gardens? The pragmatic answer offered is a public-facing page that pulls posts as updates — with the hard problem being access management and admin tooling that doesn&#x27;t rot.</p>
+</div>
+</article>
+<article class="story" id="story-2" data-story="2" data-source="https://blog.archive.org/2026/09/01/keep-our-servers-running-your-recurring-donation-goes-3x-this-september/" data-hn="https://news.ycombinator.com/item?id=49593563" data-metric="676 pts / 165 comments" tabindex="0" aria-label="Story 2: Internet Archive runs a 2:1 donation match for server costs">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">Internet Archive runs a 2:1 donation match for server costs</h2>
+<p class="exec">The Internet Archive is asking for recurring donations with a 2:1 match through September — every recurring gift of $25+ gets matched two-to-one. “Keep Our Servers Running” is the ask; the mission is keeping the web&#x27;s memory online.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The deal</span><ul><li>Start a recurring donation of $25+ in September and the initial gift is matched 2:1 — recurring only, per the fine print.</li></ul></li><li class="cat"><span class="cat-label">Why it matters</span><ul><li>The Archive runs two copies of petabytes of web history; keeping both on its own custom servers is expensive.</li><li>One suggestion: buy distressed Storj (Chapter 11) for the second copy — $1.35/TB/mo node payouts could halve the cost.</li></ul></li><li class="cat"><span class="cat-label">HN take</span><ul><li>Practical: Google Pay recurring is default-monthly and cancellation-by-email-only unless logged in — read before tapping.</li><li>Counter-report: the Archive answered a cancellation email quickly and easily.</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://blog.archive.org/2026/09/01/keep-our-servers-running-your-recurring-donation-goes-3x-this-september/" target="_blank" rel="noopener">blog.archive.org</a> · Discuss: <a href="https://news.ycombinator.com/item?id=49593563" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">676 pts / 165 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>The thread&#x27;s center of gravity is donation mechanics, not the mission: Google Pay&#x27;s one-tap monthly recurrence with email-only cancellation (when not logged in) draws suspicion, with one commenter refusing to yield money through Google services at all and another warning the graphic hides that only recurring donations match 2:1. The Archive&#x27;s responsiveness gets a defense — one donor canceled by email with no friction earlier this year. The genuinely interesting fork is architectural: a commenter proposes the Archive buy bankrupt Storj, keep one copy on its own servers, and park the second on decentralized storage at $1.35/TB/mo, freeing half its infra spend.</p>
+</div>
+</article>
+<article class="story" id="story-3" data-story="3" data-source="https://www.notebookcheck.net/LG-smart-TVs-caught-logging-audio-with-screen-off-and-snooping-on-local-devices.1391214.0.html" data-hn="https://news.ycombinator.com/item?id=49594878" data-metric="509 pts / 281 comments" tabindex="0" aria-label="Story 3: LG smart TVs log audio with the screen off, probe your LAN">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">LG smart TVs log audio with the screen off, probe your LAN</h2>
+<p class="exec">Notebookcheck reports LG smart TVs record audio even with the screen off and scan local network devices — on top of consent terms that already demand sweeping data rights. The “just don&#x27;t connect it” crowd gets its vindication.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">What was found</span><ul><li>Audio logging with the screen off, plus snooping on other devices on the local network.</li><li>The consent terms demanded any data LG wanted — the reporting suggests they took the offer.</li></ul></li><li class="cat"><span class="cat-label">Why it matters</span><ul><li>The TV is the always-on microphone and network scanner in the living room; most buyers never opted in knowingly.</li><li>Rossmann&#x27;s point: terms that can change at any time are null contracts — self-defense has to be technical now.</li></ul></li><li class="cat"><span class="cat-label">HN take</span><ul><li>The offline-TV crowd trades vindication stories; the practical advice is a dumb display plus an external box.</li><li>Side war: would LG use neighbor devices as mesh relays (AirTag-style)? Correctors say AirTags don&#x27;t route arbitrary data.</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://www.notebookcheck.net/LG-smart-TVs-caught-logging-audio-with-screen-off-and-snooping-on-local-devices.1391214.0.html" target="_blank" rel="noopener">notebookcheck.net</a> · Discuss: <a href="https://news.ycombinator.com/item?id=49594878" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">509 pts / 281 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>Vindication is the dominant note: commenters who kept TVs offline despite being mocked trade war stories, with one reading the terms, declining, and keeping all network functions disabled. The deeper thread is legal despair — contracts that can be unilaterally changed at any time are, as Rossmann argues, null contracts, so the conclusion is technical self-defense: never connect the TV. One Brazilian commenter notes their law voids terms a normal person can&#x27;t reasonably understand, and wishes the US had the equivalent. A speculative side thread wonders whether LG could mesh-relay telemetry through neighbor devices AirTag-style; correctors push back that AirTags broadcast only encrypted IDs — no routing, no arbitrary data. The smart-TVs-in-first-place question also gets airtime: underpowered hardware, garbage built-in Android TV, and the case for a dumb panel.</p>
+</div>
+</article>
+<article class="story" id="story-4" data-story="4" data-source="https://grapheneos.social/@GrapheneOS/117225539756835649" data-hn="https://news.ycombinator.com/item?id=49590512" data-metric="339 pts / 222 comments" tabindex="0" aria-label="Story 4: GrapheneOS rebuilds its default apps, starting with messaging">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">GrapheneOS rebuilds its default apps, starting with messaging</h2>
+<p class="exec">GrapheneOS is overhauling its AOSP default apps — a rebuilt messaging app with RCS support lands first, with plans for end-to-end encryption via MLS, plus a secure clipboard feature. The team has hired aggressively and says progress will accelerate.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">What shipped</span><ul><li>A messaging-app overhaul with RCS on the roadmap — the goal is RCS without needing Google Messages.</li><li>MLS-based standard E2EE for RCS is the longer-term plan.</li></ul></li><li class="cat"><span class="cat-label">What&#x27;s next</span><ul><li>AOSP Gallery is being replaced outright; the AOSP keyboard may follow.</li><li>Secure clipboard is a separate new feature — details in its own thread.</li></ul></li><li class="cat"><span class="cat-label">HN take</span><ul><li>The FUTO keyboard nomination dies on licensing: source-available, non-commercial-only, so no Android distribution can ship it.</li><li>Delta Chat (email-transport messaging) gets a counter-nomination.</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://grapheneos.social/@GrapheneOS/117225539756835649" target="_blank" rel="noopener">grapheneos.social</a> · Discuss: <a href="https://news.ycombinator.com/item?id=49590512" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">339 pts / 222 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>Enthusiasm for a non-Google RCS path runs high — Google Messages technically supports RCS on GrapheneOS, but a first-party alternative with MLS-based E2EE would be a real win. The longest sub-thread is a licensing autopsy: FUTO Keyboard, beloved and recommended, turns out to be source-available rather than open source, with a non-commercial license that disqualifies it from any Android distribution (one reading even flags donation-accepting projects as non-compliant). The thread becomes a precise, useful explainer on why “I can see the source” isn&#x27;t open source. Practical thread-enders: the clipboard overhaul is its own topic with its own post, and the AOSP keyboard&#x27;s jank makes it the top replacement candidate.</p>
+</div>
+</article>
+<article class="story" id="story-5" data-story="5" data-source="https://anubis.techaro.lol/blog/2026/anubis-wasm/" data-hn="https://news.ycombinator.com/item?id=49590611" data-metric="307 pts / 148 comments" tabindex="0" aria-label="Story 5: Shipping WebAssembly in Anubis took a full year">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">Shipping WebAssembly in Anubis took a full year</h2>
+<p class="exec">Anubis — the proof-of-work bot gate — finally shipped WebAssembly support after a year of work. The write-up is half engineering diary, half study of the “exact combination of circumstances” that makes users run WASM-blocked browsers.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The hard part</span><ul><li>A fallback path for clients that disable WebAssembly by policy — requiring a parallel wasm2js JavaScript proof-of-work.</li><li>A year of edge cases: small platforms, missing WASM engines, no-JS-but-WASM-blocking combos.</li></ul></li><li class="cat"><span class="cat-label">Why it matters</span><ul><li>Bot mitigation only works if legitimate-but-locked-down clients can still get through — accessibility is the product, not an afterthought.</li><li>The diligence bar for captchas: the author asks Cloudflare et al. get asked to do as much.</li></ul></li><li class="cat"><span class="cat-label">HN take</span><ul><li>Warmth for the thoroughness; the “wide variance in the level of kindness” phrasing becomes a beloved Britishism.</li><li>A sysadmin contingent has disabled WASM entirely — &quot;ten years to get back to roughly the same place as Flash.&quot;</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://anubis.techaro.lol/blog/2026/anubis-wasm/" target="_blank" rel="noopener">anubis.techaro.lol</a> · Discuss: <a href="https://news.ycombinator.com/item?id=49590611" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">307 pts / 148 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>The thread is unusually affectionate: the author&#x27;s dry line about users with a “wide variance in the level of kindness” becomes a beloved Britishism (he&#x27;s Canadian) and a running joke about OSS maintainer treatment. The substance is the year-long engineering: shipping WASM in a bot-gate means handling every client that blocks it — by policy, by platform, by ancient browser — which required a second full proof-of-work implementation in plain JavaScript via wasm2js, plus a clear notice when WebAssembly is unavailable. One sysadmin faction has WASM disabled outright in Firefox and asks for that fallback path to be explicit; the corrections note WASM itself can&#x27;t run in the background — that needs WebWorkers. The elegiac read: ten years to arrive at roughly the same place as Flash, now with Ruffle running Flash in WASM.</p>
+</div>
+</article>
+<article class="story" id="story-6" data-story="6" data-source="https://austinhenley.com/blog/python1024.html" data-hn="https://news.ycombinator.com/item?id=49591876" data-metric="265 pts / 96 comments" tabindex="0" aria-label="Story 6: A Python interpreter that fits in 1024 bytes">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">A Python interpreter that fits in 1024 bytes</h2>
+<p class="exec">Austin Henley&#x27;s 1024-byte Python interpreter is exactly as nasty as it sounds: any “f” is `for x in range(y)`, any “w” is `while`, any “p” is `print(`. No error checking, no mercy — just the minimal code to run one specific demo.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The trick</span><ul><li>Keyword detection by first letter only: f=loop, w=while, i=if, d=def, p=print — so `w = 4` is a syntax death.</li><li>Every shortcut Sector C wouldn&#x27;t take: the interpreter assumes its input is already correct.</li></ul></li><li class="cat"><span class="cat-label">The lineage</span><ul><li>C4: tiny but complete C with real error checking. Sector C: shortcuts. This: nastier than both.</li><li>Technique overlap with JavaScript minification and Apple II BASIC&#x27;s two-letter variables.</li></ul></li><li class="cat"><span class="cat-label">HN take</span><ul><li>Delight at the nastiness plus practical notes — dicts via linear lookup save code if you give up performance.</li><li>Kolmogorov-complexity jokes land: this is TDD taken to its absolute limit.</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://austinhenley.com/blog/python1024.html" target="_blank" rel="noopener">austinhenley.com</a> · Discuss: <a href="https://news.ycombinator.com/item?id=49591876" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">265 pts / 96 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>Delight and gentle horror in equal measure. The thread&#x27;s joy is in naming the nastiness: first-letter keyword dispatch means `w = 4` can&#x27;t exist, and the code only makes sense with the article as its decoder ring — the GitHub “readable” version has fewer comments than the post. Comparisons place it on the spectrum: C4 was tiny but complete with error checking, Sector C took every shortcut and assumed correctness, this goes further and assumes the script itself. Practical wisdom sneaks in — linear-lookup dicts for tiny interpreters, the insertion-order guarantee of Python dicts — and the historical rhymes: JS minification tricks, Apple II BASIC&#x27;s two-letter variable names (luxury versus one-letter interpreters). The Kolmogorov-complexity framing wins: the simplest program that passes the test.</p>
+</div>
+</article>
+<article class="story" id="story-7" data-story="7" data-source="https://news.ycombinator.com/item?id=49577129" data-hn="https://news.ycombinator.com/item?id=49577129" data-metric="198 pts / 118 comments" tabindex="0" aria-label="Story 7: Ask HN: my synth hack might break DRM — can I publish it?">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">Ask HN: my synth hack might break DRM — can I publish it?</h2>
+<p class="exec">A reader reverse-engineered their Fable piano&#x27;s “decoy notes” protection and wrote a working codec — and is asking HN whether releasing it is legal. The thread becomes a free clinic on reverse-engineering law, opsec theater, and why ffmpeg is the grown-up&#x27;s launderer.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The legal picture</span><ul><li>US view: decoy notes may count as a DMCA “effective technical measure” — risky. Europe: not a DMA issue; older exemptions predate it.</li><li>The corrections matter: the DMA designates gatekeepers; it doesn&#x27;t exempt every company.</li></ul></li><li class="cat"><span class="cat-label">The advice</span><ul><li>Publish, and let a C&amp;D be the signal — or hand the codec to ffmpeg, which is used to these matters.</li><li>“Publish anonymously” gets the opsec counter: a fresh GitHub account isn&#x27;t anonymity against Microsoft.</li></ul></li><li class="cat"><span class="cat-label">HN take</span><ul><li>The cynical closer: the AI boom is entirely built on committing the same acts without hiding IPs either.</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://news.ycombinator.com/item?id=49577129" target="_blank" rel="noopener">news.ycombinator.com</a> · Discuss: <a href="https://news.ycombinator.com/item?id=49577129" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">198 pts / 118 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>The top advice is pragmatic, not legalistic: don&#x27;t ask permission, publish the codec, and let a cease-and-desist be the information — with the ffmpeg route as the responsible version, since the project has permanent infra and experience with these matters. The law threads correct the sloppy bits: the DMA doesn&#x27;t blanket-exempt “gatekeeping” practices (it constrains designated gatekeepers), and pre-DMA exemptions for reverse engineering already exist. “Just publish anonymously” ignites the opsec debate — a disposable GitHub account against Microsoft&#x27;s identity graph is theater, and if you believe it might be a crime, half-measures are the worst option. The cynical closer: big tech&#x27;s AI boom is built on the same unhidden conduct at industrial scale.</p>
+</div>
+</article>
+<article class="story" id="story-8" data-story="8" data-source="https://news.ycombinator.com/item?id=49589914" data-hn="https://news.ycombinator.com/item?id=49589914" data-metric="191 pts / 176 comments" tabindex="0" aria-label="Story 8: Ask HN: how do you actually manage all these skills files?">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">Ask HN: how do you actually manage all these skills files?</h2>
+<p class="exec">With AI coding agents hungry for “skills” files, someone asks the obvious: how is anyone managing this pile? The thread splits between “skills are snake oil” and “they&#x27;re just macros that save tokens” — and both sides have a point.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The skeptic case</span><ul><li>With good repos and good prompts, agents find what they need — skills are downloaded kung fu for a problem that&#x27;s mostly gone.</li><li>Needing to manage them at all is a code smell; the useful ones are team-shared repo macros.</li></ul></li><li class="cat"><span class="cat-label">The practitioner case</span><ul><li>It&#x27;s not about discovery — it&#x27;s about not re-spending tokens re-learning the same how.</li><li>Anthropic&#x27;s rule: less in context, more in skills; keep the how out of context until invoked.</li></ul></li><li class="cat"><span class="cat-label">HN take</span><ul><li>Consensus forms around curation: adapt skills per project, don&#x27;t blindly accumulate; too many skills bloat context even unread.</li><li>Proprietary tech not in training data is the killer use case.</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://news.ycombinator.com/item?id=49589914" target="_blank" rel="noopener">news.ycombinator.com</a> · Discuss: <a href="https://news.ycombinator.com/item?id=49589914" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">191 pts / 176 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>The thread converges on a synthesis rather than a winner: skills are most defensible as repo-local macros that encode process — the how, kept out of context until needed, as Anthropic&#x27;s guidance has it — and least defensible as downloaded kung-fu downloaded from the internet. The skeptics&#x27; strongest point stands unrebutted: if you have so many skills they need managing, that&#x27;s a code smell, and unread skills still cost context. The practitioners&#x27; strongest point stands too: token savings are real and measurable for repeated tasks, and agents can&#x27;t infer what isn&#x27;t in training data — proprietary stacks make skills mandatory. The resolution everyone lands on: curate per project, adapt, don&#x27;t accumulate.</p>
+</div>
+</article>
+<article class="story" id="story-9" data-story="9" data-source="https://variety.com/2026/film/reviews/nathan-fielder-surprise-film-telluride-elizabeth-holmes-1236853513/" data-hn="https://news.ycombinator.com/item?id=49596119" data-metric="169 pts / 100 comments" tabindex="0" aria-label="Story 9: Nathan Fielder&#x27;s surprise film is about Elizabeth Holmes">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">Nathan Fielder&#x27;s surprise film is about Elizabeth Holmes</h2>
+<p class="exec">Variety reviews ‘You Can See Everything’ — Nathan Fielder&#x27;s surprise Telluride doc about Elizabeth Holmes. The HN thread barely discusses the film; it becomes a referendum on whether the Theranos scam&#x27;s fuel was gender, hype, or plain fraud.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The film</span><ul><li>Fielder&#x27;s surprise documentary on Holmes premiered at Telluride; Variety&#x27;s review is the launch point.</li><li>HN&#x27;s film talk: nearly zero — the comments go straight to the scam&#x27;s anatomy.</li></ul></li><li class="cat"><span class="cat-label">The debate</span><ul><li>Was the scam shaped exactly like what the era was told STEM&#x27;s future looked like? A business-school memory says the praise was identity, not outcomes.</li><li>Counter: male scammers get grace; “female-led” as a scam heuristic is just sexism doing pattern recognition.</li></ul></li><li class="cat"><span class="cat-label">HN take</span><ul><li>The sharpest frame: scammers adopt whatever disguise the era rewards — the hype itself is the vulnerability.</li><li>The backfire risk: future female founders may pay Holmes&#x27;s bill.</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://variety.com/2026/film/reviews/nathan-fielder-surprise-film-telluride-elizabeth-holmes-1236853513/" target="_blank" rel="noopener">variety.com</a> · Discuss: <a href="https://news.ycombinator.com/item?id=49596119" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">169 pts / 100 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>The film is almost incidental; the thread is a referendum on why Theranos went so far. One camp argues the scam was shaped exactly like what institutions wanted — young, female founder as the future of STEM — with praise detached from outcomes, and the backfire is now: investors asking “is she another Holmes?” The other camp calls that framing itself the problem: male-led scams never make “male” a scam heuristic, and “pattern recognition” is doing laundering work for sexism — patterns don&#x27;t form themselves. The strongest neutral frame: anything subject to hype is more scam-prone, because scammers adopt whatever disguise the era rewards (priests, thought leaders, red-headed founders), and the defense offered for Holmes — that others used her identity to sell it — is read as evidence of the same machine.</p>
+</div>
+</article>
+<article class="story" id="story-10" data-story="10" data-source="https://orchidfiles.com/programming-is-art/" data-hn="https://news.ycombinator.com/item?id=49595360" data-metric="127 pts / 129 comments" tabindex="0" aria-label="Story 10: Programming is art — and AI is the camera">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">Programming is art — and AI is the camera</h2>
+<p class="exec">An essay argues AI will do to programming what the camera did to painting: strip the commercial capture of reality, and leave a creative discipline. Take the money out of coding, bring the creativity back.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The analogy</span><ul><li>Photography ended painting-as-capture and freed it as expression; AI-generated code ends programming-as-trade and frees it as craft.</li><li>Vermeer may have traced camera obscuras — masters adapt tools; pupils inherit them without the craft beneath.</li></ul></li><li class="cat"><span class="cat-label">The pushback</span><ul><li>Nobody exhibits code; the audience for creative programming is thin — better analogy: poetry (Norvig&#x27;s spell-correct as verse).</li><li>Cheaper software may just mean more software, not more art — the comforting-status-quo objection.</li></ul></li><li class="cat"><span class="cat-label">HN take</span><ul><li>One commenter hopes the transition is painful specifically for those who came only for the money.</li><li>The angry dissent: this is demoralization theater for AI barons who stole the commons.</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://orchidfiles.com/programming-is-art/" target="_blank" rel="noopener">orchidfiles.com</a> · Discuss: <a href="https://news.ycombinator.com/item?id=49595360" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">127 pts / 129 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>The thread treats the camera analogy seriously — painters once captured reality for a living, now painting is a creative leisure discipline, and the same could free programming — then stress-tests it. The poetry counter-analogy lands well: you experience code like you experience a poem (Norvig&#x27;s spell-corrector cited as verse), not like a gallery painting, and code&#x27;s audience will always be other creators. The economics objections cut deepest: cheaper software production may just give investors more software to invest in, and the “transition” will be painful for people who chose the profession for the money. The angriest dissent rejects the whole frame as demoralization propaganda for AI companies that built on stolen open source — a reminder the analogy itself is doing political work.</p>
+</div>
+</article>
+    </ol>
+
+    <div class="shortcut-bar" aria-label="Keyboard shortcuts">
+      <span><kbd>J</kbd> next story</span>
+      <span><kbd>K</kbd> previous story</span>
+      <span><kbd>T</kbd> theme</span>
+    </div>
+
+    <footer class="page-footer">
+      <div class="footer-links"><a href="../">← Daily archive</a><a href="https://tk3369.github.io/hn-daily/" target="_blank" rel="noopener">Published archive ↗</a></div>
+      <span>Monday 2026-09-07 · 10 stories</span>
+    </footer>
+  </main>
+  <div class="toast" role="status" aria-live="polite"></div>
+  <script>
+(() => {
+  const root = document.documentElement;
+  const toggle = document.getElementById('theme-toggle');
+  const entries = [...document.querySelectorAll('[data-story]')];
+  function storedTheme() { try { const t = localStorage.getItem('hn-daily-theme'); return t === 'dark' || t === 'light' ? t : null; } catch (_) { return null; } }
+  function preferredTheme() { return matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'; }
+  function currentTheme() { const a = root.dataset.theme; if (a === 'dark' || a === 'light') return a; return storedTheme() || preferredTheme(); }
+  function setTheme(theme) { const next = theme === 'dark' ? 'dark' : 'light'; const opposite = next === 'dark' ? 'Light' : 'Dark';
+    if (root.dataset.theme !== next) root.dataset.theme = next;
+    toggle.querySelector('.theme-text').textContent = opposite;
+    toggle.setAttribute('aria-label', `Switch to ${opposite} theme (T)`); toggle.title = `Switch to ${opposite} theme (T)`;
+    try { localStorage.setItem('hn-daily-theme', next); } catch (_) {} }
+  function flipTheme() { setTheme(currentTheme() === 'dark' ? 'light' : 'dark'); }
+  setTheme(storedTheme() || preferredTheme());
+  toggle.addEventListener('click', flipTheme);
+  const toast = document.querySelector('.toast'); let toastTimer;
+  function showToast(msg) { toast.textContent = msg; toast.classList.add('show'); clearTimeout(toastTimer); toastTimer = setTimeout(() => toast.classList.remove('show'), 1800); }
+  document.querySelectorAll('.copy-button').forEach((button) => {
+    button.addEventListener('click', async () => {
+      const story = button.closest('.story');
+      const n = story.dataset.story;
+      const tagline = story.querySelector('.tagline').textContent.trim();
+      const execSum = story.querySelector('.exec').textContent.trim();
+      const bullets = [...story.querySelectorAll('.cat-lists .cat')].map(li => {
+        const label = li.querySelector('.cat-label').textContent.trim();
+        const pts = [...li.querySelectorAll('ul li')].map(p => '  \u2022 ' + p.textContent.trim()).join('\n');
+        return '- ' + label + ':\n' + pts;
+      }).join('\n');
+      const link = 'https://tk3369.github.io/hn-daily/2026-09-07/#story-' + n;
+      const text = n + '. ' + tagline + '\n' + execSum + '\n' + bullets + '\n' + link;
+      try { await navigator.clipboard.writeText(text); button.textContent = 'Copied'; showToast('Story ' + n + ' copied for Threads'); setTimeout(() => { button.textContent = 'Copy for Threads'; }, 1600); }
+      catch (_) { showToast('Copy was blocked by this browser'); }
+    });
+  });
+  document.addEventListener('keydown', (event) => {
+    if (event.metaKey || event.ctrlKey || event.altKey || event.shiftKey) return;
+    const tag = event.target.tagName;
+    if (tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT') return;
+    const key = event.key.toLowerCase();
+    if (key === 't') { event.preventDefault(); flipTheme(); }
+    else if ((key === 'j' || key === 'k') && entries.length) {
+      event.preventDefault();
+      const active = entries.indexOf(document.activeElement);
+      const delta = key === 'j' ? 1 : -1;
+      const next = active < 0 ? (key === 'j' ? 0 : entries.length - 1) : Math.max(0, Math.min(entries.length - 1, active + 1 * delta));
+      entries[next].focus();
+    }
+  });
+})();
+  </script>
+</body>
+</html>
