@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="color-scheme" content="light dark" />
+  <link rel="icon" href="data:," />
+  <title>HN Daily — Tuesday 2026-09-08</title>
+  <style>
+:root { --page:#f1eadb; --paper:#fffaf0; --ink:#20201c; --muted:#6f695f; --hairline:#d9cebc; --accent:#ff5a1f; --comment:#f6efe3; --shadow:0 2px 0 rgba(57,45,25,.08),0 14px 36px rgba(57,45,25,.06); --serif:Georgia,"Times New Roman",serif; --sans:ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; --mono:"SFMono-Regular",Consolas,"Liberation Mono",monospace; }
+html[data-theme="dark"] { --page:#111312; --paper:#191c1a; --ink:#f1eee6; --muted:#aba69b; --hairline:#393b36; --accent:#ff7139; --comment:#222520; --shadow:0 2px 0 rgba(0,0,0,.22),0 18px 42px rgba(0,0,0,.22); }
+* { box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body { margin:0; min-width:280px; color:var(--ink); background:var(--page); font-family:var(--sans); line-height:1.55; -webkit-font-smoothing:antialiased; }
+a { color:inherit; text-underline-offset:3px; text-decoration-thickness:1px; }
+a:hover { color:var(--accent); }
+button,a { -webkit-tap-highlight-color:transparent; }
+button { font:inherit; }
+a:focus-visible,button:focus-visible { outline:3px solid var(--accent); outline-offset:3px; }
+.page { width:min(1080px,calc(100% - 36px)); margin:0 auto; padding:28px 0 72px; }
+.issue-header { display:grid; grid-template-columns:1fr auto; gap:24px; align-items:end; padding:8px 0 26px; border-bottom:3px solid var(--ink); }
+.edition { margin:0 0 9px; color:var(--accent); font:700 12px/1.3 var(--mono); letter-spacing:.09em; text-transform:uppercase; }
+.archive-nav { display:flex; flex-wrap:wrap; gap:8px 20px; margin-bottom:16px; font:700 12px/1 var(--mono); }
+.archive-nav a { min-height:36px; display:inline-flex; align-items:center; color:var(--muted); }
+.archive-nav a:hover { color:var(--accent); }
+h1 { max-width:820px; margin:0; font:700 clamp(34px,5.5vw,62px)/.98 var(--serif); letter-spacing:-.038em; }
+.deck { max-width:730px; margin:17px 0 0; color:var(--muted); font:17px/1.55 var(--sans); }
+.theme-toggle { align-self:start; min-width:86px; min-height:40px; padding:9px 13px; border:1px solid var(--hairline); border-radius:4px; color:var(--ink); background:var(--paper); cursor:pointer; font:700 12px/1 var(--mono); display:inline-flex; align-items:center; gap:8px; }
+.theme-toggle:hover { border-color:var(--accent); color:var(--accent); }
+.theme-dot { width:10px; height:10px; border-radius:50%; background:var(--accent); display:inline-block; flex-shrink:0; }
+.theme-text { line-height:1; }
+.story-list { display:grid; gap:20px; list-style:none; margin:26px 0 0; padding:0; counter-reset:story; }
+.story { counter-increment:story; display:grid; grid-template-columns:72px minmax(0,1fr); gap:26px; padding:26px 30px 28px; background:var(--paper); border-top:4px solid var(--ink); box-shadow:var(--shadow); scroll-margin-top:24px; }
+.story-number { color:var(--accent); font:900 22px/1 var(--mono); letter-spacing:-.04em; padding-top:6px; }
+.story-number::before { content:counter(story,decimal-leading-zero); }
+.tagline { margin:0; max-width:840px; font:700 clamp(24px,3vw,36px)/1.1 var(--serif); letter-spacing:-.028em; }
+.exec { margin:14px 0 0; max-width:840px; font:17px/1.58 var(--sans); }
+.cat-lists { margin:14px 0 0; padding:0; list-style:none; display:grid; gap:10px; max-width:840px; }
+.cat-lists li.cat { font:15px/1.6 var(--sans); }
+.cat-lists .cat-label { font:700 12px/1.6 var(--mono); letter-spacing:.06em; text-transform:uppercase; color:var(--accent); }
+.cat-lists ul { margin:4px 0 0; padding-left:20px; }
+.cat-lists ul li { margin:3px 0; }
+.meta-line { margin:16px 0 0; color:var(--muted); font:700 12px/1.9 var(--mono); overflow-wrap:anywhere; }
+.meta-line a { color:var(--ink); font-weight:800; }
+.meta-line .metrics { color:var(--ink); white-space:nowrap; }
+.story-bar { display:flex; align-items:flex-start; gap:14px; margin-top:4px; }
+.copy-button { flex:0 0 auto; align-self:flex-start; min-height:36px; padding:9px 12px; border:1px solid var(--hairline); border-radius:4px; background:var(--paper); color:var(--ink); cursor:pointer; font:700 12px/1 var(--mono); }
+.copy-button:hover { border-color:var(--accent); color:var(--accent); }
+.hn-comments { margin:18px 0 0; padding:14px 18px; background:var(--comment); border:1px solid var(--hairline); font:15px/1.62 var(--serif); color:var(--ink); }
+.hn-comments strong { font:700 12px/1.6 var(--mono); color:var(--accent); display:block; margin-bottom:6px; }
+.page-footer { display:flex; justify-content:space-between; flex-wrap:wrap; gap:14px; margin-top:64px; padding-top:12px; border-top:1px solid var(--hairline); color:var(--muted); font:12px/1.6 var(--mono); }
+.footer-links { display:flex; flex-wrap:wrap; gap:8px 20px; }
+.footer-links a { min-height:36px; display:inline-flex; align-items:center; color:var(--ink); font-weight:800; }
+.footer-links a:hover { color:var(--accent); }
+.shortcut-bar { display:flex; flex-wrap:wrap; gap:18px; margin-top:28px; color:var(--muted); font:11px/1.5 var(--mono); }
+kbd { display:inline-grid; place-items:center; min-width:22px; height:22px; margin-right:6px; padding:0 6px; border:1px solid var(--hairline); border-bottom-width:2px; border-radius:3px; background:var(--comment); color:var(--ink); font:inherit; font-weight:700; }
+.toast { position:fixed; right:max(18px,env(safe-area-inset-right)); bottom:max(18px,env(safe-area-inset-bottom)); z-index:10; padding:11px 14px; color:var(--paper); background:var(--ink); border:1px solid var(--ink); font:700 12px/1 var(--mono); opacity:0; transform:translateY(8px); pointer-events:none; transition:opacity 160ms ease,transform 160ms ease; }
+.toast.show { opacity:1; transform:translateY(0); }
+@media (max-width:760px) {
+  .page { width:min(100% - 22px,1080px); padding-top:16px; }
+  .issue-header { grid-template-columns:1fr auto; gap:12px; padding-bottom:20px; }
+  h1 { font-size:clamp(34px,10vw,48px); }
+  .deck { grid-column:1 / -1; margin-top:3px; font-size:15px; }
+  .theme-toggle { grid-column:2; grid-row:1; min-width:72px; }
+  .story { grid-template-columns:44px minmax(0,1fr); gap:14px; padding:20px 18px 22px; }
+  .story-number { font-size:16px; padding-top:4px; }
+  .story-bar { flex-direction:column; align-items:stretch; }
+  .copy-button { align-self:flex-start; }
+  .page-footer { display:block; }
+}
+@media (max-width:420px) {
+  .page { width:calc(100% - 16px); }
+  .story { grid-template-columns:1fr; gap:8px; padding:20px 16px 22px; }
+  .story-number { padding-top:0; }
+  .copy-button { width:100%; }
+}
+@media (prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } *,*::before,*::after { transition:none !important; } }
+@media print { :root { --page:#fff;--paper:#fff;--ink:#000;--muted:#444;--hairline:#bbb;--comment:#f5f5f5;--shadow:none; } .page{width:100%;padding:0}.theme-toggle,.copy-button,.toast,.shortcut-bar{display:none}.story{break-inside:avoid;box-shadow:none} }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="issue-header">
+      <div>
+        <nav class="archive-nav" aria-label="HN Daily archive links"><a href="../">← Archive</a><a href="https://tk3369.github.io/hn-daily/" target="_blank" rel="noopener">Published archive ↗</a></nav>
+        <p class="edition"><time datetime="2026-09-08">2026-09-08</time> · Daily brief · Pacific time</p>
+        <h1>HN Daily</h1>
+        <p class="deck">Direct, low-fluff top 10 from Hacker News, daily at 7am PT — hottest by points</p>
+      </div>
+      <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch color theme" title="Toggle theme (T)"><span class="theme-dot" aria-hidden="true"></span><span class="theme-text">Dark</span></button>
+    </header>
+
+    <ol class="story-list" aria-label="Top 10 Hacker News stories">
+<article class="story" id="story-1" data-story="1" data-source="https://mistral.ai/news/mistral-makes-sovereign-open-weight-ai-to-frontier/" data-hn="https://news.ycombinator.com/item?id=49605767" data-metric="636 pts / 459 comments" tabindex="0" aria-label="Story 1: Mistral raises €3B at a €21B valuation, bets on sovereign open-weight AI">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">Mistral raises €3B at a €21B valuation, bets on sovereign open-weight AI</h2>
+<p class="exec">Mistral announced a €3B Series D at a post-money valuation above €21B — the largest equity round ever by a European tech company, three years after launch. Samsung Electronics led, with Scaleup Europe Fund (EQT) and existing backers; the pitch is a full sovereign stack: open-weight models plus the private compute and products to run them.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">What happened</span><ul><li>€3B Series D led by Samsung, co-led by Scaleup Europe Fund (EQT) and existing investor PSG Equity, at &gt;€21B post-money.</li><li>Mistral frames itself as the only AI company building the full stack: open-weight models, private compute, and production products.</li></ul></li><li class="cat"><span class="cat-label">Why it matters</span><ul><li>Demand from governments and enterprises for AI without surrendering control of data and infrastructure is accelerating.</li><li>Land-and-expand customers include Airbus, ASML, and HSBC across 20 countries.</li></ul></li><li class="cat"><span class="cat-label">HN take</span><ul><li>The thread&#x27;s central argument: skip the frontier arms race and win profitable sovereign niches — a stance many find strategically sound.</li><li>The Apple comparison gets pushback: Apple can afford to wait and buy, while Mistral IS the supplier; credibility, not benchmark crowns, is the product.</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://mistral.ai/news/mistral-makes-sovereign-open-weight-ai-to-frontier/" target="_blank" rel="noopener">mistral.ai</a> · Discuss: <a href="https://news.ycombinator.com/item?id=49605767" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">636 pts / 459 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>The thread reads as a strategy seminar. The popular position is that Mistral is being smart: benchmark arms races against Chinese open models commoditize intelligence, so chasing them is a money pit; going after profitable, sovereign niches is the durable play. The Apple analogy (wait out the frontier, buy the finished result) dominates, but a substantial counter-thread rejects the comparison — Apple&#x27;s business is hardware and services, so waiting costs it nothing; Mistral is itself a supplier, so it has no supplier to fall back on. The consensus that emerges: Mistral&#x27;s actual product is credibility on the tech and security front, and as long as institutional clients believe it, the model works. Open-weight models being unprofitable by definition remains the sharpest skepticism.</p>
+</div>
+</article>
+<article class="story" id="story-2" data-story="2" data-source="https://jellyfin.org/posts/jellyfin-release-12.0/" data-hn="https://news.ycombinator.com/item?id=49604861" data-metric="489 pts / 229 comments" tabindex="0" aria-label="Story 2: Jellyfin 12.0 drops the &quot;10.&quot;, rebuilds performance and books">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">Jellyfin 12.0 drops the &quot;10.&quot;, rebuilds performance and books</h2>
+<p class="exec">Jellyfin&#x27;s new stable release renames what would have been 10.12.0 to 12.0 — the leading &quot;10.&quot; never meant anything and made major releases look minor. Under the hood: database work that turns the 10.11 rebuild into real browse performance, proper book/comic support with metadata read from OPF and ComicInfo, Modern layout now default, plus security fixes. Upgrade requires a full backup, a full library scan, and removing third-party plugins first.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">What shipped</span><ul><li>Database tuning: playlist/collection items are now individual rows, so large playlists stop loading everything just to count.</li><li>Books and comics get real server-side support: OPF/ComicInfo metadata, generated posters, page counts, chapter extraction; the Bookshelf plugin is deprecated.</li><li>Modern layout becomes the default; per-library subtitle settings; plugin-extensible search and per-library recommendation sources.</li></ul></li><li class="cat"><span class="cat-label">Upgrade warnings</span><ul><li>Schema rewrite on first boot — backup is the only way back; a full library scan is required and will take longer than usual.</li><li>Third-party plugins built for 10.11 will not load; very old clients using the deprecated sign-in flow stop working.</li></ul></li><li class="cat"><span class="cat-label">HN take</span><ul><li>Longtime Plex users see Jellyfin as a soft landing from Plex&#x27;s user-hostile moves; Infuse on Apple TV is the praised remote-access workaround.</li><li>Outside access remains Jellyfin&#x27;s sore point versus Plex — Tailscale works but isn&#x27;t as smooth.</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://jellyfin.org/posts/jellyfin-release-12.0/" target="_blank" rel="noopener">jellyfin.org</a> · Discuss: <a href="https://news.ycombinator.com/item?id=49604861" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">489 pts / 229 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>The thread is mostly a Plex refugee camp. Longtime Plex users with lifetime passes cheer Jellyfin&#x27;s progress partly as leverage — a credible open alternative keeps Plex&#x27;s user-hostile behavior in check. The practical discussion centers on clients: Infuse on Apple TV gets strong recommendations (better buffering handling, excellent subtitle fetcher) versus the open-source Swiftfin tvOS client, which lags. Remote access is the acknowledged weak spot; several commenters run Tailscale for remote access but note you can&#x27;t easily share with friends and family the way Plex does. One commenter details using Claude to configure their entire *arr stack, which reads as incidental testimony to how far agent-assisted self-hosting has come.</p>
+</div>
+</article>
+<article class="story" id="story-3" data-story="3" data-source="https://mcpherrin.ca/2026/09/07/rsa.html" data-hn="https://news.ycombinator.com/item?id=49604637" data-metric="411 pts / 86 comments" tabindex="0" aria-label="Story 3: Factored: the 512-bit RSA keys of a 90s Certificate Authority">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">Factored: the 512-bit RSA keys of a 90s Certificate Authority</h2>
+<p class="exec">An engineer factored the RSA keys of a Certificate Authority from the 1990s and got stock OpenSSL to issue certificates that work — by writing a tiny custom SSLv3 server implementation in Go, since Go dropped SSLv3 in 1.14 and never supported the SSLv2-compatible ClientHello or 40-bit RC4-MD5 export cipher suites. The target client: Netscape Communicator 4.51 with its clock set to 2000. The server key is 512-bit RSA so export clients can encrypt the premaster secret directly.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">What happened</span><ul><li>Factored a 512-bit RSA key from a 90s CA; stock OpenSSL can now issue certs that a period browser accepts.</li><li>Go&#x27;s crypto/tls can&#x27;t help (no SSLv3, no SSLv2 ClientHello, no export suites), so the repo carries its own SSLv3 server-side implementation on stdlib primitives.</li></ul></li><li class="cat"><span class="cat-label">The history thread</span><ul><li>A former Netscape PM for root certificates shows up: export-grade 40-bit crypto was deliberately weak so the NSA could decrypt, required by the government.</li><li>Netscape 4.5x was expanding the root list and monetizing root slots — Verisign lobbied to re-restrict it to &quot;responsible&quot; companies and was declined.</li></ul></li><li class="cat"><span class="cat-label">HN take</span><ul><li>Admiration for the low-level plumbing work, plus a plea for commentary on why the custom TLS implementation was necessary — the repo comment answers it.</li><li>Speculation about what else is breakable now: old Lotus Notes weak keys and floating .nsf files get a mention.</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://mcpherrin.ca/2026/09/07/rsa.html" target="_blank" rel="noopener">mcpherrin.ca</a> · Discuss: <a href="https://news.ycombinator.com/item?id=49604637" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">411 pts / 86 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>The technical crowd appreciates the archaeology: rebuilding an SSLv3 server from Go stdlib primitives to talk to a 25-year-old browser is the fun part, and the author&#x27;s note about OpenSSL issuing working period certificates got its own war stories. The standout moment is a former Netscape product manager who owned root certificates for Netscape 4.51 showing up to confirm the dark parts from memory: yes, export-grade crypto was deliberately weak so the NSA could decrypt, and the government required it; and 4.5x was the release where root slots started being monetized under revenue pressure, with Verisign lobbying (unsuccessfully) to keep the list restricted to a few &quot;responsible&quot; companies. Nostalgia and a live primary source in one thread.</p>
+</div>
+</article>
+<article class="story" id="story-4" data-story="4" data-source="https://deepmind.google/science/weathernext/" data-hn="https://news.ycombinator.com/item?id=49552299" data-metric="377 pts / 91 comments" tabindex="0" aria-label="Story 4: DeepMind ships WeatherNext 3: hourly global AI forecasts from raw satellite data">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">DeepMind ships WeatherNext 3: hourly global AI forecasts from raw satellite data</h2>
+<p class="exec">Google DeepMind&#x27;s WeatherNext 3 is the first global weather model generating forecasts every hour of the day, drawing directly from raw satellite imagery instead of preprocessed inputs. It targets station-level temperature and humidity at 5km resolution, wind at 10km, and industry variables like radiation and cloud cover for renewables. The output feeds Search, Maps, and Gemini.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">What shipped</span><ul><li>First global weather model to forecast every hour of every day, reading raw satellite imagery directly.</li><li>5km resolution for temperature/humidity, 10km for wind; covers renewable-energy variables like radiation and cloud cover.</li></ul></li><li class="cat"><span class="cat-label">Why it matters</span><ul><li>Hourly cadence plus local resolution targets the exact gap — fast-changing rain and snow — where users feel model error most.</li><li>DeepMind cites a real-world win: helping the National Hurricane Center predict Hurricane Melissa&#x27;s historic landfall in Jamaica.</li></ul></li><li class="cat"><span class="cat-label">HN take</span><ul><li>Skepticism: Google&#x27;s own weather app is routinely wrong for some users, even while radar disagrees — trust is earned per-forecast.</li><li>The 4–48 hour window gets called out as the worst — not the hour-ahead or 3-day views; Met Office/BBC remain the UK fallback.</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://deepmind.google/science/weathernext/" target="_blank" rel="noopener">deepmind.google</a> · Discuss: <a href="https://news.ycombinator.com/item?id=49552299" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">377 pts / 91 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>Enthusiasm for the model meets lived distrust of the product: the top complaint is that Google&#x27;s weather app shows no rain while it&#x27;s pouring outside, which poisons any announcement about better models. One commenter blames NOAA funding cuts (fewer weather balloons, stale data) and gets the predictable counter — every app agrees poorly, and judging Google only on the times you checked competitors is a biased experiment. UK commenters say the BBC/Met Office pairing beats Google specifically in the 4–48 hour window they care most about, though Google updates more frequently and its hour-ahead view holds up. The pragmatic read: models can keep improving, but users calibrate on misses, and one-in-ten wrong is enough to burn the brand.</p>
+</div>
+</article>
+<article class="story" id="story-5" data-story="5" data-source="https://lax-skyline.parcelscope.net/" data-hn="https://news.ycombinator.com/item?id=49601655" data-metric="317 pts / 159 comments" tabindex="0" aria-label="Story 5: Watch LA get built, one building at a time (1880–2026)">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">Watch LA get built, one building at a time (1880–2026)</h2>
+<p class="exec">An interactive visualization renders Los Angeles construction chronologically, building by building, from 1880 to 2026. It&#x27;s mesmerizing as data art — but HN&#x27;s discussion quickly turned it into a zoning lecture: LA was zoned for roughly 10 million people in the 1960s and only about 4 million by the 1980s after downzoning, which the city still enforces today.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">What it is</span><ul><li>A time-lapse map of LA&#x27;s built environment over 146 years, rendered building by building.</li><li>The visual punchline: recent decades look frozen — very little gets added.</li></ul></li><li class="cat"><span class="cat-label">The numbers</span><ul><li>1960s zoning: ~10M people capacity. Post-1980s downzoning: ~4M. Population growth has crawled ever since while demand kept rising.</li><li>Result commenters cite: artificial shortage of buildable space, money funneled to landlords and homeowners, lower-income residents pushed out.</li></ul></li><li class="cat"><span class="cat-label">The counterpoint</span><ul><li>The 10M figure is called back-of-the-napkin: doubling residents would need major transit and new water sources.</li><li>Water skeptics counter that dense humans use tiny amounts of water without lawns and pools — alfalfa and agriculture dwarf the math.</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://lax-skyline.parcelscope.net/" target="_blank" rel="noopener">lax-skyline.parcelscope.net</a> · Discuss: <a href="https://news.ycombinator.com/item?id=49601655" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">317 pts / 159 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>The visualization is the hook; the zoning math is the meal. Commenters hammer the 1980s downzoning story: 10M zoned capacity cut to 4M, a four-decade decision still throttling a city that keeps getting more popular. The counter-thread is pragmatic infrastructure realism — zoning for 10M people on paper means nothing without water, transit, and upgraded pipes; one commenter marvels that conservation kept total LA water use flat for decades. A side debate on water modeling breaks out: residential density is water-cheap compared to agriculture, with alfalfa farming in the Colorado basin named as the real sink. The usual &#x27;same story in San Francisco and the rest of the US&#x27; chorus closes it out.</p>
+</div>
+</article>
+<article class="story" id="story-6" data-story="6" data-source="https://weirdgloop.org/blog/google-jail" data-hn="https://news.ycombinator.com/item?id=49604870" data-metric="315 pts / 114 comments" tabindex="0" aria-label="Story 6: There&#x27;s a new &quot;Google Jail&quot; for independent wikis">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">There&#x27;s a new &quot;Google Jail&quot; for independent wikis</h2>
+<p class="exec">Weird Gloop documents a pattern: independent game wikis get indexed by Google but effectively never surfaced in search results — months or years of invisibility despite good links and no better alternatives. Meanwhile ad-saturated Fandom wikis, even abandoned forks, keep ranking first. One commenter proposes a mundane alternative cause: some wiki sitemaps rewrite themselves on every edit, serving truncated files mid-crawl.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The claim</span><ul><li>Independent wikis: indexed per Search Console, but Google won&#x27;t display the pages — an arbitrary &quot;jail&quot; lasting a year or more.</li><li>Fandom keeps winning: stale, ad-choked forks of abandoned wikis still outrank the maintained community versions.</li></ul></li><li class="cat"><span class="cat-label">Real cases</span><ul><li>A Cyber Knights: Flashpoint wiki only broke out after months of consistent linking from Steam news posts.</li><li>Dota players still get funneled to ad-heavy Fandom over the better Liquipedia; Satisfactory&#x27;s community actively campaigns against the Fandom fork.</li></ul></li><li class="cat"><span class="cat-label">The counter-theory</span><ul><li>Sitemap self-sabotage: real-time sitemap rewrites on every wiki edit serve truncated XML mid-file, which could explain the whole phenomenon.</li><li>The Unix fix: write the new sitemap to a temp file, then rename; stop updating lastmod per edit.</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://weirdgloop.org/blog/google-jail" target="_blank" rel="noopener">weirdgloop.org</a> · Discuss: <a href="https://news.ycombinator.com/item?id=49604870" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">315 pts / 114 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>Fandom hatred is the thread&#x27;s emotional core: commenters trade war stories of abandoned Fandom forks outranking the living community wikis they split from, and the Satisfactory community&#x27;s active campaign to steer people to the official wiki reads as organized resistance. The &#x27;Google Jail&#x27; framing resonates — one game developer reports nearly a year of index-but-invisible status that only broke after sustained inbound linking from Steam news. But the most interesting turn is the self-investigation: a commenter digging into sitemaps finds that some wikis rewrite their sitemap files in real time on every edit, serving truncated XML when Google crawls mid-rewrite. That single mundane bug could explain the entire phenomenon, and the thread mostly agrees the fix is trivial — write to a temp file, rename, and don&#x27;t churn lastmod per edit.</p>
+</div>
+</article>
+<article class="story" id="story-7" data-story="7" data-source="https://ciphercue.com/blog/european-cdn-concentration-cloudflare-nine-in-ten" data-hn="https://news.ycombinator.com/item?id=49607443" data-metric="282 pts / 225 comments" tabindex="0" aria-label="Story 7: 9 in 10 European companies that use a CDN use Cloudflare">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">9 in 10 European companies that use a CDN use Cloudflare</h2>
+<p class="exec">A CipherCue survey finds that among European companies using a CDN, nearly 9 in 10 use Cloudflare — an extraordinary concentration. The product pull is easy to see: a generous free tier, global-by-default distribution with no region-thinking, R2 object storage, and D1 SQLite, versus load-balancer-per-month pricing on traditional clouds.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The finding</span><ul><li>~90% CDN share among European companies that use a CDN — Cloudflare is effectively the default European edge.</li><li>The value pitch: free tier, affordable domains, generous freemium, global-by-default Workers/D1/R2.</li></ul></li><li class="cat"><span class="cat-label">Why people switch</span><ul><li>Google Cloud and AWS charge for a load balancer monthly just to serve a static site from a bucket; Cloudflare routes domains to buckets for free.</li><li>Cloudflare&#x27;s model: no &quot;regions&quot; to plan around; D1&#x27;s distributed SQLite handles the topology behind the scenes.</li></ul></li><li class="cat"><span class="cat-label">The counter-thread</span><ul><li>Concentration risk framed as surveillance risk: Cloudflare terminates so much traffic that one call turns into &#x27;the hidden cost is the NSA sees everything.&#x27;</li><li>The rebuttal: NSA bulk collection of web traffic is a 20-year-old idea that never bore fruit; they target devices, not your corporate site.</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://ciphercue.com/blog/european-cdn-concentration-cloudflare-nine-in-ten" target="_blank" rel="noopener">ciphercue.com</a> · Discuss: <a href="https://news.ycombinator.com/item?id=49607443" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">282 pts / 225 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>The thread splits between builders and worriers. The builders report actual migrations: one moved static sites from Google buckets behind a paid load balancer to Cloudflare for effectively nothing, and the global-by-default model (no regions, D1&#x27;s distributed SQLite &#x27;just working&#x27;) is the recurring praise. Traditional clouds get framed as chasing people away with complexity and per-month nickel-and-diming. Then the surveillance thread detonates: Cloudflare is called &#x27;the LG TV of websites&#x27; with an always-on microphone, and the rebuttal is technically grounded — bulk traffic collection never worked, the NSA targets devices of interest, and if they&#x27;re in your head as a threat model you&#x27;re cooked on any provider. Nobody in the thread disputes the value; the disagreement is whether concentration at 90% should scare anyone.</p>
+</div>
+</article>
+<article class="story" id="story-8" data-story="8" data-source="https://d2lang.com/blog/tala-is-open-source/" data-hn="https://news.ycombinator.com/item?id=49604150" data-metric="270 pts / 23 comments" tabindex="0" aria-label="Story 8: TALA, D2&#x27;s graph layout engine, is now open source">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">TALA, D2&#x27;s graph layout engine, is now open source</h2>
+<p class="exec">D2&#x27;s team open-sourced TALA, their graph layout algorithm. It&#x27;s an honest announcement — the authors state up front where it lags: it doesn&#x27;t do DAGs as well as Dagre or ELK. The thread&#x27;s reaction is mixed-to-skeptical: impressive tidy layouts on some inputs, objectively worse on the Go queue example, and a broken homepage on iOS Safari that one commenter fixed with a 1998 CSS directive.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">What it is</span><ul><li>The graph layout engine behind the D2 diagramming tool, now open source.</li><li>Authors disclose the limitation in the intro: DAGs are better handled by Dagre or ELK.</li></ul></li><li class="cat"><span class="cat-label">HN reactions</span><ul><li>The Go queue example draws fire: TALA groups and flows worse than the alternatives, making the diagram look more complex than it is.</li><li>Direction directives (up/down/left/right) aren&#x27;t respected — it optimizes for squarish aspect ratios instead.</li></ul></li><li class="cat"><span class="cat-label">The CSS sideshow</span><ul><li>The announcement site breaks on iOS Safari (iPhone SE2); the reporter fixed it with a CSS2 directive from 1998.</li><li>Counter: layout is genuinely, computationally hard — things that look instinctively easy to humans are expensive problems.</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://d2lang.com/blog/tala-is-open-source/" target="_blank" rel="noopener">d2lang.com</a> · Discuss: <a href="https://news.ycombinator.com/item?id=49604150" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">270 pts / 23 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>A small, technical thread. The reactions are genuinely split by example: the first diagrams impress with tidiness, but the Go queue comparison is judged &#x27;objectively worse&#x27; than the Dagre/ELK alternatives — the alternatives keep services and users grouped with left-to-right flow, while TALA&#x27;s version looks more complicated than the underlying system. The direction-directive complaint is specific and testable: TALA ignores up/down/left/right and squeezes toward square aspect ratios. The announcement site itself becomes exhibit A in the CSS debate — broken on iOS Safari despite the team bragging about hiring the best, fixed by a reader with a 1998 CSS2 directive — though others defend layout as a genuinely hard computational problem. The honesty about the DAG limitation gets quiet respect.</p>
+</div>
+</article>
+<article class="story" id="story-9" data-story="9" data-source="https://lanparty.house/" data-hn="https://news.ycombinator.com/item?id=49579443" data-metric="268 pts / 177 comments" tabindex="0" aria-label="Story 9: We built our house for LAN parties — 22 machines, $75K of hardware">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">We built our house for LAN parties — 22 machines, $75K of hardware</h2>
+<p class="exec">A house built specifically for LAN parties: 22 gaming machines (including monitors, cables, and peripherals) at about $75,000, in a house that cost a seven-figure number. The owner is Kenton Varda — tech lead of Cloudflare Workers, Sandstorm.io co-founder, Cap&#x27;n Proto creator — who showed up in the thread noting that having the author present transforms HN: cheap criticism shrinks, curious questions take over.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">What it is</span><ul><li>A custom-built house designed around LAN parties: 22 game machines totaling ~$75K in hardware alone.</li><li>The author himself joined the thread — a repeat HN poster whose Cloudflare work has been discussed many times.</li></ul></li><li class="cat"><span class="cat-label">The numbers</span><ul><li>22 machines with monitors, cables, and peripherals: about $75,000. The house overall: a seven-figure number.</li><li>His dad, an architect, helped design it.</li></ul></li><li class="cat"><span class="cat-label">HN take</span><ul><li>Nostalgia for the friction era: manually assigning IPs, the Code Red worm hitting the moment you joined — the house removes all of it.</li><li>The wealth thread: some call it a vanity project for &#x27;King Nerd&#x27;; others defend it as money flowing to builders rather than being hoarded.</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://lanparty.house/" target="_blank" rel="noopener">lanparty.house</a> · Discuss: <a href="https://news.ycombinator.com/item?id=49579443" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">268 pts / 177 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>The thread runs on two tracks: admiration and economics. On the admiration track, old LAN party veterans trade memories of manual IP assignment and everyone catching Code Red the moment they joined — this house is the frictionless fantasy those kids dreamed about, and long friendships maintained through it earn respect. On the economics track, the $75K hardware figure and seven-figure house trigger the vanity-project debate: one side calls it wealth being wasted on vanity past the point of useful spending, the other counters that the money went to builders and contractors rather than being hoarded. The owner&#x27;s own comment about how threads change when the author shows up (cheap criticism retreats, questions arrive) gets meta-appreciation as a lived observation about HN dynamics.</p>
+</div>
+</article>
+<article class="story" id="story-10" data-story="10" data-source="https://www.ox.ac.uk/news/2026-08-28-scientists-observe-einsteins-gravity-in-the-quantum-world" data-hn="https://news.ycombinator.com/item?id=49569838" data-metric="245 pts / 83 comments" tabindex="0" aria-label="Story 10: Oxford team observes Einstein&#x27;s gravity acting on a single particle">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">Oxford team observes Einstein&#x27;s gravity acting on a single particle</h2>
+<p class="exec">Oxford scientists measured gravity&#x27;s influence on a single rubidium atom — observing Einstein&#x27;s gravity in the quantum world. The trick is a phase measurement precise enough to attribute the result to gravity after accounting for other forces, linked to an arXiv paper. Commenters flag the careful wording: this doesn&#x27;t prove the graviton exists, and one suggests it&#x27;s a quiet test of Penrose&#x27;s idea that gravity causes objective collapse of quantum superposition.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">What happened</span><ul><li>Measured the gravitational phase shift on a single (aggregate) rubidium atom with enough precision to attribute it to gravity.</li><li>Published alongside an arXiv paper (arXiv:2502.14535) detailing how other forces were accounted for.</li></ul></li><li class="cat"><span class="cat-label">The caveats</span><ul><li>Measuring gravity on one particle is not evidence of the graviton — if gravity is quantum, only then does this imply a graviton-atom interaction.</li><li>One reading: an adjacent test of Penrose&#x27;s proposal that gravitational interaction collapses superposition — subtle details aside.</li></ul></li><li class="cat"><span class="cat-label">HN take</span><ul><li>A mix of &#x27;wait, we already know particles fall&#x27; and the correction: falling was known; measuring ONE particle falling is new.</li><li>Pedantry wars over the graviton phrasing: the &#x27;if&#x27; branch of the statement was the point, say defenders.</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://www.ox.ac.uk/news/2026-08-28-scientists-observe-einsteins-gravity-in-the-quantum-world" target="_blank" rel="noopener">ox.ac.uk</a> · Discuss: <a href="https://news.ycombinator.com/item?id=49569838" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">245 pts / 83 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>A smaller, wonkier thread than the headline deserves. The top comment works through the disbelief honestly: at first it reads as &#x27;they measured a particle falling in gravity,&#x27; which seems trivial — until you get that it&#x27;s a single aggregate particle, and if gravity is quantum, that&#x27;s a graviton interacting with a rubidium atom. The careful-scientist framing gets defended against the pedants: &#x27;not necessarily evidence of the graviton&#x27; is a feature, not a failure. One speculative but interesting branch connects it to Penrose&#x27;s idea that gravity causes objective collapse of superposition — adjacent, maybe not deliberate. The overall mood: cautious admiration, with the realists reminding everyone that a quantum theory of gravity remains exactly as unsolved as yesterday.</p>
+</div>
+</article>
+    </ol>
+
+    <div class="shortcut-bar" aria-label="Keyboard shortcuts">
+      <span><kbd>J</kbd> next story</span>
+      <span><kbd>K</kbd> previous story</span>
+      <span><kbd>T</kbd> theme</span>
+    </div>
+
+    <footer class="page-footer">
+      <div class="footer-links"><a href="../">← Daily archive</a><a href="https://tk3369.github.io/hn-daily/" target="_blank" rel="noopener">Published archive ↗</a></div>
+      <span>Tuesday 2026-09-08 · 10 stories</span>
+    </footer>
+  </main>
+  <div class="toast" role="status" aria-live="polite"></div>
+  <script>
+(() => {
+  const root = document.documentElement;
+  const toggle = document.getElementById('theme-toggle');
+  const entries = [...document.querySelectorAll('[data-story]')];
+  function storedTheme() { try { const t = localStorage.getItem('hn-daily-theme'); return t === 'dark' || t === 'light' ? t : null; } catch (_) { return null; } }
+  function preferredTheme() { return matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'; }
+  function currentTheme() { const a = root.dataset.theme; if (a === 'dark' || a === 'light') return a; return storedTheme() || preferredTheme(); }
+  function setTheme(theme) { const next = theme === 'dark' ? 'dark' : 'light'; const opposite = next === 'dark' ? 'Light' : 'Dark';
+    if (root.dataset.theme !== next) root.dataset.theme = next;
+    toggle.querySelector('.theme-text').textContent = opposite;
+    toggle.setAttribute('aria-label', `Switch to ${opposite} theme (T)`); toggle.title = `Switch to ${opposite} theme (T)`;
+    try { localStorage.setItem('hn-daily-theme', next); } catch (_) {} }
+  function flipTheme() { setTheme(currentTheme() === 'dark' ? 'light' : 'dark'); }
+  setTheme(storedTheme() || preferredTheme());
+  toggle.addEventListener('click', flipTheme);
+  const toast = document.querySelector('.toast'); let toastTimer;
+  function showToast(msg) { toast.textContent = msg; toast.classList.add('show'); clearTimeout(toastTimer); toastTimer = setTimeout(() => toast.classList.remove('show'), 1800); }
+  document.querySelectorAll('.copy-button').forEach((button) => {
+    button.addEventListener('click', async () => {
+      const story = button.closest('.story');
+      const n = story.dataset.story;
+      const tagline = story.querySelector('.tagline').textContent.trim();
+      const execSum = story.querySelector('.exec').textContent.trim();
+      const bullets = [...story.querySelectorAll('.cat-lists .cat')].map(li => {
+        const label = li.querySelector('.cat-label').textContent.trim();
+        const pts = [...li.querySelectorAll('ul li')].map(p => '  \u2022 ' + p.textContent.trim()).join('\n');
+        return '- ' + label + ':\n' + pts;
+      }).join('\n');
+      const link = 'https://tk3369.github.io/hn-daily/2026-09-08/#story-' + n;
+      const text = n + '. ' + tagline + '\n' + execSum + '\n' + bullets + '\n' + link;
+      try { await navigator.clipboard.writeText(text); button.textContent = 'Copied'; showToast('Story ' + n + ' copied for Threads'); setTimeout(() => { button.textContent = 'Copy for Threads'; }, 1600); }
+      catch (_) { showToast('Copy was blocked by this browser'); }
+    });
+  });
+  document.addEventListener('keydown', (event) => {
+    if (event.metaKey || event.ctrlKey || event.altKey || event.shiftKey) return;
+    const tag = event.target.tagName;
+    if (tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT') return;
+    const key = event.key.toLowerCase();
+    if (key === 't') { event.preventDefault(); flipTheme(); }
+    else if ((key === 'j' || key === 'k') && entries.length) {
+      event.preventDefault();
+      const active = entries.indexOf(document.activeElement);
+      const delta = key === 'j' ? 1 : -1;
+      const next = active < 0 ? (key === 'j' ? 0 : entries.length - 1) : Math.max(0, Math.min(entries.length - 1, active + 1 * delta));
+      entries[next].focus();
+    }
+  });
+})();
+  </script>
+</body>
+</html>
