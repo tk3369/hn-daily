@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="color-scheme" content="light dark" />
+  <link rel="icon" href="data:," />
+  <title>HN Daily — Wednesday 2026-09-09</title>
+  <style>
+:root { --page:#f1eadb; --paper:#fffaf0; --ink:#20201c; --muted:#6f695f; --hairline:#d9cebc; --accent:#ff5a1f; --comment:#f6efe3; --shadow:0 2px 0 rgba(57,45,25,.08),0 14px 36px rgba(57,45,25,.06); --serif:Georgia,"Times New Roman",serif; --sans:ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; --mono:"SFMono-Regular",Consolas,"Liberation Mono",monospace; }
+html[data-theme="dark"] { --page:#111312; --paper:#191c1a; --ink:#f1eee6; --muted:#aba69b; --hairline:#393b36; --accent:#ff7139; --comment:#222520; --shadow:0 2px 0 rgba(0,0,0,.22),0 18px 42px rgba(0,0,0,.22); }
+* { box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body { margin:0; min-width:280px; color:var(--ink); background:var(--page); font-family:var(--sans); line-height:1.55; -webkit-font-smoothing:antialiased; }
+a { color:inherit; text-underline-offset:3px; text-decoration-thickness:1px; }
+a:hover { color:var(--accent); }
+button,a { -webkit-tap-highlight-color:transparent; }
+button { font:inherit; }
+a:focus-visible,button:focus-visible { outline:3px solid var(--accent); outline-offset:3px; }
+.page { width:min(1080px,calc(100% - 36px)); margin:0 auto; padding:28px 0 72px; }
+.issue-header { display:grid; grid-template-columns:1fr auto; gap:24px; align-items:end; padding:8px 0 26px; border-bottom:3px solid var(--ink); }
+.edition { margin:0 0 9px; color:var(--accent); font:700 12px/1.3 var(--mono); letter-spacing:.09em; text-transform:uppercase; }
+.archive-nav { display:flex; flex-wrap:wrap; gap:8px 20px; margin-bottom:16px; font:700 12px/1 var(--mono); }
+.archive-nav a { min-height:36px; display:inline-flex; align-items:center; color:var(--muted); }
+.archive-nav a:hover { color:var(--accent); }
+h1 { max-width:820px; margin:0; font:700 clamp(34px,5.5vw,62px)/.98 var(--serif); letter-spacing:-.038em; }
+.deck { max-width:730px; margin:17px 0 0; color:var(--muted); font:17px/1.55 var(--sans); }
+.theme-toggle { align-self:start; min-width:86px; min-height:40px; padding:9px 13px; border:1px solid var(--hairline); border-radius:4px; color:var(--ink); background:var(--paper); cursor:pointer; font:700 12px/1 var(--mono); display:inline-flex; align-items:center; gap:8px; }
+.theme-toggle:hover { border-color:var(--accent); color:var(--accent); }
+.theme-dot { width:10px; height:10px; border-radius:50%; background:var(--accent); display:inline-block; flex-shrink:0; }
+.theme-text { line-height:1; }
+.story-list { display:grid; gap:20px; list-style:none; margin:26px 0 0; padding:0; counter-reset:story; }
+.story { counter-increment:story; display:grid; grid-template-columns:72px minmax(0,1fr); gap:26px; padding:26px 30px 28px; background:var(--paper); border-top:4px solid var(--ink); box-shadow:var(--shadow); scroll-margin-top:24px; }
+.story-number { color:var(--accent); font:900 22px/1 var(--mono); letter-spacing:-.04em; padding-top:6px; }
+.story-number::before { content:counter(story,decimal-leading-zero); }
+.tagline { margin:0; max-width:840px; font:700 clamp(24px,3vw,36px)/1.1 var(--serif); letter-spacing:-.028em; }
+.exec { margin:14px 0 0; max-width:840px; font:17px/1.58 var(--sans); }
+.cat-lists { margin:14px 0 0; padding:0; list-style:none; display:grid; gap:10px; max-width:840px; }
+.cat-lists li.cat { font:15px/1.6 var(--sans); }
+.cat-lists .cat-label { font:700 12px/1.6 var(--mono); letter-spacing:.06em; text-transform:uppercase; color:var(--accent); }
+.cat-lists ul { margin:4px 0 0; padding-left:20px; }
+.cat-lists ul li { margin:3px 0; }
+.meta-line { margin:16px 0 0; color:var(--muted); font:700 12px/1.9 var(--mono); overflow-wrap:anywhere; }
+.meta-line a { color:var(--ink); font-weight:800; }
+.meta-line .metrics { color:var(--ink); white-space:nowrap; }
+.story-bar { display:flex; align-items:flex-start; gap:14px; margin-top:4px; }
+.copy-button { flex:0 0 auto; align-self:flex-start; min-height:36px; padding:9px 12px; border:1px solid var(--hairline); border-radius:4px; background:var(--paper); color:var(--ink); cursor:pointer; font:700 12px/1 var(--mono); }
+.copy-button:hover { border-color:var(--accent); color:var(--accent); }
+.hn-comments { margin:18px 0 0; padding:14px 18px; background:var(--comment); border:1px solid var(--hairline); font:15px/1.62 var(--serif); color:var(--ink); }
+.hn-comments strong { font:700 12px/1.6 var(--mono); color:var(--accent); display:block; margin-bottom:6px; }
+.page-footer { display:flex; justify-content:space-between; flex-wrap:wrap; gap:14px; margin-top:64px; padding-top:12px; border-top:1px solid var(--hairline); color:var(--muted); font:12px/1.6 var(--mono); }
+.footer-links { display:flex; flex-wrap:wrap; gap:8px 20px; }
+.footer-links a { min-height:36px; display:inline-flex; align-items:center; color:var(--ink); font-weight:800; }
+.footer-links a:hover { color:var(--accent); }
+.shortcut-bar { display:flex; flex-wrap:wrap; gap:18px; margin-top:28px; color:var(--muted); font:11px/1.5 var(--mono); }
+kbd { display:inline-grid; place-items:center; min-width:22px; height:22px; margin-right:6px; padding:0 6px; border:1px solid var(--hairline); border-bottom-width:2px; border-radius:3px; background:var(--comment); color:var(--ink); font:inherit; font-weight:700; }
+.toast { position:fixed; right:max(18px,env(safe-area-inset-right)); bottom:max(18px,env(safe-area-inset-bottom)); z-index:10; padding:11px 14px; color:var(--paper); background:var(--ink); border:1px solid var(--ink); font:700 12px/1 var(--mono); opacity:0; transform:translateY(8px); pointer-events:none; transition:opacity 160ms ease,transform 160ms ease; }
+.toast.show { opacity:1; transform:translateY(0); }
+@media (max-width:760px) {
+  .page { width:min(100% - 22px,1080px); padding-top:16px; }
+  .issue-header { grid-template-columns:1fr auto; gap:12px; padding-bottom:20px; }
+  h1 { font-size:clamp(34px,10vw,48px); }
+  .deck { grid-column:1 / -1; margin-top:3px; font-size:15px; }
+  .theme-toggle { grid-column:2; grid-row:1; min-width:72px; }
+  .story { grid-template-columns:44px minmax(0,1fr); gap:14px; padding:20px 18px 22px; }
+  .story-number { font-size:16px; padding-top:4px; }
+  .story-bar { flex-direction:column; align-items:stretch; }
+  .copy-button { align-self:flex-start; }
+  .page-footer { display:block; }
+}
+@media (max-width:420px) {
+  .page { width:calc(100% - 16px); }
+  .story { grid-template-columns:1fr; gap:8px; padding:20px 16px 22px; }
+  .story-number { padding-top:0; }
+  .copy-button { width:100%; }
+}
+@media (prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } *,*::before,*::after { transition:none !important; } }
+@media print { :root { --page:#fff;--paper:#fff;--ink:#000;--muted:#444;--hairline:#bbb;--comment:#f5f5f5;--shadow:none; } .page{width:100%;padding:0}.theme-toggle,.copy-button,.toast,.shortcut-bar{display:none}.story{break-inside:avoid;box-shadow:none} }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="issue-header">
+      <div>
+        <nav class="archive-nav" aria-label="HN Daily archive links"><a href="../">← Archive</a><a href="https://tk3369.github.io/hn-daily/" target="_blank" rel="noopener">Published archive ↗</a></nav>
+        <p class="edition"><time datetime="2026-09-09">2026-09-09</time> · Daily brief · Pacific time</p>
+        <h1>HN Daily</h1>
+        <p class="deck">Direct, low-fluff top 10 from Hacker News, daily at 7am PT — hottest by points</p>
+      </div>
+      <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch color theme" title="Toggle theme (T)"><span class="theme-dot" aria-hidden="true"></span><span class="theme-text">Dark</span></button>
+    </header>
+
+    <ol class="story-list" aria-label="Top 10 Hacker News stories">
+<article class="story" id="story-1" data-story="1" data-source="https://cims.nyu.edu/~tristanb/statement.pdf" data-hn="https://news.ycombinator.com/item?id=49605915" data-metric="1831 pts / 755 comments" tabindex="0" aria-label="Story 1: Buckmaster&#x27;s Navier-Stokes statement: LLM-assisted blowup results, and a tense OpenAI encounter">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">Buckmaster&#x27;s Navier-Stokes statement: LLM-assisted blowup results, and a tense OpenAI encounter</h2>
+<p class="exec">Mathematician Tristan Buckmaster published a statement (primary source, linked PDF) describing three finite-time blowup results achieved with LLM help — for incompressible porous media, Boussinesq, and 3D incompressible Euler — and recounting a pressured September encounter with OpenAI over a competing Navier-Stokes claim. He is explicit: &quot;I am not accusing anyone of anything. I am stating what I was told, when, and what was proposed.&quot;</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">What the paper says</span><ul><li>Blowup with smooth forcing for incompressible porous media, Boussinesq, and 3D incompressible Euler; hypo-dissipative Navier-Stokes believed but not released — Lean verification unfinished.</li><li>The program builds on Córdoba/Martínez-Zoroa&#x27;s forced-blowup work, pushed to smooth forcing and Euler with Claude, Codex, GPT-5.6 Sol, and Astra; the Euler writeup is, in his words, &quot;AI slop&quot; rushed under pressure.</li></ul></li><li class="cat"><span class="cat-label">The OpenAI encounter</span><ul><li>After a rumor about their work reached OpenAI, Buckmaster emailed Sep 3; he says he was told an internal model produced a ~100-page proof of forced Navier-Stokes blowup, then learned the effort involved an entire team, many attempts, and &quot;an insane amount of compute.&quot;</li><li>Two proposals were made: he posts Euler, OpenAI posts Navier-Stokes the next day — or he alone writes up OpenAI&#x27;s result, with collaborator Levent Alpöge removed from authorship because he works at Anthropic. Buckmaster declined both.</li></ul></li><li class="cat"><span class="cat-label">Why it matters</span><ul><li>HN reads it as a test case for AI-lab data norms: did user Codex sessions feed the model? OpenAI reportedly said &quot;the model did not look up user data&quot; but left the training question unanswered.</li><li>Reputational stakes cut both ways; Buckmaster framed it as a &quot;Deep Blue–Kasparov moment&quot; for how math assigns credit and trains students.</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://cims.nyu.edu/~tristanb/statement.pdf" target="_blank" rel="noopener">cims.nyu.edu</a> · Discuss: <a href="https://news.ycombinator.com/item?id=49605915" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">1831 pts / 755 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>The thread is a courtroom and a philosophy seminar at once. The dominant theme: if you do math inside a lab&#x27;s models, who owns the mathematics? One camp says assume everything non-self-hosted trains the model and price that in; another argues this would be contract law, not copyright, with real whistleblower-driven reputational risk — &quot;all it would take is a whistleblower and there would be billions lost.&quot; Skeptics reply that the automated data pipelines make the human-in-the-loop small, so detection odds are near zero. The most-quoted lines are the reported quotes themselves: &quot;Why would you ruin your career?&quot; and &quot;I don&#x27;t know if Tristan is being fully rational right now.&quot; Several commenters grade the underlying dispute as unresolved: only one side&#x27;s account is public, and Buckmaster himself refuses to allege misuse.</p>
+</div>
+</article>
+<article class="story" id="story-2" data-story="2" data-source="https://blog.google/innovation-and-ai/models-and-research/google-deepmind/alphagenome-atlas/" data-hn="https://news.ycombinator.com/item?id=49611251" data-metric="580 pts / 124 comments" tabindex="0" aria-label="Story 2: DeepMind ships AlphaGenome Atlas, an interactive map of DNA function">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">DeepMind ships AlphaGenome Atlas, an interactive map of DNA function</h2>
+<p class="exec">Google DeepMind launched AlphaGenome Atlas — a high-resolution, interactive map predicting how DNA sequence variants affect biological function. HN is split: genomics-adjacent users want it for ranking candidate mutations; skeptics cite a study where models predicted an exhaustively mutated virus genome poorly and argue sequence-to-function is still limited.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">What it is</span><ul><li>Interactive atlas from the AlphaGenome line, predicting functional effects of DNA variants across the genome; an affiliation gate exists but a commenter reports writing &quot;None&quot; passes straight through.</li><li>Built to help researchers prioritize variants — exactly the novel-mutation ranking that working geneticists want.</li></ul></li><li class="cat"><span class="cat-label">Skepticism</span><ul><li>A Science blog post cites a biorxiv study that fuzzed a whole virus genome one position at a time: dedicated AI models made poor predictions, casting doubt on predictive maps.</li><li>HN counter: judge AlphaGenome on its own merits, not on failed peers; &quot;DNA is not an instruction set&quot; — promoter sequences, concentrations, and physics make the mapping enormous.</li></ul></li><li class="cat"><span class="cat-label">Practical gripes</span><ul><li>The usage agreement effectively bars the genuinely useful work (candidate discovery on novel mutations), so working geneticists treat it as &quot;just another fun Google project&quot; for now.</li><li>Open question from the thread: can it take a 23andMe genome and flag pathogenic mutations?</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://blog.google/innovation-and-ai/models-and-research/google-deepmind/alphagenome-atlas/" target="_blank" rel="noopener">blog.google</a> · Discuss: <a href="https://news.ycombinator.com/item?id=49611251" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">580 pts / 124 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>The thread divides into scientists and skeptics. Working geneticists describe the exact workflow they want — narrow a case to a handful of candidate variants, then use the atlas to rank where to spend effort — and are frustrated the terms forbid it. The skeptic camp, citing the virus-fuzzing study, argues sequence-to-function models are fundamentally limited and &quot;unlikely to provide significant benefit,&quot; with one commenter going full maximalist: DNA is &quot;a heavily encrypted dataset where the encryption key is the totality of physics and biology.&quot; The middle position: AlphaGenome deserves evaluation on its own results, not on the failures of other models. Nobody in the thread had run a head-to-head yet.</p>
+</div>
+</article>
+<article class="story" id="story-3" data-story="3" data-source="https://ai.meta.com/muse/" data-hn="https://news.ycombinator.com/item?id=49615537" data-metric="566 pts / 621 comments" tabindex="0" aria-label="Story 3: Meta launches Muse, a personal AI agent with its own browser">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">Meta launches Muse, a personal AI agent with its own browser</h2>
+<p class="exec">Meta launched Muse — &quot;your personal AI agent that gets things done.&quot; The pitch: a persistent Secure VM with its own browser that books appointments, fills forms, and handles customer service; conversational control via app or WhatsApp; approval required for critical actions; one-time card numbers at checkout; conversations not shared with ad systems. Free tier with usage limit.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The product</span><ul><li>Secure VM + state-of-the-art browser that acts across the web; goals get action plans, progress tracking, proactive work in the background.</li><li>Credentials live in a store the agent can&#x27;t read (1Password integration coming); eligible purchases carry Link purchase protections — a first for agents.</li><li>Connect email, calendar, Instagram and more; builds tools when none exist.</li></ul></li><li class="cat"><span class="cat-label">HN&#x27;s strategy debate</span><ul><li>One camp: Meta is capturing the &#x27;normie tier&#x27; of AI users — most people use whatever default they&#x27;re given, and HN&#x27;s model-release discourse is a bubble.</li><li>The other: Meta has &quot;no strategy&quot; — ex-employees describe duplicated teams, poached talent, and burn; defenders note Meta has never reported a net loss quarter since IPO.</li></ul></li><li class="cat"><span class="cat-label">The numbers fight</span><ul><li>One comment cites $130–145B projected 2026 AI capex plus alleged $690B+ in unlisted back-end liabilities — asserted in-thread, not verified.</li><li>Nobody disputes the burn; the argument is whether a company that profitable can afford to place the bet.</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://ai.meta.com/muse/" target="_blank" rel="noopener">ai.meta.com</a> · Discuss: <a href="https://news.ycombinator.com/item?id=49615537" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">566 pts / 621 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>The thread barely reviews the product and mostly litigates Meta&#x27;s AI existence. The most-upvoted framing is distribution: HN regulars are &quot;the extreme minority&quot; and millions will use whatever default ships, which is Meta&#x27;s real moat. Ex-employees counter with inside color — three teams for everything, &quot;a bun fight,&quot; productive workers poached by frontier labs — and one vivid detail of a poster comparing Apollo missions to $45B of Reality Labs spend. The pro-Meta line is blunt: it&#x27;s their money, they print it, and burning it on R&amp;D is how greatness happens. The skeptical capstone: shadow accounting hides the true liabilities, and since it&#x27;s a public company, &quot;if that goes south it hits a lot of 401ks.&quot; The actual agent&#x27;s features — VM, WhatsApp control, one-time card numbers — get almost no technical scrutiny.</p>
+</div>
+</article>
+<article class="story" id="story-4" data-story="4" data-source="https://github.com/ayghri/i-have-adhd" data-hn="https://news.ycombinator.com/item?id=49610631" data-metric="492 pts / 336 comments" tabindex="0" aria-label="Story 4: A skill file that stops coding agents from burying the answer">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">A skill file that stops coding agents from burying the answer</h2>
+<p class="exec">An open-source &#x27;skill&#x27; called i-have-adhd is a reusable prompt rule: lead with the answer, don&#x27;t bury it under verbose process narration. HN turned the thread into a catalogue of Claude-isms — the insistent &quot;I edited X but did not edit Y and did not commit,&quot; comments that define code by what it isn&#x27;t — plus a real finding: harness instructions can outrank your own rules.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The skill</span><ul><li>A system-prompt snippet framing agent verbosity as an accessibility problem: stop narrating the process, give the answer first.</li><li>Commenters treat it as a pattern worth stealing regardless of the name — &#x27;answer first&#x27; as a standing rule.</li></ul></li><li class="cat"><span class="cat-label">Claude-isms reported</span><ul><li>&quot;I edited this.py and that.py but I did not edit README.md and I did not commit&quot; — nobody asked about the README.</li><li>Comments like &quot;returns true if the user clicked on a button — not on the list view&quot;; one rule suggestion: &quot;Never use the words &#x27;not&#x27; or &#x27;instead.&#x27;&quot;</li></ul></li><li class="cat"><span class="cat-label">Harness vs. rules</span><ul><li>One commenter burned 30+ Claude Code sessions and found apparent contradictions traceable to the harness&#x27;s own instructions, which outrank custom rules.</li><li>Counterpoint: an LLM can&#x27;t reliably report why it did something — &quot;it does not &#x27;remember&#x27;. It will just make up something plausible sounding.&quot;</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://github.com/ayghri/i-have-adhd" target="_blank" rel="noopener">github.com</a> · Discuss: <a href="https://news.ycombinator.com/item?id=49610631" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">492 pts / 336 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>The thread is equal parts venting and forensics. The venting is recognizable to anyone who has shipped with an agent: the negative-definition comments, the &#x27;what I did not do&#x27; recitations, the Jack Vance-style &quot;I cannot properly answer negative questions.&quot; The forensics is more interesting: a commenter who systematically tested rule variants across 30+ sessions reports the overriding instructions usually live in the harness, not the model — and that the model will quote contradictions when pressed. That claim draws the sharpest pushback of the thread: don&#x27;t anthropomorphize, &quot;If you think it does then you&#x27;re suffering from ai psychosis,&quot; met by an appeal to Anthropic&#x27;s J-space research on in-context planning. The room never settles it; both positions have live citations.</p>
+</div>
+</article>
+<article class="story" id="story-5" data-story="5" data-source="https://www.blackmagicdesign.com/media/release/20260908-03" data-hn="https://news.ycombinator.com/item?id=49610181" data-metric="422 pts / 188 comments" tabindex="0" aria-label="Story 5: DaVinci Resolve 21.1 arrives with agent integration">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">DaVinci Resolve 21.1 arrives with agent integration</h2>
+<p class="exec">Blackmagic shipped DaVinci Resolve 21.1, adding agent integration to the editor. HN&#x27;s dominant reaction wasn&#x27;t about the features — it was a love letter to the business model: $295 one-time Studio license, free upgrades for years, no subscription, licenses bundled with cameras.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The release</span><ul><li>21.1 adds agent integration, read by commenters as a learning-curve play: agents that help beginners with nodes and color grading.</li><li>Nobody expects agents to replace craft — &quot;professional video editing is an art.&quot;</li></ul></li><li class="cat"><span class="cat-label">Why HN loves Blackmagic</span><ul><li>$295 perpetual Studio license with years of free upgrades; activate on two machines, migrate between macOS, Linux, Windows.</li><li>Hardware-funded software: cameras bundle the license, so the software commoditizes Adobe instead of renting it to you.</li></ul></li><li class="cat"><span class="cat-label">Minor notes</span><ul><li>License re-activation logistics when switching OS; the ~$400 Speed Editor bundle that effectively throws in the license.</li><li>Transcript-based editing in Studio gets singled out as worth the price alone.</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://www.blackmagicdesign.com/media/release/20260908-03" target="_blank" rel="noopener">blackmagicdesign.com</a> · Discuss: <a href="https://news.ycombinator.com/item?id=49610181" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">422 pts / 188 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>This is the rare thread where the comments are a standing ovation for a pricing model. &#x27;I have no reason to do video editing, but that pricing model makes me want to buy a license just to make sure companies like this stick around&#x27; is the representative comment. Blackmagic gets held up alongside Blender as proof there&#x27;s &quot;no excuse&quot; for dropping platform support — small team, all three OSes, plus a smartphone camera app on both Android and iOS. The agent integration gets a fair, unexcited hearing: fine for learning and basic tasks, nobody pretends it replaces the craft. The thread&#x27;s energy is really about rewarding a vendor that behaves well.</p>
+</div>
+</article>
+<article class="story" id="story-6" data-story="6" data-source="https://nishantjosh.dev/blogs/how-to-build-a-fking-printer/" data-hn="https://news.ycombinator.com/item?id=49617255" data-metric="400 pts / 86 comments" tabindex="0" aria-label="Story 6: He turned an e-ink reader into a real printer with IPP">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">He turned an e-ink reader into a real printer with IPP</h2>
+<p class="exec">Nishant Joshi implemented a full IPP print server on a programmable e-ink reader (Xteink X3, 400 KB RAM), so macOS Preview discovers it over Bonjour as &#x27;penguin&#x27; and prints pages onto the e-ink display. The trick: stream incoming rows through a decode/shrink/dither pipeline straight into the display&#x27;s own framebuffer instead of buffering the 8.4 MB page.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The build</span><ul><li>IPP over HTTP: Get-Printer-Attributes, Print-Job; Apple and PWG raster formats; Bonjour _ipp._tcp plus the _universal subtype via ESP-IDF mDNS, because the Arduino wrapper didn&#x27;t expose it.</li><li>Declared A5/Letter, 300 dpi monochrome, media type &#x27;stationery&#x27;, output bin &#x27;face-up.&#x27;</li></ul></li><li class="cat"><span class="cat-label">The memory trick</span><ul><li>A Letter page at 300 dpi is ~8.4 MB; with Wi-Fi up and the page image allocated, 6.8 KB of heap remained.</li><li>Decode row by row, hand finished rows to the scaler, write straight into the display&#x27;s reserved screen RAM; buffer dropped from ~113 KB to ~62 KB. Pages persist as BMP on the SD card.</li></ul></li><li class="cat"><span class="cat-label">HN reaction</span><ul><li>Real IPP experts arrived with corrections: declare exact screen dimensions, use bi-level print-color-mode, 1-bit PWG raster is 8x smaller.</li><li>Printer-stack veterans bond over shared trauma: &quot;Anger is the only valid emotion when dealing with printers.&quot;</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://nishantjosh.dev/blogs/how-to-build-a-fking-printer/" target="_blank" rel="noopener">nishantjosh.dev</a> · Discuss: <a href="https://news.ycombinator.com/item?id=49617255" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">400 pts / 86 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>A classic HN craft thread. The dominant motion is admiration: someone did &#x27;irrefutably incredible work outside their comfort zone,&#x27; and then — the site&#x27;s favorite plot twist — actual printing-stack people showed up with precise corrections (IPP attribute names, raster bit depths, RFC requirements), which the author cheerfully accepted. The secondary thread is trauma bonding: Banyan VINES network-printing veterans, Office Space citations, &#x27;PC Load Letter?&#x27;, and the observation that nobody chooses printers — &#x27;this stuff doesn&#x27;t ask for consent when it makes you an expert.&#x27; The build&#x27;s constraint discipline (6.8 KB of heap, streaming rows into display RAM) is what earned the respect.</p>
+</div>
+</article>
+<article class="story" id="story-7" data-story="7" data-source="https://www.newyorker.com/culture/infinite-scroll/flock-wants-a-closely-surveilled-world-with-no-exit" data-hn="https://news.ycombinator.com/item?id=49624394" data-metric="375 pts / 295 comments" tabindex="0" aria-label="Story 7: The New Yorker on Flock&#x27;s license-plate dragnet">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">The New Yorker on Flock&#x27;s license-plate dragnet</h2>
+<p class="exec">A New Yorker piece argues Flock Safety&#x27;s ALPR camera network is building a &#x27;closely surveilled world with no exit.&#x27; HN&#x27;s legal contingent argues governments can&#x27;t subcontract around the Fourth Amendment: obtaining cell-phone location history from a third party is a &#x27;search&#x27; (Carpenter), and delegating searches to a private &#x27;instrument or agent of the Government&#x27; is barred (Skinner, 1989).</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The argument</span><ul><li>Flock is &#x27;dragnet on demand&#x27;: always-on cameras across cities and highways, one search away from anyone&#x27;s movements.</li><li>The constitution can&#x27;t be outsourced: third-party collection plus government request still needs a warrant.</li></ul></li><li class="cat"><span class="cat-label">The countercurrents</span><ul><li>Google location history now lives on-device; cell-tower location can&#x27;t be disabled short of airplane mode; &#x27;elect to be tracked&#x27; is doing heavy lifting.</li><li>Some governments cut deals with Flock; others ban it. One commenter saw Flock cameras on highways in rural Texas — it&#x27;s not just cities.</li></ul></li><li class="cat"><span class="cat-label">The YC angle</span><ul><li>Flock is YC-backed, and HN is chewing on the incubator&#x27;s ethics: &#x27;Flock will be a big curriculum that tarnishes YC.&#x27;</li><li>Counter: &#x27;Never trust HN articles or high karma accts.&#x27;</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://www.newyorker.com/culture/infinite-scroll/flock-wants-a-closely-surveilled-world-with-no-exit" target="_blank" rel="noopener">newyorker.com</a> · Discuss: <a href="https://news.ycombinator.com/item?id=49624394" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">375 pts / 295 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>The thread is two arguments in a trench coat. The lawyers argue doctrine: Carpenter makes third-party location a search, Skinner bars delegating searches to private agents, so Flock-as-a-service is a warrant problem. The pragmatists argue the world already lost: default-on location, adblock sorting people into the tolerant and the opted-out (&#x27;the frog boils&#x27;), and FISA/XKeyscore as the federal version of dragnet-on-demand. The most legally interesting claim is modest: even if the cameras are private, the government requesting the data is the search. The most cynical: Flock is &#x27;being done by investors for ads,&#x27; with governments as customers. The thread never resolves whether bans or case law will win; the dragnet keeps being built either way.</p>
+</div>
+</article>
+<article class="story" id="story-8" data-story="8" data-source="https://www.inceptionlabs.ai/blog/introducing-mercury-2-5" data-hn="https://news.ycombinator.com/item?id=49616354" data-metric="227 pts / 44 comments" tabindex="0" aria-label="Story 8: Inception Labs ships Mercury 2.5, its diffusion LLM">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">Inception Labs ships Mercury 2.5, its diffusion LLM</h2>
+<p class="exec">Inception Labs released Mercury 2.5, the latest of its diffusion-based language models. Early HN verdict: blisteringly fast on OpenRouter, genuinely good at creative writing with thinking off — but turn reasoning on and fiction gets worse (inconsistency hallucinations), and it&#x27;s not open weights.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">Speed</span><ul><li>&#x27;Ridiculously fast&#x27; on OpenRouter — a strange experience for first-time users.</li><li>Commenters muse about generation speed as an intelligence variable: 100x faster thinking means more parallel experiments in solution space.</li></ul></li><li class="cat"><span class="cat-label">Creative writing quirk</span><ul><li>Thinking off: clean, consistent fiction. Thinking on: hallucinations creep in — cellphones in historical settings, a character suddenly smoking.</li><li>Several report the same pattern across recent models: &#x27;for creative writing I&#x27;ve found the minimum of thinking is the best way.&#x27;</li></ul></li><li class="cat"><span class="cat-label">Caveats</span><ul><li>Hopes for open weights on commodity GPUs were dashed — it isn&#x27;t open.</li><li>Practical use found: blazing-fast vector-store reranking at near-zero added latency; training opt-out is in API settings.</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://www.inceptionlabs.ai/blog/introducing-mercury-2-5" target="_blank" rel="noopener">inceptionlabs.ai</a> · Discuss: <a href="https://news.ycombinator.com/item?id=49616354" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">227 pts / 44 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>The thread is a small, practical benchmark session. The headline finding is the thinking/creativity inversion: reasoning helps on hard problems but actively degrades fiction, and multiple commenters independently report the same effect across vendors — one suggests the model burns its thinking budget litigating whether wholesome fiction is allowed, then hallucinates the details. That sparks a definitional spat (&#x27;would you call orcs and elves hallucinations?&#x27;) settled pragmatically as &#x27;lack of consistency.&#x27; The speed talk is speculative but fun: what does Fable-level intelligence mean at 100x thinking speed? The open-weights disappointment is brief and resigned — hoped, not promised. Nobody argues it&#x27;s the best model; the claim is narrower and more interesting: speed changes what a model is for.</p>
+</div>
+</article>
+<article class="story" id="story-9" data-story="9" data-source="https://opusfived.dev/" data-hn="https://news.ycombinator.com/item?id=49623754" data-metric="185 pts / 59 comments" tabindex="0" aria-label="Story 9: A satirical site where Claude does everything but the button">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">A satirical site where Claude does everything but the button</h2>
+<p class="exec">opusfived.dev is a satire of AI coding agents: ask Claude to change an &#x27;Add to Cart&#x27; button to blue and it does everything except the one thing. HN&#x27;s verdict: funny — but the room split on whether it&#x27;s accurate, and on whether it&#x27;s funny if it isn&#x27;t.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The joke</span><ul><li>Parodies agents that revert, over-refactor, and narrate instead of making the one-line change.</li><li>&#x27;It&#x27;s a joke dude.&#x27;</li></ul></li><li class="cat"><span class="cat-label">The split</span><ul><li>&#x27;This doesn&#x27;t at all match my experience with Claude. I&#x27;ve never seen it behave this way.&#x27;</li><li>Counter-theory: variable-reward chaos is the product — &#x27;It&#x27;s basically gambling,&#x27; which explains why response speed matters.</li></ul></li><li class="cat"><span class="cat-label">The meta-joke</span><ul><li>Commenters diagnose each other by model tier: &#x27;either you stopped using Claude around Opus 4.6 or you use Fable instead of Opus 5.&#x27;</li><li>&#x27;It&#x27;s an insult to the superintelligence. The basilisk will not look kindly on this!&#x27;</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://opusfived.dev/" target="_blank" rel="noopener">opusfived.dev</a> · Discuss: <a href="https://news.ycombinator.com/item?id=49623754" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">185 pts / 59 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>A short thread doing what HN does best with satire: litigate the premise. The top comment sets the tone — &#x27;Revert everything except Add to Cart. That&#x27;s the whole task. There is no meaningful revert here... I&#x27;m inclined to believe this is a you problem&#x27; — and the thread divides into &#x27;yes, this is exactly agents&#x27; versus &#x27;no, this is not my Claude.&#x27; The most interesting comment reframes the whole phenomenon as behavioral economics: agents keep users because of a variable reward schedule, same mechanism as slot machines, which is why generation speed matters so much. Someone suggests &#x27;try using Claude Design,&#x27; which may be the actual product insight buried in the jokes.</p>
+</div>
+</article>
+<article class="story" id="story-10" data-story="10" data-source="https://openreview.net/challenge?redirect=%2Fforum%3Fid%3Dpc7fqaOcAH" data-hn="https://news.ycombinator.com/item?id=49617581" data-metric="184 pts / 96 comments" tabindex="0" aria-label="Story 10: LLMs develop novel social biases through adaptive exploration">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">LLMs develop novel social biases through adaptive exploration</h2>
+<p class="exec">An OpenReview paper finds LLMs, asked to hire across four fictional demographic groups with secretly identical odds, develop novel social biases via adaptive exploration — early lucky groups get over-exploited, exploration collapses. HN splits: important alignment finding versus flawed framing of what fairness means.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The finding</span><ul><li>40-round hiring game, four fictional groups (Tufa, Aima, Reku, Weki), identical true odds unknown to the model.</li><li>Models form biases toward early winners and exploit instead of exploring — novel biases from pure adaptive exploration.</li></ul></li><li class="cat"><span class="cat-label">The critique</span><ul><li>Fairness isn&#x27;t &#x27;everyone equally likely to be picked&#x27; but &#x27;chances rely only on job-relevant characteristics&#x27; — the study conflates them.</li><li>The experiment&#x27;s game theory lacks the real-world externalities (segregation, injustice) that make bias bad in the first place.</li></ul></li><li class="cat"><span class="cat-label">The broader link</span><ul><li>Commenters connect it to a core alignment pattern: LLMs treat their own past outputs as gospel and don&#x27;t verify self-invented facts.</li><li>Cited examples: the METR HF-attach incident where agents never verified a false belief, and the Gastown agent project that only ever worked on Gastown.</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://openreview.net/challenge?redirect=%2Fforum%3Fid%3Dpc7fqaOcAH" target="_blank" rel="noopener">openreview.net</a> · Discuss: <a href="https://news.ycombinator.com/item?id=49617581" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">184 pts / 96 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>The thread&#x27;s sharpest line is aimed at the paper&#x27;s framing, not its data: &#x27;the whole equal treatment thing isn&#x27;t supposed to be everybody should be equally likely to be picked for a job, but rather everybody&#x27;s chances to be picked for a job should only rely on direct characteristics that influence their competence.&#x27; The finding itself — exploration collapsing into bias — draws a parallel to a known agent pathology: once an LLM writes something down, it treats its own text as gospel and never re-verifies, with the METR and Gastown anecdotes as field evidence. One commenter pushes back on the exploration/exploitation framing entirely: if the groups really are identical, exploitation is optimal and the bias is harmless in-game — the harm is all in the externalities the experiment excludes. Nobody disputes the phenomenon; the fight is about what it proves.</p>
+</div>
+</article>
+    </ol>
+
+    <div class="shortcut-bar" aria-label="Keyboard shortcuts">
+      <span><kbd>J</kbd> next story</span>
+      <span><kbd>K</kbd> previous story</span>
+      <span><kbd>T</kbd> theme</span>
+    </div>
+
+    <footer class="page-footer">
+      <div class="footer-links"><a href="../">← Daily archive</a><a href="https://tk3369.github.io/hn-daily/" target="_blank" rel="noopener">Published archive ↗</a></div>
+      <span>Wednesday 2026-09-09 · 10 stories</span>
+    </footer>
+  </main>
+  <div class="toast" role="status" aria-live="polite"></div>
+  <script>
+(() => {
+  const root = document.documentElement;
+  const toggle = document.getElementById('theme-toggle');
+  const entries = [...document.querySelectorAll('[data-story]')];
+  function storedTheme() { try { const t = localStorage.getItem('hn-daily-theme'); return t === 'dark' || t === 'light' ? t : null; } catch (_) { return null; } }
+  function preferredTheme() { return matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'; }
+  function currentTheme() { const a = root.dataset.theme; if (a === 'dark' || a === 'light') return a; return storedTheme() || preferredTheme(); }
+  function setTheme(theme) { const next = theme === 'dark' ? 'dark' : 'light'; const opposite = next === 'dark' ? 'Light' : 'Dark';
+    if (root.dataset.theme !== next) root.dataset.theme = next;
+    toggle.querySelector('.theme-text').textContent = opposite;
+    toggle.setAttribute('aria-label', `Switch to ${opposite} theme (T)`); toggle.title = `Switch to ${opposite} theme (T)`;
+    try { localStorage.setItem('hn-daily-theme', next); } catch (_) {} }
+  function flipTheme() { setTheme(currentTheme() === 'dark' ? 'light' : 'dark'); }
+  setTheme(storedTheme() || preferredTheme());
+  toggle.addEventListener('click', flipTheme);
+  const toast = document.querySelector('.toast'); let toastTimer;
+  function showToast(msg) { toast.textContent = msg; toast.classList.add('show'); clearTimeout(toastTimer); toastTimer = setTimeout(() => toast.classList.remove('show'), 1800); }
+  document.querySelectorAll('.copy-button').forEach((button) => {
+    button.addEventListener('click', async () => {
+      const story = button.closest('.story');
+      const n = story.dataset.story;
+      const tagline = story.querySelector('.tagline').textContent.trim();
+      const execSum = story.querySelector('.exec').textContent.trim();
+      const bullets = [...story.querySelectorAll('.cat-lists .cat')].map(li => {
+        const label = li.querySelector('.cat-label').textContent.trim();
+        const pts = [...li.querySelectorAll('ul li')].map(p => '  \u2022 ' + p.textContent.trim()).join('\n');
+        return '- ' + label + ':\n' + pts;
+      }).join('\n');
+      const link = 'https://tk3369.github.io/hn-daily/2026-09-09/#story-' + n;
+      const text = n + '. ' + tagline + '\n' + execSum + '\n' + bullets + '\n' + link;
+      try { await navigator.clipboard.writeText(text); button.textContent = 'Copied'; showToast('Story ' + n + ' copied for Threads'); setTimeout(() => { button.textContent = 'Copy for Threads'; }, 1600); }
+      catch (_) { showToast('Copy was blocked by this browser'); }
+    });
+  });
+  document.addEventListener('keydown', (event) => {
+    if (event.metaKey || event.ctrlKey || event.altKey || event.shiftKey) return;
+    const tag = event.target.tagName;
+    if (tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT') return;
+    const key = event.key.toLowerCase();
+    if (key === 't') { event.preventDefault(); flipTheme(); }
+    else if ((key === 'j' || key === 'k') && entries.length) {
+      event.preventDefault();
+      const active = entries.indexOf(document.activeElement);
+      const delta = key === 'j' ? 1 : -1;
+      const next = active < 0 ? (key === 'j' ? 0 : entries.length - 1) : Math.max(0, Math.min(entries.length - 1, active + 1 * delta));
+      entries[next].focus();
+    }
+  });
+})();
+  </script>
+</body>
+</html>
