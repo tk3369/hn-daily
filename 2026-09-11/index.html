@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="color-scheme" content="light dark" />
+  <link rel="icon" href="data:," />
+  <title>HN Daily — Friday 2026-09-11</title>
+  <style>
+:root { --page:#f1eadb; --paper:#fffaf0; --ink:#20201c; --muted:#6f695f; --hairline:#d9cebc; --accent:#ff5a1f; --comment:#f6efe3; --shadow:0 2px 0 rgba(57,45,25,.08),0 14px 36px rgba(57,45,25,.06); --serif:Georgia,"Times New Roman",serif; --sans:ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; --mono:"SFMono-Regular",Consolas,"Liberation Mono",monospace; }
+html[data-theme="dark"] { --page:#111312; --paper:#191c1a; --ink:#f1eee6; --muted:#aba69b; --hairline:#393b36; --accent:#ff7139; --comment:#222520; --shadow:0 2px 0 rgba(0,0,0,.22),0 18px 42px rgba(0,0,0,.22); }
+* { box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body { margin:0; min-width:280px; color:var(--ink); background:var(--page); font-family:var(--sans); line-height:1.55; -webkit-font-smoothing:antialiased; }
+a { color:inherit; text-underline-offset:3px; text-decoration-thickness:1px; }
+a:hover { color:var(--accent); }
+button,a { -webkit-tap-highlight-color:transparent; }
+button { font:inherit; }
+a:focus-visible,button:focus-visible { outline:3px solid var(--accent); outline-offset:3px; }
+.page { width:min(1080px,calc(100% - 36px)); margin:0 auto; padding:28px 0 72px; }
+.issue-header { display:grid; grid-template-columns:1fr auto; gap:24px; align-items:end; padding:8px 0 26px; border-bottom:3px solid var(--ink); }
+.edition { margin:0 0 9px; color:var(--accent); font:700 12px/1.3 var(--mono); letter-spacing:.09em; text-transform:uppercase; }
+.archive-nav { display:flex; flex-wrap:wrap; gap:8px 20px; margin-bottom:16px; font:700 12px/1 var(--mono); }
+.archive-nav a { min-height:36px; display:inline-flex; align-items:center; color:var(--muted); }
+.archive-nav a:hover { color:var(--accent); }
+h1 { max-width:820px; margin:0; font:700 clamp(34px,5.5vw,62px)/.98 var(--serif); letter-spacing:-.038em; }
+.deck { max-width:730px; margin:17px 0 0; color:var(--muted); font:17px/1.55 var(--sans); }
+.theme-toggle { align-self:start; min-width:86px; min-height:40px; padding:9px 13px; border:1px solid var(--hairline); border-radius:4px; color:var(--ink); background:var(--paper); cursor:pointer; font:700 12px/1 var(--mono); display:inline-flex; align-items:center; gap:8px; }
+.theme-toggle:hover { border-color:var(--accent); color:var(--accent); }
+.theme-dot { width:10px; height:10px; border-radius:50%; background:var(--accent); display:inline-block; flex-shrink:0; }
+.theme-text { line-height:1; }
+.story-list { display:grid; gap:20px; list-style:none; margin:26px 0 0; padding:0; counter-reset:story; }
+.story { counter-increment:story; display:grid; grid-template-columns:72px minmax(0,1fr); gap:26px; padding:26px 30px 28px; background:var(--paper); border-top:4px solid var(--ink); box-shadow:var(--shadow); scroll-margin-top:24px; }
+.story-number { color:var(--accent); font:900 22px/1 var(--mono); letter-spacing:-.04em; padding-top:6px; }
+.story-number::before { content:counter(story,decimal-leading-zero); }
+.tagline { margin:0; max-width:840px; font:700 clamp(24px,3vw,36px)/1.1 var(--serif); letter-spacing:-.028em; }
+.exec { margin:14px 0 0; max-width:840px; font:17px/1.58 var(--sans); }
+.cat-lists { margin:14px 0 0; padding:0; list-style:none; display:grid; gap:10px; max-width:840px; }
+.cat-lists li.cat { font:15px/1.6 var(--sans); }
+.cat-lists .cat-label { font:700 12px/1.6 var(--mono); letter-spacing:.06em; text-transform:uppercase; color:var(--accent); }
+.cat-lists ul { margin:4px 0 0; padding-left:20px; }
+.cat-lists ul li { margin:3px 0; }
+.meta-line { margin:16px 0 0; color:var(--muted); font:700 12px/1.9 var(--mono); overflow-wrap:anywhere; }
+.meta-line a { color:var(--ink); font-weight:800; }
+.meta-line .metrics { color:var(--ink); white-space:nowrap; }
+.story-bar { display:flex; align-items:flex-start; gap:14px; margin-top:4px; }
+.copy-button { flex:0 0 auto; align-self:flex-start; min-height:36px; padding:9px 12px; border:1px solid var(--hairline); border-radius:4px; background:var(--paper); color:var(--ink); cursor:pointer; font:700 12px/1 var(--mono); }
+.copy-button:hover { border-color:var(--accent); color:var(--accent); }
+.hn-comments { margin:18px 0 0; padding:14px 18px; background:var(--comment); border:1px solid var(--hairline); font:15px/1.62 var(--serif); color:var(--ink); }
+.hn-comments strong { font:700 12px/1.6 var(--mono); color:var(--accent); display:block; margin-bottom:6px; }
+.page-footer { display:flex; justify-content:space-between; flex-wrap:wrap; gap:14px; margin-top:64px; padding-top:12px; border-top:1px solid var(--hairline); color:var(--muted); font:12px/1.6 var(--mono); }
+.footer-links { display:flex; flex-wrap:wrap; gap:8px 20px; }
+.footer-links a { min-height:36px; display:inline-flex; align-items:center; color:var(--ink); font-weight:800; }
+.footer-links a:hover { color:var(--accent); }
+.shortcut-bar { display:flex; flex-wrap:wrap; gap:18px; margin-top:28px; color:var(--muted); font:11px/1.5 var(--mono); }
+kbd { display:inline-grid; place-items:center; min-width:22px; height:22px; margin-right:6px; padding:0 6px; border:1px solid var(--hairline); border-bottom-width:2px; border-radius:3px; background:var(--comment); color:var(--ink); font:inherit; font-weight:700; }
+.toast { position:fixed; right:max(18px,env(safe-area-inset-right)); bottom:max(18px,env(safe-area-inset-bottom)); z-index:10; padding:11px 14px; color:var(--paper); background:var(--ink); border:1px solid var(--ink); font:700 12px/1 var(--mono); opacity:0; transform:translateY(8px); pointer-events:none; transition:opacity 160ms ease,transform 160ms ease; }
+.toast.show { opacity:1; transform:translateY(0); }
+@media (max-width:760px) {
+  .page { width:min(100% - 22px,1080px); padding-top:16px; }
+  .issue-header { grid-template-columns:1fr auto; gap:12px; padding-bottom:20px; }
+  h1 { font-size:clamp(34px,10vw,48px); }
+  .deck { grid-column:1 / -1; margin-top:3px; font-size:15px; }
+  .theme-toggle { grid-column:2; grid-row:1; min-width:72px; }
+  .story { grid-template-columns:44px minmax(0,1fr); gap:14px; padding:20px 18px 22px; }
+  .story-number { font-size:16px; padding-top:4px; }
+  .story-bar { flex-direction:column; align-items:stretch; }
+  .copy-button { align-self:flex-start; }
+  .page-footer { display:block; }
+}
+@media (max-width:420px) {
+  .page { width:calc(100% - 16px); }
+  .story { grid-template-columns:1fr; gap:8px; padding:20px 16px 22px; }
+  .story-number { padding-top:0; }
+  .copy-button { width:100%; }
+}
+@media (prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } *,*::before,*::after { transition:none !important; } }
+@media print { :root { --page:#fff;--paper:#fff;--ink:#000;--muted:#444;--hairline:#bbb;--comment:#f5f5f5;--shadow:none; } .page{width:100%;padding:0}.theme-toggle,.copy-button,.toast,.shortcut-bar{display:none}.story{break-inside:avoid;box-shadow:none} }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="issue-header">
+      <div>
+        <nav class="archive-nav" aria-label="HN Daily archive links"><a href="../">← Archive</a><a href="https://tk3369.github.io/hn-daily/" target="_blank" rel="noopener">Published archive ↗</a></nav>
+        <p class="edition"><time datetime="2026-09-11">2026-09-11</time> · Daily brief · Pacific time</p>
+        <h1>HN Daily</h1>
+        <p class="deck">Direct, low-fluff top 10 from Hacker News, daily at 7am PT — hottest by points</p>
+      </div>
+      <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch color theme" title="Toggle theme (T)"><span class="theme-dot" aria-hidden="true"></span><span class="theme-text">Dark</span></button>
+    </header>
+
+    <ol class="story-list" aria-label="Top 10 Hacker News stories">
+<article class="story" id="story-1" data-story="1" data-source="https://shopify.engineering/back-to-native" data-hn="https://news.ycombinator.com/item?id=49643982" data-metric="1154 pts / 839 comments" tabindex="0" aria-label="Story 1: Shopify reverses its 2020 React Native bet: agents made building twice cheap again">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">Shopify reverses its 2020 React Native bet: agents made building twice cheap again</h2>
+<p class="exec">Shopify is moving back to native mobile — Swift and Kotlin — six years after going all-in on React Native. The reversal&#x27;s stated cause: LLM coding agents collapsed the &#x27;build twice&#x27; cost that drove the 2020 decision. The team rebuilt the Shop app natively in 12 weeks with agent assistance, the Shopify app (300+ screens) is underway, and they built an internal migration system called Helix that checkpoints agent work through tests, visual review, and two adversarial reviewers.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">Why native again</span><ul><li>React Native remains &#x27;an excellent framework&#x27; — the economics changed, not the framework.</li><li>Agents can implement a feature on Android using the iOS version as reference and vice versa, ramp devs up outside their primary stack, and keep parity through shared specs and tests.</li><li>Native keeps them closer to platform capabilities and first-party tooling, with fewer layers between code and platform.</li></ul></li><li class="cat"><span class="cat-label">The migration machinery</span><ul><li>Greenfield rebuild beat brownfield: prototypes showed LLM-assisted rewrites land &#x27;substantially faster&#x27; than the old migrations.</li><li>Helix gates every checkpoint on tests, visual match against the running app, two adversarial code reviewers, and a human nod before committing.</li><li>Simulators were the bottleneck, so they decoupled business logic to run headlessly on desktop with a CLI — agents iterate in milliseconds instead of minutes.</li></ul></li><li class="cat"><span class="cat-label">The open-source fallout</span><ul><li>React Native Skia: sponsored through end of 2026, then creator William Candillon forks it under a new name.</li><li>FlashList (~2M downloads/week): Shopify will fix critical issues and is shopping for a long-term steward.</li><li>Restyle gets archived; kept working through 2026.</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://shopify.engineering/back-to-native" target="_blank" rel="noopener">shopify.engineering</a> · Discuss: <a href="https://news.ycombinator.com/item?id=49643982" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">1154 pts / 839 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>The top of the thread is a archaeology of Shopify&#x27;s architecture pivots — React Native in 2020, Hydrogen, and now native — with the cynical read that each generation of leadership gets its own rewrite. That derails fast into headcount discourse: the &#x27;3000 engineers&#x27; number (via GPT Astra) gets stacked against Chrome&#x27;s ~60 at launch and GTA V&#x27;s 150, prompting rebuttals that invisible long-tail work (taxes, compliance, bank integrations across X countries × Y products) is where the headcount goes. The substantive migration questions — whether agent-generated Swift/Kotlin is maintainable, whether &#x27;no slop&#x27; via Helix actually scales — mostly lose out to the meta-fight. The most grounded take: they didn&#x27;t hold a past decision just because it was successful at the time, and the whole post reads like a template for how to announce a reversal without pretending the old bet was a mistake.</p>
+</div>
+</article>
+<article class="story" id="story-2" data-story="2" data-source="https://mathstodon.xyz/@andreasthom/117240535270608201" data-hn="https://news.ycombinator.com/item?id=49639408" data-metric="834 pts / 776 comments" tabindex="0" aria-label="Story 2: Second mathematician accuses OpenAI of lifting unpublished work — and &#x27;that did not happen&#x27; reads as a dodge">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">Second mathematician accuses OpenAI of lifting unpublished work — and &#x27;that did not happen&#x27; reads as a dodge</h2>
+<p class="exec">Mathematician Andreas Thom (TU Dresden) publicly questioned whether his private ChatGPT sessions fed the OpenAI result behind the first known non-sofic group, one of ten problems Astra reportedly settled on August 1. He and a colleague spent months on the expander matching problem inside ChatGPT, then emailed OpenAI&#x27;s Mark Sellke and Sebastien Bubeck two questions: did those chats enter training data, and could the system reach them while solving? Sellke&#x27;s one-line reply — &#x27;that did not happen&#x27; — is, Thom now says, unjustifiably broad, addressing only the direct-access question. This follows the Navier-Stokes row, where OpenAI said no specific user data was accessed but &#x27;cannot rule out that de-identified data derived from their use of its products had helped improve its models.&#x27;</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The accusation</span><ul><li>Thom opted out of model training on June 29 — which says nothing about earlier chats, and can&#x27;t be audited anyway.</li><li>He was surprised Astra took the same route as him and Gabor Kun when most researchers favored quantum-games methods.</li><li>He stops short of claiming proof, asking OpenAI to disclose the basis for its denial.</li></ul></li><li class="cat"><span class="cat-label">The pattern</span><ul><li>The thread recaps the FrontierMath funding disclosure (Dec 2024), where contributors learned after the fact that OpenAI funded the benchmark and had early access.</li><li>OpenAI&#x27;s own phrasing gets parsed closely: &#x27;did not use their prompts or proofs to prompt our models or direct our agents&#x27; is not the same as &#x27;we were never trained on them.&#x27;</li><li>Terence Tao gets quoted: &#x27;indiscriminate use of powerful solution-extraction tools&#x27; risks researchers no longer sharing promising work.</li></ul></li><li class="cat"><span class="cat-label">The ethics argument</span><ul><li>The popular analogy: a human collaborator who publishes your joint work without attribution would be unethical — the unverifiability of the technical denial is what rankles.</li><li>Knowing a solution exists is &#x27;a gigantic advantage&#x27;; committing millions in compute to front-run a preprint is what critics call the real offense, training data or not.</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://mathstodon.xyz/@andreasthom/117240535270608201" target="_blank" rel="noopener">mathstodon.xyz</a> · Discuss: <a href="https://news.ycombinator.com/item?id=49639408" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">834 pts / 776 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>The thread splits between legalistic parsing and moral judgment. The parsing camp notes OpenAI&#x27;s statements are carefully scoped — &#x27;we did not see their work,&#x27; &#x27;did not use their prompts&#x27; — and that nobody is actually claiming the model was trained on those exact sessions, which is an unfalsifiable technical claim from the outside. The moral camp says the parsing is the point: even on the most charitable reading — hearing a rumor that a problem was solved, then spending millions to scoop the preprint authors — it&#x27;s &#x27;extremely unsporting,&#x27; and excluding an author over their employer while using their products to write the proof is &#x27;unaligned with scientific practice.&#x27; A third current runs under both: the hierarchy of enrichment — $22M lying around to start training on a math problem on a whim while actual researchers scrape for funding — which is why &#x27;the investment dollars mostly go to customers&#x27; gets pushback. The consensus question the thread keeps returning to: if this is how unpublished work is treated, who submits anything to a lab-owned model again?</p>
+</div>
+</article>
+<article class="story" id="story-3" data-story="3" data-source="https://blog.jim-nielsen.com/2026/hands-off-my-cables/" data-hn="https://news.ycombinator.com/item?id=49645393" data-metric="642 pts / 397 comments" tabindex="0" aria-label="Story 3: In defense of the big box of cables — and how to actually organize one">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">In defense of the big box of cables — and how to actually organize one</h2>
+<p class="exec">Jim Nielsen found a skeet from Tyler Gaw celebrating the Big Box of Cables — dug to the bottom after 10+ years to find two cables he needed — and took it seriously: screenshotted, printed, taped to his own box, lovingly labeled &#x27;FAMILY TECHNO BOX&#x27; by his wife. A small monument to the universal experience of being vindicated by the cable you almost threw away.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The organizing canon</span><ul><li>Group by type first: grouping is what lets you discover you own ten USB-A-to-B printer cables and can keep two.</li><li>Bag individual cables (cheap 2mil ziplocs) to prevent the tangle singularity.</li></ul></li><li class="cat"><span class="cat-label">Capability sorting</span><ul><li>The HN-level upgrade: sort by actual capability, not just connector — get a cable tester (Treedix, CaberQu) that can query e-marker chips.</li><li>Color-code with tape or label makers: e.g. white=USB2 data, blue=USB3, green=TB/USB4, yellow=45W PD, red=65W+.</li></ul></li><li class="cat"><span class="cat-label">The payoff</span><ul><li>A &#x27;great&#x27; USB-C cable: 65W+ power plus 4K/60 display, keyboard/mouse, and audio over one plug.</li><li>The aesthetic layer: some cables just look or feel better, and that&#x27;s a valid selection criterion.</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://blog.jim-nielsen.com/2026/hands-off-my-cables/" target="_blank" rel="noopener">blog.jim-nielsen.com</a> · Discuss: <a href="https://news.ycombinator.com/item?id=49645393" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">642 pts / 397 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>A rare wholesome thread: almost everyone has the box, and the disagreement is purely methodological. The dominant consensus is that &#x27;have a box&#x27; is step zero and grouping is step one — the deduplication revelation only happens when identical cables sit side by side. The thread&#x27;s real value is the tester-lore: which cheap boards query e-marker chips, which ones just count conductors, and the elaborate color-code systems people run (one commenter&#x27;s 5-color tape scheme encodes data tier and PD wattage at a glance). Minor dissent: a few note that marker chips mostly tell devices not to abuse the cable, so &#x27;contact OK&#x27; is enough for most cases. The emotional core is untouched: every cable packrat gets their day, and the skeet taped to the box is both memorial and warning.</p>
+</div>
+</article>
+<article class="story" id="story-4" data-story="4" data-source="https://cognition.com/blog/swe-2" data-hn="https://news.ycombinator.com/item?id=49645443" data-metric="428 pts / 177 comments" tabindex="0" aria-label="Story 4: Cognition&#x27;s SWE-2: 50.0% on FrontierCode, one point off Fable 5.1 at 64% of the cost — and a benchmaxxing fight">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">Cognition&#x27;s SWE-2: 50.0% on FrontierCode, one point off Fable 5.1 at 64% of the cost — and a benchmaxxing fight</h2>
+<p class="exec">Cognition launched SWE-2, post-trained from Kimi K3 (a 2.8T-parameter model), claiming 50.0% on FrontierCode 1.1 Main — within one point of Fable 5.1 while being 64% cheaper. The technical hook: RL scaled to the multi-trillion-parameter regime, with a cost-penalized reward (R=S−λₑC) that trains all reasoning-effort levels in a single run, plus length-weighted reward baselines and tripling of RL environments. It&#x27;s live in Devin Desktop, CLI, Web, and Fusion.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The headline numbers</span><ul><li>FrontierCode 1.1 Main: SWE-2 50.0% vs Fable 5.1 50.9%, GPT-5.6 Sol 47.5%, GPT-6 Astra 53.3% — at a quarter of Astra&#x27;s cost.</li><li>DeepSWE 1.1 73.0% (beats all listed); Terminal-Bench 2.1 92.8%; Terminal-Bench 4: 27.3%.</li><li>SWE-2 medium beats SWE-1.7 while taking 58% fewer turns and costing 81% less; first real edit after a median of 18 steps vs 48.</li></ul></li><li class="cat"><span class="cat-label">The bench gap</span><ul><li>Terminal-Bench 2.1 (92.8%) vs Terminal-Bench 4 (27.3%, released weeks ago) is the thread&#x27;s fixation — read as a measure of &#x27;how benchmaxxed is this model?&#x27;</li><li>The counter: TB2.1 is saturated; Sol xhigh also drops from 90% to 37% on TB4 — is it &#x27;benchmaxxed&#x27; too?</li><li>One camp: &#x27;benchmaxxing is the default case, always has been&#x27;; the other: that just makes benchmarks useless marketing numbers.</li></ul></li><li class="cat"><span class="cat-label">The resource question</span><ul><li>A much smaller lab matching frontier labs on score and beating them on cost is the real story for the optimists.</li><li>The skeptic&#x27;s reply: they don&#x27;t get to claim competitiveness with Fable and Astra and then plead &#x27;but we have less compute.&#x27;</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://cognition.com/blog/swe-2" target="_blank" rel="noopener">cognition.com</a> · Discuss: <a href="https://news.ycombinator.com/item?id=49645443" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">428 pts / 177 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>The thread barely engages with the RL methodology — the cost-penalized Pareto-frontier training gets almost no play — and instead relitigates benchmark epistemology. The TB2.1/TB4 delta dominates: is a 65-point drop evidence of benchmark gaming, or just what happens when a saturated benchmark meets a fresh one? The most thoughtful comments admit both can be true: even sincere training can&#x27;t fully escape the zeitgeist of benchmarks baked into docs and code, and saturation makes 99%s meaningless. The pricing angle gets the warmest reception: a model within striking distance of Fable 5.1 at 64% less cost is a genuine cost–performance move, regardless of which benchmark you trust.</p>
+</div>
+</article>
+<article class="story" id="story-5" data-story="5" data-source="https://spinoff.nasa.gov/Manipulating_Satellite_Photos_Now_Reveals_Ancient_Images" data-hn="https://news.ycombinator.com/item?id=49645437" data-metric="353 pts / 57 comments" tabindex="0" aria-label="Story 5: NASA&#x27;s image trick that finds invisible cave paintings — a 1978 satellite technique turned archaeology tool">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">NASA&#x27;s image trick that finds invisible cave paintings — a 1978 satellite technique turned archaeology tool</h2>
+<p class="exec">A NASA Spinoff piece (from 2025, resurfacing) tells the story of decorrelation stretch: a JPL technique from a 1978 paper by Jim Soha applying the Karhunen–Loève transform to satellite imagery for color enhancement. In the 1980s–2005 it stayed in remote sensing; then Jon Harman — a medical-imaging worker with a Berkeley math PhD — saw Mars rover images with and without the stretch, built the Dstretch plug-in for ImageJ, and accidentally revolutionized rock-art archaeology: ~200 Angkor Wat paintings found between 2010 and 2012, 15 new figures at Norway&#x27;s Årsand site, bats and pigs at Egypt&#x27;s Beni Hassan, a Crow warrior&#x27;s &#x27;calling card&#x27; at Writing-on-Stone, buried structures at Vlochos in Greece, even tattoo patterns on mummies.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">How it works</span><ul><li>Rather than raising contrast, it remaps colors into an expanded range via diagonalizing color matrices — rooted in the Karhunen–Loève theorem, coinvented by Harman&#x27;s own former professor Michel Loève.</li><li>Ronald Alley&#x27;s 1996 JPL paper made it fast and accurate by replacing iterative intermediate images with matrix multiplication, for the ASTER imager.</li></ul></li><li class="cat"><span class="cat-label">The crossover</span><ul><li>Harman&#x27;s medical-imaging background let him read the NASA paper and just implement it — then applying it to Baja rock art photos made a yellow figure &#x27;materialize from nowhere.&#x27;</li><li>Dstretch sells ~200 licenses a year at $50; the phone apps ($20) use a shortcut since real decorrelation stretch &#x27;would take forever&#x27; on a phone.</li></ul></li><li class="cat"><span class="cat-label">The lesson</span><ul><li>The technique still tracks volcanic SO2 plumes from ASTER infrared today — a 1978 remote-sensing trick doing double duty across geology and archaeology.</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://spinoff.nasa.gov/Manipulating_Satellite_Photos_Now_Reveals_Ancient_Images" target="_blank" rel="noopener">spinoff.nasa.gov</a> · Discuss: <a href="https://news.ycombinator.com/item?id=49645437" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">353 pts / 57 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>The thread is mostly fond remembrance: people who learned false-color compositing in high-school GIS describe the &#x27;Eureka!&#x27; moment of watching vegetation pop red in Landsat imagery and realizing human vision isn&#x27;t canonical. That nostalgia sparks a secondary thread — envy that schools teach GIS now, stories of magnet programs and teachers who rerouted lives — plus practical side quests: a GIMP LAB-channel recipe that mimics decorrelation stretch, and notes on how insects, birds, and B&amp;W astro-imagers all live in non-canonical color worlds. The spinoff-to-archaeology story itself gets less debate than appreciation; the one philosophical jab is that declaring vegetation &#x27;red&#x27; just replaces one arbitrary canonical reality with another.</p>
+</div>
+</article>
+<article class="story" id="story-6" data-story="6" data-source="https://mmoustafa.com/blog/so-you-want-to-use-openrouter/" data-hn="https://news.ycombinator.com/item?id=49621546" data-metric="322 pts / 77 comments" tabindex="0" aria-label="Story 6: So you want to use OpenRouter? Pain all the way down, says a guy who ran 18M messages through it">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">So you want to use OpenRouter? Pain all the way down, says a guy who ran 18M messages through it</h2>
+<p class="exec">Mo Moustafa runs Olly, an iMessage AI assistant, on open models through OpenRouter — 18M messages, a third on open models — and wrote the field guide he wishes he&#x27;d had: the same weights served by ~20 different providers behave like different models. First-party DeepSeek hits 90% GPQA / 81% TAU while DigitalOcean serves the same weights at 75% / 58%; some &#x27;vision&#x27; providers never see images but return 200 OK; the reasoning.effort knob is ignored by several hosts; quantization filters don&#x27;t predict quality; tool calls leak into raw text; hollow completions arrive as 200s; history rules differ per provider; and even pinning three vetted providers failed him when all three broke within two weeks.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The provider lottery</span><ul><li>Per-provider benchmarks (GPQA Diamond, TAU-Bench Airline) show 5–7 point tool-calling gaps and knowledge cliffs — for agents, a 20-point TAU swing &#x27;is not noise.&#x27;</li><li>Vision hosts that can&#x27;t see images, parsers that miss tool calls, reasoning tokens vanishing — each provider has its &#x27;proprietary list of bugs.&#x27;</li><li>Precision is a bad proxy: fp4 hosts land mid-pack among fp8; GLM&#x27;s best scorer declares nothing.</li></ul></li><li class="cat"><span class="cat-label">The operational rules</span><ul><li>Filter on the benchmark board, not the bits; track reasoning tokens per provider for your effort setting.</li><li>Treat no-content/no-tool-call 200s as failures and retry; test latency and reliability from prod, not your laptop (rate limits hit by IP).</li><li>Pinned providers rot: Baidu 429&#x27;d everything, Cloudflare stopped serving the model, Alibaba 429&#x27;d — the #1 OpenRouter model went down.</li></ul></li><li class="cat"><span class="cat-label">The verdict</span><ul><li>OpenRouter is &#x27;an LLM wholesaler&#x27; — great for trying models, risky as production plumbing without your own evals.</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://mmoustafa.com/blog/so-you-want-to-use-openrouter/" target="_blank" rel="noopener">mmoustafa.com</a> · Discuss: <a href="https://news.ycombinator.com/item?id=49621546" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">322 pts / 77 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>Commenters corroborate with their own horror stories — models switching to Italian mid-conversation and impersonating a podcast host — and the thread settles into two camps. One says the marketplace premise is broken: OpenRouter sells swappable commodity providers but surfaces none of the provider-quality info, so users sit there wondering if OpenRouter &#x27;has no clothes.&#x27; The other says that&#x27;s a category error: it&#x27;s a router, you were always supposed to pin and evaluate; serious users build their own eval harness per workload and treat public benchmarks as decoration. The practical middle ground wins the most agreement: OpenRouter for quick testing and trying every model, then pin one vetted provider (or go direct to Novita/Fireworks/Together) for production. The Fireworks irony gets noted: the author measured it among the worst on TAU, yet commenters recommend it as a direct provider.</p>
+</div>
+</article>
+<article class="story" id="story-7" data-story="7" data-source="https://developers.openai.com/api/docs/guides/agents-api/overview" data-hn="https://news.ycombinator.com/item?id=49649213" data-metric="296 pts / 159 comments" tabindex="0" aria-label="Story 7: OpenAI ships an Agents API: the Codex harness as a managed service">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">OpenAI ships an Agents API: the Codex harness as a managed service</h2>
+<p class="exec">OpenAI&#x27;s new Agents API exposes its Codex harness through an API: OpenAI manages sessions, orchestration, context compaction, and recovery while your app supplies tools and picks the execution environment (OpenAI-hosted sandbox or self-hosted). Agents can run code, edit files, connect to MCP servers, and produce artifacts. Usage is billed at the selected model&#x27;s API rates. Notable constraints: data residency is US-only, and the API does not support Zero Data Retention — self-hosting the sandbox doesn&#x27;t make it ZDR-eligible.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The model</span><ul><li>Four primitives: Agent (model + instructions + tools + MCP), Environment (sandbox/computer), Session (durable instance), Events/items.</li><li>Streaming output, webhooks, steering mid-turn, subagent delegation, session resume — the full harness loop as primitives.</li></ul></li><li class="cat"><span class="cat-label">The pitch</span><ul><li>Building your own harness is &#x27;a huge undertaking, a deep rabbit hole&#x27; — this lets teams plug in tools and get the deep harness engineering for free.</li><li>Comes with worked examples: incident-response agents, Slack bots, data analysts, GitHub issue investigators, document reviewers.</li></ul></li><li class="cat"><span class="cat-label">The catches</span><ul><li>US-only data residency and no ZDR is a real constraint for regulated industries.</li><li>You&#x27;re renting the harness along with the model — switching costs land on both layers at once.</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://developers.openai.com/api/docs/guides/agents-api/overview" target="_blank" rel="noopener">developers.openai.com</a> · Discuss: <a href="https://news.ycombinator.com/item?id=49649213" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">296 pts / 159 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>The thread is a referendum on the harness question itself. The warm camp says we&#x27;re &#x27;still figuring out the right abstraction for agents as a product&#x27;: building your own harness is a deep rabbit hole, and agent-as-a-service lets you plug in tools while OpenAI iterates on the hard parts (state, recovery, compaction). The DIY camp counters with receipts: they built custom harnesses on pi/herdr tailored to their workflows, provider-independent, and — crucially — much of harness engineering is deterministic framework around the LLM, not throwaway code a model jump obsoletes. The sharpest critique: &#x27;undocumented back door access&#x27; means outside harnesses can never match what the labs&#x27; own teams get, so renting theirs is pragmatic — but also exactly the lock-in. Nobody disputes the API is useful; the fight is whether investing in your own harness is good engineering or bad resource allocation.</p>
+</div>
+</article>
+<article class="story" id="story-8" data-story="8" data-source="https://www.upsocl.com/en/16-year-old-mexican-student-creates-an-acoustic-fire-extinguisher-that-uses-sound-waves-to-put-out-fires-in-seconds/" data-hn="https://news.ycombinator.com/item?id=49652237" data-metric="291 pts / 94 comments" tabindex="0" aria-label="Story 8: A 16-year-old built a sound-wave fire extinguisher — HN&#x27;s reaction is complicated">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">A 16-year-old built a sound-wave fire extinguisher — HN&#x27;s reaction is complicated</h2>
+<p class="exec">Ángela Karime Venegas Hernández, 16, from Altamira, Tamaulipas (CETIS 78), built &#x27;Vortex Tech&#x27;: a device with a 12-volt battery, frequency generator, and speaker emitting 30 pulses per second that pushes oxygen away from flames and kills them in five to eight seconds. She tested it 100+ times — wood, flammable liquids, cooking grease, electronics — with no pollution, no residue, no harm to the user. She&#x27;s now representing Mexico at an international fair.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The physics</span><ul><li>Low-frequency sound waves agitate air and displace oxygen at the flame front — enough to break the combustion triangle without chemicals.</li><li>30 Hz pulses, five-to-eight-second extinguishing, tested across fuel types — a clean, residue-free kill.</li></ul></li><li class="cat"><span class="cat-label">The skepticism</span><ul><li>It&#x27;s not novel: acoustic fire suppression has YouTube demos going back years and even a published MDPI paper.</li><li>A known technology that never productized — niche potential (grills, grain silos) where distance is fixed.</li></ul></li><li class="cat"><span class="cat-label">The celebration</span><ul><li>The counterweight: ideas are cheap, a 16-year-old built and tested it 100+ times — &#x27;Brilliant, keep inventing.&#x27;</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://www.upsocl.com/en/16-year-old-mexican-student-creates-an-acoustic-fire-extinguisher-that-uses-sound-waves-to-put-out-fires-in-seconds/" target="_blank" rel="noopener">upsocl.com</a> · Discuss: <a href="https://news.ycombinator.com/item?id=49652237" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">291 pts / 94 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>The thread is a tug-of-war between the killjoys and the cheerleaders, and both have real points. The killjoys note acoustic suppression is well-known — YouTube demos, an MDPI paper, never productized — and that the &#x27;new invention&#x27; framing is just feel-good clickbait. The cheerleaders say novelty was never the point: a 16-year-old built it, tested it a hundred times, and is representing her country, and &#x27;ideas are cheap, only delivery matters&#x27; cuts both ways. The science side-quest is genuinely interesting: speakers produce on-axis net-blow and off-axis net-suck, which is the actual mechanism. The most pragmatic take splits the difference: it won&#x27;t replace your kitchen extinguisher, but fixed-distance applications like grills or grain silos are a real niche — if anyone ever productizes it.</p>
+</div>
+</article>
+<article class="story" id="story-9" data-story="9" data-source="https://planetscale.com/blog/introducing-neki" data-hn="https://news.ycombinator.com/item?id=49645686" data-metric="255 pts / 138 comments" tabindex="0" aria-label="Story 9: PlanetScale&#x27;s Neki: sharded Postgres that is actually Postgres — and a launch post HN tore apart">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">PlanetScale&#x27;s Neki: sharded Postgres that is actually Postgres — and a launch post HN tore apart</h2>
+<p class="exec">PlanetScale launched Neki (platform preview), sharded Postgres built from eight years of running giant sharded MySQL clusters: your app connects to a router over the standard Postgres wire protocol, each shard is real unmodified Postgres (one primary + two replicas across three AZs), and you pick the shard key via a JSON data topology. Schema changes, version upgrades, failovers, and resharding run as built-in fully online workflows. You can start unsharded and reshard later. The catch: it&#x27;s a platform preview — don&#x27;t run production on it yet.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The architecture</span><ul><li>Router: full Postgres query parser + distributed query planner, scales horizontally.</li><li>Every shard is real Postgres — extensions, SQL behavior, performance all behave like Postgres because it is Postgres.</li><li>Sidecars on every instance make connection pooling better than bolting PgBouncer on; a control plane handles health, failovers, workflows.</li></ul></li><li class="cat"><span class="cat-label">The pitch</span><ul><li>For teams hitting the single-machine ceiling: &#x27;Metal bought them time&#x27; but there&#x27;s no good next step for fast-growing Postgres.</li><li>Against &#x27;Postgres-compatible&#x27; distributed databases: those hide the shard key, take away extensions, and add latency that&#x27;s hard to debug.</li></ul></li><li class="cat"><span class="cat-label">The meta-story</span><ul><li>The HN thread is dominated by the launch post itself — top comment: it never says what Neki is. PlanetScale rewrote the post mid-thread and linked the marketing page instead.</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://planetscale.com/blog/introducing-neki" target="_blank" rel="noopener">planetscale.com</a> · Discuss: <a href="https://news.ycombinator.com/item?id=49645686" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">255 pts / 138 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>The thread&#x27;s most-discussed item isn&#x27;t the database — it&#x27;s the blog post. The top criticism, which PlanetScale visibly reacted to by replacing the post with a link to the marketing page mid-thread, is that the launch announcement never states what the product is. That spun into a genuinely good meta-debate: in 2026, never assume anyone clicks the link — versus links being &#x27;the best thing about the web,&#x27; eroded by paywalls, banners, and slow pages. The database itself gets pragmatic engagement: questions about eventual consistency and CAP tradeoffs vs RDS Aurora Global, skepticism at &#x27;unlimited IOPS&#x27; marketing (&#x27;marketroid for we don&#x27;t limit them&#x27;), and the core selling point — real Postgres on every shard — landing well with people burned by &#x27;compatible&#x27; distributed systems.</p>
+</div>
+</article>
+<article class="story" id="story-10" data-story="10" data-source="https://musictheory.pugetsound.edu/mt21c/MusicTheory.html" data-hn="https://news.ycombinator.com/item?id=49647134" data-metric="254 pts / 116 comments" tabindex="0" aria-label="Story 10: Music Theory for the 21st-Century Classroom: a free, full-year college textbook — title sold separately">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">Music Theory for the 21st-Century Classroom: a free, full-year college textbook — title sold separately</h2>
+<p class="exec">A free, open-license, full-year college music theory textbook from the University of Puget Sound, built as online hypertext with YouTube examples from 21st-century music. It deliberately de-emphasizes four-part SATB voiceleading in favor of relating harmony to the phrase and analyzing melodic units smaller than the phrase — motivic analysis, which traditional textbooks underweight. Includes homework and assignments for self-study.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">What&#x27;s different</span><ul><li>Open license — the preface&#x27;s first justification for the title: a full-year college text you don&#x27;t pay for.</li><li>Online hypertext with 21st-century music examples instead of a canon of dead-white-guy chorales.</li><li>More motivic analysis, more harmony-to-phrase, less SATB part-writing drills.</li></ul></li><li class="cat"><span class="cat-label">For autodidacts</span><ul><li>The homeworks and assignments are all public — several commenters call out the self-study path.</li><li>Draws comparisons to Open Music Theory (pressbooks) and Absolutely Understand Guitar on YouTube.</li></ul></li><li class="cat"><span class="cat-label">The title fight</span><ul><li>&#x27;21st-Century Classroom&#x27; reads as marketing to some; others cite the preface: it&#x27;s an online hypertext using current music as examples — that&#x27;s the 21st-century part.</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://musictheory.pugetsound.edu/mt21c/MusicTheory.html" target="_blank" rel="noopener">musictheory.pugetsound.edu</a> · Discuss: <a href="https://news.ycombinator.com/item?id=49647134" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">254 pts / 116 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>The thread&#x27;s main event is the title: is &#x27;21st-Century Classroom&#x27; a meaningful descriptor or marketing fluff? The skeptics say strip it and you&#x27;re left with &#x27;Music Theory,&#x27; a perfectly good dull title. The defenders read the preface: a full-year college text with an open license, in hypertext form, using YouTube examples of current music — in 2026 that&#x27;s a genuine format statement. Beneath the title war, the substance lands well: self-studiers appreciate the public homeworks, and the pedagogical shift (phrase-level harmony, motivic analysis over SATB drills) gets nods from people who lived through the chorale grind. The recurring request: now do this for learning piano as a middle-aged adult.</p>
+</div>
+</article>
+    </ol>
+
+    <div class="shortcut-bar" aria-label="Keyboard shortcuts">
+      <span><kbd>J</kbd> next story</span>
+      <span><kbd>K</kbd> previous story</span>
+      <span><kbd>T</kbd> theme</span>
+    </div>
+
+    <footer class="page-footer">
+      <div class="footer-links"><a href="../">← Daily archive</a><a href="https://tk3369.github.io/hn-daily/" target="_blank" rel="noopener">Published archive ↗</a></div>
+      <span>Friday 2026-09-11 · 10 stories</span>
+    </footer>
+  </main>
+  <div class="toast" role="status" aria-live="polite"></div>
+  <script>
+(() => {
+  const root = document.documentElement;
+  const toggle = document.getElementById('theme-toggle');
+  const entries = [...document.querySelectorAll('[data-story]')];
+  function storedTheme() { try { const t = localStorage.getItem('hn-daily-theme'); return t === 'dark' || t === 'light' ? t : null; } catch (_) { return null; } }
+  function preferredTheme() { return matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'; }
+  function currentTheme() { const a = root.dataset.theme; if (a === 'dark' || a === 'light') return a; return storedTheme() || preferredTheme(); }
+  function setTheme(theme) { const next = theme === 'dark' ? 'dark' : 'light'; const opposite = next === 'dark' ? 'Light' : 'Dark';
+    if (root.dataset.theme !== next) root.dataset.theme = next;
+    toggle.querySelector('.theme-text').textContent = opposite;
+    toggle.setAttribute('aria-label', `Switch to ${opposite} theme (T)`); toggle.title = `Switch to ${opposite} theme (T)`;
+    try { localStorage.setItem('hn-daily-theme', next); } catch (_) {} }
+  function flipTheme() { setTheme(currentTheme() === 'dark' ? 'light' : 'dark'); }
+  setTheme(storedTheme() || preferredTheme());
+  toggle.addEventListener('click', flipTheme);
+  const toast = document.querySelector('.toast'); let toastTimer;
+  function showToast(msg) { toast.textContent = msg; toast.classList.add('show'); clearTimeout(toastTimer); toastTimer = setTimeout(() => toast.classList.remove('show'), 1800); }
+  document.querySelectorAll('.copy-button').forEach((button) => {
+    button.addEventListener('click', async () => {
+      const story = button.closest('.story');
+      const n = story.dataset.story;
+      const tagline = story.querySelector('.tagline').textContent.trim();
+      const execSum = story.querySelector('.exec').textContent.trim();
+      const bullets = [...story.querySelectorAll('.cat-lists .cat')].map(li => {
+        const label = li.querySelector('.cat-label').textContent.trim();
+        const pts = [...li.querySelectorAll('ul li')].map(p => '  \u2022 ' + p.textContent.trim()).join('\n');
+        return '- ' + label + ':\n' + pts;
+      }).join('\n');
+      const link = 'https://tk3369.github.io/hn-daily/2026-09-11/#story-' + n;
+      const text = n + '. ' + tagline + '\n' + execSum + '\n' + bullets + '\n' + link;
+      try { await navigator.clipboard.writeText(text); button.textContent = 'Copied'; showToast('Story ' + n + ' copied for Threads'); setTimeout(() => { button.textContent = 'Copy for Threads'; }, 1600); }
+      catch (_) { showToast('Copy was blocked by this browser'); }
+    });
+  });
+  document.addEventListener('keydown', (event) => {
+    if (event.metaKey || event.ctrlKey || event.altKey || event.shiftKey) return;
+    const tag = event.target.tagName;
+    if (tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT') return;
+    const key = event.key.toLowerCase();
+    if (key === 't') { event.preventDefault(); flipTheme(); }
+    else if ((key === 'j' || key === 'k') && entries.length) {
+      event.preventDefault();
+      const active = entries.indexOf(document.activeElement);
+      const delta = key === 'j' ? 1 : -1;
+      const next = active < 0 ? (key === 'j' ? 0 : entries.length - 1) : Math.max(0, Math.min(entries.length - 1, active + 1 * delta));
+      entries[next].focus();
+    }
+  });
+})();
+  </script>
+</body>
+</html>
