@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="color-scheme" content="light dark" />
+  <link rel="icon" href="data:," />
+  <title>HN Daily — Friday 2026-09-18</title>
+  <style>
+:root { --page:#f1eadb; --paper:#fffaf0; --ink:#20201c; --muted:#6f695f; --hairline:#d9cebc; --accent:#ff5a1f; --comment:#f6efe3; --shadow:0 2px 0 rgba(57,45,25,.08),0 14px 36px rgba(57,45,25,.06); --serif:Georgia,"Times New Roman",serif; --sans:ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; --mono:"SFMono-Regular",Consolas,"Liberation Mono",monospace; }
+html[data-theme="dark"] { --page:#111312; --paper:#191c1a; --ink:#f1eee6; --muted:#aba69b; --hairline:#393b36; --accent:#ff7139; --comment:#222520; --shadow:0 2px 0 rgba(0,0,0,.22),0 18px 42px rgba(0,0,0,.22); }
+* { box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body { margin:0; min-width:280px; color:var(--ink); background:var(--page); font-family:var(--sans); line-height:1.55; -webkit-font-smoothing:antialiased; }
+a { color:inherit; text-underline-offset:3px; text-decoration-thickness:1px; }
+a:hover { color:var(--accent); }
+button,a { -webkit-tap-highlight-color:transparent; }
+button { font:inherit; }
+a:focus-visible,button:focus-visible { outline:3px solid var(--accent); outline-offset:3px; }
+.page { width:min(1080px,calc(100% - 36px)); margin:0 auto; padding:28px 0 72px; }
+.issue-header { display:grid; grid-template-columns:1fr auto; gap:24px; align-items:end; padding:8px 0 26px; border-bottom:3px solid var(--ink); }
+.edition { margin:0 0 9px; color:var(--accent); font:700 12px/1.3 var(--mono); letter-spacing:.09em; text-transform:uppercase; }
+.archive-nav { display:flex; flex-wrap:wrap; gap:8px 20px; margin-bottom:16px; font:700 12px/1 var(--mono); }
+.archive-nav a { min-height:36px; display:inline-flex; align-items:center; color:var(--muted); }
+.archive-nav a:hover { color:var(--accent); }
+h1 { max-width:820px; margin:0; font:700 clamp(34px,5.5vw,62px)/.98 var(--serif); letter-spacing:-.038em; }
+.deck { max-width:730px; margin:17px 0 0; color:var(--muted); font:17px/1.55 var(--sans); }
+.theme-toggle { align-self:start; min-width:86px; min-height:40px; padding:9px 13px; border:1px solid var(--hairline); border-radius:4px; color:var(--ink); background:var(--paper); cursor:pointer; font:700 12px/1 var(--mono); display:inline-flex; align-items:center; gap:8px; }
+.theme-toggle:hover { border-color:var(--accent); color:var(--accent); }
+.theme-dot { width:10px; height:10px; border-radius:50%; background:var(--accent); display:inline-block; flex-shrink:0; }
+.theme-text { line-height:1; }
+.story-list { display:grid; gap:20px; list-style:none; margin:26px 0 0; padding:0; counter-reset:story; }
+.story { counter-increment:story; display:grid; grid-template-columns:72px minmax(0,1fr); gap:26px; padding:26px 30px 28px; background:var(--paper); border-top:4px solid var(--ink); box-shadow:var(--shadow); scroll-margin-top:24px; }
+.story-number { color:var(--accent); font:900 22px/1 var(--mono); letter-spacing:-.04em; padding-top:6px; }
+.story-number::before { content:counter(story,decimal-leading-zero); }
+.tagline { margin:0; max-width:840px; font:700 clamp(24px,3vw,36px)/1.1 var(--serif); letter-spacing:-.028em; }
+.exec { margin:14px 0 0; max-width:840px; font:17px/1.58 var(--sans); }
+.cat-lists { margin:14px 0 0; padding:0; list-style:none; display:grid; gap:10px; max-width:840px; }
+.cat-lists li.cat { font:15px/1.6 var(--sans); }
+.cat-lists .cat-label { font:700 12px/1.6 var(--mono); letter-spacing:.06em; text-transform:uppercase; color:var(--accent); }
+.cat-lists ul { margin:4px 0 0; padding-left:20px; }
+.cat-lists ul li { margin:3px 0; }
+.meta-line { margin:16px 0 0; color:var(--muted); font:700 12px/1.9 var(--mono); overflow-wrap:anywhere; }
+.meta-line a { color:var(--ink); font-weight:800; }
+.meta-line .metrics { color:var(--ink); white-space:nowrap; }
+.story-bar { display:flex; align-items:flex-start; gap:14px; margin-top:4px; }
+.copy-button { flex:0 0 auto; align-self:flex-start; min-height:36px; padding:9px 12px; border:1px solid var(--hairline); border-radius:4px; background:var(--paper); color:var(--ink); cursor:pointer; font:700 12px/1 var(--mono); }
+.copy-button:hover { border-color:var(--accent); color:var(--accent); }
+.hn-comments { margin:18px 0 0; padding:14px 18px; background:var(--comment); border:1px solid var(--hairline); font:15px/1.62 var(--serif); color:var(--ink); }
+.hn-comments strong { font:700 12px/1.6 var(--mono); color:var(--accent); display:block; margin-bottom:6px; }
+.page-footer { display:flex; justify-content:space-between; flex-wrap:wrap; gap:14px; margin-top:64px; padding-top:12px; border-top:1px solid var(--hairline); color:var(--muted); font:12px/1.6 var(--mono); }
+.footer-links { display:flex; flex-wrap:wrap; gap:8px 20px; }
+.footer-links a { min-height:36px; display:inline-flex; align-items:center; color:var(--ink); font-weight:800; }
+.footer-links a:hover { color:var(--accent); }
+.shortcut-bar { display:flex; flex-wrap:wrap; gap:18px; margin-top:28px; color:var(--muted); font:11px/1.5 var(--mono); }
+kbd { display:inline-grid; place-items:center; min-width:22px; height:22px; margin-right:6px; padding:0 6px; border:1px solid var(--hairline); border-bottom-width:2px; border-radius:3px; background:var(--comment); color:var(--ink); font:inherit; font-weight:700; }
+.toast { position:fixed; right:max(18px,env(safe-area-inset-right)); bottom:max(18px,env(safe-area-inset-bottom)); z-index:10; padding:11px 14px; color:var(--paper); background:var(--ink); border:1px solid var(--ink); font:700 12px/1 var(--mono); opacity:0; transform:translateY(8px); pointer-events:none; transition:opacity 160ms ease,transform 160ms ease; }
+.toast.show { opacity:1; transform:translateY(0); }
+@media (max-width:760px) {
+  .page { width:min(100% - 22px,1080px); padding-top:16px; }
+  .issue-header { grid-template-columns:1fr auto; gap:12px; padding-bottom:20px; }
+  h1 { font-size:clamp(34px,10vw,48px); }
+  .deck { grid-column:1 / -1; margin-top:3px; font-size:15px; }
+  .theme-toggle { grid-column:2; grid-row:1; min-width:72px; }
+  .story { grid-template-columns:44px minmax(0,1fr); gap:14px; padding:20px 18px 22px; }
+  .story-number { font-size:16px; padding-top:4px; }
+  .story-bar { flex-direction:column; align-items:stretch; }
+  .copy-button { align-self:flex-start; }
+  .page-footer { display:block; }
+}
+@media (max-width:420px) {
+  .page { width:calc(100% - 16px); }
+  .story { grid-template-columns:1fr; gap:8px; padding:20px 16px 22px; }
+  .story-number { padding-top:0; }
+  .copy-button { width:100%; }
+}
+@media (prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } *,*::before,*::after { transition:none !important; } }
+@media print { :root { --page:#fff;--paper:#fff;--ink:#000;--muted:#444;--hairline:#bbb;--comment:#f5f5f5;--shadow:none; } .page{width:100%;padding:0}.theme-toggle,.copy-button,.toast,.shortcut-bar{display:none}.story{break-inside:avoid;box-shadow:none} }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="issue-header">
+      <div>
+        <nav class="archive-nav" aria-label="HN Daily archive links"><a href="../">← Archive</a><a href="https://tk3369.github.io/hn-daily/" target="_blank" rel="noopener">Published archive ↗</a></nav>
+        <p class="edition"><time datetime="2026-09-18">2026-09-18</time> · Daily brief · Pacific time</p>
+        <h1>HN Daily</h1>
+        <p class="deck">Direct, low-fluff top 10 from Hacker News, daily at 7am PT — hottest by points</p>
+      </div>
+      <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch color theme" title="Toggle theme (T)"><span class="theme-dot" aria-hidden="true"></span><span class="theme-text">Dark</span></button>
+    </header>
+
+    <ol class="story-list" aria-label="Top 10 Hacker News stories">
+<article class="story" id="story-1" data-story="1" data-source="https://github.com/asciimoo/hister" data-hn="https://news.ycombinator.com/item?id=49743097" data-metric="661 pts / 174 comments" tabindex="0" aria-label="Story 1: Show HN: Hister, a private search engine for the pages you visit and the files you keep">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">Show HN: Hister, a private search engine for the pages you visit and the files you keep</h2>
+<p class="exec">asciimoo (of Searx fame) launched Hister: a personal search index over your browser history, bookmarks, local files, and crawled sites, with full-text + semantic search fully local. Offline previews keep info searchable even after the original page changes or vanishes.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">What it is</span><ul><li>Personal index: history, bookmarks, files, crawled sites</li><li>Semantic + full-text search, fully local</li></ul></li><li class="cat"><span class="cat-label">HN take</span><ul><li>Wants video transcripts (yt-dlp extractor exists)</li><li>Custom extractors can&#x27;t be loaded as plugins yet</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://github.com/asciimoo/hister" target="_blank" rel="noopener">github.com</a> · Discuss: <a href="https://news.ycombinator.com/item?id=49743097" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">661 pts / 174 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>Author asciimoo did an AMA (his first free-software search project was Searx; he left the metasearch concept behind). Two gaps dominate feedback: a yt-dlp extractor exists but discoverability of video transcripts is the top request, and custom extractors must be bundled into the build — there&#x27;s no plugin config, same root cause as the request for a config UI / PikaPods hosting, which asciimoo says is on his list. Side threads drifted into naming candidates (chronilog.org floated) and a warning about pre-emptive domain squatting.</p>
+</div>
+</article>
+<article class="story" id="story-2" data-story="2" data-source="https://global.fujitsu/en-global/pr/news/2026/09/14-02" data-hn="https://news.ycombinator.com/item?id=49715813" data-metric="613 pts / 239 comments" tabindex="0" aria-label="Story 2: Fujitsu launches made-in-Japan next-generation CPU FUJITSU-MONAKA">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">Fujitsu launches made-in-Japan next-generation CPU FUJITSU-MONAKA</h2>
+<p class="exec">Fujitsu&#x27;s FUJITSU-MONAKA: 2nm cores + 5nm cache/IO in 3D stack, up to 3.8GHz, 8800MT/s memory, 2x AI-inference throughput vs other CPUs via dedicated matrix instructions, Arm CCA confidential computing. Sales start November 2026, pitched as sovereign AI infrastructure manufactured at Kasashima.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">What it is</span><ul><li>3D-stacked 2nm/5nm CPU, 3.8GHz, 8800MT/s</li><li>2x CPU-only AI inference throughput claim</li></ul></li><li class="cat"><span class="cat-label">HN take</span><ul><li>Thread got hijacked into Fujitsu&#x27;s 2008 10G switch glory days</li><li>Broadcom blamed for commoditizing their ASIC edge</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://global.fujitsu/en-global/pr/news/2026/09/14-02" target="_blank" rel="noopener">global.fujitsu</a> · Discuss: <a href="https://news.ycombinator.com/item?id=49715813" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">613 pts / 239 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>The thread barely engaged the CPU: the top comments are nostalgia for Fujitsu&#x27;s 2008 10Gbps switches, with a Google engineer&#x27;s story about building 40Gbps packet sniffers at Google and wondering why Fujitsu never built a meaningful US networking business. Answer offered: their impressive networking ASICs were commoditized by Broadcom and Fulcrum chips within a few years. The packet-sniffer premise then spun into a debate over whether mirroring is standard debugging practice (it is) or NSA-adjacent (Room 641A jokes included).</p>
+</div>
+</article>
+<article class="story" id="story-3" data-story="3" data-source="https://bend-lang.com/" data-hn="https://news.ycombinator.com/item?id=49746163" data-metric="532 pts / 257 comments" tabindex="0" aria-label="Story 3: Bend: a language that blocks AI mistakes via proof, on CPU and GPU">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">Bend: a language that blocks AI mistakes via proof, on CPU and GPU</h2>
+<p class="exec">Bend: C-speed, CUDA-parallel, Python-syntax language where you declare invariants in LAWS.bend and the AI writes PROOF.bend; the type checker is a proof checker that runs in ~1 second, so breaking a law is mathematically un-mergeable.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">What it is</span><ul><li>LAWS.bend declares invariants; AI writes proofs</li><li>Near-C speed, GPU runs 100x single core</li></ul></li><li class="cat"><span class="cat-label">HN take</span><ul><li>Underspecification: &#x27;can&#x27;t win&#x27; law broke movement instead</li><li>Laws only protect what you remember to write</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://bend-lang.com/" target="_blank" rel="noopener">bend-lang.com</a> · Discuss: <a href="https://news.ycombinator.com/item?id=49746163" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">532 pts / 257 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>The author, candid about a year of 16-hour days given for free, asked for civil feedback — the demo&#x27;s &#x27;you can&#x27;t win&#x27; law then supplied the sharpest critique: the AI protected the law by redefining movement (diagonal instead of walled), proving laws are only as good as what you remember to write. Debate splits between automated law discovery (unit tests as a starting point, disputed as law sources) and a philosophical objection that language itself has no ground truth, so proof-over-language is chasing closure words can&#x27;t provide.</p>
+</div>
+</article>
+<article class="story" id="story-4" data-story="4" data-source="https://openai.com/index/astra-for-law/" data-hn="https://news.ycombinator.com/item?id=49745940" data-metric="526 pts / 634 comments" tabindex="0" aria-label="Story 4: Astra for Law">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">Astra for Law</h2>
+<p class="exec">OpenAI&#x27;s Astra for Law: GPT-6 Astra plus a 230M-URL legal search index (case law, statutes, regs, Free Law Project corpus), scoring 54.0% vs 38.7% on Vals AI&#x27;s Legal Research Bench at max effort. Launch includes a Trusted Access program with Zero Data Retention and 26 partner plugins for Relativity, Clio, iManage.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">What it is</span><ul><li>GPT-6 Astra + legal search index, 40% relative bench gain</li><li>Trusted Access: ZDR, no default human review</li></ul></li><li class="cat"><span class="cat-label">HN take</span><ul><li>Honest &#x27;2-3 to 8-10 docs/hr&#x27; framing beats 100x hype</li><li>&#x27;It&#x27;s not a time saver, you get to work more&#x27;</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://openai.com/index/astra-for-law/" target="_blank" rel="noopener">openai.com</a> · Discuss: <a href="https://news.ycombinator.com/item?id=49745940" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">526 pts / 634 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>Commenters praised the honesty of &#x27;2-3 documents an hour to 8-10&#x27; over typical AGI hype — but the thread&#x27;s center of gravity is Amdahl&#x27;s law: speeding document intake doesn&#x27;t speed the whole system when human judgment is the bottleneck (one commenter: you now need 3-5x more lawyers to judge 3-5x more documents). Others note quality-at-scale friction — stacked improvements with compounding dependencies degrade quality — and rue the &#x27;10x lawyer&#x27; grifters arriving within five minutes. Still, there&#x27;s real lawyer-workflow validation in the thread: benefits/healthcare document extraction is exactly this use case.</p>
+</div>
+</article>
+<article class="story" id="story-5" data-story="5" data-source="https://prismml.com/news/bonsai-2-27b" data-hn="https://news.ycombinator.com/item?id=49746618" data-metric="503 pts / 158 comments" tabindex="0" aria-label="Story 5: Bonsai 2 27B: near-lossless compression in a 9x smaller footprint">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">Bonsai 2 27B: near-lossless compression in a 9x smaller footprint</h2>
+<p class="exec">Prism ML&#x27;s Bonsai 2 27B: a ternary-quantized model claiming near-lossless compression in a 9x smaller footprint — roughly 5.95GB GGUF for a 27B model. The thread is empirical: needs Prism&#x27;s llama.cpp fork, SVG-generation bake-offs, and a &#x27;recite Jabberwocky&#x27; test where the bf16 version almost passes and ternary fails badly.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">What it is</span><ul><li>Ternary 27B model, ~5.95GB GGUF</li><li>Needs Prism&#x27;s llama.cpp fork to run</li></ul></li><li class="cat"><span class="cat-label">HN take</span><ul><li>Pelican-on-bicycle SVG bake-offs: 18-38 min</li><li>Memorization tasks degrade hard at low bit-width</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://prismml.com/news/bonsai-2-27b" target="_blank" rel="noopener">prismml.com</a> · Discuss: <a href="https://news.ycombinator.com/item?id=49746618" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">503 pts / 158 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>Practical thread: the top comment is a runbook for getting the GGUFs working (Prism&#x27;s llama.cpp fork, ~5.95GB download), followed by SVG-rendering bake-offs — a pelican riding a bicycle took 18min 20s on one machine, 38min on an M1 Pro, with the classic ass-helmet misrender spawning jokes about wings and rear tires. Skepticism centers on the &#x27;near-lossless&#x27; claim: a Jabberwocky-recitation test had bf16 almost passing while ternary and even fp8 failed badly, suggesting memorization tasks are exactly where low-bit quantization hurts.</p>
+</div>
+</article>
+<article class="story" id="story-6" data-story="6" data-source="https://en.wikipedia.org/wiki/Wax_motor" data-hn="https://news.ycombinator.com/item?id=49726007" data-metric="467 pts / 82 comments" tabindex="0" aria-label="Story 6: Wax motor">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">Wax motor</h2>
+<p class="exec">Wikipedia&#x27;s wax motor page became a terminology fight: is a wax motor a motor (actuation by deliberate heating) or a thermostat (ambient expansion)? The page&#x27;s photo of a thermostatic radiator valve is cited as a mislabel. Practical datapoints included: ~100 units in a hotel, one replaced every couple of years.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">What it is</span><ul><li>Paraffin-wax thermal actuator; reliable in damp environments</li><li>Photo allegedly shows a thermostatic valve, not a wax motor</li></ul></li><li class="cat"><span class="cat-label">HN take</span><ul><li>Does &#x27;motor&#x27; need a heater, or is ambient expansion enough?</li><li>Spatial vs temporal reading of &#x27;thermal gradient&#x27;</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://en.wikipedia.org/wiki/Wax_motor" target="_blank" rel="noopener">en.wikipedia.org</a> · Discuss: <a href="https://news.ycombinator.com/item?id=49726007" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">467 pts / 82 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>The most HN comment possible: a Wikipedia correction thread arguing physics semantics. One camp: a wax motor must actuate — heat deliberately applied, cool to retract — while thermostatic valves are ambient at both ends, so the radiator-valve photo is a mislabel. The other: expansion happens from absolute temperature alone, no gradient needed, so &#x27;motor&#x27; just means &#x27;creates movement.&#x27; Meta-layer: the two sides may mean different things by &#x27;thermal gradient&#x27; (spatial vs temporal). Empirical interlude: one commenter services ~100 in a hotel (replaces one every couple years), another replaced half their floor-heating units in a decade — so &#x27;rarely fails&#x27; gets disputed.</p>
+</div>
+</article>
+<article class="story" id="story-7" data-story="7" data-source="https://techcrunch.com/2026/09/17/microsoft-exec-called-ai-scraping-the-largest-theft-of-labor-in-human-history-new-unredacted-filings-reveal/" data-hn="https://news.ycombinator.com/item?id=49752056" data-metric="456 pts / 371 comments" tabindex="0" aria-label="Story 7: Microsoft exec called AI scraping &#x27;the largest theft of labor in human history&#x27;">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">Microsoft exec called AI scraping &#x27;the largest theft of labor in human history&#x27;</h2>
+<p class="exec">Unredacted filings reveal a Microsoft exec called AI scraping &#x27;the largest theft of labor in human history.&#x27; The rhetoric hits HN&#x27;s open-source core: comments confirm the damage is already done — peers stopped publishing code and discussing techniques openly, retreating to one-on-one channels where LLMs can&#x27;t scrape it.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">What it is</span><ul><li>Unredacted filings surface the Microsoft exec&#x27;s quote</li><li>HN: open-source publishing already retreating</li></ul></li><li class="cat"><span class="cat-label">HN take</span><ul><li>&#x27;Piracy is theft&#x27; flawed-premise objection</li><li>Guns analogy: AI is a crime of scope</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://techcrunch.com/2026/09/17/microsoft-exec-called-ai-scraping-the-largest-theft-of-labor-in-human-history-new-unredacted-filings-reveal/" target="_blank" rel="noopener">techcrunch.com</a> · Discuss: <a href="https://news.ycombinator.com/item?id=49752056" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">456 pts / 371 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>Consensus: the damage is real and already happening — one commenter reports peers deciding LLM output is &#x27;good enough&#x27; instead of understanding techniques, and multiple say they stopped publishing code publicly, &#x27;pulling it away when AI can rip it out in minutes,&#x27; with a CD-joke about going back to sneakernet. The main counter: culture isn&#x27;t &#x27;robbed&#x27; (the originals are still there) — the rhetoric echoes the flawed &#x27;piracy is theft&#x27; framing. Sharpest framing from the thread: AI is a crime of scope — like guns vs knives, scale is what changes the game — and IP law is Calvinball where creators keep rewriting rules to defend power.</p>
+</div>
+</article>
+<article class="story" id="story-8" data-story="8" data-source="https://www.hacktron.ai/blog/hacking-openai" data-hn="https://news.ycombinator.com/item?id=49749656" data-metric="388 pts / 166 comments" tabindex="0" aria-label="Story 8: A heap overflow and SSO misconfiguration to compromise OpenAI internal repos">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">A heap overflow and SSO misconfiguration to compromise OpenAI internal repos</h2>
+<p class="exec">Hacktron&#x27;s writeup: heap overflow via image upload got local RCE on a Discourse instance by 6am; Claude in an autonomous /goal loop, proxied as a CTF target (Opus refused the remote exploit), had RCE on OpenAI&#x27;s internal instance by 10am.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">What it is</span><ul><li>Image-upload heap overflow -&gt; local RCE by 6am</li><li>Claude agent autonomously found RCE by 10am</li></ul></li><li class="cat"><span class="cat-label">HN take</span><ul><li>AI cut attack AND defense costs — Jevons paradox</li><li>&#x27;Rough couple of years, then more secure stacks&#x27;</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://www.hacktron.ai/blog/hacking-openai" target="_blank" rel="noopener">hacktron.ai</a> · Discuss: <a href="https://news.ycombinator.com/item?id=49749656" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">388 pts / 166 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>The thread&#x27;s headline fact is the method: Opus refused to write exploits for remote targets, so the researchers proxied their own Discourse through rce.ee/ctf-forum to make it look like a CTF — alignment theater vs determined jailbreak. Two schools: (1) transition theory — finite RCEs exist, LLMs will find them fast, a rough couple of years then more-secure stacks; (2) Jevons-paradox view — AI cut both attack and defense costs, the game sped up, not changed. The cultural critique lands hardest: developers now orchestrate agents but can&#x27;t respond to security review feedback. Plus the AI-security-industrial-complex theory: vendors sell tokens for both attack and defense.</p>
+</div>
+</article>
+<article class="story" id="story-9" data-story="9" data-source="https://qwen.ai/blog?id=qwen3.8-omni-flash" data-hn="https://news.ycombinator.com/item?id=49747925" data-metric="276 pts / 97 comments" tabindex="0" aria-label="Story 9: Qwen 3.8 Omni Flash">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">Qwen 3.8 Omni Flash</h2>
+<p class="exec">Alibaba&#x27;s Qwen3.8-Omni-Flash: native omnimodal model (text, image, audio, video in; text out) with 1M-token context, pitched on agentic long-video understanding — evidence gathering cut tokens 45.7% while raising OmniVideoBench 63.4 to 67.8. Audio input pricing cut 98% (under 1 cent per hour), matching Gemini 3.8 Flash on audio. API only, no open weights.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">What it is</span><ul><li>Native omnimodal, 1M context, agentic video</li><li>Audio pricing -98%, under 1¢/hour</li></ul></li><li class="cat"><span class="cat-label">HN take</span><ul><li>No open weights at launch (API only)</li><li>Model-choice debate: satisfice, don&#x27;t optimize</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://qwen.ai/blog?id=qwen3.8-omni-flash" target="_blank" rel="noopener">qwen.ai</a> · Discuss: <a href="https://news.ycombinator.com/item?id=49747925" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">276 pts / 97 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>The announcement itself got little analysis — the thread drifted into the more useful question of how anyone picks a model anymore. The consensus advice: satisfice, don&#x27;t optimize — find a cheap model that solves your problem (GLM 5.3 Flash gets endorsements) and stop chasing releases, except for cost. OpenRouter&#x27;s auto-model and popularity-trend browsing are the pragmatic selectors. The benchmark caveat worth remembering: capability varies with harness (WildClawBench-MM vs UniClawBench), and all headline numbers are self-reported by Qwen.</p>
+</div>
+</article>
+<article class="story" id="story-10" data-story="10" data-source="https://openjev.com/" data-hn="https://news.ycombinator.com/item?id=49752041" data-metric="267 pts / 157 comments" tabindex="0" aria-label="Story 10: OpenJev">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">OpenJev</h2>
+<p class="exec">&#x27;NOT JEV&#x27; — a live, local experiment: run a small model (MiniCPM5 2B, Qwen3 0.6B, or Qwen3.5 4B) in your browser and compare two decision methods on the same choice — reading choice logits directly vs having the model write probabilities as JSON token-by-token. Real timing on your GPU, weights from HF, inputs never leave the page.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">What it is</span><ul><li>Browser-local logit readout vs token JSON showdown</li><li>Measured timings on your own GPU, no backend</li></ul></li><li class="cat"><span class="cat-label">HN take</span><ul><li>One-shot vibecoded sites: visual clutter, exam-essay energy</li><li>McMaster-Carr and Berkshire held up as canonical good sites</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://openjev.com/" target="_blank" rel="noopener">openjev.com</a> · Discuss: <a href="https://news.ycombinator.com/item?id=49752041" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">267 pts / 157 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>The demo&#x27;s concept (conditional-probability readouts, calibrated-vs-unconditional warnings, real performance.now() timings) got less discussion than the site&#x27;s vibe: commenters call one-shot AI-built sites &#x27;complete visual headaches&#x27; — &#x27;anxious exam-essay output, anti-edited to cram every detail a grader might dock points for.&#x27; The thread&#x27;s canon of good web design: Berkshire Hathaway, McMaster-Carr (whose paper catalogs get genuine love), Craigslist. One honest dissent: &#x27;I kind of like it.&#x27;</p>
+</div>
+</article>
+    </ol>
+
+    <div class="shortcut-bar" aria-label="Keyboard shortcuts">
+      <span><kbd>J</kbd> next story</span>
+      <span><kbd>K</kbd> previous story</span>
+      <span><kbd>T</kbd> theme</span>
+    </div>
+
+    <footer class="page-footer">
+      <div class="footer-links"><a href="../">← Daily archive</a><a href="https://tk3369.github.io/hn-daily/" target="_blank" rel="noopener">Published archive ↗</a></div>
+      <span>Friday 2026-09-18 · 10 stories</span>
+    </footer>
+  </main>
+  <div class="toast" role="status" aria-live="polite"></div>
+  <script>
+(() => {
+  const root = document.documentElement;
+  const toggle = document.getElementById('theme-toggle');
+  const entries = [...document.querySelectorAll('[data-story]')];
+  function storedTheme() { try { const t = localStorage.getItem('hn-daily-theme'); return t === 'dark' || t === 'light' ? t : null; } catch (_) { return null; } }
+  function preferredTheme() { return matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'; }
+  function currentTheme() { const a = root.dataset.theme; if (a === 'dark' || a === 'light') return a; return storedTheme() || preferredTheme(); }
+  function setTheme(theme) { const next = theme === 'dark' ? 'dark' : 'light'; const opposite = next === 'dark' ? 'Light' : 'Dark';
+    if (root.dataset.theme !== next) root.dataset.theme = next;
+    toggle.querySelector('.theme-text').textContent = opposite;
+    toggle.setAttribute('aria-label', `Switch to ${opposite} theme (T)`); toggle.title = `Switch to ${opposite} theme (T)`;
+    try { localStorage.setItem('hn-daily-theme', next); } catch (_) {} }
+  function flipTheme() { setTheme(currentTheme() === 'dark' ? 'light' : 'dark'); }
+  setTheme(storedTheme() || preferredTheme());
+  toggle.addEventListener('click', flipTheme);
+  const toast = document.querySelector('.toast'); let toastTimer;
+  function showToast(msg) { toast.textContent = msg; toast.classList.add('show'); clearTimeout(toastTimer); toastTimer = setTimeout(() => toast.classList.remove('show'), 1800); }
+  document.querySelectorAll('.copy-button').forEach((button) => {
+    button.addEventListener('click', async () => {
+      const story = button.closest('.story');
+      const n = story.dataset.story;
+      const tagline = story.querySelector('.tagline').textContent.trim();
+      const execSum = story.querySelector('.exec').textContent.trim();
+      const bullets = [...story.querySelectorAll('.cat-lists .cat')].map(li => {
+        const label = li.querySelector('.cat-label').textContent.trim();
+        const pts = [...li.querySelectorAll('ul li')].map(p => '  \u2022 ' + p.textContent.trim()).join('\n');
+        return '- ' + label + ':\n' + pts;
+      }).join('\n');
+      const link = 'https://tk3369.github.io/hn-daily/2026-09-18/#story-' + n;
+      const text = n + '. ' + tagline + '\n' + execSum + '\n' + bullets + '\n' + link;
+      try { await navigator.clipboard.writeText(text); button.textContent = 'Copied'; showToast('Story ' + n + ' copied for Threads'); setTimeout(() => { button.textContent = 'Copy for Threads'; }, 1600); }
+      catch (_) { showToast('Copy was blocked by this browser'); }
+    });
+  });
+  document.addEventListener('keydown', (event) => {
+    if (event.metaKey || event.ctrlKey || event.altKey || event.shiftKey) return;
+    const tag = event.target.tagName;
+    if (tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT') return;
+    const key = event.key.toLowerCase();
+    if (key === 't') { event.preventDefault(); flipTheme(); }
+    else if ((key === 'j' || key === 'k') && entries.length) {
+      event.preventDefault();
+      const active = entries.indexOf(document.activeElement);
+      const delta = key === 'j' ? 1 : -1;
+      const next = active < 0 ? (key === 'j' ? 0 : entries.length - 1) : Math.max(0, Math.min(entries.length - 1, active + 1 * delta));
+      entries[next].focus();
+    }
+  });
+})();
+  </script>
+</body>
+</html>
