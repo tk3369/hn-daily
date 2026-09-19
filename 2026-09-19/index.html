@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="color-scheme" content="light dark" />
+  <link rel="icon" href="data:," />
+  <title>HN Daily — Saturday 2026-09-19</title>
+  <style>
+:root { --page:#f1eadb; --paper:#fffaf0; --ink:#20201c; --muted:#6f695f; --hairline:#d9cebc; --accent:#ff5a1f; --comment:#f6efe3; --shadow:0 2px 0 rgba(57,45,25,.08),0 14px 36px rgba(57,45,25,.06); --serif:Georgia,"Times New Roman",serif; --sans:ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; --mono:"SFMono-Regular",Consolas,"Liberation Mono",monospace; }
+html[data-theme="dark"] { --page:#111312; --paper:#191c1a; --ink:#f1eee6; --muted:#aba69b; --hairline:#393b36; --accent:#ff7139; --comment:#222520; --shadow:0 2px 0 rgba(0,0,0,.22),0 18px 42px rgba(0,0,0,.22); }
+* { box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body { margin:0; min-width:280px; color:var(--ink); background:var(--page); font-family:var(--sans); line-height:1.55; -webkit-font-smoothing:antialiased; }
+a { color:inherit; text-underline-offset:3px; text-decoration-thickness:1px; }
+a:hover { color:var(--accent); }
+button,a { -webkit-tap-highlight-color:transparent; }
+button { font:inherit; }
+a:focus-visible,button:focus-visible { outline:3px solid var(--accent); outline-offset:3px; }
+.page { width:min(1080px,calc(100% - 36px)); margin:0 auto; padding:28px 0 72px; }
+.issue-header { display:grid; grid-template-columns:1fr auto; gap:24px; align-items:end; padding:8px 0 26px; border-bottom:3px solid var(--ink); }
+.edition { margin:0 0 9px; color:var(--accent); font:700 12px/1.3 var(--mono); letter-spacing:.09em; text-transform:uppercase; }
+.archive-nav { display:flex; flex-wrap:wrap; gap:8px 20px; margin-bottom:16px; font:700 12px/1 var(--mono); }
+.archive-nav a { min-height:36px; display:inline-flex; align-items:center; color:var(--muted); }
+.archive-nav a:hover { color:var(--accent); }
+h1 { max-width:820px; margin:0; font:700 clamp(34px,5.5vw,62px)/.98 var(--serif); letter-spacing:-.038em; }
+.deck { max-width:730px; margin:17px 0 0; color:var(--muted); font:17px/1.55 var(--sans); }
+.theme-toggle { align-self:start; min-width:86px; min-height:40px; padding:9px 13px; border:1px solid var(--hairline); border-radius:4px; color:var(--ink); background:var(--paper); cursor:pointer; font:700 12px/1 var(--mono); display:inline-flex; align-items:center; gap:8px; }
+.theme-toggle:hover { border-color:var(--accent); color:var(--accent); }
+.theme-dot { width:10px; height:10px; border-radius:50%; background:var(--accent); display:inline-block; flex-shrink:0; }
+.theme-text { line-height:1; }
+.story-list { display:grid; gap:20px; list-style:none; margin:26px 0 0; padding:0; counter-reset:story; }
+.story { counter-increment:story; display:grid; grid-template-columns:72px minmax(0,1fr); gap:26px; padding:26px 30px 28px; background:var(--paper); border-top:4px solid var(--ink); box-shadow:var(--shadow); scroll-margin-top:24px; }
+.story-number { color:var(--accent); font:900 22px/1 var(--mono); letter-spacing:-.04em; padding-top:6px; }
+.story-number::before { content:counter(story,decimal-leading-zero); }
+.tagline { margin:0; max-width:840px; font:700 clamp(24px,3vw,36px)/1.1 var(--serif); letter-spacing:-.028em; }
+.exec { margin:14px 0 0; max-width:840px; font:17px/1.58 var(--sans); }
+.cat-lists { margin:14px 0 0; padding:0; list-style:none; display:grid; gap:10px; max-width:840px; }
+.cat-lists li.cat { font:15px/1.6 var(--sans); }
+.cat-lists .cat-label { font:700 12px/1.6 var(--mono); letter-spacing:.06em; text-transform:uppercase; color:var(--accent); }
+.cat-lists ul { margin:4px 0 0; padding-left:20px; }
+.cat-lists ul li { margin:3px 0; }
+.meta-line { margin:16px 0 0; color:var(--muted); font:700 12px/1.9 var(--mono); overflow-wrap:anywhere; }
+.meta-line a { color:var(--ink); font-weight:800; }
+.meta-line .metrics { color:var(--ink); white-space:nowrap; }
+.story-bar { display:flex; align-items:flex-start; gap:14px; margin-top:4px; }
+.copy-button { flex:0 0 auto; align-self:flex-start; min-height:36px; padding:9px 12px; border:1px solid var(--hairline); border-radius:4px; background:var(--paper); color:var(--ink); cursor:pointer; font:700 12px/1 var(--mono); }
+.copy-button:hover { border-color:var(--accent); color:var(--accent); }
+.hn-comments { margin:18px 0 0; padding:14px 18px; background:var(--comment); border:1px solid var(--hairline); font:15px/1.62 var(--serif); color:var(--ink); }
+.hn-comments strong { font:700 12px/1.6 var(--mono); color:var(--accent); display:block; margin-bottom:6px; }
+.page-footer { display:flex; justify-content:space-between; flex-wrap:wrap; gap:14px; margin-top:64px; padding-top:12px; border-top:1px solid var(--hairline); color:var(--muted); font:12px/1.6 var(--mono); }
+.footer-links { display:flex; flex-wrap:wrap; gap:8px 20px; }
+.footer-links a { min-height:36px; display:inline-flex; align-items:center; color:var(--ink); font-weight:800; }
+.footer-links a:hover { color:var(--accent); }
+.shortcut-bar { display:flex; flex-wrap:wrap; gap:18px; margin-top:28px; color:var(--muted); font:11px/1.5 var(--mono); }
+kbd { display:inline-grid; place-items:center; min-width:22px; height:22px; margin-right:6px; padding:0 6px; border:1px solid var(--hairline); border-bottom-width:2px; border-radius:3px; background:var(--comment); color:var(--ink); font:inherit; font-weight:700; }
+.toast { position:fixed; right:max(18px,env(safe-area-inset-right)); bottom:max(18px,env(safe-area-inset-bottom)); z-index:10; padding:11px 14px; color:var(--paper); background:var(--ink); border:1px solid var(--ink); font:700 12px/1 var(--mono); opacity:0; transform:translateY(8px); pointer-events:none; transition:opacity 160ms ease,transform 160ms ease; }
+.toast.show { opacity:1; transform:translateY(0); }
+@media (max-width:760px) {
+  .page { width:min(100% - 22px,1080px); padding-top:16px; }
+  .issue-header { grid-template-columns:1fr auto; gap:12px; padding-bottom:20px; }
+  h1 { font-size:clamp(34px,10vw,48px); }
+  .deck { grid-column:1 / -1; margin-top:3px; font-size:15px; }
+  .theme-toggle { grid-column:2; grid-row:1; min-width:72px; }
+  .story { grid-template-columns:44px minmax(0,1fr); gap:14px; padding:20px 18px 22px; }
+  .story-number { font-size:16px; padding-top:4px; }
+  .story-bar { flex-direction:column; align-items:stretch; }
+  .copy-button { align-self:flex-start; }
+  .page-footer { display:block; }
+}
+@media (max-width:420px) {
+  .page { width:calc(100% - 16px); }
+  .story { grid-template-columns:1fr; gap:8px; padding:20px 16px 22px; }
+  .story-number { padding-top:0; }
+  .copy-button { width:100%; }
+}
+@media (prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } *,*::before,*::after { transition:none !important; } }
+@media print { :root { --page:#fff;--paper:#fff;--ink:#000;--muted:#444;--hairline:#bbb;--comment:#f5f5f5;--shadow:none; } .page{width:100%;padding:0}.theme-toggle,.copy-button,.toast,.shortcut-bar{display:none}.story{break-inside:avoid;box-shadow:none} }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="issue-header">
+      <div>
+        <nav class="archive-nav" aria-label="HN Daily archive links"><a href="../">← Archive</a><a href="https://tk3369.github.io/hn-daily/" target="_blank" rel="noopener">Published archive ↗</a></nav>
+        <p class="edition"><time datetime="2026-09-19">2026-09-19</time> · Daily brief · Pacific time</p>
+        <h1>HN Daily</h1>
+        <p class="deck">Direct, low-fluff top 10 from Hacker News, daily at 7am PT — hottest by points</p>
+      </div>
+      <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch color theme" title="Toggle theme (T)"><span class="theme-dot" aria-hidden="true"></span><span class="theme-text">Dark</span></button>
+    </header>
+
+    <ol class="story-list" aria-label="Top 10 Hacker News stories">
+<article class="story" id="story-1" data-story="1" data-source="https://grapheneos.social/@GrapheneOS/117282080803799576" data-hn="https://news.ycombinator.com/item?id=49758736" data-metric="913 pts / 500 comments" tabindex="0" aria-label="Story 1: Android 17 is the first since 3.x to add new APIs without releasing to the AOSP">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">Android 17 is the first since 3.x to add new APIs without releasing to the AOSP</h2>
+<p class="exec">GrapheneOS flags the milestone: Android 17 ships new APIs with no AOSP source drop — the first since Honeycomb 3.x. It&#x27;s the visible tip of a two-year retreat — embargoed patches, delayed upstreams, attestation pressure on custom ROMs — and the thread reads it as Google closing the open era.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">What it is</span><ul><li>New APIs in Android 17, no AOSP source release</li><li>Follows embargoed patches, delayed upstreams, attestation squeeze</li></ul></li><li class="cat"><span class="cat-label">HN take</span><ul><li>Open source was strategy, not philosophy — &#x27;they regret Android being open&#x27;</li><li>Post-Epic loss, Google is rebuilding the Apple walled garden</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://grapheneos.social/@GrapheneOS/117282080803799576" target="_blank" rel="noopener">grapheneos.social</a> · Discuss: <a href="https://news.ycombinator.com/item?id=49758736" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">913 pts / 500 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>The top thread is strategy-vs-philosophy: when Android launched, open source got phone makers and carriers on board; today it&#x27;s a net negative for Google, so they&#x27;re changing it — well-run companies aren&#x27;t zealots. A minority argues keeping AOSP open is still in Google&#x27;s interest (free passionate labor, security signals, forks beat alternatives). The sharpest legal read: after losing to Epic, Google is moving toward Apple&#x27;s walled-garden model because a locked-down platform wins those lawsuits.</p>
+</div>
+</article>
+<article class="story" id="story-2" data-story="2" data-source="https://try.cloudflare.com/" data-hn="https://news.ycombinator.com/item?id=49754785" data-metric="754 pts / 294 comments" tabindex="0" aria-label="Story 2: Cloudflare Quick Tunnels">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">Cloudflare Quick Tunnels</h2>
+<p class="exec">Cloudflare shipped a fresh landing page for Quick Tunnels — the anonymous, zero-config tunnels at trycloudflare.com — pitched at the agent era (&#x27;your agent needs a URL, not a laptop&#x27;, JSON output for coding agents). HN&#x27;s top fact: the product is five years old; archive.org has the same URL from December 2021.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">What it is</span><ul><li>Zero-config anonymous tunnels, trycloudflare.com</li><li>Repitched for agents: JSON output, coding-agent framing</li></ul></li><li class="cat"><span class="cat-label">HN take</span><ul><li>Title needs a [2021] tag — product existed since 2021</li><li>Page reads as pure Claude design output (blinking badges, eyebrow caps)</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://try.cloudflare.com/" target="_blank" rel="noopener">try.cloudflare.com</a> · Discuss: <a href="https://news.ycombinator.com/item?id=49754785" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">754 pts / 294 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>The thread is half design forensics, half practical notes. The Claude-design tells get cataloged (blinking &#x27;now with JSON output&#x27; badges, small-caps eyebrows, 01-02-03 numbered lists, inconsistent skill level: impressive mobile hero, broken desktop overflow). Practical side: anonymous tunnels are great for demos but bots poke public URLs immediately, Tailscale serve is the private alternative, and the Zero Trust dashboard side remains a setup nightmare. Several commenters found the product for the first time today — useful, just not new.</p>
+</div>
+</article>
+<article class="story" id="story-3" data-story="3" data-source="https://openjev.com/" data-hn="https://news.ycombinator.com/item?id=49752041" data-metric="649 pts / 273 comments" tabindex="0" aria-label="Story 3: OpenJev">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">OpenJev</h2>
+<p class="exec">openjev.com is a live in-browser experiment: run a small model (MiniCPM5 2B, Qwen3 0.6B, Qwen3.5 4B) and compare two ways of reading a model&#x27;s choice — direct logit readout vs asking the model to write probabilities as JSON token-by-token. Real timing on your GPU, weights from HF, inputs never leave the page.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">What it is</span><ul><li>Browser-local logit readout vs token JSON showdown</li><li>Measured timings on your own GPU, no backend</li></ul></li><li class="cat"><span class="cat-label">HN take</span><ul><li>One-shot vibecoded sites: visual clutter, exam-essay energy</li><li>McMaster-Carr and Berkshire held up as canonical good sites</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://openjev.com/" target="_blank" rel="noopener">openjev.com</a> · Discuss: <a href="https://news.ycombinator.com/item?id=49752041" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">649 pts / 273 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>Today&#x27;s comments are all about the site&#x27;s vibe: one-shot AI-built sites are &#x27;complete visual headaches&#x27; — &#x27;anxious exam-essay output, anti-edited to cram every detail a grader might dock points for.&#x27; Commenters trade prompting tricks for terse output (&#x27;Expand. Clarify for human. 5 minute read max. Senior engineer audience.&#x27; / &#x27;Be terse.&#x27;). The honest counterpoints: the RL reward-shaping explanation for why outputs over-cover every angle, and one dissent — &#x27;I kind of like it.&#x27;</p>
+</div>
+</article>
+<article class="story" id="story-4" data-story="4" data-source="https://sockpuppet.org/blog/2026/09/17/how-to-write-with-an-llm/" data-hn="https://news.ycombinator.com/item?id=49747070" data-metric="530 pts / 352 comments" tabindex="0" aria-label="Story 4: How to Write with an LLM">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">How to Write with an LLM</h2>
+<p class="exec">Thomas Ptacek&#x27;s two rules for LLM-assisted writing: (1) never use a single word an LLM suggests — use it as copyeditor, not ghostwriter, because frontier models turn everything into magazine headlines; (2) forbid encouragement — models praise your first draft and you&#x27;ll double down on impulses you&#x27;d normally edit out. Write first, then run problem-finding passes.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">What it is</span><ul><li>Rule 1: no LLM-suggested words, ever; Rule 2: no encouragement</li><li>Write first, then model runs problem-finding passes</li></ul></li><li class="cat"><span class="cat-label">HN take</span><ul><li>Thread pivots to commit messages: the WHY belongs there, not a diff summary</li><li>CI-enforce semantic format + ticket; Claude&#x27;s gibberish commits prove the point</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://sockpuppet.org/blog/2026/09/17/how-to-write-with-an-llm/" target="_blank" rel="noopener">sockpuppet.org</a> · Discuss: <a href="https://news.ycombinator.com/item?id=49747070" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">530 pts / 352 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>The thread&#x27;s real topic: commit messages. Strong consensus that the message should carry what the diff can&#x27;t — the why — because a diff-derived summary is redundant. Top practical workflow: enforce semantic-commit plus ticket format in CI, and have the same agent that wrote the code lead with a paragraph of context. The funniest validation of Ptacek&#x27;s thesis: Claude&#x27;s actual commit messages (&#x27;Realigned the shape of the load-bearing ownership gate&#x27;) read exactly like the magazine-headline mush Rule One is designed to stop.</p>
+</div>
+</article>
+<article class="story" id="story-5" data-story="5" data-source="https://john.hartnup.uk/2026/06/07/ai-event-posters.html" data-hn="https://news.ycombinator.com/item?id=49764791" data-metric="468 pts / 298 comments" tabindex="0" aria-label="Story 5: AI-generated posters don&#x27;t have to be horrible">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">AI-generated posters don&#x27;t have to be horrible</h2>
+<p class="exec">A poster designer shows AI event posters can be good with discipline — constrained prompts, real variety, readable layouts — arguing the failure mode is process, not the model. The thread mostly agrees with the premise and fights about everything downstream of it.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">What it is</span><ul><li>Disciplined prompting for readable, varied AI event posters</li><li>Failure mode is process, not the model</li></ul></li><li class="cat"><span class="cat-label">HN take</span><ul><li>Average Fiverr freelancer is worse than AI; real complaint is readability</li><li>&#x27;Can you tell it&#x27;s AI&#x27; fails blind taste tests — the label drives the judgment</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://john.hartnup.uk/2026/06/07/ai-event-posters.html" target="_blank" rel="noopener">john.hartnup.uk</a> · Discuss: <a href="https://news.ycombinator.com/item?id=49764791" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">468 pts / 298 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>Two camps. Practitioners: budget designers are worse than the models, and a small local event will never afford a great human designer — disciplined AI beats no poster, and the real failure is readability (busy posters where you hunt for the info). Skeptics insist the AI &#x27;tell&#x27; is real. The sharpest point is the taste-test one: a viral thread mistook a Monet painting for AI slop, and millions of genAI images pass unremarked — commenters conclude that knowing it&#x27;s AI is often what makes people judge it as bad, not the pixels.</p>
+</div>
+</article>
+<article class="story" id="story-6" data-story="6" data-source="https://med.stanford.edu/news/all-news/2026/09/two-separate-brains.html" data-hn="https://news.ycombinator.com/item?id=49763697" data-metric="393 pts / 146 comments" tabindex="0" aria-label="Story 6: Human brain is two separate organs, Stanford Medicine-led research finds">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">Human brain is two separate organs, Stanford Medicine-led research finds</h2>
+<p class="exec">Stanford Medicine-led study: the human forebrain and hindbrain trace to fundamentally distinct embryonic progenitor lineages, specified separately early in evolution — arguably two organs that later merged. The practical payoff noted: a route to growing hindbrain cells in the lab, previously blocked.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">What it is</span><ul><li>Forebrain and hindbrain: distinct embryonic progenitor lineages</li><li>Opens lab-grown hindbrain cells; separate evolutionary histories</li></ul></li><li class="cat"><span class="cat-label">HN take</span><ul><li>Accurate headline: &#x27;distinct embryonic progenitor lineages&#x27;</li><li>Thread becomes a truth-vs-communication seminar; oversold but real finding</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://med.stanford.edu/news/all-news/2026/09/two-separate-brains.html" target="_blank" rel="noopener">med.stanford.edu</a> · Discuss: <a href="https://news.ycombinator.com/item?id=49763697" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">393 pts / 146 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>The thread is a seminar on science communication. One side: the accurate headline is the interesting result and &#x27;two organs&#x27; is marketing — but &#x27;saying the truth and communicating well are orthogonal; you can do both.&#x27; The other: nobody clicks the accurate version, and the definition of &#x27;organ&#x27; is doing real work here — distinct stem-cell pathways plus distinct evolutionary histories is exactly what organ-ness means. Mediating view: the fight itself made people interrogate what an organ is, which is the point.</p>
+</div>
+</article>
+<article class="story" id="story-7" data-story="7" data-source="https://blog.cloudflare.com/saving-100-tb-of-ram-with-math/" data-hn="https://news.ycombinator.com/item?id=49758580" data-metric="393 pts / 86 comments" tabindex="0" aria-label="Story 7: Saving another 100TB of RAM">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">Saving another 100TB of RAM</h2>
+<p class="exec">Cloudflare engineering&#x27;s latest in their optimization series: squeezing RAM with math to save another 100TB across their global fleet. At their scale, single-digit percentage gains are headline-worthy — and HN splits between nostalgia for the scarce-RAM era and ship-fast pragmatism.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">What it is</span><ul><li>Math-driven RAM optimization, 100TB fleet-wide</li><li>Continuing series: at Cloudflare scale, 1% gains are huge</li></ul></li><li class="cat"><span class="cat-label">HN take</span><ul><li>Forced-optimization era vs &#x27;let me just ship&#x27; pragmatism</li><li>RAM is expensive again because everyone&#x27;s maxing out boxes for LLMs</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://blog.cloudflare.com/saving-100-tb-of-ram-with-math/" target="_blank" rel="noopener">blog.cloudflare.com</a> · Discuss: <a href="https://news.ycombinator.com/item?id=49758580" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">393 pts / 86 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>Classic HN split: one side is happy expensive RAM has forced a new era of optimization (&#x27;a basic notepad failing on multi-core machines&#x27; is the ship-fast era&#x27;s bill coming due), the other just wanted to get product to customers (&#x27;spend more time thinking about what customers want&#x27;). The sobering datapoint: today&#x27;s RAM is expensive because everyone is maxing out machines to run LLMs. And the trade-off question the series invites — celebrating 1% gains is great at fleet scale, but in a mobile app that&#x27;s 1MB: how much complexity and bug surface is that worth?</p>
+</div>
+</article>
+<article class="story" id="story-8" data-story="8" data-source="https://www.nationalgeographic.com/animals/article/meet-the-first-new-cat-species-discovered-in-100-years" data-hn="https://news.ycombinator.com/item?id=49744704" data-metric="300 pts / 113 comments" tabindex="0" aria-label="Story 8: The first new cat species discovered in 100 years">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">The first new cat species discovered in 100 years</h2>
+<p class="exec">NatGeo: Leopardus tilcayo, the &#x27;tilcayo tiger cat&#x27; from Bolivia — declared a distinct species after genetic analysis, the first new cat species in a century. A 3–4 lb wildcat that looks enough like a housecat that one was kept in a home until the owner gave up trying to tame it.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">What it is</span><ul><li>Leopardus tilcayo: Bolivia tiger cats split from Brazil&#x27;s by genetics</li><li>3–4 lbs, housecat lookalike; locals called it tilcayo all along</li></ul></li><li class="cat"><span class="cat-label">HN take</span><ul><li>It&#x27;s a reclassification, not a never-before-seen animal</li><li>Wikipedia page up within hours; instant taming/breeding debates</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://www.nationalgeographic.com/animals/article/meet-the-first-new-cat-species-discovered-in-100-years" target="_blank" rel="noopener">www.nationalgeographic.com</a> · Discuss: <a href="https://news.ycombinator.com/item?id=49744704" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">300 pts / 113 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>The headline deflates fast: genetic analysis split Bolivia&#x27;s tiger cats from Brazil&#x27;s — locals knew the animal as tilcayo forever. But the charming detail carries the thread: one was being kept in a house because someone thought it was a pretty housecat (fed &#x27;noodles, rice, and eggs&#x27;) until it made clear it wasn&#x27;t tameable. The rest is classic HN: can it be tamed (house cats are only semi-domesticated, argues one; &#x27;the only reason my house cat hasn&#x27;t murdered me is he&#x27;s 4kg&#x27;), and Wikipedia already has a Tilcayo tiger cat page.</p>
+</div>
+</article>
+<article class="story" id="story-9" data-story="9" data-source="https://onionfutures.com/" data-hn="https://news.ycombinator.com/item?id=49763296" data-metric="248 pts / 88 comments" tabindex="0" aria-label="Story 9: San Francisco Onion Futures Company">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">San Francisco Onion Futures Company</h2>
+<p class="exec">onionfutures.com — an independent novelty/art project that actually sells and delivers onions at novelty prices ($9/onion gets questioned in-thread), riffing on the 1958 US ban on onion futures trading. The thread features people claiming to run it, plus the real UChicago/Northwestern student org campaigning to legalize onion futures.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">What it is</span><ul><li>Novelty onion delivery riffing on the 1958 Onion Futures Act</li><li>Student org &#x27;UChicago for Our Futures&#x27; campaigns for legalization</li></ul></li><li class="cat"><span class="cat-label">HN take</span><ul><li>&#x27;We are selling to willing buyers at the current fair market price&#x27;</li><li>It&#x27;s performance art — but the onions really get delivered</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://onionfutures.com/" target="_blank" rel="noopener">onionfutures.com</a> · Discuss: <a href="https://news.ycombinator.com/item?id=49763296" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">248 pts / 88 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>The best kind of HN thread: people claiming to run the site answer questions, the UChicago student org explains their onion-futures-legalization campaign (including aggressive free-onion handouts on campus), and the price debate lands exactly where you&#x27;d expect: &#x27;Are you really charging $9/onion? I get upset when Safeway charges $2/lb.&#x27; Consensus: it&#x27;s novelty art, but the onions really do get delivered — &#x27;priced to what the market can bear.&#x27;</p>
+</div>
+</article>
+<article class="story" id="story-10" data-story="10" data-source="https://laya.convaiinnovations.com/" data-hn="https://news.ycombinator.com/item?id=49765348" data-metric="217 pts / 34 comments" tabindex="0" aria-label="Story 10: Laya the open source version of Jev">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">Laya the open source version of Jev</h2>
+<p class="exec">Laya (laya.convaiinnovations.com) — an open-source version of Jev, the one-shot classifier that beat calling Gemini 2.5 Flash Lite on classification tasks: a bit faster, a bit cheaper, nice consistency. One call, multiple classifiers, no LLM in the loop.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">What it is</span><ul><li>Open-source one-shot classifier: faster/cheaper than Flash Lite</li><li>One call, multiple classifiers; pre-LLM NLP playbook</li></ul></li><li class="cat"><span class="cat-label">HN take</span><ul><li>&#x27;Just BERT with more data&#x27; vs LLMs generalize better on messy inputs</li><li>Typed-vs-untyped analogy: LLM is the one-off script, Jev the long-term typed solution</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://laya.convaiinnovations.com/" target="_blank" rel="noopener">laya.convaiinnovations.com</a> · Discuss: <a href="https://news.ycombinator.com/item?id=49765348" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">217 pts / 34 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>The thread relitigates the oldest ML argument of the LLM era. One side (ex-NLP engineers): using LLMs for everything is lazy and wasteful — Jev is &#x27;just BERT with more data,&#x27; a wake-up call to go back to basics; the cheapest LLM request is no request. The other: LLMs are less fragile on out-of-distribution inputs, and off-the-shelf is cheaper once you count training, data prep, and labeling time. The typed-vs-untyped-languages analogy lands best: the LLM is the one-off Python script, the specialized classifier is the long-term typed solution.</p>
+</div>
+</article>
+    </ol>
+
+    <div class="shortcut-bar" aria-label="Keyboard shortcuts">
+      <span><kbd>J</kbd> next story</span>
+      <span><kbd>K</kbd> previous story</span>
+      <span><kbd>T</kbd> theme</span>
+    </div>
+
+    <footer class="page-footer">
+      <div class="footer-links"><a href="../">← Daily archive</a><a href="https://tk3369.github.io/hn-daily/" target="_blank" rel="noopener">Published archive ↗</a></div>
+      <span>Saturday 2026-09-19 · 10 stories</span>
+    </footer>
+  </main>
+  <div class="toast" role="status" aria-live="polite"></div>
+  <script>
+(() => {
+  const root = document.documentElement;
+  const toggle = document.getElementById('theme-toggle');
+  const entries = [...document.querySelectorAll('[data-story]')];
+  function storedTheme() { try { const t = localStorage.getItem('hn-daily-theme'); return t === 'dark' || t === 'light' ? t : null; } catch (_) { return null; } }
+  function preferredTheme() { return matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'; }
+  function currentTheme() { const a = root.dataset.theme; if (a === 'dark' || a === 'light') return a; return storedTheme() || preferredTheme(); }
+  function setTheme(theme) { const next = theme === 'dark' ? 'dark' : 'light'; const opposite = next === 'dark' ? 'Light' : 'Dark';
+    if (root.dataset.theme !== next) root.dataset.theme = next;
+    toggle.querySelector('.theme-text').textContent = opposite;
+    toggle.setAttribute('aria-label', `Switch to ${opposite} theme (T)`); toggle.title = `Switch to ${opposite} theme (T)`;
+    try { localStorage.setItem('hn-daily-theme', next); } catch (_) {} }
+  function flipTheme() { setTheme(currentTheme() === 'dark' ? 'light' : 'dark'); }
+  setTheme(storedTheme() || preferredTheme());
+  toggle.addEventListener('click', flipTheme);
+  const toast = document.querySelector('.toast'); let toastTimer;
+  function showToast(msg) { toast.textContent = msg; toast.classList.add('show'); clearTimeout(toastTimer); toastTimer = setTimeout(() => toast.classList.remove('show'), 1800); }
+  document.querySelectorAll('.copy-button').forEach((button) => {
+    button.addEventListener('click', async () => {
+      const story = button.closest('.story');
+      const n = story.dataset.story;
+      const tagline = story.querySelector('.tagline').textContent.trim();
+      const execSum = story.querySelector('.exec').textContent.trim();
+      const bullets = [...story.querySelectorAll('.cat-lists .cat')].map(li => {
+        const label = li.querySelector('.cat-label').textContent.trim();
+        const pts = [...li.querySelectorAll('ul li')].map(p => '  \u2022 ' + p.textContent.trim()).join('\n');
+        return '- ' + label + ':\n' + pts;
+      }).join('\n');
+      const link = 'https://tk3369.github.io/hn-daily/2026-09-19/#story-' + n;
+      const text = n + '. ' + tagline + '\n' + execSum + '\n' + bullets + '\n' + link;
+      try { await navigator.clipboard.writeText(text); button.textContent = 'Copied'; showToast('Story ' + n + ' copied for Threads'); setTimeout(() => { button.textContent = 'Copy for Threads'; }, 1600); }
+      catch (_) { showToast('Copy was blocked by this browser'); }
+    });
+  });
+  document.addEventListener('keydown', (event) => {
+    if (event.metaKey || event.ctrlKey || event.altKey || event.shiftKey) return;
+    const tag = event.target.tagName;
+    if (tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT') return;
+    const key = event.key.toLowerCase();
+    if (key === 't') { event.preventDefault(); flipTheme(); }
+    else if ((key === 'j' || key === 'k') && entries.length) {
+      event.preventDefault();
+      const active = entries.indexOf(document.activeElement);
+      const delta = key === 'j' ? 1 : -1;
+      const next = active < 0 ? (key === 'j' ? 0 : entries.length - 1) : Math.max(0, Math.min(entries.length - 1, active + 1 * delta));
+      entries[next].focus();
+    }
+  });
+})();
+  </script>
+</body>
+</html>
