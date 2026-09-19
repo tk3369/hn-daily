@@ -224,8 +224,10 @@ kbd { display:inline-grid; place-items:center; min-width:22px; height:22px; marg
         const pts = [...li.querySelectorAll('ul li')].map(p => '  \u2022 ' + p.textContent.trim()).join('\n');
         return '- ' + label + ':\n' + pts;
       }).join('\n');
-      const link = 'https://tk3369.github.io/hn-daily/2026-09-19/#story-' + n;
-      const text = n + '. ' + tagline + '\n' + execSum + '\n' + bullets + '\n' + link;
+      const sourceUrl = story.dataset.source;
+      const hnUrl = story.dataset.hn;
+      const metrics = story.dataset.metric;
+      const text = n + '. ' + tagline + '\n\n' + execSum + '\n' + bullets + '\n\nSource: ' + sourceUrl + '\nHN: ' + hnUrl + '\n' + metrics;
       try { await navigator.clipboard.writeText(text); button.textContent = 'Copied'; showToast('Story ' + n + ' copied for Threads'); setTimeout(() => { button.textContent = 'Copy for Threads'; }, 1600); }
       catch (_) { showToast('Copy was blocked by this browser'); }
     });
