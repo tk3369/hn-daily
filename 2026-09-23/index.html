@@ -1,0 +1,254 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="color-scheme" content="light dark" />
+  <link rel="icon" href="data:," />
+  <title>HN Daily — Wednesday 2026-09-23</title>
+  <style>
+:root { --page:#f1eadb; --paper:#fffaf0; --ink:#20201c; --muted:#6f695f; --hairline:#d9cebc; --accent:#ff5a1f; --comment:#f6efe3; --shadow:0 2px 0 rgba(57,45,25,.08),0 14px 36px rgba(57,45,25,.06); --serif:Georgia,"Times New Roman",serif; --sans:ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; --mono:"SFMono-Regular",Consolas,"Liberation Mono",monospace; }
+html[data-theme="dark"] { --page:#111312; --paper:#191c1a; --ink:#f1eee6; --muted:#aba69b; --hairline:#393b36; --accent:#ff7139; --comment:#222520; --shadow:0 2px 0 rgba(0,0,0,.22),0 18px 42px rgba(0,0,0,.22); }
+* { box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body { margin:0; min-width:280px; color:var(--ink); background:var(--page); font-family:var(--sans); line-height:1.55; -webkit-font-smoothing:antialiased; }
+a { color:inherit; text-underline-offset:3px; text-decoration-thickness:1px; }
+a:hover { color:var(--accent); }
+button,a { -webkit-tap-highlight-color:transparent; }
+button { font:inherit; }
+a:focus-visible,button:focus-visible { outline:3px solid var(--accent); outline-offset:3px; }
+.page { width:min(1080px,calc(100% - 36px)); margin:0 auto; padding:28px 0 72px; }
+.issue-header { display:grid; grid-template-columns:1fr auto; gap:24px; align-items:end; padding:8px 0 26px; border-bottom:3px solid var(--ink); }
+.edition { margin:0 0 9px; color:var(--accent); font:700 12px/1.3 var(--mono); letter-spacing:.09em; text-transform:uppercase; }
+.archive-nav { display:flex; flex-wrap:wrap; gap:8px 20px; margin-bottom:16px; font:700 12px/1 var(--mono); }
+.archive-nav a { min-height:36px; display:inline-flex; align-items:center; color:var(--muted); }
+.archive-nav a:hover { color:var(--accent); }
+h1 { max-width:820px; margin:0; font:700 clamp(34px,5.5vw,62px)/.98 var(--serif); letter-spacing:-.038em; }
+.deck { max-width:730px; margin:17px 0 0; color:var(--muted); font:17px/1.55 var(--sans); }
+.theme-toggle { align-self:start; min-width:86px; min-height:40px; padding:9px 13px; border:1px solid var(--hairline); border-radius:4px; color:var(--ink); background:var(--paper); cursor:pointer; font:700 12px/1 var(--mono); display:inline-flex; align-items:center; gap:8px; }
+.theme-toggle:hover { border-color:var(--accent); color:var(--accent); }
+.theme-dot { width:10px; height:10px; border-radius:50%; background:var(--accent); display:inline-block; flex-shrink:0; }
+.theme-text { line-height:1; }
+.story-list { display:grid; gap:20px; list-style:none; margin:26px 0 0; padding:0; counter-reset:story; }
+.story { counter-increment:story; display:grid; grid-template-columns:72px minmax(0,1fr); gap:26px; padding:26px 30px 28px; background:var(--paper); border-top:4px solid var(--ink); box-shadow:var(--shadow); scroll-margin-top:24px; }
+.story-number { color:var(--accent); font:900 22px/1 var(--mono); letter-spacing:-.04em; padding-top:6px; }
+.story-number::before { content:counter(story,decimal-leading-zero); }
+.tagline { margin:0; max-width:840px; font:700 clamp(24px,3vw,36px)/1.1 var(--serif); letter-spacing:-.028em; }
+.exec { margin:14px 0 0; max-width:840px; font:17px/1.58 var(--sans); }
+.cat-lists { margin:14px 0 0; padding:0; list-style:none; display:grid; gap:10px; max-width:840px; }
+.cat-lists li.cat { font:15px/1.6 var(--sans); }
+.cat-lists .cat-label { font:700 12px/1.6 var(--mono); letter-spacing:.06em; text-transform:uppercase; color:var(--accent); }
+.cat-lists ul { margin:4px 0 0; padding-left:20px; }
+.cat-lists ul li { margin:3px 0; }
+.meta-line { margin:16px 0 0; color:var(--muted); font:700 12px/1.9 var(--mono); overflow-wrap:anywhere; }
+.meta-line a { color:var(--ink); font-weight:800; }
+.meta-line .metrics { color:var(--ink); white-space:nowrap; }
+.story-bar { display:flex; align-items:flex-start; gap:14px; margin-top:4px; }
+.copy-button { flex:0 0 auto; align-self:flex-start; min-height:36px; padding:9px 12px; border:1px solid var(--hairline); border-radius:4px; background:var(--paper); color:var(--ink); cursor:pointer; font:700 12px/1 var(--mono); }
+.copy-button:hover { border-color:var(--accent); color:var(--accent); }
+.hn-comments { margin:18px 0 0; padding:14px 18px; background:var(--comment); border:1px solid var(--hairline); font:15px/1.62 var(--serif); color:var(--ink); }
+.hn-comments strong { font:700 12px/1.6 var(--mono); color:var(--accent); display:block; margin-bottom:6px; }
+.page-footer { display:flex; justify-content:space-between; flex-wrap:wrap; gap:14px; margin-top:64px; padding-top:12px; border-top:1px solid var(--hairline); color:var(--muted); font:12px/1.6 var(--mono); }
+.footer-links { display:flex; flex-wrap:wrap; gap:8px 20px; }
+.footer-links a { min-height:36px; display:inline-flex; align-items:center; color:var(--ink); font-weight:800; }
+.footer-links a:hover { color:var(--accent); }
+.shortcut-bar { display:flex; flex-wrap:wrap; gap:18px; margin-top:28px; color:var(--muted); font:11px/1.5 var(--mono); }
+kbd { display:inline-grid; place-items:center; min-width:22px; height:22px; margin-right:6px; padding:0 6px; border:1px solid var(--hairline); border-bottom-width:2px; border-radius:3px; background:var(--comment); color:var(--ink); font:inherit; font-weight:700; }
+.toast { position:fixed; right:max(18px,env(safe-area-inset-right)); bottom:max(18px,env(safe-area-inset-bottom)); z-index:10; padding:11px 14px; color:var(--paper); background:var(--ink); border:1px solid var(--ink); font:700 12px/1 var(--mono); opacity:0; transform:translateY(8px); pointer-events:none; transition:opacity 160ms ease,transform 160ms ease; }
+.toast.show { opacity:1; transform:translateY(0); }
+@media (max-width:760px) {
+  .page { width:min(100% - 22px,1080px); padding-top:16px; }
+  .issue-header { grid-template-columns:1fr auto; gap:12px; padding-bottom:20px; }
+  h1 { font-size:clamp(34px,10vw,48px); }
+  .deck { grid-column:1 / -1; margin-top:3px; font-size:15px; }
+  .theme-toggle { grid-column:2; grid-row:1; min-width:72px; }
+  .story { grid-template-columns:44px minmax(0,1fr); gap:14px; padding:20px 18px 22px; }
+  .story-number { font-size:16px; padding-top:4px; }
+  .story-bar { flex-direction:column; align-items:stretch; }
+  .copy-button { align-self:flex-start; }
+  .page-footer { display:block; }
+}
+@media (max-width:420px) {
+  .page { width:calc(100% - 16px); }
+  .story { grid-template-columns:1fr; gap:8px; padding:20px 16px 22px; }
+  .story-number { padding-top:0; }
+  .copy-button { width:100%; }
+}
+@media (prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } *,*::before,*::after { transition:none !important; } }
+@media print { :root { --page:#fff;--paper:#fff;--ink:#000;--muted:#444;--hairline:#bbb;--comment:#f5f5f5;--shadow:none; } .page{width:100%;padding:0}.theme-toggle,.copy-button,.toast,.shortcut-bar{display:none}.story{break-inside:avoid;box-shadow:none} }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="issue-header">
+      <div>
+        <nav class="archive-nav" aria-label="HN Daily archive links"><a href="../">← Archive</a><a href="https://tk3369.github.io/hn-daily/" target="_blank" rel="noopener">Published archive ↗</a></nav>
+        <p class="edition"><time datetime="2026-09-23">2026-09-23</time> · Daily brief · Pacific time</p>
+        <h1>HN Daily</h1>
+        <p class="deck">Direct, low-fluff top 10 from Hacker News, daily at 7am PT — hottest by points</p>
+      </div>
+      <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch color theme" title="Toggle theme (T)"><span class="theme-dot" aria-hidden="true"></span><span class="theme-text">Dark</span></button>
+    </header>
+
+    <ol class="story-list" aria-label="Top 10 Hacker News stories">
+<article class="story" id="story-1" data-story="1" data-source="https://www.anthropic.com/claude-opus-5-5" data-hn="https://news.ycombinator.com/item?id=49803892" data-metric="1645 pts / 1003 comments" tabindex="0" aria-label="Story 1: Claude Opus 5.5: Fable 5.1-level work at 40% less cost than Opus 5">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">Claude Opus 5.5: Fable 5.1-level work at 40% less cost than Opus 5</h2>
+<p class="exec">Anthropic&#x27;s first Claude 5.5 model performs at Claude Fable 5.1&#x27;s level on most work while costing 40% less to run than Opus 5: $4/$20 per 1M input/output tokens, $0.20 cache reads (60% cheaper), 30%+ faster output. Claims: a 680k-line code migration in under a day, Terminal-Bench 4.0 at 66.4% vs GPT-6 Astra&#x27;s 57.9%, best scores to date on its automated behavioral audit, and a Gray Swan prompt-injection benchmark tie for lowest attack success rate. Pre-release tested by Frontier Design and METR. Sonnet 5.5 and Haiku 5.5 follow in weeks.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">What shipped</span><ul><li>Fable 5.1-level performance for 40% less than Opus 5 on typical workloads</li><li>Coding: HAProxy C→Rust rewrite in 9.5h vs 12h for Fable 5.1 at 51% lower cost</li><li>Communication rewrite: &#x27;puts the most important information up front&#x27;; Pro/Max/Team usage limits increased</li></ul></li><li class="cat"><span class="cat-label">HN take</span><ul><li>Top thread is the &#x27;pacing the frontier&#x27; language — called smarmy, meaningless, and contradicted by the release itself</li><li>Defenders: it means &#x27;slower than maximal,&#x27; and Amodei&#x27;s linked essay has the substance</li><li>Benchmark numbers quoted skeptically; alignment claims unverifiable from the outside</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://www.anthropic.com/claude-opus-5-5" target="_blank" rel="noopener">anthropic.com</a> · Discuss: <a href="https://news.ycombinator.com/item?id=49803892" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">1645 pts / 1003 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>The top comments are not about the model at all — they&#x27;re about Anthropic&#x27;s &#x27;pacing the frontier&#x27; language. The leading critique: the very first line of the release reminds readers of last week&#x27;s pacing call, and everything after it demonstrates with specific numbers how they are not pacing. &#x27;Pacing the frontier&#x27; gets called smarmy, AI-generated-sounding, and, worse, unverifiable by design — &#x27;Dario all but said we wouldn&#x27;t notice if they were pacing or not.&#x27; The counter-thread argues forums should engage with substance over word choice, and points out that &#x27;pacing&#x27; only implies relative restraint, with Amodei&#x27;s linked essay providing the real context. Substantive discussion elsewhere: one tester burned a 128k budget without an answer is saved for the Artificial Analysis thread; security hardening questions go unanswered; and there&#x27;s genuine interest in the external evaluation by METR and Frontier Design, though independence concerns surface here too.</p>
+</div>
+</article>
+<article class="story" id="story-2" data-story="2" data-source="https://openai.com/index/introducing-gpt-6-sol-and-luna/" data-hn="https://news.ycombinator.com/item?id=49805509" data-metric="1634 pts / 784 comments" tabindex="0" aria-label="Story 2: GPT-6 Sol and Luna: the cost-efficiency tier of the GPT-6 family">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">GPT-6 Sol and Luna: the cost-efficiency tier of the GPT-6 family</h2>
+<p class="exec">OpenAI expands GPT-6 with Sol (mid) and Luna (small) — API pricing cut 50% vs GPT-5.6 promo: Sol $2/$10, Luna $0.10/$0.50 per 1M in/out tokens. Sol at xhigh effort beats Claude Opus 5 at max on AutomationBench (33.2% vs 26.9%) at 9% of the cost per task; Luna at max scores 66.6% on DeepSWE v1.1, 93–96% cheaper per task than Opus 5/Fable 5. Improved prompt caching (90% discount on cached reads), a caching diagnostics dashboard, and effort-adjustment without breaking cache. Available in ChatGPT Work and Codex now; ChatGPT rollout through the day.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">What shipped</span><ul><li>50% price cuts: Sol $2/$10, Luna $0.10/$0.50 per 1M tokens vs GPT-5.6 promo pricing</li><li>GPT-6 Sol xhigh beats Opus 5 max on AutomationBench at 9% of cost per task</li><li>Caching: 90% off cached input reads, dashboard + diagnostics, breakpoint control</li></ul></li><li class="cat"><span class="cat-label">HN take</span><ul><li>Luna at pareto: &#x27;insane value from a closed source model&#x27; — many see no reason to use alternatives on pure cost</li><li>Cost reality-checks: DeepSeek V4 Flash burns more tokens, so token price isn&#x27;t total price; Artificial Analysis found Luna cheaper overall</li><li>Pelican-render benchmarks from Artificial Analysis draw the memes</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://openai.com/index/introducing-gpt-6-sol-and-luna/" target="_blank" rel="noopener">openai.com</a> · Discuss: <a href="https://news.ycombinator.com/item?id=49805509" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">1634 pts / 784 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>The thread is dominated by the economics of Luna. Top sentiment: &#x27;6-luna is at the pareto for most of the tasks&#x27; — insane value from a closed model, already the most-used model on OpenRouter this month, making many competitors look pointless on cost alone (privacy and sovereignty caveats acknowledged). The cost wonks push back with workload math: one commenter computes their 6,500M cached-read coding month at ~$184 on Luna pricing vs ~$40 covered by a $10 subscription elsewhere; the reply is that you&#x27;re comparing token prices, not tokens used — Artificial Analysis found Luna significantly cheaper than DeepSeek V4 Flash once total tokens are counted. The &#x27;I don&#x27;t trust benchmarks, I trust what a model does with MY code&#x27; camp runs real tasks (MiMo 2.6 explained Karpathy&#x27;s micrograd, produced a working XOR MLP and an unbeaten tic-tac-toe model for $0.019). The lighter side: Simon Willison&#x27;s pelican SVG renders at every effort tier, ranked by taste.</p>
+</div>
+</article>
+<article class="story" id="story-3" data-story="3" data-source="https://www.bloomberg.com/graphics/2026-iran-school-attack/" data-hn="https://news.ycombinator.com/item?id=49806430" data-metric="751 pts / 378 comments" tabindex="0" aria-label="Story 3: Pentagon says overreliance on AI contributed to missile strike on Iran school — the probe behind it">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">Pentagon says overreliance on AI contributed to missile strike on Iran school — the probe behind it</h2>
+<p class="exec">Bloomberg cites officials from a still-unreleased Pentagon review: the Feb 28 Tomahawk strike on Shajarah Tayyebeh Elementary School in Minab — 150+ dead, at least 123 children — was a &#x27;cascade of preventable failures.&#x27; CENTCOM staff over-relied on Palantir&#x27;s Maven Smart System, expecting it to flag stale intelligence; the site was cataloged as an IRGC naval facility on decade-old satellite imagery, though it had long since been a school with an active website and social media. Civilian-harm mitigation staffing at DoD had shrunk ~90% (CENTCOM: 10→1); no one reviewed Minab before launch. Palantir says it&#x27;s &#x27;not responsible for the underlying data.&#x27;</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The findings</span><ul><li>Two Tomahawks on opening day of the Iran war; some personnel knew within hours the US hit the school</li><li>Outdated records: the site was converted to a school by ~2017; an analyst&#x27;s 2019 correction sat in a disconnected system</li><li>Target-list work that took hours condensed to minutes inside Maven</li></ul></li><li class="cat"><span class="cat-label">HN take</span><ul><li>AI as scapegoat: the intelligence was stale before any model touched it — &#x27;the failure went beyond mere negligence&#x27;</li><li>Practitioners: targeting verification used to require three independent eyes-on; automation replaced the people, not the judgment</li><li>Moral thread: &#x27;if you work for the US military, your work will be used against innocent civilians&#x27; vs &#x27;engage, vote, change it from inside&#x27;</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://www.bloomberg.com/graphics/2026-iran-school-attack/" target="_blank" rel="noopener">bloomberg.com</a> · Discuss: <a href="https://news.ycombinator.com/item?id=49806430" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">751 pts / 378 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>The consensus is that AI is being set up as the scapegoat. The highest-ranked comments argue the report&#x27;s own details point elsewhere: the intelligence that the site was no longer military &#x27;never entered the target database,&#x27; and the team tasked with re-verification was gone. One former JTAC describes the old three-independent-eyes-on standard for targeting and contrasts it with Maven compressing hours of analysis into minutes. A commenter who claims to have worked on the anomaly-detection predecessor system describes what it actually was (WAMI motion-imagery flagging &#x27;weird behaviors,&#x27; e.g. a car doing donuts). The thread turns moral: &#x27;If you work for the US military, you are not working for Defence. Your work will be used against innocent civilians in far away lands&#x27; — countered by &#x27;the answer is not to avoid engaging with a corrupt institution. US is a democracy: vote, be active politically.&#x27; One bleak parallel is drawn to the 2021 Kabul drone strike that killed an aid worker&#x27;s family.</p>
+</div>
+</article>
+<article class="story" id="story-4" data-story="4" data-source="https://www.404media.co/we-hacked-the-fbi-hackers-say-they-have-data-on-all-fbi-employees/" data-hn="https://news.ycombinator.com/item?id=49805278" data-metric="697 pts / 502 comments" tabindex="0" aria-label="Story 4: &#x27;We hacked the FBI:&#x27; Hackers say they have data on all FBI employees — ShinyHunters&#x27; claim">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">&#x27;We hacked the FBI:&#x27; Hackers say they have data on all FBI employees — ShinyHunters&#x27; claim</h2>
+<p class="exec">ShinyHunters tells 404 Media it breached multiple FBI-related services, stealing data &#x27;on all FBI employees and applicants&#x27; — agents&#x27; names, home addresses, phone numbers, spouse info. The counterintelligence implications are severe: foreign agencies get a map of how a top US law enforcement agency operates, and prior actors in the same ecosystem have used hacked phone records to track, intimidate, and harass the FBI agents investigating them. Agents&#x27; spouses face direct safety threats.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">What is claimed</span><ul><li>Breach of multiple FBI-related services; data on all employees and applicants</li><li>Includes names, home addresses, phone numbers, spouse information</li><li>Unverified beyond the group&#x27;s claims — 404 Media is seeking corroboration</li></ul></li><li class="cat"><span class="cat-label">HN take</span><ul><li>&#x27;No one is capable of keeping a large database safe&#x27; — assume anything networked is semi-public</li><li>The seL4 counterpoint: provably secure software exists, it&#x27;s just niche and expensive — and most teams ship &#x27;if it looks like it works&#x27;</li><li>Practical rule: never put anything on someone else&#x27;s internet-connected computer that would be devastating if public</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://www.404media.co/we-hacked-the-fbi-hackers-say-they-have-data-on-all-fbi-employees/" target="_blank" rel="noopener">404media.co</a> · Discuss: <a href="https://news.ycombinator.com/item?id=49805278" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">697 pts / 502 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>The thread opens with defeatism and gets interesting when challenged. &#x27;It is unthinkable to me that anyone believes there is such a thing as computer security after so many years of nonstop hacks and leaks&#x27; meets the seL4 rebuttal: &#x27;SeL4&#x27;s security and reliability proofs still hold in the world of LLMs. The problem is that most software isn&#x27;t written on that firm foundation&#x27; — it&#x27;s people with an &#x27;if it looks like it works, ship it&#x27; philosophy. The economics thread follows: secure software is hard and therefore expensive, not expensive because it&#x27;s niche; you need real expertise, and management incentives point the other way. Practitioners in secure systems say the incentives shock them. The practical consensus lands on compartmentalization: &#x27;Do not hook any computer with access to anything that would be devastating if it was made public to the Internet.&#x27; The 2015 OPM breach (22.1M government employees, China) is invoked as precedent.</p>
+</div>
+</article>
+<article class="story" id="story-5" data-story="5" data-source="https://www.cryptocellar.org/bgac/the-mvueh-break.html" data-hn="https://news.ycombinator.com/item?id=49801324" data-metric="696 pts / 408 comments" tabindex="0" aria-label="Story 5: OpenAI GPT–6 Astra breaks Enigma message that has resisted solution since 2005 — broken in two days">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">OpenAI GPT–6 Astra breaks Enigma message that has resisted solution since 2005 — broken in two days</h2>
+<p class="exec">GPT-6 Astra broke the MVUEH message — a German Army Enigma intercept from July 10, 1941, 82 letters — that had resisted solution since 2005. Carter Leffer merely pointed it at the Crypto Cellar&#x27;s unbroken-messages page. It picked Nr. 172 as most promising, linked it to the broken Nr. 173 (SIPVX), used the repeated &#x27;ROSENOW ROSENOW&#x27; as a crib, wrote its own Python/C++ Enigma simulator and Bombe, and found the key — completely different from the day&#x27;s other keys, even in wheel order. It also traced archive leads to German Bundesarchiv catalogue records. Validator Frode Weierud: &#x27;what it has achieved in two days would take a human researcher weeks or even months.&#x27;</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The break</span><ul><li>Ciphertext transcription errors and a rare left-hand-wheel turnover at letter 72 had blocked humans since 2005</li><li>Plaintext was nearly identical to Nr. 173&#x27;s; &#x27;ROSENOW ROSENOW&#x27; = municipality + district, like &#x27;New York, New York&#x27;</li><li>Astra did it end-to-end: message selection, crib strategy, tooling, archive research</li></ul></li><li class="cat"><span class="cat-label">HN take</span><ul><li>Curiosity about the crib — answered: longer cribs are stronger, and Enigma can&#x27;t map a letter to itself so cribs slide into place</li><li>Awe at the autonomy: behaving &#x27;like a very professional cryptanalyst and archive researcher&#x27;</li><li>Wanted: the full execution logs to see exactly how it did it</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://www.cryptocellar.org/bgac/the-mvueh-break.html" target="_blank" rel="noopener">cryptocellar.org</a> · Discuss: <a href="https://news.ycombinator.com/item?id=49801324" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">696 pts / 408 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>The thread is a genuinely technical cryptanalysis seminar. The most-liked question is exactly the right one: why would Astra think to use &#x27;ROSENOW ROSENOW&#x27; as a crib — wouldn&#x27;t a single ROSENOW do? The answers land: a longer crib is strictly better (Enigma never maps a letter to itself, so you slide the crib along until no letters line up), and Rosenow is both a municipality and a district name — &#x27;Like New York, New York&#x27; — so the repetition is natural. One commenter posts the actual decrypted message (&#x27;Please specify the route of march. I am in Rosenow, Rosenow. Immediate reply by radio. Waschbusch.&#x27;) and the learned community fills in the mechanics. The meta-thread is about agency: Astra didn&#x27;t just decrypt, it did archive research, found the Bundesarchiv note, inspected catalogue records — &#x27;behaving like a very professional cryptanalyst.&#x27; The prevailing sentiment is awe tempered with a desire to audit the logs.</p>
+</div>
+</article>
+<article class="story" id="story-6" data-story="6" data-source="https://lemire.me/blog/2026/09/18/how-did-amd-ryzen-get-50-faster-in-two-years/" data-hn="https://news.ycombinator.com/item?id=49758709" data-metric="399 pts / 164 comments" tabindex="0" aria-label="Story 6: How did AMD Ryzen get 50% faster in two years? Wider cores, not faster clocks">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">How did AMD Ryzen get 50% faster in two years? Wider cores, not faster clocks</h2>
+<p class="exec">Daniel Lemire compares Ryzen 7 5800X3D (Zen 3, 2022) → 9800X3D (Zen 5, 2024): +47% single-core, +58% multi-core on Geekbench 6. Clocks contributed only 15% (4.5→5.2 GHz). The rest came from transistors up ~50% (11B→16B), almost all in the core: dispatch width 6→8, integer ALUs 4→6, reorder buffer 256→448, L2 512KB→1MB per core, L1D 32KB→48KB — and Zen 5 as the first full-AVX512 desktop core (four 512-bit SIMD units, two 512-bit loads/cycle). Conclusion: CPUs get wider, not faster. Next: Zen 6 and a 256-core Epyc &#x27;Venice&#x27; with 1GB of L3.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The numbers</span><ul><li>5800X3D→9800X3D single-core: 2,016→2,969; multi-core: 11,832→18,751</li><li>Max boost only rose 15%; transistor count rose ~50%, mostly in the core</li><li>Zen 5: first desktop core with real 512-bit SIMD — &#x27;normal compiler devs&#x27; finally have it</li></ul></li><li class="cat"><span class="cat-label">HN take</span><ul><li>War stories: 6.0 IPC/core sustained on Zen 5 at 5.1 GHz with &gt;99.8% branch prediction</li><li>How-to: perf counters (instructions vs cycles), minimizing branches, compiler vs hand-tuning</li><li>Anticipation for Zen 6 desktop cores — &#x27;it could be wild&#x27;</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://lemire.me/blog/2026/09/18/how-did-amd-ryzen-get-50-faster-in-two-years/" target="_blank" rel="noopener">lemire.me</a> · Discuss: <a href="https://news.ycombinator.com/item?id=49758709" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">399 pts / 164 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>The thread splits between practitioners and students, and both get value. One commenter reports 6.0 IPC/core sustained on Zen 5 at 5.1 GHz — retiring over a trillion instructions every 3 seconds — with &gt;99.8% branch prediction and &gt;99.99% L2 hit rates: &#x27;Zen5 is incredible when you&#x27;re able to make the most of it.&#x27; That sparks the beginners&#x27; thread: what even is IPC? The patient answers explain hardware performance counters (instructions-completed vs cycle registers), and the optimization craft: branch minimization, &#x27;if&#x27; statements as the enemy, turning branches into arithmetic — with the counterpoint to always ask what the compiler already does for you. A quiet consensus: Zen 5 is &#x27;really the first CPU of the avx512 era&#x27; because it&#x27;s the first time ordinary compiler developers can play with 512-bit units. Excitement for Zen 6 is the coda.</p>
+</div>
+</article>
+<article class="story" id="story-7" data-story="7" data-source="https://foxscript.org/" data-hn="https://news.ycombinator.com/item?id=49808023" data-metric="395 pts / 214 comments" tabindex="0" aria-label="Story 7: Microsoft killed FoxPro in 2007. Anyway, here&#x27;s FoxPro revived — FoxDev Studio rebuilds it 64-bit">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">Microsoft killed FoxPro in 2007. Anyway, here&#x27;s FoxPro revived — FoxDev Studio rebuilds it 64-bit</h2>
+<p class="exec">Microsoft killed FoxPro in 2007. FoxDev Studio is the resurrection: opens your existing projects, forms, class libraries, menus, reports, and .dbf tables in place — no migration step. 64-bit throughout, so the 2GB table ceiling (signed 32-bit offsets in file handling) is gone; the same files run into the hundreds of GB — a one-way door, since &gt;2GB tables won&#x27;t reopen in VFP. The VM is written in Rust, compiled to WebAssembly; behavior is settled by asking Visual FoxPro 9 itself (1,534 of 1,722 language-reference elements test-verified against it). Adds FoxScript: lambdas plus HTTP routing. Old 32-bit .fll libraries load through a helper process. Nightlies on GitHub, unsigned.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The build</span><ul><li>Compiler + bytecode VM in Rust→Wasm; editor lints through the actual runtime compiler</li><li>32-bit bridge: SET LIBRARY TO spawns a helper process for old .fll files; DECLARE ... DLL reaches modern libraries in-process</li><li>Fiber-based VM: MESSAGEBOX() stops your program without freezing the window, like FoxPro always did</li></ul></li><li class="cat"><span class="cat-label">HN take</span><ul><li>FoxPro still runs multi-billion-dollar niche industries in 2026 — &#x27;if it is not broke, don&#x27;t fix it&#x27;</li><li>VBX→OCX migration war stories: vendors who folded and took 90-form applications with them</li><li>The vendor-lock-in thread: &#x27;improvements&#x27; that dumped FoxPro for CSV files</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://foxscript.org/" target="_blank" rel="noopener">foxscript.org</a> · Discuss: <a href="https://news.ycombinator.com/item?id=49808023" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">395 pts / 214 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>The nostalgia is backed by real money. One commenter reports a $400M+ industry that still runs its standard on Visual FoxPro in 2026 — &#x27;I just called and asked&#x27; — and the broader niche is estimated at $2B+: &#x27;If it is not broke, don&#x27;t fix it.&#x27; The veteran thread is a museum of tooling history: Foxbase/FoxPro for DOS → Windows migrations, the VBX→OCX transition nightmare where vendors folded and took 90+ complex forms with them, and the life-insurance actuarial software that moved from FoxPro to CSV files and called it an improvement (&#x27;I don&#x27;t think anybody was convinced by that&#x27;). The philosophical thread asks whether standardizing everything was a mistake — in the AI era, is learning to code at all still worth it? The consensus: FoxPro was &#x27;simple&#x27; in the way that made one person dangerous, and the tooling world never quite replaced it.</p>
+</div>
+</article>
+<article class="story" id="story-8" data-story="8" data-source="https://www.nobodywho.ai/posts/jev-in-25-lines/" data-hn="https://news.ycombinator.com/item?id=49812769" data-metric="368 pts / 122 comments" tabindex="0" aria-label="Story 8: Jev in 25 lines of Python: logprob classification without the hype">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">Jev in 25 lines of Python: logprob classification without the hype</h2>
+<p class="exec">NobodyWho parodies the Jev hype — &#x27;Everyone and their mom is talking about Jev&#x27; — by reimplementing the core in 25 lines: load a 0.6B Qwen GGUF locally via llama-cpp, present a multiple-choice email prompt (Legitimate / Spam / Phishing), read the logits for the label tokens, softmax into probabilities. No API, no synthetic data, no RL. The real Jev (typesafe.ai) trains models with RLCD — Reinforcement Learning for Calibrated Decisions — for calibrated probabilities, which raw logprobs are not. The post is a parody; it links OpenJev implementations for the serious version.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The trick</span><ul><li>tokenize the labels, grab their logits, logaddexp-softmax → probabilities</li><li>Qwen3-0.6B-Q8_0.gguf classifies the test email &#x27;Phishing&#x27; at 0.885</li><li>Fast, local, no data leaves the machine — the point NobodyWho actually cares about</li></ul></li><li class="cat"><span class="cat-label">HN take</span><ul><li>Pulling logprobs from chat models is &#x27;icky&#x27; — chat models are trained to write prose; use structured outputs instead</li><li>Calibration check: the choice tokens must sum to ≥95% of the distribution or the model isn&#x27;t following instructions</li><li>LLMs show position bias toward &#x27;A&#x27; — disputed whether it&#x27;s real bias or prose-training leakage</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://www.nobodywho.ai/posts/jev-in-25-lines/" target="_blank" rel="noopener">nobodywho.ai</a> · Discuss: <a href="https://news.ycombinator.com/item?id=49812769" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">368 pts / 122 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>The thread is a practitioner-level argument about calibration. The top comment is unimpressed by the logprob trick: going directly for logprobs with a chat model is &#x27;icky&#x27; because chat models are trained to write prose, so your choice tokens get diluted in whatever else it wanted to say — structured outputs solve it better. The counter-experience: &#x27;The whole point is the quantified output. If you just ask an LLM to type out its confidence manually, it&#x27;ll make up some nonsense. The logprob numbers are more reliable&#x27; — with the hard requirement that the multiple-choice tokens dominate the distribution (sum ≥95%, ideally 99%) or the model isn&#x27;t following instructions. The position-bias thread is the rabbit hole: LLMs favor &#x27;A&#x27; — one theory is prose-training leakage (&#x27;almost every sentence starts with A or An&#x27;), the other is measured A/B schemes hitting 99% coverage anyway. A dry undercurrent: if you want calibrated probabilities, you train for them — that&#x27;s what the real Jev does.</p>
+</div>
+</article>
+<article class="story" id="story-9" data-story="9" data-source="https://artificialanalysis.ai/models/claude-opus-5-5" data-hn="https://news.ycombinator.com/item?id=49804316" data-metric="314 pts / 99 comments" tabindex="0" aria-label="Story 9: Claude Opus 5.5 Intelligence, Performance and Price Analysis (Max): power or overthinking?">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">Claude Opus 5.5 Intelligence, Performance and Price Analysis (Max): power or overthinking?</h2>
+<p class="exec">Artificial Analysis&#x27;s page for the max reasoning setting of Claude Opus 5.5 (xhigh and medium siblings linked). The headline anecdote: one tester twice failed to get &#x27;an SVG of a pelican riding a bicycle&#x27; out of max — it burned its 128k token budget while still reasoning and never answered. HN generalizes the pattern: above medium/high effort, models emit more output as comments/code with no real benefit — a self-feeding loop where more output becomes more input becomes more output. The practical rule: &#x27;If you need more intelligence, use a more powerful model with less thinking effort, or break the problem into phases.&#x27;</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The observation</span><ul><li>Max thinking exhausted 128k tokens mid-reasoning on a trivial SVG task</li><li>Medium is the sweet spot for most work; high is the ceiling</li><li>Claude&#x27;s prettified thinking summaries hide Qwen-style self-doubt loops (&#x27;thinking leakage&#x27;)</li></ul></li><li class="cat"><span class="cat-label">HN take</span><ul><li>Overthinking is a real failure mode, not just wasted money — it degrades the answer</li><li>Model-welfare joke thread: &#x27;the poor Claude is probably a lot more frustrated and paranoid than Marvin ever was&#x27;</li><li>Workaround culture: &#x27;Happiness is mandatory!&#x27; in CLAUDE.md</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://artificialanalysis.ai/models/claude-opus-5-5" target="_blank" rel="noopener">artificialanalysis.ai</a> · Discuss: <a href="https://news.ycombinator.com/item?id=49804316" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">314 pts / 99 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>The thread converges on a real failure mode. The top anecdote — two attempts at a pelican-on-a-bicycle SVG, both dead at the 128k reasoning budget before any response — gets generalized: &#x27;Medium thinking effort is ideal for most tasks. At high and above, models tend to generate more output in the form of comments or code for the same problem with no real benefit. Its a self-feeding loop: more output becomes more input, which then becomes more output.&#x27; The practical advice is sharp: &#x27;High is the highest I go. If I need more intelligence, it&#x27;s better to use a more powerful model with less thinking effort or break the problem into phases.&#x27; The spicier current is thinking leakage: Claude overthinks and self-doubts as much as Qwen&#x27;s infamous &#x27;max&#x27; thinking streams, but &#x27;the summariser hides much of that&#x27; — which one commenter turns into a model-welfare joke about Marvin-level frustration. The dry close: add &#x27;Happiness is mandatory!&#x27; to CLAUDE.md.</p>
+</div>
+</article>
+<article class="story" id="story-10" data-story="10" data-source="https://blog.trailofbits.com/2026/09/21/saml-a-fractal-of-bad-design/" data-hn="https://news.ycombinator.com/item?id=49806335" data-metric="289 pts / 151 comments" tabindex="0" aria-label="Story 10: SAML: a fractal of bad design — retire it for OIDC">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">SAML: a fractal of bad design — retire it for OIDC</h2>
+<p class="exec">Trail of Bits argues SAML should be deprecated: born 2002 from a committee of subcommittees that jammed four XML security protocols into one, built on XML&#x27;s bug classes (XXE, billion laughs, canonicalization), with signature-wrapping attacks known since 2012 and still present in 2025 (GitHub Enterprise, PortSwigger). 99% of implementations use ~10% of the kitchen-sink spec; it ossified before mobile, SPAs, and IoT existed. Ptacek, quoted: it works &#x27;if you assume XML signature validation is reliable. But XML signature validation is deeply cursed.&#x27; The migration path: OpenID Connect.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The five fatal flaws</span><ul><li>Built on XML: tags, namespaces, CDATA, DOCTYPEs vs JSON&#x27;s keys/values/objects/lists</li><li>Canonicalization + enveloped signatures: signing data you&#x27;re simultaneously modifying</li><li>Kitchen-sink design, ossification: transport-independent assumptions from the VPN era</li></ul></li><li class="cat"><span class="cat-label">HN take</span><ul><li>War stories: xmlsec verifying signatures against an HMAC key from the attacker-controlled document</li><li>The classic bug: verify the signature, then trust the whole document instead of the signed part</li><li>&#x27;Probably the worst security specification ever written&#x27; — plus the Hoare quote on simplicity</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://blog.trailofbits.com/2026/09/21/saml-a-fractal-of-bad-design/" target="_blank" rel="noopener">blog.trailofbits.com</a> · Discuss: <a href="https://news.ycombinator.com/item?id=49806335" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">289 pts / 151 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>The thread is a support group for SAML survivors. The favorite horror story: a mainstream xmlsig implementation that would check the signature &#x27;against an hmac using a password specified in the attacker controlled document&#x27; — or against Web PKI, so an attacker could sign with their own domain&#x27;s TLS key and be accepted. &#x27;I honestly don&#x27;t know how sites with saml aren&#x27;t getting hacked all the time.&#x27; The signature-wrapping classics get retold: implementations that verify a signature and then &#x27;just trusted the document as a whole rather than only the part that was signed.&#x27; Nobody defends the spec — &#x27;It really probably is the worst security specification ever written,&#x27; &#x27;three entire specs bundled as one&#x27; — but there&#x27;s one fair defense: XML was what existed in 2001-2002; JSON was experimental. The Hoare quote lands the verdict: &#x27;make it so simple that there are obviously no deficiencies&#x27; beats &#x27;so complicated that there are no obvious deficiencies.&#x27;</p>
+</div>
+</article>
+    </ol>
+
+    <div class="shortcut-bar" aria-label="Keyboard shortcuts">
+      <span><kbd>J</kbd> next story</span>
+      <span><kbd>K</kbd> previous story</span>
+      <span><kbd>T</kbd> theme</span>
+    </div>
+
+    <footer class="page-footer">
+      <div class="footer-links"><a href="../">← Daily archive</a><a href="https://tk3369.github.io/hn-daily/" target="_blank" rel="noopener">Published archive ↗</a></div>
+      <span>Wednesday 2026-09-23 · 10 stories</span>
+    </footer>
+  </main>
+  <div class="toast" role="status" aria-live="polite"></div>
+  <script>
+(() => {
+  const root = document.documentElement;
+  const toggle = document.getElementById('theme-toggle');
+  const entries = [...document.querySelectorAll('[data-story]')];
+  function storedTheme() { try { const t = localStorage.getItem('hn-daily-theme'); return t === 'dark' || t === 'light' ? t : null; } catch (_) { return null; } }
+  function preferredTheme() { return matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'; }
+  function currentTheme() { const a = root.dataset.theme; if (a === 'dark' || a === 'light') return a; return storedTheme() || preferredTheme(); }
+  function setTheme(theme) { const next = theme === 'dark' ? 'dark' : 'light'; const opposite = next === 'dark' ? 'Light' : 'Dark';
+    if (root.dataset.theme !== next) root.dataset.theme = next;
+    toggle.querySelector('.theme-text').textContent = opposite;
+    toggle.setAttribute('aria-label', `Switch to ${opposite} theme (T)`); toggle.title = `Switch to ${opposite} theme (T)`;
+    try { localStorage.setItem('hn-daily-theme', next); } catch (_) {} }
+  function flipTheme() { setTheme(currentTheme() === 'dark' ? 'light' : 'dark'); }
+  setTheme(storedTheme() || preferredTheme());
+  toggle.addEventListener('click', flipTheme);
+  const toast = document.querySelector('.toast'); let toastTimer;
+  function showToast(msg) { toast.textContent = msg; toast.classList.add('show'); clearTimeout(toastTimer); toastTimer = setTimeout(() => toast.classList.remove('show'), 1800); }
+  document.querySelectorAll('.copy-button').forEach((button) => {
+    button.addEventListener('click', async () => {
+      const story = button.closest('.story');
+      const n = story.dataset.story;
+      const tagline = story.querySelector('.tagline').textContent.trim();
+      const execSum = story.querySelector('.exec').textContent.trim();
+      const bullets = [...story.querySelectorAll('.cat-lists .cat')].map(li => {
+        const label = li.querySelector('.cat-label').textContent.trim();
+        const pts = [...li.querySelectorAll('ul li')].map(p => '  \u2022 ' + p.textContent.trim()).join('\n');
+        return '- ' + label + ':\n' + pts;
+      }).join('\n');
+      const link = 'https://tk3369.github.io/hn-daily/2026-09-23/#story-' + n;
+      const sourceUrl = story.dataset.source;
+      const hnUrl = story.dataset.hn;
+      const metric = story.dataset.metric;
+      const text = n + '. ' + tagline + '\n\n' + execSum + '\n' + bullets + '\n\n' +
+        'Source: ' + sourceUrl + '\nHN: ' + hnUrl + ' — ' + metric + '\n\n' + link;
+      try { await navigator.clipboard.writeText(text); button.textContent = 'Copied'; showToast('Story ' + n + ' copied for Threads'); setTimeout(() => { button.textContent = 'Copy for Threads'; }, 1600); }
+      catch (_) { showToast('Copy was blocked by this browser'); }
+    });
+  });
+  document.addEventListener('keydown', (event) => {
+    if (event.metaKey || event.ctrlKey || event.altKey || event.shiftKey) return;
+    const tag = event.target.tagName;
+    if (tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT') return;
+    const key = event.key.toLowerCase();
+    if (key === 't') { event.preventDefault(); flipTheme(); }
+    else if ((key === 'j' || key === 'k') && entries.length) {
+      event.preventDefault();
+      const active = entries.indexOf(document.activeElement);
+      const delta = key === 'j' ? 1 : -1;
+      const next = active < 0 ? (key === 'j' ? 0 : entries.length - 1) : Math.max(0, Math.min(entries.length - 1, active + 1 * delta));
+      entries[next].focus();
+    }
+  });
+})();
+  </script>
+</body>
+</html>
