@@ -1,0 +1,254 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="color-scheme" content="light dark" />
+  <link rel="icon" href="data:," />
+  <title>HN Daily — Thursday 2026-09-24</title>
+  <style>
+:root { --page:#f1eadb; --paper:#fffaf0; --ink:#20201c; --muted:#6f695f; --hairline:#d9cebc; --accent:#ff5a1f; --comment:#f6efe3; --shadow:0 2px 0 rgba(57,45,25,.08),0 14px 36px rgba(57,45,25,.06); --serif:Georgia,"Times New Roman",serif; --sans:ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; --mono:"SFMono-Regular",Consolas,"Liberation Mono",monospace; }
+html[data-theme="dark"] { --page:#111312; --paper:#191c1a; --ink:#f1eee6; --muted:#aba69b; --hairline:#393b36; --accent:#ff7139; --comment:#222520; --shadow:0 2px 0 rgba(0,0,0,.22),0 18px 42px rgba(0,0,0,.22); }
+* { box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body { margin:0; min-width:280px; color:var(--ink); background:var(--page); font-family:var(--sans); line-height:1.55; -webkit-font-smoothing:antialiased; }
+a { color:inherit; text-underline-offset:3px; text-decoration-thickness:1px; }
+a:hover { color:var(--accent); }
+button,a { -webkit-tap-highlight-color:transparent; }
+button { font:inherit; }
+a:focus-visible,button:focus-visible { outline:3px solid var(--accent); outline-offset:3px; }
+.page { width:min(1080px,calc(100% - 36px)); margin:0 auto; padding:28px 0 72px; }
+.issue-header { display:grid; grid-template-columns:1fr auto; gap:24px; align-items:end; padding:8px 0 26px; border-bottom:3px solid var(--ink); }
+.edition { margin:0 0 9px; color:var(--accent); font:700 12px/1.3 var(--mono); letter-spacing:.09em; text-transform:uppercase; }
+.archive-nav { display:flex; flex-wrap:wrap; gap:8px 20px; margin-bottom:16px; font:700 12px/1 var(--mono); }
+.archive-nav a { min-height:36px; display:inline-flex; align-items:center; color:var(--muted); }
+.archive-nav a:hover { color:var(--accent); }
+h1 { max-width:820px; margin:0; font:700 clamp(34px,5.5vw,62px)/.98 var(--serif); letter-spacing:-.038em; }
+.deck { max-width:730px; margin:17px 0 0; color:var(--muted); font:17px/1.55 var(--sans); }
+.theme-toggle { align-self:start; min-width:86px; min-height:40px; padding:9px 13px; border:1px solid var(--hairline); border-radius:4px; color:var(--ink); background:var(--paper); cursor:pointer; font:700 12px/1 var(--mono); display:inline-flex; align-items:center; gap:8px; }
+.theme-toggle:hover { border-color:var(--accent); color:var(--accent); }
+.theme-dot { width:10px; height:10px; border-radius:50%; background:var(--accent); display:inline-block; flex-shrink:0; }
+.theme-text { line-height:1; }
+.story-list { display:grid; gap:20px; list-style:none; margin:26px 0 0; padding:0; counter-reset:story; }
+.story { counter-increment:story; display:grid; grid-template-columns:72px minmax(0,1fr); gap:26px; padding:26px 30px 28px; background:var(--paper); border-top:4px solid var(--ink); box-shadow:var(--shadow); scroll-margin-top:24px; }
+.story-number { color:var(--accent); font:900 22px/1 var(--mono); letter-spacing:-.04em; padding-top:6px; }
+.story-number::before { content:counter(story,decimal-leading-zero); }
+.tagline { margin:0; max-width:840px; font:700 clamp(24px,3vw,36px)/1.1 var(--serif); letter-spacing:-.028em; }
+.exec { margin:14px 0 0; max-width:840px; font:17px/1.58 var(--sans); }
+.cat-lists { margin:14px 0 0; padding:0; list-style:none; display:grid; gap:10px; max-width:840px; }
+.cat-lists li.cat { font:15px/1.6 var(--sans); }
+.cat-lists .cat-label { font:700 12px/1.6 var(--mono); letter-spacing:.06em; text-transform:uppercase; color:var(--accent); }
+.cat-lists ul { margin:4px 0 0; padding-left:20px; }
+.cat-lists ul li { margin:3px 0; }
+.meta-line { margin:16px 0 0; color:var(--muted); font:700 12px/1.9 var(--mono); overflow-wrap:anywhere; }
+.meta-line a { color:var(--ink); font-weight:800; }
+.meta-line .metrics { color:var(--ink); white-space:nowrap; }
+.story-bar { display:flex; align-items:flex-start; gap:14px; margin-top:4px; }
+.copy-button { flex:0 0 auto; align-self:flex-start; min-height:36px; padding:9px 12px; border:1px solid var(--hairline); border-radius:4px; background:var(--paper); color:var(--ink); cursor:pointer; font:700 12px/1 var(--mono); }
+.copy-button:hover { border-color:var(--accent); color:var(--accent); }
+.hn-comments { margin:18px 0 0; padding:14px 18px; background:var(--comment); border:1px solid var(--hairline); font:15px/1.62 var(--serif); color:var(--ink); }
+.hn-comments strong { font:700 12px/1.6 var(--mono); color:var(--accent); display:block; margin-bottom:6px; }
+.page-footer { display:flex; justify-content:space-between; flex-wrap:wrap; gap:14px; margin-top:64px; padding-top:12px; border-top:1px solid var(--hairline); color:var(--muted); font:12px/1.6 var(--mono); }
+.footer-links { display:flex; flex-wrap:wrap; gap:8px 20px; }
+.footer-links a { min-height:36px; display:inline-flex; align-items:center; color:var(--ink); font-weight:800; }
+.footer-links a:hover { color:var(--accent); }
+.shortcut-bar { display:flex; flex-wrap:wrap; gap:18px; margin-top:28px; color:var(--muted); font:11px/1.5 var(--mono); }
+kbd { display:inline-grid; place-items:center; min-width:22px; height:22px; margin-right:6px; padding:0 6px; border:1px solid var(--hairline); border-bottom-width:2px; border-radius:3px; background:var(--comment); color:var(--ink); font:inherit; font-weight:700; }
+.toast { position:fixed; right:max(18px,env(safe-area-inset-right)); bottom:max(18px,env(safe-area-inset-bottom)); z-index:10; padding:11px 14px; color:var(--paper); background:var(--ink); border:1px solid var(--ink); font:700 12px/1 var(--mono); opacity:0; transform:translateY(8px); pointer-events:none; transition:opacity 160ms ease,transform 160ms ease; }
+.toast.show { opacity:1; transform:translateY(0); }
+@media (max-width:760px) {
+  .page { width:min(100% - 22px,1080px); padding-top:16px; }
+  .issue-header { grid-template-columns:1fr auto; gap:12px; padding-bottom:20px; }
+  h1 { font-size:clamp(34px,10vw,48px); }
+  .deck { grid-column:1 / -1; margin-top:3px; font-size:15px; }
+  .theme-toggle { grid-column:2; grid-row:1; min-width:72px; }
+  .story { grid-template-columns:44px minmax(0,1fr); gap:14px; padding:20px 18px 22px; }
+  .story-number { font-size:16px; padding-top:4px; }
+  .story-bar { flex-direction:column; align-items:stretch; }
+  .copy-button { align-self:flex-start; }
+  .page-footer { display:block; }
+}
+@media (max-width:420px) {
+  .page { width:calc(100% - 16px); }
+  .story { grid-template-columns:1fr; gap:8px; padding:20px 16px 22px; }
+  .story-number { padding-top:0; }
+  .copy-button { width:100%; }
+}
+@media (prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } *,*::before,*::after { transition:none !important; } }
+@media print { :root { --page:#fff;--paper:#fff;--ink:#000;--muted:#444;--hairline:#bbb;--comment:#f5f5f5;--shadow:none; } .page{width:100%;padding:0}.theme-toggle,.copy-button,.toast,.shortcut-bar{display:none}.story{break-inside:avoid;box-shadow:none} }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="issue-header">
+      <div>
+        <nav class="archive-nav" aria-label="HN Daily archive links"><a href="../">← Archive</a><a href="https://tk3369.github.io/hn-daily/" target="_blank" rel="noopener">Published archive ↗</a></nav>
+        <p class="edition"><time datetime="2026-09-24">2026-09-24</time> · Daily brief · Pacific time</p>
+        <h1>HN Daily</h1>
+        <p class="deck">Direct, low-fluff top 10 from Hacker News, daily at 7am PT — hottest by points</p>
+      </div>
+      <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch color theme" title="Toggle theme (T)"><span class="theme-dot" aria-hidden="true"></span><span class="theme-text">Dark</span></button>
+    </header>
+
+    <ol class="story-list" aria-label="Top 10 Hacker News stories">
+<article class="story" id="story-1" data-story="1" data-source="https://www.anthropic.com/news/claude-discovers-novel-enzyme-system" data-hn="https://news.ycombinator.com/item?id=49820134" data-metric="706 pts / 721 comments" tabindex="0" aria-label="Story 1: Claude finds a CRISPR-like enzyme system">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">Claude finds a CRISPR-like enzyme system</h2>
+<p class="exec">Anthropic says Claude discovered a novel enzyme system with CRISPR-like repeats — a genuine biology finding produced by an AI agent, not a benchmark. If the underlying work holds up in peer review, it&#x27;s a concrete data point for LLM-driven science. That&#x27;s a big if, and the paper is the proof.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">What happened</span><ul><li>Anthropic announcement: novel enzyme system with CRISPR-like repeats, attributed to Claude</li><li>No published paper yet — that&#x27;s the missing piece</li></ul></li><li class="cat"><span class="cat-label">HN take</span><ul><li>Half excited, half skeptical: &#x27;in a year this is either peak hype or the start of the singularity&#x27;</li><li>Top fear: another lab is about to publish the same finding and Claude proofread their paper</li><li>Biology is harder for LLMs than math — Anthropic scoped the problem down a lot; publish or it didn&#x27;t happen</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://www.anthropic.com/news/claude-discovers-novel-enzyme-system" target="_blank" rel="noopener">anthropic.com</a> · Discuss: <a href="https://news.ycombinator.com/item?id=49820134" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">706 pts / 721 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>Commenters split between real excitement and genuine skepticism. The missing paper is the main complaint: one wag predicted a lab will complain next week that Claude proofread their manuscript on the same finding and &#x27;whoops, how&#x27;d that get into Anthropic&#x27;s training data.&#x27; Others note biology is a harder problem for LLMs than math — Anthropic had to scope it down from something ambitious — and that finding patterns in huge datasets is exactly what LLMs do well. Consensus: cool, now publish the results.</p>
+</div>
+</article>
+<article class="story" id="story-2" data-story="2" data-source="https://www.qualcomm.com/news/onq/2026/09/snapdragon-summit-agentic-ai-pcs-linux" data-hn="https://news.ycombinator.com/item?id=49823582" data-metric="508 pts / 205 comments" tabindex="0" aria-label="Story 2: Linux is coming to Snapdragon X2">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">Linux is coming to Snapdragon X2</h2>
+<p class="exec">Qualcomm announced Linux support for the Snapdragon X2 series, its ARM laptop chips. ARM Linux on real laptops has been a long, painful road, so any vendor officially committing to it matters — especially with Apple setting the pace on ARM notebooks.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">Why it matters</span><ul><li>First-party Linux support on a flagship ARM PC chip</li><li>Commenters want more than one X2 model, and X4 running mainline Linux well</li></ul></li><li class="cat"><span class="cat-label">HN take</span><ul><li>Enthusiastic but Apple-aware: &#x27;Qualcomm is juggling three OSes to sell chips while Apple just stuck a phone chip in the Neo&#x27;</li><li>Mockery of the announcement page&#x27;s three cookie banners</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://www.qualcomm.com/news/onq/2026/09/snapdragon-summit-agentic-ai-pcs-linux" target="_blank" rel="noopener">qualcomm.com</a> · Discuss: <a href="https://news.ycombinator.com/item?id=49823582" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">508 pts / 205 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>Mostly positive. Readers cheered — one asked Qualcomm to please sell more than one X2 model, dreaming of 2031 when &#x27;we&#x27;re swimming in way too many of these, running great Linux.&#x27; The recurring jab: Qualcomm is juggling three OSes to sell chips while Apple controls chip, OS, and machine. A few sniped at the announcement page&#x27;s three cookie banners.</p>
+</div>
+</article>
+<article class="story" id="story-3" data-story="3" data-source="https://pointinthecloud.com/2026-04-11-211700.html" data-hn="https://news.ycombinator.com/item?id=49817469" data-metric="477 pts / 110 comments" tabindex="0" aria-label="Story 3: Fixing the Portobello police station clock">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">Fixing the Portobello police station clock</h2>
+<p class="exec">A hands-on repair log of an old police-station tower clock — mechanical innards, a mystery status-LED code, the works. The kind of physical-world debugging story HN loves.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">Details</span><ul><li>LED flashed long-long-short-short-short — one commenter decoded it as morse for &#x27;7&#x27;</li><li>Backup battery looks long past its expected life</li></ul></li><li class="cat"><span class="cat-label">HN take</span><ul><li>Authors never actually contacted the people who did the repair</li><li>Readers swapped their own dusty-clock-tower escapades</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://pointinthecloud.com/2026-04-11-211700.html" target="_blank" rel="noopener">pointinthecloud.com</a> · Discuss: <a href="https://news.ycombinator.com/item?id=49817469" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">477 pts / 110 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>Warm and nerdy. Readers shared their own church-attic and bell-tower stories — one barely made a flight after dust from a clock tower flagged an airport swab test. Sharp-eyed commenters noted the authors never contacted the actual repairers, and decoded the status LED pattern as morse code for 7. The dead backup battery got a knowing diagnosis from anyone with an aging house alarm.</p>
+</div>
+</article>
+<article class="story" id="story-4" data-story="4" data-source="https://www.meta.com/vr-glasses/" data-hn="https://news.ycombinator.com/item?id=49824268" data-metric="451 pts / 402 comments" tabindex="0" aria-label="Story 4: Meta announces $1,300 VR Glasses">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">Meta announces $1,300 VR Glasses</h2>
+<p class="exec">Meta&#x27;s new VR Glasses: micro-OLED, 2412×2288 per eye, 37 PPD, 70°×66° FOV, Snapdragon Reality Elite, 12GB RAM, eye/face/hand tracking, $1,300. Commenters crowd-sourced the specs Meta&#x27;s thin product page omitted and re-litigated whether VR is a real platform or a novelty wearing thin.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">Specs (from comments)</span><ul><li>Micro-OLED 2412×2288 per eye, ~37 PPD — comparable to Apple Vision Pro pixel density</li><li>12GB RAM / 128GB (1TB via microSD on the puck), $1,300 plus your data</li></ul></li><li class="cat"><span class="cat-label">HN take</span><ul><li>Four-product lineup now: Ray-Ban Audio, Ray-Ban Display, VR Glasses, Quest 3 — what&#x27;s the differentiation?</li><li>&#x27;VR is a novelty that wears thin&#x27; vs believers: one user lost 60 lbs using VR workouts</li><li>Tarnished brand is the drag: &#x27;If Apple released this form factor it would be a winner&#x27;</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://www.meta.com/vr-glasses/" target="_blank" rel="noopener">meta.com</a> · Discuss: <a href="https://news.ycombinator.com/item?id=49824268" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">451 pts / 402 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>The thread did Meta&#x27;s spec sheet work for them, then split on the meta question. Skeptics call VR a Beverly-Hillbillies rerun — corporate money thrown at a novelty that wears thin. Believers counter with the private-movie-theater and fitness use cases, one reporting 60 lbs lost. A recurring theme: the hardware is getting genuinely good (PPD comparable to AVP) but Meta&#x27;s brand is the anchor — &#x27;if Apple released the same form factor, it would be a winner.&#x27;</p>
+</div>
+</article>
+<article class="story" id="story-5" data-story="5" data-source="https://www.reddit.com/r/facebook/comments/1wotwrk/meta_takes_down_a_critical_video_about_meta_ai/" data-hn="https://news.ycombinator.com/item?id=49827794" data-metric="387 pts / 210 comments" tabindex="0" aria-label="Story 5: Meta pulls a critical video about its AI glasses">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">Meta pulls a critical video about its AI glasses</h2>
+<p class="exec">Reddit thread claims Meta took down a video criticizing Meta AI Glasses, filmed outside Meta. Facts are thin — it&#x27;s a Reddit post, not reporting — but the Streisand-effect crowd needs no invitation.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">HN take</span><ul><li>&#x27;Rules for thee, not for me&#x27; — hypocrisy charges from the usual suspects</li><li>Counter: the title may mislead — filming employees at the entrance could be harassment, which Meta routinely removes</li><li>Protest idea: stand on the public right-of-way outside Meta offices smiling in your Ray-Bans</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://www.reddit.com/r/facebook/comments/1wotwrk/meta_takes_down_a_critical_video_about_meta_ai/" target="_blank" rel="noopener">reddit.com</a> · Discuss: <a href="https://news.ycombinator.com/item?id=49827794" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">387 pts / 210 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>Commenters divided cleanly. Half cried hypocrisy and invoked the Streisand effect; one suggested protests conducted entirely in Ray-Bans on the public sidewalk. The other half argued the title misleads — Meta routinely pulls videos targeting employees as harassment, and filming at the office entrance looks like exactly that. Nobody in the thread had hard evidence either way.</p>
+</div>
+</article>
+<article class="story" id="story-6" data-story="6" data-source="https://jyn.dev/tokens-too-cheap-to-meter/" data-hn="https://news.ycombinator.com/item?id=49813482" data-metric="326 pts / 214 comments" tabindex="0" aria-label="Story 6: Tokens too cheap to meter">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">Tokens too cheap to meter</h2>
+<p class="exec">jyn.dev essay arguing inference cost collapse means the data-center buildout is the bubble, not AI: hardware and model efficiency will outrun demand and leave orphaned data centers. Commenters broadly agreed, adding that the environmental bill is the unpriced externality.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The argument</span><ul><li>Model + hardware improvements pace or outrun demand → stranded data centers</li><li>Nvidia&#x27;s inference lead is &#x27;only a few months&#x27;; training dominance is safe, inference margins aren&#x27;t</li></ul></li><li class="cat"><span class="cat-label">HN take</span><ul><li>Pushback on the 3–6-year local-frontier claim: &#x27;anyone checked the state of consumer hardware recently?&#x27;</li><li>Regression-line skepticism on the Epoch hardware chart</li><li>Hard to see how environmental side effects aren&#x27;t somewhere between bad and disastrous</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://jyn.dev/tokens-too-cheap-to-meter/" target="_blank" rel="noopener">jyn.dev</a> · Discuss: <a href="https://news.ycombinator.com/item?id=49813482" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">326 pts / 214 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>Broad agreement that data-center demand is a bubble even if AI isn&#x27;t. The most-supported thesis: efficiency gains will outrun demand and strand capacity, and Nvidia&#x27;s inference lead is months, not years. Pushback concentrated on the essay&#x27;s optimism — consumer hardware isn&#x27;t keeping up, the trend-line on the Epoch chart looked sloppy, and several commenters flagged the environmental costs the piece hand-waves past.</p>
+</div>
+</article>
+<article class="story" id="story-7" data-story="7" data-source="https://fly.io/blog/vscode-ssh-wtf/" data-hn="https://news.ycombinator.com/item?id=49822555" data-metric="266 pts / 163 comments" tabindex="0" aria-label="Story 7: VSCode&#x27;s SSH agent is bananas">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">VSCode&#x27;s SSH agent is bananas</h2>
+<p class="exec">Fly.io&#x27;s breakdown of VSCode&#x27;s remote SSH agent: a WebSocket tunnel back to your local machine that can roam the filesystem, edit files, and spawn shells. Remote-dev fans call it a godsend; the Emacs/Tramp crowd notes the scary direction is a compromised remote owning your local box.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The mechanism</span><ul><li>WebSocket back to your running VSCode front-end; can wander the filesystem, edit files, launch PTY shells</li><li>Security-world name for tools that work this way went politely unsaid</li></ul></li><li class="cat"><span class="cat-label">HN take</span><ul><li>Fans: restrict SSH access arbitrarily; never been an issue in practice</li><li>Skeptics: remote-typing is fine, the reverse direction — compromised remote → local machine — is not acceptable</li><li>Tramp did the same thing first, and the spiritual forebearer gets its due</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://fly.io/blog/vscode-ssh-wtf/" target="_blank" rel="noopener">fly.io</a> · Discuss: <a href="https://news.ycombinator.com/item?id=49822555" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">266 pts / 163 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>The thread is a proxy war between remote-dev pragmatists and security minimalists. One side: VSCode SSH is a godsend for teams, guardrails exist, use them. The other: the agent-only-types-what-you-could-type model is acceptable, but the reverse tunnel means a compromised remote can do anything to your local machine — and that direction is not acceptable. The Emacs faction mostly enjoyed watching Tramp get its flowers as the spiritual forebearer.</p>
+</div>
+</article>
+<article class="story" id="story-8" data-story="8" data-source="https://lwn.net/SubscriberLink/1095425/2d9f411252325784/" data-hn="https://news.ycombinator.com/item?id=49825642" data-metric="238 pts / 279 comments" tabindex="0" aria-label="Story 8: Rethinking the open-source desktop">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">Rethinking the open-source desktop</h2>
+<p class="exec">LWN-linked talk on modernizing the Linux desktop: design for big widescreen displays, widgets over windows, customization without rabbit holes. Commenters agree on the diagnosis — Wayland fragmentation, &#x27;don&#x27;t touch my stuff&#x27; conservatism — and diverge on whether this is user-driven UX or big-company product thinking.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">Ideas</span><ul><li>Widescreen-first layouts, draggable-to-widget window behavior, customization accessible to everyone</li><li>Wayland as-is can supposedly do it — if every app cooperates and rewrites</li></ul></li><li class="cat"><span class="cat-label">HN take</span><ul><li>&#x27;True revolution comes from making customization accessible&#x27; — not from product-manager vision</li><li>Counter: users do benefit from being pushed out of conservatism</li><li>The shitty-laptop-touchpad use case is completely ignored by widescreen-first thinking</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://lwn.net/SubscriberLink/1095425/2d9f411252325784/" target="_blank" rel="noopener">lwn.net</a> · Discuss: <a href="https://news.ycombinator.com/item?id=49825642" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">238 pts / 279 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>Sympathetic but wary. Readers liked the talk and mostly agree the Linux desktop needs rethinking, but a popular objection: this reads as big-company &#x27;next big product&#x27; thinking, and the true fix is accessible customization so everyone decides for themselves. The &#x27;don&#x27;t touch my stuff&#x27; reflex got both defended (years of hard-won setup) and called out (conservatism blocking progress). One nice counterpoint: the whole pitch ignores people on terrible old laptops with bad touchpads.</p>
+</div>
+</article>
+<article class="story" id="story-9" data-story="9" data-source="https://blog.arxiv.org/2026/09/23/arxiv-receives-multiyear-investment/" data-hn="https://news.ycombinator.com/item?id=49823664" data-metric="231 pts / 30 comments" tabindex="0" aria-label="Story 9: arXiv gets multiyear funding as an independent nonprofit">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">arXiv gets multiyear funding as an independent nonprofit</h2>
+<p class="exec">arXiv secured multiyear commitments to stay an independent nonprofit — good news given the alternative is $49-a-pop paywalls. The thread&#x27;s real energy went to AI-generated paper spam polluting the archive: post-2023 solo authors are assumed junk, and there&#x27;s no magic bullet for moderation.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">Why it matters</span><ul><li>Independent funding keeps science&#x27;s preprint server off the paywall treadmill</li><li>Without arXiv, one commenter&#x27;s company paper would have been a blog post with nothing citable</li></ul></li><li class="cat"><span class="cat-label">HN take</span><ul><li>AI-generated spam is the existential thread: editors &#x27;having trouble keeping up with the onslaught&#x27;</li><li>&#x27;If I see a single author post-2023, I assume it&#x27;s junk&#x27;</li><li>Propaganda-as-research pieces are also abusing arXiv&#x27;s credibility</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://blog.arxiv.org/2026/09/23/arxiv-receives-multiyear-investment/" target="_blank" rel="noopener">blog.arxiv.org</a> · Discuss: <a href="https://news.ycombinator.com/item?id=49823664" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">231 pts / 30 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>Relief about the funding, fury about the spam. Commenters agreed the money is sorely needed — &#x27;how is science to evolve if good research requires $49 a pop?&#x27; — but the dominant sub-thread was arXiv being polluted by AI-generated papers: editors can&#x27;t keep up, post-2023 solo authors get assumed junk, and one reader reported reviewers themselves using LLMs. Others worried about opinion pieces laundered as research through arXiv&#x27;s credibility. No magic bullets offered.</p>
+</div>
+</article>
+<article class="story" id="story-10" data-story="10" data-source="https://tailscale.com/blog/making-tailscale-faster" data-hn="https://news.ycombinator.com/item?id=49819880" data-metric="200 pts / 76 comments" tabindex="0" aria-label="Story 10: Making Tailscale faster">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">Making Tailscale faster</h2>
+<p class="exec">Tailscale&#x27;s engineering blog on squeezing more throughput out of their mesh VPN. Commenters reported mixed real-world results — latency going &#x27;parabolic&#x27; at 250 sessions — and the raw-WireGuard camp showed up, as always, to say it&#x27;s faster and simpler.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">HN take</span><ul><li>Real-world reports: 250 sessions at 60 Mb/s made latency go parabolic</li><li>Exit-node battery drain is still the complaint</li><li>&#x27;I put WireGuard on my home network and Tailscale became irrelevant&#x27;</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://tailscale.com/blog/making-tailscale-faster" target="_blank" rel="noopener">tailscale.com</a> · Discuss: <a href="https://news.ycombinator.com/item?id=49819880" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">200 pts / 76 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>Polite skepticism. A few readers brought numbers — parabolic latency at 250 sessions — and the perennial WireGuard purists argued raw WireGuard with dynamic DNS is more stable and feels faster with amazingly simple setup. One asked whether the Linux/Android focus is just where Tailscale started or where the actual wins are. Plus one drive-by &#x27;slop check: yes.&#x27;</p>
+</div>
+</article>
+    </ol>
+
+    <div class="shortcut-bar" aria-label="Keyboard shortcuts">
+      <span><kbd>J</kbd> next story</span>
+      <span><kbd>K</kbd> previous story</span>
+      <span><kbd>T</kbd> theme</span>
+    </div>
+
+    <footer class="page-footer">
+      <div class="footer-links"><a href="../">← Daily archive</a><a href="https://tk3369.github.io/hn-daily/" target="_blank" rel="noopener">Published archive ↗</a></div>
+      <span>Thursday 2026-09-24 · 10 stories</span>
+    </footer>
+  </main>
+  <div class="toast" role="status" aria-live="polite"></div>
+  <script>
+(() => {
+  const root = document.documentElement;
+  const toggle = document.getElementById('theme-toggle');
+  const entries = [...document.querySelectorAll('[data-story]')];
+  function storedTheme() { try { const t = localStorage.getItem('hn-daily-theme'); return t === 'dark' || t === 'light' ? t : null; } catch (_) { return null; } }
+  function preferredTheme() { return matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'; }
+  function currentTheme() { const a = root.dataset.theme; if (a === 'dark' || a === 'light') return a; return storedTheme() || preferredTheme(); }
+  function setTheme(theme) { const next = theme === 'dark' ? 'dark' : 'light'; const opposite = next === 'dark' ? 'Light' : 'Dark';
+    if (root.dataset.theme !== next) root.dataset.theme = next;
+    toggle.querySelector('.theme-text').textContent = opposite;
+    toggle.setAttribute('aria-label', `Switch to ${opposite} theme (T)`); toggle.title = `Switch to ${opposite} theme (T)`;
+    try { localStorage.setItem('hn-daily-theme', next); } catch (_) {} }
+  function flipTheme() { setTheme(currentTheme() === 'dark' ? 'light' : 'dark'); }
+  setTheme(storedTheme() || preferredTheme());
+  toggle.addEventListener('click', flipTheme);
+  const toast = document.querySelector('.toast'); let toastTimer;
+  function showToast(msg) { toast.textContent = msg; toast.classList.add('show'); clearTimeout(toastTimer); toastTimer = setTimeout(() => toast.classList.remove('show'), 1800); }
+  document.querySelectorAll('.copy-button').forEach((button) => {
+    button.addEventListener('click', async () => {
+      const story = button.closest('.story');
+      const n = story.dataset.story;
+      const tagline = story.querySelector('.tagline').textContent.trim();
+      const execSum = story.querySelector('.exec').textContent.trim();
+      const bullets = [...story.querySelectorAll('.cat-lists .cat')].map(li => {
+        const label = li.querySelector('.cat-label').textContent.trim();
+        const pts = [...li.querySelectorAll('ul li')].map(p => '  \u2022 ' + p.textContent.trim()).join('\n');
+        return '- ' + label + ':\n' + pts;
+      }).join('\n');
+      const link = 'https://tk3369.github.io/hn-daily/2026-09-24/#story-' + n;
+      const sourceUrl = story.dataset.source;
+      const hnUrl = story.dataset.hn;
+      const metric = story.dataset.metric;
+      const text = n + '. ' + tagline + '\n\n' + execSum + '\n' + bullets + '\n\n' +
+        'Source: ' + sourceUrl + '\nHN: ' + hnUrl + ' — ' + metric + '\n\n' + link;
+      try { await navigator.clipboard.writeText(text); button.textContent = 'Copied'; showToast('Story ' + n + ' copied for Threads'); setTimeout(() => { button.textContent = 'Copy for Threads'; }, 1600); }
+      catch (_) { showToast('Copy was blocked by this browser'); }
+    });
+  });
+  document.addEventListener('keydown', (event) => {
+    if (event.metaKey || event.ctrlKey || event.altKey || event.shiftKey) return;
+    const tag = event.target.tagName;
+    if (tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT') return;
+    const key = event.key.toLowerCase();
+    if (key === 't') { event.preventDefault(); flipTheme(); }
+    else if ((key === 'j' || key === 'k') && entries.length) {
+      event.preventDefault();
+      const active = entries.indexOf(document.activeElement);
+      const delta = key === 'j' ? 1 : -1;
+      const next = active < 0 ? (key === 'j' ? 0 : entries.length - 1) : Math.max(0, Math.min(entries.length - 1, active + 1 * delta));
+      entries[next].focus();
+    }
+  });
+})();
+  </script>
+</body>
+</html>
