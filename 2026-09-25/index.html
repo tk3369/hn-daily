@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="color-scheme" content="light dark" />
+  <link rel="icon" href="data:," />
+  <title>HN Daily — Friday 2026-09-25</title>
+  <style>
+:root { --page:#f1eadb; --paper:#fffaf0; --ink:#20201c; --muted:#6f695f; --hairline:#d9cebc; --accent:#ff5a1f; --comment:#f6efe3; --shadow:0 2px 0 rgba(57,45,25,.08),0 14px 36px rgba(57,45,25,.06); --serif:Georgia,"Times New Roman",serif; --sans:ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; --mono:"SFMono-Regular",Consolas,"Liberation Mono",monospace; }
+html[data-theme="dark"] { --page:#111312; --paper:#191c1a; --ink:#f1eee6; --muted:#aba69b; --hairline:#393b36; --accent:#ff7139; --comment:#222520; --shadow:0 2px 0 rgba(0,0,0,.22),0 18px 42px rgba(0,0,0,.22); }
+* { box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body { margin:0; min-width:280px; color:var(--ink); background:var(--page); font-family:var(--sans); line-height:1.55; -webkit-font-smoothing:antialiased; }
+a { color:inherit; text-underline-offset:3px; text-decoration-thickness:1px; }
+a:hover { color:var(--accent); }
+button,a { -webkit-tap-highlight-color:transparent; }
+button { font:inherit; }
+a:focus-visible,button:focus-visible { outline:3px solid var(--accent); outline-offset:3px; }
+.page { width:min(1080px,calc(100% - 36px)); margin:0 auto; padding:28px 0 72px; }
+.issue-header { display:grid; grid-template-columns:1fr auto; gap:24px; align-items:end; padding:8px 0 26px; border-bottom:3px solid var(--ink); }
+.edition { margin:0 0 9px; color:var(--accent); font:700 12px/1.3 var(--mono); letter-spacing:.09em; text-transform:uppercase; }
+.archive-nav { display:flex; flex-wrap:wrap; gap:8px 20px; margin-bottom:16px; font:700 12px/1 var(--mono); }
+.archive-nav a { min-height:36px; display:inline-flex; align-items:center; color:var(--muted); }
+.archive-nav a:hover { color:var(--accent); }
+h1 { max-width:820px; margin:0; font:700 clamp(34px,5.5vw,62px)/.98 var(--serif); letter-spacing:-.038em; }
+.deck { max-width:730px; margin:17px 0 0; color:var(--muted); font:17px/1.55 var(--sans); }
+.theme-toggle { align-self:start; min-width:86px; min-height:40px; padding:9px 13px; border:1px solid var(--hairline); border-radius:4px; color:var(--ink); background:var(--paper); cursor:pointer; font:700 12px/1 var(--mono); display:inline-flex; align-items:center; gap:8px; }
+.theme-toggle:hover { border-color:var(--accent); color:var(--accent); }
+.theme-dot { width:10px; height:10px; border-radius:50%; background:var(--accent); display:inline-block; flex-shrink:0; }
+.theme-text { line-height:1; }
+.story-list { display:grid; gap:20px; list-style:none; margin:26px 0 0; padding:0; counter-reset:story; }
+.story { counter-increment:story; display:grid; grid-template-columns:72px minmax(0,1fr); gap:26px; padding:26px 30px 28px; background:var(--paper); border-top:4px solid var(--ink); box-shadow:var(--shadow); scroll-margin-top:24px; }
+.story-number { color:var(--accent); font:900 22px/1 var(--mono); letter-spacing:-.04em; padding-top:6px; }
+.story-number::before { content:counter(story,decimal-leading-zero); }
+.tagline { margin:0; max-width:840px; font:700 clamp(24px,3vw,36px)/1.1 var(--serif); letter-spacing:-.028em; }
+.exec { margin:14px 0 0; max-width:840px; font:17px/1.58 var(--sans); }
+.cat-lists { margin:14px 0 0; padding:0; list-style:none; display:grid; gap:10px; max-width:840px; }
+.cat-lists li.cat { font:15px/1.6 var(--sans); }
+.cat-lists .cat-label { font:700 12px/1.6 var(--mono); letter-spacing:.06em; text-transform:uppercase; color:var(--accent); }
+.cat-lists ul { margin:4px 0 0; padding-left:20px; }
+.cat-lists ul li { margin:3px 0; }
+.meta-line { margin:16px 0 0; color:var(--muted); font:700 12px/1.9 var(--mono); overflow-wrap:anywhere; }
+.meta-line a { color:var(--ink); font-weight:800; }
+.meta-line .metrics { color:var(--ink); white-space:nowrap; }
+.story-bar { display:flex; align-items:flex-start; gap:14px; margin-top:4px; }
+.copy-button { flex:0 0 auto; align-self:flex-start; min-height:36px; padding:9px 12px; border:1px solid var(--hairline); border-radius:4px; background:var(--paper); color:var(--ink); cursor:pointer; font:700 12px/1 var(--mono); }
+.copy-button:hover { border-color:var(--accent); color:var(--accent); }
+.hn-comments { margin:18px 0 0; padding:14px 18px; background:var(--comment); border:1px solid var(--hairline); font:15px/1.62 var(--serif); color:var(--ink); }
+.hn-comments strong { font:700 12px/1.6 var(--mono); color:var(--accent); display:block; margin-bottom:6px; }
+.page-footer { display:flex; justify-content:space-between; flex-wrap:wrap; gap:14px; margin-top:64px; padding-top:12px; border-top:1px solid var(--hairline); color:var(--muted); font:12px/1.6 var(--mono); }
+.footer-links { display:flex; flex-wrap:wrap; gap:8px 20px; }
+.footer-links a { min-height:36px; display:inline-flex; align-items:center; color:var(--ink); font-weight:800; }
+.footer-links a:hover { color:var(--accent); }
+.shortcut-bar { display:flex; flex-wrap:wrap; gap:18px; margin-top:28px; color:var(--muted); font:11px/1.5 var(--mono); }
+kbd { display:inline-grid; place-items:center; min-width:22px; height:22px; margin-right:6px; padding:0 6px; border:1px solid var(--hairline); border-bottom-width:2px; border-radius:3px; background:var(--comment); color:var(--ink); font:inherit; font-weight:700; }
+.toast { position:fixed; right:max(18px,env(safe-area-inset-right)); bottom:max(18px,env(safe-area-inset-bottom)); z-index:10; padding:11px 14px; color:var(--paper); background:var(--ink); border:1px solid var(--ink); font:700 12px/1 var(--mono); opacity:0; transform:translateY(8px); pointer-events:none; transition:opacity 160ms ease,transform 160ms ease; }
+.toast.show { opacity:1; transform:translateY(0); }
+@media (max-width:760px) {
+  .page { width:min(100% - 22px,1080px); padding-top:16px; }
+  .issue-header { grid-template-columns:1fr auto; gap:12px; padding-bottom:20px; }
+  h1 { font-size:clamp(34px,10vw,48px); }
+  .deck { grid-column:1 / -1; margin-top:3px; font-size:15px; }
+  .theme-toggle { grid-column:2; grid-row:1; min-width:72px; }
+  .story { grid-template-columns:44px minmax(0,1fr); gap:14px; padding:20px 18px 22px; }
+  .story-number { font-size:16px; padding-top:4px; }
+  .story-bar { flex-direction:column; align-items:stretch; }
+  .copy-button { align-self:flex-start; }
+  .page-footer { display:block; }
+}
+@media (max-width:420px) {
+  .page { width:calc(100% - 16px); }
+  .story { grid-template-columns:1fr; gap:8px; padding:20px 16px 22px; }
+  .story-number { padding-top:0; }
+  .copy-button { width:100%; }
+}
+@media (prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } *,*::before,*::after { transition:none !important; } }
+@media print { :root { --page:#fff;--paper:#fff;--ink:#000;--muted:#444;--hairline:#bbb;--comment:#f5f5f5;--shadow:none; } .page{width:100%;padding:0}.theme-toggle,.copy-button,.toast,.shortcut-bar{display:none}.story{break-inside:avoid;box-shadow:none} }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="issue-header">
+      <div>
+        <nav class="archive-nav" aria-label="HN Daily archive links"><a href="../">← Archive</a><a href="https://tk3369.github.io/hn-daily/" target="_blank" rel="noopener">Published archive ↗</a></nav>
+        <p class="edition"><time datetime="2026-09-25">2026-09-25</time> · Daily brief · Pacific time</p>
+        <h1>HN Daily</h1>
+        <p class="deck">Direct, low-fluff top 10 from Hacker News, daily at 7am PT — hottest by points</p>
+      </div>
+      <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch color theme" title="Toggle theme (T)"><span class="theme-dot" aria-hidden="true"></span><span class="theme-text">Dark</span></button>
+    </header>
+
+    <ol class="story-list" aria-label="Top 10 Hacker News stories">
+<article class="story" id="story-1" data-story="1" data-source="https://f-droid.org/2026/09/24/f-droid-2.0-a-new-chapter-for-android-freedom.html" data-hn="https://news.ycombinator.com/item?id=49831968" data-metric="1328 pts / 380 comments" tabindex="0" aria-label="Story 1: F-Droid 2.0: a new chapter for Android freedom">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">F-Droid 2.0: a new chapter for Android freedom</h2>
+<p class="exec">F-Droid, the open-source Android app store, shipped 2.0 with a full client redesign — its biggest UI overhaul in years. If you run a Google-free Android, F-Droid is the only store that matters; a modern client lowers the barrier to a de-Googled phone.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">What shipped</span><ul><li>Complete client redesign with screenshots on the release page</li><li>F-Droid remains the default store for de-Googled Android devices</li></ul></li><li class="cat"><span class="cat-label">HN take</span><ul><li>The thread&#x27;s one-line summary: &#x27;no one is happy about anything, ever&#x27; — new design is fine, old design is fine</li><li>Design-vs-functionality argument: &#x27;good design recognizes the user is part of the functional chain&#x27; vs &#x27;it&#x27;s not an app you open much&#x27;</li><li>Somebody nitpicked the screenshot&#x27;s line-breaking of &#x27;Syncthing-For k&#x27; — designers really did show up</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://f-droid.org/2026/09/24/f-droid-2.0-a-new-chapter-for-android-freedom.html" target="_blank" rel="noopener">f-droid.org</a> · Discuss: <a href="https://news.ycombinator.com/item?id=49831968" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">1328 pts / 380 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>The thread reads like a group hug with mild disagreements. The consensus: nobody&#x27;s happy about anything ever, the redesign is fine, and people mostly just want to search for an app and find it. Underneath, a genuine argument about whether design is part of functionality — one camp calls it usability, the other says an app you open rarely should spend effort elsewhere. A couple of readers couldn&#x27;t resist type-scolding the screenshots themselves.</p>
+</div>
+</article>
+<article class="story" id="story-2" data-story="2" data-source="https://bastardica.mitpit.com" data-hn="https://news.ycombinator.com/item?id=49823738" data-metric="769 pts / 102 comments" tabindex="0" aria-label="Story 2: Times New Bastard: a font mixer for cursed typography">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">Times New Bastard: a font mixer for cursed typography</h2>
+<p class="exec">A Show HN tool that mangles existing fonts into deliberately cursed new ones — pick two fonts, tweak scale and offset, download the abomination. It&#x27;s a toy, but a joyful one: commenters are already pranking colleagues with Papyrus-meets-Comic-Sans hybrids.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">What it does</span><ul><li>Mixes glyph paths from multiple fonts into new TTFs</li><li>The site shows what it does up front — &#x27;show don&#x27;t tell&#x27;, which commenters say explains the response</li></ul></li><li class="cat"><span class="cat-label">HN take</span><ul><li>Prankware: one designer &#x27;carefully adjusted vertical scale so Papyrus optically matches Comic Sans&#x27; for an unnamed victim</li><li>&#x27;Oddly readable&#x27; — the results are bad on purpose, which reads as craft rather than failure</li><li>Prior-art poster admitted the tool looks more interesting here than their own, and pinned it on presentation</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://bastardica.mitpit.com" target="_blank" rel="noopener">bastardica.mitpit.com</a> · Discuss: <a href="https://news.ycombinator.com/item?id=49823738" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">769 pts / 102 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>Warm, playful reception. Commenters treated it as intentional art rather than failed design — &#x27;oddly readable&#x27; and &#x27;glitched in a good way&#x27; — and the prank potential dominated: matching Papyrus to Comic Sans x-height drew genuine cackling. The one honest critique was generous and useful: a prior-art builder confessed the difference in response came down to showing the thing rather than writing a wall of text about it.</p>
+</div>
+</article>
+<article class="story" id="story-3" data-story="3" data-source="https://www.dawo.community/en/" data-hn="https://news.ycombinator.com/item?id=49841563" data-metric="566 pts / 304 comments" tabindex="0" aria-label="Story 3: Dutch government builds a Microsoft alternative on NixOS">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">Dutch government builds a Microsoft alternative on NixOS</h2>
+<p class="exec">A community project (DAWO) is building a NixOS-based desktop alternative aimed at Dutch government agencies wanting out of Microsoft licensing and lock-in. It&#x27;s early, but the appetite is real: EU digital-sovereignty pressure is turning from speeches into migration projects.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">What it is</span><ul><li>NixOS-based alternative targeting Dutch government use</li><li>Community-driven, documented on the DAWO site</li></ul></li><li class="cat"><span class="cat-label">Why it matters</span><ul><li>EU sovereignty push is live: German export dependence and US cloud leverage came up repeatedly</li><li>A Microsoft ad-patent scare got corrected: a patent is not intent to deploy — most are just patent-incentive wallpaper</li></ul></li><li class="cat"><span class="cat-label">HN take</span><ul><li>Thread split between &#x27;any move away from abusive big tech is good&#x27; and practical migration pain</li><li>Side quest: the Linux gaming flame — &#x27;everyone gave up and accepted emulation&#x27; vs &#x27;most games now run natively, fine&#x27;</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://www.dawo.community/en/" target="_blank" rel="noopener">dawo.community</a> · Discuss: <a href="https://news.ycombinator.com/item?id=49841563" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">566 pts / 304 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>The political heat outran the technical detail. Most commenters cheer any EU move away from US big tech, but the top-cited reason (a Microsoft patent about ads gated on camera/microphone monitoring) got a detailed correction: the patent doesn&#x27;t say that, and a patent is not a product plan. From there the thread fanned into German industrial dependence on the US and a classic Linux gaming flame — whether &#x27;Wine&#x27; counts as giving up or as winning, with most now reporting games just work.</p>
+</div>
+</article>
+<article class="story" id="story-4" data-story="4" data-source="https://dynomight.substack.com/p/liver" data-hn="https://news.ycombinator.com/item?id=49832938" data-metric="466 pts / 238 comments" tabindex="0" aria-label="Story 4: Why is the liver so weirdly regenerative?">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">Why is the liver so weirdly regenerative?</h2>
+<p class="exec">A dynomight essay on the liver&#x27;s strange superpower: it regrows to the right mass, not the original shape. The comment section delivered the goods — a working pathologist showed up, recommended Weinberg&#x27;s The Biology of Cancer, and the thread dove into vitamin A toxicity science.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The essay</span><ul><li>Walks through how liver regeneration actually works and why it&#x27;s odd among organs</li></ul></li><li class="cat"><span class="cat-label">HN take</span><ul><li>A pathologist gave a reading list and bought-in credibility; commenters are ordering the book</li><li>Vitamin A toxicity tangent: provitamin carotenes from food can&#x27;t cause hypervitaminosis A — the conversion is tightly regulated</li><li>Serum retinol does not correlate with liver stores at all — a useful, non-obvious fact</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://dynomight.substack.com/p/liver" target="_blank" rel="noopener">dynomight.substack.com</a> · Discuss: <a href="https://news.ycombinator.com/item?id=49832938" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">466 pts / 238 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>One of HN&#x27;s best science threads. The pathologist&#x27;s arrival turned it into a mini-lecture with book recommendations, and the vitamin A subthread was unusually well-cited: carotenes from vegetables and fruit are self-limiting by enzymatic regulation, while preformed retinol (dairy, meat fats, supplements, cod liver oil) is the real toxicity risk. Disagreement stayed factual — people asked for the actual papers and got them.</p>
+</div>
+</article>
+<article class="story" id="story-5" data-story="5" data-source="https://electrek.co/2026/09/23/toyota-best-selling-corolla-electric/" data-hn="https://news.ycombinator.com/item?id=49823568" data-metric="369 pts / 655 comments" tabindex="0" aria-label="Story 5: Toyota is taking the Corolla electric">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">Toyota is taking the Corolla electric</h2>
+<p class="exec">Toyota is electrifying the Corolla — its best-selling nameplate — at roughly $30K against $25K for the gas version. HN&#x27;s verdict is blunt: shoehorning an EV drivetrain into an ICE platform loses to ground-up EVs every time, and BYD is already selling at $14K in Australia.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The move</span><ul><li>Corolla EV joins Toyota&#x27;s reluctant electrification push</li><li>Follows the pattern of the ES350e — hybrid-first, EV variant panned as mediocre</li></ul></li><li class="cat"><span class="cat-label">HN take</span><ul><li>&#x27;Toyota is Nokia&#x27; chorus: Tesla was the warning, BYD is the threat with actual production scale</li><li>Counterpoint: BYD&#x27;s Japan prices aren&#x27;t magic — intro pricing, and they&#x27;re not even cheapest there</li><li>Ground-up platforms (bZ on e-TNGA) get credit; conversions don&#x27;t</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://electrek.co/2026/09/23/toyota-best-selling-corolla-electric/" target="_blank" rel="noopener">electrek.co</a> · Discuss: <a href="https://news.ycombinator.com/item?id=49823568" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">369 pts / 655 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>The highest-comment thread of the day and it earned it. The &#x27;Toyota is Nokia&#x27; thesis drew both cheers and careful rebuttals: Tesla never had the production capacity to kill the incumbents and Toyota survived it, but BYD plausibly does have that scale. The most interesting dissent argued BYD&#x27;s pricing is introductory, not structural — not the cheapest option in Japan. The whole thread also detoured into German auto industry schadenfreude, with someone&#x27;s WWII analogy promptly side-eyed.</p>
+</div>
+</article>
+<article class="story" id="story-6" data-story="6" data-source="https://www.youtube.com/watch?v=vDjW_dRyKXY" data-hn="https://news.ycombinator.com/item?id=49817680" data-metric="369 pts / 401 comments" tabindex="0" aria-label="Story 6: Rails World 2026: DHH&#x27;s opening keynote [video]">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">Rails World 2026: DHH&#x27;s opening keynote [video]</h2>
+<p class="exec">DHH&#x27;s opening keynote from Rails World 2026. A front-row attendee reports the vibe is far from doom and gloom: most of the industry is employed mending systems, not designing the future&#x27;s architecture. The comment thread cared about something else: who&#x27;s actually paying for all these AI subscriptions.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The talk</span><ul><li>Framing: we&#x27;re menders of inherited systems, not blank-canvas architects</li><li>Attendee report: the Rails community is cheerfully employed despite the discourse</li></ul></li><li class="cat"><span class="cat-label">The thread&#x27;s real topic</span><ul><li>AI subscription economics: $20/mo to $200/mo, with DeepSeek 4.1 flash called &#x27;on the pareto frontier&#x27;</li><li>&#x27;Easy to be optimistic when you&#x27;re sitting on millions&#x27; — the DHH-wealth rebuttal</li><li>The janitor counterpoint: &#x27;we&#x27;ve become simple rubber-stampers for whatever the AI puts out&#x27;</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://www.youtube.com/watch?v=vDjW_dRyKXY" target="_blank" rel="noopener">youtube.com</a> · Discuss: <a href="https://news.ycombinator.com/item?id=49817680" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">369 pts / 401 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>The keynote was the occasion; the AI-economics argument was the event. Commenters posted real numbers — $20 a month for Opus 5.5 on fun projects, $200 for heavy open-source model use — and broadly agreed the &#x27;AI is unaffordable&#x27; worry is over, with cheap models on the pareto frontier. The sharp counterpoint stands: management-mandated AI turns engineers into janitors in the slop hall, and optimism from a multimillionaire hits different than from someone on a salary.</p>
+</div>
+</article>
+<article class="story" id="story-7" data-story="7" data-source="https://ahmedhossamdev.com/writing/my-weird-new-hobby-wandering-around-tokyo/" data-hn="https://news.ycombinator.com/item?id=49805344" data-metric="362 pts / 164 comments" tabindex="0" aria-label="Story 7: My weird new hobby: wandering Tokyo on Google Maps">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">My weird new hobby: wandering Tokyo on Google Maps</h2>
+<p class="exec">An essay about a low-stakes hobby: aimlessly wandering Tokyo via Google Street View. The comments turned into a nostalgia thread — grandparents caught raking leaves in Street View imagery, the Michaelsoft Binbows quest, and the collective TIL that Bing Maps has street view at all.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The essay</span><ul><li>Digital flânerie: wandering a city you&#x27;ll never be in, on foot, via Street View</li></ul></li><li class="cat"><span class="cat-label">HN take</span><ul><li>Memory-keeping: one commenter visits their late grandfather, caught raking leaves, once in a while</li><li>Mini-flame: is emailing a friend a link to check &#x27;in a couple of months&#x27; rude? Be a better friend, apparently</li><li>The classic-video recommendations are genuinely good — Michaelsoft Binbows holds up</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://ahmedhossamdev.com/writing/my-weird-new-hobby-wandering-around-tokyo/" target="_blank" rel="noopener">ahmedhossamdev.com</a> · Discuss: <a href="https://news.ycombinator.com/item?id=49805344" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">362 pts / 164 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>Sweet thread. The dominant theme is Street View as accidental memory archive: people shared stories of finding lost relatives in old imagery and advised to &#x27;grab it before you miss it.&#x27; The only real argument was about manners — whether sending a friend a link that only becomes interesting months later is frustrating or fine. The meta-discovery of the thread: multiple people learning that Bing Maps exists, with street view.</p>
+</div>
+</article>
+<article class="story" id="story-8" data-story="8" data-source="https://github.com/devdotfast/whiteboard" data-hn="https://news.ycombinator.com/item?id=49833867" data-metric="344 pts / 124 comments" tabindex="0" aria-label="Story 8: Show HN: Whiteboard (YC W26), an open-source IDE for thoughtful software design">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">Show HN: Whiteboard (YC W26), an open-source IDE for thoughtful software design</h2>
+<p class="exec">A YC W26 open-source &#x27;IDE for thoughtful software design&#x27; — streaming diagram animations drawn as your agent produces them, with OS LSP integration. Commenters debated the taxonomy (orchestrator? ADE? agent multiplexer?), pressed for Linux builds, and the founders responded in-thread.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">What it is</span><ul><li>Design-first IDE: diagrams animate as they&#x27;re generated, aimed at human-in-the-loop design review</li><li>Open source, extension system planned so users can add diagram types</li></ul></li><li class="cat"><span class="cat-label">HN take</span><ul><li>The naming bikeshed is real: &#x27;agent multiplexer&#x27; was adopted by one commenter after rejecting IDE/ADE/orchestrator</li><li>A mistaken &#x27;macOS only&#x27; reading offended souls until corrected — Fedora/Ubuntu/Debian/Arch builds exist</li><li>Pressed on likec4/erode comparisons: text-based diagram heritage for LLM generation</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://github.com/devdotfast/whiteboard" target="_blank" rel="noopener">github.com</a> · Discuss: <a href="https://news.ycombinator.com/item?id=49833867" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">344 pts / 124 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>Good founder engagement — they showed up, answered both questions honestly (they settled on &#x27;IDE&#x27; because most people review code in VS Code), and shipped a Fedora build mid-thread because a friend swears by it. The taxonomy debate is the interesting part: an emerging category of &#x27;harnesses for harnesses&#x27; with no settled name, and Whiteboard is explicitly aimed at the opposite of the agent-orchestrator crowd — humans doing high-leverage design work rather than context switching.</p>
+</div>
+</article>
+<article class="story" id="story-9" data-story="9" data-source="https://launchvideo.io" data-hn="https://news.ycombinator.com/item?id=49836374" data-metric="316 pts / 175 comments" tabindex="0" aria-label="Story 9: Opus 5.5 is good at explainer videos">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">Opus 5.5 is good at explainer videos</h2>
+<p class="exec">A launch page claiming Anthropic&#x27;s Opus 5.5 is good at generating explainer videos. The thread became a referendum on explainer videos themselves: dark pattern that killed written docs, or a genuinely better medium for showing a product in use.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The claim</span><ul><li>Opus 5.5 can generate explainer videos from a prompt — LLM-made video instead of LLM-made docs</li></ul></li><li class="cat"><span class="cat-label">HN take</span><ul><li>Strong opener: explainer videos are &#x27;dark patterns that replaced written howto documents to serve ads&#x27;</li><li>The counter: video is a richer medium — it shows the UI in use and forces you to distill the message</li><li>Honest middle: do both; a video is a push message, text is pull</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://launchvideo.io" target="_blank" rel="noopener">launchvideo.io</a> · Discuss: <a href="https://news.ycombinator.com/item?id=49836374" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">316 pts / 175 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>The anti-video camp opened strong: explainer videos exist to serve ads, not to explain, and Google deprioritizing them was a rare win. The pro camp&#x27;s best point is underappreciated: a video forces the maker to show the thing being used, which text alone can&#x27;t verify — and for a product launch, guided vision has value even if developers hate it. The thread&#x27;s consensus lands where most good content strategy does: publish both forms.</p>
+</div>
+</article>
+<article class="story" id="story-10" data-story="10" data-source="https://linebender.org/blog/fearless-simd-1-0/" data-hn="https://news.ycombinator.com/item?id=49800085" data-metric="277 pts / 43 comments" tabindex="0" aria-label="Story 10: Fearless SIMD v1.0">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">Fearless SIMD v1.0</h2>
+<p class="exec">Linebender&#x27;s portable-SIMD crate hit 1.0 — and it&#x27;s what finally let the PhastFT FFT crate run on stable Rust, no nightly std::simd required. The thread is a SIMD-wonk rabbit hole: NaN-aware min/max codegen, pattern types, and a Dart compiler dev asking about interprocedural float analyses.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">Why it matters</span><ul><li>Stable Rust SIMD without nightly — a real blocker for production crates is gone</li><li>PhastFT&#x27;s migration story is the proof: they needed features, the maintainer built them</li></ul></li><li class="cat"><span class="cat-label">HN take</span><ul><li>Deep technical digression: x86 min vs minimumnum, LLVM nnan flags, range analysis on floats</li><li>Realistic pushback: knowing a float is never NaN ahead of time is nearly impossible outside trivial cases</li><li>Julia folks: possible there without patching the compiler, via compiler-extension packages</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://linebender.org/blog/fearless-simd-1-0/" target="_blank" rel="noopener">linebender.org</a> · Discuss: <a href="https://news.ycombinator.com/item?id=49800085" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">277 pts / 43 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>A small, dense thread of people who actually write SIMD code. The PhastFT story is the heart of it: the crate&#x27;s author evaluated portable SIMD options, picked fearless_simd, hit missing functionality, and one of the maintainers ended up contributing significantly to the 1.0 — open-source dogfooding at its best. The rest is pure compiler talk: whether interprocedural analysis can ever track custom float subsets, and the honest answer that NaN-tracking is almost always impossible past initialization.</p>
+</div>
+</article>
+    </ol>
+
+    <div class="shortcut-bar" aria-label="Keyboard shortcuts">
+      <span><kbd>J</kbd> next story</span>
+      <span><kbd>K</kbd> previous story</span>
+      <span><kbd>T</kbd> theme</span>
+    </div>
+
+    <footer class="page-footer">
+      <div class="footer-links"><a href="../">← Daily archive</a><a href="https://tk3369.github.io/hn-daily/" target="_blank" rel="noopener">Published archive ↗</a></div>
+      <span>Friday 2026-09-25 · 10 stories</span>
+    </footer>
+  </main>
+  <div class="toast" role="status" aria-live="polite"></div>
+  <script>
+(() => {
+  const root = document.documentElement;
+  const toggle = document.getElementById('theme-toggle');
+  const entries = [...document.querySelectorAll('[data-story]')];
+  function storedTheme() { try { const t = localStorage.getItem('hn-daily-theme'); return t === 'dark' || t === 'light' ? t : null; } catch (_) { return null; } }
+  function preferredTheme() { return matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'; }
+  function currentTheme() { const a = root.dataset.theme; if (a === 'dark' || a === 'light') return a; return storedTheme() || preferredTheme(); }
+  function setTheme(theme) { const next = theme === 'dark' ? 'dark' : 'light'; const opposite = next === 'dark' ? 'Light' : 'Dark';
+    if (root.dataset.theme !== next) root.dataset.theme = next;
+    toggle.querySelector('.theme-text').textContent = opposite;
+    toggle.setAttribute('aria-label', `Switch to ${opposite} theme (T)`); toggle.title = `Switch to ${opposite} theme (T)`;
+    try { localStorage.setItem('hn-daily-theme', next); } catch (_) {} }
+  function flipTheme() { setTheme(currentTheme() === 'dark' ? 'light' : 'dark'); }
+  setTheme(storedTheme() || preferredTheme());
+  toggle.addEventListener('click', flipTheme);
+  const toast = document.querySelector('.toast'); let toastTimer;
+  function showToast(msg) { toast.textContent = msg; toast.classList.add('show'); clearTimeout(toastTimer); toastTimer = setTimeout(() => toast.classList.remove('show'), 1800); }
+  document.querySelectorAll('.copy-button').forEach((button) => {
+    button.addEventListener('click', async () => {
+      const story = button.closest('.story');
+      const n = story.dataset.story;
+      const tagline = story.querySelector('.tagline').textContent.trim();
+      const execSum = story.querySelector('.exec').textContent.trim();
+      const bullets = [...story.querySelectorAll('.cat-lists .cat')].map(li => {
+        const label = li.querySelector('.cat-label').textContent.trim();
+        const pts = [...li.querySelectorAll('ul li')].map(p => '  \u2022 ' + p.textContent.trim()).join('\n');
+        return '- ' + label + ':\n' + pts;
+      }).join('\n');
+      const link = 'https://tk3369.github.io/hn-daily/2026-09-25/#story-' + n;
+      const text = n + '. ' + tagline + '\n\n' + execSum + '\n' + bullets + '\n\n' + link;
+      try { await navigator.clipboard.writeText(text); button.textContent = 'Copied'; showToast('Story ' + n + ' copied for Threads'); setTimeout(() => { button.textContent = 'Copy for Threads'; }, 1600); }
+      catch (_) { showToast('Copy was blocked by this browser'); }
+    });
+  });
+  document.addEventListener('keydown', (event) => {
+    if (event.metaKey || event.ctrlKey || event.altKey || event.shiftKey) return;
+    const tag = event.target.tagName;
+    if (tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT') return;
+    const key = event.key.toLowerCase();
+    if (key === 't') { event.preventDefault(); flipTheme(); }
+    else if ((key === 'j' || key === 'k') && entries.length) {
+      event.preventDefault();
+      const active = entries.indexOf(document.activeElement);
+      const delta = key === 'j' ? 1 : -1;
+      const next = active < 0 ? (key === 'j' ? 0 : entries.length - 1) : Math.max(0, Math.min(entries.length - 1, active + 1 * delta));
+      entries[next].focus();
+    }
+  });
+})();
+  </script>
+</body>
+</html>
