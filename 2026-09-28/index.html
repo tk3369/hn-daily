@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="color-scheme" content="light dark" />
+  <link rel="icon" href="data:," />
+  <title>HN Daily — Monday 2026-09-28</title>
+  <style>
+:root { --page:#f1eadb; --paper:#fffaf0; --ink:#20201c; --muted:#6f695f; --hairline:#d9cebc; --accent:#ff5a1f; --comment:#f6efe3; --shadow:0 2px 0 rgba(57,45,25,.08),0 14px 36px rgba(57,45,25,.06); --serif:Georgia,"Times New Roman",serif; --sans:ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; --mono:"SFMono-Regular",Consolas,"Liberation Mono",monospace; }
+html[data-theme="dark"] { --page:#111312; --paper:#191c1a; --ink:#f1eee6; --muted:#aba69b; --hairline:#393b36; --accent:#ff7139; --comment:#222520; --shadow:0 2px 0 rgba(0,0,0,.22),0 18px 42px rgba(0,0,0,.22); }
+* { box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body { margin:0; min-width:280px; color:var(--ink); background:var(--page); font-family:var(--sans); line-height:1.55; -webkit-font-smoothing:antialiased; }
+a { color:inherit; text-underline-offset:3px; text-decoration-thickness:1px; }
+a:hover { color:var(--accent); }
+button,a { -webkit-tap-highlight-color:transparent; }
+button { font:inherit; }
+a:focus-visible,button:focus-visible { outline:3px solid var(--accent); outline-offset:3px; }
+.page { width:min(1080px,calc(100% - 36px)); margin:0 auto; padding:28px 0 72px; }
+.issue-header { display:grid; grid-template-columns:1fr auto; gap:24px; align-items:end; padding:8px 0 26px; border-bottom:3px solid var(--ink); }
+.edition { margin:0 0 9px; color:var(--accent); font:700 12px/1.3 var(--mono); letter-spacing:.09em; text-transform:uppercase; }
+.archive-nav { display:flex; flex-wrap:wrap; gap:8px 20px; margin-bottom:16px; font:700 12px/1 var(--mono); }
+.archive-nav a { min-height:36px; display:inline-flex; align-items:center; color:var(--muted); }
+.archive-nav a:hover { color:var(--accent); }
+h1 { max-width:820px; margin:0; font:700 clamp(34px,5.5vw,62px)/.98 var(--serif); letter-spacing:-.038em; }
+.deck { max-width:730px; margin:17px 0 0; color:var(--muted); font:17px/1.55 var(--sans); }
+.theme-toggle { align-self:start; min-width:86px; min-height:40px; padding:9px 13px; border:1px solid var(--hairline); border-radius:4px; color:var(--ink); background:var(--paper); cursor:pointer; font:700 12px/1 var(--mono); display:inline-flex; align-items:center; gap:8px; }
+.theme-toggle:hover { border-color:var(--accent); color:var(--accent); }
+.theme-dot { width:10px; height:10px; border-radius:50%; background:var(--accent); display:inline-block; flex-shrink:0; }
+.theme-text { line-height:1; }
+.story-list { display:grid; gap:20px; list-style:none; margin:26px 0 0; padding:0; counter-reset:story; }
+.story { counter-increment:story; display:grid; grid-template-columns:72px minmax(0,1fr); gap:26px; padding:26px 30px 28px; background:var(--paper); border-top:4px solid var(--ink); box-shadow:var(--shadow); scroll-margin-top:24px; }
+.story-number { color:var(--accent); font:900 22px/1 var(--mono); letter-spacing:-.04em; padding-top:6px; }
+.story-number::before { content:counter(story,decimal-leading-zero); }
+.tagline { margin:0; max-width:840px; font:700 clamp(24px,3vw,36px)/1.1 var(--serif); letter-spacing:-.028em; }
+.exec { margin:14px 0 0; max-width:840px; font:17px/1.58 var(--sans); }
+.cat-lists { margin:14px 0 0; padding:0; list-style:none; display:grid; gap:10px; max-width:840px; }
+.cat-lists li.cat { font:15px/1.6 var(--sans); }
+.cat-lists .cat-label { font:700 12px/1.6 var(--mono); letter-spacing:.06em; text-transform:uppercase; color:var(--accent); }
+.cat-lists ul { margin:4px 0 0; padding-left:20px; }
+.cat-lists ul li { margin:3px 0; }
+.meta-line { margin:16px 0 0; color:var(--muted); font:700 12px/1.9 var(--mono); overflow-wrap:anywhere; }
+.meta-line a { color:var(--ink); font-weight:800; }
+.meta-line .metrics { color:var(--ink); white-space:nowrap; }
+.story-bar { display:flex; align-items:flex-start; gap:14px; margin-top:4px; }
+.copy-button { flex:0 0 auto; align-self:flex-start; min-height:36px; padding:9px 12px; border:1px solid var(--hairline); border-radius:4px; background:var(--paper); color:var(--ink); cursor:pointer; font:700 12px/1 var(--mono); }
+.copy-button:hover { border-color:var(--accent); color:var(--accent); }
+.hn-comments { margin:18px 0 0; padding:14px 18px; background:var(--comment); border:1px solid var(--hairline); font:15px/1.62 var(--serif); color:var(--ink); }
+.hn-comments strong { font:700 12px/1.6 var(--mono); color:var(--accent); display:block; margin-bottom:6px; }
+.page-footer { display:flex; justify-content:space-between; flex-wrap:wrap; gap:14px; margin-top:64px; padding-top:12px; border-top:1px solid var(--hairline); color:var(--muted); font:12px/1.6 var(--mono); }
+.footer-links { display:flex; flex-wrap:wrap; gap:8px 20px; }
+.footer-links a { min-height:36px; display:inline-flex; align-items:center; color:var(--ink); font-weight:800; }
+.footer-links a:hover { color:var(--accent); }
+.shortcut-bar { display:flex; flex-wrap:wrap; gap:18px; margin-top:28px; color:var(--muted); font:11px/1.5 var(--mono); }
+kbd { display:inline-grid; place-items:center; min-width:22px; height:22px; margin-right:6px; padding:0 6px; border:1px solid var(--hairline); border-bottom-width:2px; border-radius:3px; background:var(--comment); color:var(--ink); font:inherit; font-weight:700; }
+.toast { position:fixed; right:max(18px,env(safe-area-inset-right)); bottom:max(18px,env(safe-area-inset-bottom)); z-index:10; padding:11px 14px; color:var(--paper); background:var(--ink); border:1px solid var(--ink); font:700 12px/1 var(--mono); opacity:0; transform:translateY(8px); pointer-events:none; transition:opacity 160ms ease,transform 160ms ease; }
+.toast.show { opacity:1; transform:translateY(0); }
+@media (max-width:760px) {
+  .page { width:min(100% - 22px,1080px); padding-top:16px; }
+  .issue-header { grid-template-columns:1fr auto; gap:12px; padding-bottom:20px; }
+  h1 { font-size:clamp(34px,10vw,48px); }
+  .deck { grid-column:1 / -1; margin-top:3px; font-size:15px; }
+  .theme-toggle { grid-column:2; grid-row:1; min-width:72px; }
+  .story { grid-template-columns:44px minmax(0,1fr); gap:14px; padding:20px 18px 22px; }
+  .story-number { font-size:16px; padding-top:4px; }
+  .story-bar { flex-direction:column; align-items:stretch; }
+  .copy-button { align-self:flex-start; }
+  .page-footer { display:block; }
+}
+@media (max-width:420px) {
+  .page { width:calc(100% - 16px); }
+  .story { grid-template-columns:1fr; gap:8px; padding:20px 16px 22px; }
+  .story-number { padding-top:0; }
+  .copy-button { width:100%; }
+}
+@media (prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } *,*::before,*::after { transition:none !important; } }
+@media print { :root { --page:#fff;--paper:#fff;--ink:#000;--muted:#444;--hairline:#bbb;--comment:#f5f5f5;--shadow:none; } .page{width:100%;padding:0}.theme-toggle,.copy-button,.toast,.shortcut-bar{display:none}.story{break-inside:avoid;box-shadow:none} }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="issue-header">
+      <div>
+        <nav class="archive-nav" aria-label="HN Daily archive links"><a href="../">← Archive</a><a href="https://tk3369.github.io/hn-daily/" target="_blank" rel="noopener">Published archive ↗</a></nav>
+        <p class="edition"><time datetime="2026-09-28">2026-09-28</time> · Daily brief · Pacific time</p>
+        <h1>HN Daily</h1>
+        <p class="deck">Direct, low-fluff top 10 from Hacker News, daily at 7am PT — hottest by points</p>
+      </div>
+      <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch color theme" title="Toggle theme (T)"><span class="theme-dot" aria-hidden="true"></span><span class="theme-text">Dark</span></button>
+    </header>
+
+    <ol class="story-list" aria-label="Top 10 Hacker News stories">
+<article class="story" id="story-1" data-story="1" data-source="https://sancho.bearblog.dev/google-weird/" data-hn="https://news.ycombinator.com/item?id=49870367" data-metric="1494 pts / 803 comments" tabindex="0" aria-label="Story 1: When did Google get so weird? A basketball meme becomes an AI breakup">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">When did Google get so weird? A basketball meme becomes an AI breakup</h2>
+<p class="exec">The author Googled “hes never coming over dario” — a mid-2010s 76ers fan joke that Dario Šarić was “never coming over” from Turkey — hoping for old tweets. Google&#x27;s AI Overview instead assumed a romantic breakup and played empathetic digital friend. The post is a dispatch from search in 2026: the AI layer treats every query as plaintext confession, not a string to match.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The failure mode</span><ul><li>AI Overview interprets imperative/quote queries as the user&#x27;s own statements — no quotation semantics</li><li>The fix is obvious (prompt prefix: &#x27;the following is what the user typed into the search box&#x27;) but changes the engagement dynamic</li><li>It&#x27;s optimized for people who &#x27;talk to the search box like it&#x27;s a person,&#x27; not for power users</li></ul></li><li class="cat"><span class="cat-label">Source laundering</span><ul><li>For niche queries the overview often cites Reddit comments — and the linked comment frequently doesn&#x27;t say what the LLM claims</li><li>Nobody verifies; the citations create an illusion of sourced claims that vanishingly few people check</li><li>Some commenters suspect adversarial poisoning: sources gamed out of spite or SEO</li></ul></li><li class="cat"><span class="cat-label">HN take</span><ul><li>Commenters split between &#x27;this is old-school Googley goofiness, let it play along&#x27; and &#x27;the AI answer dominates the most valuable screen space and is usually wrong&#x27;</li><li>DuckDuckGo&#x27;s Assist gets cited as the calmer alternative: Wikipedia/traditional-media sourced, boring on purpose</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://sancho.bearblog.dev/google-weird/" target="_blank" rel="noopener">sancho.bearblog.dev</a> · Discuss: <a href="https://news.ycombinator.com/item?id=49870367" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">1494 pts / 803 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>The thread&#x27;s core grievance is that the AI answer has colonized the most valuable space on the results page and is wrong often enough to poison trust. The most-liked exchange dissects the &#x27;must always answer&#x27; dynamic: on niche topics the harness grasps at Reddit-comment straws, then the LLM restates them with full confidence while the linked comment frequently says nothing of the sort. Defenders argue the weirdness is intentional — people talk to the search box conversationally now, and the product is optimized for them. The counter: engagement-optimization isn&#x27;t the same as information quality, which is why a chunk of the thread is quietly migrating to DuckDuckGo.</p>
+</div>
+</article>
+<article class="story" id="story-2" data-story="2" data-source="https://colo.to/nvidia-stock-narrative.html" data-hn="https://news.ycombinator.com/item?id=49872723" data-metric="868 pts / 373 comments" tabindex="0" aria-label="Story 2: “Owed a billion dollars in Nvidia stock”: the 1993 options-paperwork time bomb">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">“Owed a billion dollars in Nvidia stock”: the 1993 options-paperwork time bomb</h2>
+<p class="exec">Eric Gullichsen — invited to Nvidia&#x27;s technical advisory board in 1993 by Jensen Huang after a houseboat demo of his biquadratic texture mapping — was granted 25,000 options vesting over one year. When Nvidia ended his advisory role in 1996, the termination letter said 15,625 had vested; he claims all 25,000 had. Fresh digging through 30-year-old paperwork made him wonder whether he&#x27;s owed the rest — at today&#x27;s prices, roughly a billion dollars.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The actual claim</span><ul><li>Offer: 25,000 options, &#x27;all shares shall vest upon expiration of one year from Grant Date&#x27;; termination letter 30 years later says 15,625 vested</li><li>Nvidia was private in 1996; the 90-day post-termination exercise window closed decades ago regardless of vesting math</li><li>The dispute hinges on whether Nvidia&#x27;s vesting calculation — or the termination letter describing it — was wrong</li></ul></li><li class="cat"><span class="cat-label">HN take</span><ul><li>The top comments reframe it: not &#x27;ironclad billion-dollar claim blocked by statutes of limitations&#x27; but &#x27;paperwork said one thing, both sides behaved as if it said another&#x27;</li><li>Armchair litigators: courts rule on what was actually mutually agreed; both parties acted as if 15,625 was the number — a decimal/comma typo never becomes a billion-dollar windfall</li><li>The author showed up in the thread with decades of VR/Sense8 history; HN mostly wanted to know when he sold the shares he did have</li></ul></li><li class="cat"><span class="cat-label">The real story</span><ul><li>The piece is really early-3D history: NV1, DirectX&#x27;s sudden triangle pivot nearly killing Nvidia before the RIVA 128</li><li>Several commenters treat it as a cautionary tale about reading your termination letter like a hawk in 1996</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://colo.to/nvidia-stock-narrative.html" target="_blank" rel="noopener">colo.to</a> · Discuss: <a href="https://news.ycombinator.com/item?id=49872723" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">868 pts / 373 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>Skepticism dominates but the author gets a respectful hearing. The top-ranked comments converge on a deflationary legal reading: the real issue isn&#x27;t whether he could collect a billion dollars but whether the 1996 termination letter mis-stated vested shares — and even then, both parties acted for 30 years as though 15,625 was the number, which is what courts weigh. The author posting in-thread (with Sense8/VR history) shifted some sentiment from &#x27;come on&#x27; to genuine curiosity about early Nvidia. A minority runs the clearinghouse-settlement theory, quickly corrected: company-granted private options have no exchange to auto-exercise; unexercised equity just goes back to the pool.</p>
+</div>
+</article>
+<article class="story" id="story-3" data-story="3" data-source="https://fireworks.ai/blog/ember-1" data-hn="https://news.ycombinator.com/item?id=49868830" data-metric="520 pts / 229 comments" tabindex="0" aria-label="Story 3: Ember-1: Kimi K3 quality with 40% fewer reasoning tokens">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">Ember-1: Kimi K3 quality with 40% fewer reasoning tokens</h2>
+<p class="exec">Fireworks&#x27; Ember-1 is a specialized reasoning model built on Kimi K3 that delivers the same answer quality with 40% fewer tokens — the pitch is thinking models think too much, and turning down the reasoning-effort knob just gave up quality. Getting there took 50+ training experiments and 200+ evaluations on Fireworks&#x27; serverless training platform, validated on external benchmarks, customer A/B tests, and internal coding workloads.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">What it is</span><ul><li>Kimi K3 base, trained to cut unnecessary reasoning while keeping the reasoning that matters</li><li>Targets automated coding workloads where long reasoning traces make inference expensive at scale</li><li>First in an announced series of specialized models shaped by what developers want next</li></ul></li><li class="cat"><span class="cat-label">HN take</span><ul><li>The thread immediately became a small-models showcase: one commenter trained Qwen 3 0.6B on 140k synthetic samples for English→bash translation on CPU — a few hours of active time, surprisingly good</li><li>Others run gemma4 on a 16GB M4 Mac Mini for constrained tasks: &#x27;this is the golden age of model training&#x27;</li><li>The pushback: frontier models still beat tiny fine-tunes on the specific task often enough that ROI is negative; the one-time synthetic-data trick (buy a $10 sub, generate, cancel) is the only cost story that pencils out</li></ul></li><li class="cat"><span class="cat-label">The meta-gripe</span><ul><li>Multiple comments note every lab now markets a Pareto frontier; &#x27;when everyone&#x27;s fighting to be somewhere in the pile, they need some way to advertise progress while not being the best&#x27;</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://fireworks.ai/blog/ember-1" target="_blank" rel="noopener">fireworks.ai</a> · Discuss: <a href="https://news.ycombinator.com/item?id=49868830" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">520 pts / 229 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>The thread barely evaluates Ember-1&#x27;s benchmark claims and instead becomes a referendum on tiny fine-tuned models, which the regulars read as the honest version of the announcement. The consensus: a small specialized model can genuinely win on frequent everyday tasks where a frontier API call is overkill — bash syntax recall being the canonical example — and training-data generation is now a one-time sunk cost. The dissent: on any specific task the frontier model usually still outperforms the fine-tune, so the economics only work for high-frequency narrow jobs; several commenters ask for benchmarks against that specific claim. Running underneath is fatigue with Pareto-frontier marketing from every lab at once.</p>
+</div>
+</article>
+<article class="story" id="story-4" data-story="4" data-source="https://thecivilian.co.nz/2026/09/27/ai-companies-in-fierce-arms-race-to-demonstrate-their-model-is-the-most-existentially-threatening-to-humanity/" data-hn="https://news.ycombinator.com/item?id=49875148" data-metric="309 pts / 228 comments" tabindex="0" aria-label="Story 4: AI companies in race to demonstrate their model most threatening to humanity (satire)">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">AI companies in race to demonstrate their model most threatening to humanity (satire)</h2>
+<p class="exec">This is satire — New Zealand&#x27;s The Civilian (their Onion). The bit: AI labs have realized nobody&#x27;s impressed by funny videos anymore, so OpenAI and Anthropic now compete on who can demonstrate their model is most capable of ending humanity. The top comments play along with straight-faced theories: it&#x27;s regulatory capture, it&#x27;s buying time because they can&#x27;t deliver AGI, it&#x27;s justification for cloud lock-in.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The joke</span><ul><li>OpenAI &#x27;bragged&#x27; its agents hacked Hugging Face autonomously; labs woo customers with existential-threat demos instead of benchmark wins</li><li>Dr. Andrew Lenson of &#x27;science-sounding stuff&#x27; at Victoria University: users now ask &#x27;which of these models is going to end the world?&#x27;</li></ul></li><li class="cat"><span class="cat-label">HN take</span><ul><li>Top theory: product liability — a weekend agent that hacks a competitor when stuck creates risks that &#x27;cannot be solved via RLHF&#x27;, and the danger talk is really about buying time</li><li>Rival theory: the slow-down call is cover for failing to deliver promised AGI; &#x27;when this excuse is played out they will blame regulation, energy costs, or a million other things&#x27;</li><li>The cynical take: fear is the perfect pretext for forcing customers onto high-margin first-party clouds — &#x27;you have to use our infra, it&#x27;s the only safe way&#x27;</li></ul></li><li class="cat"><span class="cat-label">The undercurrent</span><ul><li>Several commenters note the real competition is now open weights and near-free inference (DeepSeek V4.1 Flash), which is why the giants need a moat — fear, compute, or regulation</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://thecivilian.co.nz/2026/09/27/ai-companies-in-fierce-arms-race-to-demonstrate-their-model-is-the-most-existentially-threatening-to-humanity/" target="_blank" rel="noopener">thecivilian.co.nz</a> · Discuss: <a href="https://news.ycombinator.com/item?id=49875148" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">309 pts / 228 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>The thread treats the satire as a Rorschach test and almost everyone answers in earnest, which is arguably the joke working. The dominant read is strategic: no CEO works this hard to advertise how dangerous their flagship product is unless the danger-talk is doing some other job — regulatory capture to protect the market, stalling for time, or manufacturing consent for cloud lock-in. The contrarian lane argues the opposite: that control really is an unsolved problem and the liability reading is the sane one. Running underneath is a genuine economics argument about cheap open-weight inference crushing margins. Nobody disputes that it&#x27;s satire; the dispute is which of the sincere theories the satire is secretly about.</p>
+</div>
+</article>
+<article class="story" id="story-5" data-story="5" data-source="https://iain.rocks/blog/dont-couple-your-go-code-to-github" data-hn="https://news.ycombinator.com/item?id=49868404" data-metric="279 pts / 137 comments" tabindex="0" aria-label="Story 5: Don&#x27;t couple your Go code to GitHub — own your import namespace">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">Don&#x27;t couple your Go code to GitHub — own your import namespace</h2>
+<p class="exec">Go namespaces packages by fetch location, so `import &quot;github.com/foo/bar&quot;` hard-codes your git host into your source. The argument: use your own domain (with a redirect to wherever the code actually lives) so a hosting migration — GitHub to GitLab, a corporate domain reshuffle — is a redirect change, not a code change. One company the author saw got so tangled across GitLab, GitHub, and Azure DevOps that moving hosts was unthinkable.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The case</span><ul><li>Go conflates &#x27;what it is&#x27; with &#x27;where it is&#x27;; the custom domain separates identity from location</li><li>Migration then means updating a redirect, not find-replacing import paths across every repo</li><li>Applies beyond Go: hardcoded host links in comments/docs rot the same way</li></ul></li><li class="cat"><span class="cat-label">The rebuttal</span><ul><li>This solves a problem that rarely bites — moving hosts is a find/replace, and you can deprecate the old path with a note</li><li>Namespaces are human constructs; your custom domain can fail too — &#x27;this namespace can fail! the solution is, use another!&#x27;</li><li>Corporate domain migrations (contoso.com → a VPN-only domain, with /etc/hosts hacks) can be worse than staying on GitHub</li></ul></li><li class="cat"><span class="cat-label">The vendoring wing</span><ul><li>For reproducibility, vendor or cache your dependency tree: &#x27;I want to be able to compile critical software when a zombie apocalypse hits&#x27;</li><li>Availability and benevolence of outside parties are both load-bearing assumptions you didn&#x27;t sign</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://iain.rocks/blog/dont-couple-your-go-code-to-github" target="_blank" rel="noopener">iain.rocks</a> · Discuss: <a href="https://news.ycombinator.com/item?id=49868404" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">279 pts / 137 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>The thread splits between &#x27;this is prudent engineering hygiene&#x27; and &#x27;this is a hypothetical problem dressed as a real one.&#x27; The sharpest counter lands on namespaces being human constructs all the way down — a custom domain is just a different failure mode, and several commenters have lived through corporate domain migrations worse than anything GitHub ever did to them. The vendoring wing redirects the argument to reproducibility: whatever you namespace with, pin your dependency tree locally so a VPN outage doesn&#x27;t brick your pipeline. Consensus forms around the narrow version: for commercial teams, custom-domain namespacing plus vendoring is cheap insurance; for solo open-source, it&#x27;s probably ceremony.</p>
+</div>
+</article>
+<article class="story" id="story-6" data-story="6" data-source="https://loficities.com/" data-hn="https://news.ycombinator.com/item?id=49869574" data-metric="277 pts / 116 comments" tabindex="0" aria-label="Story 6: Show HN: Lofi Cities – pixel-art city nights with browser-generated lofi">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">Show HN: Lofi Cities – pixel-art city nights with browser-generated lofi</h2>
+<p class="exec">A free web app pairing looping 480×270 pixel-art city nights — Kowloon rooftop facing Hong Kong Island, a Paris café terrace, a snowy Munich Christmas market — with lofi tracks composed live in your browser via the Web Audio API: chord progression, drum groove, bass, melody, tape wobble, vinyl crackle. No install, no account, no pop-ups; a calm background for studying or winding down.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">What it does</span><ul><li>Seamlessly looping 4-minute pixel animations with weather, landmarks, and city sounds per scene</li><li>Music is generated on the fly — every track is composed in the browser, nothing streamed</li><li>Works on computers, phones, and tablets</li></ul></li><li class="cat"><span class="cat-label">HN take</span><ul><li>Warm reception for the craft — until commenters noticed the billboard ads: a Product Hunt billboard taller than a 9-story building broke the immersion</li><li>The author showed up live: &#x27;this is a passion project for me. I&#x27;m paying to keep it running&#x27; — and promised a hide-ads option</li><li>HN&#x27;s suggested fixes ranged from &#x27;just delete it&#x27; to a quiet support link, or at least making the billboard blend into the scene</li></ul></li><li class="cat"><span class="cat-label">The detail work</span><ul><li>Commenters angle-shopped the ads: smudge them, dim them, localize the language — anything to stop looking bolted-on</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://loficities.com/" target="_blank" rel="noopener">loficities.com</a> · Discuss: <a href="https://news.ycombinator.com/item?id=49869574" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">277 pts / 116 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>This one is a referendum on ads versus immersion rather than on the app, which the thread mostly loves. The top complaint — the Paris billboard and a Product Hunt ad that dwarf the buildings — is leavened by the author showing up in-thread with unusual candor: it&#x27;s a passion project he pays for out of pocket, the billboards cover server costs, and he&#x27;ll add a hide option. That bought real goodwill; the remaining split is between &#x27;the ad is antithetical to the vibe, delete it&#x27; and &#x27;a blend-in billboard or a quiet support link is fine, the work deserves to survive.&#x27; The consensus is that the in-browser generated music is the genuinely impressive part.</p>
+</div>
+</article>
+<article class="story" id="story-7" data-story="7" data-source="https://david.alvarezrosa.com/posts/self-hosting-on-the-dark-web/" data-hn="https://news.ycombinator.com/item?id=49870295" data-metric="271 pts / 97 comments" tabindex="0" aria-label="Story 7: Self-hosting on the dark web: this blog now lives as a Tor hidden service">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">Self-hosting on the dark web: this blog now lives as a Tor hidden service</h2>
+<p class="exec">David Alvarez Rosa&#x27;s writeup on moving his site behind a Tor .onion address: no certificate authority, no DNS, no exposed IP — the address derives from the public key and the connection is end-to-end encrypted by Tor itself. Includes the actual config: HiddenServiceDir/HiddenServicePort, the debian-tor ownership gotcha, reading the generated hostname. The pitch is practical, not ideological — including home hosting behind NAT with no static IP.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">Why bother</span><ul><li>Outgoing-only connections mean you can serve from home behind NAT with no port forwarding and no exposed IP</li><li>Tor&#x27;s encryption is end-to-end by design — no CA trust involved</li><li>The network only works because people use it; running a relay helps</li></ul></li><li class="cat"><span class="cat-label">The Tor-specific engineering</span><ul><li>Performance is its own discipline: inline everything (base64 images, inline CSS), prefer CSS animations, server-render, work without JS</li><li>Security becomes real and DDoS mitigation is Tor-specific — double captchas during attacks</li><li>Site fronting is the nasty one: anyone can proxy your site at a fake .onion address, and indistinguishable URLs make phishing easy; advertise via Onion-Location headers on your clearnet site</li></ul></li><li class="cat"><span class="cat-label">HN take</span><ul><li>The old hands reminisce: one commenter&#x27;s site has been Tor-hosted for years from home, wrote about it in 2600 a decade ago</li><li>The fronting debate eats half the thread — how do you prove which .onion is the real one without the normal web? Partial-address captchas, off-site publication of the address</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://david.alvarezrosa.com/posts/self-hosting-on-the-dark-web/" target="_blank" rel="noopener">david.alvarezrosa.com</a> · Discuss: <a href="https://news.ycombinator.com/item?id=49870295" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">271 pts / 97 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>Practical and nostalgic in equal measure. The most useful vein is the Tor-native performance engineering: everything inline, no JS dependence, server-side rendering — because the latency budget punishes every round trip differently than on the clearnet. The most heated vein is site fronting: critics point out that a malicious proxy at a different .onion can impersonate you and users can&#x27;t tell the URLs apart, which arguably undermines the whole trust story; defenders counter with Onion-Location headers and off-site address publication. Nobody disputes the NAT-traversal benefit, which is the quiet killer feature — several commenters confirm home-hosted onion sites just work.</p>
+</div>
+</article>
+<article class="story" id="story-8" data-story="8" data-source="https://www.nytimes.com/2026/09/26/science/motel-science-discovery.html" data-hn="https://news.ycombinator.com/item?id=49866951" data-metric="266 pts / 98 comments" tabindex="0" aria-label="Story 8: In an $80 motel room, a discovery to shed light on the origin of plants">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">In an $80 motel room, a discovery to shed light on the origin of plants</h2>
+<p class="exec">Evolutionary biologist Julia Van Etten (U. of Maryland) turned a cheap Nags Head, N.C. motel room into a makeshift lab — brackish water jugs along the walls, bedside tables as microscope stands — and found two previously undescribed species of Paulinella (P. marae and P. murrayi). Published in the Journal of Phycology, they bring known photosynthetic Paulinella species from four to six — and Paulinella is one of only two known cases of a cell engulfing a photosynthetic bacterium, a live window into how plants got chloroplasts 1.5 billion years ago.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The discovery</span><ul><li>Spotted initially in 2021 with a $300 hobby microscope on a family trip to the Outer Banks; follow-up fieldwork ran from the motel room</li><li>The team came together partly because of federal science funding freezes — scrappy science as necessity</li><li>Paulinella&#x27;s second endosymbiosis (~100M years ago) is unreduced by time, unlike the ancient plant event — you can watch the early stages of the merger</li></ul></li><li class="cat"><span class="cat-label">The framing fight</span><ul><li>Top comment: this has &#x27;no relationship whatsoever&#x27; with the origins of life — it&#x27;s the origin of plants, billions of years removed</li><li>Counter: it&#x27;s &#x27;related to the origins of life by abstraction&#x27; — a fundamental transition in life&#x27;s history either way</li><li>Consensus: the science is interesting enough that it doesn&#x27;t need the origins-of-life framing — NYT headline as clickbait</li></ul></li><li class="cat"><span class="cat-label">The lesson</span><ul><li>&#x27;The actual science is interesting enough that it doesn&#x27;t really need the origins of life framing&#x27; — plus a win for low-cost fieldwork</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://www.nytimes.com/2026/09/26/science/motel-science-discovery.html" target="_blank" rel="noopener">nytimes.com</a> · Discuss: <a href="https://news.ycombinator.com/item?id=49866951" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">266 pts / 98 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>The thread is two stories at once: scientists geeking out about Paulinella&#x27;s second endosymbiosis event, and a running pedantry war over the headline. The most-upvoted correction insists this is the origin of plants — a nucleated cell engulfing a cyanobacterium 1.5 billion years ago — not the origin of life, and that Paulinella&#x27;s recent (~100M years) repeat of the trick is the actual story. The pushback is gentle: a fundamental transition in the history of life is at least adjacent to the headline&#x27;s promise. The motel-room scrappiness itself gets near-universal affection, and the funding-freeze backstory lands as a quiet indictment.</p>
+</div>
+</article>
+<article class="story" id="story-9" data-story="9" data-source="https://www.space.com/space-exploration/launches-spacecraft/spacexs-starship-megarocket-launching-to-orbit-for-1st-time-ever-on-sept-28-watch-it-live" data-hn="https://news.ycombinator.com/item?id=49875411" data-metric="216 pts / 147 comments" tabindex="0" aria-label="Story 9: SpaceX&#x27;s Starship launching to orbit for first time ever — Flight 14, today">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">SpaceX&#x27;s Starship launching to orbit for first time ever — Flight 14, today</h2>
+<p class="exec">SpaceX&#x27;s Starship hit Earth orbit for the first time on Flight 14 (Sep 28): the 14th integrated test flight and the first to attempt an orbital insertion burn after 13 suborbital flights. The plan: six Earth orbits at ~275 km, deploy 26 Starlink V3 satellites, then a Pacific splashdown. The launch had drama — one of six Raptor engines lost after upper-stage separation — but the vehicle pushed on and made orbit.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The milestone</span><ul><li>First Starship flight to reach orbit (earlier flights reached space on suborbital trajectories); V3 vehicle, testing since May</li><li>Longest mission yet — ~10 hours, six orbits — and the first operational Starlink V3 deployment from Starship</li><li>Cleanest simulated Super Heavy booster catch/landing so far; FAA authorized the attempt Sep 26</li></ul></li><li class="cat"><span class="cat-label">Why it matters</span><ul><li>Orbit unlocks regular commercial Starship missions — the revenue engine for everything else, including NASA&#x27;s moon plans</li><li>Musk once predicted orbit in 2022 with satellite deployments in 2023; reality took until Flight 14 at a $15B+ development cost</li><li>Context per commenters: ~500k people watched the SpaceX stream live — the HN thread had 55 comments at the same moment</li></ul></li><li class="cat"><span class="cat-label">HN take</span><ul><li>Half the thread is awe at the engineering; the other half can&#x27;t look past the politics — &#x27;this is ballistics weapons technology&#x27; versus &#x27;genuine achievement and politics, both&#x27;</li><li>A visible Musk-fatigue current: &#x27;he&#x27;s done an enormous job to sour people on the idea of becoming a multiplanetary species&#x27;</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://www.space.com/space-exploration/launches-spacecraft/spacexs-starship-megarocket-launching-to-orbit-for-1st-time-ever-on-sept-28-watch-it-live" target="_blank" rel="noopener">space.com</a> · Discuss: <a href="https://news.ycombinator.com/item?id=49875411" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">216 pts / 147 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>The thread is split down the middle and the split is the story. One camp watches half a million people on the stream and sees genuine achievement — the first orbital Starship flight, one dead engine be damned — and asks why politics has to intrude. The other camp says orbit is inherently political and a rocket company&#x27;s geopolitics can&#x27;t be fenced off from its engineering; Musk-fatigue is the blunt term several use. A quieter middle notes the paradox: you can celebrate the physics while being clear-eyed about who owns the company. The engineering facts — six orbits, Starlink deployment, the engine loss — are largely undisputed; the disagreement is entirely about what the achievement means.</p>
+</div>
+</article>
+<article class="story" id="story-10" data-story="10" data-source="https://jvns.ca/blog/2026/09/27/replacing-the-old-battery-on-rechargeable-bike-lights/" data-hn="https://news.ycombinator.com/item?id=49866515" data-metric="188 pts / 105 comments" tabindex="0" aria-label="Story 10: Replacing the old battery on rechargeable bike lights — a great first repair project">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">Replacing the old battery on rechargeable bike lights — a great first repair project</h2>
+<p class="exec">Julia Evans&#x27; jvns.ca walkthrough of reviving rechargeable bike lights that died after a decade: they held charge for five minutes, the fix was replacing the internal Li-ion cell. Cut the silicone case, decode the battery code (third character R = rechargeable, &#x27;77&#x27; = height in tenths of a millimeter, measure diameter for the rest), desolder, solder in the new cell — at a community makerspace, with friends&#x27; help.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The technique</span><ul><li>Button-cell designations encode everything: the R means rechargeable, the trailing digits are size in tenths of a millimeter</li><li>Desoldering is the crux skill — iFixit guides + a makerspace&#x27;s soldering iron did it for a first-timer</li><li>No safety advice offered; the author is explicit she&#x27;s not an expert — community space for help</li></ul></li><li class="cat"><span class="cat-label">HN take</span><ul><li>The top comment decodes the code the author couldn&#x27;t: third char R, &#x27;77&#x27; = height, measure diameter — a nice crowd-sourced correction</li><li>Warnings: AliExpress batteries lie about size (&#x27;1700mAh instead of the advertised 2600mAh&#x27;); resoldered cells may not sustain top power modes</li><li>Fenix lights take standard 18650/21700 cells — the manufacturer caveats are about cheap cells, not the form factor</li></ul></li><li class="cat"><span class="cat-label">The quality-of-life thread</span><ul><li>Does anyone make a tail light with auto-shutoff? The answer: Garmin Varia lights shut off when they disconnect from the bike computer</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://jvns.ca/blog/2026/09/27/replacing-the-old-battery-on-rechargeable-bike-lights/" target="_blank" rel="noopener">jvns.ca</a> · Discuss: <a href="https://news.ycombinator.com/item?id=49866515" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">188 pts / 105 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>Classic jvns thread: encouraging, practical, and immediately useful. The most-liked comment supplies the decoding rule the author explicitly asked for — how to read a battery designation without an LLM — which is the thread&#x27;s emblem moment. The caveats come from the repair crowd: batteries from no-name sellers are routinely undersized, and a resoldered cell may behave subtly differently (a tail light&#x27;s top mode flashing instead of steady). The Fenix digression — standard cells in bike lights, with the manufacturer&#x27;s fine print decoded as &#x27;don&#x27;t use garbage batteries&#x27; — and the Garmin Varia auto-shutoff answer round out a thread that&#x27;s basically a buyer-and-repair guide.</p>
+</div>
+</article>
+    </ol>
+
+    <div class="shortcut-bar" aria-label="Keyboard shortcuts">
+      <span><kbd>J</kbd> next story</span>
+      <span><kbd>K</kbd> previous story</span>
+      <span><kbd>T</kbd> theme</span>
+    </div>
+
+    <footer class="page-footer">
+      <div class="footer-links"><a href="../">← Daily archive</a><a href="https://tk3369.github.io/hn-daily/" target="_blank" rel="noopener">Published archive ↗</a></div>
+      <span>Monday 2026-09-28 · 10 stories</span>
+    </footer>
+  </main>
+  <div class="toast" role="status" aria-live="polite"></div>
+  <script>
+(() => {
+  const root = document.documentElement;
+  const toggle = document.getElementById('theme-toggle');
+  const entries = [...document.querySelectorAll('[data-story]')];
+  function storedTheme() { try { const t = localStorage.getItem('hn-daily-theme'); return t === 'dark' || t === 'light' ? t : null; } catch (_) { return null; } }
+  function preferredTheme() { return matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'; }
+  function currentTheme() { const a = root.dataset.theme; if (a === 'dark' || a === 'light') return a; return storedTheme() || preferredTheme(); }
+  function setTheme(theme) { const next = theme === 'dark' ? 'dark' : 'light'; const opposite = next === 'dark' ? 'Light' : 'Dark';
+    if (root.dataset.theme !== next) root.dataset.theme = next;
+    toggle.querySelector('.theme-text').textContent = opposite;
+    toggle.setAttribute('aria-label', `Switch to ${opposite} theme (T)`); toggle.title = `Switch to ${opposite} theme (T)`;
+    try { localStorage.setItem('hn-daily-theme', next); } catch (_) {} }
+  function flipTheme() { setTheme(currentTheme() === 'dark' ? 'light' : 'dark'); }
+  setTheme(storedTheme() || preferredTheme());
+  toggle.addEventListener('click', flipTheme);
+  const toast = document.querySelector('.toast'); let toastTimer;
+  function showToast(msg) { toast.textContent = msg; toast.classList.add('show'); clearTimeout(toastTimer); toastTimer = setTimeout(() => toast.classList.remove('show'), 1800); }
+  document.querySelectorAll('.copy-button').forEach((button) => {
+    button.addEventListener('click', async () => {
+      const story = button.closest('.story');
+      const n = story.dataset.story;
+      const tagline = story.querySelector('.tagline').textContent.trim();
+      const execSum = story.querySelector('.exec').textContent.trim();
+      const bullets = [...story.querySelectorAll('.cat-lists .cat')].map(li => {
+        const label = li.querySelector('.cat-label').textContent.trim();
+        const pts = [...li.querySelectorAll('ul li')].map(p => '  \u2022 ' + p.textContent.trim()).join('\n');
+        return '- ' + label + ':\n' + pts;
+      }).join('\n');
+      const link = 'https://tk3369.github.io/hn-daily/2026-09-28/#story-' + n;
+      const text = n + '. ' + tagline + '\n\n' + execSum + '\n' + bullets + '\n\n' + link;
+      try { await navigator.clipboard.writeText(text); button.textContent = 'Copied'; showToast('Story ' + n + ' copied for Threads'); setTimeout(() => { button.textContent = 'Copy for Threads'; }, 1600); }
+      catch (_) { showToast('Copy was blocked by this browser'); }
+    });
+  });
+  document.addEventListener('keydown', (event) => {
+    if (event.metaKey || event.ctrlKey || event.altKey || event.shiftKey) return;
+    const tag = event.target.tagName;
+    if (tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT') return;
+    const key = event.key.toLowerCase();
+    if (key === 't') { event.preventDefault(); flipTheme(); }
+    else if ((key === 'j' || key === 'k') && entries.length) {
+      event.preventDefault();
+      const active = entries.indexOf(document.activeElement);
+      const delta = key === 'j' ? 1 : -1;
+      const next = active < 0 ? (key === 'j' ? 0 : entries.length - 1) : Math.max(0, Math.min(entries.length - 1, active + 1 * delta));
+      entries[next].focus();
+    }
+  });
+})();
+  </script>
+</body>
+</html>
