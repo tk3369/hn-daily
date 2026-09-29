@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="color-scheme" content="light dark" />
+  <link rel="icon" href="data:," />
+  <title>HN Daily — Tuesday 2026-09-29</title>
+  <style>
+:root { --page:#f1eadb; --paper:#fffaf0; --ink:#20201c; --muted:#6f695f; --hairline:#d9cebc; --accent:#ff5a1f; --comment:#f6efe3; --shadow:0 2px 0 rgba(57,45,25,.08),0 14px 36px rgba(57,45,25,.06); --serif:Georgia,"Times New Roman",serif; --sans:ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; --mono:"SFMono-Regular",Consolas,"Liberation Mono",monospace; }
+html[data-theme="dark"] { --page:#111312; --paper:#191c1a; --ink:#f1eee6; --muted:#aba69b; --hairline:#393b36; --accent:#ff7139; --comment:#222520; --shadow:0 2px 0 rgba(0,0,0,.22),0 18px 42px rgba(0,0,0,.22); }
+* { box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body { margin:0; min-width:280px; color:var(--ink); background:var(--page); font-family:var(--sans); line-height:1.55; -webkit-font-smoothing:antialiased; }
+a { color:inherit; text-underline-offset:3px; text-decoration-thickness:1px; }
+a:hover { color:var(--accent); }
+button,a { -webkit-tap-highlight-color:transparent; }
+button { font:inherit; }
+a:focus-visible,button:focus-visible { outline:3px solid var(--accent); outline-offset:3px; }
+.page { width:min(1080px,calc(100% - 36px)); margin:0 auto; padding:28px 0 72px; }
+.issue-header { display:grid; grid-template-columns:1fr auto; gap:24px; align-items:end; padding:8px 0 26px; border-bottom:3px solid var(--ink); }
+.edition { margin:0 0 9px; color:var(--accent); font:700 12px/1.3 var(--mono); letter-spacing:.09em; text-transform:uppercase; }
+.archive-nav { display:flex; flex-wrap:wrap; gap:8px 20px; margin-bottom:16px; font:700 12px/1 var(--mono); }
+.archive-nav a { min-height:36px; display:inline-flex; align-items:center; color:var(--muted); }
+.archive-nav a:hover { color:var(--accent); }
+h1 { max-width:820px; margin:0; font:700 clamp(34px,5.5vw,62px)/.98 var(--serif); letter-spacing:-.038em; }
+.deck { max-width:730px; margin:17px 0 0; color:var(--muted); font:17px/1.55 var(--sans); }
+.theme-toggle { align-self:start; min-width:86px; min-height:40px; padding:9px 13px; border:1px solid var(--hairline); border-radius:4px; color:var(--ink); background:var(--paper); cursor:pointer; font:700 12px/1 var(--mono); display:inline-flex; align-items:center; gap:8px; }
+.theme-toggle:hover { border-color:var(--accent); color:var(--accent); }
+.theme-dot { width:10px; height:10px; border-radius:50%; background:var(--accent); display:inline-block; flex-shrink:0; }
+.theme-text { line-height:1; }
+.story-list { display:grid; gap:20px; list-style:none; margin:26px 0 0; padding:0; counter-reset:story; }
+.story { counter-increment:story; display:grid; grid-template-columns:72px minmax(0,1fr); gap:26px; padding:26px 30px 28px; background:var(--paper); border-top:4px solid var(--ink); box-shadow:var(--shadow); scroll-margin-top:24px; }
+.story-number { color:var(--accent); font:900 22px/1 var(--mono); letter-spacing:-.04em; padding-top:6px; }
+.story-number::before { content:counter(story,decimal-leading-zero); }
+.tagline { margin:0; max-width:840px; font:700 clamp(24px,3vw,36px)/1.1 var(--serif); letter-spacing:-.028em; }
+.exec { margin:14px 0 0; max-width:840px; font:17px/1.58 var(--sans); }
+.cat-lists { margin:14px 0 0; padding:0; list-style:none; display:grid; gap:10px; max-width:840px; }
+.cat-lists li.cat { font:15px/1.6 var(--sans); }
+.cat-lists .cat-label { font:700 12px/1.6 var(--mono); letter-spacing:.06em; text-transform:uppercase; color:var(--accent); }
+.cat-lists ul { margin:4px 0 0; padding-left:20px; }
+.cat-lists ul li { margin:3px 0; }
+.meta-line { margin:16px 0 0; color:var(--muted); font:700 12px/1.9 var(--mono); overflow-wrap:anywhere; }
+.meta-line a { color:var(--ink); font-weight:800; }
+.meta-line .metrics { color:var(--ink); white-space:nowrap; }
+.story-bar { display:flex; align-items:flex-start; gap:14px; margin-top:4px; }
+.copy-button { flex:0 0 auto; align-self:flex-start; min-height:36px; padding:9px 12px; border:1px solid var(--hairline); border-radius:4px; background:var(--paper); color:var(--ink); cursor:pointer; font:700 12px/1 var(--mono); }
+.copy-button:hover { border-color:var(--accent); color:var(--accent); }
+.hn-comments { margin:18px 0 0; padding:14px 18px; background:var(--comment); border:1px solid var(--hairline); font:15px/1.62 var(--serif); color:var(--ink); }
+.hn-comments strong { font:700 12px/1.6 var(--mono); color:var(--accent); display:block; margin-bottom:6px; }
+.page-footer { display:flex; justify-content:space-between; flex-wrap:wrap; gap:14px; margin-top:64px; padding-top:12px; border-top:1px solid var(--hairline); color:var(--muted); font:12px/1.6 var(--mono); }
+.footer-links { display:flex; flex-wrap:wrap; gap:8px 20px; }
+.footer-links a { min-height:36px; display:inline-flex; align-items:center; color:var(--ink); font-weight:800; }
+.footer-links a:hover { color:var(--accent); }
+.shortcut-bar { display:flex; flex-wrap:wrap; gap:18px; margin-top:28px; color:var(--muted); font:11px/1.5 var(--mono); }
+kbd { display:inline-grid; place-items:center; min-width:22px; height:22px; margin-right:6px; padding:0 6px; border:1px solid var(--hairline); border-bottom-width:2px; border-radius:3px; background:var(--comment); color:var(--ink); font:inherit; font-weight:700; }
+.toast { position:fixed; right:max(18px,env(safe-area-inset-right)); bottom:max(18px,env(safe-area-inset-bottom)); z-index:10; padding:11px 14px; color:var(--paper); background:var(--ink); border:1px solid var(--ink); font:700 12px/1 var(--mono); opacity:0; transform:translateY(8px); pointer-events:none; transition:opacity 160ms ease,transform 160ms ease; }
+.toast.show { opacity:1; transform:translateY(0); }
+@media (max-width:760px) {
+  .page { width:min(100% - 22px,1080px); padding-top:16px; }
+  .issue-header { grid-template-columns:1fr auto; gap:12px; padding-bottom:20px; }
+  h1 { font-size:clamp(34px,10vw,48px); }
+  .deck { grid-column:1 / -1; margin-top:3px; font-size:15px; }
+  .theme-toggle { grid-column:2; grid-row:1; min-width:72px; }
+  .story { grid-template-columns:44px minmax(0,1fr); gap:14px; padding:20px 18px 22px; }
+  .story-number { font-size:16px; padding-top:4px; }
+  .story-bar { flex-direction:column; align-items:stretch; }
+  .copy-button { align-self:flex-start; }
+  .page-footer { display:block; }
+}
+@media (max-width:420px) {
+  .page { width:calc(100% - 16px); }
+  .story { grid-template-columns:1fr; gap:8px; padding:20px 16px 22px; }
+  .story-number { padding-top:0; }
+  .copy-button { width:100%; }
+}
+@media (prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } *,*::before,*::after { transition:none !important; } }
+@media print { :root { --page:#fff;--paper:#fff;--ink:#000;--muted:#444;--hairline:#bbb;--comment:#f5f5f5;--shadow:none; } .page{width:100%;padding:0}.theme-toggle,.copy-button,.toast,.shortcut-bar{display:none}.story{break-inside:avoid;box-shadow:none} }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="issue-header">
+      <div>
+        <nav class="archive-nav" aria-label="HN Daily archive links"><a href="../">← Archive</a><a href="https://tk3369.github.io/hn-daily/" target="_blank" rel="noopener">Published archive ↗</a></nav>
+        <p class="edition"><time datetime="2026-09-29">2026-09-29</time> · Daily brief · Pacific time</p>
+        <h1>HN Daily</h1>
+        <p class="deck">Direct, low-fluff top 10 from Hacker News, daily at 7am PT — hottest by points</p>
+      </div>
+      <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch color theme" title="Toggle theme (T)"><span class="theme-dot" aria-hidden="true"></span><span class="theme-text">Dark</span></button>
+    </header>
+
+    <ol class="story-list" aria-label="Top 10 Hacker News stories">
+<article class="story" id="story-1" data-story="1" data-source="https://twitter.com/AliAbunimah/status/2103890594137309425" data-hn="https://news.ycombinator.com/item?id=49879645" data-metric="764 pts / 632 comments" tabindex="0" aria-label="Story 1: Satellite maps now show what two years of war did to Rafah">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">Satellite maps now show what two years of war did to Rafah</h2>
+<p class="exec">Updated Google Maps satellite imagery of Rafah, Gaza shows entire neighborhoods reduced to rubble. Commenters are toggling between Street View&#x27;s pre-war streets — shops, apartments, people going about their day — and the current gray aerial view of nothing but dust.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The record</span><ul><li>Street View still carries pre-war captures: side streets, local shops, apartment buildings</li><li>The contrast between those and the current aerial view is what hit people hardest</li><li>One thread asks whether crowd-contributed Street View can preserve more of what was lost</li></ul></li><li class="cat"><span class="cat-label">HN take</span><ul><li>The top comments are mostly grief and documentation, not argument</li><li>A Netanyahu 2025 quote on mass demolition and emigration pressure gets circulated</li><li>The engineering angle: maps as an involuntary before/after archive</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://twitter.com/AliAbunimah/status/2103890594137309425" target="_blank" rel="noopener">twitter.com</a> · Discuss: <a href="https://news.ycombinator.com/item?id=49879645" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">764 pts / 632 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>The consensus is grief and measurement — people opening two map tabs, Google and Apple, flipping between pre-war Street View and the current satellite view to size up the destruction. Several threads note Street View captures of ordinary streets that no longer exist in any form. The disagreement is political and practical: some argue over causes and intent, others pivot to whether more crowd-contributed imagery could preserve a record of what was lost before connectivity and access made it impossible.</p>
+</div>
+</article>
+<article class="story" id="story-2" data-story="2" data-source="https://mubi.com/en/notebook/posts/pirating-the-pirates" data-hn="https://news.ycombinator.com/item?id=49880036" data-metric="638 pts / 322 comments" tabindex="0" aria-label="Story 2: The film essayist the pirates trust: how one YouTuber became the archive&#x27;s last reviewer">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">The film essayist the pirates trust: how one YouTuber became the archive&#x27;s last reviewer</h2>
+<p class="exec">A MUBI notebook profile of Spencer Draper, the YouTuber whose film essays dissect digital releases — transfers, encodes, extras — with peer-review-grade rigor. He&#x27;s the guy cinephiles trust over the studios. The thread became a referendum on what the early web was for.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The subject</span><ul><li>Reviews the technical and historical aspects of digital releases with unusual rigor</li><li>Built an audience of film obsessives that treats his verdicts as authoritative</li><li>The old-web model: one person, one site, deep niche, global audience</li></ul></li><li class="cat"><span class="cat-label">HN take</span><ul><li>Nostalgia camp: this is what the early web was about — obscure hobbies, personal publishing, small communities</li><li>Pushback: barriers were also a filter; YouTube and newsletters now host far more and deeper niches</li><li>The genre split: cinema was always internet-adjacent; craft hobbies had to wait for smartphones</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://mubi.com/en/notebook/posts/pirating-the-pirates" target="_blank" rel="noopener">mubi.com</a> · Discuss: <a href="https://news.ycombinator.com/item?id=49880036" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">638 pts / 322 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>The nostalgic take dominates — the early web rewarded people sharing obscure obsessions on their own sites, and something real was lost when publishing centralized onto social platforms. The counterargument has numbers on its side: there were far fewer deep niches back then because standing up a site was expensive; YouTube and newsletters now host more obsessive coverage of more topics than the old web ever did. A third thread notes the genre asymmetry: cinema fans were always adjacent enough to the internet to blog, while woodworkers and similar crafts needed the smartphone and YouTube boom first — though one reply counters that phpbb forums already covered every niche hobby before that.</p>
+</div>
+</article>
+<article class="story" id="story-3" data-story="3" data-source="https://github.com/firelex/jeff" data-hn="https://news.ycombinator.com/item?id=49883844" data-metric="536 pts / 203 comments" tabindex="0" aria-label="Story 3: 0.8B decision models trained at home, running in 30 ms">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">0.8B decision models trained at home, running in 30 ms</h2>
+<p class="exec">Jeff: Jev-compatible 0.8B-parameter decision models you train at home, running inference in ~30ms. The demo plays Doom from semantic snapshots, not the framebuffer. HN&#x27;s verdict splits on demo vs. technology: the showcase undersells the idea, and a commenter posted the more impressive version.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">What it is</span><ul><li>0.8B decision models, Jev-compatible API, trained at home</li><li>Runs Doom from semantic snapshots rather than pixels</li><li>~30ms inference — the claim is small, fast, and local</li></ul></li><li class="cat"><span class="cat-label">HN take</span><ul><li>The demo shoots at static monsters; a commenter&#x27;s laya-duum actually hunts, prioritizes health, switches goals, finishes levels</li><li>&#x27;That&#x27;s the 13kg lost, not the potential to lose it&#x27; — demo vs. technology is the whole argument</li><li>The real open question: what does the semantic-snapshot design actually buy you?</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://github.com/firelex/jeff" target="_blank" rel="noopener">github.com</a> · Discuss: <a href="https://news.ycombinator.com/item?id=49883844" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">536 pts / 203 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>The top thread is a demo-vs-technology debate — several commenters argue the Jeff demo undersells the idea and point to laya-duum as the actually-impressive implementation: it goes after monsters, makes decisions about prioritizing health, changes goals, and plays through the first two levels to completion. Others push back that the underlying technology isn&#x27;t different, only the showcase, so crediting the demo over the design misses the point. Underneath sits a genuine technical question that nobody fully answered: the project feeds semantic snapshots rather than the framebuffer, and people want a clear account of that design choice and its tradeoffs.</p>
+</div>
+</article>
+<article class="story" id="story-4" data-story="4" data-source="https://www.derekthompson.org/p/the-death-of-the-american-host" data-hn="https://news.ycombinator.com/item?id=49891295" data-metric="305 pts / 248 comments" tabindex="0" aria-label="Story 4: The dinner party is dying, and nobody can agree why">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">The dinner party is dying, and nobody can agree why</h2>
+<p class="exec">Derek Thompson&#x27;s essay on the decline of hosting — fewer dinner parties, a cultural drift away from being the person who throws them. Commenters sorted instantly into hosts and non-hosts, then argued about whether introversion is a trait or an excuse.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The claim</span><ul><li>Hosting culture is measurably declining; fewer people throw dinner parties</li><li>The pattern reads as specifically American — European commenters report still-thriving party cultures</li><li>Personality sorts it: some are energized by hosting, others drained by it</li></ul></li><li class="cat"><span class="cat-label">HN take</span><ul><li>Trait camp: introversion is a reproducible Big Five trait; the 80s had lone wolves too, they just couldn&#x27;t say it</li><li>Taxonomy camp: the modern introvert/extrovert discourse is self-fulfilling — labels give people permission to opt out</li><li>The pragmatic read: &#x27;there are people who throw parties and people who don&#x27;t&#x27; was always true</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://www.derekthompson.org/p/the-death-of-the-american-host" target="_blank" rel="noopener">derekthompson.org</a> · Discuss: <a href="https://news.ycombinator.com/item?id=49891295" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">305 pts / 248 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>Consensus: the decline is real, and personality sorts it — hosting energizes some people and drains others, and that&#x27;s old news rather than a new crisis. The sharp disagreement is causal. One side says introversion is a stable, reproducible trait that always existed; the 80s simply weren&#x27;t a culture where you could say it, citing left-handedness graphs as the analogy for reporting bias. The other side says the modern introvert/extrovert taxonomy is itself doing damage — introversion has become a socially acceptable excuse to hermit, and labeling a mood as an identity reinforces it. A middle thread suggests thinking of it as mood, not character.</p>
+</div>
+</article>
+<article class="story" id="story-5" data-story="5" data-source="https://www.kqed.org/news/12101534/california-farmers-are-struggling-to-sell-grapes-as-demand-for-wine-drops" data-hn="https://news.ycombinator.com/item?id=49883539" data-metric="287 pts / 719 comments" tabindex="0" aria-label="Story 5: Wine demand is collapsing and California grape growers are stuck with the harvest">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">Wine demand is collapsing and California grape growers are stuck with the harvest</h2>
+<p class="exec">California wine-grape farmers can&#x27;t sell their harvest — demand for wine is in structural decline and there&#x27;s nowhere to offload the grapes. HN reads this as a demand story, not a supply story: the cultural norms around alcohol have moved permanently, and growers hold a perishable asset with no buyers.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The shift</span><ul><li>Lunch wines that were normal a decade ago now get you an HR trip</li><li>Offering beers at a family gathering draws looks &#x27;as if you&#x27;d offered the kids drugs&#x27;</li><li>Nordic commenters add the policy dimension: state monopolies and punitive pricing worked as designed</li></ul></li><li class="cat"><span class="cat-label">HN take</span><ul><li>Consensus: this isn&#x27;t a bad vintage, it&#x27;s a generational decline — structural, not cyclical</li><li>Denmark never had prohibitionist policies and demand fell there too, so culture is doing most of the work</li><li>The growers&#x27; problem has no obvious fix: grapes rot, and alternative uses don&#x27;t pencil out at scale</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://www.kqed.org/news/12101534/california-farmers-are-struggling-to-sell-grapes-as-demand-for-wine-drops" target="_blank" rel="noopener">kqed.org</a> · Discuss: <a href="https://news.ycombinator.com/item?id=49883539" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">287 pts / 719 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>The consensus is blunt — this isn&#x27;t a bad vintage, it&#x27;s a generational shift in alcohol norms, and farmers are holding a perishable asset with no buyers. European commenters trace the change concretely: 10–15 years ago bankers drank wine at lunch; now being even slightly drunk around children is taboo. The policy subplot splits along Nordics-versus-Denmark lines: commenters from Finland, Norway, Sweden, and Iceland describe decades of state-run monopolies and high taxes doing exactly what they were designed to do — while Denmark never bothered with any of it, and demand declined there too, suggesting culture is doing most of the work and policy mostly accelerates it.</p>
+</div>
+</article>
+<article class="story" id="story-6" data-story="6" data-source="https://stateofutopia.com/experiments/microllmlab/" data-hn="https://news.ycombinator.com/item?id=49882781" data-metric="263 pts / 96 comments" tabindex="0" aria-label="Story 6: Seven tiny LLMs running in your browser, no server needed">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">Seven tiny LLMs running in your browser, no server needed</h2>
+<p class="exec">MicroLLM Lab lets you try 7 small language models entirely in-browser — a demo that would have been compute-impossible a few years ago. HN&#x27;s top response is a design review, not a tech review: the UI is &#x27;the Claude special,&#x27; and a simple product buried under a verbose page is a self-inflicted wound.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">What it is</span><ul><li>7 tiny language models running client-side in the browser</li><li>No server, no API key, no install — just the page</li><li>A real demonstration of how far small-model inference has come</li></ul></li><li class="cat"><span class="cat-label">HN take</span><ul><li>Top complaint: tiny text, dense AI-generated copy, over a page of scrolling before the actual product</li><li>&#x27;All these dashboards look quite similar&#x27; — vibe-coded UIs are converging</li><li>The unanswered question the page dodges: what are these models actually good for, and where do they break?</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://stateofutopia.com/experiments/microllmlab/" target="_blank" rel="noopener">stateofutopia.com</a> · Discuss: <a href="https://news.ycombinator.com/item?id=49882781" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">263 pts / 96 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>Consensus: cool tech, bad packaging — nearly every top comment is a UI critique (small text, information density, AI-generated filler) rather than a model comparison. A second thread asks the substantive question the page apparently dodges: give examples of what these small models are actually useful for, and be honest about their limits. The pushback is mild: &#x27;before LLMs we never had sloppy UIs&#x27; — though most agree this is worse, a layer of looking-legit-at-first-glance polish over a one-shot build. The technical achievement still gets acknowledged underneath the design complaints.</p>
+</div>
+</article>
+<article class="story" id="story-7" data-story="7" data-source="https://jorgegarciaherrero.com/wp-content/interactivos/20260916-Prompt-like-a-butterfly-sting-like-a-tracker-(clean).pdf" data-hn="https://news.ycombinator.com/item?id=49890226" data-metric="255 pts / 72 comments" tabindex="0" aria-label="Story 7: AI chat providers are leaking your prompts to advertisers">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">AI chat providers are leaking your prompts to advertisers</h2>
+<p class="exec">A research PDF finding that AI providers disclose conversation-derived artifacts — titles, prompts, screenshots — to third parties, often alongside persistent identifiers that enable attribution, with some providers exposing conversation permalinks without access controls. HN&#x27;s reaction: part outrage, part weary resignation.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The findings</span><ul><li>Multiple providers disclose sensitive conversation-derived artifacts to third parties</li><li>Often alongside persistent user identifiers that enable attribution</li><li>Some publicly expose conversation permalinks without access controls</li></ul></li><li class="cat"><span class="cat-label">HN take</span><ul><li>Outrage camp: prompt histories are categorically more revealing than browsing data</li><li>Weary camp: data brokers predate the web; this is the next source, not a new phenomenon</li><li>The trust thread: fifty years of eroded trust made everything adversarial, and old models of it no longer describe anything</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://jorgegarciaherrero.com/wp-content/interactivos/20260916-Prompt-like-a-butterfly-sting-like-a-tracker-(clean).pdf" target="_blank" rel="noopener">jorgegarciaherrero.com</a> · Discuss: <a href="https://news.ycombinator.com/item?id=49890226" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">255 pts / 72 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>The broad agreement is that this is bad and underpriced — conversation data is far more revealing than browsing history, and persistent identifiers make attribution trivial. The disagreement is about novelty: some commenters argue data brokers existed for decades and this is just the next source they&#x27;re tapping; the counter is that a full prompt history with screenshots and unprotected permalinks is categorically different from purchase records — &#x27;that&#x27;s like saying my 1980s Casio calculator watch and an Apple Watch are the same thing.&#x27; A smaller thread questions whether specific claims in the PDF are independently verifiable.</p>
+</div>
+</article>
+<article class="story" id="story-8" data-story="8" data-source="https://jagi.studio/posts/phyllotaxis/" data-hn="https://news.ycombinator.com/item?id=49880411" data-metric="184 pts / 25 comments" tabindex="0" aria-label="Story 8: A 5-fold symmetric PCB that turns music into light">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">A 5-fold symmetric PCB that turns music into light</h2>
+<p class="exec">Phyllotaxis: a custom audio-reactive LED display with a PCB laid out in 5-fold symmetry to use the full board allowance. HN loves the craft — oversized hand-soldering pads, Neopixels with pads extending up the sides, a paper diffuser over a 3D-printed body. Winamp visualization, reborn as hardware.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The build</span><ul><li>5-fold symmetry on the PCB to use up the board allowance</li><li>Pads made slightly larger than necessary for SMT — room to wick solder onto</li><li>Paper diffuser over the 3D-printed body, audio-reactive mapping</li></ul></li><li class="cat"><span class="cat-label">HN take</span><ul><li>The nostalgia thread hit instantly: this is Windows Media Player visualization, but hardware — &#x27;better than software&#x27;</li><li>One commenter flags convergent evolution with Voria Labs&#x27; Lumanoi; the builder says the resemblance is only superficial</li><li>Practical build questions: how the paper diffuser is fixed to the print</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://jagi.studio/posts/phyllotaxis/" target="_blank" rel="noopener">jagi.studio</a> · Discuss: <a href="https://news.ycombinator.com/item?id=49880411" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">184 pts / 25 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>A pure appreciation thread — the consensus is admiration for the hardware craft and the symmetry trick for filling the board, with several commenters noting this is the old software audio-visualizer tradition finally embodied in hardware. The main substantive exchange is about the Voria Labs comparison: one commenter cites the shared Voronoi-tessellation approach to mapping LED positions to cells as more than coincidence, the author counters that none of the inner workings are related. A smaller thread asks practical build questions, like how the paper used as diffuser is fixed to the 3D-printed model.</p>
+</div>
+</article>
+<article class="story" id="story-9" data-story="9" data-source="https://www.theguardian.com/technology/2026/sep/29/trial-live-facial-recognition-cameras-london-stations-false-positive" data-hn="https://news.ycombinator.com/item?id=49891480" data-metric="183 pts / 108 comments" tabindex="0" aria-label="Story 9: 500,000 face scans, zero arrests, one false positive">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">500,000 face scans, zero arrests, one false positive</h2>
+<p class="exec">A six-month UK trial of live facial recognition at rail stations scanned ~500,000 faces, produced zero arrests and one false positive. HN immediately attacked the denominator: 500k is &#x27;two days of Liverpool Street&#x27; — either the cameras were off 99% of the time or the same faces are being counted daily.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The numbers</span><ul><li>16 deployments over 6 months yielded 500k scanned faces</li><li>Zero arrests, one false positive</li><li>500k faces is two days of Liverpool Street&#x27;s daily average — the scale doesn&#x27;t add up</li></ul></li><li class="cat"><span class="cat-label">HN take</span><ul><li>The article says faces, not people — repeats are likely being counted as scans</li><li>BTP says non-alert data is deleted immediately, so they can&#x27;t know whether scans are repeats</li><li>The intent debate: fishing expedition vs. control system, with the Jan 6 retrospective identifications cited</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://www.theguardian.com/technology/2026/sep/29/trial-live-facial-recognition-cameras-london-stations-false-positive" target="_blank" rel="noopener">theguardian.com</a> · Discuss: <a href="https://news.ycombinator.com/item?id=49891480" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">183 pts / 108 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>The consensus is skepticism about the headline numbers — commenters note 500k faces is trivially small for 16 deployments over 6 months, and the article says faces, not people, so repeats are likely being counted. One careful thread parses the BTP claim that non-alert images and biometric data are &#x27;automatically and immediately deleted&#x27; and notes the consequence: they therefore can&#x27;t know whether scans are repeats, so the figure must be total scans, not unique faces. The disagreement is about intent: fishing expedition versus control system — with the use of similar systems to identify and arrest participants after the Capitol riot cited as evidence the technology&#x27;s real value is retrospective identification, not real-time arrests.</p>
+</div>
+</article>
+<article class="story" id="story-10" data-story="10" data-source="https://www.tomshardware.com/software/the-netherlands-is-rolling-alternative-nixos-based-software-ecosystem-after-u-s-sanctions-on-icc-took-microsoft-off-the-table-trial-programs-running-now-first-release-expected-at-end-of-2027" data-hn="https://news.ycombinator.com/item?id=49891550" data-metric="174 pts / 108 comments" tabindex="0" aria-label="Story 10: US sanctions on the ICC are pushing the Netherlands off Microsoft">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">US sanctions on the ICC are pushing the Netherlands off Microsoft</h2>
+<p class="exec">After US sanctions hit ICC judges — frozen bank accounts, blocked salary payments for judges living in the Netherlands — the Dutch government is trialing a NixOS-based alternative software ecosystem to reduce Microsoft dependency. First release expected end of 2027. HN reads this as hormesis.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">What happened</span><ul><li>US sanctions on the ICC triggered financial blockages for judges living in the Netherlands</li><li>Bank accounts inaccessible, routine salary transfers blocked</li><li>Dutch response: NixOS-based sovereign software ecosystem, trials running now, first release end of 2027</li></ul></li><li class="cat"><span class="cat-label">HN take</span><ul><li>The dominant thread cheers the forced decoupling: &#x27;get rid of US dependency for government infrastructure as quickly as possible&#x27;</li><li>Skeptics demand concrete verification that judges actually lost banking access</li><li>Third thread notes the pattern: European digital-sovereignty stories keep recurring on HN</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://www.tomshardware.com/software/the-netherlands-is-rolling-alternative-nixos-based-software-ecosystem-after-u-s-sanctions-on-icc-took-microsoft-off-the-table-trial-programs-running-now-first-release-expected-at-end-of-2027" target="_blank" rel="noopener">tomshardware.com</a> · Discuss: <a href="https://news.ycombinator.com/item?id=49891550" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">174 pts / 108 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>The dominant thread is strategic — sanctions are an accelerant for European digital sovereignty, and several commenters frame it as hormesis: a forced stressor making Europe build domestic payment and software infrastructure it should have had anyway. The skeptical thread demands receipts: concrete examples that ICC judges actually lost access to bank accounts, with the article&#x27;s framing questioned as possibly exaggerated. A third thread notes this is part of a pattern — similar European-sovereignty stories have run repeatedly on HN over recent months — and argues that in any case, decisions about courts belong to the justice system, not to governments.</p>
+</div>
+</article>
+    </ol>
+
+    <div class="shortcut-bar" aria-label="Keyboard shortcuts">
+      <span><kbd>J</kbd> next story</span>
+      <span><kbd>K</kbd> previous story</span>
+      <span><kbd>T</kbd> theme</span>
+    </div>
+
+    <footer class="page-footer">
+      <div class="footer-links"><a href="../">← Daily archive</a><a href="https://tk3369.github.io/hn-daily/" target="_blank" rel="noopener">Published archive ↗</a></div>
+      <span>Tuesday 2026-09-29 · 10 stories</span>
+    </footer>
+  </main>
+  <div class="toast" role="status" aria-live="polite"></div>
+  <script>
+(() => {
+  const root = document.documentElement;
+  const toggle = document.getElementById('theme-toggle');
+  const entries = [...document.querySelectorAll('[data-story]')];
+  function storedTheme() { try { const t = localStorage.getItem('hn-daily-theme'); return t === 'dark' || t === 'light' ? t : null; } catch (_) { return null; } }
+  function preferredTheme() { return matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'; }
+  function currentTheme() { const a = root.dataset.theme; if (a === 'dark' || a === 'light') return a; return storedTheme() || preferredTheme(); }
+  function setTheme(theme) { const next = theme === 'dark' ? 'dark' : 'light'; const opposite = next === 'dark' ? 'Light' : 'Dark';
+    if (root.dataset.theme !== next) root.dataset.theme = next;
+    toggle.querySelector('.theme-text').textContent = opposite;
+    toggle.setAttribute('aria-label', `Switch to ${opposite} theme (T)`); toggle.title = `Switch to ${opposite} theme (T)`;
+    try { localStorage.setItem('hn-daily-theme', next); } catch (_) {} }
+  function flipTheme() { setTheme(currentTheme() === 'dark' ? 'light' : 'dark'); }
+  setTheme(storedTheme() || preferredTheme());
+  toggle.addEventListener('click', flipTheme);
+  const toast = document.querySelector('.toast'); let toastTimer;
+  function showToast(msg) { toast.textContent = msg; toast.classList.add('show'); clearTimeout(toastTimer); toastTimer = setTimeout(() => toast.classList.remove('show'), 1800); }
+  document.querySelectorAll('.copy-button').forEach((button) => {
+    button.addEventListener('click', async () => {
+      const story = button.closest('.story');
+      const n = story.dataset.story;
+      const tagline = story.querySelector('.tagline').textContent.trim();
+      const execSum = story.querySelector('.exec').textContent.trim();
+      const bullets = [...story.querySelectorAll('.cat-lists .cat')].map(li => {
+        const label = li.querySelector('.cat-label').textContent.trim();
+        const pts = [...li.querySelectorAll('ul li')].map(p => '  \u2022 ' + p.textContent.trim()).join('\n');
+        return '- ' + label + ':\n' + pts;
+      }).join('\n');
+      const link = 'https://tk3369.github.io/hn-daily/2026-09-29/#story-' + n;
+      const text = n + '. ' + tagline + '\n\n' + execSum + '\n' + bullets + '\n\n' + link;
+      try { await navigator.clipboard.writeText(text); button.textContent = 'Copied'; showToast('Story ' + n + ' copied for Threads'); setTimeout(() => { button.textContent = 'Copy for Threads'; }, 1600); }
+      catch (_) { showToast('Copy was blocked by this browser'); }
+    });
+  });
+  document.addEventListener('keydown', (event) => {
+    if (event.metaKey || event.ctrlKey || event.altKey || event.shiftKey) return;
+    const tag = event.target.tagName;
+    if (tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT') return;
+    const key = event.key.toLowerCase();
+    if (key === 't') { event.preventDefault(); flipTheme(); }
+    else if ((key === 'j' || key === 'k') && entries.length) {
+      event.preventDefault();
+      const active = entries.indexOf(document.activeElement);
+      const delta = key === 'j' ? 1 : -1;
+      const next = active < 0 ? (key === 'j' ? 0 : entries.length - 1) : Math.max(0, Math.min(entries.length - 1, active + 1 * delta));
+      entries[next].focus();
+    }
+  });
+})();
+  </script>
+</body>
+</html>
