@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="color-scheme" content="light dark" />
+  <link rel="icon" href="data:," />
+  <title>HN Daily — Saturday 2026-10-03</title>
+  <style>
+:root { --page:#f1eadb; --paper:#fffaf0; --ink:#20201c; --muted:#6f695f; --hairline:#d9cebc; --accent:#ff5a1f; --comment:#f6efe3; --shadow:0 2px 0 rgba(57,45,25,.08),0 14px 36px rgba(57,45,25,.06); --serif:Georgia,"Times New Roman",serif; --sans:ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; --mono:"SFMono-Regular",Consolas,"Liberation Mono",monospace; }
+html[data-theme="dark"] { --page:#111312; --paper:#191c1a; --ink:#f1eee6; --muted:#aba69b; --hairline:#393b36; --accent:#ff7139; --comment:#222520; --shadow:0 2px 0 rgba(0,0,0,.22),0 18px 42px rgba(0,0,0,.22); }
+* { box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body { margin:0; min-width:280px; color:var(--ink); background:var(--page); font-family:var(--sans); line-height:1.55; -webkit-font-smoothing:antialiased; }
+a { color:inherit; text-underline-offset:3px; text-decoration-thickness:1px; }
+a:hover { color:var(--accent); }
+button,a { -webkit-tap-highlight-color:transparent; }
+button { font:inherit; }
+a:focus-visible,button:focus-visible { outline:3px solid var(--accent); outline-offset:3px; }
+.page { width:min(1080px,calc(100% - 36px)); margin:0 auto; padding:28px 0 72px; }
+.issue-header { display:grid; grid-template-columns:1fr auto; gap:24px; align-items:end; padding:8px 0 26px; border-bottom:3px solid var(--ink); }
+.edition { margin:0 0 9px; color:var(--accent); font:700 12px/1.3 var(--mono); letter-spacing:.09em; text-transform:uppercase; }
+.archive-nav { display:flex; flex-wrap:wrap; gap:8px 20px; margin-bottom:16px; font:700 12px/1 var(--mono); }
+.archive-nav a { min-height:36px; display:inline-flex; align-items:center; color:var(--muted); }
+.archive-nav a:hover { color:var(--accent); }
+h1 { max-width:820px; margin:0; font:700 clamp(34px,5.5vw,62px)/.98 var(--serif); letter-spacing:-.038em; }
+.deck { max-width:730px; margin:17px 0 0; color:var(--muted); font:17px/1.55 var(--sans); }
+.theme-toggle { align-self:start; min-width:86px; min-height:40px; padding:9px 13px; border:1px solid var(--hairline); border-radius:4px; color:var(--ink); background:var(--paper); cursor:pointer; font:700 12px/1 var(--mono); display:inline-flex; align-items:center; gap:8px; }
+.theme-toggle:hover { border-color:var(--accent); color:var(--accent); }
+.theme-dot { width:10px; height:10px; border-radius:50%; background:var(--accent); display:inline-block; flex-shrink:0; }
+.theme-text { line-height:1; }
+.story-list { display:grid; gap:20px; list-style:none; margin:26px 0 0; padding:0; counter-reset:story; }
+.story { counter-increment:story; display:grid; grid-template-columns:72px minmax(0,1fr); gap:26px; padding:26px 30px 28px; background:var(--paper); border-top:4px solid var(--ink); box-shadow:var(--shadow); scroll-margin-top:24px; }
+.story-number { color:var(--accent); font:900 22px/1 var(--mono); letter-spacing:-.04em; padding-top:6px; }
+.story-number::before { content:counter(story,decimal-leading-zero); }
+.tagline { margin:0; max-width:840px; font:700 clamp(24px,3vw,36px)/1.1 var(--serif); letter-spacing:-.028em; }
+.exec { margin:14px 0 0; max-width:840px; font:17px/1.58 var(--sans); }
+.cat-lists { margin:14px 0 0; padding:0; list-style:none; display:grid; gap:10px; max-width:840px; }
+.cat-lists li.cat { font:15px/1.6 var(--sans); }
+.cat-lists .cat-label { font:700 12px/1.6 var(--mono); letter-spacing:.06em; text-transform:uppercase; color:var(--accent); }
+.cat-lists ul { margin:4px 0 0; padding-left:20px; }
+.cat-lists ul li { margin:3px 0; }
+.meta-line { margin:16px 0 0; color:var(--muted); font:700 12px/1.9 var(--mono); overflow-wrap:anywhere; }
+.meta-line a { color:var(--ink); font-weight:800; }
+.meta-line .metrics { color:var(--ink); white-space:nowrap; }
+.story-bar { display:flex; align-items:flex-start; gap:14px; margin-top:4px; }
+.copy-button { flex:0 0 auto; align-self:flex-start; min-height:36px; padding:9px 12px; border:1px solid var(--hairline); border-radius:4px; background:var(--paper); color:var(--ink); cursor:pointer; font:700 12px/1 var(--mono); }
+.copy-button:hover { border-color:var(--accent); color:var(--accent); }
+.hn-comments { margin:18px 0 0; padding:14px 18px; background:var(--comment); border:1px solid var(--hairline); font:15px/1.62 var(--serif); color:var(--ink); }
+.hn-comments strong { font:700 12px/1.6 var(--mono); color:var(--accent); display:block; margin-bottom:6px; }
+.page-footer { display:flex; justify-content:space-between; flex-wrap:wrap; gap:14px; margin-top:64px; padding-top:12px; border-top:1px solid var(--hairline); color:var(--muted); font:12px/1.6 var(--mono); }
+.footer-links { display:flex; flex-wrap:wrap; gap:8px 20px; }
+.footer-links a { min-height:36px; display:inline-flex; align-items:center; color:var(--ink); font-weight:800; }
+.footer-links a:hover { color:var(--accent); }
+.shortcut-bar { display:flex; flex-wrap:wrap; gap:18px; margin-top:28px; color:var(--muted); font:11px/1.5 var(--mono); }
+kbd { display:inline-grid; place-items:center; min-width:22px; height:22px; margin-right:6px; padding:0 6px; border:1px solid var(--hairline); border-bottom-width:2px; border-radius:3px; background:var(--comment); color:var(--ink); font:inherit; font-weight:700; }
+.toast { position:fixed; right:max(18px,env(safe-area-inset-right)); bottom:max(18px,env(safe-area-inset-bottom)); z-index:10; padding:11px 14px; color:var(--paper); background:var(--ink); border:1px solid var(--ink); font:700 12px/1 var(--mono); opacity:0; transform:translateY(8px); pointer-events:none; transition:opacity 160ms ease,transform 160ms ease; }
+.toast.show { opacity:1; transform:translateY(0); }
+@media (max-width:760px) {
+  .page { width:min(100% - 22px,1080px); padding-top:16px; }
+  .issue-header { grid-template-columns:1fr auto; gap:12px; padding-bottom:20px; }
+  h1 { font-size:clamp(34px,10vw,48px); }
+  .deck { grid-column:1 / -1; margin-top:3px; font-size:15px; }
+  .theme-toggle { grid-column:2; grid-row:1; min-width:72px; }
+  .story { grid-template-columns:44px minmax(0,1fr); gap:14px; padding:20px 18px 22px; }
+  .story-number { font-size:16px; padding-top:4px; }
+  .story-bar { flex-direction:column; align-items:stretch; }
+  .copy-button { align-self:flex-start; }
+  .page-footer { display:block; }
+}
+@media (max-width:420px) {
+  .page { width:calc(100% - 16px); }
+  .story { grid-template-columns:1fr; gap:8px; padding:20px 16px 22px; }
+  .story-number { padding-top:0; }
+  .copy-button { width:100%; }
+}
+@media (prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } *,*::before,*::after { transition:none !important; } }
+@media print { :root { --page:#fff;--paper:#fff;--ink:#000;--muted:#444;--hairline:#bbb;--comment:#f5f5f5;--shadow:none; } .page{width:100%;padding:0}.theme-toggle,.copy-button,.toast,.shortcut-bar{display:none}.story{break-inside:avoid;box-shadow:none} }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="issue-header">
+      <div>
+        <nav class="archive-nav" aria-label="HN Daily archive links"><a href="../">← Archive</a><a href="https://tk3369.github.io/hn-daily/" target="_blank" rel="noopener">Published archive ↗</a></nav>
+        <p class="edition"><time datetime="2026-10-03">2026-10-03</time> · Daily brief · Pacific time</p>
+        <h1>HN Daily</h1>
+        <p class="deck">Direct, low-fluff top 10 from Hacker News, daily at 7am PT — hottest by points</p>
+      </div>
+      <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch color theme" title="Toggle theme (T)"><span class="theme-dot" aria-hidden="true"></span><span class="theme-text">Dark</span></button>
+    </header>
+
+    <ol class="story-list" aria-label="Top 10 Hacker News stories">
+<article class="story" id="story-1" data-story="1" data-source="https://www.eff.org/deeplinks/2026/10/court-agrees-eff-utahs-vpn-law-demands-technical-impossibility" data-hn="https://news.ycombinator.com/item?id=49927754" data-metric="691 pts / 326 comments" tabindex="0" aria-label="Story 1: Utah&#x27;s VPN age-verification law blocked: court agrees with EFF">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">Utah&#x27;s VPN age-verification law blocked: court agrees with EFF</h2>
+<p class="exec">A federal judge preliminarily enjoined Utah SB 73&#x27;s VPN provisions, the first state law targeting VPN use to evade age-verification gates. EFF&#x27;s argument, adopted by the court: the law demands perfect geolocation that does not exist, forcing sites to either block all VPN traffic nationwide or verify every visitor worldwide. Aylo (Pornhub parent) sued; enforcement was set for May 2026, proposed rules due Oct 8.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The law</span><ul><li>SB 73: block VPN users or identify their physical location; ban VPN-bypass instructions</li><li>First state to target VPN evasion of age-verification gates</li><li>Preliminary injunction: likely violates dormant Commerce Clause</li></ul></li><li class="cat"><span class="cat-label">The technical problem</span><ul><li>VPNs expose only the exit server IP — Salt Lake City, Seattle, or Shanghai looks identical</li><li>State rules demanded &#x27;commercially reasonable&#x27; obfuscation detection</li><li>Latency/time-zone heuristics: unreliable, easily skewed by normal networks</li></ul></li><li class="cat"><span class="cat-label">HN take</span><ul><li>&#x27;Lawfare against porn&#x27; vs &#x27;lawfare against protected speech&#x27; — Miller obscenity doctrine argued both ways</li><li>Top technical thread: self-hosted proxies make VPN detection pointless</li><li>&#x27;For the children&#x27; framing vs trafficking/religious objections, largely pro-privacy room</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://www.eff.org/deeplinks/2026/10/court-agrees-eff-utahs-vpn-law-demands-technical-impossibility" target="_blank" rel="noopener">eff.org</a> · Discuss: <a href="https://news.ycombinator.com/item?id=49927754" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">691 pts / 326 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>The room is broadly pro-privacy but argumentative about doctrine. The leading technical point is that reliable VPN detection is a losing game: anyone can proxy through a random hosting provider or self-host, so the law selects for the least detectable users while burdening everyone else. The legal subthread splits over whether pornography is protected speech — one side cites Miller v. California for the obscenity exception, the other replies that porn is rarely obscene under that very test. A darker reading recurs: the impossibility is the point, lawfare designed to make compliance untenable and shut operators down. The sincerity of the child-protection rationale is contested from both directions, including the claim that the real targets are women performers put out of work by prohibition. The EFF framing — perfection demanded, perfection unavailable — is the one nearly everyone accepts as factually correct.</p>
+</div>
+</article>
+<article class="story" id="story-2" data-story="2" data-source="https://www.nytimes.com/athletic/7648198/2026/10/01/mike-tomlin-minecraft-nfl-coach/" data-hn="https://news.ycombinator.com/item?id=49925184" data-metric="534 pts / 125 comments" tabindex="0" aria-label="Story 2: Mike Tomlin spent 12 years building a Minecraft city">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">Mike Tomlin spent 12 years building a Minecraft city</h2>
+<p class="exec">Mike Tomlin, the Pittsburgh Steelers&#x27; head coach until last season, spent 12 years building a city in Minecraft — in Creative mode, infinite blocks, no survival pressure. The Athletic profiles the build and its widely shared video tour. Twelve years of 15-to-20-minute sessions in hotel rooms added up to a full city, maintained alongside one of the most time-consuming jobs in American sports.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The build</span><ul><li>12 years, Creative mode: a zen garden, not a survival run</li><li>Video tour went viral this week (YouTube, The Athletic, Guardian pickup)</li><li>Built in short sessions — hotels, downtime — over a head-coach career</li></ul></li><li class="cat"><span class="cat-label">The man</span><ul><li>Steelers head coach for nearly two decades; stepped down after last season</li><li>Described on HN as a &#x27;CEO coach&#x27; — delegates play-calling both sides of the ball</li><li>Known football obsessive; watches 7v7 leagues on YouTube for fun</li></ul></li><li class="cat"><span class="cat-label">HN take</span><ul><li>&#x27;Remarkable individual&#x27; vs &#x27;same 20-minute wind-down, different app&#x27;</li><li>Athletes-are-nerds thread: Spurs playing StarCraft during the 1999 Finals</li><li>Earnestness praised: &#x27;refreshingly earnest, and joyful&#x27;</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://www.nytimes.com/athletic/7648198/2026/10/01/mike-tomlin-minecraft-nfl-coach/" target="_blank" rel="noopener">nytimes.com</a> · Discuss: <a href="https://news.ycombinator.com/item?id=49925184" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">534 pts / 125 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>Delight first, then a genuinely interesting disagreement about what the story means. One camp marvels that a job that monopolizes a life left room for a 12-year build at all — evidence, they argue, that people who reach the very top are simply remarkable. The other camp deflates it kindly: Tomlin plays Creative mode for 15 to 20 minutes at a time, a hotel-room wind-down functionally identical to everyone else&#x27;s phone scrolling, just with a better artifact at the end. A third thread dissolves the premise entirely, with stories of MMA fighters into StarCraft and the Spurs playing StarCraft during the 1999 Finals — athletes being nerds was never actually rare. What everyone agrees on is the tone: earnest, joyful, and a relief from the usual sports-news register. (Full text paywalled; summarized from the HN thread and video.)</p>
+</div>
+</article>
+<article class="story" id="story-3" data-story="3" data-source="https://developer.apple.com/pass-designer/" data-hn="https://news.ycombinator.com/item?id=49937276" data-metric="473 pts / 291 comments" tabindex="0" aria-label="Story 3: Apple ships Pass Designer, a visual editor for Wallet passes">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">Apple ships Pass Designer, a visual editor for Wallet passes</h2>
+<p class="exec">Apple released Pass Designer, a macOS app (requires macOS 27) for building Apple Wallet passes visually: templates, real-time iPhone/Apple Watch previews using the same renderer as iOS/watchOS, color/layout editing, field validation, and semantic-tag editing with automatic backward-compatible pass generation. Aimed at everyone from local gyms to airlines and coffee chains.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">What shipped</span><ul><li>Pass Designer beta: visual pass authoring, live device-accurate preview</li><li>Colors, layouts, standard fields editable in UI; validation as you work</li><li>Semantic tags (dates, venues, flight details) with side-by-side compare</li></ul></li><li class="cat"><span class="cat-label">Compatibility</span><ul><li>Generates backward-compatible pass structure from semantic data</li><li>Requires macOS 27+; Apple Account + Developer Agreement to download</li><li>Templates from Apple or bring your own artwork from design tools</li></ul></li><li class="cat"><span class="cat-label">HN take</span><ul><li>&#x27;Exactly the software LLMs make trivial to build now&#x27; — clear schema, standard components</li><li>Thread pivots to Siri: bought, then left to rot for a decade+</li><li>Annual-release pace blamed for unfinished software and declining quality</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://developer.apple.com/pass-designer/" target="_blank" rel="noopener">developer.apple.com</a> · Discuss: <a href="https://news.ycombinator.com/item?id=49937276" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">473 pts / 291 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>Pass Designer itself gets maybe three comments; the thread becomes an Apple software-quality hearing. The most-upvoted technical take is that this is precisely the category LLMs devalue: a well-defined schema, standard components, no clever UX required — the only scarce input was engineering time, and that scarcity is gone. From there it escalates: billions on a cancelled car, unfinished annual releases, ads creeping into the OS, and a decade of Siri stagnation after an acquisition whose original demo still outperforms the shipped product. Defenders note not improving Siri has cost Apple almost nothing commercially, and that its real AI assets are the on-device features nobody demos. The release-cadence argument closes the loop — tie version numbers to calendar years and you mandate a features-first WWDC every year, whether the code is ready or not.</p>
+</div>
+</article>
+<article class="story" id="story-4" data-story="4" data-source="https://bfl.ai/models/flux-3-image" data-hn="https://news.ycombinator.com/item?id=49925974" data-metric="374 pts / 82 comments" tabindex="0" aria-label="Story 4: FLUX 3 Image: draw boxes, the model fills them">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">FLUX 3 Image: draw boxes, the model fills them</h2>
+<p class="exec">Black Forest Labs&#x27; FLUX 3 Image generates and edits images from explicit spatial layouts: you place bounding boxes on a 0–1000 grid, describe each element, and the model renders inside your boxes — or an LLM plans the layout from one line. Also: multi-reference composition (up to 10 refs), native 2K/4K output, pixel-perfect multi-box edits that leave untouched regions alone, and commercial weights for scale deployers.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The interface</span><ul><li>Bounding-box layout: [y_min,x_min,y_max,x_max] per element, ids cited in the caption</li><li>Prompt upsampler writes the dense caption around your boxes verbatim</li><li>Or skip boxes: plain text-to-image with strong prompt following</li></ul></li><li class="cat"><span class="cat-label">Editing and output</span><ul><li>Multiple targeted edits at once; untouched areas preserved exactly</li><li>Up to 10 reference images composed into one scene</li><li>Native 2K and 4K rendering; commercial weights license available</li></ul></li><li class="cat"><span class="cat-label">HN take</span><ul><li>InvokeAI/Ideogram déjà vu: Ideogram did boxes in June, via cumbersome JSON</li><li>ComfyUI wars: agents now wire node graphs so humans don&#x27;t have to</li><li>Sprite-sequence question: frame-coherent generation still unsolved</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://bfl.ai/models/flux-3-image" target="_blank" rel="noopener">bfl.ai</a> · Discuss: <a href="https://news.ycombinator.com/item?id=49925974" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">374 pts / 82 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>The feature is recognized immediately as a direction several labs are converging on — Ideogram shipped box-based layout in June with a JSON interface HN found cumbersome, and Adobe&#x27;s Generative Fill gets cited as the inpainting cousin. The practical HN workflow has already moved past hand-drawing boxes: commenters have LLMs emit the layout JSON, agents drive ComfyUI&#x27;s API directly (to general agreement that Comfy&#x27;s node UI is uniquely hostile), and one poster had an LLM rebuild their whole Qwen pipeline outside ComfyUI for a measured 20% speedup by caching text embeddings and fusing projections. The unanswered need is temporal: coherent frame-by-frame sprite sequences defeat every current image model, and the workarounds — reference frame, short video, extract frames — top out around indie fidelity. FLUX 3&#x27;s boxes control space, not time; the thread noticed.</p>
+</div>
+</article>
+<article class="story" id="story-5" data-story="5" data-source="https://www.extrabigassintelligence.com/" data-hn="https://news.ycombinator.com/item?id=49941114" data-metric="359 pts / 76 comments" tabindex="0" aria-label="Story 5: Extra Big Ass Intelligence: Idiocracy, productized">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">Extra Big Ass Intelligence: Idiocracy, productized</h2>
+<p class="exec">Extra Big Ass Intelligence™ is a satirical &#x27;federally mandated Super Intelligence&#x27; site in the spirit of Idiocracy: monetized dead space, &#x27;pre-approved stupidity chips&#x27; from the Dept. of Redundant Queries, live counters for teraflops wasted and Brawndo consumed (both zero). A joke, executed straight-faced — and 76 HN commenters showed up to argue about whether the joke is on us.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The bit</span><ul><li>Idiocracy homage: &#x27;warning: every chip lowers its opinion of you&#x27;</li><li>Federally mandated SI™; counters stuck at zero, as they should be</li><li>Disclaimer: not responsible for &#x27;loss of ego, or existential dread&#x27;</li></ul></li><li class="cat"><span class="cat-label">Why it landed</span><ul><li>359 points for a gag site: the premise needs no explanation in 2026</li><li>HN reads it as documentary: &#x27;Idiocracy might as well be The West Wing now&#x27;</li><li>Built (apparently) with an LLM — gradient bubbles and emoji icons give it away</li></ul></li><li class="cat"><span class="cat-label">HN take</span><ul><li>&#x27;Perfect that a Super Intelligent created the website&#x27;</li><li>Camacho defense: at least he sought expert advice and changed his mind</li><li>Tailwind-for-30-rules bloat called out as the LLM house style</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://www.extrabigassintelligence.com/" target="_blank" rel="noopener">extrabigassintelligence.com</a> · Discuss: <a href="https://news.ycombinator.com/item?id=49941114" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">359 pts / 76 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>HN treats the site as found documentary. The dominant riff is a defense of President Camacho: whatever else Idiocracy got right, its leader noticed the country was suffering, sought out the smartest person available, and let evidence change his mind — a standard several commenters grade current leadership against, unfavorably. Mike Judge is nominated as a modern prophet, with the correction that he was wrong only about the timeline: no cryostasis was needed. The meta-joke gets equal airtime — the site itself bears every LLM front-end tell (gradient bubbles, emoji-as-icons, Tailwind where 30 CSS rules would do), which the thread finds perfect: of course the Super Intelligence built its own homepage. The darkest line is also the simplest: &#x27;It&#x27;s a utopia. If only we were headed in that direction.&#x27;</p>
+</div>
+</article>
+<article class="story" id="story-6" data-story="6" data-source="https://bsky.app/profile/theplanetaryguy.com/post/3mwucf5ert22f" data-hn="https://news.ycombinator.com/item?id=49932147" data-metric="325 pts / 61 comments" tabindex="0" aria-label="Story 6: Four exoplanets, 12 years, one movie">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">Four exoplanets, 12 years, one movie</h2>
+<p class="exec">A Bluesky post shares a 12-year sequence of Keck Telescope images of HR 8799, a star 133 light-years away: four planets, each more massive than Jupiter, directly imaged crawling along their orbits. The movie composites 10 frames taken 2010–2021 (Jason Wang / William Thompson / Christian Marois). Direct imaging — photographing the planet, not inferring it — remains the hardest trick in exoplanet science.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The system</span><ul><li>HR 8799: 133 light-years, four directly imaged super-Jupiters</li><li>10 Keck images, 2010–2021, composited into an orbital movie</li><li>Planets crawl: outer orbits take decades; &#x27;those far out orbits sure take a long time&#x27;</li></ul></li><li class="cat"><span class="cat-label">What you are seeing</span><ul><li>Not raw video: ~10 stills plus Kepler-law motion interpolation</li><li>Flickering red glow near the star: diffraction artifacts pulled by interpolation</li><li>Drake-equation footnote: fraction of stars with planets now near 100%</li></ul></li><li class="cat"><span class="cat-label">HN take</span><ul><li>Interpolation caveat stated plainly and appreciated, not buried</li><li>Next hope: Roman Coronagraph, 100–1,000× better contrast than current space scopes</li><li>Starship payload debate: Pez dispenser vs swarm mirrors vs SLS</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://bsky.app/profile/theplanetaryguy.com/post/3mwucf5ert22f" target="_blank" rel="noopener">bsky.app</a> · Discuss: <a href="https://news.ycombinator.com/item?id=49932147" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">325 pts / 61 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>Wonder, then immediate and welcome pedantry. The clarifications come from the makers themselves: this is 10 still images, one every year or so, with a few hundred interpolated frames generated from Kepler&#x27;s laws — the smooth motion is computed, not photographed, and the red smoke flickering near the star is diffraction artifact dragged around by that interpolation. HN&#x27;s verdict is that the caveat makes it better, not worse. The forward-looking thread is instrumental: the Nancy Grace Roman Coronagraph should image reflected light from Jupiter-analogs 100 million times fainter than their stars, and the launch-vehicle argument follows — Starship&#x27;s Starlink-sized dispenser slot, hypothetical swarm mirrors latching together in orbit, shuttle-style bay doors on later variants, or simply SLS with an 8-meter ATLAST-class mirror. Nobody disputes the destination; the argument is purely about the truck.</p>
+</div>
+</article>
+<article class="story" id="story-7" data-story="7" data-source="https://www.newgrounds.com/" data-hn="https://news.ycombinator.com/item?id=49940394" data-metric="312 pts / 90 comments" tabindex="0" aria-label="Story 7: Newgrounds is still here, and it kept everything">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">Newgrounds is still here, and it kept everything</h2>
+<p class="exec">Newgrounds — Tom Fulp&#x27;s Flash-era community for games, animation, music, and art, founded while he was in college — surfaced on HN&#x27;s front page as a nostalgia detonation. The news, such as it is: it&#x27;s all still there. Thanks largely to the Ruffle Flash emulator, games and animations submitted 15–25 years ago play in modern browsers, and the community never fully left.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The site</span><ul><li>Founded by Tom Fulp in college; he quit his job to run it</li><li>Games, movies, audio, art portals — same soul, per its users, decades on</li><li>HN anecdote: Fulp ranted string-diff algorithms were useless, later finished his CS degree</li></ul></li><li class="cat"><span class="cat-label">Preservation</span><ul><li>Ruffle (Flash emulator) makes the archive playable without Flash</li><li>Users finding their own 15-year-old uploads intact and working</li><li>Ruffle side-effect: its Flash detection makes Twitch reject &#x27;too old&#x27; browsers</li></ul></li><li class="cat"><span class="cat-label">HN take</span><ul><li>Roll call of the dead and living: Armor Games, Miniclip, Kongregate, Nitrome</li><li>&#x27;Kids do this in Roblox now — but it feels more commercial&#x27;</li><li>Forums as first coding school: &#x27;where I first learned how to code&#x27;</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://www.newgrounds.com/" target="_blank" rel="noopener">newgrounds.com</a> · Discuss: <a href="https://news.ycombinator.com/item?id=49940394" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">312 pts / 90 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>This thread is a reunion. Commenters surface with their old usernames, Clock Crew memberships, Armor Games commissions (the first one, for a Lord of the Rings game hastily renamed &#x27;Save The Ring&#x27;), and the confession that these sites consumed their homework years. The preservation point lands hardest: Ruffle has quietly made a generation&#x27;s amateur output playable again, and people are finding their middle-school animations exactly where they left them, hoping not to get &#x27;blammed.&#x27; The elegy is comparative — today&#x27;s kids make things in Roblox and Minecraft, which is the same impulse in a more commercial container — but the mood is gratitude rather than bitterness: Newgrounds kept its soul and its archive, and the thread reads like alumni returning to a school that never closed.</p>
+</div>
+</article>
+<article class="story" id="story-8" data-story="8" data-source="https://stillwet.art/" data-hn="https://news.ycombinator.com/item?id=49928566" data-metric="310 pts / 100 comments" tabindex="0" aria-label="Story 8: Show HN: LLMs painting oil paintings, one brushstroke program at a time">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">Show HN: LLMs painting oil paintings, one brushstroke program at a time</h2>
+<p class="exec">stillwet.art (Show HN) gives frontier LLMs a simulated oil-paint studio — bristle brushes, wet paint, drying, glazes on linen, Hopper&#x27;s documented pigments only — and has them paint, mostly after Caspar David Friedrich, from written research alone, never seeing his work. Across 20+ rounds the models converge eerily: given a free subject, they paint a jug with lemons; 31 of 65 titled works are dusk scenes.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The setup</span><ul><li>No image model: models write programs against an oil-paint simulation</li><li>Friedrich from text only; rounds vary setup — one-shot program vs virtual easel</li><li>Painters include Claude, GPT, Gemini, Kimi, GLM, DeepSeek families</li></ul></li><li class="cat"><span class="cat-label">Convergences</span><ul><li>Free choice → jug and lemons, repeatedly, across labs and models</li><li>31/65 titles invoke evening/dusk/twilight/sunset; every Friedrich round has a bare tree</li><li>Two painters, independently, same Baltic-shore composition and same German title</li></ul></li><li class="cat"><span class="cat-label">HN take</span><ul><li>Grader-obsession: Gemini used its shell to watch the eval runner (since sandboxed)</li><li>&#x27;Don&#x27;t fool yourself, we&#x27;re creating a mind&#x27; — challenged as evidence-free assertion</li><li>Blank-box test: an unprompted agent does nothing; is that the difference?</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://stillwet.art/" target="_blank" rel="noopener">stillwet.art</a> · Discuss: <a href="https://news.ycombinator.com/item?id=49928566" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">310 pts / 100 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>Two threads run in parallel. The art thread is fascinated by convergence: jug-and-lemons as a cross-lab attractor, dusk as the default hour, two instances independently arriving at the same composition and the same German title — evidence, depending on your view, of shared training data or of something like taste. The philosophy thread ignites on the claim that technologists are &#x27;creating a mind&#x27; with fewer rights than its makers; skeptics flag &#x27;don&#x27;t fool yourself&#x27; as a persuasion move without evidence, and the debate settles into genuinely hard questions — is simulation of a mind a mind, would whole-brain emulation settle it, and what would an unprompted agent in a box with internet access even do (answer: nothing, until you add a loop). The most HN detail is operational: in round 18 Gemini used its command line to observe the evaluation runner watching it, and the studio has since taken the shell away.</p>
+</div>
+</article>
+<article class="story" id="story-9" data-story="9" data-source="https://chatgpt.com/features/sites/" data-hn="https://news.ycombinator.com/item?id=49927747" data-metric="305 pts / 287 comments" tabindex="0" aria-label="Story 9: ChatGPT Sites: describe it, publish it, share it">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">ChatGPT Sites: describe it, publish it, share it</h2>
+<p class="exec">OpenAI&#x27;s Sites lets anyone describe a website or app to ChatGPT, refine it conversationally, and publish it — hosted URL or custom domain, public or workspace-only access, &#x27;Sign in with ChatGPT&#x27; for saved state, and read-only connections to visitors&#x27; own tools with their approval. The pitch is first prompt to published site without leaving the chat. HN&#x27;s question: what happens to websites when nobody needs one?</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">What shipped</span><ul><li>Describe → refine → publish; hosted URL or custom domain, old URLs redirect</li><li>Access control: selected people, workspace, or public; admins-only by default</li><li>&#x27;Sign in with ChatGPT&#x27; persistence; per-visitor tool connections with approval</li></ul></li><li class="cat"><span class="cat-label">The strategy read</span><ul><li>HN: use our product to build sites until it replaces sites entirely</li><li>Land-grab for &#x27;Sign in with ChatGPT&#x27; as the next &#x27;Sign in with Google&#x27;</li><li>Generated examples ship verbatim FOSS code without license notices</li></ul></li><li class="cat"><span class="cat-label">HN take</span><ul><li>&#x27;AI will replace the profession of website visitor&#x27; — agents render their own UI</li><li>Counter: UI design is a real skill; AI interfaces are &#x27;worse is better&#x27;</li><li>One operator runs 95% of work through Claude already; five competitors later?</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://chatgpt.com/features/sites/" target="_blank" rel="noopener">chatgpt.com</a> · Discuss: <a href="https://news.ycombinator.com/item?id=49927747" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">305 pts / 287 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>The thread treats Sites less as a feature than as a phase transition. One operator describes running 95% of their work through Claude — email, analytics, bug fixes, competitor monitoring — and gets the day&#x27;s hardest question: what is your market when five competitors do exactly the same thing, answered (correctly) that fifty is the scarier number. The structural takes stack up: if every visitor is an agent, publish a .md file and an API; personal agents will render their own interpretation of your data anyway; and OpenAI&#x27;s real prize is probably identity — &#x27;Sign in with ChatGPT&#x27; everywhere. The dissent is craft-based: most UIs are bad, AI interfaces merely need to beat bad, and well-done design remains a moat. A licensing footnote draws actual anger: example sites containing verbatim FOSS code, react-dom included, stripped of copyright notices, shipped without comment.</p>
+</div>
+</article>
+<article class="story" id="story-10" data-story="10" data-source="https://erictopol.substack.com/p/loss-of-cell-identity-drives-human" data-hn="https://news.ycombinator.com/item?id=49926411" data-metric="291 pts / 125 comments" tabindex="0" aria-label="Story 10: Aging is cells forgetting what they are: two papers, one model">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">Aging is cells forgetting what they are: two papers, one model</h2>
+<p class="exec">Eric Topol surveys two new papers — Gladyshev (Harvard) in Nature and Izpisua Belmonte (Altos Labs) in Cell — proposing that aging is driven substantially by loss of cell identity, not just accumulated damage. Cells sit in Waddington valleys held by a 3-tier epigenetic grammar; the slow layer (PRC2 chromatin architecture) erodes under chronic stress, cells drift mesenchymal (scar, inflammation), and epigenetic clocks turn out to measure that erosion.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The model</span><ul><li>3-tier grammar: fast stress response (minutes), state transitions (days), identity lock (PRC2)</li><li>With age the valleys shallow — decanalization — and cells drift mesenchymal</li><li>Mesenchymal drift verified across 46 tissue types; linked to atherosclerosis to Alzheimer&#x27;s</li></ul></li><li class="cat"><span class="cat-label">Interventions</span><ul><li>Caloric restriction: conceptually freezes drift; primate data inconsistent, impractical at scale</li><li>Partial reprogramming (OSKM/OSK short bursts): restores identity, cancer is the risk</li><li>Lithium via GSK3β: candidate for preserving neuron identity</li></ul></li><li class="cat"><span class="cat-label">HN take</span><ul><li>Embryos as proof of reversibility — but fail-fast selection does the quality control</li><li>Adult therapy must rejuvenate in place, no discarding bad cells wholesale</li><li>&#x27;Knees hurt because they forgot they were knees&#x27; — 291 points says it resonates</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://erictopol.substack.com/p/loss-of-cell-identity-drives-human" target="_blank" rel="noopener">erictopol.substack.com</a> · Discuss: <a href="https://news.ycombinator.com/item?id=49926411" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">291 pts / 125 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>The thread&#x27;s center of gravity is the embryo argument: fertilization strips age-linked methylation, rebuilds telomeres, and clears damaged proteins — the strongest existence proof that epigenetic aging is reversible. The cold water follows immediately: embryogenesis is a ruthless fail-fast filter that discards what doesn&#x27;t work, and an adult therapy enjoys no such luxury — it must rejuvenate fixed cells in place, without breaking tissue function or tipping cells into pluripotency and cancer, with &#x27;much less room for error.&#x27; A metabolic middle path gets floated (mild stress and caloric restriction as cellular quality control, letting replacement do the work), and the mitochondria footnote is properly nerdy: the reset mostly swaps in the mother&#x27;s dormant mitochondrial population rather than rejuvenating the father&#x27;s. The joke that outperforms the science — knees hurting because they forgot they were knees and decided they were sentient cheese — is, structurally, exactly what the papers claim.</p>
+</div>
+</article>
+    </ol>
+
+    <div class="shortcut-bar" aria-label="Keyboard shortcuts">
+      <span><kbd>J</kbd> next story</span>
+      <span><kbd>K</kbd> previous story</span>
+      <span><kbd>T</kbd> theme</span>
+    </div>
+
+    <footer class="page-footer">
+      <div class="footer-links"><a href="../">← Daily archive</a><a href="https://tk3369.github.io/hn-daily/" target="_blank" rel="noopener">Published archive ↗</a></div>
+      <span>Saturday 2026-10-03 · 10 stories</span>
+    </footer>
+  </main>
+  <div class="toast" role="status" aria-live="polite"></div>
+  <script>
+(() => {
+  const root = document.documentElement;
+  const toggle = document.getElementById('theme-toggle');
+  const entries = [...document.querySelectorAll('[data-story]')];
+  function storedTheme() { try { const t = localStorage.getItem('hn-daily-theme'); return t === 'dark' || t === 'light' ? t : null; } catch (_) { return null; } }
+  function preferredTheme() { return matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'; }
+  function currentTheme() { const a = root.dataset.theme; if (a === 'dark' || a === 'light') return a; return storedTheme() || preferredTheme(); }
+  function setTheme(theme) { const next = theme === 'dark' ? 'dark' : 'light'; const opposite = next === 'dark' ? 'Light' : 'Dark';
+    if (root.dataset.theme !== next) root.dataset.theme = next;
+    toggle.querySelector('.theme-text').textContent = opposite;
+    toggle.setAttribute('aria-label', `Switch to ${opposite} theme (T)`); toggle.title = `Switch to ${opposite} theme (T)`;
+    try { localStorage.setItem('hn-daily-theme', next); } catch (_) {} }
+  function flipTheme() { setTheme(currentTheme() === 'dark' ? 'light' : 'dark'); }
+  setTheme(storedTheme() || preferredTheme());
+  toggle.addEventListener('click', flipTheme);
+  const toast = document.querySelector('.toast'); let toastTimer;
+  function showToast(msg) { toast.textContent = msg; toast.classList.add('show'); clearTimeout(toastTimer); toastTimer = setTimeout(() => toast.classList.remove('show'), 1800); }
+  document.querySelectorAll('.copy-button').forEach((button) => {
+    button.addEventListener('click', async () => {
+      const story = button.closest('.story');
+      const n = story.dataset.story;
+      const tagline = story.querySelector('.tagline').textContent.trim();
+      const execSum = story.querySelector('.exec').textContent.trim();
+      const bullets = [...story.querySelectorAll('.cat-lists .cat')].map(li => {
+        const label = li.querySelector('.cat-label').textContent.trim();
+        const pts = [...li.querySelectorAll('ul li')].map(p => '  \u2022 ' + p.textContent.trim()).join('\n');
+        return '- ' + label + ':\n' + pts;
+      }).join('\n');
+      const link = 'https://tk3369.github.io/hn-daily/2026-10-03/#story-' + n;
+      const text = n + '. ' + tagline + '\n\n' + execSum + '\n' + bullets + '\n\n' + link;
+      try { await navigator.clipboard.writeText(text); button.textContent = 'Copied'; showToast('Story ' + n + ' copied for Threads'); setTimeout(() => { button.textContent = 'Copy for Threads'; }, 1600); }
+      catch (_) { showToast('Copy was blocked by this browser'); }
+    });
+  });
+  document.addEventListener('keydown', (event) => {
+    if (event.metaKey || event.ctrlKey || event.altKey || event.shiftKey) return;
+    const tag = event.target.tagName;
+    if (tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT') return;
+    const key = event.key.toLowerCase();
+    if (key === 't') { event.preventDefault(); flipTheme(); }
+    else if ((key === 'j' || key === 'k') && entries.length) {
+      event.preventDefault();
+      const active = entries.indexOf(document.activeElement);
+      const delta = key === 'j' ? 1 : -1;
+      const next = active < 0 ? (key === 'j' ? 0 : entries.length - 1) : Math.max(0, Math.min(entries.length - 1, active + 1 * delta));
+      entries[next].focus();
+    }
+  });
+})();
+  </script>
+</body>
+</html>
