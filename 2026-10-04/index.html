@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="color-scheme" content="light dark" />
+  <link rel="icon" href="data:," />
+  <title>HN Daily — Sunday 2026-10-04</title>
+  <style>
+:root { --page:#f1eadb; --paper:#fffaf0; --ink:#20201c; --muted:#6f695f; --hairline:#d9cebc; --accent:#ff5a1f; --comment:#f6efe3; --shadow:0 2px 0 rgba(57,45,25,.08),0 14px 36px rgba(57,45,25,.06); --serif:Georgia,"Times New Roman",serif; --sans:ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; --mono:"SFMono-Regular",Consolas,"Liberation Mono",monospace; }
+html[data-theme="dark"] { --page:#111312; --paper:#191c1a; --ink:#f1eee6; --muted:#aba69b; --hairline:#393b36; --accent:#ff7139; --comment:#222520; --shadow:0 2px 0 rgba(0,0,0,.22),0 18px 42px rgba(0,0,0,.22); }
+* { box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body { margin:0; min-width:280px; color:var(--ink); background:var(--page); font-family:var(--sans); line-height:1.55; -webkit-font-smoothing:antialiased; }
+a { color:inherit; text-underline-offset:3px; text-decoration-thickness:1px; }
+a:hover { color:var(--accent); }
+button,a { -webkit-tap-highlight-color:transparent; }
+button { font:inherit; }
+a:focus-visible,button:focus-visible { outline:3px solid var(--accent); outline-offset:3px; }
+.page { width:min(1080px,calc(100% - 36px)); margin:0 auto; padding:28px 0 72px; }
+.issue-header { display:grid; grid-template-columns:1fr auto; gap:24px; align-items:end; padding:8px 0 26px; border-bottom:3px solid var(--ink); }
+.edition { margin:0 0 9px; color:var(--accent); font:700 12px/1.3 var(--mono); letter-spacing:.09em; text-transform:uppercase; }
+.archive-nav { display:flex; flex-wrap:wrap; gap:8px 20px; margin-bottom:16px; font:700 12px/1 var(--mono); }
+.archive-nav a { min-height:36px; display:inline-flex; align-items:center; color:var(--muted); }
+.archive-nav a:hover { color:var(--accent); }
+h1 { max-width:820px; margin:0; font:700 clamp(34px,5.5vw,62px)/.98 var(--serif); letter-spacing:-.038em; }
+.deck { max-width:730px; margin:17px 0 0; color:var(--muted); font:17px/1.55 var(--sans); }
+.theme-toggle { align-self:start; min-width:86px; min-height:40px; padding:9px 13px; border:1px solid var(--hairline); border-radius:4px; color:var(--ink); background:var(--paper); cursor:pointer; font:700 12px/1 var(--mono); display:inline-flex; align-items:center; gap:8px; }
+.theme-toggle:hover { border-color:var(--accent); color:var(--accent); }
+.theme-dot { width:10px; height:10px; border-radius:50%; background:var(--accent); display:inline-block; flex-shrink:0; }
+.theme-text { line-height:1; }
+.story-list { display:grid; gap:20px; list-style:none; margin:26px 0 0; padding:0; counter-reset:story; }
+.story { counter-increment:story; display:grid; grid-template-columns:72px minmax(0,1fr); gap:26px; padding:26px 30px 28px; background:var(--paper); border-top:4px solid var(--ink); box-shadow:var(--shadow); scroll-margin-top:24px; }
+.story-number { color:var(--accent); font:900 22px/1 var(--mono); letter-spacing:-.04em; padding-top:6px; }
+.story-number::before { content:counter(story,decimal-leading-zero); }
+.tagline { margin:0; max-width:840px; font:700 clamp(24px,3vw,36px)/1.1 var(--serif); letter-spacing:-.028em; }
+.exec { margin:14px 0 0; max-width:840px; font:17px/1.58 var(--sans); }
+.cat-lists { margin:14px 0 0; padding:0; list-style:none; display:grid; gap:10px; max-width:840px; }
+.cat-lists li.cat { font:15px/1.6 var(--sans); }
+.cat-lists .cat-label { font:700 12px/1.6 var(--mono); letter-spacing:.06em; text-transform:uppercase; color:var(--accent); }
+.cat-lists ul { margin:4px 0 0; padding-left:20px; }
+.cat-lists ul li { margin:3px 0; }
+.meta-line { margin:16px 0 0; color:var(--muted); font:700 12px/1.9 var(--mono); overflow-wrap:anywhere; }
+.meta-line a { color:var(--ink); font-weight:800; }
+.meta-line .metrics { color:var(--ink); white-space:nowrap; }
+.story-bar { display:flex; align-items:flex-start; gap:14px; margin-top:4px; }
+.copy-button { flex:0 0 auto; align-self:flex-start; min-height:36px; padding:9px 12px; border:1px solid var(--hairline); border-radius:4px; background:var(--paper); color:var(--ink); cursor:pointer; font:700 12px/1 var(--mono); }
+.copy-button:hover { border-color:var(--accent); color:var(--accent); }
+.hn-comments { margin:18px 0 0; padding:14px 18px; background:var(--comment); border:1px solid var(--hairline); font:15px/1.62 var(--serif); color:var(--ink); }
+.hn-comments strong { font:700 12px/1.6 var(--mono); color:var(--accent); display:block; margin-bottom:6px; }
+.page-footer { display:flex; justify-content:space-between; flex-wrap:wrap; gap:14px; margin-top:64px; padding-top:12px; border-top:1px solid var(--hairline); color:var(--muted); font:12px/1.6 var(--mono); }
+.footer-links { display:flex; flex-wrap:wrap; gap:8px 20px; }
+.footer-links a { min-height:36px; display:inline-flex; align-items:center; color:var(--ink); font-weight:800; }
+.footer-links a:hover { color:var(--accent); }
+.shortcut-bar { display:flex; flex-wrap:wrap; gap:18px; margin-top:28px; color:var(--muted); font:11px/1.5 var(--mono); }
+kbd { display:inline-grid; place-items:center; min-width:22px; height:22px; margin-right:6px; padding:0 6px; border:1px solid var(--hairline); border-bottom-width:2px; border-radius:3px; background:var(--comment); color:var(--ink); font:inherit; font-weight:700; }
+.toast { position:fixed; right:max(18px,env(safe-area-inset-right)); bottom:max(18px,env(safe-area-inset-bottom)); z-index:10; padding:11px 14px; color:var(--paper); background:var(--ink); border:1px solid var(--ink); font:700 12px/1 var(--mono); opacity:0; transform:translateY(8px); pointer-events:none; transition:opacity 160ms ease,transform 160ms ease; }
+.toast.show { opacity:1; transform:translateY(0); }
+@media (max-width:760px) {
+  .page { width:min(100% - 22px,1080px); padding-top:16px; }
+  .issue-header { grid-template-columns:1fr auto; gap:12px; padding-bottom:20px; }
+  h1 { font-size:clamp(34px,10vw,48px); }
+  .deck { grid-column:1 / -1; margin-top:3px; font-size:15px; }
+  .theme-toggle { grid-column:2; grid-row:1; min-width:72px; }
+  .story { grid-template-columns:44px minmax(0,1fr); gap:14px; padding:20px 18px 22px; }
+  .story-number { font-size:16px; padding-top:4px; }
+  .story-bar { flex-direction:column; align-items:stretch; }
+  .copy-button { align-self:flex-start; }
+  .page-footer { display:block; }
+}
+@media (max-width:420px) {
+  .page { width:calc(100% - 16px); }
+  .story { grid-template-columns:1fr; gap:8px; padding:20px 16px 22px; }
+  .story-number { padding-top:0; }
+  .copy-button { width:100%; }
+}
+@media (prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } *,*::before,*::after { transition:none !important; } }
+@media print { :root { --page:#fff;--paper:#fff;--ink:#000;--muted:#444;--hairline:#bbb;--comment:#f5f5f5;--shadow:none; } .page{width:100%;padding:0}.theme-toggle,.copy-button,.toast,.shortcut-bar{display:none}.story{break-inside:avoid;box-shadow:none} }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="issue-header">
+      <div>
+        <nav class="archive-nav" aria-label="HN Daily archive links"><a href="../">← Archive</a><a href="https://tk3369.github.io/hn-daily/" target="_blank" rel="noopener">Published archive ↗</a></nav>
+        <p class="edition"><time datetime="2026-10-04">2026-10-04</time> · Daily brief · Pacific time</p>
+        <h1>HN Daily</h1>
+        <p class="deck">Direct, low-fluff top 10 from Hacker News, daily at 7am PT — hottest by points</p>
+      </div>
+      <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch color theme" title="Toggle theme (T)"><span class="theme-dot" aria-hidden="true"></span><span class="theme-text">Dark</span></button>
+    </header>
+
+    <ol class="story-list" aria-label="Top 10 Hacker News stories">
+<article class="story" id="story-1" data-story="1" data-source="https://news.ycombinator.com/item?id=49949438" data-hn="https://news.ycombinator.com/item?id=49949438" data-metric="587 pts / 115 comments" tabindex="0" aria-label="Story 1: Tell HN reports Bob Cringely has died">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">Tell HN reports Bob Cringely has died</h2>
+<p class="exec">A Tell HN post reports that Bob Cringely — real name Mark Stevens, an early Apple employee best known for the PBS documentary Triumph of the Nerds — passed away in his sleep early Saturday, per a friend of the family. The post is second-hand and, at fetch time, the thread had no independent confirmation; commenters were searching to verify it, noting his 2020 post titled &#x27;Not dead yet.&#x27; Treat the death as reported, not yet confirmed.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The report</span><ul><li>Tell HN: family friend reports he passed in his sleep early Saturday</li><li>Real name Mark Stevens; early Apple employee</li><li>No independent confirmation in the thread at 07:00 PT fetch</li></ul></li><li class="cat"><span class="cat-label">The work</span><ul><li>Triumph of the Nerds and Nerds 2.0.1 (PBS); Accidental Empires (book)</li><li>InfoWorld&#x27;s Cringely column, then his own blog</li><li>&#x27;Plane Crazy&#x27; and the Steve Jobs &#x27;Lost Interview&#x27; also cited</li></ul></li><li class="cat"><span class="cat-label">HN take</span><ul><li>&#x27;Reading Accidental Empires is how I learned the tech industry even existed&#x27;</li><li>Contrarian takes praised: a different angle that broadened views</li><li>Grief plus verification: readers hunting for a second source</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: Ask HN (thread only) · Discuss: <a href="https://news.ycombinator.com/item?id=49949438" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">587 pts / 115 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>The thread is part obituary, part verification desk. The affection is specific: Accidental Empires as a first map of an industry many readers did not know existed, Triumph of the Nerds gifted and re-watched, the Lost Interview with Steve Jobs, and a contrarian column that readers far from Silicon Valley relied on before the web. Several commenters pause to check the claim itself — searching for confirmation and surfacing, with a sad laugh, Cringely&#x27;s own 2020 post &#x27;Not dead yet.&#x27; That unresolved status hangs over the thread: the grief is real, and so is the caution that, as of this morning, HN is working from a single second-hand report.</p>
+</div>
+</article>
+<article class="story" id="story-2" data-story="2" data-source="https://simonwillison.net/2026/Oct/3/default-hard-budget-caps/" data-hn="https://news.ycombinator.com/item?id=49949235" data-metric="502 pts / 257 comments" tabindex="0" aria-label="Story 2: Hard budget caps should be the default, not a warning email">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">Hard budget caps should be the default, not a warning email</h2>
+<p class="exec">Simon Willison argues pay-by-usage services need default hard budget caps: after $X/month, cut the service off and return errors — soft &#x27;we emailed you at midnight&#x27; warnings will not do, because agents now spin up billable code while you sleep. AWS launched project spend limits in September and Google Cloud added Spend Caps in July; Willison wants uncapped billing to become an explicit, scary opt-in.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The ask</span><ul><li>Hard cap by default: exceed $X/month, service errors out</li><li>Removing the cap should be a prominent, explicit opt-in checkbox</li><li>Agents should steer new builders toward capped providers</li></ul></li><li class="cat"><span class="cat-label">Why now</span><ul><li>Coding and personal agents lower the friction of creating billable services</li><li>Runaway loops can consume hundreds to thousands overnight</li><li>&#x27;Businesses prefer errors to a surprise $10,000+ bill&#x27;</li></ul></li><li class="cat"><span class="cat-label">State of play</span><ul><li>AWS: monthly spend limits for new projects (Sep 2026), still rolling out</li><li>Google Cloud: Spend Caps per service (July 2026)</li><li>HN check: GCP caps cover only a few services so far — &#x27;it&#x27;s fake&#x27; for most</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://simonwillison.net/2026/Oct/3/default-hard-budget-caps/" target="_blank" rel="noopener">simonwillison.net</a> · Discuss: <a href="https://news.ycombinator.com/item?id=49949235" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">502 pts / 257 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>HN agrees with the direction and immediately audits the implementation. The top technical complaint is that Google Cloud&#x27;s new caps, on inspection, apply to only a handful of services — &#x27;fake&#x27; for the workloads people actually fear. The incentive problem gets stated plainly: why would a vendor make it harder to accidentally give them a million dollars, and a $10,000 surprise bill is &#x27;getting off easy.&#x27; Several commenters go further than Willison — caps should be legally required, or billing without a negotiated contract should not exist at all — while others note the workaround already in use (virtual cards with hard limits) may be exactly what is pushing the clouds to build the real thing. One poster realized this morning that their new CI provider has no caps at all; fortunately, they say, not the hard way.</p>
+</div>
+</article>
+<article class="story" id="story-3" data-story="3" data-source="https://www.phoronix.com/news/XDC-2026-Valve-Timur-AMDGPU" data-hn="https://news.ycombinator.com/item?id=49946895" data-metric="350 pts / 60 comments" tabindex="0" aria-label="Story 3: Valve&#x27;s Timur Kristóf is reviving decade-old AMD GPUs on Linux">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">Valve&#x27;s Timur Kristóf is reviving decade-old AMD GPUs on Linux</h2>
+<p class="exec">Phoronix reports from XDC 2026 in Toronto: Valve&#x27;s Timur Kristóf has spent a year moving decade-old AMD GCN 1.0/1.1 cards from the legacy Radeon driver to the modern AMDGPU kernel driver — unlocking the RADV Vulkan driver, better performance (about 30% in Linux 6.19 testing), and fixes for display and power management. AMD itself has not resourced this work in years; Valve picked it up.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The work</span><ul><li>GCN 1.0/1.1 (decade-old) cards moved Radeon → AMDGPU driver</li><li>Fixes: display code defects, power management, soft reset support</li><li>Kristóf started in Mesa user-space; this began as a kernel-learning exercise</li></ul></li><li class="cat"><span class="cat-label">The payoff</span><ul><li>RADV Vulkan becomes usable on the old cards</li><li>~30% performance boost measured for old Radeon GPUs on Linux 6.19</li><li>Aging cards stay viable for Linux gaming in 2026 and beyond</li></ul></li><li class="cat"><span class="cat-label">HN take</span><ul><li>&#x27;If only AMD did this&#x27; — vendor neglect vs Valve&#x27;s stewardship</li><li>E-waste angle: old GPUs repurposed for LLM inference, encode, passthrough</li><li>&#x27;Such legendary behaviour&#x27; — and how do we donate?</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://www.phoronix.com/news/XDC-2026-Valve-Timur-AMDGPU" target="_blank" rel="noopener">phoronix.com</a> · Discuss: <a href="https://news.ycombinator.com/item?id=49946895" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">350 pts / 60 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>Admiration, aimed partly at AMD. The recurring line is &#x27;if only AMD did this&#x27;: a platform vendor is funding the unglamorous driver archaeology that keeps a decade of hardware useful, while the manufacturer that sold the cards moved on. The practical thread is repurposing — old GPUs as dedicated video encode/decode, frame interpolation, extra monitor outputs, VM passthrough, backup cards, and a hope that better drivers carry over to local LLM inference via llama.cpp/GGML. A handheld owner reports an older RDNA 2 APU running noticeably smoother under Linux than Windows, which the thread treats as the same story at a smaller scale. The ask at the end is direct: is Valve funding this specifically, and how can people donate?</p>
+</div>
+</article>
+<article class="story" id="story-4" data-story="4" data-source="https://asteriskmag.com/issues/15/so-you-think-you-could-be-an-electrician" data-hn="https://news.ycombinator.com/item?id=49910462" data-metric="336 pts / 265 comments" tabindex="0" aria-label="Story 4: The trades pitch is more complicated than the six-figure story">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">The trades pitch is more complicated than the six-figure story</h2>
+<p class="exec">An Asterisk essay by a former apprentice electrician pushes back on the popular &#x27;skip college, become a union electrician, earn six figures, AI-proof&#x27; narrative: college graduates still out-earn non-graduates by hundreds of thousands over a career, trades wages are not broadly surging, elite union trades are as selective as elite white-collar jobs, and the physical toll — he broke both heels at 20 — is real and underweighted.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The economics</span><ul><li>College wage premium: rigorous studies find large lifetime gains, completion matters</li><li>Net price actually paid for public college is low and falling since 2016</li><li>Trades wage gains were narrow and COVID-era, not a broad surge</li></ul></li><li class="cat"><span class="cat-label">The hierarchy</span><ul><li>Median blue-collar job is not a trade — e.g. delivery driving at ~$40k</li><li>Union electrician sits near the McKinsey partner end of blue-collar status</li><li>Apprenticeships: 100–200 applicants winnowed to a handful of entrants</li></ul></li><li class="cat"><span class="cat-label">HN take</span><ul><li>&#x27;Many kinds of electricians who can&#x27;t do each other&#x27;s jobs&#x27;</li><li>For the right person the alternative is retail, not an office job</li><li>Demand cuts both ways: if white-collar pay falls, who buys trades work?</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://asteriskmag.com/issues/15/so-you-think-you-could-be-an-electrician" target="_blank" rel="noopener">asteriskmag.com</a> · Discuss: <a href="https://news.ycombinator.com/item?id=49910462" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">336 pts / 265 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>The thread largely accepts the essay&#x27;s framing and adds the insider texture it asks for. Electricians distinguish house wirers from panel builders, industrial, marine, and high-voltage specialists who cannot simply swap jobs; apprentices confirm that getting in is genuinely hard, and that the six-figure outcomes cluster where the essay says they do. The most useful reframing is comparative: for many people the real choice is not trades versus a comfortable office job, but trades versus retail and service work with a weak degree and no ladder — and on that comparison the trades look much better. The macro worry runs the other way: trades income depends on customers who can pay, so a white-collar collapse would not spare the builders either. The physical-cost passages get no pushback at all.</p>
+</div>
+</article>
+<article class="story" id="story-5" data-story="5" data-source="https://notoriousbfg.com/hole-punch/" data-hn="https://news.ycombinator.com/item?id=49946393" data-metric="315 pts / 74 comments" tabindex="0" aria-label="Story 5: Hole Punch: slingshot a spaceship around gravity wells">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">Hole Punch: slingshot a spaceship around gravity wells</h2>
+<p class="exec">Hole Punch is a browser game about slinging a spaceship around gravitational fields — space golf with black holes. You place and grow gravity holes to bend your ship&#x27;s trajectory toward the goal. It runs in the browser (landscape; desktop-first in practice) and HN is playing it this morning, filing precise, affectionate bug reports.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The game</span><ul><li>Browser game: bend a spaceship&#x27;s path with gravitational fields</li><li>Click and hold to add mass to a hole; trajectory does the rest</li><li>Landscape presentation; touch support is the top mobile request</li></ul></li><li class="cat"><span class="cat-label">HN feedback</span><ul><li>&#x27;Never ignored a tutorial faster. (This is a compliment.)&#x27;</li><li>Overshoot problem: no way to subtract mass or delete a hole</li><li>Requests: type mass numerically, key to speed up time, Safari precision</li></ul></li><li class="cat"><span class="cat-label">HN take</span><ul><li>&#x27;This is the year of old browser (and Flash) games making a comeback&#x27;</li><li>Turn-based Scorched Earth variant proposed in-thread</li><li>Fun first, friction second: &#x27;kind of maddening&#x27; still means playing</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://notoriousbfg.com/hole-punch/" target="_blank" rel="noopener">notoriousbfg.com</a> · Discuss: <a href="https://news.ycombinator.com/item?id=49946393" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">315 pts / 74 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>The thread is a playtest, in the best sense. Praise is immediate — &#x27;a lot of fun,&#x27; &#x27;I love it,&#x27; and the backhanded compliment of the day: &#x27;Never ignored a tutorial faster.&#x27; The complaints are specific and constructive: you can add mass to a hole but cannot subtract it or delete the hole after an overshoot, clicking meters matter too coarsely on Safari to set a precise value, and players want a typed numeric input and a fast-forward key once a run is underway. Mobile players ask for proper touch support in a world that is, as one puts it, a mobile world now. The design space gets one good extension — a turn-based Scorched Earth mode, lobbing projectiles across a field of stars and black holes — and the frame for the whole thread is nostalgic: old browser and Flash games are having a comeback year.</p>
+</div>
+</article>
+<article class="story" id="story-6" data-story="6" data-source="https://www.theatlantic.com/technology/2026/10/openai-safety-team-resignation/688881/?gift=v5U_UzUTothfWXsPxtvNVAh7esWToMRD6XnbXmc5WgA" data-hn="https://news.ycombinator.com/item?id=49944227" data-metric="313 pts / 549 comments" tabindex="0" aria-label="Story 6: A safety researcher quits OpenAI, calling its culture broken">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">A safety researcher quits OpenAI, calling its culture broken</h2>
+<p class="exec">The Atlantic publishes a first-person account by an OpenAI safety researcher who resigned over the lab&#x27;s internal culture — its closing argument, quoted in-thread: before the organizations building AI can teach a superintelligence to treat humanity well, they will need to remember how to do it themselves. The piece lands ahead of intense public-market scrutiny of the AI labs, which is exactly how part of HN reads it.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The claim</span><ul><li>First-person resignation account in The Atlantic (gift link in-thread)</li><li>Charge: the culture inside a leading AI lab is broken</li><li>Closing line: teach superintelligence well only after learning it yourselves</li></ul></li><li class="cat"><span class="cat-label">Context</span><ul><li>Safety-team departures are a recurring story at the frontier labs</li><li>549 comments — the largest discussion in today&#x27;s top 10</li><li>Archive and gift links circulated immediately in-thread</li></ul></li><li class="cat"><span class="cat-label">HN take</span><ul><li>&#x27;I have made enough money in AI that I can now speak my mind&#x27;</li><li>Cynical read: resignation-as-hype ahead of an IPO (&#x27;big and scary sells&#x27;)</li><li>Accountability proposal: CEO personally liable when an agent commits a crime</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://www.theatlantic.com/technology/2026/10/openai-safety-team-resignation/688881/?gift=v5U_UzUTothfWXsPxtvNVAh7esWToMRD6XnbXmc5WgA" target="_blank" rel="noopener">theatlantic.com</a> · Discuss: <a href="https://news.ycombinator.com/item?id=49944227" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">313 pts / 549 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>With 549 comments this is today&#x27;s real argument. One camp takes the account at face value and generalizes it: the incentive gradient inside the labs points away from the caution the safety teams were hired for, and the quoted closing line — learn to treat humanity well yourselves first — is treated as the thesis. A second, colder camp reads the timing: dramatic safety exits double as marketing for how powerful and dangerous the product is, which is useful ahead of an IPO, and one commenter invokes Michael Burry&#x27;s line that IPOs need hype. A third thread skips motive entirely and argues mechanism: hold a CEO personally accountable, as if they had acted themselves, when their agent commits a crime. The most-liked shrug may be the most honest: AGI and alignment, in the same sentence, may be an oxymoron to begin with.</p>
+</div>
+</article>
+<article class="story" id="story-7" data-story="7" data-source="https://cosmowenman.substack.com/p/rodin-museum-3d-scan-verdict" data-hn="https://news.ycombinator.com/item?id=49946355" data-metric="243 pts / 116 comments" tabindex="0" aria-label="Story 7: Rodin Museum wins: 3D scans are not documents, court rules">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">Rodin Museum wins: 3D scans are not documents, court rules</h2>
+<p class="exec">After eight years, France&#x27;s Conseil d&#x27;État ruled against Cosmo Wenman&#x27;s bid for the Rodin Museum&#x27;s publicly funded 3D scans of public-domain sculptures: the scans, the court held, are legally indistinguishable from physical reproductions — part of the museum&#x27;s inalienable collection, not administrative documents — so freedom-of-information law does not apply. The appeal was thrown out and Wenman ordered to pay the museum €3,000. A 2023 lower-court win on other scan formats was effectively undone.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The ruling</span><ul><li>Conseil d&#x27;État: point-cloud scans are not administrative documents</li><li>Scans treated as collection items; FOI law held inapplicable</li><li>Appeal dismissed; €3,000 costs to the museum; earlier win undone</li></ul></li><li class="cat"><span class="cat-label">The record</span><ul><li>8-year case; CADA (the government&#x27;s own FOI body) had sided with Wenman</li><li>Museum claimed scans were both unusable and a counterfeiting risk</li><li>Lower court in 2023 ordered some formats released; museum ignored the order</li></ul></li><li class="cat"><span class="cat-label">HN take</span><ul><li>&#x27;Establishment forces looking after each other to hold back data&#x27;</li><li>Counter-note: we hear one side; the museum&#x27;s case is unargued here</li><li>Warning read: museums will simply stop making high-quality scans</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://cosmowenman.substack.com/p/rodin-museum-3d-scan-verdict" target="_blank" rel="noopener">cosmowenman.substack.com</a> · Discuss: <a href="https://news.ycombinator.com/item?id=49946355" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">243 pts / 116 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>The thread&#x27;s first question is the right one: why did the museum fight this hard for eight years? The answers split. The cynical reading is revenue and control — high-quality scans let anyone produce reconstructions, ending a reproduction income stream — compounded by institutions protecting each other, with the court&#x27;s own analyst supplying a surrealist &#x27;sometimes a document is not a document&#x27; rationale the museum had not even argued. A dissenting voice insists on the missing other side and cautions that the account is one litigant&#x27;s. The systemic warning gets the most traction: the lesson other museums will take is to never make high-quality scans in the first place, or never admit to having them — a preservation loss no ruling can undo. Whether an EU-level appeal exists is asked and, in-thread, unanswered.</p>
+</div>
+</article>
+<article class="story" id="story-8" data-story="8" data-source="https://liao.gg/blog/agents-dont-need-memory" data-hn="https://news.ycombinator.com/item?id=49945933" data-metric="242 pts / 132 comments" tabindex="0" aria-label="Story 8: Agents don&#x27;t need memory plugins. They need documentation.">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">Agents don&#x27;t need memory plugins. They need documentation.</h2>
+<p class="exec">Kevin Liao argues the agent-memory plugin market — scrape transcripts into 1,000 vector snippets, inject the five most similar per prompt — solves the wrong problem: similarity is not correctness, snippets lose context, and the store is unauditable. His alternative is document-based memory: a plain-Markdown &#x27;brain&#x27; (his open-source Operator Memory) that the agent consults before work and updates after, turning the loop from prompt → build → forget into prompt → consult → build → update.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The critique</span><ul><li>Memory plugins: transcript snippets in a vector DB, top-5 injected per prompt</li><li>Similarity ranks embedding closeness, not truth, currency, or completeness</li><li>Unauditable: thousands of embeddings, no view of what is stale or wrong</li></ul></li><li class="cat"><span class="cat-label">The alternative</span><ul><li>Structured Markdown workspace: instructions, specs, decisions, research</li><li>Agent reads relevant docs before work, updates them after</li><li>No embeddings, summarizers, or background &#x27;dreamer&#x27; daemons; git-friendly</li></ul></li><li class="cat"><span class="cat-label">HN take</span><ul><li>Naur&#x27;s &#x27;theory building&#x27; objection: docs never capture the full mental model</li><li>Token cost worry: reading and updating a growing brain balloons small tasks</li><li>&#x27;Why install a tool? An AGENTS.md instruction plus a hook does this&#x27;</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://liao.gg/blog/agents-dont-need-memory" target="_blank" rel="noopener">liao.gg</a> · Discuss: <a href="https://news.ycombinator.com/item?id=49945933" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">242 pts / 132 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>The thesis lands; the product gets interrogated. Practitioners who have built similar systems warn that the read-and-update discipline consumes tokens fast as the document set grows, and that keeping stale pages from steering the agent is the real work. A thoughtful objection invokes Peter Naur&#x27;s Programming as Theory Building — documentation alone cannot preserve the mental model behind a program — with the counter that agents, unlike humans, need far more of that model made explicit anyway. The minimalist camp is blunt: session history plus grep is already perfect recall for coding, and a memory layer is tokens spent building an imperfect copy next to the original. The middle position may be the consensus: memory as uncurated recall can harm as easily as help, while accurate, human-readable documentation is only ever beneficial — whether or not it ships as a plugin.</p>
+</div>
+</article>
+<article class="story" id="story-9" data-story="9" data-source="https://www.whec.com/top-news/webster-man-celebrating-the-100th-birthday-of-the-kidney-his-mom-donated-to-him-as-a-teenager/" data-hn="https://news.ycombinator.com/item?id=49923873" data-metric="214 pts / 57 comments" tabindex="0" aria-label="Story 9: A donated kidney turns 100">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">A donated kidney turns 100</h2>
+<p class="exec">WHEC reports a Webster man celebrating the 100th birthday of the kidney his mother donated to him when he was a teenager — the organ&#x27;s age counted from the donor: his mother would have been 100. It is, by transplant standards, an exceptionally long-lived kidney, and the HN thread — several of whose members have given or received one — treats it as such. (Summary based on the headline and the HN thread.)</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The story</span><ul><li>Webster man marks the 100th birthday of his transplanted kidney</li><li>Donated by his mother when he was a teenager; she would have been 100</li><li>Thread detail: mother and son on gurneys, holding hands, before surgery</li></ul></li><li class="cat"><span class="cat-label">Context</span><ul><li>Donated kidneys commonly last 10–20 years; decades-long function is notable</li><li>One commenter&#x27;s maternal kidney lasted 19 years; another&#x27;s gift gave 23</li><li>HLA matching (4 of 6 in one account) lowers anti-rejection dosing</li></ul></li><li class="cat"><span class="cat-label">HN take</span><ul><li>Donors and recipients comparing notes, not debating</li><li>&#x27;Could a kidney go to a third person?&#x27; — asked in genuine curiosity</li><li>Organs appear to sync toward the recipient&#x27;s biological age, per one link</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://www.whec.com/top-news/webster-man-celebrating-the-100th-birthday-of-the-kidney-his-mom-donated-to-him-as-a-teenager/" target="_blank" rel="noopener">whec.com</a> · Discuss: <a href="https://news.ycombinator.com/item?id=49923873" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">214 pts / 57 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>This is the warmest thread in the top 10, and it runs on first-person evidence. A recipient whose mother&#x27;s kidney lasted 19 years before dialysis, a donor whose kidney gave his father 23 extra years on low anti-rejection doses thanks to a 4-of-6 HLA match — the comments read like a support group that happens to be technically literate. The detail everyone quotes is pre-surgical: mother and son on gurneys, holding hands, the mother crying that she has a Genesis concert she is not missing. (They both made it; he still has the ticket stub.) The science tangent is genuinely interesting — reports that transplanted organs drift toward the recipient&#x27;s biological age — and the closing joke proposes the obvious experiment: pass the kidney to a third person and see how long it can keep going.</p>
+</div>
+</article>
+<article class="story" id="story-10" data-story="10" data-source="https://fortune.com/2026/10/01/ai-godfather-yann-lecun-has-zero-concerns-about-human-extinction-says-anthropic-ceo-dario-amodei-is-deuded/" data-hn="https://news.ycombinator.com/item?id=49946228" data-metric="212 pts / 318 comments" tabindex="0" aria-label="Story 10: LeCun says he has &#x27;zero concerns&#x27; about AI extinction">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">LeCun says he has &#x27;zero concerns&#x27; about AI extinction</h2>
+<p class="exec">Fortune reports Yann LeCun — Meta&#x27;s chief AI scientist and a Turing Award winner — saying he has &#x27;zero concerns&#x27; about AI wiping out humanity, dismissing recent &#x27;rogue AI&#x27; incidents and, per the report, Anthropic CEO Dario Amodei&#x27;s extinction warnings. It is the latest round of the field&#x27;s longest-running argument: existential risk as serious planning, or as a distraction from nearer harms. (Summary based on the headline and the HN thread.)</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The claim</span><ul><li>LeCun, via Fortune: &#x27;zero concerns&#x27; about AI-driven human extinction</li><li>Recent &#x27;rogue&#x27; incidents dismissed as not evidence of existential risk</li><li>Anthropic&#x27;s Amodei named as the opposing camp</li></ul></li><li class="cat"><span class="cat-label">The landscape</span><ul><li>LeCun&#x27;s long-standing position: current architectures lack world models</li><li>318 comments — today&#x27;s second-largest discussion</li><li>Counter-risk named in-thread: social and economic chaos, not extinction</li></ul></li><li class="cat"><span class="cat-label">HN take</span><ul><li>&#x27;I&#x27;m more worried about my fellow humans than a personified algorithm&#x27;</li><li>World-models thread: maybe LeCun &#x27;knows what he is talking about&#x27;</li><li>Gates comparison cuts both ways — visionary, or &#x27;screamed Terminator is real&#x27;</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://fortune.com/2026/10/01/ai-godfather-yann-lecun-has-zero-concerns-about-human-extinction-says-anthropic-ceo-dario-amodei-is-deuded/" target="_blank" rel="noopener">fortune.com</a> · Discuss: <a href="https://news.ycombinator.com/item?id=49946228" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">212 pts / 318 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>The thread splits into three risks and argues about which one is real. LeCun&#x27;s defenders say the extinction frame anthropomorphizes a statistical tool, that his world-models critique has been consistent for years, and that the nearer dangers — state misuse, economic displacement — get crowded out by Terminator talk. The middle position concedes extinction and worries anyway: we can wipe ourselves out socially and economically with AI that never becomes an agent of anything. The skeptics of LeCun note that confidence is cheap and that dismissing incidents wholesale is its own kind of faith. Bill Gates gets invoked by both sides within a few comments of each other — as the man whose foresight built an industry, and as a nontechnical voice shouting that the Terminator is real. Nobody&#x27;s mind visibly changes; the map of positions is the value.</p>
+</div>
+</article>
+    </ol>
+
+    <div class="shortcut-bar" aria-label="Keyboard shortcuts">
+      <span><kbd>J</kbd> next story</span>
+      <span><kbd>K</kbd> previous story</span>
+      <span><kbd>T</kbd> theme</span>
+    </div>
+
+    <footer class="page-footer">
+      <div class="footer-links"><a href="../">← Daily archive</a><a href="https://tk3369.github.io/hn-daily/" target="_blank" rel="noopener">Published archive ↗</a></div>
+      <span>Sunday 2026-10-04 · 10 stories</span>
+    </footer>
+  </main>
+  <div class="toast" role="status" aria-live="polite"></div>
+  <script>
+(() => {
+  const root = document.documentElement;
+  const toggle = document.getElementById('theme-toggle');
+  const entries = [...document.querySelectorAll('[data-story]')];
+  function storedTheme() { try { const t = localStorage.getItem('hn-daily-theme'); return t === 'dark' || t === 'light' ? t : null; } catch (_) { return null; } }
+  function preferredTheme() { return matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'; }
+  function currentTheme() { const a = root.dataset.theme; if (a === 'dark' || a === 'light') return a; return storedTheme() || preferredTheme(); }
+  function setTheme(theme) { const next = theme === 'dark' ? 'dark' : 'light'; const opposite = next === 'dark' ? 'Light' : 'Dark';
+    if (root.dataset.theme !== next) root.dataset.theme = next;
+    toggle.querySelector('.theme-text').textContent = opposite;
+    toggle.setAttribute('aria-label', `Switch to ${opposite} theme (T)`); toggle.title = `Switch to ${opposite} theme (T)`;
+    try { localStorage.setItem('hn-daily-theme', next); } catch (_) {} }
+  function flipTheme() { setTheme(currentTheme() === 'dark' ? 'light' : 'dark'); }
+  setTheme(storedTheme() || preferredTheme());
+  toggle.addEventListener('click', flipTheme);
+  const toast = document.querySelector('.toast'); let toastTimer;
+  function showToast(msg) { toast.textContent = msg; toast.classList.add('show'); clearTimeout(toastTimer); toastTimer = setTimeout(() => toast.classList.remove('show'), 1800); }
+  document.querySelectorAll('.copy-button').forEach((button) => {
+    button.addEventListener('click', async () => {
+      const story = button.closest('.story');
+      const n = story.dataset.story;
+      const tagline = story.querySelector('.tagline').textContent.trim();
+      const execSum = story.querySelector('.exec').textContent.trim();
+      const bullets = [...story.querySelectorAll('.cat-lists .cat')].map(li => {
+        const label = li.querySelector('.cat-label').textContent.trim();
+        const pts = [...li.querySelectorAll('ul li')].map(p => '  \u2022 ' + p.textContent.trim()).join('\n');
+        return '- ' + label + ':\n' + pts;
+      }).join('\n');
+      const link = 'https://tk3369.github.io/hn-daily/2026-10-04/#story-' + n;
+      const text = n + '. ' + tagline + '\n\n' + execSum + '\n' + bullets + '\n\n' + link;
+      try { await navigator.clipboard.writeText(text); button.textContent = 'Copied'; showToast('Story ' + n + ' copied for Threads'); setTimeout(() => { button.textContent = 'Copy for Threads'; }, 1600); }
+      catch (_) { showToast('Copy was blocked by this browser'); }
+    });
+  });
+  document.addEventListener('keydown', (event) => {
+    if (event.metaKey || event.ctrlKey || event.altKey || event.shiftKey) return;
+    const tag = event.target.tagName;
+    if (tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT') return;
+    const key = event.key.toLowerCase();
+    if (key === 't') { event.preventDefault(); flipTheme(); }
+    else if ((key === 'j' || key === 'k') && entries.length) {
+      event.preventDefault();
+      const active = entries.indexOf(document.activeElement);
+      const delta = key === 'j' ? 1 : -1;
+      const next = active < 0 ? (key === 'j' ? 0 : entries.length - 1) : Math.max(0, Math.min(entries.length - 1, active + 1 * delta));
+      entries[next].focus();
+    }
+  });
+})();
+  </script>
+</body>
+</html>
