@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="color-scheme" content="light dark" />
+  <link rel="icon" href="data:," />
+  <title>HN Daily — Monday 2026-10-05</title>
+  <style>
+:root { --page:#f1eadb; --paper:#fffaf0; --ink:#20201c; --muted:#6f695f; --hairline:#d9cebc; --accent:#ff5a1f; --comment:#f6efe3; --shadow:0 2px 0 rgba(57,45,25,.08),0 14px 36px rgba(57,45,25,.06); --serif:Georgia,"Times New Roman",serif; --sans:ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; --mono:"SFMono-Regular",Consolas,"Liberation Mono",monospace; }
+html[data-theme="dark"] { --page:#111312; --paper:#191c1a; --ink:#f1eee6; --muted:#aba69b; --hairline:#393b36; --accent:#ff7139; --comment:#222520; --shadow:0 2px 0 rgba(0,0,0,.22),0 18px 42px rgba(0,0,0,.22); }
+* { box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body { margin:0; min-width:280px; color:var(--ink); background:var(--page); font-family:var(--sans); line-height:1.55; -webkit-font-smoothing:antialiased; }
+a { color:inherit; text-underline-offset:3px; text-decoration-thickness:1px; }
+a:hover { color:var(--accent); }
+button,a { -webkit-tap-highlight-color:transparent; }
+button { font:inherit; }
+a:focus-visible,button:focus-visible { outline:3px solid var(--accent); outline-offset:3px; }
+.page { width:min(1080px,calc(100% - 36px)); margin:0 auto; padding:28px 0 72px; }
+.issue-header { display:grid; grid-template-columns:1fr auto; gap:24px; align-items:end; padding:8px 0 26px; border-bottom:3px solid var(--ink); }
+.edition { margin:0 0 9px; color:var(--accent); font:700 12px/1.3 var(--mono); letter-spacing:.09em; text-transform:uppercase; }
+.archive-nav { display:flex; flex-wrap:wrap; gap:8px 20px; margin-bottom:16px; font:700 12px/1 var(--mono); }
+.archive-nav a { min-height:36px; display:inline-flex; align-items:center; color:var(--muted); }
+.archive-nav a:hover { color:var(--accent); }
+h1 { max-width:820px; margin:0; font:700 clamp(34px,5.5vw,62px)/.98 var(--serif); letter-spacing:-.038em; }
+.deck { max-width:730px; margin:17px 0 0; color:var(--muted); font:17px/1.55 var(--sans); }
+.theme-toggle { align-self:start; min-width:86px; min-height:40px; padding:9px 13px; border:1px solid var(--hairline); border-radius:4px; color:var(--ink); background:var(--paper); cursor:pointer; font:700 12px/1 var(--mono); display:inline-flex; align-items:center; gap:8px; }
+.theme-toggle:hover { border-color:var(--accent); color:var(--accent); }
+.theme-dot { width:10px; height:10px; border-radius:50%; background:var(--accent); display:inline-block; flex-shrink:0; }
+.theme-text { line-height:1; }
+.story-list { display:grid; gap:20px; list-style:none; margin:26px 0 0; padding:0; counter-reset:story; }
+.story { counter-increment:story; display:grid; grid-template-columns:72px minmax(0,1fr); gap:26px; padding:26px 30px 28px; background:var(--paper); border-top:4px solid var(--ink); box-shadow:var(--shadow); scroll-margin-top:24px; }
+.story-number { color:var(--accent); font:900 22px/1 var(--mono); letter-spacing:-.04em; padding-top:6px; }
+.story-number::before { content:counter(story,decimal-leading-zero); }
+.tagline { margin:0; max-width:840px; font:700 clamp(24px,3vw,36px)/1.1 var(--serif); letter-spacing:-.028em; }
+.exec { margin:14px 0 0; max-width:840px; font:17px/1.58 var(--sans); }
+.cat-lists { margin:14px 0 0; padding:0; list-style:none; display:grid; gap:10px; max-width:840px; }
+.cat-lists li.cat { font:15px/1.6 var(--sans); }
+.cat-lists .cat-label { font:700 12px/1.6 var(--mono); letter-spacing:.06em; text-transform:uppercase; color:var(--accent); }
+.cat-lists ul { margin:4px 0 0; padding-left:20px; }
+.cat-lists ul li { margin:3px 0; }
+.meta-line { margin:16px 0 0; color:var(--muted); font:700 12px/1.9 var(--mono); overflow-wrap:anywhere; }
+.meta-line a { color:var(--ink); font-weight:800; }
+.meta-line .metrics { color:var(--ink); white-space:nowrap; }
+.story-bar { display:flex; align-items:flex-start; gap:14px; margin-top:4px; }
+.copy-button { flex:0 0 auto; align-self:flex-start; min-height:36px; padding:9px 12px; border:1px solid var(--hairline); border-radius:4px; background:var(--paper); color:var(--ink); cursor:pointer; font:700 12px/1 var(--mono); }
+.copy-button:hover { border-color:var(--accent); color:var(--accent); }
+.hn-comments { margin:18px 0 0; padding:14px 18px; background:var(--comment); border:1px solid var(--hairline); font:15px/1.62 var(--serif); color:var(--ink); }
+.hn-comments strong { font:700 12px/1.6 var(--mono); color:var(--accent); display:block; margin-bottom:6px; }
+.page-footer { display:flex; justify-content:space-between; flex-wrap:wrap; gap:14px; margin-top:64px; padding-top:12px; border-top:1px solid var(--hairline); color:var(--muted); font:12px/1.6 var(--mono); }
+.footer-links { display:flex; flex-wrap:wrap; gap:8px 20px; }
+.footer-links a { min-height:36px; display:inline-flex; align-items:center; color:var(--ink); font-weight:800; }
+.footer-links a:hover { color:var(--accent); }
+.shortcut-bar { display:flex; flex-wrap:wrap; gap:18px; margin-top:28px; color:var(--muted); font:11px/1.5 var(--mono); }
+kbd { display:inline-grid; place-items:center; min-width:22px; height:22px; margin-right:6px; padding:0 6px; border:1px solid var(--hairline); border-bottom-width:2px; border-radius:3px; background:var(--comment); color:var(--ink); font:inherit; font-weight:700; }
+.toast { position:fixed; right:max(18px,env(safe-area-inset-right)); bottom:max(18px,env(safe-area-inset-bottom)); z-index:10; padding:11px 14px; color:var(--paper); background:var(--ink); border:1px solid var(--ink); font:700 12px/1 var(--mono); opacity:0; transform:translateY(8px); pointer-events:none; transition:opacity 160ms ease,transform 160ms ease; }
+.toast.show { opacity:1; transform:translateY(0); }
+@media (max-width:760px) {
+  .page { width:min(100% - 22px,1080px); padding-top:16px; }
+  .issue-header { grid-template-columns:1fr auto; gap:12px; padding-bottom:20px; }
+  h1 { font-size:clamp(34px,10vw,48px); }
+  .deck { grid-column:1 / -1; margin-top:3px; font-size:15px; }
+  .theme-toggle { grid-column:2; grid-row:1; min-width:72px; }
+  .story { grid-template-columns:44px minmax(0,1fr); gap:14px; padding:20px 18px 22px; }
+  .story-number { font-size:16px; padding-top:4px; }
+  .story-bar { flex-direction:column; align-items:stretch; }
+  .copy-button { align-self:flex-start; }
+  .page-footer { display:block; }
+}
+@media (max-width:420px) {
+  .page { width:calc(100% - 16px); }
+  .story { grid-template-columns:1fr; gap:8px; padding:20px 16px 22px; }
+  .story-number { padding-top:0; }
+  .copy-button { width:100%; }
+}
+@media (prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } *,*::before,*::after { transition:none !important; } }
+@media print { :root { --page:#fff;--paper:#fff;--ink:#000;--muted:#444;--hairline:#bbb;--comment:#f5f5f5;--shadow:none; } .page{width:100%;padding:0}.theme-toggle,.copy-button,.toast,.shortcut-bar{display:none}.story{break-inside:avoid;box-shadow:none} }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="issue-header">
+      <div>
+        <nav class="archive-nav" aria-label="HN Daily archive links"><a href="../">← Archive</a><a href="https://tk3369.github.io/hn-daily/" target="_blank" rel="noopener">Published archive ↗</a></nav>
+        <p class="edition"><time datetime="2026-10-05">2026-10-05</time> · Daily brief · Pacific time</p>
+        <h1>HN Daily</h1>
+        <p class="deck">Direct, low-fluff top 10 from Hacker News, daily at 7am PT — hottest by points</p>
+      </div>
+      <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch color theme" title="Toggle theme (T)"><span class="theme-dot" aria-hidden="true"></span><span class="theme-text">Dark</span></button>
+    </header>
+
+    <ol class="story-list" aria-label="Top 10 Hacker News stories">
+<article class="story" id="story-1" data-story="1" data-source="https://news.ycombinator.com/item?id=49949438" data-hn="https://news.ycombinator.com/item?id=49949438" data-metric="906 pts / 197 comments" tabindex="0" aria-label="Story 1: Tell HN reports Bob Cringely has died — thread still unconfirmed">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">Tell HN reports Bob Cringely has died — thread still unconfirmed</h2>
+<p class="exec">The same Tell HN post that led yesterday&#x27;s front page is still #1 this morning, now at 906 points: a friend-of-the-family report that Bob Cringely — real name Mark Stevens, early Apple employee, PBS Triumph of the Nerds — passed in his sleep early Saturday. At 07:00 PT fetch, the thread still had no independent confirmation beyond that second-hand post.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The report</span><ul><li>Tell HN: family friend reports he passed in his sleep early Saturday</li><li>Real name Mark Stevens; early Apple employee</li><li>No independent confirmation in the thread at 07:00 PT fetch</li></ul></li><li class="cat"><span class="cat-label">The work</span><ul><li>Triumph of the Nerds and Plane Crazy (PBS); Accidental Empires (book)</li><li>InfoWorld&#x27;s Cringely column, then his own blog</li><li>Recent years noted in-thread: house loss, vision loss, stroke, heart attack</li></ul></li><li class="cat"><span class="cat-label">HN take</span><ul><li>&#x27;Reading Accidental Empires is how I learned the tech industry even existed&#x27;</li><li>Plane Crazy revisited: hubris, failure, and a salvaged documentary</li><li>Grief plus verification: readers still hunting for a second source</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: Ask HN (thread only) · Discuss: <a href="https://news.ycombinator.com/item?id=49949438" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">906 pts / 197 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>Day two of the thread is less news desk, more wake. The Plane Crazy detour dominates the top: Cringely&#x27;s doomed 30-day composite-plane build, everyone telling him it can&#x27;t be done, and the producers salvaging the show with a kit plane — &#x27;a masterclass in attempting to salvage a show when the whole premise collapses.&#x27; The personal notes are sadder than yesterday&#x27;s: commenters piece together his last brutal years (lost house, near-blindness, a lost son, heart attack, stroke) and his May 2026 return to blogging. The verification caution from yesterday has not resolved; it has simply been outvoted by affection.</p>
+</div>
+</article>
+<article class="story" id="story-2" data-story="2" data-source="https://github.com/Niko1221/Strata" data-hn="https://news.ycombinator.com/item?id=49953495" data-metric="849 pts / 383 comments" tabindex="0" aria-label="Story 2: Strata claims a 125B Qwen on one RTX 4090 at 100 tokens/s">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">Strata claims a 125B Qwen on one RTX 4090 at 100 tokens/s</h2>
+<p class="exec">A GitHub project, Strata, claims to run Qwen 3.8 Flash Next (125B) on consumer hardware — an RTX 4090 — at 100 tokens/second, as a one-click install for Windows/Linux exposing a local OpenAI/Anthropic-compatible API with optional image input. The trick is aggressive sub-4-bit quantization; whether the quality holds is the whole argument.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The claim</span><ul><li>125B model on a single consumer GPU (RTX 4090)</li><li>100 T/s headline figure; local API server included</li><li>One-click install, Windows/Linux, optional image input</li></ul></li><li class="cat"><span class="cat-label">The method</span><ul><li>Sub-4-bit quants (IQ3-class) to fit the model in 24GB</li><li>Custom inference engine rather than stock llama.cpp path</li><li>Author benchmarks: 89.7% vs 66.7% on code generation in-thread</li></ul></li><li class="cat"><span class="cat-label">HN take</span><ul><li>Skepticism: below 4-bit, &#x27;significant degradation in quality&#x27;</li><li>Rented RTX Pro 6000 at ~$1/hr cited as the practical alternative</li><li>PCIe lane tuning (4x → 16x) as hidden performance lever</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://github.com/Niko1221/Strata" target="_blank" rel="noopener">github.com</a> · Discuss: <a href="https://news.ycombinator.com/item?id=49953495" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">849 pts / 383 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>The thread is a benchmark fight with unusually good data. A skeptic opens with the standard objection — below 4-bit you pay in quality — and cites a rented RTX Pro 6000 doing 1.2M output tokens/hour as the sane baseline. Then a commenter posts a head-to-head: Strata&#x27;s IQ3 build beats a Q4/Q5 ninfer build 114/128 to 92/128 on coding tasks, while running slower wall-clock (142 vs 122 min) and with fewer API failures. The most HN moment is diagnostic: a user who let their local model debug why their PCIe link was stuck at 4x and talked it up to 16x. Belief is conditional, and the condition is reproduction.</p>
+</div>
+</article>
+<article class="story" id="story-3" data-story="3" data-source="https://github.com/omlahore/RemoveMacAI" data-hn="https://news.ycombinator.com/item?id=49957116" data-metric="662 pts / 452 comments" tabindex="0" aria-label="Story 3: One command turns off Apple Intelligence on macOS 27">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">One command turns off Apple Intelligence on macOS 27</h2>
+<p class="exec">RemoveMacAI is a one-command, fully reversible tool to turn off Apple Intelligence on macOS 27 and reclaim its disk space. It lands in a long HN tradition: the feature you didn&#x27;t ask for, the gigabytes you did notice, and the shell command that gives you a choice Apple didn&#x27;t surface.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The tool</span><ul><li>Turn off Apple Intelligence on macOS 27; reclaim disk space</li><li>One command, fully reversible (per the repo)</li><li>Hosted on GitHub by omlahore</li></ul></li><li class="cat"><span class="cat-label">The real grievance</span><ul><li>HN&#x27;s top complaint is not AI — it&#x27;s 100GB of simulator images</li><li>Apple Watch/tvOS runtimes can&#x27;t be removed without safe-mode dances</li><li>`xcrun simctl delete unavailable` offered as the actual fix</li></ul></li><li class="cat"><span class="cat-label">HN take</span><ul><li>&#x27;Can’t you just ask Claude to remove it?&#x27; — met with contempt</li><li>Hostile design or &#x27;now well-established software incompetence&#x27;?</li><li>DevCleaner cited as the existing cleanup tool</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://github.com/omlahore/RemoveMacAI" target="_blank" rel="noopener">github.com</a> · Discuss: <a href="https://news.ycombinator.com/item?id=49957116" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">662 pts / 452 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>With 452 comments, the tool is almost a pretext. The thread&#x27;s energy goes to a bigger, older wound: Xcode&#x27;s simulator runtimes quietly eating 100GB, un-deletable without disabling security features and rebooting. The fixes fly in fast — simctl delete unavailable, runtime delete by UUID, DevCleaner — alongside the meta-argument about whether Apple&#x27;s disk sprawl is malice or the incompetence several commenters now treat as the default explanation. The Apple Intelligence angle draws the ideological split you&#x27;d expect: one camp wants the off switch on principle, the other asks why you&#x27;d remove the only interesting thing. The disk-space camp wins on upvotes and specificity.</p>
+</div>
+</article>
+<article class="story" id="story-4" data-story="4" data-source="https://www.1011now.com/2026/09/30/more-questions-than-answers-about-lincolns-google-data-center-water-electricity-usage/" data-hn="https://news.ycombinator.com/item?id=49957068" data-metric="455 pts / 595 comments" tabindex="0" aria-label="Story 4: A copy-paste redaction fail reveals Google&#x27;s Lincoln data center usage">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">A copy-paste redaction fail reveals Google&#x27;s Lincoln data center usage</h2>
+<p class="exec">Nebraska&#x27;s 1011 Now reports that Google&#x27;s Lincoln data center (filed as Agate LLC) claimed trade-secret protection for its water and power figures — but the redaction was a text box you can highlight, copy, and paste: 52.65 megawatts peak demand and 13.299 megagallons of water (about 13 million gallons) in the last year, across cooling towers, evaporative systems, and site operations.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The leak</span><ul><li>Redaction defeated by highlight → copy → paste</li><li>52.65 MW peak electrical demand (Agate LLC, Lincoln)</li><li>13.299 megagallons ≈ 13M gallons water last year</li></ul></li><li class="cat"><span class="cat-label">The context</span><ul><li>≈20 Olympic pools; under half of Lincoln&#x27;s single-day city use (Sept 29)</li><li>Six reporting Nebraska data centers: 765M gallons last year combined</li><li>Google claimed the same exemption for Omaha and Papillion too</li></ul></li><li class="cat"><span class="cat-label">HN take</span><ul><li>One average Nebraska farm uses ~30x the water (≈390M gal/yr)</li><li>Evaporation counts as &#x27;used&#x27; for crops and cooling alike</li><li>Trade-secret statutes vs a public right to know the load</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://www.1011now.com/2026/09/30/more-questions-than-answers-about-lincolns-google-data-center-water-electricity-usage/" target="_blank" rel="noopener">1011now.com</a> · Discuss: <a href="https://news.ycombinator.com/item?id=49957068" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">455 pts / 595 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>Today&#x27;s biggest thread (595 comments) is really a units argument. The number that sounds damning — 13 million gallons — gets immediately rescaled: an average Nebraska farm uses roughly 390 million gallons a year, some 30 times the data center, and the state has 44,479 of them covering 90% of its land. The philosophy-of-water subthread is genuinely good: if field evaporation is &#x27;recycled,&#x27; why isn&#x27;t cooling-tower evaporation? If a crop transpires water into food and oxygen, is that better spent than the same water carrying heat out of a server hall? Underneath sits the structural complaint that survives every rescaling: a trade-secret claim, filed in a public report, that only failed because someone redacted with a text box.</p>
+</div>
+</article>
+<article class="story" id="story-5" data-story="5" data-source="https://mcmansionhell.com/post/829127919552151552/what-is-going-on-with-ceiling-fans" data-hn="https://news.ycombinator.com/item?id=49917536" data-metric="363 pts / 313 comments" tabindex="0" aria-label="Story 5: Ceiling fans have lost the plot (McMansion Hell investigates)">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">Ceiling fans have lost the plot (McMansion Hell investigates)</h2>
+<p class="exec">McMansion Hell turns from houses to fixtures: commercial ceiling-fan design has dissolved into &#x27;fandeliers,&#x27; LED sculptural fan-lights, and Big Ass Fans rip-offs &#x27;prone to decapitating the poor denizens of your living room.&#x27; Plastic blades, plastic shades, metal made to look like wrought iron — &#x27;chaos reigns in fanville.&#x27;</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The phenomenon</span><ul><li>&#x27;Fandeliers&#x27;: ceiling-mounted light + fan hybrids</li><li>LED sculptural lighting with integrated fans</li><li>Every material imitating every other material</li></ul></li><li class="cat"><span class="cat-label">The frame</span><ul><li>A renter&#x27;s-eye view: fans beyond purchase scope, until one wasn&#x27;t</li><li>Design phenomena slipping past even the design-attuned</li><li>Sep 29, 2026 post; 4,949 notes on the original</li></ul></li><li class="cat"><span class="cat-label">HN take</span><ul><li>Top story: DIP-switch remotes all set to 0000 from the factory</li><li>Neighbour&#x27;s remote activating fans down the street</li><li>&#x27;Wi-Fi only works when it&#x27;s raining&#x27; invoked as prior art</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://mcmansionhell.com/post/829127919552151552/what-is-going-on-with-ceiling-fans" target="_blank" rel="noopener">mcmansionhell.com</a> · Discuss: <a href="https://news.ycombinator.com/item?id=49917536" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">363 pts / 313 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>The article is the excuse; the thread is a support group for haunted fans. The top comment is a perfect HN mystery solved in retrospect: fans turning themselves on at random, a replacement controller bought and never installed, and the real culprit — every house on a street built by the same company, every remote&#x27;s DIP switches left at factory 0000, so one neighbour&#x27;s click sometimes reached the next house. From there it&#x27;s callbacks (&#x27;The Wi-Fi only works when it&#x27;s raining&#x27;) and a short, sharp fight about whether the piece is &#x27;LLM slop,&#x27; which the thread mostly rejects: the voice is the point, and the voice is recognizably a person who has opinions about fans.</p>
+</div>
+</article>
+<article class="story" id="story-6" data-story="6" data-source="https://wieslawsoltes.github.io/VB6/" data-hn="https://news.ycombinator.com/item?id=49956681" data-metric="307 pts / 101 comments" tabindex="0" aria-label="Story 6: A classic VB6 IDE, rebuilt to run natively in the browser">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">A classic VB6 IDE, rebuilt to run natively in the browser</h2>
+<p class="exec">A browser-native recreation of the classic Visual Basic 6 IDE: drag controls onto a form, edit properties, write code, and even &#x27;compile&#x27; an app to a single HTML file. It is a nostalgia project with real ambition — and, per the thread, real bugs — running entirely on a static page.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The project</span><ul><li>Classic VB6 IDE recreated in the browser (Wiesław Soltes)</li><li>Visual form designer, property editing, code view</li><li>&#x27;Compile&#x27; an app to a standalone HTML file</li></ul></li><li class="cat"><span class="cat-label">Known rough edges</span><ul><li>Pixel-level fidelity: noisy window buttons, missing bevel edges</li><li>Cannot click non-visual/disabled controls (e.g. timer) to select</li><li>Author in-thread: &#x27;many bugs still, major work&#x27; — fixes landing</li></ul></li><li class="cat"><span class="cat-label">HN take</span><ul><li>Modern tooling&#x27;s discoverability gap vs VB6&#x27;s palette-and-properties</li><li>Parallel effort: source-compatible VB6 compiler, slow burn</li><li>&#x27;Makes it absurd that modern platforms aren&#x27;t near this level&#x27;</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://wieslawsoltes.github.io/VB6/" target="_blank" rel="noopener">wieslawsoltes.github.io</a> · Discuss: <a href="https://news.ycombinator.com/item?id=49956681" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">307 pts / 101 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>The critique is affectionate and exact. The functionality impresses — compiling to an HTML file is called &#x27;exactly how something like this should work&#x27; — while the visuals get a screenshot-annotated review: crooked window buttons, missing bevels, the uncanny valley of an almost-right Windows 95 chrome, with the prescription to screenshot a real 86Box install and match it pixel for pixel. Two builders compare notes on their own VB6 revivals, and then the thread turns wistful in the way VB6 threads always do: palettes, property editors, one-click codegen — a discoverability that, several commenters argue, modern platforms still haven&#x27;t matched.</p>
+</div>
+</article>
+<article class="story" id="story-7" data-story="7" data-source="https://www.cpr.dk/cpr-nyt/nyhedsarkiv/2026/okt/omfattende-uautoriseret-adgang-til-borgeres-cpr-oplysninger" data-hn="https://news.ycombinator.com/item?id=49962012" data-metric="273 pts / 222 comments" tabindex="0" aria-label="Story 7: Denmark: 8.8M people&#x27;s CPR data accessed through a company&#x27;s legal login">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">Denmark: 8.8M people&#x27;s CPR data accessed through a company&#x27;s legal login</h2>
+<p class="exec">Danish authorities say unauthorised parties accessed names, addresses, and CPR numbers (the national ID) for about 8.8 million people in the Central Person Register — including the deceased and emigrated, of roughly 11 million records total — by misusing a private company&#x27;s legitimate search access. Automated searches hunting valid CPR numbers ran through September; the access has been cut, police and the data protection agency are investigating, and protected-address records were not touched.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The breach</span><ul><li>≈8.8M records: names, addresses, CPR numbers</li><li>Register holds ≈11M entries incl. deceased/emigrated (population ≈6M)</li><li>Access via a Danish company&#x27;s legitimate CPR search rights</li></ul></li><li class="cat"><span class="cat-label">The timeline</span><ul><li>Automated valid-CPR-number searches through September</li><li>Unusual activity detected Oct 2; scale confirmed over the weekend</li><li>Company&#x27;s access stopped; Datatilsynet notified Oct 4</li></ul></li><li class="cat"><span class="cat-label">HN take</span><ul><li>Privacy fatigue: &#x27;I simply stopped worrying and began to love the bomb&#x27;</li><li>Counter: data as personhood — &#x27;people more malevolent will use it&#x27;</li><li>State as worst protector vs companies &#x27;battle-tested for 20+ years&#x27;</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://www.cpr.dk/cpr-nyt/nyhedsarkiv/2026/okt/omfattende-uautoriseret-adgang-til-borgeres-cpr-oplysninger" target="_blank" rel="noopener">cpr.dk</a> · Discuss: <a href="https://news.ycombinator.com/item?id=49962012" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">273 pts / 222 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>The thread is two kinds of exhaustion arguing with each other. One camp has made peace: degoogled early, dropped social media, built the homelab — and concluded that the data is out there regardless, so the only controllable variable is your reaction to it. The other camp refuses the peace: your data is your personhood, the evidence and record of yourself, and the question is not whether cleverer people will advertise to you but when more malevolent ones will persecute you. A third argument cuts across both — that the state is simultaneously the most ruthless gatherer and the worst protector, while private companies at least treat security as their business. Nobody proposes a mechanism that would have prevented a legitimate login from being abused at scale, which may be the point.</p>
+</div>
+</article>
+<article class="story" id="story-8" data-story="8" data-source="https://www.motorsport.com/f1/news/horrible-totally-unacceptable-powerless-f1-drivers-frustrated-by-bahrain-f1-software-glitch/10861968/" data-hn="https://news.ycombinator.com/item?id=49959869" data-metric="252 pts / 216 comments" tabindex="0" aria-label="Story 8: F1 cars died on the formation lap. The fix was a software patch.">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">F1 cars died on the formation lap. The fix was a software patch.</h2>
+<p class="exec">At the Bahrain Grand Prix in Malaysia (Sepang), a software bug in the FIA-supplied energy management left multiple cars powerless on the wet formation lap — Verstappen first, Hamilton stopped and restarted on the pit straight, eight cars crawling. The FIA blamed low engine speed, low grip, wet-weather settings, and the circuit&#x27;s sector layout draining batteries with turbos unspooled; a patched energy limit, uploaded in the pits, delayed the start over 90 minutes. Drivers called it &#x27;horrible,&#x27; &#x27;sad,&#x27; &#x27;totally unacceptable.&#x27;</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The failure</span><ul><li>FIA software bug; multiple cars lost power on formation lap</li><li>Cause: revs too low behind safety car, battery drained, turbo unspooled</li><li>Hamilton&#x27;s career-first: stopped on track, restarted the power unit</li></ul></li><li class="cat"><span class="cat-label">The fix</span><ul><li>All cars back to pits; FIA patch removed the sector energy limit</li><li>Start delayed &gt;90 minutes (past the rain delay itself)</li><li>FIA apology and a promised full review with teams and PU makers</li></ul></li><li class="cat"><span class="cat-label">HN take</span><ul><li>Field-patching a critical controller &#x27;seems wild&#x27; vs F1&#x27;s perpetual QA</li><li>Budget-cap rebuttal: small teams update continuously too</li><li>&#x27;Probably just settings, rather than an actual code update&#x27;</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://www.motorsport.com/f1/news/horrible-totally-unacceptable-powerless-f1-drivers-frustrated-by-bahrain-f1-software-glitch/10861968/" target="_blank" rel="noopener">motorsport.com</a> · Discuss: <a href="https://news.ycombinator.com/item?id=49959869" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">252 pts / 216 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>Engineers read this as a process story. The first reaction is disbelief that a critical controller gets coded and deployed in the field without lab QA and root-cause — and the rebuttal is that F1 cars live in perpetual QA, modified between every race, which is precisely how a wet-weather edge case (slow laps, low revs, battery drain) ships undetected. The budget-cap correction matters: smaller teams aren&#x27;t just &#x27;happy to be there&#x27; anymore; everyone brings upgrades all year, with extra testing time deliberately granted to the back of the grid. The deflationary take may be the accurate one: the &#x27;software update&#x27; was likely a settings change — an energy-limit flag unclipped — which makes the 90-minute delay less a deployment story than a testing one. Nobody tested the rain mode.</p>
+</div>
+</article>
+<article class="story" id="story-9" data-story="9" data-source="https://cedardb.com/blog/sqldoom/" data-hn="https://news.ycombinator.com/item?id=49948300" data-metric="207 pts / 34 comments" tabindex="0" aria-label="Story 9: Doom, ported to SQL. All of it. Deathmatch included.">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">Doom, ported to SQL. All of it. Deathmatch included.</h2>
+<p class="exec">CedarDB ported the original Doom — game logic and renderer — to SQL queries, about 5,900 lines of it: BSP traversal, walls, visplanes, the full tic loop as query plans, with working deathmatch. The blog&#x27;s own framing is the honest one: abusing the query planner as a state machine, and discovering where a database is actually a good idea (everything is data; multiplayer almost comes for free).</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The port</span><ul><li>Original Doom logic + renderer implemented as SQL queries</li><li>≈5,900 lines of SQL; BSP traversal, walls, visplanes</li><li>Deathmatch works; &#x27;multiplayer almost comes for free&#x27;</li></ul></li><li class="cat"><span class="cat-label">The argument</span><ul><li>&#x27;Everything is data&#x27; — game state as tables, ticks as queries</li><li>Where the database genuinely helps vs where it&#x27;s a stunt</li><li>Carmack, per the authors, &#x27;was a genius&#x27;</li></ul></li><li class="cat"><span class="cat-label">HN take</span><ul><li>Semiconductor fabs run on stored procedures, hundreds of users</li><li>&#x27;Peak engineering malpractice. I love it.&#x27;</li><li>DX counter: stringly typed, minimal stdlib, debugging pain</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://cedardb.com/blog/sqldoom/" target="_blank" rel="noopener">cedardb.com</a> · Discuss: <a href="https://news.ycombinator.com/item?id=49948300" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">207 pts / 34 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>Only 34 comments, but they split into the two permanent SQL camps with real experience on both sides. One veteran describes semiconductor manufacturing run almost entirely on stored procedures — hundreds of users inspecting and proposing changes against a replicated production DB every morning, no gap between data and logic — and argues HN sleeps on modern SQL. The other camp remembers debugging unversioned 2000s stored procedures and counts on one hand the colleagues who can own complex logic at that layer. The Doom port itself gets universal affection, including the thread&#x27;s best line of the day: fewer lines than the C original, while abusing the query planner as a state machine, is &#x27;peak engineering malpractice. I love it.&#x27;</p>
+</div>
+</article>
+<article class="story" id="story-10" data-story="10" data-source="http://www.taobackup.com/index.html" data-hn="https://news.ycombinator.com/item?id=49932236" data-metric="193 pts / 71 comments" tabindex="0" aria-label="Story 10: The Tao of Backup, reread in the age of NixOS and snapshots">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">The Tao of Backup, reread in the age of NixOS and snapshots</h2>
+<p class="exec">The Tao of Backup — the koan-style backup parable (&#x27;the master made no reply&#x27;) — is back on the front page, and in 2026 it reads as a requirements doc: what do you back up, where does the only uncorrupted copy live, and what did you forget (your age keys) that makes the restore worthless? The text is old; the failure modes are current.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The parable</span><ul><li>Koans: the novice who&#x27;d reinstall from distribution disks (3 days later...)</li><li>The master who mailed a backup tape to his brother in China</li><li>&#x27;Now you are truly enlightened&#x27; — yes, it&#x27;s also a Veracity ad</li></ul></li><li class="cat"><span class="cat-label">2026 answers</span><ul><li>NixOS: back up one config file, recreate the system in minutes</li><li>Snapshots over backups; VMs with a clean host</li><li>The gotcha: sops/age keys outside the repo, forgotten, unrestorable</li></ul></li><li class="cat"><span class="cat-label">HN take</span><ul><li>Bit-for-bit claims nitpicked: &#x27;identical enough for all practical purposes&#x27;</li><li>Restores as cleanup opportunities vs bare-metal recovery discipline</li><li>&#x27;You only learn after a catastrophic loss&#x27; — the skin-burned koan</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="http://www.taobackup.com/index.html" target="_blank" rel="noopener">taobackup.com</a> · Discuss: <a href="https://news.ycombinator.com/item?id=49932236" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">193 pts / 71 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>The thread treats the parable as a design review. The NixOS camp answers the oldest koan directly: don&#x27;t back up applications at all — back up the single declarative config and rebuild bit-for-bit (well, &#x27;identical enough&#x27;; the nitpick is immediate and correct). Then the same camp indicts itself: the age keys your secrets live under sit outside the git repo, and forgetting them is the modern version of overwriting the only good tape. The traditionalists hold their ground — bare-metal recovery beats reinstalling, snapshot the hypervisor too — and the koan-keepers quote the master back at everyone: you only learn to back up after the catastrophic loss, and protecting the novice from it deprives them of the knowledge burned into the skin.</p>
+</div>
+</article>
+    </ol>
+
+    <div class="shortcut-bar" aria-label="Keyboard shortcuts">
+      <span><kbd>J</kbd> next story</span>
+      <span><kbd>K</kbd> previous story</span>
+      <span><kbd>T</kbd> theme</span>
+    </div>
+
+    <footer class="page-footer">
+      <div class="footer-links"><a href="../">← Daily archive</a><a href="https://tk3369.github.io/hn-daily/" target="_blank" rel="noopener">Published archive ↗</a></div>
+      <span>Monday 2026-10-05 · 10 stories</span>
+    </footer>
+  </main>
+  <div class="toast" role="status" aria-live="polite"></div>
+  <script>
+(() => {
+  const root = document.documentElement;
+  const toggle = document.getElementById('theme-toggle');
+  const entries = [...document.querySelectorAll('[data-story]')];
+  function storedTheme() { try { const t = localStorage.getItem('hn-daily-theme'); return t === 'dark' || t === 'light' ? t : null; } catch (_) { return null; } }
+  function preferredTheme() { return matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'; }
+  function currentTheme() { const a = root.dataset.theme; if (a === 'dark' || a === 'light') return a; return storedTheme() || preferredTheme(); }
+  function setTheme(theme) { const next = theme === 'dark' ? 'dark' : 'light'; const opposite = next === 'dark' ? 'Light' : 'Dark';
+    if (root.dataset.theme !== next) root.dataset.theme = next;
+    toggle.querySelector('.theme-text').textContent = opposite;
+    toggle.setAttribute('aria-label', `Switch to ${opposite} theme (T)`); toggle.title = `Switch to ${opposite} theme (T)`;
+    try { localStorage.setItem('hn-daily-theme', next); } catch (_) {} }
+  function flipTheme() { setTheme(currentTheme() === 'dark' ? 'light' : 'dark'); }
+  setTheme(storedTheme() || preferredTheme());
+  toggle.addEventListener('click', flipTheme);
+  const toast = document.querySelector('.toast'); let toastTimer;
+  function showToast(msg) { toast.textContent = msg; toast.classList.add('show'); clearTimeout(toastTimer); toastTimer = setTimeout(() => toast.classList.remove('show'), 1800); }
+  document.querySelectorAll('.copy-button').forEach((button) => {
+    button.addEventListener('click', async () => {
+      const story = button.closest('.story');
+      const n = story.dataset.story;
+      const tagline = story.querySelector('.tagline').textContent.trim();
+      const execSum = story.querySelector('.exec').textContent.trim();
+      const bullets = [...story.querySelectorAll('.cat-lists .cat')].map(li => {
+        const label = li.querySelector('.cat-label').textContent.trim();
+        const pts = [...li.querySelectorAll('ul li')].map(p => '  \u2022 ' + p.textContent.trim()).join('\n');
+        return '- ' + label + ':\n' + pts;
+      }).join('\n');
+      const link = 'https://tk3369.github.io/hn-daily/2026-10-05/#story-' + n;
+      const text = n + '. ' + tagline + '\n\n' + execSum + '\n' + bullets + '\n\n' + link;
+      try { await navigator.clipboard.writeText(text); button.textContent = 'Copied'; showToast('Story ' + n + ' copied for Threads'); setTimeout(() => { button.textContent = 'Copy for Threads'; }, 1600); }
+      catch (_) { showToast('Copy was blocked by this browser'); }
+    });
+  });
+  document.addEventListener('keydown', (event) => {
+    if (event.metaKey || event.ctrlKey || event.altKey || event.shiftKey) return;
+    const tag = event.target.tagName;
+    if (tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT') return;
+    const key = event.key.toLowerCase();
+    if (key === 't') { event.preventDefault(); flipTheme(); }
+    else if ((key === 'j' || key === 'k') && entries.length) {
+      event.preventDefault();
+      const active = entries.indexOf(document.activeElement);
+      const delta = key === 'j' ? 1 : -1;
+      const next = active < 0 ? (key === 'j' ? 0 : entries.length - 1) : Math.max(0, Math.min(entries.length - 1, active + 1 * delta));
+      entries[next].focus();
+    }
+  });
+})();
+  </script>
+</body>
+</html>
