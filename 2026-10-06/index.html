@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="color-scheme" content="light dark" />
+  <link rel="icon" href="data:," />
+  <title>HN Daily — Tuesday 2026-10-06</title>
+  <style>
+:root { --page:#f1eadb; --paper:#fffaf0; --ink:#20201c; --muted:#6f695f; --hairline:#d9cebc; --accent:#ff5a1f; --comment:#f6efe3; --shadow:0 2px 0 rgba(57,45,25,.08),0 14px 36px rgba(57,45,25,.06); --serif:Georgia,"Times New Roman",serif; --sans:ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; --mono:"SFMono-Regular",Consolas,"Liberation Mono",monospace; }
+html[data-theme="dark"] { --page:#111312; --paper:#191c1a; --ink:#f1eee6; --muted:#aba69b; --hairline:#393b36; --accent:#ff7139; --comment:#222520; --shadow:0 2px 0 rgba(0,0,0,.22),0 18px 42px rgba(0,0,0,.22); }
+* { box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body { margin:0; min-width:280px; color:var(--ink); background:var(--page); font-family:var(--sans); line-height:1.55; -webkit-font-smoothing:antialiased; }
+a { color:inherit; text-underline-offset:3px; text-decoration-thickness:1px; }
+a:hover { color:var(--accent); }
+button,a { -webkit-tap-highlight-color:transparent; }
+button { font:inherit; }
+a:focus-visible,button:focus-visible { outline:3px solid var(--accent); outline-offset:3px; }
+.page { width:min(1080px,calc(100% - 36px)); margin:0 auto; padding:28px 0 72px; }
+.issue-header { display:grid; grid-template-columns:1fr auto; gap:24px; align-items:end; padding:8px 0 26px; border-bottom:3px solid var(--ink); }
+.edition { margin:0 0 9px; color:var(--accent); font:700 12px/1.3 var(--mono); letter-spacing:.09em; text-transform:uppercase; }
+.archive-nav { display:flex; flex-wrap:wrap; gap:8px 20px; margin-bottom:16px; font:700 12px/1 var(--mono); }
+.archive-nav a { min-height:36px; display:inline-flex; align-items:center; color:var(--muted); }
+.archive-nav a:hover { color:var(--accent); }
+h1 { max-width:820px; margin:0; font:700 clamp(34px,5.5vw,62px)/.98 var(--serif); letter-spacing:-.038em; }
+.deck { max-width:730px; margin:17px 0 0; color:var(--muted); font:17px/1.55 var(--sans); }
+.theme-toggle { align-self:start; min-width:86px; min-height:40px; padding:9px 13px; border:1px solid var(--hairline); border-radius:4px; color:var(--ink); background:var(--paper); cursor:pointer; font:700 12px/1 var(--mono); display:inline-flex; align-items:center; gap:8px; }
+.theme-toggle:hover { border-color:var(--accent); color:var(--accent); }
+.theme-dot { width:10px; height:10px; border-radius:50%; background:var(--accent); display:inline-block; flex-shrink:0; }
+.theme-text { line-height:1; }
+.story-list { display:grid; gap:20px; list-style:none; margin:26px 0 0; padding:0; counter-reset:story; }
+.story { counter-increment:story; display:grid; grid-template-columns:72px minmax(0,1fr); gap:26px; padding:26px 30px 28px; background:var(--paper); border-top:4px solid var(--ink); box-shadow:var(--shadow); scroll-margin-top:24px; }
+.story-number { color:var(--accent); font:900 22px/1 var(--mono); letter-spacing:-.04em; padding-top:6px; }
+.story-number::before { content:counter(story,decimal-leading-zero); }
+.tagline { margin:0; max-width:840px; font:700 clamp(24px,3vw,36px)/1.1 var(--serif); letter-spacing:-.028em; }
+.exec { margin:14px 0 0; max-width:840px; font:17px/1.58 var(--sans); }
+.cat-lists { margin:14px 0 0; padding:0; list-style:none; display:grid; gap:10px; max-width:840px; }
+.cat-lists li.cat { font:15px/1.6 var(--sans); }
+.cat-lists .cat-label { font:700 12px/1.6 var(--mono); letter-spacing:.06em; text-transform:uppercase; color:var(--accent); }
+.cat-lists ul { margin:4px 0 0; padding-left:20px; }
+.cat-lists ul li { margin:3px 0; }
+.meta-line { margin:16px 0 0; color:var(--muted); font:700 12px/1.9 var(--mono); overflow-wrap:anywhere; }
+.meta-line a { color:var(--ink); font-weight:800; }
+.meta-line .metrics { color:var(--ink); white-space:nowrap; }
+.story-bar { display:flex; align-items:flex-start; gap:14px; margin-top:4px; }
+.copy-button { flex:0 0 auto; align-self:flex-start; min-height:36px; padding:9px 12px; border:1px solid var(--hairline); border-radius:4px; background:var(--paper); color:var(--ink); cursor:pointer; font:700 12px/1 var(--mono); }
+.copy-button:hover { border-color:var(--accent); color:var(--accent); }
+.hn-comments { margin:18px 0 0; padding:14px 18px; background:var(--comment); border:1px solid var(--hairline); font:15px/1.62 var(--serif); color:var(--ink); }
+.hn-comments strong { font:700 12px/1.6 var(--mono); color:var(--accent); display:block; margin-bottom:6px; }
+.page-footer { display:flex; justify-content:space-between; flex-wrap:wrap; gap:14px; margin-top:64px; padding-top:12px; border-top:1px solid var(--hairline); color:var(--muted); font:12px/1.6 var(--mono); }
+.footer-links { display:flex; flex-wrap:wrap; gap:8px 20px; }
+.footer-links a { min-height:36px; display:inline-flex; align-items:center; color:var(--ink); font-weight:800; }
+.footer-links a:hover { color:var(--accent); }
+.shortcut-bar { display:flex; flex-wrap:wrap; gap:18px; margin-top:28px; color:var(--muted); font:11px/1.5 var(--mono); }
+kbd { display:inline-grid; place-items:center; min-width:22px; height:22px; margin-right:6px; padding:0 6px; border:1px solid var(--hairline); border-bottom-width:2px; border-radius:3px; background:var(--comment); color:var(--ink); font:inherit; font-weight:700; }
+.toast { position:fixed; right:max(18px,env(safe-area-inset-right)); bottom:max(18px,env(safe-area-inset-bottom)); z-index:10; padding:11px 14px; color:var(--paper); background:var(--ink); border:1px solid var(--ink); font:700 12px/1 var(--mono); opacity:0; transform:translateY(8px); pointer-events:none; transition:opacity 160ms ease,transform 160ms ease; }
+.toast.show { opacity:1; transform:translateY(0); }
+@media (max-width:760px) {
+  .page { width:min(100% - 22px,1080px); padding-top:16px; }
+  .issue-header { grid-template-columns:1fr auto; gap:12px; padding-bottom:20px; }
+  h1 { font-size:clamp(34px,10vw,48px); }
+  .deck { grid-column:1 / -1; margin-top:3px; font-size:15px; }
+  .theme-toggle { grid-column:2; grid-row:1; min-width:72px; }
+  .story { grid-template-columns:44px minmax(0,1fr); gap:14px; padding:20px 18px 22px; }
+  .story-number { font-size:16px; padding-top:4px; }
+  .story-bar { flex-direction:column; align-items:stretch; }
+  .copy-button { align-self:flex-start; }
+  .page-footer { display:block; }
+}
+@media (max-width:420px) {
+  .page { width:calc(100% - 16px); }
+  .story { grid-template-columns:1fr; gap:8px; padding:20px 16px 22px; }
+  .story-number { padding-top:0; }
+  .copy-button { width:100%; }
+}
+@media (prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } *,*::before,*::after { transition:none !important; } }
+@media print { :root { --page:#fff;--paper:#fff;--ink:#000;--muted:#444;--hairline:#bbb;--comment:#f5f5f5;--shadow:none; } .page{width:100%;padding:0}.theme-toggle,.copy-button,.toast,.shortcut-bar{display:none}.story{break-inside:avoid;box-shadow:none} }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="issue-header">
+      <div>
+        <nav class="archive-nav" aria-label="HN Daily archive links"><a href="../">← Archive</a><a href="https://tk3369.github.io/hn-daily/" target="_blank" rel="noopener">Published archive ↗</a></nav>
+        <p class="edition"><time datetime="2026-10-06">2026-10-06</time> · Daily brief · Pacific time</p>
+        <h1>HN Daily</h1>
+        <p class="deck">Direct, low-fluff top 10 from Hacker News, daily at 7am PT — hottest by points</p>
+      </div>
+      <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch color theme" title="Toggle theme (T)"><span class="theme-dot" aria-hidden="true"></span><span class="theme-text">Dark</span></button>
+    </header>
+
+    <ol class="story-list" aria-label="Top 10 Hacker News stories">
+<article class="story" id="story-1" data-story="1" data-source="https://developers.cloudflare.com/changelog/post/2026-10-02-introducing-web-search-api/" data-hn="https://news.ycombinator.com/item?id=49963171" data-metric="570 pts / 266 comments" tabindex="0" aria-label="Story 1: Cloudflare puts web search for agents behind one API">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">Cloudflare puts web search for agents behind one API</h2>
+<p class="exec">Cloudflare&#x27;s Web Search API is in beta: one call through AI Gateway lets agents search the live web instead of guessing URLs or relying on a training cutoff. At launch you pick Ceramic, Exa, or Linkup, billed at the provider&#x27;s list price with no markup, or bring your own key.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The launch</span><ul><li>Beta, via AI Gateway; REST API or Workers AI binding</li><li>Providers at launch: Ceramic, Exa, and Linkup</li><li>Billed at provider list price, no Cloudflare markup; BYO key allowed</li></ul></li><li class="cat"><span class="cat-label">The terms that matter</span><ul><li>All three providers support Zero Data Retention via Cloudflare</li><li>All committed to Cloudflare&#x27;s verified-bot crawling standards</li><li>Per-provider output terms still govern storing and sharing results</li></ul></li><li class="cat"><span class="cat-label">Why it matters</span><ul><li>Search becomes a swappable commodity layer for agents</li><li>Gateway logs give one place to audit agent search calls</li><li>The provider choice, not the API shape, becomes the lock-in question</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://developers.cloudflare.com/changelog/post/2026-10-02-introducing-web-search-api/" target="_blank" rel="noopener">developers.cloudflare.com</a> · Discuss: <a href="https://news.ycombinator.com/item?id=49963171" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">570 pts / 266 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>The thread mostly ignores Cloudflare and litigates one provider&#x27;s terms instead. The top comment quotes Ceramic&#x27;s prohibitions on storing, aggregating, or resyndicating search output, then argues the display exception is undercut by a clause barring output that is independently extractable by end users — hard to satisfy for anything visible. From there it splits: one camp calls it crawling the web and then forbidding anyone to crawl it back, the other points to a long body of copyright law distinguishing a database from its contents. The practical takeaway survives both: read the output terms before building an agent feature on any of these APIs.</p>
+</div>
+</article>
+<article class="story" id="story-2" data-story="2" data-source="https://reflection.ai/blog/introducing-beam" data-hn="https://news.ycombinator.com/item?id=49969183" data-metric="486 pts / 158 comments" tabindex="0" aria-label="Story 2: Beam: Reflection&#x27;s 501B open-weight model, weights later this month">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">Beam: Reflection&#x27;s 501B open-weight model, weights later this month</h2>
+<p class="exec">Reflection introduced Beam, a sparse MoE model with 501B total and 23B active parameters, built for coding, reasoning, and agentic work. It was pretrained on 23.8T tokens, then RL-trained with over 100M rollouts on 10,500 GB300 GPUs over four weeks. Weights are promised later this month; for now it is early-access signup and benchmark tables.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The model</span><ul><li>501B total / 23B active parameters, sparse MoE</li><li>Pretrained on 23.8 trillion tokens (web + licensed)</li><li>Focus: coding, reasoning, agentic workloads</li></ul></li><li class="cat"><span class="cat-label">The RL run</span><ul><li>100M+ rollouts on 10.5K NVIDIA GB300 GPUs, 4 weeks</li><li>~1M curated environments; ~1.3B sandboxes claimed</li><li>Claim: GLM-5.2-level reasoning at 3-4x less inference compute</li></ul></li><li class="cat"><span class="cat-label">Status</span><ul><li>Weights, tech report, and model card due later this month</li><li>Still in final red-teaming and evaluation at announcement</li><li>Positioned against GLM 5.2 / Qwen 3.8-Max; Kimi K3 ahead on raw scores</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://reflection.ai/blog/introducing-beam" target="_blank" rel="noopener">reflection.ai</a> · Discuss: <a href="https://news.ycombinator.com/item?id=49969183" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">486 pts / 158 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>HN welcomes another open-weight entrant, then goes straight for the demo methodology. The flagged caption claims a land-or-water generalization puzzle was only a few days old and so could not be in training data; commenters who remember the original post say it is not recent at all, which undercuts that specific proof even if the broader point — it was not an RL training task — might survive. The recurring word is sloppy: if you assert a test was unseen, you have to validate that it was not in pretraining or RL data, and disable search while you run it. The efficiency claims get interest; the generalization claim gets an audit.</p>
+</div>
+</article>
+<article class="story" id="story-3" data-story="3" data-source="https://www.vals.ai/blogs/room-temperature-magnetic-semiconductors" data-hn="https://news.ycombinator.com/item?id=49970667" data-metric="408 pts / 274 comments" tabindex="0" aria-label="Story 3: AI agents flag two room-temperature magnetic semiconductor candidates">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">AI agents flag two room-temperature magnetic semiconductor candidates</h2>
+<p class="exec">A Vals AI post says its agents used density-functional calculations to design one Luttinger-compensated magnet, YBaMnFeO5, and to spot the same property in KV[Cr(CN)6], a Prussian-blue relative first made in 1999. Both are predicted to have zero net magnetism yet spin-sorted band edges — useful for spintronics. These are calculations, not measurements: neither candidate&#x27;s spin sorting has been measured yet.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">Candidate 1: designed</span><ul><li>YBaMnFeO5, never made; predicted 2.35 eV band gap</li><li>Predicted magnetic order to ~420-490 K in simulation</li><li>Catch: its required checkerboard ordering scrambles near synthesis temperatures</li></ul></li><li class="cat"><span class="cat-label">Candidate 2: found in 1999</span><ul><li>KV[Cr(CN)6]; 1999 sample stayed ordered to 376 K</li><li>Predicted ~2.1 eV gap; large spin-sorted windows</li><li>Structure locks each metal to its own site — the thing candidate 1 lacks</li></ul></li><li class="cat"><span class="cat-label">Status</span><ul><li>Predictions for perfect, dry crystals; the 1999 sample was a wet powder</li><li>Two simulation methods disagree on how much water weakens it</li><li>Next step stated in the post: remake it and measure the spin sorting</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://www.vals.ai/blogs/room-temperature-magnetic-semiconductors" target="_blank" rel="noopener">vals.ai</a> · Discuss: <a href="https://news.ycombinator.com/item?id=49970667" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">408 pts / 274 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>The thread&#x27;s first fight is about the primer, not the result: casting magnetism as a binary of ferromagnets and antiferromagnets ignores the diamagnets and paramagnets people actually meet, like copper and aluminium. That sloppiness feeds the second fight — several commenters suspect the post was LLM-written and insufficiently reviewed, and the thread veers into how much LLM text HN already carries undetected. The underlying claim gets less scrutiny than its packaging, which is itself the lesson: a computation-only candidate, presented in a shaky explainer, will be judged on the explainer.</p>
+</div>
+</article>
+<article class="story" id="story-4" data-story="4" data-source="https://docs.mistral.ai/models/mistral-large-4-0" data-hn="https://news.ycombinator.com/item?id=49977979" data-metric="285 pts / 116 comments" tabindex="0" aria-label="Story 4: Mistral Large 4: 1.05T total, 49B active, 1M context, open-weight">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">Mistral Large 4: 1.05T total, 49B active, 1M context, open-weight</h2>
+<p class="exec">Mistral&#x27;s docs page for Large 4 (public preview, v26.10, dated Oct 6) lists a general-purpose multimodal model with a granular MoE architecture: 1.05T total parameters, 49B active, a 1.6B vision encoder, and a 1M-token context. It is described as open-weight, with structured outputs, function calling, document Q&amp;A, and agents among the listed features.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The specs</span><ul><li>1.05T total / 49B active parameters, granular MoE</li><li>1.6B vision encoder; multimodal, general-purpose</li><li>1M-token context window (per the docs page)</li></ul></li><li class="cat"><span class="cat-label">The release</span><ul><li>Public Preview v26.10, dated October 6, 2026</li><li>Described as open-weight on the model page</li><li>Features listed: structured outputs, function calling, document Q&amp;A, batching, agents</li></ul></li><li class="cat"><span class="cat-label">Context</span><ul><li>A European frontier-scale open-weight entry</li><li>Thread is young — scores and hands-on reports are still thin</li><li>The interesting test is price/performance against US and Chinese rivals</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://docs.mistral.ai/models/mistral-large-4-0" target="_blank" rel="noopener">docs.mistral.ai</a> · Discuss: <a href="https://news.ycombinator.com/item?id=49977979" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">285 pts / 116 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>This thread was only minutes old at fetch, so treat it as first reactions, not verdicts. The dominant note is relief that AI has not become winner-take-all: Mistral is still in the game after Large 3 stumbled, and several commenters hope Large 4 is good enough to become a European default and fund the next round. That quickly becomes a subsidy argument — DeepSeek&#x27;s open papers credited as instruction manuals for everyone, countered by claims that Chinese releases are state-subsidised economic warfare, countered again by pointing at US support for its own champions. Almost nobody in the early thread has run the model yet.</p>
+</div>
+</article>
+<article class="story" id="story-5" data-story="5" data-source="https://www.debugbear.com/blog/example-dot-com-redesign-history" data-hn="https://news.ycombinator.com/item?id=49971921" data-metric="268 pts / 180 comments" tabindex="0" aria-label="Story 5: Example.com got a redesign — and broke people&#x27;s workflows anyway">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">Example.com got a redesign — and broke people&#x27;s workflows anyway</h2>
+<p class="exec">DebugBear traces example.com&#x27;s biggest change in decades: on Sep 28, IANA&#x27;s reserved-domain page went multilingual, rotating through six languages every five seconds with a per-character fade, each letter wrapped in its own span. On Oct 3 the animation was removed and all languages now show at once. IANA says the split into a basic page plus a separate JavaScript file cuts bandwidth, because most traffic is automated and never fetches the JS.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">What changed</span><ul><li>Sep 28: rotating EN/AR/ZH/FR/RU/ES, per-character transition delays</li><li>Oct 3: animation removed; all languages shown from the start</li><li>An SVG book icon was also added in the redesign</li></ul></li><li class="cat"><span class="cat-label">IANA&#x27;s reason</span><ul><li>Bandwidth: automated traffic skips the JS file, so it is not served</li><li>The domain is for documentation examples, per the page itself</li><li>&#x27;This is not a service; avoid relying on it for testing and monitoring&#x27;</li></ul></li><li class="cat"><span class="cat-label">The history</span><ul><li>Reserved by IANA since the late 1990s for documentation</li><li>Earlier redesigns: 2013 (own page again, CDN), 2019 (fonts/copy), 2025 (new copy)</li><li>Now served via Cloudflare (since Dec 2025, per DebugBear)</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://www.debugbear.com/blog/example-dot-com-redesign-history" target="_blank" rel="noopener">debugbear.com</a> · Discuss: <a href="https://news.ycombinator.com/item?id=49971921" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">268 pts / 180 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>Peak HN: the top comment mourns a glasses-cleaning workflow — the old near-white page was ideal for spotting smudges, and the new dark-by-default page ruins it, xkcd 1172 duly linked. The substantive split is over testing: people admit their suites and connectivity checks lean on example.com, others quote the page back at them — it explicitly says it is not a service and not to rely on it for testing or monitoring — and suggest captive-portal endpoints or infrastructure you control instead. A volunteer even posts a self-hostable replica of the classic page for the desperate. The bandwidth irony is noted too: a page slimmed for bots now wraps every letter in a span for humans.</p>
+</div>
+</article>
+<article class="story" id="story-6" data-story="6" data-source="https://cses.fi/book/book.pdf" data-hn="https://news.ycombinator.com/item?id=49944049" data-metric="246 pts / 59 comments" tabindex="0" aria-label="Story 6: The Competitive Programmer&#x27;s Handbook (2018) still earns its front page">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">The Competitive Programmer&#x27;s Handbook (2018) still earns its front page</h2>
+<p class="exec">Antti Laaksonen&#x27;s Competitive Programmer&#x27;s Handbook — the free PDF companion to the CSES problem set — is back on the front page. It is a compact, code-first tour of the algorithms and data structures competitive programming actually uses, written for people who solve problems rather than read about them. In 2026 its HN appeal is partly the content and partly the contrast: skills built by hand, no agent in the loop.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The book</span><ul><li>By Antti Laaksonen (CSES); free PDF, 2018 edition</li><li>Companion to the CSES problem set</li><li>Code-first coverage of core CP algorithms and techniques</li></ul></li><li class="cat"><span class="cat-label">Why now</span><ul><li>Front-page nostalgia with a practical edge: drills that still work</li><li>Used alongside Codeforces, LeetCode, Codewars, Rosalind in-thread</li><li>A counterweight to agent-written code: reps for your own reasoning</li></ul></li><li class="cat"><span class="cat-label">The caveat</span><ul><li>2018 vintage — language and library details date quickly</li><li>Competitive style optimises for speed of solving, not production code</li><li>Best used actively, problem in hand, not read cover to cover</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://cses.fi/book/book.pdf" target="_blank" rel="noopener">cses.fi</a> · Discuss: <a href="https://news.ycombinator.com/item?id=49944049" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">246 pts / 59 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>A small, warm thread. The top commenter describes doing Codeforces, Rosalind, Codewars, and LeetCode casually as a detox from heavy daily agent use — relearning what over-reliance made them forget, and rediscovering how good it feels to think hard and arrive at a solution. The argument that follows is the familiar one, done well: does LLM assistance prove most people never wanted that feeling, or does a good-enough tool simply remove the incentive to train, the way compilers removed hand-written assembly — while some people still check the generated code? Nobody resolves it; several people go off to do problems.</p>
+</div>
+</article>
+<article class="story" id="story-7" data-story="7" data-source="https://flattensf.com/" data-hn="https://news.ycombinator.com/item?id=49971230" data-metric="244 pts / 83 comments" tabindex="0" aria-label="Story 7: Flatten SF: the flattest route between any two points, in your browser">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">Flatten SF: the flattest route between any two points, in your browser</h2>
+<p class="exec">Flatten SF computes routes across San Francisco in the browser over 160,000 street segments, using USGS 1-metre lidar elevation and the Overture/OpenStreetMap street graph. A slider walks the Pareto frontier from shortest to flattest — where a foot of climb is priced at 200 feet of walking — using cumulative gain, not endpoint difference. Place search is offline, built into the page.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">How it works</span><ul><li>160K street segments; USGS 1 m lidar elevation</li><li>Slider: every route nothing else beats on both distance and climb</li><li>1 ft of climb = 200 ft of walking at the flat extreme</li></ul></li><li class="cat"><span class="cat-label">Details that matter</span><ul><li>Climbing is cumulative gain, not net endpoint difference</li><li>Stairways allowed on foot, excluded on a bike</li><li>Offline search: intersections, places, addresses built into the page</li></ul></li><li class="cat"><span class="cat-label">By</span><ul><li>Drew Edwards; source, data, and full analysis on GitHub</li><li>No server routing — computation happens in your browser</li><li>Faint lines show the other Pareto routes as you slide</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://flattensf.com/" target="_blank" rel="noopener">flattensf.com</a> · Discuss: <a href="https://news.ycombinator.com/item?id=49971230" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">244 pts / 83 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>Cyclists take over, productively. The Bikehopper team plugs its Bay Area router — 1 m DTM elevation for SF because buildings and trees break coarser models — and a user immediately files a real bug: a route between two Safeways that sends riders up the Harry Street steps, which the maintainer acknowledges and promises to fix. The design consensus is that grade, not elevation, is the signal, and that it is non-linear: twice as steep should cost more than twice as much, and e-bikes need a different profile from what one commenter calls acoustic bikes — a term another commenter spends a full comment resenting. A driver, meanwhile, confesses to loving the hills.</p>
+</div>
+</article>
+<article class="story" id="story-8" data-story="8" data-source="https://www.nobelprize.org/prizes/physics/2026/" data-hn="https://news.ycombinator.com/item?id=49976265" data-metric="243 pts / 75 comments" tabindex="0" aria-label="Story 8: Nobel Prize in Physics goes to Francis Halzen for IceCube neutrinos">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">Nobel Prize in Physics goes to Francis Halzen for IceCube neutrinos</h2>
+<p class="exec">The 2026 Nobel Prize in Physics was awarded solely to Francis Halzen &#x27;for decisive contributions to the IceCube Neutrino Observatory and the discovery of high-energy neutrinos of astrophysical origin.&#x27; IceCube is a cubic-kilometre detector buried in Antarctic ice; it catches neutrinos via the Cherenkov light from the charged particles they create in the ice.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The prize</span><ul><li>Francis Halzen, sole laureate (prize share 1/1)</li><li>Citation: IceCube contributions + high-energy astrophysical neutrinos</li><li>Announced during Nobel week, Oct 5-12 announcements</li></ul></li><li class="cat"><span class="cat-label">The instrument</span><ul><li>Cubic-kilometre detector in Antarctic ice</li><li>Neutrinos convert to charged particles in the ice</li><li>Detected via Cherenkov radiation (faster than light in the medium, not in vacuum)</li></ul></li><li class="cat"><span class="cat-label">Why it matters</span><ul><li>High-energy neutrinos point back to cosmic sources light cannot escape</li><li>A decades-long bet on an extreme-environment instrument</li><li>Neutrino astronomy as a working field, not a proposal</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://www.nobelprize.org/prizes/physics/2026/" target="_blank" rel="noopener">nobelprize.org</a> · Discuss: <a href="https://news.ycombinator.com/item?id=49976265" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">243 pts / 75 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>HN&#x27;s physicists explain the Cherenkov mechanism clearly, and then the thread becomes a logistics appreciation post. Building a cubic kilometre of instrument at the literal South Pole — the furthest possible end of any supply chain, as one commenter puts it, proposing it as a refined synonym for the middle of nowhere — runs through the South Pole Traverse, air cargo at great cost, and diesel generators running it year-round. A side debate asks whether the ocean floor at Point Nemo would be harder (ships are easy; keeping active electronics alive at 4,000 m down is not), and a book recommendation lands: The Telescope in the Ice.</p>
+</div>
+</article>
+<article class="story" id="story-9" data-story="9" data-source="https://qlabs.sh/research/dust" data-hn="https://news.ycombinator.com/item?id=49970871" data-metric="236 pts / 62 comments" tabindex="0" aria-label="Story 9: Dust: pretraining transformers without backpropagation">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">Dust: pretraining transformers without backpropagation</h2>
+<p class="exec">Q Labs&#x27; Dust is a zeroth-order method that perturbs activations — independently at every token — so one forward pass evaluates a whole virtual population in parallel, instead of materialising perturbed weight copies. The authors claim it is the first such method competitive with backprop at pretraining transformers, exceeding it in some settings at large populations, and orders of magnitude more efficient than weight-space evolution strategies. They also state the limit plainly: not compute-efficient enough to replace backprop today.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The method</span><ul><li>Node perturbation: Gaussian noise on layer outputs, per token</li><li>Reward-weighted noise estimates the gradient; no chain rule</li><li>Each token is a virtual population member — one pass evaluates them all</li></ul></li><li class="cat"><span class="cat-label">The claims</span><ul><li>Competitive with backprop at large populations; exceeds it in some settings</li><li>Claimed 1,000-10,000x more efficient than EGGROLL (extrapolated)</li><li>Larger models were more population-efficient, up to 1B tokens tested</li></ul></li><li class="cat"><span class="cat-label">The stated limits</span><ul><li>Approximates backprop at substantially more compute</li><li>Authors: not a backprop replacement today</li><li>The prize is architectures backprop cannot train at all</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://qlabs.sh/research/dust" target="_blank" rel="noopener">qlabs.sh</a> · Discuss: <a href="https://news.ycombinator.com/item?id=49970871" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">236 pts / 62 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>The top commenter would bet their life savings that no derivative-free method ever makes an impact: neural objectives are smooth, gradients tell you where to go, and the advantage grows with parameter count — with a strict complexity gap between gradient-based and derivative-free optimisation cited, and a correction that the gap has been textbook material since Nesterov rather than a new result. The defence is biological and pragmatic: brains almost certainly do not run full backprop and train a PhD on far less energy, and for genuinely discontinuous objectives gradient-like methods still need help. Interesting, well-argued, and — on the thread&#x27;s own evidence — not close to settled in Dust&#x27;s favour.</p>
+</div>
+</article>
+<article class="story" id="story-10" data-story="10" data-source="https://dbushell.com/2026/10/03/deno-to-node/" data-hn="https://news.ycombinator.com/item?id=49971719" data-metric="234 pts / 148 comments" tabindex="0" aria-label="Story 10: Friendship ended with Deno, now Node is my best friend">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">Friendship ended with Deno, now Node is my best friend</h2>
+<p class="exec">Web developer David Bushell writes up leaving Deno and returning to Node — the title is the meme, the post is a working developer&#x27;s account of why the newer runtime stopped earning its place in his stack while Node kept improving underneath it.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The move</span><ul><li>A Deno-to-Node switch by a long-time Deno advocate and blogger</li><li>Framed as Node quietly improving while challengers stalled</li><li>One of several recent &#x27;back to Node&#x27; posts in the same genre</li></ul></li><li class="cat"><span class="cat-label">What Deno still does well</span><ul><li>Built-in test runner, linter, and type checker — no config archaeology</li><li>JSR publishing with generated docs praised in-thread</li><li>Permissions model and single-binary story remain distinctive</li></ul></li><li class="cat"><span class="cat-label">The concern in-thread</span><ul><li>A Deno stdlib contributor: layoffs, no visible roadmap or comms</li><li>&#x27;Slow decline into obscurity&#x27; — hope, but no evidence of a turn</li><li>Node&#x27;s ecosystem gravity (npm) never actually left</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://dbushell.com/2026/10/03/deno-to-node/" target="_blank" rel="noopener">dbushell.com</a> · Discuss: <a href="https://news.ycombinator.com/item?id=49971719" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">234 pts / 148 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>Half the thread never gets past the domain — dbushell parsed as &#x27;D-Bus hell&#x27; by multiple readers expecting a Linux IPC rant. The substantive split is elegiac versus pragmatic. A former Deno standard-library contractor says they have always loved the team and philosophy and are saddened by what looks like decline: layoffs, no roadmap, no communications. Others still pick Deno precisely for its integrated toolchain and JSR publishing, and argue Node&#x27;s project setup remains a configuration swamp. One quoted passage — on TypeScript restrictions being philosophical — costs the author credibility with some readers. The consensus, such as it is: Node kept doing its thing, incrementally, and that was enough.</p>
+</div>
+</article>
+    </ol>
+
+    <div class="shortcut-bar" aria-label="Keyboard shortcuts">
+      <span><kbd>J</kbd> next story</span>
+      <span><kbd>K</kbd> previous story</span>
+      <span><kbd>T</kbd> theme</span>
+    </div>
+
+    <footer class="page-footer">
+      <div class="footer-links"><a href="../">← Daily archive</a><a href="https://tk3369.github.io/hn-daily/" target="_blank" rel="noopener">Published archive ↗</a></div>
+      <span>Tuesday 2026-10-06 · 10 stories</span>
+    </footer>
+  </main>
+  <div class="toast" role="status" aria-live="polite"></div>
+  <script>
+(() => {
+  const root = document.documentElement;
+  const toggle = document.getElementById('theme-toggle');
+  const entries = [...document.querySelectorAll('[data-story]')];
+  function storedTheme() { try { const t = localStorage.getItem('hn-daily-theme'); return t === 'dark' || t === 'light' ? t : null; } catch (_) { return null; } }
+  function preferredTheme() { return matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'; }
+  function currentTheme() { const a = root.dataset.theme; if (a === 'dark' || a === 'light') return a; return storedTheme() || preferredTheme(); }
+  function setTheme(theme) { const next = theme === 'dark' ? 'dark' : 'light'; const opposite = next === 'dark' ? 'Light' : 'Dark';
+    if (root.dataset.theme !== next) root.dataset.theme = next;
+    toggle.querySelector('.theme-text').textContent = opposite;
+    toggle.setAttribute('aria-label', `Switch to ${opposite} theme (T)`); toggle.title = `Switch to ${opposite} theme (T)`;
+    try { localStorage.setItem('hn-daily-theme', next); } catch (_) {} }
+  function flipTheme() { setTheme(currentTheme() === 'dark' ? 'light' : 'dark'); }
+  setTheme(storedTheme() || preferredTheme());
+  toggle.addEventListener('click', flipTheme);
+  const toast = document.querySelector('.toast'); let toastTimer;
+  function showToast(msg) { toast.textContent = msg; toast.classList.add('show'); clearTimeout(toastTimer); toastTimer = setTimeout(() => toast.classList.remove('show'), 1800); }
+  document.querySelectorAll('.copy-button').forEach((button) => {
+    button.addEventListener('click', async () => {
+      const story = button.closest('.story');
+      const n = story.dataset.story;
+      const tagline = story.querySelector('.tagline').textContent.trim();
+      const execSum = story.querySelector('.exec').textContent.trim();
+      const bullets = [...story.querySelectorAll('.cat-lists .cat')].map(li => {
+        const label = li.querySelector('.cat-label').textContent.trim();
+        const pts = [...li.querySelectorAll('ul li')].map(p => '  \u2022 ' + p.textContent.trim()).join('\n');
+        return '- ' + label + ':\n' + pts;
+      }).join('\n');
+      const link = 'https://tk3369.github.io/hn-daily/2026-10-06/#story-' + n;
+      const text = n + '. ' + tagline + '\n\n' + execSum + '\n' + bullets + '\n\n' + link;
+      try { await navigator.clipboard.writeText(text); button.textContent = 'Copied'; showToast('Story ' + n + ' copied for Threads'); setTimeout(() => { button.textContent = 'Copy for Threads'; }, 1600); }
+      catch (_) { showToast('Copy was blocked by this browser'); }
+    });
+  });
+  document.addEventListener('keydown', (event) => {
+    if (event.metaKey || event.ctrlKey || event.altKey || event.shiftKey) return;
+    const tag = event.target.tagName;
+    if (tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT') return;
+    const key = event.key.toLowerCase();
+    if (key === 't') { event.preventDefault(); flipTheme(); }
+    else if ((key === 'j' || key === 'k') && entries.length) {
+      event.preventDefault();
+      const active = entries.indexOf(document.activeElement);
+      const delta = key === 'j' ? 1 : -1;
+      const next = active < 0 ? (key === 'j' ? 0 : entries.length - 1) : Math.max(0, Math.min(entries.length - 1, active + 1 * delta));
+      entries[next].focus();
+    }
+  });
+})();
+  </script>
+</body>
+</html>
