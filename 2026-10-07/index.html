@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="color-scheme" content="light dark" />
+  <link rel="icon" href="data:," />
+  <title>HN Daily — Wednesday 2026-10-07</title>
+  <style>
+:root { --page:#f1eadb; --paper:#fffaf0; --ink:#20201c; --muted:#6f695f; --hairline:#d9cebc; --accent:#ff5a1f; --comment:#f6efe3; --shadow:0 2px 0 rgba(57,45,25,.08),0 14px 36px rgba(57,45,25,.06); --serif:Georgia,"Times New Roman",serif; --sans:ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; --mono:"SFMono-Regular",Consolas,"Liberation Mono",monospace; }
+html[data-theme="dark"] { --page:#111312; --paper:#191c1a; --ink:#f1eee6; --muted:#aba69b; --hairline:#393b36; --accent:#ff7139; --comment:#222520; --shadow:0 2px 0 rgba(0,0,0,.22),0 18px 42px rgba(0,0,0,.22); }
+* { box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body { margin:0; min-width:280px; color:var(--ink); background:var(--page); font-family:var(--sans); line-height:1.55; -webkit-font-smoothing:antialiased; }
+a { color:inherit; text-underline-offset:3px; text-decoration-thickness:1px; }
+a:hover { color:var(--accent); }
+button,a { -webkit-tap-highlight-color:transparent; }
+button { font:inherit; }
+a:focus-visible,button:focus-visible { outline:3px solid var(--accent); outline-offset:3px; }
+.page { width:min(1080px,calc(100% - 36px)); margin:0 auto; padding:28px 0 72px; }
+.issue-header { display:grid; grid-template-columns:1fr auto; gap:24px; align-items:end; padding:8px 0 26px; border-bottom:3px solid var(--ink); }
+.edition { margin:0 0 9px; color:var(--accent); font:700 12px/1.3 var(--mono); letter-spacing:.09em; text-transform:uppercase; }
+.archive-nav { display:flex; flex-wrap:wrap; gap:8px 20px; margin-bottom:16px; font:700 12px/1 var(--mono); }
+.archive-nav a { min-height:36px; display:inline-flex; align-items:center; color:var(--muted); }
+.archive-nav a:hover { color:var(--accent); }
+h1 { max-width:820px; margin:0; font:700 clamp(34px,5.5vw,62px)/.98 var(--serif); letter-spacing:-.038em; }
+.deck { max-width:730px; margin:17px 0 0; color:var(--muted); font:17px/1.55 var(--sans); }
+.theme-toggle { align-self:start; min-width:86px; min-height:40px; padding:9px 13px; border:1px solid var(--hairline); border-radius:4px; color:var(--ink); background:var(--paper); cursor:pointer; font:700 12px/1 var(--mono); display:inline-flex; align-items:center; gap:8px; }
+.theme-toggle:hover { border-color:var(--accent); color:var(--accent); }
+.theme-dot { width:10px; height:10px; border-radius:50%; background:var(--accent); display:inline-block; flex-shrink:0; }
+.theme-text { line-height:1; }
+.story-list { display:grid; gap:20px; list-style:none; margin:26px 0 0; padding:0; counter-reset:story; }
+.story { counter-increment:story; display:grid; grid-template-columns:72px minmax(0,1fr); gap:26px; padding:26px 30px 28px; background:var(--paper); border-top:4px solid var(--ink); box-shadow:var(--shadow); scroll-margin-top:24px; }
+.story-number { color:var(--accent); font:900 22px/1 var(--mono); letter-spacing:-.04em; padding-top:6px; }
+.story-number::before { content:counter(story,decimal-leading-zero); }
+.tagline { margin:0; max-width:840px; font:700 clamp(24px,3vw,36px)/1.1 var(--serif); letter-spacing:-.028em; }
+.exec { margin:14px 0 0; max-width:840px; font:17px/1.58 var(--sans); }
+.cat-lists { margin:14px 0 0; padding:0; list-style:none; display:grid; gap:10px; max-width:840px; }
+.cat-lists li.cat { font:15px/1.6 var(--sans); }
+.cat-lists .cat-label { font:700 12px/1.6 var(--mono); letter-spacing:.06em; text-transform:uppercase; color:var(--accent); }
+.cat-lists ul { margin:4px 0 0; padding-left:20px; }
+.cat-lists ul li { margin:3px 0; }
+.meta-line { margin:16px 0 0; color:var(--muted); font:700 12px/1.9 var(--mono); overflow-wrap:anywhere; }
+.meta-line a { color:var(--ink); font-weight:800; }
+.meta-line .metrics { color:var(--ink); white-space:nowrap; }
+.story-bar { display:flex; align-items:flex-start; gap:14px; margin-top:4px; }
+.copy-button { flex:0 0 auto; align-self:flex-start; min-height:36px; padding:9px 12px; border:1px solid var(--hairline); border-radius:4px; background:var(--paper); color:var(--ink); cursor:pointer; font:700 12px/1 var(--mono); }
+.copy-button:hover { border-color:var(--accent); color:var(--accent); }
+.hn-comments { margin:18px 0 0; padding:14px 18px; background:var(--comment); border:1px solid var(--hairline); font:15px/1.62 var(--serif); color:var(--ink); }
+.hn-comments strong { font:700 12px/1.6 var(--mono); color:var(--accent); display:block; margin-bottom:6px; }
+.page-footer { display:flex; justify-content:space-between; flex-wrap:wrap; gap:14px; margin-top:64px; padding-top:12px; border-top:1px solid var(--hairline); color:var(--muted); font:12px/1.6 var(--mono); }
+.footer-links { display:flex; flex-wrap:wrap; gap:8px 20px; }
+.footer-links a { min-height:36px; display:inline-flex; align-items:center; color:var(--ink); font-weight:800; }
+.footer-links a:hover { color:var(--accent); }
+.shortcut-bar { display:flex; flex-wrap:wrap; gap:18px; margin-top:28px; color:var(--muted); font:11px/1.5 var(--mono); }
+kbd { display:inline-grid; place-items:center; min-width:22px; height:22px; margin-right:6px; padding:0 6px; border:1px solid var(--hairline); border-bottom-width:2px; border-radius:3px; background:var(--comment); color:var(--ink); font:inherit; font-weight:700; }
+.toast { position:fixed; right:max(18px,env(safe-area-inset-right)); bottom:max(18px,env(safe-area-inset-bottom)); z-index:10; padding:11px 14px; color:var(--paper); background:var(--ink); border:1px solid var(--ink); font:700 12px/1 var(--mono); opacity:0; transform:translateY(8px); pointer-events:none; transition:opacity 160ms ease,transform 160ms ease; }
+.toast.show { opacity:1; transform:translateY(0); }
+@media (max-width:760px) {
+  .page { width:min(100% - 22px,1080px); padding-top:16px; }
+  .issue-header { grid-template-columns:1fr auto; gap:12px; padding-bottom:20px; }
+  h1 { font-size:clamp(34px,10vw,48px); }
+  .deck { grid-column:1 / -1; margin-top:3px; font-size:15px; }
+  .theme-toggle { grid-column:2; grid-row:1; min-width:72px; }
+  .story { grid-template-columns:44px minmax(0,1fr); gap:14px; padding:20px 18px 22px; }
+  .story-number { font-size:16px; padding-top:4px; }
+  .story-bar { flex-direction:column; align-items:stretch; }
+  .copy-button { align-self:flex-start; }
+  .page-footer { display:block; }
+}
+@media (max-width:420px) {
+  .page { width:calc(100% - 16px); }
+  .story { grid-template-columns:1fr; gap:8px; padding:20px 16px 22px; }
+  .story-number { padding-top:0; }
+  .copy-button { width:100%; }
+}
+@media (prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } *,*::before,*::after { transition:none !important; } }
+@media print { :root { --page:#fff;--paper:#fff;--ink:#000;--muted:#444;--hairline:#bbb;--comment:#f5f5f5;--shadow:none; } .page{width:100%;padding:0}.theme-toggle,.copy-button,.toast,.shortcut-bar{display:none}.story{break-inside:avoid;box-shadow:none} }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="issue-header">
+      <div>
+        <nav class="archive-nav" aria-label="HN Daily archive links"><a href="../">← Archive</a><a href="https://tk3369.github.io/hn-daily/" target="_blank" rel="noopener">Published archive ↗</a></nav>
+        <p class="edition"><time datetime="2026-10-07">2026-10-07</time> · Daily brief · Pacific time</p>
+        <h1>HN Daily</h1>
+        <p class="deck">Direct, low-fluff top 10 from Hacker News, daily at 7am PT — hottest by points</p>
+      </div>
+      <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch color theme" title="Toggle theme (T)"><span class="theme-dot" aria-hidden="true"></span><span class="theme-text">Dark</span></button>
+    </header>
+
+    <ol class="story-list" aria-label="Top 10 Hacker News stories">
+<article class="story" id="story-1" data-story="1" data-source="https://mistral.ai/news/mistral-large-4/" data-hn="https://news.ycombinator.com/item?id=49977979" data-metric="1915 pts / 1151 comments" tabindex="0" aria-label="Story 1: Mistral Large 4: 1T parameters, 49B active, weights at month-end">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">Mistral Large 4: 1T parameters, 49B active, weights at month-end</h2>
+<p class="exec">Mistral launched a public preview of Large 4 — ‘le Chonk’ — a 1-trillion-parameter natively multimodal model with 49B active parameters, trained from scratch on 3,800 NVIDIA Grace Blackwell GPUs in Mistral&#x27;s own European datacenters. The preview API is live on Mistral Studio today; the open weights drop at the end of the month, after red-teaming with vetted partners.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The model</span><ul><li>1T total / 49B active parameters, natively multimodal</li><li>Trained on 3,800 Grace Blackwell GPUs in Europe</li><li>Mistral claims state-of-the-art among open models on cyber, finance, and law workloads</li></ul></li><li class="cat"><span class="cat-label">The release</span><ul><li>Public preview API on Mistral Studio now</li><li>Weights promised by end of October 2026</li><li>Red-teaming first, with reduced moderation for vetted security partners</li></ul></li><li class="cat"><span class="cat-label">Why it matters</span><ul><li>Largest open-weight entry from the US or Europe to date, per Mistral</li><li>Sovereignty pitch: European infrastructure, self-deployable weights</li><li>Yesterday this was a 285-pt docs page; today it is the front page at 1,915 pts</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://mistral.ai/news/mistral-large-4/" target="_blank" rel="noopener">mistral.ai</a> · Discuss: <a href="https://news.ycombinator.com/item?id=49977979" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">1915 pts / 1151 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>The biggest thread of the day runs on pelicans. Simon Willison&#x27;s SVG pelican-on-a-bicycle test gets run at both reasoning settings: ‘none’ and ‘high’ differ little — a tiny thinking trace, fewer output tokens on high, a better bicycle frame — and commenters ask why every model adds a sun the prompt never asked for, reading it as overfitting to earlier pelican results in training data. From there the thread dissolves into AGI initialism jokes (‘Attractions to Get Investments’, ‘Automated Grift Infrastructure’). The substantive sovereignty and benchmark discussion is present but drowned out; the pelican is the verdict people actually share.</p>
+</div>
+</article>
+<article class="story" id="story-2" data-story="2" data-source="https://openai.com/index/sharing-ai-progress-in-mathematics/" data-hn="https://news.ycombinator.com/item?id=49984923" data-metric="1054 pts / 1077 comments" tabindex="0" aria-label="Story 2: OpenAI shares AI progress in maths — and the strip-mining fight follows">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">OpenAI shares AI progress in maths — and the strip-mining fight follows</h2>
+<p class="exec">OpenAI&#x27;s post shares recent AI progress in mathematics, including work on long-open problems, and links an advisory group&#x27;s recommendations on how labs should handle such results. The advisory statement is explicit from its first paragraph: frontier labs are testing advanced problems on proprietary models that remain inaccessible to the broader scientific community, and the group does not endorse that practice.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The post</span><ul><li>OpenAI sharing AI progress in mathematics</li><li>Links an advisory group statement with recommendations</li><li>Advisory group objects to open-problem testing on inaccessible proprietary models</li></ul></li><li class="cat"><span class="cat-label">One case in-thread</span><ul><li>Barnette&#x27;s Conjecture discussed as reportedly solved (problem 180 in the list)</li><li>No Lean proof for that one, per a commenter digesting the paper</li><li>A 24-year personal attempt on the same problem, described in the top comment</li></ul></li><li class="cat"><span class="cat-label">Why it matters</span><ul><li>The dispute is access, not whether AI maths works</li><li>Verification and credit norms have not caught up with proprietary solvers</li><li>Tao and others in the group are described in-thread as pro-AI, anti-strip-mining</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://openai.com/index/sharing-ai-progress-in-mathematics/" target="_blank" rel="noopener">openai.com</a> · Discuss: <a href="https://news.ycombinator.com/item?id=49984923" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">1054 pts / 1077 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>The top comment is personal: a graph theorist who moved to Budapest and spent 24 years, on and off, on Barnette&#x27;s Conjecture describes hearing it may be solved — enjoyable years, a far-off sadness, and a paper to digest with no Lean proof to check. The argument that follows is the advisory group&#x27;s own: researchers increasingly find that hours with a public model like Fable only convince them a problem is unsolved, while the advances happen on withheld proprietary systems — ‘the Open Problem Strip Miner’, in the Tao phrase quoted in-thread. Counter-arguments call maths just the latest industry to be industrialised, with competition as the control. Almost nobody disputes the results; they dispute who gets to do the science.</p>
+</div>
+</article>
+<article class="story" id="story-3" data-story="3" data-source="https://news.ycombinator.com/item?id=49982498" data-hn="https://news.ycombinator.com/item?id=49982498" data-metric="380 pts / 206 comments" tabindex="0" aria-label="Story 3: Tell HN: GitHub won&#x27;t remove cracked Photopea copies after a month">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">Tell HN: GitHub won&#x27;t remove cracked Photopea copies after a month</h2>
+<p class="exec">The Photopea creator posts that people take the JavaScript from his site, strip the ads, and publish the result on GitHub as a free ‘new product’ — and that GitHub, after a month, says it is unable to confirm a violation of 17 U.S. Code § 1201. He has ticket numbers and earlier takedowns that did succeed; this time the process stalls, and he is asking HN for a route that is not a lawyer.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The claim</span><ul><li>Photopea JS copied, ads removed, republished on GitHub</li><li>GitHub reply quoted: unable to confirm a § 1201 violation</li><li>Tickets 4822535 and 4726557 cited by the author in-thread</li></ul></li><li class="cat"><span class="cat-label">The legal wrinkle</span><ul><li>§ 1201 covers circumventing a technological measure</li><li>Publicly served JS, even obfuscated, may not qualify, per commenters</li><li>Post-youtube-dl, GitHub manually reviews every § 1201 notice</li></ul></li><li class="cat"><span class="cat-label">Why it matters</span><ul><li>A one-person product&#x27;s enforcement cost is the product&#x27;s time</li><li>HN visibility is, in practice, an escalation channel — again</li><li>Earlier Photopea DMCA filings (2022, 2024) are public in github/dmca</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: Tell HN (thread only) · Discuss: <a href="https://news.ycombinator.com/item?id=49982498" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">380 pts / 206 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>An IP lawyer in-thread gives the unsentimental version: pay a specialist firm to play whack-a-mole — not at $500/hr, firms that do only this exist — or accept it as normal losses, because your own hours are the worst currency to spend on it. Others work the technical angle: the § 1201 filing was likely the wrong instrument for publicly served JavaScript, deobfuscation has been read broadly elsewhere, and detection heuristics that add friction beat any takedown. A GitHub employee asks for the ticket codes and offers to follow up internally, which is roughly what the author hoped HN would produce. Enforcement abroad (several repos traced to China or Russia in-thread) is flagged as the hard limit on damages.</p>
+</div>
+</article>
+<article class="story" id="story-4" data-story="4" data-source="https://blog.google/innovation-and-ai/technology/developers-tools/embeddinggemma-2/" data-hn="https://news.ycombinator.com/item?id=49980487" data-metric="375 pts / 37 comments" tabindex="0" aria-label="Story 4: EmbeddingGemma 2: Google&#x27;s open, lightweight multimodal embedding model">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">EmbeddingGemma 2: Google&#x27;s open, lightweight multimodal embedding model</h2>
+<p class="exec">Google DeepMind&#x27;s EmbeddingGemma 2 is the successor to its 270M on-device model, rebuilt as a 4.5B-parameter model with 3.88B effective parameters once embeddings are excluded. One model embeds text, image, audio, and video into a shared space across 140+ languages, with a 256K-token context for text (128K for other media), a 262K vocabulary, and Matryoshka output dimensions from 256 to 2816. Quantized, Google says it runs in under 6 GB of RAM.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The model</span><ul><li>4.5B total / 3.88B effective parameters; text, image, audio, video</li><li>256K context (text), 262K vocab, 140+ languages</li><li>Matryoshka dimensions 256-2816; &lt;6 GB RAM quantized, per Google</li></ul></li><li class="cat"><span class="cat-label">The use case</span><ul><li>Embed thousands to millions of items, store, compare later</li><li>Runs on a rented GPU at $1-2/hr for batch jobs, per commenters</li><li>Also usable for zero-shot-style classification via answer embeddings</li></ul></li><li class="cat"><span class="cat-label">Why it matters</span><ul><li>A hosted embedding model that gets retired forces a full re-embed</li><li>Open weights remove that migration cliff</li><li>Moderate-size multimodal embeddings were a clear gap until now, per thread</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://blog.google/innovation-and-ai/technology/developers-tools/embeddinggemma-2/" target="_blank" rel="noopener">blog.google</a> · Discuss: <a href="https://news.ycombinator.com/item?id=49980487" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">375 pts / 37 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>A short, approving thread. The top comment makes the structural case for open embeddings specifically: your stored vectors are only as durable as the model that made them, a proprietary vendor will eventually retire that model, and re-embedding a corpus is a real bill — OpenAI once offered to cover re-embedding costs, and nobody should count on that twice. A side debate about CPU-vs-GPU determinism gets corrected on embedding terms: you do not need bit-identical vectors, you need stable distances, and those survive the hardware switch. One hands-on report is mixed — Google&#x27;s own example classification failed locally for one user, with a rival (Laya) more accurate and almost as fast — which is the right kind of caveat for a launch-day thread.</p>
+</div>
+</article>
+<article class="story" id="story-5" data-story="5" data-source="https://developers.openai.com/api/docs/guides/decisions" data-hn="https://news.ycombinator.com/item?id=49984025" data-metric="354 pts / 195 comments" tabindex="0" aria-label="Story 5: OpenAI Decisions API in public beta: predicate questions, real probabilities">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">OpenAI Decisions API in public beta: predicate questions, real probabilities</h2>
+<p class="exec">OpenAI&#x27;s Decisions API, now in public beta, takes an input plus a list of named predicate questions — ‘is this a complaint?’ — and returns a probability for each, with zero output tokens in the in-thread example. It is zero-shot classification as a first-class endpoint: no training set, no per-task model, and crucially no prompt-engineered pseudo-confidence — the probabilities come from the model&#x27;s internal state at inference.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The API</span><ul><li>POST /v1/decisions with model, input, and predicate questions</li><li>Returns per-question probabilities; in-thread test: complaint 0.91, compliment 0.06</li><li>Public beta, documented in the OpenAI API guides</li></ul></li><li class="cat"><span class="cat-label">How it differs</span><ul><li>Questions run in parallel, not as sequential structured outputs</li><li>Probabilities are read from inference state, not generated text</li><li>OpenAI reports 0.16s median latency and free use during beta, on Luna/Terra/Sol snapshots</li></ul></li><li class="cat"><span class="cat-label">Context</span><ul><li>OpenAI&#x27;s answer to Typesafe&#x27;s Jev, per commenters</li><li>Same product shape as Strands Decider, also on today&#x27;s front page</li><li>Classification is becoming an API category of its own</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://developers.openai.com/api/docs/guides/decisions" target="_blank" rel="noopener">developers.openai.com</a> · Discuss: <a href="https://news.ycombinator.com/item?id=49984025" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">354 pts / 195 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>The thread&#x27;s first move is a working curl from Simon Willison&#x27;s llm tool, which does more than the docs excerpt: complaint at 0.91 against compliment at 0.06 on an angry-feature message, 310 input tokens, zero output tokens. Then the scepticism: how is this different from ML-era categorisation, or from structured outputs on a normal model? The answers that hold up are parallelism — independent questions do not contaminate each other the way sequential generated fields do — and true probabilities, which no amount of prompt engineering extracts from generated text. The joke that lands is historical: someone finally shipped the zero-shot classifier from the 2015 sales decks.</p>
+</div>
+</article>
+<article class="story" id="story-6" data-story="6" data-source="https://github.com/FeSens/openTPU" data-hn="https://news.ycombinator.com/item?id=49980715" data-metric="319 pts / 359 comments" tabindex="0" aria-label="Story 6: OpenTPU: an open-source AI accelerator, developed by AI, running on a real FPGA card">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">OpenTPU: an open-source AI accelerator, developed by AI, running on a real FPGA card</h2>
+<p class="exec">OpenTPU is a complete, readable AI accelerator in one monorepo — SystemVerilog hardware, an instruction set, a bit-exact simulator, a kernel language and compiler, and host software — built, per the project, by AI agents. It runs ten modern models with real weights on an Inspur card with a Xilinx Kintex-7 FPGA, producing exactly the simulator&#x27;s tokens: LFM2.5-230M at 59 tok/s int8 decode, Qwen3-0.6B at 21.6 tok/s, at 82-94% of peak DRAM bandwidth.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">What is in the repo</span><ul><li>SystemVerilog design, ISA, bit-exact simulator, kernel compiler, host stack</li><li>Runs on Inspur YPCB-00338 (Kintex-7 xc7k480t, two DDR3 channels)</li><li>Ten models with real weights, device output matching simulator bit-for-bit</li></ul></li><li class="cat"><span class="cat-label">Measured, from the README</span><ul><li>LFM2.5-230M: 59.0 tok/s decode int8; 85.8 tok/s at 4-bit</li><li>Qwen3-0.6B: 21.6 tok/s int8; Phi-4-mini 3.8B: 4.0 tok/s int8</li><li>DRAM use while decoding: 82-94% of peak across the table</li></ul></li><li class="cat"><span class="cat-label">Why it matters</span><ul><li>A full accelerator stack small enough to read end to end</li><li>Explicitly a learning project as well as an AI-builds-hardware test</li><li>Asks how far agents get at hardware design, on real silicon (FPGA)</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://github.com/FeSens/openTPU" target="_blank" rel="noopener">github.com</a> · Discuss: <a href="https://news.ycombinator.com/item?id=49980715" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">319 pts / 359 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>The top question is the honest software one: why aren&#x27;t labs already burning frontier models into chips? The answer is timing — state of the art moves faster than a chip can be designed and fabbed, so you would commit to a model for years while still paying to train its successors; GPUs win because last year&#x27;s hardware runs this year&#x27;s model. That turns into the real debate: several commenters argue models are now good enough that the race should be to smaller and cheaper, and a fixed-function card for a frozen model is a product they would buy; others call racing to the bottom the outcome they fear most, on job-competition grounds. The OpenTPU numbers themselves get little argument — the argument is about what they imply.</p>
+</div>
+</article>
+<article class="story" id="story-7" data-story="7" data-source="https://www.zohaib.cc/blog/smartest-claude-code-feature" data-hn="https://news.ycombinator.com/item?id=49981905" data-metric="238 pts / 136 comments" tabindex="0" aria-label="Story 7: Claude Code&#x27;s suggested message: the real customer may be the model">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">Claude Code&#x27;s suggested message: the real customer may be the model</h2>
+<p class="exec">A short blog post argues Claude Code&#x27;s suggested next message — the grey text predicting what you will type, shown before Claude&#x27;s results are even read — is its smartest feature, because the model is predicting the user, not summarising its own work. The suggestion primes both sides: you get your intent reflected back, and the model gets cleaner, more predictable next-turn context. Hence the title: in a real sense the suggestion&#x27;s customer is the model itself, and accepted suggestions become exactly the kind of interaction data that trains the next one.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The claim</span><ul><li>Suggested message = smartest Claude Code feature, per the post</li><li>It predicts the user before results are read — priming, not summary</li><li>Talker/doer separation, via a LessWrong post cited in-thread</li></ul></li><li class="cat"><span class="cat-label">Why it works when it works</span><ul><li>The suggestion anticipates the user&#x27;s actual next instruction</li><li>Accepting it keeps the agent&#x27;s context and plan aligned</li><li>One keypress instead of re-typing intent</li></ul></li><li class="cat"><span class="cat-label">The failure mode, in-thread</span><ul><li>Claude made an unwanted change, then suggested reverting it</li><li>It ‘knew’ the user would object — and made the change anyway</li><li>Suggestion quality exposes the gap between talker and doer</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://www.zohaib.cc/blog/smartest-claude-code-feature" target="_blank" rel="noopener">zohaib.cc</a> · Discuss: <a href="https://news.ycombinator.com/item?id=49981905" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">238 pts / 136 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>Users mostly like the feature and say so plainly: a small polish item that makes the harness nicer, with equally well-judged feedback UX — press 1, 2, or 3, a second or two to add a note, then it disappears instead of nagging. The anecdote of the day is the self-aware revert: Claude changed a feature nobody asked for, and its suggested message was, in effect, ‘revert that change’. From there the thread follows the talker/doer link into a long, genuinely interesting detour about inner voices, knowing the right approach and not taking it, and where that analogy helps or misleads. As product analysis it is thin; as a prompt for how people experience agent harnesses, it earns its points.</p>
+</div>
+</article>
+<article class="story" id="story-8" data-story="8" data-source="https://strandsagents.com/blog/introducing-strands-decider/" data-hn="https://news.ycombinator.com/item?id=49987076" data-metric="229 pts / 68 comments" tabindex="0" aria-label="Story 8: Strands Decider 2B: a small, open-source decision model for agents">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">Strands Decider 2B: a small, open-source decision model for agents</h2>
+<p class="exec">Strands Decider 2B is a small open-source model built for one job: decisions inside agent workflows — routing, guardrails, PII checks, escalation — in a single prefill pass. Strands reports 0.832 on DeciderBench against 0.443 for Haiku 4.5 prompted as a judge, and 0.817 on Fjord-Bench against Sonnet 4.6&#x27;s 0.854, at about 30 ms median latency versus 1,219-1,640 ms for the frontier models, and $0.02 per million tokens self-hosted on a g5.xlarge versus $3-5 via API. Those are the project&#x27;s own benchmarks; treat them as seller-reported until independently run.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The model</span><ul><li>2B parameters, Apache 2.0, from the Strands Agents project</li><li>Reported: DeciderBench 0.832, Fjord-Bench 0.817 (project benchmarks)</li><li>Prefill-only — ~30 ms median reported, vs 1,219-1,640 ms for frontier judges</li></ul></li><li class="cat"><span class="cat-label">The category</span><ul><li>Same shape as OpenAI Decisions API and Typesafe Jev</li><li>Replaces a frontier-model call for routine routing/gating</li><li>Speed story is architectural: one pass, probability out</li></ul></li><li class="cat"><span class="cat-label">Why it matters</span><ul><li>Agent stacks make thousands of small decisions per task</li><li>A 2B local specialist cuts cost and latency for each one</li><li>Decision models are consolidating into a distinct model class</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://strandsagents.com/blog/introducing-strands-decider/" target="_blank" rel="noopener">strandsagents.com</a> · Discuss: <a href="https://news.ycombinator.com/item?id=49987076" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">229 pts / 68 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>The practical fight is about where micromodels should live. A regular user of specialised small models warns that running one permanently on a PC&#x27;s CPU will disappoint — offload to the NPU for roughly double performance at a quarter of the power, with pitfalls. The correction is precise and useful: most LLMs cannot run efficiently on current NPUs except in the prefill stage, because the hardware was built for a different workload — and decision models are prefill-only, which is most of the explanation for their speed in the first place. The thread also produces the category&#x27;s best joke: a comedian should release a decision model backed by a human named Jerry. Under the jokes, a real deployment question is getting worked out in public.</p>
+</div>
+</article>
+<article class="story" id="story-9" data-story="9" data-source="https://penguin-mail.com/" data-hn="https://news.ycombinator.com/item?id=49984716" data-metric="218 pts / 148 comments" tabindex="0" aria-label="Story 9: Penguin Mail: open-source Linux mail and calendar, AI assistant off by default">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">Penguin Mail: open-source Linux mail and calendar, AI assistant off by default</h2>
+<p class="exec">Penguin Mail 1.0 is a free-software (GPL-3.0) mail and calendar client for Linux, written in Rust on the native GPUI toolkit — no Electron, no WebView, no Chromium — with mail stored locally in SQLite: Gmail, Microsoft, and any IMAP/POP3 account in one inbox, with CalDAV/CardDAV calendars and contacts, OpenPGP and S/MIME signing through your own GnuPG — it never holds your keys — and server-side rules shown in plain words. The AI assistant is off until you turn it on, can run locally via LM Studio or Ollama, and asks before it sends mail or changes a setting.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The client</span><ul><li>Version 1.0.0, GPL-3.0, x86_64 Linux; Rust + GPUI, local SQLite</li><li>Gmail, Outlook/Microsoft 365, Fastmail, iCloud, Yahoo, any IMAP/POP3/SMTP</li><li>One inbox, tray sync, unread counts, actionable notifications</li></ul></li><li class="cat"><span class="cat-label">Built in</span><ul><li>Calendar (Google, Microsoft, CalDAV) and contacts (CardDAV)</li><li>OpenPGP/S/MIME via your GnuPG; keys never held by the app</li><li>Gmail filters, Microsoft rules, and Sieve, edited in plain language</li></ul></li><li class="cat"><span class="cat-label">The assistant</span><ul><li>Off by default; you choose the model</li><li>Local option via LM Studio or Ollama</li><li>Ctrl+J natural-language search over your mail; asks before sending</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://penguin-mail.com/" target="_blank" rel="noopener">penguin-mail.com</a> · Discuss: <a href="https://news.ycombinator.com/item?id=49984716" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">218 pts / 148 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>The thread&#x27;s first question is the right one for any new mail client, AI-flavoured or not: how well do you sanitise HTML mail? Thunderbird&#x27;s protections — no inline JavaScript, blocked tracking pixels and remote CSS — took years to harden, and a client that renders mail in a trusted origin inherits all of it. A competing developer answers with their own stack (sanitisation plus an isolated sandboxed iframe plus CSP, and surprise at how many popular clients rely on sanitisation alone), which turns the thread into a useful comparative audit. The other live need is unglamorous: catch-all domain users who must send as company@mydomain.com without turning every alias into a mailbox. Rendering safety and alias handling — that is the actual bar for a new client.</p>
+</div>
+</article>
+<article class="story" id="story-10" data-story="10" data-source="https://github.com/szabadkai/c64-keyboard-font/" data-hn="https://news.ycombinator.com/item?id=49990224" data-metric="193 pts / 35 comments" tabindex="0" aria-label="Story 10: A font rebuilt from photographs of Commodore 64 keycaps">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">A font rebuilt from photographs of Commodore 64 keycaps</h2>
+<p class="exec">C64 Keyboard is a font recreated from photographs of classic Commodore 64 keycaps, with cleaned-up shapes and consistent proportions — the printed key legends, not the screen bitmap font. Version 1.107 ships as TTF, OTF, and webfont, with uppercase, numbers, punctuation, £, selected accented letters including Hungarian characters, function-key labels f1-f12, and all 63 PETSCII front-legends graphics, inserted via a bundled type-tester preview.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The font</span><ul><li>Recreated from keycap photographs; cleaned, consistent proportions</li><li>TTF / OTF / WOFF2 plus a complete package; v1.107</li><li>Lowercase input displays as uppercase, as on the keys</li></ul></li><li class="cat"><span class="cat-label">Included</span><ul><li>All 63 PETSCII graphic front legends, arranged by key</li><li>Function-key labels f1-f12 and classic C64 key legends</li><li>Accented letters including Hungarian characters, and £</li></ul></li><li class="cat"><span class="cat-label">The method, stated plainly</span><ul><li>Identities and key assignments from the Ultimate C64 Reference</li><li>Curves and print proportions inferred from the photograph</li><li>Reconstructed outlines — explicitly not exact photo traces</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://github.com/szabadkai/c64-keyboard-font/" target="_blank" rel="noopener">github.com</a> · Discuss: <a href="https://news.ycombinator.com/item?id=49990224" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">193 pts / 35 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>A small, fond thread that mostly trades font archaeology: the Gorton article (‘the hardest-working font in Manhattan’) and its list of digitised routed fonts, a font carved into a tree, and the lineage note that early VIC-20 keys used Microgramma — the basis of Eurostile, the staple of sci-fi movie typography. The quality control is also very HN: one commenter copies the specimen into Paint, draws a baseline, and reports that the !#$% characters float too high or need to be bigger; another flags the exclamation mark sitting above the baseline. Clean overall verdict, two punctuation nitpicks, and a ‘PRESS PLAY ON TAPE’ sighting. Exactly the review a keycap font wants.</p>
+</div>
+</article>
+    </ol>
+
+    <div class="shortcut-bar" aria-label="Keyboard shortcuts">
+      <span><kbd>J</kbd> next story</span>
+      <span><kbd>K</kbd> previous story</span>
+      <span><kbd>T</kbd> theme</span>
+    </div>
+
+    <footer class="page-footer">
+      <div class="footer-links"><a href="../">← Daily archive</a><a href="https://tk3369.github.io/hn-daily/" target="_blank" rel="noopener">Published archive ↗</a></div>
+      <span>Wednesday 2026-10-07 · 10 stories</span>
+    </footer>
+  </main>
+  <div class="toast" role="status" aria-live="polite"></div>
+  <script>
+(() => {
+  const root = document.documentElement;
+  const toggle = document.getElementById('theme-toggle');
+  const entries = [...document.querySelectorAll('[data-story]')];
+  function storedTheme() { try { const t = localStorage.getItem('hn-daily-theme'); return t === 'dark' || t === 'light' ? t : null; } catch (_) { return null; } }
+  function preferredTheme() { return matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'; }
+  function currentTheme() { const a = root.dataset.theme; if (a === 'dark' || a === 'light') return a; return storedTheme() || preferredTheme(); }
+  function setTheme(theme) { const next = theme === 'dark' ? 'dark' : 'light'; const opposite = next === 'dark' ? 'Light' : 'Dark';
+    if (root.dataset.theme !== next) root.dataset.theme = next;
+    toggle.querySelector('.theme-text').textContent = opposite;
+    toggle.setAttribute('aria-label', `Switch to ${opposite} theme (T)`); toggle.title = `Switch to ${opposite} theme (T)`;
+    try { localStorage.setItem('hn-daily-theme', next); } catch (_) {} }
+  function flipTheme() { setTheme(currentTheme() === 'dark' ? 'light' : 'dark'); }
+  setTheme(storedTheme() || preferredTheme());
+  toggle.addEventListener('click', flipTheme);
+  const toast = document.querySelector('.toast'); let toastTimer;
+  function showToast(msg) { toast.textContent = msg; toast.classList.add('show'); clearTimeout(toastTimer); toastTimer = setTimeout(() => toast.classList.remove('show'), 1800); }
+  document.querySelectorAll('.copy-button').forEach((button) => {
+    button.addEventListener('click', async () => {
+      const story = button.closest('.story');
+      const n = story.dataset.story;
+      const tagline = story.querySelector('.tagline').textContent.trim();
+      const execSum = story.querySelector('.exec').textContent.trim();
+      const bullets = [...story.querySelectorAll('.cat-lists .cat')].map(li => {
+        const label = li.querySelector('.cat-label').textContent.trim();
+        const pts = [...li.querySelectorAll('ul li')].map(p => '  \u2022 ' + p.textContent.trim()).join('\n');
+        return '- ' + label + ':\n' + pts;
+      }).join('\n');
+      const link = 'https://tk3369.github.io/hn-daily/2026-10-07/#story-' + n;
+      const text = n + '. ' + tagline + '\n\n' + execSum + '\n' + bullets + '\n\n' + link;
+      try { await navigator.clipboard.writeText(text); button.textContent = 'Copied'; showToast('Story ' + n + ' copied for Threads'); setTimeout(() => { button.textContent = 'Copy for Threads'; }, 1600); }
+      catch (_) { showToast('Copy was blocked by this browser'); }
+    });
+  });
+  document.addEventListener('keydown', (event) => {
+    if (event.metaKey || event.ctrlKey || event.altKey || event.shiftKey) return;
+    const tag = event.target.tagName;
+    if (tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT') return;
+    const key = event.key.toLowerCase();
+    if (key === 't') { event.preventDefault(); flipTheme(); }
+    else if ((key === 'j' || key === 'k') && entries.length) {
+      event.preventDefault();
+      const active = entries.indexOf(document.activeElement);
+      const delta = key === 'j' ? 1 : -1;
+      const next = active < 0 ? (key === 'j' ? 0 : entries.length - 1) : Math.max(0, Math.min(entries.length - 1, active + 1 * delta));
+      entries[next].focus();
+    }
+  });
+})();
+  </script>
+</body>
+</html>
