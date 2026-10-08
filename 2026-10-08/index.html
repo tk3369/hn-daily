@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="color-scheme" content="light dark" />
+  <link rel="icon" href="data:," />
+  <title>HN Daily — Thursday 2026-10-08</title>
+  <style>
+:root { --page:#f1eadb; --paper:#fffaf0; --ink:#20201c; --muted:#6f695f; --hairline:#d9cebc; --accent:#ff5a1f; --comment:#f6efe3; --shadow:0 2px 0 rgba(57,45,25,.08),0 14px 36px rgba(57,45,25,.06); --serif:Georgia,"Times New Roman",serif; --sans:ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; --mono:"SFMono-Regular",Consolas,"Liberation Mono",monospace; }
+html[data-theme="dark"] { --page:#111312; --paper:#191c1a; --ink:#f1eee6; --muted:#aba69b; --hairline:#393b36; --accent:#ff7139; --comment:#222520; --shadow:0 2px 0 rgba(0,0,0,.22),0 18px 42px rgba(0,0,0,.22); }
+* { box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body { margin:0; min-width:280px; color:var(--ink); background:var(--page); font-family:var(--sans); line-height:1.55; -webkit-font-smoothing:antialiased; }
+a { color:inherit; text-underline-offset:3px; text-decoration-thickness:1px; }
+a:hover { color:var(--accent); }
+button,a { -webkit-tap-highlight-color:transparent; }
+button { font:inherit; }
+a:focus-visible,button:focus-visible { outline:3px solid var(--accent); outline-offset:3px; }
+.page { width:min(1080px,calc(100% - 36px)); margin:0 auto; padding:28px 0 72px; }
+.issue-header { display:grid; grid-template-columns:1fr auto; gap:24px; align-items:end; padding:8px 0 26px; border-bottom:3px solid var(--ink); }
+.edition { margin:0 0 9px; color:var(--accent); font:700 12px/1.3 var(--mono); letter-spacing:.09em; text-transform:uppercase; }
+.archive-nav { display:flex; flex-wrap:wrap; gap:8px 20px; margin-bottom:16px; font:700 12px/1 var(--mono); }
+.archive-nav a { min-height:36px; display:inline-flex; align-items:center; color:var(--muted); }
+.archive-nav a:hover { color:var(--accent); }
+h1 { max-width:820px; margin:0; font:700 clamp(34px,5.5vw,62px)/.98 var(--serif); letter-spacing:-.038em; }
+.deck { max-width:730px; margin:17px 0 0; color:var(--muted); font:17px/1.55 var(--sans); }
+.theme-toggle { align-self:start; min-width:86px; min-height:40px; padding:9px 13px; border:1px solid var(--hairline); border-radius:4px; color:var(--ink); background:var(--paper); cursor:pointer; font:700 12px/1 var(--mono); display:inline-flex; align-items:center; gap:8px; }
+.theme-toggle:hover { border-color:var(--accent); color:var(--accent); }
+.theme-dot { width:10px; height:10px; border-radius:50%; background:var(--accent); display:inline-block; flex-shrink:0; }
+.theme-text { line-height:1; }
+.story-list { display:grid; gap:20px; list-style:none; margin:26px 0 0; padding:0; counter-reset:story; }
+.story { counter-increment:story; display:grid; grid-template-columns:72px minmax(0,1fr); gap:26px; padding:26px 30px 28px; background:var(--paper); border-top:4px solid var(--ink); box-shadow:var(--shadow); scroll-margin-top:24px; }
+.story-number { color:var(--accent); font:900 22px/1 var(--mono); letter-spacing:-.04em; padding-top:6px; }
+.story-number::before { content:counter(story,decimal-leading-zero); }
+.tagline { margin:0; max-width:840px; font:700 clamp(24px,3vw,36px)/1.1 var(--serif); letter-spacing:-.028em; }
+.exec { margin:14px 0 0; max-width:840px; font:17px/1.58 var(--sans); }
+.cat-lists { margin:14px 0 0; padding:0; list-style:none; display:grid; gap:10px; max-width:840px; }
+.cat-lists li.cat { font:15px/1.6 var(--sans); }
+.cat-lists .cat-label { font:700 12px/1.6 var(--mono); letter-spacing:.06em; text-transform:uppercase; color:var(--accent); }
+.cat-lists ul { margin:4px 0 0; padding-left:20px; }
+.cat-lists ul li { margin:3px 0; }
+.meta-line { margin:16px 0 0; color:var(--muted); font:700 12px/1.9 var(--mono); overflow-wrap:anywhere; }
+.meta-line a { color:var(--ink); font-weight:800; }
+.meta-line .metrics { color:var(--ink); white-space:nowrap; }
+.story-bar { display:flex; align-items:flex-start; gap:14px; margin-top:4px; }
+.copy-button { flex:0 0 auto; align-self:flex-start; min-height:36px; padding:9px 12px; border:1px solid var(--hairline); border-radius:4px; background:var(--paper); color:var(--ink); cursor:pointer; font:700 12px/1 var(--mono); }
+.copy-button:hover { border-color:var(--accent); color:var(--accent); }
+.hn-comments { margin:18px 0 0; padding:14px 18px; background:var(--comment); border:1px solid var(--hairline); font:15px/1.62 var(--serif); color:var(--ink); }
+.hn-comments strong { font:700 12px/1.6 var(--mono); color:var(--accent); display:block; margin-bottom:6px; }
+.page-footer { display:flex; justify-content:space-between; flex-wrap:wrap; gap:14px; margin-top:64px; padding-top:12px; border-top:1px solid var(--hairline); color:var(--muted); font:12px/1.6 var(--mono); }
+.footer-links { display:flex; flex-wrap:wrap; gap:8px 20px; }
+.footer-links a { min-height:36px; display:inline-flex; align-items:center; color:var(--ink); font-weight:800; }
+.footer-links a:hover { color:var(--accent); }
+.shortcut-bar { display:flex; flex-wrap:wrap; gap:18px; margin-top:28px; color:var(--muted); font:11px/1.5 var(--mono); }
+kbd { display:inline-grid; place-items:center; min-width:22px; height:22px; margin-right:6px; padding:0 6px; border:1px solid var(--hairline); border-bottom-width:2px; border-radius:3px; background:var(--comment); color:var(--ink); font:inherit; font-weight:700; }
+.toast { position:fixed; right:max(18px,env(safe-area-inset-right)); bottom:max(18px,env(safe-area-inset-bottom)); z-index:10; padding:11px 14px; color:var(--paper); background:var(--ink); border:1px solid var(--ink); font:700 12px/1 var(--mono); opacity:0; transform:translateY(8px); pointer-events:none; transition:opacity 160ms ease,transform 160ms ease; }
+.toast.show { opacity:1; transform:translateY(0); }
+@media (max-width:760px) {
+  .page { width:min(100% - 22px,1080px); padding-top:16px; }
+  .issue-header { grid-template-columns:1fr auto; gap:12px; padding-bottom:20px; }
+  h1 { font-size:clamp(34px,10vw,48px); }
+  .deck { grid-column:1 / -1; margin-top:3px; font-size:15px; }
+  .theme-toggle { grid-column:2; grid-row:1; min-width:72px; }
+  .story { grid-template-columns:44px minmax(0,1fr); gap:14px; padding:20px 18px 22px; }
+  .story-number { font-size:16px; padding-top:4px; }
+  .story-bar { flex-direction:column; align-items:stretch; }
+  .copy-button { align-self:flex-start; }
+  .page-footer { display:block; }
+}
+@media (max-width:420px) {
+  .page { width:calc(100% - 16px); }
+  .story { grid-template-columns:1fr; gap:8px; padding:20px 16px 22px; }
+  .story-number { padding-top:0; }
+  .copy-button { width:100%; }
+}
+@media (prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } *,*::before,*::after { transition:none !important; } }
+@media print { :root { --page:#fff;--paper:#fff;--ink:#000;--muted:#444;--hairline:#bbb;--comment:#f5f5f5;--shadow:none; } .page{width:100%;padding:0}.theme-toggle,.copy-button,.toast,.shortcut-bar{display:none}.story{break-inside:avoid;box-shadow:none} }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="issue-header">
+      <div>
+        <nav class="archive-nav" aria-label="HN Daily archive links"><a href="../">← Archive</a><a href="https://tk3369.github.io/hn-daily/" target="_blank" rel="noopener">Published archive ↗</a></nav>
+        <p class="edition"><time datetime="2026-10-08">2026-10-08</time> · Daily brief · Pacific time</p>
+        <h1>HN Daily</h1>
+        <p class="deck">Direct, low-fluff top 10 from Hacker News, daily at 7am PT — hottest by points</p>
+      </div>
+      <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch color theme" title="Toggle theme (T)"><span class="theme-dot" aria-hidden="true"></span><span class="theme-text">Dark</span></button>
+    </header>
+
+    <ol class="story-list" aria-label="Top 10 Hacker News stories">
+<article class="story" id="story-1" data-story="1" data-source="https://news.mit.edu/2026/margaret-hamilton-computing-pioneer-dies-1007" data-hn="https://news.ycombinator.com/item?id=49998895" data-metric="1826 pts / 200 comments" tabindex="0" aria-label="Story 1: Margaret Hamilton, who led Apollo flight software, dies at 90">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">Margaret Hamilton, who led Apollo flight software, dies at 90</h2>
+<p class="exec">MIT reports Margaret Hamilton died Sep 30 at 90. She led the team that built Apollo&#x27;s onboard flight software at MIT&#x27;s Instrumentation Lab, pushed for software to be treated as engineering in its own right, and later founded two software companies. Her team&#x27;s priority-driven design is the reason the Apollo 11 landing could proceed through the 1202 overload alarm.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The work</span><ul><li>First programmer hired for Apollo at MIT; led onboard flight software</li><li>Team grew to 400+ people by the crewed missions</li><li>Defensive, priority-driven software: shed low-priority tasks under load</li></ul></li><li class="cat"><span class="cat-label">The record</span><ul><li>130+ publications; Presidential Medal of Freedom in 2016</li><li>NASA Exceptional Space Act Award in 2003</li><li>Apollo code published on GitHub in 2015; Lego figure in 2017</li></ul></li><li class="cat"><span class="cat-label">Why it matters</span><ul><li>She made reliability and error handling a design discipline, not an afterthought</li><li>The P01 / Apollo 8 incident is still the textbook case for designing for operator error</li><li>A career that started when &#x27;software engineering&#x27; was treated as a joke</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://news.mit.edu/2026/margaret-hamilton-computing-pioneer-dies-1007" target="_blank" rel="noopener">news.mit.edu</a> · Discuss: <a href="https://news.ycombinator.com/item?id=49998895" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">1826 pts / 200 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>A memorial thread, and a long one by HN standards for an obituary. Commenters trade first encounters with the famous photo of Hamilton beside the stack of Apollo code, link the Computer History Museum oral history, and argue the lineage point: that her insistence on rigour predates and enables later formal methodologies rather than following them. Several call it a black-bar day. There is no real disagreement here, just an unusually specific shared debt: priority scheduling, defensive programming, and taking software seriously as engineering all trace back to that team.</p>
+</div>
+</article>
+<article class="story" id="story-2" data-story="2" data-source="https://openai.com/index/sharing-ai-progress-in-mathematics/" data-hn="https://news.ycombinator.com/item?id=49984923" data-metric="1293 pts / 1467 comments" tabindex="0" aria-label="Story 2: OpenAI publishes its AI maths results — 372 problems, Lean proofs, open repo">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">OpenAI publishes its AI maths results — 372 problems, Lean proofs, open repo</h2>
+<p class="exec">OpenAI is releasing a broad set of new mathematical results produced by an internal frontier model, published in a public GitHub repo with Lean formalisations for many proofs, reasoning summaries for 10 results, and compute estimates averaging roughly three hours of ChatGPT Pro-equivalent thinking per result. The release follows advice from the independent Advisory Group on Mathematics and AI at the IAS on how such results should be shared.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The release</span><ul><li>Results in github.com/openai/math, with revision and citation protocols</li><li>Lean checkable proofs for many results; more promised</li><li>Workshops and conferences on understanding the results to be funded by OpenAI</li></ul></li><li class="cat"><span class="cat-label">The context</span><ul><li>Internal model, not yet publicly released; responsible release promised</li><li>Advisory group guidance shaped the sharing format</li><li>This story was also #2 yesterday at lower counts; today it is 1,293 pts / 1,467 comments</li></ul></li><li class="cat"><span class="cat-label">Why it matters</span><ul><li>Verification shifts from reading prose to checking Lean where available</li><li>Credit and exposition norms are being negotiated in public, in real time</li><li>See also stories 6 and 8 today: the field is arguing about what counts as progress</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://openai.com/index/sharing-ai-progress-in-mathematics/" target="_blank" rel="noopener">openai.com</a> · Discuss: <a href="https://news.ycombinator.com/item?id=49984923" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">1293 pts / 1467 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>At 1,467 comments this is the most-discussed thread of the day, and the split is process, not correctness. One camp welcomes the open GitHub release over paywalled journals and sees engagement with mathematicians as overdue but real. The other camp says the lab had to be publicly pressed into this format and that this post alone does not settle access: the producing model is still internal. A recurring practical ask cuts through both: can someone qualified rank which of the hundreds of results actually matter? That digest job is now the bottleneck.</p>
+</div>
+</article>
+<article class="story" id="story-3" data-story="3" data-source="https://www.anthropic.com/claude-haiku-5-5" data-hn="https://news.ycombinator.com/item?id=49996437" data-metric="952 pts / 447 comments" tabindex="0" aria-label="Story 3: Claude Haiku 5.5: Anthropic&#x27;s cheapest, fastest small model, ~75% cheaper to run">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">Claude Haiku 5.5: Anthropic&#x27;s cheapest, fastest small model, ~75% cheaper to run</h2>
+<p class="exec">Anthropic launched Claude Haiku 5.5, pitched for high-volume, cost-sensitive work — summaries, compaction, queries, classification — and as a subagent alongside Sonnet 5.5 and Opus 5.5. Anthropic says it costs on average about 75% less to run than Haiku 4.5, is its fastest model to date, and is the first Haiku with an adjustable effort setting. Sonnet 5.5 cache reads are also halved, which Anthropic puts at roughly 20% cheaper on most agentic work.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">Pricing (per 1M tokens, Anthropic table)</span><ul><li>Haiku 5.5 up to 100k prompt: $0.10 in / $0.50 out; over 100k: $0.50 / $2.50</li><li>Haiku 4.5 was $1.00 / $5.00; Sonnet 5.5 is $2.00 / $10.00</li><li>Cache reads: Haiku 5.5 $0.01 / $0.05 vs $0.10 for Haiku 4.5</li></ul></li><li class="cat"><span class="cat-label">Benchmarks (Anthropic-reported)</span><ul><li>GDPval-AA v2.1: 1620 vs 735 for Haiku 4.5</li><li>OSWorld 2.1 offline subset: 72.4% vs 15.7% for Haiku 4.5</li><li>Terminal-Bench 4.0: 39.2% vs 0.0% for Haiku 4.5; Sonnet 5.5 still leads at 70.6%</li></ul></li><li class="cat"><span class="cat-label">Also in the launch</span><ul><li>Monthly API credits for Max and Team subscribers ($100-$500 pooled)</li><li>Python/TypeScript SDKs add computer use and browser use in beta</li><li>Available now as claude-haiku-5-5, including AWS, Google Cloud, Azure</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://www.anthropic.com/claude-haiku-5-5" target="_blank" rel="noopener">anthropic.com</a> · Discuss: <a href="https://news.ycombinator.com/item?id=49996437" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">952 pts / 447 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>The thread likes the model and fights about the price table. The 100k-token tier boundary is the sore point: several commenters note agent workloads blow past 100k quickly, so the headline rate applies to exactly the short, classifier-like jobs and not to long agent contexts — with one reading it as a deliberate hedge against dedicated decision/classifier endpoints. Others focus on the jump itself, quoting the near-doubling-plus on knowledge-work scores over Haiku 4.5, and on the Sonnet cache-read cut as the quieter, broader saving. And yes, someone asks where the pelican is.</p>
+</div>
+</article>
+<article class="story" id="story-4" data-story="4" data-source="https://openai.com/index/gpt-6-for-everyone/" data-hn="https://news.ycombinator.com/item?id=49996425" data-metric="690 pts / 401 comments" tabindex="0" aria-label="Story 4: GPT-6 reaches ChatGPT for everyone, with Intelligent UI built into answers">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">GPT-6 reaches ChatGPT for everyone, with Intelligent UI built into answers</h2>
+<p class="exec">OpenAI is rolling GPT-6 out in ChatGPT beyond paid tiers, headlined by Intelligent UI: the model composes answers from text, visuals, and interactive elements — diagrams, charts, tappable controls, small in-chat tools — using a native, streamable component library and a compiler that renders the interface progressively as it generates. OpenAI also says GPT-6 can start answering while still reasoning, and starts web-search answers 44% sooner on average than GPT-5.6 Instant in its internal evaluation.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">Intelligent UI</span><ul><li>Model chooses layout and interactivity per question; plain text when that is best</li><li>Examples: plans with timelines and maps, step-by-step interactive explanations</li><li>In-chat tools on request: calculators, splitters, small games</li></ul></li><li class="cat"><span class="cat-label">Speed claim (OpenAI internal eval)</span><ul><li>Interleaved thinking and answering; no wait for full reasoning to finish</li><li>Web-search answers start 44% sooner on average vs GPT-5.6 Instant</li><li>GPT-6 Extra High starts as fast as GPT-5.6 Medium at a higher score, per OpenAI</li></ul></li><li class="cat"><span class="cat-label">Rollout</span><ul><li>Plus, Pro, Business, Enterprise today; Free and Go from tomorrow</li><li>Powered by GPT-6 Sol (paid) and GPT-6 Luna (Free/Go) in Chat</li><li>Work and Codex models unchanged in this release</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://openai.com/index/gpt-6-for-everyone/" target="_blank" rel="noopener">openai.com</a> · Discuss: <a href="https://news.ycombinator.com/item?id=49996425" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">690 pts / 401 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>Scepticism leads. The first question is whether this is OpenAI catching up to artifact-style interfaces, with the distinction that the UI generation is trained into the model rather than bolted on by a harness. A second group wants the opposite direction: plain, exportable text, and worries interactive answers make an already heavy app heavier and lock output into the chat surface. The sympathetic use cases are concrete — origami, bike assembly, colour and layout choices where a slider beats a paragraph — paired with an unease about outsourcing basic competence to the tool that explains it.</p>
+</div>
+</article>
+<article class="story" id="story-5" data-story="5" data-source="https://bigwords.page/" data-hn="https://news.ycombinator.com/item?id=49994443" data-metric="576 pts / 144 comments" tabindex="0" aria-label="Story 5: Show HN: Bigwords.page — the URL is the sign, no backend, nothing stored">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">Show HN: Bigwords.page — the URL is the sign, no backend, nothing stored</h2>
+<p class="exec">Bigwords.page turns any screen into a full-screen sign, timer, or message, configured entirely in the URL fragment — which browsers never send to a server, so there is no account, no app, and no stored message. Text auto-fits any screen, supports Markdown, rotating slides split by ||, countdowns via &amp;until= or &amp;timer=, and QR codes and images generated locally in the browser. The author built it to put a message on a remotely managed tablet he could not physically reach.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">How it works</span><ul><li>Message lives in the URL fragment; never sent to a server</li><li>All parameters documented, so links can be generated by any tool</li><li>Open source; every use-case card on the homepage is itself a working link</li></ul></li><li class="cat"><span class="cat-label">Features</span><ul><li>Auto-fit text from phone to stadium board, any browser</li><li>Markdown, slides on a timer, countdowns and timers</li><li>QR codes for links, Wi-Fi, calls, texts, email — generated client-side</li></ul></li><li class="cat"><span class="cat-label">Why it matters</span><ul><li>A complete product with zero backend to run, secure, or pay for</li><li>Useful exactly where apps are not: arrivals boards, front desks, conference screens</li><li>The constraint is the feature — share or bookmark the link and you have shared the app</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://bigwords.page/" target="_blank" rel="noopener">bigwords.page</a> · Discuss: <a href="https://news.ycombinator.com/item?id=49994443" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">576 pts / 144 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>Pure Show HN goodwill. The author explains the origin — a kiosk-mode tablet under remote management and no way to change what it displayed — and the thread responds with instant use cases, especially conferences, plus a string of people admitting the same tool has sat on their own todo lists for years. The one-liner that sums up the aesthetic argument: we used to call URL-is-the-app things websites. Nobody is asking for accounts, sync, or a roadmap; the praise is precisely for what is not there.</p>
+</div>
+</article>
+<article class="story" id="story-6" data-story="6" data-source="https://mathstodon.xyz/@tao/117395269325940185" data-hn="https://news.ycombinator.com/item?id=50002008" data-metric="429 pts / 412 comments" tabindex="0" aria-label="Story 6: Tao on &#x27;Math 2.0&#x27;: progress will need valuing more than solved problems">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">Tao on &#x27;Math 2.0&#x27;: progress will need valuing more than solved problems</h2>
+<p class="exec">Terence Tao&#x27;s post, linked via Mastodon, argues that a coming &#x27;Math 2.0&#x27; will need to value mathematical progress more holistically — not only headline solutions to named open problems, but understanding, exposition, and the work of connecting results. It lands the same week as OpenAI&#x27;s large AI maths release, which makes the question concrete: if machines produce proofs faster than humans can absorb them, what should the field reward?</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The argument</span><ul><li>Value progress holistically, not just by problems solved</li><li>Understanding and explanation are part of the progress, not overhead after it</li><li>Posted as the AI maths results (stories 2 and 8) dominate discussion</li></ul></li><li class="cat"><span class="cat-label">The pressure underneath</span><ul><li>Hiring and prestige still track top-tier papers and named results</li><li>AI shifts scarce effort from solving toward verifying and explaining</li><li>Workshops and digestion work need status if they are to get done</li></ul></li><li class="cat"><span class="cat-label">Why it matters</span><ul><li>This is the incentive-design question behind the Mathocalypse argument</li><li>If only solutions count, nobody is rewarded for making solutions usable</li><li>Tao is a member of the advisory circle around the OpenAI release</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://mathstodon.xyz/@tao/117395269325940185" target="_blank" rel="noopener">mathstodon.xyz</a> · Discuss: <a href="https://news.ycombinator.com/item?id=50002008" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">429 pts / 412 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>The thread takes the incentive point seriously and tests it against academic reality: one commenter doubts any hiring committee will stop counting top-tier papers, and sketches departments instead spending grant money on AI access for fewer students. Another line argues the understanding gap is temporary — that if models keep improving, they will also explain their proofs step by step, dissolving the digestion problem Tao is organising around. The sharpest short answer to how you formalise &#x27;interesting&#x27; is a single word: taste. Which is, in effect, Tao&#x27;s point stated from the other side.</p>
+</div>
+</article>
+<article class="story" id="story-7" data-story="7" data-source="https://ascii.rest/" data-hn="https://news.ycombinator.com/item?id=49993857" data-metric="403 pts / 72 comments" tabindex="0" aria-label="Story 7: Animated ASCII art for web pages: a gallery that runs in text">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">Animated ASCII art for web pages: a gallery that runs in text</h2>
+<p class="exec">ascii.rest is a gallery of animated ASCII art scenes for web pages — classic text-mode animation, rendered live in the browser, with the code on GitHub. It is a small, finished, joyful thing: no framework pitch, no monetisation, just scenes that move. For anyone who came up on BBS art or terminal screensavers, the appeal is immediate; the craft is in the timing and character choice, not the tech stack.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">What it is</span><ul><li>Animated ASCII scenes, live in the browser at ascii.rest</li><li>Source on GitHub, linked from the page</li><li>Runs anywhere text renders — the lowest-common-denominator medium</li></ul></li><li class="cat"><span class="cat-label">The lineage</span><ul><li>BBS-era animated ASCII sequences, made by hand over days</li><li>Terminal and SSH-banner art as place-markers for servers</li><li>The demoscene constraint: expression inside a fixed character grid</li></ul></li><li class="cat"><span class="cat-label">Why it matters</span><ul><li>A reminder that constraints, not tooling, produce style</li><li>Zero-asset web art: no images, no video, negligible bandwidth</li><li>Today&#x27;s front page needed one of these</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://ascii.rest/" target="_blank" rel="noopener">ascii.rest</a> · Discuss: <a href="https://news.ycombinator.com/item?id=49993857" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">403 pts / 72 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>A short, warm thread with two useful bug reports: one commenter does not see the pieces animating at all, and another reports rows shuffling in about half the animations — so browser variance is real even for ASCII. The rest is reminiscence with specifics: entire days spent making animated sequences for dial-up BBS boards, ASCII Star Wars, and a smaller cousin project that shows agent activity in Claude Code and Pi terminals. Nobody debates the premise. The verdict is in the first comment: wonderful.</p>
+</div>
+</article>
+<article class="story" id="story-8" data-story="8" data-source="https://scottaaronson.blog/?p=10169" data-hn="https://news.ycombinator.com/item?id=49997718" data-metric="298 pts / 312 comments" tabindex="0" aria-label="Story 8: The Mathocalypse: Aaronson on 372 AI results, including the Unique Games Conjecture">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">The Mathocalypse: Aaronson on 372 AI results, including the Unique Games Conjecture</h2>
+<p class="exec">Scott Aaronson&#x27;s long post works through OpenAI&#x27;s maths release from inside theoretical computer science: among the hundreds of results he lists a claimed proof of the Unique Games Conjecture — a problem his wife Dana Moshkovitz has worked on for her whole career — plus L=BPL, a sub-n log n Fourier/integer-multiplication result, and progress touching several Millennium-adjacent problems. He is clear on the epistemic state: some results carry Lean certificates, and no human yet understands most of the proofs.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">Scale, per Aaronson</span><ul><li>372 results released on the advisory group&#x27;s recommendation</li><li>Model tried ~8,000 problems; roughly 5% solved per attempt, per his sources</li><li>Average ~3 hours of GPT-Pro-level compute per solved problem</li></ul></li><li class="cat"><span class="cat-label">Named in the post</span><ul><li>Unique Games Conjecture, with a Lean certificate</li><li>L=BPL derandomisation result</li><li>Unitary Synthesis Problem solved positively, against most expectations</li></ul></li><li class="cat"><span class="cat-label">The open argument</span><ul><li>OpenAI model: publish raw, let humans race to digest</li><li>Anthropic model, in a parallel case: let the human researchers write it up first</li><li>Cryptography conspicuous by its absence from the list, per his update</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://scottaaronson.blog/?p=10169" target="_blank" rel="noopener">scottaaronson.blog</a> · Discuss: <a href="https://news.ycombinator.com/item?id=49997718" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">298 pts / 312 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>The thread argues about value, not existence. The hardest line says statistically guided brute force that produces no human understanding adds nothing and may harm the field. The counter-line, quoting a professor in-thread, is that PhD problems solvable in 15 minutes by public models turn the defence into a test of understanding rather than of production — which may be the healthier test. A third complaint is aesthetic: several breakthrough bounds beat the old mark by a hair in the exponent, which reads as the machine doing the minimum to win. The teleport-to-the-summit metaphor from the post is the image commenters keep reusing, approvingly and critically at once.</p>
+</div>
+</article>
+<article class="story" id="story-9" data-story="9" data-source="https://100r.ca/site/home.html" data-hn="https://news.ycombinator.com/item?id=49970767" data-metric="289 pts / 103 comments" tabindex="0" aria-label="Story 9: Hundred Rabbits: living and making software off-grid, on a sailboat">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">Hundred Rabbits: living and making software off-grid, on a sailboat</h2>
+<p class="exec">Hundred Rabbits (100R) is the site of Devine and Rek, who live and work aboard the sailboat Pino and build small, durable software — the Uxn ecosystem, the Orca livecoding environment, games like Donsol — under serious power, bandwidth, and hardware constraints. The current log covers a definitive Donsol re-release ten years on, Rabbit Waves pages on pen-and-paper cryptography including one-time pads, and months where internet arrives only from a mountaintop with a laptop.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The setup</span><ul><li>Two people, one sailboat, solar power, intermittent connectivity</li><li>Software designed to run on minimal, repairable hardware</li><li>Monthly public log: software, recipes, book club, boat work</li></ul></li><li class="cat"><span class="cat-label">Recent work in the log</span><ul><li>Donsol definitive edition released on itch.io, playable in browser/Uxn</li><li>Rabbit Waves: pen-and-paper ciphers and one-time pads explainers</li><li>A book, No Bears None, from the Victoria-to-Sitka logbook</li></ul></li><li class="cat"><span class="cat-label">Why it matters</span><ul><li>Constraint-driven design as a working practice, not a pose</li><li>A decade-long existence proof for low-tech, self-reliant computing</li><li>Their tools (Uxn, Orca) are used well beyond the boat</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://100r.ca/site/home.html" target="_blank" rel="noopener">100r.ca</a> · Discuss: <a href="https://news.ycombinator.com/item?id=49970767" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">289 pts / 103 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>Affectionate and brief. Long-time followers check in — some for close to a decade — and point newcomers to the Orca esolang for music composition and to a recent video interview. There is no technical argument to settle; the thread treats the project as a known quantity and a standing rebuke to disposable software: tools built to run forever on almost nothing, by people who have to live with every dependency they accept. Approved, as one commenter puts it, without qualification.</p>
+</div>
+</article>
+<article class="story" id="story-10" data-story="10" data-source="https://github.com/docker/docker-agent" data-hn="https://news.ycombinator.com/item?id=49996259" data-metric="269 pts / 124 comments" tabindex="0" aria-label="Story 10: Docker Agent: build and run agent teams from YAML, as a Docker CLI plugin">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">Docker Agent: build and run agent teams from YAML, as a Docker CLI plugin</h2>
+<p class="exec">Docker Agent is Docker&#x27;s open-source (Apache-2.0) agent builder and runtime: define agents declaratively in YAML with instructions and toolsets — built-in tools plus any MCP server — and run them via the docker agent CLI plugin, pre-installed in Docker Desktop 4.63+. It is provider-agnostic (OpenAI, Anthropic, Gemini, Bedrock, Mistral, xAI, or local Docker Model Runner), supports multi-agent delegation, RAG, and packaging agents as OCI images to share through any registry.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The tool</span><ul><li>docker agent run agent.yaml; also runs agents straight from OCI registries</li><li>YAML config: model, instructions, toolsets; no code required</li><li>Built-in think, todo, and memory tools; RAG with BM25/embeddings/hybrid</li></ul></li><li class="cat"><span class="cat-label">The repo</span><ul><li>Go project, Apache-2.0; ~4,100 stars at fetch time</li><li>262 releases; Docker itself uses it to build itself, per the README</li><li>Sandbox documentation lives under the docs site, not the repo front page</li></ul></li><li class="cat"><span class="cat-label">Why it matters</span><ul><li>Distribution is the pitch: agents as OCI artifacts, Docker&#x27;s home turf</li><li>Provider-agnostic runtimes are commoditising fast — differentiation moves to packaging and trust</li><li>Another major-vendor harness entering a crowded field</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://github.com/docker/docker-agent" target="_blank" rel="noopener">github.com</a> · Discuss: <a href="https://news.ycombinator.com/item?id=49996259" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">269 pts / 124 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>The thread is sceptical in a specific way: agent harnesses are compared to JavaScript frameworks in their proliferation era — every vendor has one, and coolness is not a moat. The pointed questions are what this has to do with Docker beyond branding, where the sandboxing story is (one commenter supplies the docs link the repo page lacks), and why you would choose it over existing sandboxed agent platforms with network-level isolation. Defenders are thin on the ground in the top comments; the burden of proof, HN has decided, sits with the harness number fifty.</p>
+</div>
+</article>
+    </ol>
+
+    <div class="shortcut-bar" aria-label="Keyboard shortcuts">
+      <span><kbd>J</kbd> next story</span>
+      <span><kbd>K</kbd> previous story</span>
+      <span><kbd>T</kbd> theme</span>
+    </div>
+
+    <footer class="page-footer">
+      <div class="footer-links"><a href="../">← Daily archive</a><a href="https://tk3369.github.io/hn-daily/" target="_blank" rel="noopener">Published archive ↗</a></div>
+      <span>Thursday 2026-10-08 · 10 stories</span>
+    </footer>
+  </main>
+  <div class="toast" role="status" aria-live="polite"></div>
+  <script>
+(() => {
+  const root = document.documentElement;
+  const toggle = document.getElementById('theme-toggle');
+  const entries = [...document.querySelectorAll('[data-story]')];
+  function storedTheme() { try { const t = localStorage.getItem('hn-daily-theme'); return t === 'dark' || t === 'light' ? t : null; } catch (_) { return null; } }
+  function preferredTheme() { return matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'; }
+  function currentTheme() { const a = root.dataset.theme; if (a === 'dark' || a === 'light') return a; return storedTheme() || preferredTheme(); }
+  function setTheme(theme) { const next = theme === 'dark' ? 'dark' : 'light'; const opposite = next === 'dark' ? 'Light' : 'Dark';
+    if (root.dataset.theme !== next) root.dataset.theme = next;
+    toggle.querySelector('.theme-text').textContent = opposite;
+    toggle.setAttribute('aria-label', `Switch to ${opposite} theme (T)`); toggle.title = `Switch to ${opposite} theme (T)`;
+    try { localStorage.setItem('hn-daily-theme', next); } catch (_) {} }
+  function flipTheme() { setTheme(currentTheme() === 'dark' ? 'light' : 'dark'); }
+  setTheme(storedTheme() || preferredTheme());
+  toggle.addEventListener('click', flipTheme);
+  const toast = document.querySelector('.toast'); let toastTimer;
+  function showToast(msg) { toast.textContent = msg; toast.classList.add('show'); clearTimeout(toastTimer); toastTimer = setTimeout(() => toast.classList.remove('show'), 1800); }
+  document.querySelectorAll('.copy-button').forEach((button) => {
+    button.addEventListener('click', async () => {
+      const story = button.closest('.story');
+      const n = story.dataset.story;
+      const tagline = story.querySelector('.tagline').textContent.trim();
+      const execSum = story.querySelector('.exec').textContent.trim();
+      const bullets = [...story.querySelectorAll('.cat-lists .cat')].map(li => {
+        const label = li.querySelector('.cat-label').textContent.trim();
+        const pts = [...li.querySelectorAll('ul li')].map(p => '  \u2022 ' + p.textContent.trim()).join('\n');
+        return '- ' + label + ':\n' + pts;
+      }).join('\n');
+      const link = 'https://tk3369.github.io/hn-daily/2026-10-08/#story-' + n;
+      const text = n + '. ' + tagline + '\n\n' + execSum + '\n' + bullets + '\n\n' + link;
+      try { await navigator.clipboard.writeText(text); button.textContent = 'Copied'; showToast('Story ' + n + ' copied for Threads'); setTimeout(() => { button.textContent = 'Copy for Threads'; }, 1600); }
+      catch (_) { showToast('Copy was blocked by this browser'); }
+    });
+  });
+  document.addEventListener('keydown', (event) => {
+    if (event.metaKey || event.ctrlKey || event.altKey || event.shiftKey) return;
+    const tag = event.target.tagName;
+    if (tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT') return;
+    const key = event.key.toLowerCase();
+    if (key === 't') { event.preventDefault(); flipTheme(); }
+    else if ((key === 'j' || key === 'k') && entries.length) {
+      event.preventDefault();
+      const active = entries.indexOf(document.activeElement);
+      const delta = key === 'j' ? 1 : -1;
+      const next = active < 0 ? (key === 'j' ? 0 : entries.length - 1) : Math.max(0, Math.min(entries.length - 1, active + 1 * delta));
+      entries[next].focus();
+    }
+  });
+})();
+  </script>
+</body>
+</html>
