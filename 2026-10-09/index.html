@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="color-scheme" content="light dark" />
+  <link rel="icon" href="data:," />
+  <title>HN Daily — Friday 2026-10-09</title>
+  <style>
+:root { --page:#f1eadb; --paper:#fffaf0; --ink:#20201c; --muted:#6f695f; --hairline:#d9cebc; --accent:#ff5a1f; --comment:#f6efe3; --shadow:0 2px 0 rgba(57,45,25,.08),0 14px 36px rgba(57,45,25,.06); --serif:Georgia,"Times New Roman",serif; --sans:ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; --mono:"SFMono-Regular",Consolas,"Liberation Mono",monospace; }
+html[data-theme="dark"] { --page:#111312; --paper:#191c1a; --ink:#f1eee6; --muted:#aba69b; --hairline:#393b36; --accent:#ff7139; --comment:#222520; --shadow:0 2px 0 rgba(0,0,0,.22),0 18px 42px rgba(0,0,0,.22); }
+* { box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body { margin:0; min-width:280px; color:var(--ink); background:var(--page); font-family:var(--sans); line-height:1.55; -webkit-font-smoothing:antialiased; }
+a { color:inherit; text-underline-offset:3px; text-decoration-thickness:1px; }
+a:hover { color:var(--accent); }
+button,a { -webkit-tap-highlight-color:transparent; }
+button { font:inherit; }
+a:focus-visible,button:focus-visible { outline:3px solid var(--accent); outline-offset:3px; }
+.page { width:min(1080px,calc(100% - 36px)); margin:0 auto; padding:28px 0 72px; }
+.issue-header { display:grid; grid-template-columns:1fr auto; gap:24px; align-items:end; padding:8px 0 26px; border-bottom:3px solid var(--ink); }
+.edition { margin:0 0 9px; color:var(--accent); font:700 12px/1.3 var(--mono); letter-spacing:.09em; text-transform:uppercase; }
+.archive-nav { display:flex; flex-wrap:wrap; gap:8px 20px; margin-bottom:16px; font:700 12px/1 var(--mono); }
+.archive-nav a { min-height:36px; display:inline-flex; align-items:center; color:var(--muted); }
+.archive-nav a:hover { color:var(--accent); }
+h1 { max-width:820px; margin:0; font:700 clamp(34px,5.5vw,62px)/.98 var(--serif); letter-spacing:-.038em; }
+.deck { max-width:730px; margin:17px 0 0; color:var(--muted); font:17px/1.55 var(--sans); }
+.theme-toggle { align-self:start; min-width:86px; min-height:40px; padding:9px 13px; border:1px solid var(--hairline); border-radius:4px; color:var(--ink); background:var(--paper); cursor:pointer; font:700 12px/1 var(--mono); display:inline-flex; align-items:center; gap:8px; }
+.theme-toggle:hover { border-color:var(--accent); color:var(--accent); }
+.theme-dot { width:10px; height:10px; border-radius:50%; background:var(--accent); display:inline-block; flex-shrink:0; }
+.theme-text { line-height:1; }
+.story-list { display:grid; gap:20px; list-style:none; margin:26px 0 0; padding:0; counter-reset:story; }
+.story { counter-increment:story; display:grid; grid-template-columns:72px minmax(0,1fr); gap:26px; padding:26px 30px 28px; background:var(--paper); border-top:4px solid var(--ink); box-shadow:var(--shadow); scroll-margin-top:24px; }
+.story-number { color:var(--accent); font:900 22px/1 var(--mono); letter-spacing:-.04em; padding-top:6px; }
+.story-number::before { content:counter(story,decimal-leading-zero); }
+.tagline { margin:0; max-width:840px; font:700 clamp(24px,3vw,36px)/1.1 var(--serif); letter-spacing:-.028em; }
+.exec { margin:14px 0 0; max-width:840px; font:17px/1.58 var(--sans); }
+.cat-lists { margin:14px 0 0; padding:0; list-style:none; display:grid; gap:10px; max-width:840px; }
+.cat-lists li.cat { font:15px/1.6 var(--sans); }
+.cat-lists .cat-label { font:700 12px/1.6 var(--mono); letter-spacing:.06em; text-transform:uppercase; color:var(--accent); }
+.cat-lists ul { margin:4px 0 0; padding-left:20px; }
+.cat-lists ul li { margin:3px 0; }
+.meta-line { margin:16px 0 0; color:var(--muted); font:700 12px/1.9 var(--mono); overflow-wrap:anywhere; }
+.meta-line a { color:var(--ink); font-weight:800; }
+.meta-line .metrics { color:var(--ink); white-space:nowrap; }
+.story-bar { display:flex; align-items:flex-start; gap:14px; margin-top:4px; }
+.copy-button { flex:0 0 auto; align-self:flex-start; min-height:36px; padding:9px 12px; border:1px solid var(--hairline); border-radius:4px; background:var(--paper); color:var(--ink); cursor:pointer; font:700 12px/1 var(--mono); }
+.copy-button:hover { border-color:var(--accent); color:var(--accent); }
+.hn-comments { margin:18px 0 0; padding:14px 18px; background:var(--comment); border:1px solid var(--hairline); font:15px/1.62 var(--serif); color:var(--ink); }
+.hn-comments strong { font:700 12px/1.6 var(--mono); color:var(--accent); display:block; margin-bottom:6px; }
+.page-footer { display:flex; justify-content:space-between; flex-wrap:wrap; gap:14px; margin-top:64px; padding-top:12px; border-top:1px solid var(--hairline); color:var(--muted); font:12px/1.6 var(--mono); }
+.footer-links { display:flex; flex-wrap:wrap; gap:8px 20px; }
+.footer-links a { min-height:36px; display:inline-flex; align-items:center; color:var(--ink); font-weight:800; }
+.footer-links a:hover { color:var(--accent); }
+.shortcut-bar { display:flex; flex-wrap:wrap; gap:18px; margin-top:28px; color:var(--muted); font:11px/1.5 var(--mono); }
+kbd { display:inline-grid; place-items:center; min-width:22px; height:22px; margin-right:6px; padding:0 6px; border:1px solid var(--hairline); border-bottom-width:2px; border-radius:3px; background:var(--comment); color:var(--ink); font:inherit; font-weight:700; }
+.toast { position:fixed; right:max(18px,env(safe-area-inset-right)); bottom:max(18px,env(safe-area-inset-bottom)); z-index:10; padding:11px 14px; color:var(--paper); background:var(--ink); border:1px solid var(--ink); font:700 12px/1 var(--mono); opacity:0; transform:translateY(8px); pointer-events:none; transition:opacity 160ms ease,transform 160ms ease; }
+.toast.show { opacity:1; transform:translateY(0); }
+@media (max-width:760px) {
+  .page { width:min(100% - 22px,1080px); padding-top:16px; }
+  .issue-header { grid-template-columns:1fr auto; gap:12px; padding-bottom:20px; }
+  h1 { font-size:clamp(34px,10vw,48px); }
+  .deck { grid-column:1 / -1; margin-top:3px; font-size:15px; }
+  .theme-toggle { grid-column:2; grid-row:1; min-width:72px; }
+  .story { grid-template-columns:44px minmax(0,1fr); gap:14px; padding:20px 18px 22px; }
+  .story-number { font-size:16px; padding-top:4px; }
+  .story-bar { flex-direction:column; align-items:stretch; }
+  .copy-button { align-self:flex-start; }
+  .page-footer { display:block; }
+}
+@media (max-width:420px) {
+  .page { width:calc(100% - 16px); }
+  .story { grid-template-columns:1fr; gap:8px; padding:20px 16px 22px; }
+  .story-number { padding-top:0; }
+  .copy-button { width:100%; }
+}
+@media (prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } *,*::before,*::after { transition:none !important; } }
+@media print { :root { --page:#fff;--paper:#fff;--ink:#000;--muted:#444;--hairline:#bbb;--comment:#f5f5f5;--shadow:none; } .page{width:100%;padding:0}.theme-toggle,.copy-button,.toast,.shortcut-bar{display:none}.story{break-inside:avoid;box-shadow:none} }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="issue-header">
+      <div>
+        <nav class="archive-nav" aria-label="HN Daily archive links"><a href="../">← Archive</a><a href="https://tk3369.github.io/hn-daily/" target="_blank" rel="noopener">Published archive ↗</a></nav>
+        <p class="edition"><time datetime="2026-10-09">2026-10-09</time> · Daily brief · Pacific time</p>
+        <h1>HN Daily</h1>
+        <p class="deck">Direct, low-fluff top 10 from Hacker News, daily at 7am PT — hottest by points</p>
+      </div>
+      <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch color theme" title="Toggle theme (T)"><span class="theme-dot" aria-hidden="true"></span><span class="theme-text">Dark</span></button>
+    </header>
+
+    <ol class="story-list" aria-label="Top 10 Hacker News stories">
+<article class="story" id="story-1" data-story="1" data-source="https://www.dgt.is/blog/2026-10-07-deepseek-freek-out/" data-hn="https://news.ycombinator.com/item?id=50000488" data-metric="888 pts / 799 comments" tabindex="0" aria-label="Story 1: DeepSeek 4.1 Flash feels like a frontier model at a fraction of the cost — so why isn&#x27;t the industry freaking out?">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">DeepSeek 4.1 Flash feels like a frontier model at a fraction of the cost — so why isn&#x27;t the industry freaking out?</h2>
+<p class="exec">After a month of heavy use across a dozen projects, the author says he cannot tell mid-session whether he is on DeepSeek 4.1 Flash or Opus: same quality of conversation and work, at orders of magnitude lower cost. His claim is that &#x27;good enough&#x27; has already arrived for high-quality unattended work, and the frontier labs&#x27; pricing — not their quality lead of a month or two — is the exposed flank.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The cost claim (author-reported)</span><ul><li>OpenCode Go subscription at $10/month makes DeepSeek effectively unlimited for him</li><li>Sessions rarely exceed $1 in expected costs, even all-day sessions</li><li>Opus 5.5 pulled in only for a final code review; DeepSeek then executes the fixes</li></ul></li><li class="cat"><span class="cat-label">The mechanism he credits</span><ul><li>DeepSeek shrank the KV cache by roughly 437x compared with its V1 model, per the post</li><li>Holding that cache in GPU memory is one of the biggest costs of long coding sessions</li><li>He argues the same cache efficiency quietly powered Opus 5.5&#x27;s own efficiency boost</li></ul></li><li class="cat"><span class="cat-label">Why it matters</span><ul><li>If a distilled open model is indistinguishable in daily work, the moat is distribution and habit, not capability</li><li>Cheap inference changes behaviour: exploratory and &#x27;mindless&#x27; tasks become free to run</li><li>He frames it as sustainability and access, not nickel-and-diming: he holds frontier subscriptions through work</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://www.dgt.is/blog/2026-10-07-deepseek-freek-out/" target="_blank" rel="noopener">dgt.is</a> · Discuss: <a href="https://news.ycombinator.com/item?id=50000488" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">888 pts / 799 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>The top thread barely discusses the model: it argues that the industry IS freaking out about open weights — pointing to repeated calls to pace the frontier and prominent retired politicians now making the dangers case — and then fights over whether labs in a Nash equilibrium can unilaterally slow down without destroying themselves. The hands-on comments split cleanly: several report a good time on 4.1 Flash, one links a bake-off where Opus 5.5 scores 99/100 against Flash&#x27;s 72/100 on coding at similar cost, and one long report says Flash matched a frontier model on an architecture task where the expensive model exhausted most of its quota and found nothing more. Awareness lag and enterprise slowness get named as the boring explanation.</p>
+</div>
+</article>
+<article class="story" id="story-2" data-story="2" data-source="https://cactuscompute.com/blog/whistle" data-hn="https://news.ycombinator.com/item?id=50008427" data-metric="824 pts / 167 comments" tabindex="0" aria-label="Story 2: Whistle: open speech-to-text in a single 16.9 MB file, first token in 11 ms, fully on-device">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">Whistle: open speech-to-text in a single 16.9 MB file, first token in 11 ms, fully on-device</h2>
+<p class="exec">Cactus releases Whistle, an open speech recognition model that ships as one 16.9 MB file, runs on CPU with no dependencies, and loads into the same C++ engine as its Needle model — so a clip can go straight from audio to tool calls in one binary. It transcribes up to 30 seconds of 16 kHz mono audio in seven languages, returns word-level timestamps, and can also emit speech embeddings without decoding a transcript.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The spec</span><ul><li>16.9 MB single file; CPU only; no dependencies; runs in a browser tab in the sandbox demo</li><li>English, German, French, Spanish, Italian, Dutch, Polish; language auto-detected unless specified</li><li>First token in 11 ms; audio never leaves the device</li></ul></li><li class="cat"><span class="cat-label">Benchmarks (Cactus-reported WER, lower is better)</span><ul><li>Ahead of Whisper base on LibriSpeech test-clean and test-other, SPGISpeech, Earnings-22, and the FLEURS average</li><li>Whisper base still ahead on TED-LIUM, AMI, and the MLS average</li><li>Moonshine tiny v2 is the other comparator; it is English-only</li></ul></li><li class="cat"><span class="cat-label">Why it matters</span><ul><li>Speech input for mobiles, wearables, robots, smart home and microcontrollers without a cloud round-trip</li><li>Shares blocks and code with Needle rather than duplicating them — one engine, two models</li><li>Silence handling is built in: quiet clips return an empty transcript without entering beam search</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://cactuscompute.com/blog/whistle" target="_blank" rel="noopener">cactuscompute.com</a> · Discuss: <a href="https://news.ycombinator.com/item?id=50008427" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">824 pts / 167 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>The most useful comment is a field report with numbers: one user replaced a 1.7B-parameter ASR model on an RTX 5080 with Whistle to take over an Echo Show, and free-form transcription was poor — 70 of 170 messages correct against the big model&#x27;s 168. But constrained to a fixed set of command templates, the same setup scored 206 of 208 phrases, beating Vosk small with a phrase grammar (184/208) and Kaldi Speech-to-Phrase (118/208) in his follow-up tests. The thread&#x27;s conclusion is that structure beats raw model size for command-and-control: grammar-constrained recognition is an old idea (CMU Sphinx and JSGF get name-checked) coming back because the use case never actually wanted free-form text.</p>
+</div>
+</article>
+<article class="story" id="story-3" data-story="3" data-source="https://www.dexerto.com/entertainment/man-discovers-his-parents-coffee-machine-used-1tb-of-data-in-10-days-3416399/" data-hn="https://news.ycombinator.com/item?id=49995495" data-metric="796 pts / 484 comments" tabindex="0" aria-label="Story 3: A parents&#x27; smart coffee machine generated 1 TB of traffic in 10 days — and saturated the home Wi-Fi">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">A parents&#x27; smart coffee machine generated 1 TB of traffic in 10 days — and saturated the home Wi-Fi</h2>
+<p class="exec">A man checking his parents&#x27; network found their smart Keurig had generated 1 TB of traffic in 10 days. His follow-up investigation — he has worked in IT for over a decade — found most of the traffic stayed inside the home network rather than going out over the internet, but it saturated the wireless access point. He calls it likely a bug in this unit, unplugged the machine, and is buying his parents a new coffee maker.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">What happened</span><ul><li>1 TB of traffic in 10 days from a single coffee machine, per the owner&#x27;s network logs</li><li>Most traffic was local-network, not uplink — the harm was a saturated access point</li><li>Owner&#x27;s verdict, via Dexerto: &#x27;This is likely a bug with this unit&#x27;</li></ul></li><li class="cat"><span class="cat-label">The reaction</span><ul><li>Machine unplugged immediately; replacement coffee maker planned</li><li>The post went viral on X before the LAN detail was widely understood</li><li>Headline number is traffic generated, not data uploaded to Keurig</li></ul></li><li class="cat"><span class="cat-label">Why it matters</span><ul><li>A single misbehaving IoT device can degrade a whole home network without sending anything to the cloud</li><li>You cannot see this without per-device traffic visibility on the home network</li><li>The fix available to a normal household is the plug — there is no patch channel to wait for</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://www.dexerto.com/entertainment/man-discovers-his-parents-coffee-machine-used-1tb-of-data-in-10-days-3416399/" target="_blank" rel="noopener">dexerto.com</a> · Discuss: <a href="https://news.ycombinator.com/item?id=49995495" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">796 pts / 484 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>Two camps. The first trades war stories: a Midea air conditioner hammering a router every second while trying to join a Wi-Fi network it was never told about, a TV that racked up a million blocked DNS queries in a week, malware found on a router itself via NextDNS logs. The practical consensus is a dedicated IoT VLAN or SSID, per-device traffic monitoring, and never assuming malice when a retry loop explains it — several devices in the thread query their update servers every 15 seconds forever. A second camp insists, citing the original X thread, that the traffic was metadata-scanning tied to data collection for advertisers; that claim is commenter-asserted and goes beyond what the Dexerto report confirms, which is local traffic and a likely bug. The meme of the thread: the tech worker&#x27;s house contains one 2004 printer and a loaded gun next to it in case it makes a noise.</p>
+</div>
+</article>
+<article class="story" id="story-4" data-story="4" data-source="https://antonfrolov.substack.com/p/i-hired-an-illustrator-to-draw-my" data-hn="https://news.ycombinator.com/item?id=49986882" data-metric="741 pts / 156 comments" tabindex="0" aria-label="Story 4: He hired an illustrator to draw his house — now the drawing is his Home Assistant dashboard">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">He hired an illustrator to draw his house — now the drawing is his Home Assistant dashboard</h2>
+<p class="exec">Anton Frolov&#x27;s family would not use the Home Assistant app, so he commissioned an environment artist to illustrate his house, floor by floor, and built the dashboard on the artwork: the fireplace flickers, the garden glows, the bedroom AC blows — in the picture and in the house. Under the hood it is one stock Home Assistant card, picture-elements, with the illustration as background and each device layered on top in its exact position.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The brief that made it work</span><ul><li>PNGs with transparency (WebP for animations); a day and a night version of every floor</li><li>Every device on its own layer: a still for &#x27;off&#x27;, a short loop (eight frames was plenty) for &#x27;on&#x27;, in both lightings</li><li>Everything exported on one shared canvas at full size, each piece in place — the rule he says saves days of alignment</li></ul></li><li class="cat"><span class="cat-label">The build</span><ul><li>Stock picture-elements card; state_image swaps stills for animated WebP per device state</li><li>Day/night switched by a helper flipped by a sunrise/sunset automation</li><li>Garden ended up with three versions: day, night, night with lights on</li></ul></li><li class="cat"><span class="cat-label">Why it matters</span><ul><li>The artwork was the project: finding the artist and writing the brief was most of the work, not code</li><li>The real problem was adoption — a dashboard the whole family enjoys beats a correct one nobody opens</li><li>Automations already handled the rest; this solved the few things that still need a human tap</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://antonfrolov.substack.com/p/i-hired-an-illustrator-to-draw-my" target="_blank" rel="noopener">antonfrolov.substack.com</a> · Discuss: <a href="https://news.ycombinator.com/item?id=49986882" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">741 pts / 156 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>The thread&#x27;s one real argument is about credit, not tech: the top comment links the illustrator&#x27;s portfolio and says that if you write a whole article about an artist&#x27;s work, the credit belongs prominently in the writing, not at the bottom. Others reply the credit was there from the start — a Wayback check confirms it — and the exchange curdles into a side-fight about paying artists at all. The appreciative majority focuses on the craft lesson: the shared-canvas export rule and per-device layers are the difference between a charming idea and a weekend of misery, and several people file it as the first dashboard design their own households might tolerate.</p>
+</div>
+</article>
+<article class="story" id="story-5" data-story="5" data-source="https://htmx.org/essays/yes-and/" data-hn="https://news.ycombinator.com/item?id=50003796" data-metric="557 pts / 203 comments" tabindex="0" aria-label="Story 5: &#x27;Yes, and…&#x27; — htmx&#x27;s Carson Gross tells would-be programmers to learn the trade, and to write the code themselves">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">&#x27;Yes, and…&#x27; — htmx&#x27;s Carson Gross tells would-be programmers to learn the trade, and to write the code themselves</h2>
+<p class="exec">Carson Gross, who teaches computer science at Montana State, answers the question he now gets constantly — should I still become a programmer, given AI? — with &#x27;Yes, and…&#x27;. Programming is problem-solving with computers plus controlling the complexity of the solution, and he cannot imagine that getting less valuable. The &#x27;and&#x27; is a warning aimed at juniors: AI can generate the code for the assignment, and letting it do so robs you of the understanding that only comes from writing it.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The core argument</span><ul><li>If you don&#x27;t write code, you won&#x27;t learn to read code — and reading code is the skill the AI era raises in value</li><li>Unread generated code is the Sorcerer&#x27;s Apprentice trap: systems you don&#x27;t understand and can&#x27;t control</li><li>AI used as a teaching assistant, not a generator, is &#x27;a tremendously effective TA&#x27;</li></ul></li><li class="cat"><span class="cat-label">The analogy he rejects</span><ul><li>Prompting is not assembly-to-high-level-languages: compilers are deterministic, LLM output is not</li><li>High-level languages removed accidental complexity; LLM code often adds it back — wrong approaches, shortcuts</li><li>You can only tell the difference if you can read the code</li></ul></li><li class="cat"><span class="cat-label">Why it matters</span><ul><li>The risk is concentrated on juniors: seniors already have the visceral understanding generation skips</li><li>The career advice is conditional, not nostalgic — the value is in judgement built by doing</li><li>An htmx essay, so the minimalism is on brand: the tool is fine, the abdication is not</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://htmx.org/essays/yes-and/" target="_blank" rel="noopener">htmx.org</a> · Discuss: <a href="https://news.ycombinator.com/item?id=50003796" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">557 pts / 203 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>The pushback is a single strong analogy: the Persian rug. &#x27;Master, should I still learn to weave by hand?&#x27; — every pre-industrial craft made the same quality argument against the machine, and mostly lost; one reply notes even ultra-premium projects now use machine-made rugs with a handmade centrepiece. The counter-thread argues software is not zero-sum like rugs: cheaper creation means far more custom software for smaller groups, built by people who still need to verify it does what it claims. A working detail from a tiny non-tech company: the small useful tools AI now makes trivial would previously have needed a contractor, coordination, and QA overhead out of proportion to the job. Nobody in the thread disputes the junior warning itself.</p>
+</div>
+</article>
+<article class="story" id="story-6" data-story="6" data-source="https://www.theranos.world/" data-hn="https://news.ycombinator.com/item?id=50009295" data-metric="492 pts / 176 comments" tabindex="0" aria-label="Story 6: Theranos.world: Elizabeth Holmes&#x27;s desktop and inbox, rebuilt as a browsable interactive site">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">Theranos.world: Elizabeth Holmes&#x27;s desktop and inbox, rebuilt as a browsable interactive site</h2>
+<p class="exec">Theranos.world recreates a Mac desktop — Finder menus, a mailbox, documents, spreadsheets — and lets you log in as Elizabeth Holmes with no password and read. Behind the period-perfect UI sits Theranos&#x27;s internal correspondence: the emails and messages that documented the fraud from inside, presented as the machine she would have read them on.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">What is on the desk</span><ul><li>A simulated period macOS desktop: Finder, Mailbox, documents, Keynote and spreadsheets</li><li>&#x27;Click Log In or press Return. No password is required.&#x27;</li><li>Internal email threads, including the whistleblower exchanges commenters excavate (see below)</li></ul></li><li class="cat"><span class="cat-label">What readers found inside</span><ul><li>Per commenters: all of Tyler Schultz&#x27;s exchanges with Holmes amount to about four, all on one day — 4/11/2014</li><li>Sunny Balwani&#x27;s reply to Schultz&#x27;s concerned email, quoted at length in the thread, attacks his &#x27;tone&#x27; and &#x27;higher perch of morality&#x27;</li><li>Holmes and Balwani suspecting Schultz and the CLIA lab director of plotting, while regulators simply did the work</li></ul></li><li class="cat"><span class="cat-label">Why it matters</span><ul><li>Primary-source fraud documents presented as an experience, not a PDF dump — and readers are actually reading them</li><li>Commenters connect the site to a documentary launch; the polish is the distribution strategy</li><li>It is also a nostalgia hit: multiple comments mourn how good the old Mac UI feels next to today&#x27;s</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://www.theranos.world/" target="_blank" rel="noopener">theranos.world</a> · Discuss: <a href="https://news.ycombinator.com/item?id=50009295" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">492 pts / 176 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>Two threads in one. The surface thread is craft praise — &#x27;super slick&#x27;, the email working inside the simulated iPhone gets singled out, an anti-advertising commenter concedes that if promotion has to exist it should look like this — plus one bug report: the page crashes instantly in Safari on iOS on an iPhone 13. The deeper thread treats it as an archive and goes digging: how did Holmes and Balwani fool experts inside their own company for so long (answers: micro-tasked work, suspicion as management tool, NDAs and money), and what the Schultz exchange shows about how a sincere internal warning gets reframed as arrogance. Several readers who came for the gimmick stayed for Bad Blood in primary sources.</p>
+</div>
+</article>
+<article class="story" id="story-7" data-story="7" data-source="https://twitter.com/danintheory/status/2108065033070789090" data-hn="https://news.ycombinator.com/item?id=50002650" data-metric="350 pts / 591 comments" tabindex="0" aria-label="Story 7: OpenAI withdraws three of its maths results and adds six Lean formalisations — repo now ~42% formalised">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">OpenAI withdraws three of its maths results and adds six Lean formalisations — repo now ~42% formalised</h2>
+<p class="exec">Two days after the release that dominated yesterday&#x27;s front page, OpenAI updated its public maths repo: six new Lean formalisations, 19 modifications, and three withdrawals. Per a reply quoting the repo history, the withdrawn manuscripts are the algebraicity of Weil classes on split abelian eightfolds, algebraicity of Kuga–Satake correspondences for K3 surfaces, and the rational Hodge conjecture for products of K3 surfaces. OpenAI says updates and errata will continue.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The update (Dan Roberts, OpenAI, on X)</span><ul><li>6 new Lean formalizations, 19 modifications, 3 withdrawals</li><li>Repo now has ~42% of top-line results formalized</li><li>&#x27;We will continue to update the repo with new formalizations and with any errata we notice&#x27;</li></ul></li><li class="cat"><span class="cat-label">The withdrawn three</span><ul><li>Algebraicity of Weil classes on split abelian eightfolds</li><li>Algebraicity of Kuga–Satake correspondences for K3 surfaces</li><li>The rational Hodge conjecture for products of K3 surfaces</li></ul></li><li class="cat"><span class="cat-label">Why it matters</span><ul><li>Follow-through on yesterday&#x27;s story: the open-repo format is exactly what makes a withdrawal visible and cheap</li><li>The errata arrived in two days — the &#x27;proofs shipping like software&#x27; model, with the same obvious question attached</li><li>Formalised share is now a stated, trackable number: ~42% and rising, per OpenAI</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://twitter.com/danintheory/status/2108065033070789090" target="_blank" rel="noopener">twitter.com</a> · Discuss: <a href="https://news.ycombinator.com/item?id=50002650" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">350 pts / 591 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>More comments than points — the argument is the story. The first question is why verified and unverified results were mixed in one release at all, with a concrete proposal: publish in two parts, Lean-verified separately from promising-but-unchecked. The sharpest technical thread argues that under a fixed ~3.5-hour compute budget per result, having a Lean proof can actually signal a weaker result: Mathlib has gaps in basic theories, formalisation steps are small and labour-intensive, so effort spent formalising is effort not spent exploring — and a result Lean can state at all is bounded by what the library can express. The rebuttal clarifies the claim is about likely depth, not correctness: a Lean proof assures you proved something, but only a human reading the definitions knows whether that something is the theorem you wanted. &#x27;Why did you not check these before releasing them?&#x27; is the blunt version, asked on X and echoed on HN.</p>
+</div>
+</article>
+<article class="story" id="story-8" data-story="8" data-source="https://vale.rocks/posts/dvd-menus" data-hn="https://news.ycombinator.com/item?id=50005527" data-metric="322 pts / 168 comments" tabindex="0" aria-label="Story 8: Beauty in DVD menus: the design era that streaming quietly threw away">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">Beauty in DVD menus: the design era that streaming quietly threw away</h2>
+<p class="exec">Vale&#x27;s essay is a close look at DVD menus as a design medium: once a headline selling point in the post-VHS market, then a canvas for custom animation, diegetic interfaces, and hidden content packed into every spare sector. It gets technical fast — 720×480 NTSC and 720×576 PAL, storage versus display aspect ratios, and the 4:3 safe area that menu designers kept respecting long after 16:9 displays took over.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The format constraints</span><ul><li>NTSC 720×480, PAL 720×576, traced to the D-1 standard and Rec. 601 from 1982</li><li>Disc stores one ratio, metadata stretches it to another: SAR vs DAR/PAR</li><li>Critical menu content stayed inside the 4:3 safe area even on widescreen-era releases</li></ul></li><li class="cat"><span class="cat-label">The craft</span><ul><li>Standard kit: play, chapter select, extras, settings — at the simplest, a list over a still</li><li>At the decadent end: full custom animation, in-world diegetic menus, easter eggs</li><li>Early releases often had no menu at all; the menu era tracks the format&#x27;s 2000s stride</li></ul></li><li class="cat"><span class="cat-label">Why it matters</span><ul><li>Menus were authored per-title by people who cared; streaming replaced them with one generic chrome for everything</li><li>A fixed, known playback target let designers push a constrained medium to a finished polish</li><li>The essay runs 2,096 words with the receipts — resolution tables, not just nostalgia</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://vale.rocks/posts/dvd-menus" target="_blank" rel="noopener">vale.rocks</a> · Discuss: <a href="https://news.ycombinator.com/item?id=50005527" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">322 pts / 168 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>Nostalgia, but specific. Commenters name their artefacts: the original Blade DVD&#x27;s alternate ending as a first-menu mind-blow, the Matrix dual-layer disc&#x27;s &#x27;follow the white rabbit&#x27; hidden mode that made pirate copies a reams-of-guides problem, the LotR extended editions whose commentary and extras carried one commenter through a week of sleeping upright with a wrecked shoulder. The dissent is honest: several prefer discs that just start the movie, note that Matroska supports much of the same feature set with no player implementing it, and read today&#x27;s bare menus as revealed preference, not decline. Director commentaries and deleted scenes get defended as genuinely new in their era — there was no YouTube to absorb that demand.</p>
+</div>
+</article>
+<article class="story" id="story-9" data-story="9" data-source="https://news.ycombinator.com/item?id=49985548" data-hn="https://news.ycombinator.com/item?id=49985548" data-metric="294 pts / 469 comments" tabindex="0" aria-label="Story 9: Ask HN: what do you run on a $5 VPS that&#x27;s worth keeping online 24/7?">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">Ask HN: what do you run on a $5 VPS that&#x27;s worth keeping online 24/7?</h2>
+<p class="exec">An Ask HN with no link and 469 answers: what earns a permanent slot on a cheap VPS? The recurring pattern is boring infrastructure with personal stakes — a VPN endpoint, the family mail server, authoritative DNS, a handful of static sites — plus the self-hosted services people no longer trust to rented platforms. Several answers are really about the exit: workloads that moved home once a proper home server existed.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The staples</span><ul><li>WireGuard or a self-built VPN image, deployable in any region</li><li>Family IMAP/mail with per-service aliases — spam to an alias names the site that leaked it</li><li>Authoritative DNS, static sites behind nginx, Git mirrors &#x27;in case GitHub goes down or closes my account&#x27;</li></ul></li><li class="cat"><span class="cat-label">The self-hosted kit</span><ul><li>Vaultwarden for the family&#x27;s passwords, Filestash as a Drive replacement, a container registry on S3-compatible storage</li><li>Jellyfin, Immich and Gitea — often on a home server, with the VPS or Tailscale as the way in</li><li>RabbitMQ/BullMQ queues kept on their own images &#x27;so they recover fast&#x27;</li></ul></li><li class="cat"><span class="cat-label">Why it matters</span><ul><li>The $5 tier is the unit of personal infrastructure: cheap enough to never justify deleting</li><li>Chat hole-punching for two people behind NAT is the purest case — built because services keep dying or paywalling</li><li>Oracle&#x27;s free tier (4 CPU / 24 GB, per one answer) keeps distorting what &#x27;$5 VPS&#x27; even means</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: Tell HN (thread only) · Discuss: <a href="https://news.ycombinator.com/item?id=49985548" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">294 pts / 469 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>The biggest sub-thread is not a service recommendation at all: a privacy challenge to the most upvoted home-server answer over Tailscale&#x27;s connection logging — every inter-machine TCP/UDP open and close event, centralised, under US jurisdiction. The replies split three ways: &#x27;they can see my laptop talked to my VPS, bring the hammer down&#x27;, &#x27;that logging is for troubleshooting and can be turned off&#x27;, and the counter that the centralised coordination itself cannot be turned off, which is why some run Headscale or raw WireGuard. Beyond that fight, the answers are a catalogue with a philosophy attached: seedboxes, Trillium notes, a self-written chat that exists because chat services keep disappearing, and one person who shut down a 10-year VPS entirely after Cloudflare tunnelling to a home server made it redundant.</p>
+</div>
+</article>
+<article class="story" id="story-10" data-story="10" data-source="https://www.reddit.com/r/ClaudeAI/s/mbe5IY2LF9" data-hn="https://news.ycombinator.com/item?id=50002665" data-metric="227 pts / 111 comments" tabindex="0" aria-label="Story 10: &#x27;I think I found a planet nobody knew existed&#x27; — a candidate exoplanet surfaced with Claude Code, and TESS will look">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">&#x27;I think I found a planet nobody knew existed&#x27; — a candidate exoplanet surfaced with Claude Code, and TESS will look</h2>
+<p class="exec">A Reddit post in r/ClaudeAI reports a candidate planet nobody knew existed, found by its author working with Claude Code on public telescope data. The follow-through is what makes it more than a claim: per a quote from the post carried into the HN thread, TESS returns to that part of the sky in November, the author submitted an observing proposal asking it to record the star every two minutes while it is there — and it was approved, as Program #100.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The claim</span><ul><li>Candidate planet found by an individual analyst using Claude Code, per the post&#x27;s title and the HN thread</li><li>Source is a Reddit post; the full text could not be fetched for this brief, so method details are the author&#x27;s and unverified here</li><li>The verification path is institutional, not social: a telescope observing proposal, approved</li></ul></li><li class="cat"><span class="cat-label">The follow-up</span><ul><li>TESS revisits that sky region in November</li><li>Proposal asks for 2-minute cadence recording of the star during the visit</li><li>Approved as Program #100, per the quote from the post</li></ul></li><li class="cat"><span class="cat-label">Why it matters</span><ul><li>The interesting unit is not the model — it is an amateur result entering the professional confirmation pipeline</li><li>Public data plus an agent lowers the cost of the first pass; the expensive, scarce step stays human-reviewed</li><li>If November&#x27;s data shows nothing, the same pipeline disposes of the claim — that is the system working</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://www.reddit.com/r/ClaudeAI/s/mbe5IY2LF9" target="_blank" rel="noopener">reddit.com</a> · Discuss: <a href="https://news.ycombinator.com/item?id=50002665" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">227 pts / 111 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>The thread argues about how science should be done, not whether the planet is real — that is November&#x27;s question. The top comment calls it sad that the work was done alone in a bedroom when NASA&#x27;s Planet Hunters TESS and ESA&#x27;s new CHEOPS project on Zooniverse exist precisely to channel this effort, with contributors credited on papers. The replies push back hard: he did collaborate — with NASA, at the point where it mattered, and got telescope time; collaboration is a means, not a ritual, and several people describe their own solitary agent-assisted hobbies (RTL-SDR signal decoding, in one case) as the point, not a failure mode. A SETI@home relaunch for idle local agents gets proposed and immediately meets the modern objection: electricity is no longer free, so optimised institutional hardware may be the greener donation.</p>
+</div>
+</article>
+    </ol>
+
+    <div class="shortcut-bar" aria-label="Keyboard shortcuts">
+      <span><kbd>J</kbd> next story</span>
+      <span><kbd>K</kbd> previous story</span>
+      <span><kbd>T</kbd> theme</span>
+    </div>
+
+    <footer class="page-footer">
+      <div class="footer-links"><a href="../">← Daily archive</a><a href="https://tk3369.github.io/hn-daily/" target="_blank" rel="noopener">Published archive ↗</a></div>
+      <span>Friday 2026-10-09 · 10 stories</span>
+    </footer>
+  </main>
+  <div class="toast" role="status" aria-live="polite"></div>
+  <script>
+(() => {
+  const root = document.documentElement;
+  const toggle = document.getElementById('theme-toggle');
+  const entries = [...document.querySelectorAll('[data-story]')];
+  function storedTheme() { try { const t = localStorage.getItem('hn-daily-theme'); return t === 'dark' || t === 'light' ? t : null; } catch (_) { return null; } }
+  function preferredTheme() { return matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'; }
+  function currentTheme() { const a = root.dataset.theme; if (a === 'dark' || a === 'light') return a; return storedTheme() || preferredTheme(); }
+  function setTheme(theme) { const next = theme === 'dark' ? 'dark' : 'light'; const opposite = next === 'dark' ? 'Light' : 'Dark';
+    if (root.dataset.theme !== next) root.dataset.theme = next;
+    toggle.querySelector('.theme-text').textContent = opposite;
+    toggle.setAttribute('aria-label', `Switch to ${opposite} theme (T)`); toggle.title = `Switch to ${opposite} theme (T)`;
+    try { localStorage.setItem('hn-daily-theme', next); } catch (_) {} }
+  function flipTheme() { setTheme(currentTheme() === 'dark' ? 'light' : 'dark'); }
+  setTheme(storedTheme() || preferredTheme());
+  toggle.addEventListener('click', flipTheme);
+  const toast = document.querySelector('.toast'); let toastTimer;
+  function showToast(msg) { toast.textContent = msg; toast.classList.add('show'); clearTimeout(toastTimer); toastTimer = setTimeout(() => toast.classList.remove('show'), 1800); }
+  document.querySelectorAll('.copy-button').forEach((button) => {
+    button.addEventListener('click', async () => {
+      const story = button.closest('.story');
+      const n = story.dataset.story;
+      const tagline = story.querySelector('.tagline').textContent.trim();
+      const execSum = story.querySelector('.exec').textContent.trim();
+      const bullets = [...story.querySelectorAll('.cat-lists .cat')].map(li => {
+        const label = li.querySelector('.cat-label').textContent.trim();
+        const pts = [...li.querySelectorAll('ul li')].map(p => '  \u2022 ' + p.textContent.trim()).join('\n');
+        return '- ' + label + ':\n' + pts;
+      }).join('\n');
+      const link = 'https://tk3369.github.io/hn-daily/2026-10-09/#story-' + n;
+      const text = n + '. ' + tagline + '\n\n' + execSum + '\n' + bullets + '\n\n' + link;
+      try { await navigator.clipboard.writeText(text); button.textContent = 'Copied'; showToast('Story ' + n + ' copied for Threads'); setTimeout(() => { button.textContent = 'Copy for Threads'; }, 1600); }
+      catch (_) { showToast('Copy was blocked by this browser'); }
+    });
+  });
+  document.addEventListener('keydown', (event) => {
+    if (event.metaKey || event.ctrlKey || event.altKey || event.shiftKey) return;
+    const tag = event.target.tagName;
+    if (tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT') return;
+    const key = event.key.toLowerCase();
+    if (key === 't') { event.preventDefault(); flipTheme(); }
+    else if ((key === 'j' || key === 'k') && entries.length) {
+      event.preventDefault();
+      const active = entries.indexOf(document.activeElement);
+      const delta = key === 'j' ? 1 : -1;
+      const next = active < 0 ? (key === 'j' ? 0 : entries.length - 1) : Math.max(0, Math.min(entries.length - 1, active + 1 * delta));
+      entries[next].focus();
+    }
+  });
+})();
+  </script>
+</body>
+</html>
