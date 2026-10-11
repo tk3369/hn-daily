@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="color-scheme" content="light dark" />
+  <link rel="icon" href="data:," />
+  <title>HN Daily — Sunday 2026-10-11</title>
+  <style>
+:root { --page:#f1eadb; --paper:#fffaf0; --ink:#20201c; --muted:#6f695f; --hairline:#d9cebc; --accent:#ff5a1f; --comment:#f6efe3; --shadow:0 2px 0 rgba(57,45,25,.08),0 14px 36px rgba(57,45,25,.06); --serif:Georgia,"Times New Roman",serif; --sans:ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; --mono:"SFMono-Regular",Consolas,"Liberation Mono",monospace; }
+html[data-theme="dark"] { --page:#111312; --paper:#191c1a; --ink:#f1eee6; --muted:#aba69b; --hairline:#393b36; --accent:#ff7139; --comment:#222520; --shadow:0 2px 0 rgba(0,0,0,.22),0 18px 42px rgba(0,0,0,.22); }
+* { box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body { margin:0; min-width:280px; color:var(--ink); background:var(--page); font-family:var(--sans); line-height:1.55; -webkit-font-smoothing:antialiased; }
+a { color:inherit; text-underline-offset:3px; text-decoration-thickness:1px; }
+a:hover { color:var(--accent); }
+button,a { -webkit-tap-highlight-color:transparent; }
+button { font:inherit; }
+a:focus-visible,button:focus-visible { outline:3px solid var(--accent); outline-offset:3px; }
+.page { width:min(1080px,calc(100% - 36px)); margin:0 auto; padding:28px 0 72px; }
+.issue-header { display:grid; grid-template-columns:1fr auto; gap:24px; align-items:end; padding:8px 0 26px; border-bottom:3px solid var(--ink); }
+.edition { margin:0 0 9px; color:var(--accent); font:700 12px/1.3 var(--mono); letter-spacing:.09em; text-transform:uppercase; }
+.archive-nav { display:flex; flex-wrap:wrap; gap:8px 20px; margin-bottom:16px; font:700 12px/1 var(--mono); }
+.archive-nav a { min-height:36px; display:inline-flex; align-items:center; color:var(--muted); }
+.archive-nav a:hover { color:var(--accent); }
+h1 { max-width:820px; margin:0; font:700 clamp(34px,5.5vw,62px)/.98 var(--serif); letter-spacing:-.038em; }
+.deck { max-width:730px; margin:17px 0 0; color:var(--muted); font:17px/1.55 var(--sans); }
+.theme-toggle { align-self:start; min-width:86px; min-height:40px; padding:9px 13px; border:1px solid var(--hairline); border-radius:4px; color:var(--ink); background:var(--paper); cursor:pointer; font:700 12px/1 var(--mono); display:inline-flex; align-items:center; gap:8px; }
+.theme-toggle:hover { border-color:var(--accent); color:var(--accent); }
+.theme-dot { width:10px; height:10px; border-radius:50%; background:var(--accent); display:inline-block; flex-shrink:0; }
+.theme-text { line-height:1; }
+.story-list { display:grid; gap:20px; list-style:none; margin:26px 0 0; padding:0; counter-reset:story; }
+.story { counter-increment:story; display:grid; grid-template-columns:72px minmax(0,1fr); gap:26px; padding:26px 30px 28px; background:var(--paper); border-top:4px solid var(--ink); box-shadow:var(--shadow); scroll-margin-top:24px; }
+.story-number { color:var(--accent); font:900 22px/1 var(--mono); letter-spacing:-.04em; padding-top:6px; }
+.story-number::before { content:counter(story,decimal-leading-zero); }
+.tagline { margin:0; max-width:840px; font:700 clamp(24px,3vw,36px)/1.1 var(--serif); letter-spacing:-.028em; }
+.exec { margin:14px 0 0; max-width:840px; font:17px/1.58 var(--sans); }
+.cat-lists { margin:14px 0 0; padding:0; list-style:none; display:grid; gap:10px; max-width:840px; }
+.cat-lists li.cat { font:15px/1.6 var(--sans); }
+.cat-lists .cat-label { font:700 12px/1.6 var(--mono); letter-spacing:.06em; text-transform:uppercase; color:var(--accent); }
+.cat-lists ul { margin:4px 0 0; padding-left:20px; }
+.cat-lists ul li { margin:3px 0; }
+.meta-line { margin:16px 0 0; color:var(--muted); font:700 12px/1.9 var(--mono); overflow-wrap:anywhere; }
+.meta-line a { color:var(--ink); font-weight:800; }
+.meta-line .metrics { color:var(--ink); white-space:nowrap; }
+.story-bar { display:flex; align-items:flex-start; gap:14px; margin-top:4px; }
+.copy-button { flex:0 0 auto; align-self:flex-start; min-height:36px; padding:9px 12px; border:1px solid var(--hairline); border-radius:4px; background:var(--paper); color:var(--ink); cursor:pointer; font:700 12px/1 var(--mono); }
+.copy-button:hover { border-color:var(--accent); color:var(--accent); }
+.hn-comments { margin:18px 0 0; padding:14px 18px; background:var(--comment); border:1px solid var(--hairline); font:15px/1.62 var(--serif); color:var(--ink); }
+.hn-comments strong { font:700 12px/1.6 var(--mono); color:var(--accent); display:block; margin-bottom:6px; }
+.page-footer { display:flex; justify-content:space-between; flex-wrap:wrap; gap:14px; margin-top:64px; padding-top:12px; border-top:1px solid var(--hairline); color:var(--muted); font:12px/1.6 var(--mono); }
+.footer-links { display:flex; flex-wrap:wrap; gap:8px 20px; }
+.footer-links a { min-height:36px; display:inline-flex; align-items:center; color:var(--ink); font-weight:800; }
+.footer-links a:hover { color:var(--accent); }
+.shortcut-bar { display:flex; flex-wrap:wrap; gap:18px; margin-top:28px; color:var(--muted); font:11px/1.5 var(--mono); }
+kbd { display:inline-grid; place-items:center; min-width:22px; height:22px; margin-right:6px; padding:0 6px; border:1px solid var(--hairline); border-bottom-width:2px; border-radius:3px; background:var(--comment); color:var(--ink); font:inherit; font-weight:700; }
+.toast { position:fixed; right:max(18px,env(safe-area-inset-right)); bottom:max(18px,env(safe-area-inset-bottom)); z-index:10; padding:11px 14px; color:var(--paper); background:var(--ink); border:1px solid var(--ink); font:700 12px/1 var(--mono); opacity:0; transform:translateY(8px); pointer-events:none; transition:opacity 160ms ease,transform 160ms ease; }
+.toast.show { opacity:1; transform:translateY(0); }
+@media (max-width:760px) {
+  .page { width:min(100% - 22px,1080px); padding-top:16px; }
+  .issue-header { grid-template-columns:1fr auto; gap:12px; padding-bottom:20px; }
+  h1 { font-size:clamp(34px,10vw,48px); }
+  .deck { grid-column:1 / -1; margin-top:3px; font-size:15px; }
+  .theme-toggle { grid-column:2; grid-row:1; min-width:72px; }
+  .story { grid-template-columns:44px minmax(0,1fr); gap:14px; padding:20px 18px 22px; }
+  .story-number { font-size:16px; padding-top:4px; }
+  .story-bar { flex-direction:column; align-items:stretch; }
+  .copy-button { align-self:flex-start; }
+  .page-footer { display:block; }
+}
+@media (max-width:420px) {
+  .page { width:calc(100% - 16px); }
+  .story { grid-template-columns:1fr; gap:8px; padding:20px 16px 22px; }
+  .story-number { padding-top:0; }
+  .copy-button { width:100%; }
+}
+@media (prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } *,*::before,*::after { transition:none !important; } }
+@media print { :root { --page:#fff;--paper:#fff;--ink:#000;--muted:#444;--hairline:#bbb;--comment:#f5f5f5;--shadow:none; } .page{width:100%;padding:0}.theme-toggle,.copy-button,.toast,.shortcut-bar{display:none}.story{break-inside:avoid;box-shadow:none} }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="issue-header">
+      <div>
+        <nav class="archive-nav" aria-label="HN Daily archive links"><a href="../">← Archive</a><a href="https://tk3369.github.io/hn-daily/" target="_blank" rel="noopener">Published archive ↗</a></nav>
+        <p class="edition"><time datetime="2026-10-11">2026-10-11</time> · Daily brief · Pacific time</p>
+        <h1>HN Daily</h1>
+        <p class="deck">Direct, low-fluff top 10 from Hacker News, daily at 7am PT — hottest by points</p>
+      </div>
+      <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch color theme" title="Toggle theme (T)"><span class="theme-dot" aria-hidden="true"></span><span class="theme-text">Dark</span></button>
+    </header>
+
+    <ol class="story-list" aria-label="Top 10 Hacker News stories">
+<article class="story" id="story-1" data-story="1" data-source="https://patkerr.co.uk/2d-vehicles/" data-hn="https://news.ycombinator.com/item?id=49991852" data-metric="529 pts / 106 comments" tabindex="0" aria-label="Story 1: 2D Vehicles: the 1996 weekend prototype that became GTA&#x27;s car physics, remastered in JavaScript for its 30th year">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">2D Vehicles: the 1996 weekend prototype that became GTA&#x27;s car physics, remastered in JavaScript for its 30th year</h2>
+<p class="exec">Pat Kerr recreates, in JavaScript, the 2D physics simulation he wrote in one weekend in late August 1996 in GFA BASIC on an Atari ST — the prototype that later became the vehicle system in Grand Theft Auto. The remaster is playable in the browser with three modes (Car, the simpler Ship, and Brick), toggleable collision barriers and gravity, and the same camera tricks the game used: a dead zone, and a speed-related zoom that pulls back as you go faster.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">How it works</span><ul><li>Two layers: a general-purpose 2D rigid-body simulation, plus a deliberately simple car model on top</li><li>It started as the Brick, gained Thrust-like Ship elements, then the additions that made it feel like a car</li><li>Kerr notes rigid-body vehicle physics was uncommon in games at the time; most used basic point physics</li></ul></li><li class="cat"><span class="cat-label">The recreation</span><ul><li>Playable in the browser, with touch controls on mobile; keys 1/2/3 switch modes, B toggles barriers, G gravity, Z/X camera</li><li>Framed explicitly as independent and unaffiliated with GTA, Rockstar or Take-Two</li></ul></li><li class="cat"><span class="cat-label">Why it matters</span><ul><li>A working artefact of how a genre-defining game started: one weekend prototype, not a design document</li><li>Prototyping as a toy, with no production baggage, is what made the feel discoverable</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://patkerr.co.uk/2d-vehicles/" target="_blank" rel="noopener">patkerr.co.uk</a> · Discuss: <a href="https://news.ycombinator.com/item?id=49991852" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">529 pts / 106 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>Affection first: players say it still feels great and recognisably like the original, and one credits it with teaching them handbrake turns — until tyre costs cured the habit. The top comment pushes back on the remaster itself, asking why a programmer of Kerr&#x27;s talent would revisit old work with modern tooling instead of pushing forward; others answer that the history is the point, and that isolated toy prototypes are how concepts like this get found. A side thread compares alternative vehicle models, including a bicycle-model parking solver.</p>
+</div>
+</article>
+<article class="story" id="story-2" data-story="2" data-source="https://lightbulbcomputer.com/" data-hn="https://news.ycombinator.com/item?id=50029487" data-metric="491 pts / 72 comments" tabindex="0" aria-label="Story 2: The Lightbulb Computer: a projector and camera in a lightbulb socket, instead of a headset on your face">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">The Lightbulb Computer: a projector and camera in a lightbulb socket, instead of a headset on your face</h2>
+<p class="exec">Guillaume Ardaud&#x27;s speculative design fits a projector and computer vision into a large lightbulb that screws into a standard Edison socket or sits in a portable lamp base. It reacts to voice, sees where you point, analyses what it sees, and projects content onto real surfaces — recipe widgets and timers in the kitchen, answers next to the book you are reading, a shared map for trip planning. The pitch is ambient and shared: information in the room, not on a small screen or piped through glasses.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The form factor</span><ul><li>Ceiling mounting gives a vantage over the whole room and can project anywhere in it</li><li>Edison sockets are a near-ubiquitous worldwide standard; a battery base makes it portable</li><li>Positioned against smart glasses: no constraining, socially awkward device on your face</li></ul></li><li class="cat"><span class="cat-label">What it does (design prototypes)</span><ul><li>Voice commands plus pointing: it watches where you point and responds there</li><li>Kitchen overlays for mise en place, study Q&amp;A beside the page, shared maps with gesture pan and scroll</li><li>A series of design prototypes exploring the direction, not a shipping product</li></ul></li><li class="cat"><span class="cat-label">Why it matters</span><ul><li>Tests whether spatial computing needs a wearable at all, if the room itself can be the display</li><li>Shared projection solves the XR problem of everyone else seeing a weird, private object</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://lightbulbcomputer.com/" target="_blank" rel="noopener">lightbulbcomputer.com</a> · Discuss: <a href="https://news.ycombinator.com/item?id=50029487" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">491 pts / 72 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>The idea lands. Several commenters compare the feeling to the first pre-iPhone multitouch demos, and the Humane Pin is invoked kindly for once: a stationary, ambient version solves many of its interaction and engineering problems. The sharpest suggestion is latency: timestamp the word &#x27;here&#x27; in speech and analyse the buffered frame from that moment, so the user does not have to hold a pointing pose while the computer catches up — ideally with a projected dot confirming the capture. One sceptic asks whether the demos are a real working prototype or animation; the rest mostly want one.</p>
+</div>
+</article>
+<article class="story" id="story-3" data-story="3" data-source="https://housing.over.pizza/" data-hn="https://news.ycombinator.com/item?id=50036864" data-metric="412 pts / 137 comments" tabindex="0" aria-label="Story 3: Discretionary Review: a San Francisco housing simulator where every rule and vote comes from the public record">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">Discretionary Review: a San Francisco housing simulator where every rule and vote comes from the public record</h2>
+<p class="exec">This browser game puts you through San Francisco&#x27;s discretionary-review process for housing: height limits, supervisor districts, homeowner and coalition politics, and project approvals, simulated from January 2015 onward. The in-game rulebook states that every rule, vote count and case is drawn from the public record, with sources in the project&#x27;s research docs, while neighbourhood-politics scores and the economics are simplified for play. The city, as the HN title puts it, would prefer you didn&#x27;t build.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The simulation</span><ul><li>Projects move through sites, height limits and district politics; a right-hand panel scores neighbourhood reaction</li><li>An in-game newspaper, the Fog City Ledger, reports as you play</li><li>Rules, vote counts and cases sourced from the public record; politics and economics simplified, and labelled as such</li></ul></li><li class="cat"><span class="cat-label">Why it matters</span><ul><li>Makes an opaque approval process legible by making you operate it</li><li>The friction is the content: the process itself is the argument</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://housing.over.pizza/" target="_blank" rel="noopener">housing.over.pizza</a> · Discuss: <a href="https://news.ycombinator.com/item?id=50036864" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">412 pts / 137 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>Players split on the interface before the politics: several find the UI complex, convoluted and verbose, and ask who it is for and why learning it is worth the time, while others praise the aesthetics and say it took them back to SimFarm. The scoring confuses people in play — what a high Neighbourhood score means before approving a project is not obvious. Underneath, the usual San Francisco argument runs: whether an old city resisting profitable development is a community defending itself or a process that has become the product. One detail everyone likes: the Blue Angels fly over at one point.</p>
+</div>
+</article>
+<article class="story" id="story-4" data-story="4" data-source="https://nishtahir.com/build-your-own-decision-model/" data-hn="https://news.ycombinator.com/item?id=50037949" data-metric="378 pts / 83 comments" tabindex="0" aria-label="Story 4: Build your own decision model: one forward pass, masked tokens, calibrated probabilities — with Qwen3-1.7B">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">Build your own decision model: one forward pass, masked tokens, calibrated probabilities — with Qwen3-1.7B</h2>
+<p class="exec">Nish Tahir walks through building a Jev-style decision model yourself. The trick: constrain the output to a fixed set of option tokens, mask everything else in the vocabulary, and read the answer off a single forward pass instead of generating token by token — the worked example takes 11 passes for structured JSON where the decision model takes one. The post is equally clear on the caveat: raw token probabilities measure next-token confidence, not correctness, so calibration — adjusting temperature against a benchmark — is part of the build, using Qwen/Qwen3-1.7B.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The mechanism</span><ul><li>Fixed options only: mask the vocabulary so the model can only emit an allowed option token</li><li>Select the highest-probability option; one pass replaces multi-token generation</li><li>Worked code uses Qwen/Qwen3-1.7B via transformers, with an interactive in-page demo</li></ul></li><li class="cat"><span class="cat-label">The caveat</span><ul><li>Uncalibrated token probabilities are not true probabilities of being right</li><li>Calibration is presented as required work, not an optional refinement</li></ul></li><li class="cat"><span class="cat-label">Why it matters</span><ul><li>Decision models are a learnable technique, not a proprietary product: the core is masking plus calibration</li><li>Cheap, fast classification is the layer routing, gating and screening systems are built on</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://nishtahir.com/build-your-own-decision-model/" target="_blank" rel="noopener">nishtahir.com</a> · Discuss: <a href="https://news.ycombinator.com/item?id=50037949" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">378 pts / 83 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>Readers who work in ML greet it with a familiar frustration: classifiers have been hard to sell for years, plain LLMs already work as zero-shot classifiers, and the hype around Jev makes one MLE &#x27;scream internally&#x27; — while conceding zero-shot convenience is real. The calibration step draws the methodological challenge: is fitting temperature to a benchmark after the fact legitimate calibration or p-hacking? Others simply enjoy playing the token generation interactively, and a lighter CPU alternative, Jeffy, is linked for people who want to train their own.</p>
+</div>
+</article>
+<article class="story" id="story-5" data-story="5" data-source="https://radar.cloudflare.com/bots/as13238?dateRange=7d" data-hn="https://news.ycombinator.com/item?id=50041619" data-metric="355 pts / 135 comments" tabindex="0" aria-label="Story 5: Cloudflare Radar: bot traffic from Yandex&#x27;s AS13238 fell to near zero after strikes on its data centres">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">Cloudflare Radar: bot traffic from Yandex&#x27;s AS13238 fell to near zero after strikes on its data centres</h2>
+<p class="exec">Cloudflare Radar data for AS13238 (Yandex LLC) shows a sudden drop in bot traffic — requests Radar scores 1–29, i.e. likely automated — following strikes on Yandex data centres. Commenters tracking the chart report HTTP traffic from Yandex down to roughly 0% after a third strike, after the first two had already degraded it, while Yandex&#x27;s search pages still serve. Read the chart for what it is: one network&#x27;s view of one autonomous system&#x27;s automated requests, not a measure of Yandex as a whole.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">What the data shows</span><ul><li>Radar classifies bot vs human by bot score: 1–29 likely automated, 30+ likely human, on HTML requests by default</li><li>The linked view is AS13238 over a 7-day range; the drop follows the data-centre strikes</li><li>Crawler traffic is the visible casualty; search serving continued, per thread reports</li></ul></li><li class="cat"><span class="cat-label">Why it matters</span><ul><li>Indexing is deferrable work: lose capacity and bot traffic falls faster than user traffic</li><li>Physical strikes now show up, measurably and publicly, in internet telemetry within days</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://radar.cloudflare.com/bots/as13238?dateRange=7d" target="_blank" rel="noopener">radar.cloudflare.com</a> · Discuss: <a href="https://news.ycombinator.com/item?id=50041619" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">355 pts / 135 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>The thread supplies the missing definitions and the missing scale: one commenter posts Radar&#x27;s bot-score glossary, another notes Yandex is &#x27;Russian Google&#x27; — of course it emits bot traffic, that is what indexing is, and Google taken offline would show the same shape. Several track the decline strike by strike and link reporting on cascading outages across Yandex Go, Pay, food delivery and smart-home services as failover broke down after three facilities were hit in four days. The jokes about donating to the Ukrainian military sit alongside a plainer argument that &#x27;AI agents&#x27; is a rebranding of bots.</p>
+</div>
+</article>
+<article class="story" id="story-6" data-story="6" data-source="https://status.yandex.cloud/en/incidents/2136" data-hn="https://news.ycombinator.com/item?id=50040547" data-metric="319 pts / 387 comments" tabindex="0" aria-label="Story 6: Yandex Cloud status: a third data centre hit, logged as incident 2136">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">Yandex Cloud status: a third data centre hit, logged as incident 2136</h2>
+<p class="exec">Yandex Cloud&#x27;s own status page records incident 2136 for the third of its data centres to be hit. This is the primary-source companion to the Cloudflare Radar story above it: the operator&#x27;s own incident log, rather than third-party telemetry. Commenters note the public timeline page shows two of the facilities, not three, so the count depends on which Yandex page you read — the discrepancy is in the source, and worth knowing before citing either number.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The record</span><ul><li>Incident 2136 on status.yandex.cloud covers the third data centre hit</li><li>The status timeline page shows two facilities, per thread checks — sources inside Yandex differ</li><li>Failover and cascading service outages are reported in the companion Radar thread</li></ul></li><li class="cat"><span class="cat-label">Why it matters</span><ul><li>Concentrated cloud regions are physical targets; redundancy inside one metro is not geographic redundancy</li><li>Incident pages are now part of war reporting: primary, timestamped, and incomplete in visible ways</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://status.yandex.cloud/en/incidents/2136" target="_blank" rel="noopener">status.yandex.cloud</a> · Discuss: <a href="https://news.ycombinator.com/item?id=50040547" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">319 pts / 387 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>This is the larger and more political of the two Yandex threads — 387 comments against the Radar story&#x27;s 135 — and much of it is argument about the war rather than the engineering. The engineering strand that does run is the durable one: a commenter pairs this with destroyed AWS data centres in the Middle East and asks how future data centres get built if facilities are targets — expecting more decentralisation and larger networks of smaller sites. Others simply trade search-engine loyalties, including a defence of Yandex as the best index for material banned elsewhere.</p>
+</div>
+</article>
+<article class="story" id="story-7" data-story="7" data-source="https://github.com/rociiu/talorys" data-hn="https://news.ycombinator.com/item?id=50031614" data-metric="304 pts / 140 comments" tabindex="0" aria-label="Story 7: Show HN: Talorys — a personal AI agent running entirely in your own Cloudflare account, free-tier friendly">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">Show HN: Talorys — a personal AI agent running entirely in your own Cloudflare account, free-tier friendly</h2>
+<p class="exec">Talorys is an open-source, single-user personal AI agent that deploys into your own Cloudflare account with one command (npx create-talorys@latest). It runs on Workers, Workers AI, Durable Objects and Pages, and provides AI chat with persistent memory and conversation history, task, note and project management, and scheduled reminders and recurring automations, behind password-protected access with no signup and no telemetry. The author&#x27;s stated goal: an assistant they own and control, with no monthly subscription and no one else&#x27;s hosted service.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The stack</span><ul><li>Cloudflare Workers, Workers AI, Durable Objects and Pages — the whole agent lives in your account</li><li>One-command deploy; free-tier friendly; single-user, password-protected, no telemetry</li><li>Chat with persistent memory, tasks, notes, projects, reminders and recurring automations</li></ul></li><li class="cat"><span class="cat-label">The catch, from the thread</span><ul><li>Workers AI free tier is metered in &#x27;neurons&#x27; — 10,000 a day — a unit commenters find opaque</li><li>One user warns of confusing neuron billing on paid Workers plans and an ignored support ticket</li></ul></li><li class="cat"><span class="cat-label">Why it matters</span><ul><li>The ownership model is the feature: your account, your data, commodity infrastructure</li><li>It also shows the limit of that model — you own the agent, Cloudflare owns the ground it stands on</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://github.com/rociiu/talorys" target="_blank" rel="noopener">github.com</a> · Discuss: <a href="https://news.ycombinator.com/item?id=50031614" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">304 pts / 140 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>The title takes the beating: &#x27;self-hosted&#x27; is the thread&#x27;s oxymoron of the day — several commenters define self-hosted as something you host yourself, and relying on Cloudflare for literally everything does not meet it. The author does not really dispute the infrastructure point; the claim is ownership and control versus a subscription service. Practical warnings follow: the free Workers AI tier&#x27;s &#x27;neurons&#x27; unit baffles people, and one user reports being billed for neuron usage they believed was covered, with a support ticket ignored — a known issue, they say, in Cloudflare&#x27;s support Discord.</p>
+</div>
+</article>
+<article class="story" id="story-8" data-story="8" data-source="https://lineageos.org/Changelog-32/" data-hn="https://news.ycombinator.com/item?id=50040276" data-metric="215 pts / 66 comments" tabindex="0" aria-label="Story 8: LineageOS 24.0: Android 17, rebased faster than expected, security patches merged back to 18.1 — and 10 years old this December">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">LineageOS 24.0: Android 17, rebased faster than expected, security patches merged back to 18.1 — and 10 years old this December</h2>
+<p class="exec">LineageOS 24.0, based on Android 17, arrives early this year: the team says prior work adapting to Google&#x27;s heavy refactoring let them rebase onto Android 17 (released in June) faster than anticipated. Security patches from August 2025 to October 2026 are merged into 18.1 through 24.0, with backporting continuing for legacy branches. The release also adds a new experimental generic target that has booted on x86_64 PCs, Apple Silicon Macs, NVIDIA DGX Spark and Snapdragon X laptops. On December 24, 2026, the project turns 10.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The release</span><ul><li>Android 17 base; Android 17 itself is described as iterative improvements and UI/UX refinements</li><li>Security patches Aug 2025 – Oct 2026 merged for 18.1–24.0; legacy 15.1–17.1 backports now reach November 2025</li><li>Long device list still includes old hardware — the Pixel 4a remains supported</li></ul></li><li class="cat"><span class="cat-label">The experiment</span><ul><li>A new generic target, still experimental, has booted on common x86_64 PCs, Apple Silicon Macs, DGX Spark and Snapdragon X laptops</li><li>Not a phone release: a step toward LineageOS on general bare-metal hardware</li></ul></li><li class="cat"><span class="cat-label">Why it matters</span><ul><li>Ten years of keeping phones out of landfill is the measurable result</li><li>Faster rebasing suggests the project is keeping pace with Google&#x27;s refactoring, not falling behind it</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://lineageos.org/Changelog-32/" target="_blank" rel="noopener">lineageos.org</a> · Discuss: <a href="https://news.ycombinator.com/item?id=50040276" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">215 pts / 66 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>Gratitude with specific hardware: one user was secretly hoping the Pixel 4a would be dropped so they&#x27;d have an excuse to upgrade, and will instead keep it another year; another credits LineageOS with keeping a OnePlus 6T alive. The generic target excites people most — refurbishing old laptops with Android alongside desktop Linux sounds genuinely useful. The standing reservations are unchanged: camera quality on some devices suffers without vendor drivers, and a GrapheneOS user stays put for contact and storage scopes. &#x27;This is how Android is meant to be&#x27; is the consensus line.</p>
+</div>
+</article>
+<article class="story" id="story-9" data-story="9" data-source="https://fzakaria.com/2026/10/07/nix-wrote-half-of-my-debugger" data-hn="https://news.ycombinator.com/item?id=50017247" data-metric="215 pts / 51 comments" tabindex="0" aria-label="Story 9: Nix wrote half of my debugger: Rewind&#x27;s hard parts — inputs, symbols, sources, reproducibility — were already derivations">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">Nix wrote half of my debugger: Rewind&#x27;s hard parts — inputs, symbols, sources, reproducibility — were already derivations</h2>
+<p class="exec">Farid Zakaria&#x27;s Rewind VM makes every Nix build run a pure function of its inputs, thread schedule included, and he has been using it to find and reproduce race conditions in Nix builds. As he added debugger features — a source panel, stack frames, a Compare tab, gdb support, thread lanes showing who held the CPU at each step, and &#x27;Check from here&#x27; — each one turned out to need work Nix had already done: a debugger needs a program&#x27;s exact inputs, debug symbols, its sources and every library&#x27;s sources, reproducible on someone else&#x27;s machine. That is exactly what a derivation is.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The demonstration</span><ul><li>A two-teller bank-account race lost money in 396 of 1,000 runs on a 16-core laptop, and in none of 1,000 pinned to one core</li><li>Rewind&#x27;s single-CPU VM passes on the first run too, so rewind check re-runs under perturbed schedules and narrows the first failure to one step</li><li>Thread lanes show who held the CPU at every step; &#x27;Check from here&#x27; finds the exact step where a race begins</li></ul></li><li class="cat"><span class="cat-label">The claim</span><ul><li>Each debugger feature&#x27;s hard part — inputs, symbols, sources, reproducibility — was already solved by Nix derivations</li><li>Deterministic builds are not just hygiene; they are the substrate a real debugger can stand on</li></ul></li><li class="cat"><span class="cat-label">Why it matters</span><ul><li>Reproducibility compounds: one property, paid once, keeps supplying tools that are expensive to build any other way</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://fzakaria.com/2026/10/07/nix-wrote-half-of-my-debugger" target="_blank" rel="noopener">fzakaria.com</a> · Discuss: <a href="https://news.ycombinator.com/item?id=50017247" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">215 pts / 51 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>Admiring, with one structural question: a commenter asks what Nix has to do with it, since Rewind looks like reimplementing rr — the answer in the post is that the derivation system supplies the inputs and symbols rr-style tools must assemble themselves. Others generalise the move: more and more non-build work is being pushed into Nix builds to avoid hand-rolling cache invalidation. A recurring prediction is that AI assistance accelerates Nix adoption — many developers understand what Nix offers but would not master it unaided — set against one user&#x27;s story of a complex flake in which Nix deleted itself, and trust went with it.</p>
+</div>
+</article>
+<article class="story" id="story-10" data-story="10" data-source="https://www.thomas-huehn.com/knuth-reward-check/" data-hn="https://news.ycombinator.com/item?id=50034081" data-metric="207 pts / 75 comments" tabindex="0" aria-label="Story 10: Knuth reward check: the error was on page 1, in the first word — and the check, 0x$1.20, is framed twenty years on">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">Knuth reward check: the error was on page 1, in the first word — and the check, 0x$1.20, is framed twenty years on</h2>
+<p class="exec">Thomas Hühn recounts receiving a Knuth reward check twenty years ago for an error in Computer Modern Typefaces — Volume E of Computers and Typesetting, which is why the memo field says &#x27;E1&#x27;: page 1. The error sits in the first paragraph, in the very first word, in a less-read book than the TeXbook or The Art of Computer Programming, and had been read over by practically everyone who opened it. He waited months and re-checked before reporting it. The check reads 0x$1.20 — hexadecimal dollars, $2.88 — and a later, wrong, error report still earned $0.32, because Knuth counted a throwaway sentence in it as a good suggestion and wrote paragraphs explaining why the main claim was wrong.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The find</span><ul><li>Error in Computer Modern Typefaces, page 1, first paragraph, first word; memo &#x27;E1&#x27; = Volume E, page 1</li><li>Reported only after months of re-checking; a local university expert dismissed the excitement</li><li>Knuth confirmed the error and sent the check; Hühn has censored the check image, as Knuth no longer issues real checks</li></ul></li><li class="cat"><span class="cat-label">The money, precisely</span><ul><li>First check 0x$1.20 = $2.88; a later wrong report earned $0.32 for a good suggestion buried in it</li><li>Modern recipients get a certificate from the fictional Bank of San Serriffe instead of a real check</li></ul></li><li class="cat"><span class="cat-label">Why it matters</span><ul><li>Folklore, verified in one case: the reward is real, small, and earned by reading page 1 carefully</li><li>The $0.32 check is the better story — being wrong carefully still contributed</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://www.thomas-huehn.com/knuth-reward-check/" target="_blank" rel="noopener">thomas-huehn.com</a> · Discuss: <a href="https://news.ycombinator.com/item?id=50034081" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">207 pts / 75 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>A collectors&#x27; thread: several commenters have checks of their own — one has two, another knows someone with four or more, and one confesses the biggest shame of his life is having had one and lost it. The technical discussion picks at the error itself: the claim said infinitely many alphabets can be generated, and a commenter notes there are finitely many parameters with finite ranges, so &#x27;a humongous number&#x27; would have been correct. Practical note for readers: the images failed to load for some, and a Wayback Machine copy is linked in the thread.</p>
+</div>
+</article>
+    </ol>
+
+    <div class="shortcut-bar" aria-label="Keyboard shortcuts">
+      <span><kbd>J</kbd> next story</span>
+      <span><kbd>K</kbd> previous story</span>
+      <span><kbd>T</kbd> theme</span>
+    </div>
+
+    <footer class="page-footer">
+      <div class="footer-links"><a href="../">← Daily archive</a><a href="https://tk3369.github.io/hn-daily/" target="_blank" rel="noopener">Published archive ↗</a></div>
+      <span>Sunday 2026-10-11 · 10 stories</span>
+    </footer>
+  </main>
+  <div class="toast" role="status" aria-live="polite"></div>
+  <script>
+(() => {
+  const root = document.documentElement;
+  const toggle = document.getElementById('theme-toggle');
+  const entries = [...document.querySelectorAll('[data-story]')];
+  function storedTheme() { try { const t = localStorage.getItem('hn-daily-theme'); return t === 'dark' || t === 'light' ? t : null; } catch (_) { return null; } }
+  function preferredTheme() { return matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'; }
+  function currentTheme() { const a = root.dataset.theme; if (a === 'dark' || a === 'light') return a; return storedTheme() || preferredTheme(); }
+  function setTheme(theme) { const next = theme === 'dark' ? 'dark' : 'light'; const opposite = next === 'dark' ? 'Light' : 'Dark';
+    if (root.dataset.theme !== next) root.dataset.theme = next;
+    toggle.querySelector('.theme-text').textContent = opposite;
+    toggle.setAttribute('aria-label', `Switch to ${opposite} theme (T)`); toggle.title = `Switch to ${opposite} theme (T)`;
+    try { localStorage.setItem('hn-daily-theme', next); } catch (_) {} }
+  function flipTheme() { setTheme(currentTheme() === 'dark' ? 'light' : 'dark'); }
+  setTheme(storedTheme() || preferredTheme());
+  toggle.addEventListener('click', flipTheme);
+  const toast = document.querySelector('.toast'); let toastTimer;
+  function showToast(msg) { toast.textContent = msg; toast.classList.add('show'); clearTimeout(toastTimer); toastTimer = setTimeout(() => toast.classList.remove('show'), 1800); }
+  document.querySelectorAll('.copy-button').forEach((button) => {
+    button.addEventListener('click', async () => {
+      const story = button.closest('.story');
+      const n = story.dataset.story;
+      const tagline = story.querySelector('.tagline').textContent.trim();
+      const execSum = story.querySelector('.exec').textContent.trim();
+      const bullets = [...story.querySelectorAll('.cat-lists .cat')].map(li => {
+        const label = li.querySelector('.cat-label').textContent.trim();
+        const pts = [...li.querySelectorAll('ul li')].map(p => '  \u2022 ' + p.textContent.trim()).join('\n');
+        return '- ' + label + ':\n' + pts;
+      }).join('\n');
+      const link = 'https://tk3369.github.io/hn-daily/2026-10-11/#story-' + n;
+      const text = n + '. ' + tagline + '\n\n' + execSum + '\n' + bullets + '\n\n' + link;
+      try { await navigator.clipboard.writeText(text); button.textContent = 'Copied'; showToast('Story ' + n + ' copied for Threads'); setTimeout(() => { button.textContent = 'Copy for Threads'; }, 1600); }
+      catch (_) { showToast('Copy was blocked by this browser'); }
+    });
+  });
+  document.addEventListener('keydown', (event) => {
+    if (event.metaKey || event.ctrlKey || event.altKey || event.shiftKey) return;
+    const tag = event.target.tagName;
+    if (tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT') return;
+    const key = event.key.toLowerCase();
+    if (key === 't') { event.preventDefault(); flipTheme(); }
+    else if ((key === 'j' || key === 'k') && entries.length) {
+      event.preventDefault();
+      const active = entries.indexOf(document.activeElement);
+      const delta = key === 'j' ? 1 : -1;
+      const next = active < 0 ? (key === 'j' ? 0 : entries.length - 1) : Math.max(0, Math.min(entries.length - 1, active + 1 * delta));
+      entries[next].focus();
+    }
+  });
+})();
+  </script>
+</body>
+</html>
