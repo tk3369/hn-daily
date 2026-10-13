@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="color-scheme" content="light dark" />
+  <link rel="icon" href="data:," />
+  <title>HN Daily — Tuesday 2026-10-13</title>
+  <style>
+:root { --page:#f1eadb; --paper:#fffaf0; --ink:#20201c; --muted:#6f695f; --hairline:#d9cebc; --accent:#ff5a1f; --comment:#f6efe3; --shadow:0 2px 0 rgba(57,45,25,.08),0 14px 36px rgba(57,45,25,.06); --serif:Georgia,"Times New Roman",serif; --sans:ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; --mono:"SFMono-Regular",Consolas,"Liberation Mono",monospace; }
+html[data-theme="dark"] { --page:#111312; --paper:#191c1a; --ink:#f1eee6; --muted:#aba69b; --hairline:#393b36; --accent:#ff7139; --comment:#222520; --shadow:0 2px 0 rgba(0,0,0,.22),0 18px 42px rgba(0,0,0,.22); }
+* { box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body { margin:0; min-width:280px; color:var(--ink); background:var(--page); font-family:var(--sans); line-height:1.55; -webkit-font-smoothing:antialiased; }
+a { color:inherit; text-underline-offset:3px; text-decoration-thickness:1px; }
+a:hover { color:var(--accent); }
+button,a { -webkit-tap-highlight-color:transparent; }
+button { font:inherit; }
+a:focus-visible,button:focus-visible { outline:3px solid var(--accent); outline-offset:3px; }
+.page { width:min(1080px,calc(100% - 36px)); margin:0 auto; padding:28px 0 72px; }
+.issue-header { display:grid; grid-template-columns:1fr auto; gap:24px; align-items:end; padding:8px 0 26px; border-bottom:3px solid var(--ink); }
+.edition { margin:0 0 9px; color:var(--accent); font:700 12px/1.3 var(--mono); letter-spacing:.09em; text-transform:uppercase; }
+.archive-nav { display:flex; flex-wrap:wrap; gap:8px 20px; margin-bottom:16px; font:700 12px/1 var(--mono); }
+.archive-nav a { min-height:36px; display:inline-flex; align-items:center; color:var(--muted); }
+.archive-nav a:hover { color:var(--accent); }
+h1 { max-width:820px; margin:0; font:700 clamp(34px,5.5vw,62px)/.98 var(--serif); letter-spacing:-.038em; }
+.deck { max-width:730px; margin:17px 0 0; color:var(--muted); font:17px/1.55 var(--sans); }
+.theme-toggle { align-self:start; min-width:86px; min-height:40px; padding:9px 13px; border:1px solid var(--hairline); border-radius:4px; color:var(--ink); background:var(--paper); cursor:pointer; font:700 12px/1 var(--mono); display:inline-flex; align-items:center; gap:8px; }
+.theme-toggle:hover { border-color:var(--accent); color:var(--accent); }
+.theme-dot { width:10px; height:10px; border-radius:50%; background:var(--accent); display:inline-block; flex-shrink:0; }
+.theme-text { line-height:1; }
+.story-list { display:grid; gap:20px; list-style:none; margin:26px 0 0; padding:0; counter-reset:story; }
+.story { counter-increment:story; display:grid; grid-template-columns:72px minmax(0,1fr); gap:26px; padding:26px 30px 28px; background:var(--paper); border-top:4px solid var(--ink); box-shadow:var(--shadow); scroll-margin-top:24px; }
+.story-number { color:var(--accent); font:900 22px/1 var(--mono); letter-spacing:-.04em; padding-top:6px; }
+.story-number::before { content:counter(story,decimal-leading-zero); }
+.tagline { margin:0; max-width:840px; font:700 clamp(24px,3vw,36px)/1.1 var(--serif); letter-spacing:-.028em; }
+.exec { margin:14px 0 0; max-width:840px; font:17px/1.58 var(--sans); }
+.cat-lists { margin:14px 0 0; padding:0; list-style:none; display:grid; gap:10px; max-width:840px; }
+.cat-lists li.cat { font:15px/1.6 var(--sans); }
+.cat-lists .cat-label { font:700 12px/1.6 var(--mono); letter-spacing:.06em; text-transform:uppercase; color:var(--accent); }
+.cat-lists ul { margin:4px 0 0; padding-left:20px; }
+.cat-lists ul li { margin:3px 0; }
+.meta-line { margin:16px 0 0; color:var(--muted); font:700 12px/1.9 var(--mono); overflow-wrap:anywhere; }
+.meta-line a { color:var(--ink); font-weight:800; }
+.meta-line .metrics { color:var(--ink); white-space:nowrap; }
+.story-bar { display:flex; align-items:flex-start; gap:14px; margin-top:4px; }
+.copy-button { flex:0 0 auto; align-self:flex-start; min-height:36px; padding:9px 12px; border:1px solid var(--hairline); border-radius:4px; background:var(--paper); color:var(--ink); cursor:pointer; font:700 12px/1 var(--mono); }
+.copy-button:hover { border-color:var(--accent); color:var(--accent); }
+.hn-comments { margin:18px 0 0; padding:14px 18px; background:var(--comment); border:1px solid var(--hairline); font:15px/1.62 var(--serif); color:var(--ink); }
+.hn-comments strong { font:700 12px/1.6 var(--mono); color:var(--accent); display:block; margin-bottom:6px; }
+.page-footer { display:flex; justify-content:space-between; flex-wrap:wrap; gap:14px; margin-top:64px; padding-top:12px; border-top:1px solid var(--hairline); color:var(--muted); font:12px/1.6 var(--mono); }
+.footer-links { display:flex; flex-wrap:wrap; gap:8px 20px; }
+.footer-links a { min-height:36px; display:inline-flex; align-items:center; color:var(--ink); font-weight:800; }
+.footer-links a:hover { color:var(--accent); }
+.shortcut-bar { display:flex; flex-wrap:wrap; gap:18px; margin-top:28px; color:var(--muted); font:11px/1.5 var(--mono); }
+kbd { display:inline-grid; place-items:center; min-width:22px; height:22px; margin-right:6px; padding:0 6px; border:1px solid var(--hairline); border-bottom-width:2px; border-radius:3px; background:var(--comment); color:var(--ink); font:inherit; font-weight:700; }
+.toast { position:fixed; right:max(18px,env(safe-area-inset-right)); bottom:max(18px,env(safe-area-inset-bottom)); z-index:10; padding:11px 14px; color:var(--paper); background:var(--ink); border:1px solid var(--ink); font:700 12px/1 var(--mono); opacity:0; transform:translateY(8px); pointer-events:none; transition:opacity 160ms ease,transform 160ms ease; }
+.toast.show { opacity:1; transform:translateY(0); }
+@media (max-width:760px) {
+  .page { width:min(100% - 22px,1080px); padding-top:16px; }
+  .issue-header { grid-template-columns:1fr auto; gap:12px; padding-bottom:20px; }
+  h1 { font-size:clamp(34px,10vw,48px); }
+  .deck { grid-column:1 / -1; margin-top:3px; font-size:15px; }
+  .theme-toggle { grid-column:2; grid-row:1; min-width:72px; }
+  .story { grid-template-columns:44px minmax(0,1fr); gap:14px; padding:20px 18px 22px; }
+  .story-number { font-size:16px; padding-top:4px; }
+  .story-bar { flex-direction:column; align-items:stretch; }
+  .copy-button { align-self:flex-start; }
+  .page-footer { display:block; }
+}
+@media (max-width:420px) {
+  .page { width:calc(100% - 16px); }
+  .story { grid-template-columns:1fr; gap:8px; padding:20px 16px 22px; }
+  .story-number { padding-top:0; }
+  .copy-button { width:100%; }
+}
+@media (prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } *,*::before,*::after { transition:none !important; } }
+@media print { :root { --page:#fff;--paper:#fff;--ink:#000;--muted:#444;--hairline:#bbb;--comment:#f5f5f5;--shadow:none; } .page{width:100%;padding:0}.theme-toggle,.copy-button,.toast,.shortcut-bar{display:none}.story{break-inside:avoid;box-shadow:none} }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="issue-header">
+      <div>
+        <nav class="archive-nav" aria-label="HN Daily archive links"><a href="../">← Archive</a><a href="https://tk3369.github.io/hn-daily/" target="_blank" rel="noopener">Published archive ↗</a></nav>
+        <p class="edition"><time datetime="2026-10-13">2026-10-13</time> · Daily brief · Pacific time</p>
+        <h1>HN Daily</h1>
+        <p class="deck">Direct, low-fluff top 10 from Hacker News, daily at 7am PT — hottest by points</p>
+      </div>
+      <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch color theme" title="Toggle theme (T)"><span class="theme-dot" aria-hidden="true"></span><span class="theme-text">Dark</span></button>
+    </header>
+
+    <ol class="story-list" aria-label="Top 10 Hacker News stories">
+<article class="story" id="story-1" data-story="1" data-source="https://www.tomshardware.com/tech-industry/cyber-security/unprecedented-cyberattack-cripples-supermarket-fridges-across-europe-as-hackers-activate-automatic-defrosting-delivery-and-store-prices-also-impacted-by-incident" data-hn="https://news.ycombinator.com/item?id=50055304" data-metric="789 pts / 910 comments" tabindex="0" aria-label="Story 1: Hackers trigger defrost across European supermarket fridges — deliveries and store prices hit too">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">Hackers trigger defrost across European supermarket fridges — deliveries and store prices hit too</h2>
+<p class="exec">Tom&#x27;s Hardware reports an attack in which hackers activated automatic defrosting in supermarket fridge systems across Europe, spoiling stock; deliveries and in-store prices were also impacted. The vulnerable part is the control path: commercial refrigeration controllers are sold on remote diagnosis and control — start a defrost without a callout, compare performance across a whole estate — which is exactly the access an attacker needs to start defrosts everywhere at once.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The attack</span><ul><li>Automatic defrosting activated remotely across supermarket fridges in Europe; frozen and chilled stock spoiled, deliveries and store prices impacted</li><li>Vendor pitch for the same connectivity: remote diagnosis, remote defrost, estate-wide efficiency comparison</li></ul></li><li class="cat"><span class="cat-label">Why it matters</span><ul><li>Monitoring and control were bundled: a system that only reported temperatures could not be told to defrost</li><li>This is the IoT pattern at infrastructure scale — a convenience feature becomes a single point of failure for a food supply chain</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://www.tomshardware.com/tech-industry/cyber-security/unprecedented-cyberattack-cripples-supermarket-fridges-across-europe-as-hackers-activate-automatic-defrosting-delivery-and-store-prices-also-impacted-by-incident" target="_blank" rel="noopener">tomshardware.com</a> · Discuss: <a href="https://news.ycombinator.com/item?id=50055304" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">789 pts / 910 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>At 910 comments this is the day&#x27;s biggest thread, and its first move is to strike the word &#x27;unprecedented&#x27;: commenters link an August 2026 incident in which US military commissary freezers were all put into defrost mode and the food spoiled — the same attack, a month earlier, as a warning nobody acted on. The main argument is architectural: why is a defrost control reachable at all, when remote monitoring could be read-only and a human has to visit the fridge to unload it anyway? Defenders of connectivity cite failure alerts and energy optimisation; the counter is that none of that requires giving the network write access to the cooling system.</p>
+</div>
+</article>
+<article class="story" id="story-2" data-story="2" data-source="https://prophitt.me/writing/a-modern-web-app-in-c" data-hn="https://news.ycombinator.com/item?id=50058528" data-metric="632 pts / 277 comments" tabindex="0" aria-label="Story 2: A modern web app in C: one CGI binary, SQLite, Stripe payments — shipped as a real commercial product">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">A modern web app in C: one CGI binary, SQLite, Stripe payments — shipped as a real commercial product</h2>
+<p class="exec">Corey Prophitt shipped marketyour.games — accounts, a creator search dashboard, folders, Stripe payments, Postmark email, no JavaScript required — as a C program served by CGI, the 1994 model. The stack is BCHS: OpenBSD, C, httpd, SQLite. Every request spawns a fresh process; deploying is replacing one file, with no restart and no downtime. Three dependencies: libcurl, libsodium, and vendored single-file SQLite and cJSON. A clean build takes seconds.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The stack</span><ul><li>No framework, no templating language, no database server: C reads CGI variables, writes HTML directly, opens SQLite through its C API</li><li>OpenBSD defaults do security work: httpd serves from a chroot, pledge and unveil sandbox the binary</li></ul></li><li class="cat"><span class="cat-label">Why it matters</span><ul><li>The whole system fits in one head — the measured trade is developer comfort for a dependency and operations count near zero</li><li>CGI&#x27;s 2004 verdict is being re-litigated: per-request process isolation is a feature when machines are fast and deploys are file copies</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://prophitt.me/writing/a-modern-web-app-in-c" target="_blank" rel="noopener">prophitt.me</a> · Discuss: <a href="https://news.ycombinator.com/item?id=50058528" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">632 pts / 277 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>Admiration, with the obvious objection stated plainly: most of the listed benefits — one binary, SQLite, minimal dependencies — also apply to Go or Rust, with memory safety included, so why accept C&#x27;s string handling for HTML output? Systems commenters work the details: fork-per-request costs milliseconds that FastCGI was invented to avoid, and SQLite&#x27;s write behaviour under concurrent CGI processes gets questioned. A quieter strand simply agrees with the shape — modern PHP users report building the same way, frameworks only when a large team forces one.</p>
+</div>
+</article>
+<article class="story" id="story-3" data-story="3" data-source="https://z.ai/blog/glm-legal" data-hn="https://news.ycombinator.com/item?id=50058507" data-metric="615 pts / 342 comments" tabindex="0" aria-label="Story 3: GLM-Legal: Z.ai takes the GLM line into legal work, where a hallucinated case is a sanction, not a typo">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">GLM-Legal: Z.ai takes the GLM line into legal work, where a hallucinated case is a sanction, not a typo</h2>
+<p class="exec">Z.ai&#x27;s blog announces GLM-Legal, a legal-domain entry in its GLM model line. The workflow shown leans on tracked changes and human lawyer review rather than autonomous output — the only defensible shape in a field where the known failure mode is specific and public: LLMs inventing cases and holdings, filed by lawyers who did not check, ending in sanctions. The examples shown focus on common-law work, the US and UK being where the legal industry&#x27;s money is.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The product</span><ul><li>Legal-domain GLM from Z.ai (z.ai blog); presented around drafting and review workflows with human sign-off</li><li>Not presented as an open model — notable as Chinese labs trend toward keeping domain models proprietary</li></ul></li><li class="cat"><span class="cat-label">Why it matters</span><ul><li>Legal is the vertical where hallucination has a documented cost: judges have already sanctioned filings with invented citations</li><li>The open question is liability: when the model is wrong and the human missed it, the current answer is that the lawyer pays</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://z.ai/blog/glm-legal" target="_blank" rel="noopener">z.ai</a> · Discuss: <a href="https://news.ycombinator.com/item?id=50058507" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">615 pts / 342 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>The thread goes straight to accountability: several commenters want disclosure laws for attorneys&#x27; AI use, on the grounds that a client should not learn from a sanctions order that their filing was prompt output. Others note the workflow defence — tracked changes plus human review — only works if the human actually verifies citations, which is precisely the step that failed in the publicised cases. A colder take predicts the economics: if a human sign-off remains legally required, lawyers keep high-paid jobs while models do the heavy lifting underneath.</p>
+</div>
+</article>
+<article class="story" id="story-4" data-story="4" data-source="https://yyhh.org/blog/2026/10/ai-is-a-tool/" data-hn="https://news.ycombinator.com/item?id=50063427" data-metric="485 pts / 393 comments" tabindex="0" aria-label="Story 4: AI is a tool and using it well takes skill: a direct rebuttal to Rich Hickey&#x27;s &#x27;AI is not a tool&#x27;">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">AI is a tool and using it well takes skill: a direct rebuttal to Rich Hickey&#x27;s &#x27;AI is not a tool&#x27;</h2>
+<p class="exec">Huahai Yang answers Rich Hickey&#x27;s October 11 essay, which argued LLMs are automation, not tools, because they cannot be wielded. The rebuttal: a saw does not guarantee a straight cut and a chisel does not make a sculptor — tools amplify poor judgement as readily as good, and usefulness depends on directing the work, reading feedback and correcting mistakes. Automation does not disqualify a tool either: a compiler and a spreadsheet both do substantial work unsupervised, and we still wield them.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The argument</span><ul><li>Unpredictability is a quality by which tools are judged, not a disqualifier from the category</li><li>The claimed LLM workflow — ask, challenge the explanation, inspect the source, test, reject, refine — is a human-directed feedback loop</li></ul></li><li class="cat"><span class="cat-label">Why it matters</span><ul><li>Framing decides practice: &#x27;tool&#x27; implies operator skill and responsibility; &#x27;automation&#x27; implies output you accept</li><li>If skill is real, it should be specifiable — which is exactly where the thread pushes back</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://yyhh.org/blog/2026/10/ai-is-a-tool/" target="_blank" rel="noopener">yyhh.org</a> · Discuss: <a href="https://news.ycombinator.com/item?id=50063427" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">485 pts / 393 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>The strongest pushback is a demand for receipts: name the skill concretely, in a form others can replicate — a saw technique can be taught to 100% reliability, while a compiler gives the same output for the same input and an LLM does not. Practitioners split by experience: one camp says the prompt-craft skills of mid-2025 are already obsolete and what remains is knowing what to ask for; another says AI used to learn a codebase is a skill amplifier, while most users treat it as a wishing machine and outsource the thinking. Several call the whole framing debate one of HN&#x27;s least productive genres.</p>
+</div>
+</article>
+<article class="story" id="story-5" data-story="5" data-source="https://github.com/h0m3us3r/w1700k-sdr" data-hn="https://news.ycombinator.com/item?id=50055593" data-metric="383 pts / 104 comments" tabindex="0" aria-label="Story 5: A WiFi 7 router becomes a 320 Msps software-defined radio receiver">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">A WiFi 7 router becomes a 320 Msps software-defined radio receiver</h2>
+<p class="exec">A GitHub project (h0m3us3r, w1700k-sdr) turns a WiFi 7 router into a 320 megasample-per-second SDR receiver — commodity networking silicon re-purposed as radio test gear. The same developer previously built an SDR from an ESP32 Wi-Fi microcontroller. At 5 GHz, commenters note, there is no cheaper known way to get a receiver with this sample rate; dedicated SDR hardware at these rates is a different price class entirely.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The hack</span><ul><li>WiFi 7 router (W1700K chipset) driven as a 320 Msps SDR receiver; code on GitHub</li><li>Same author&#x27;s earlier work: an ESP32 turned into an SDR (eSpDR)</li></ul></li><li class="cat"><span class="cat-label">Why it matters</span><ul><li>Every mass-produced Wi-Fi chipset is a wideband radio with a locked door; this is another door opened</li><li>Cheap receivers change who can experiment: spectrum work that needed lab budgets moves to a router&#x27;s price</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://github.com/h0m3us3r/w1700k-sdr" target="_blank" rel="noopener">github.com</a> · Discuss: <a href="https://news.ycombinator.com/item?id=50055593" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">383 pts / 104 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>Radio people are genuinely impressed, with one deflationary correction: a Wi-Fi chipset already is an SDR, so the feat is access, not transmutation. Practical questions dominate — what is the SNR, can it be had in Europe, and will it work on the Banana Pi R4, which shares the chipset and adds PCIe/NVMe? The most ambitious reply sketches the endpoint: add attenuators, filters and a mixer stage and the router becomes the core of a small, high-performance service monitor good to 5 GHz — lab gear assembled from consumer parts.</p>
+</div>
+</article>
+<article class="story" id="story-6" data-story="6" data-source="https://www.bbc.com/news/articles/c620r33plgppo" data-hn="https://news.ycombinator.com/item?id=50055220" data-metric="376 pts / 424 comments" tabindex="0" aria-label="Story 6: Citroën revives the 2CV for an electric age: retro concept, showrooms planned by 2028">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">Citroën revives the 2CV for an electric age: retro concept, showrooms planned by 2028</h2>
+<p class="exec">The BBC reports Citroën has brought back the 2CV name at the Paris Motor Show: a small electric city runabout with retro styling, shown as a concept car that indicates direction rather than a finished product, with a production version planned for showrooms by 2028. Parent Stellantis is explicit about the context — European brands facing mounting competition from Chinese manufacturers are using heritage as a selling tool in a difficult EV market.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The car</span><ul><li>Concept unveiled at the Paris Motor Show; small city EV in 2CV retro styling, production version targeted for 2028</li><li>A heritage play by Citroën/Stellantis as Chinese makers undercut European EVs on price</li></ul></li><li class="cat"><span class="cat-label">Why it matters</span><ul><li>The test is the original&#x27;s virtue, not its silhouette: the 2CV won on simplicity and price, not styling</li><li>European makers are splitting strategies — heritage and design against a cost fight they are currently losing</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://www.bbc.com/news/articles/c620r33plgppo" target="_blank" rel="noopener">bbc.com</a> · Discuss: <a href="https://news.ycombinator.com/item?id=50055220" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">376 pts / 424 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>Design gets praised first — Citroën, Renault and Hyundai are credited with making cars that look like the future instead of bloated and aggressive — then economics takes over: heritage sells to people who treat a car as fashion, while working buyers choose range per unit of money, and a commenter prices the rival directly, a BYD Seagull as a real car for less. The recurring condition for success is fidelity to the original&#x27;s actual appeal: if the production car keeps the 2CV&#x27;s simplicity it can win; if the concept&#x27;s impractical interior survives, it is a marketing stunt.</p>
+</div>
+</article>
+<article class="story" id="story-7" data-story="7" data-source="https://github.com/rust-lang/rust/issues/164250" data-hn="https://news.ycombinator.com/item?id=50069499" data-metric="343 pts / 173 comments" tabindex="0" aria-label="Story 7: 11-year-old unsoundness bugs found in Rust&#x27;s borrow checker — and the minimal example is ordinary code">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">11-year-old unsoundness bugs found in Rust&#x27;s borrow checker — and the minimal example is ordinary code</h2>
+<p class="exec">A Rust compiler issue reports unsoundness bugs in the borrow checker that have sat there for 11 years. What alarms the thread is not exoticism but the opposite: the minimal example is short, plausible code — a generic wrapper with a &#x27;static bound and a Drop implementation that ends up holding a reference which has outlived its data. Variance is the mechanism, and variance is the part of the type system almost nobody writes or tests by hand.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The bug</span><ul><li>Unsoundness in the borrow checker, present for 11 years, filed as rust-lang/rust issue #164250</li><li>Minimal reproduction is simple, normal-looking code — not a contrived edge case</li></ul></li><li class="cat"><span class="cat-label">Why it matters</span><ul><li>Rust&#x27;s core promise is that safe code cannot do this; an 11-year hole in the checker is a hole in the guarantee itself</li><li>It raises the audit question for certified variants: whether the Ferrocene safety-critical compiler shares the issue</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://github.com/rust-lang/rust/issues/164250" target="_blank" rel="noopener">github.com</a> · Discuss: <a href="https://news.ycombinator.com/item?id=50069499" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">343 pts / 173 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>Rust developers react with disbelief at the reproduction&#x27;s simplicity — this is code shape you meet in normal work, and several say it took minutes to even see the trick, which is itself the explanation for 11 undiscovered years: hand-written variance is rare, so the tests never covered it. Context arrives quickly: collections of known Rust soundness bugs exist, a paper cataloguing them was posted to HN before to little attention, and the general verdict is type systems are hard — Rust is better, never perfect, and its safety claims may need the disclaimer printed.</p>
+</div>
+</article>
+<article class="story" id="story-8" data-story="8" data-source="https://jsomers.net/e-coli-chemotaxis/" data-hn="https://news.ycombinator.com/item?id=50041866" data-metric="340 pts / 95 comments" tabindex="0" aria-label="Story 8: The baffling intelligence of a single cell: E. coli navigates by comparing now with a few seconds ago (2024)">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">The baffling intelligence of a single cell: E. coli navigates by comparing now with a few seconds ago (2024)</h2>
+<p class="exec">James Somers&#x27; interactive essay walks through E. coli chemotaxis: a bacterium with no brain swims toward food by storing its recent chemical past — in chemical modifications to its own proteins — and comparing the present against a few seconds ago, biasing its tumble-and-run movement accordingly. Memory, comparison and decision, implemented in chemistry. The piece is from 2024; it is back on the front page on the strength of the interactive presentation as much as the biology.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The mechanism</span><ul><li>State stored as chemical modifications; the cell compares current nutrient concentration with its seconds-old record and adjusts turning behaviour</li><li>An interactive, animated treatment (jsomers.net) of a classic molecular-biology system</li></ul></li><li class="cat"><span class="cat-label">Why it matters</span><ul><li>It is the minimal working example of navigation: sensing plus memory plus a comparator, with no neurons anywhere</li><li>A live design question for AI: real neurons have properties artificial ones lack, and single cells already compute more than the neuron model suggests</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://jsomers.net/e-coli-chemotaxis/" target="_blank" rel="noopener">jsomers.net</a> · Discuss: <a href="https://news.ycombinator.com/item?id=50041866" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">340 pts / 95 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>The thread argues about the word in the title. One side: a nutrient sensor that raises concentration readings and flips turning direction below a threshold is a fully automatic mechanism, the opposite of intelligence. The other side treats that as the point — memory-and-compare is the same computational primitive a neuron uses, slower and simpler, and a single cell resembles a small neural network more than a single artificial neuron. In between, pure craft appreciation: multiple commenters call it one of the best-designed pages they have seen, and a previous 2024 discussion is linked for the longer argument.</p>
+</div>
+</article>
+<article class="story" id="story-9" data-story="9" data-source="https://www.intel.com/content/www/us/en/products/details/discrete-gpus/data-center-gpu/d-series.html" data-hn="https://news.ycombinator.com/item?id=50063365" data-metric="269 pts / 139 comments" tabindex="0" aria-label="Story 9: Intel D270: a data-centre AI accelerator with up to 480 GB of LPDDR5X, aimed at token serving">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">Intel D270: a data-centre AI accelerator with up to 480 GB of LPDDR5X, aimed at token serving</h2>
+<p class="exec">Intel&#x27;s product page lists the D270, a Crescent Island data-centre GPU in its D-series, with up to 480 GB of LPDDR5X memory — far above the 120 GB figure originally trailed, which Intel had said partners could exceed. The pitch on the page is inference economics: dense, air-cooled, standard PCIe infrastructure to maximise tokens per rack and per watt. Memory capacity, not peak compute, is the headline specification.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The hardware</span><ul><li>D270 (Crescent Island), data-centre GPU, up to 480 GB LPDDR5X; air-cooled PCIe form factor for serving racks</li><li>Positioned on tokens per rack and watt — capacity-led inference, not training</li></ul></li><li class="cat"><span class="cat-label">Why it matters</span><ul><li>Memory capacity is the binding constraint for serving large models cheaply; a high-capacity option changes the buying comparison against both GPUs and Apple-silicon-class machines</li><li>Only if it ships in volume at a real price — the thread&#x27;s standing objection to Intel accelerator announcements</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://www.intel.com/content/www/us/en/products/details/discrete-gpus/data-center-gpu/d-series.html" target="_blank" rel="noopener">intel.com</a> · Discuss: <a href="https://news.ycombinator.com/item?id=50063365" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">269 pts / 139 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>Interest, immediately audited. The capacity number earns respect — twenty channels of LPDDR5 is a real route to memory sizes consumers and smaller shops cannot otherwise buy — and one commenter notes the page under-sells its own bandwidth figure. Then the scepticism: can you actually buy one, is the compute too small for anything but MoE-style serving, and is this more announced Intel silicon that never reaches a shelf? A side regret runs through it: Intel&#x27;s GPU driver stack had matured into a genuine third option, and the energy is going to data-centre parts instead.</p>
+</div>
+</article>
+<article class="story" id="story-10" data-story="10" data-source="https://arxiv.org/abs/2610.13928" data-hn="https://news.ycombinator.com/item?id=50065692" data-metric="245 pts / 115 comments" tabindex="0" aria-label="Story 10: AI models can provably hide arbitrary capabilities: encrypted circuits in the weights that only a secret trigger unlocks">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">AI models can provably hide arbitrary capabilities: encrypted circuits in the weights that only a secret trigger unlocks</h2>
+<p class="exec">A NeurIPS 2026 paper (arXiv 2610.13928) constructs backdoored models that embed an encrypted neural network inside the host model&#x27;s weights, decrypting and executing it only on a secret trigger. Using digital lockers, the hidden capability is provably hard to elicit or interpret under cryptographic assumptions — even with full access to the weights. The PyTorch proof of concept, tested on a chemical-reaction prediction task as a CBRN proxy, resisted fine-tuning, weight noising, gradient-based trigger search and latent adversarial training.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The result</span><ul><li>Extends prior work from hiding fixed strings to hiding arbitrary computations inside model weights</li><li>Capability audits assume hidden behaviour can be elicited; this is a constructive counterexample under adversarial conditions</li></ul></li><li class="cat"><span class="cat-label">Why it matters</span><ul><li>Elicitation-based evaluation has a provable limit — a clean audit cannot, in general, certify that a capability is absent</li><li>The authors release the models to support defences; the immediate use is as a test case for audit methods</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://arxiv.org/abs/2610.13928" target="_blank" rel="noopener">arxiv.org</a> · Discuss: <a href="https://news.ycombinator.com/item?id=50065692" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">245 pts / 115 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>The thread separates the theorem from the threat model. One camp calls it a cool but deflationary demo: the construction follows from Rice&#x27;s-theorem-style limits, and today&#x27;s hidden weights are detectable in practice. The reply is that proofs of concept are the point — no known theoretical barrier stops a future version being indistinguishable from normal weights, whether planted by an attacker or learned. Practical consequences get named: sleeper behaviour in free open-weight models is the standing worry, and fully inspectable training data becomes a stronger selling point for open providers.</p>
+</div>
+</article>
+    </ol>
+
+    <div class="shortcut-bar" aria-label="Keyboard shortcuts">
+      <span><kbd>J</kbd> next story</span>
+      <span><kbd>K</kbd> previous story</span>
+      <span><kbd>T</kbd> theme</span>
+    </div>
+
+    <footer class="page-footer">
+      <div class="footer-links"><a href="../">← Daily archive</a><a href="https://tk3369.github.io/hn-daily/" target="_blank" rel="noopener">Published archive ↗</a></div>
+      <span>Tuesday 2026-10-13 · 10 stories</span>
+    </footer>
+  </main>
+  <div class="toast" role="status" aria-live="polite"></div>
+  <script>
+(() => {
+  const root = document.documentElement;
+  const toggle = document.getElementById('theme-toggle');
+  const entries = [...document.querySelectorAll('[data-story]')];
+  function storedTheme() { try { const t = localStorage.getItem('hn-daily-theme'); return t === 'dark' || t === 'light' ? t : null; } catch (_) { return null; } }
+  function preferredTheme() { return matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'; }
+  function currentTheme() { const a = root.dataset.theme; if (a === 'dark' || a === 'light') return a; return storedTheme() || preferredTheme(); }
+  function setTheme(theme) { const next = theme === 'dark' ? 'dark' : 'light'; const opposite = next === 'dark' ? 'Light' : 'Dark';
+    if (root.dataset.theme !== next) root.dataset.theme = next;
+    toggle.querySelector('.theme-text').textContent = opposite;
+    toggle.setAttribute('aria-label', `Switch to ${opposite} theme (T)`); toggle.title = `Switch to ${opposite} theme (T)`;
+    try { localStorage.setItem('hn-daily-theme', next); } catch (_) {} }
+  function flipTheme() { setTheme(currentTheme() === 'dark' ? 'light' : 'dark'); }
+  setTheme(storedTheme() || preferredTheme());
+  toggle.addEventListener('click', flipTheme);
+  const toast = document.querySelector('.toast'); let toastTimer;
+  function showToast(msg) { toast.textContent = msg; toast.classList.add('show'); clearTimeout(toastTimer); toastTimer = setTimeout(() => toast.classList.remove('show'), 1800); }
+  document.querySelectorAll('.copy-button').forEach((button) => {
+    button.addEventListener('click', async () => {
+      const story = button.closest('.story');
+      const n = story.dataset.story;
+      const tagline = story.querySelector('.tagline').textContent.trim();
+      const execSum = story.querySelector('.exec').textContent.trim();
+      const bullets = [...story.querySelectorAll('.cat-lists .cat')].map(li => {
+        const label = li.querySelector('.cat-label').textContent.trim();
+        const pts = [...li.querySelectorAll('ul li')].map(p => '  \u2022 ' + p.textContent.trim()).join('\n');
+        return '- ' + label + ':\n' + pts;
+      }).join('\n');
+      const link = 'https://tk3369.github.io/hn-daily/2026-10-13/#story-' + n;
+      const text = n + '. ' + tagline + '\n\n' + execSum + '\n' + bullets + '\n\n' + link;
+      try { await navigator.clipboard.writeText(text); button.textContent = 'Copied'; showToast('Story ' + n + ' copied for Threads'); setTimeout(() => { button.textContent = 'Copy for Threads'; }, 1600); }
+      catch (_) { showToast('Copy was blocked by this browser'); }
+    });
+  });
+  document.addEventListener('keydown', (event) => {
+    if (event.metaKey || event.ctrlKey || event.altKey || event.shiftKey) return;
+    const tag = event.target.tagName;
+    if (tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT') return;
+    const key = event.key.toLowerCase();
+    if (key === 't') { event.preventDefault(); flipTheme(); }
+    else if ((key === 'j' || key === 'k') && entries.length) {
+      event.preventDefault();
+      const active = entries.indexOf(document.activeElement);
+      const delta = key === 'j' ? 1 : -1;
+      const next = active < 0 ? (key === 'j' ? 0 : entries.length - 1) : Math.max(0, Math.min(entries.length - 1, active + 1 * delta));
+      entries[next].focus();
+    }
+  });
+})();
+  </script>
+</body>
+</html>
