@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="color-scheme" content="light dark" />
+  <link rel="icon" href="data:," />
+  <title>HN Daily — Wednesday 2026-10-14</title>
+  <style>
+:root { --page:#f1eadb; --paper:#fffaf0; --ink:#20201c; --muted:#6f695f; --hairline:#d9cebc; --accent:#ff5a1f; --comment:#f6efe3; --shadow:0 2px 0 rgba(57,45,25,.08),0 14px 36px rgba(57,45,25,.06); --serif:Georgia,"Times New Roman",serif; --sans:ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; --mono:"SFMono-Regular",Consolas,"Liberation Mono",monospace; }
+html[data-theme="dark"] { --page:#111312; --paper:#191c1a; --ink:#f1eee6; --muted:#aba69b; --hairline:#393b36; --accent:#ff7139; --comment:#222520; --shadow:0 2px 0 rgba(0,0,0,.22),0 18px 42px rgba(0,0,0,.22); }
+* { box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body { margin:0; min-width:280px; color:var(--ink); background:var(--page); font-family:var(--sans); line-height:1.55; -webkit-font-smoothing:antialiased; }
+a { color:inherit; text-underline-offset:3px; text-decoration-thickness:1px; }
+a:hover { color:var(--accent); }
+button,a { -webkit-tap-highlight-color:transparent; }
+button { font:inherit; }
+a:focus-visible,button:focus-visible { outline:3px solid var(--accent); outline-offset:3px; }
+.page { width:min(1080px,calc(100% - 36px)); margin:0 auto; padding:28px 0 72px; }
+.issue-header { display:grid; grid-template-columns:1fr auto; gap:24px; align-items:end; padding:8px 0 26px; border-bottom:3px solid var(--ink); }
+.edition { margin:0 0 9px; color:var(--accent); font:700 12px/1.3 var(--mono); letter-spacing:.09em; text-transform:uppercase; }
+.archive-nav { display:flex; flex-wrap:wrap; gap:8px 20px; margin-bottom:16px; font:700 12px/1 var(--mono); }
+.archive-nav a { min-height:36px; display:inline-flex; align-items:center; color:var(--muted); }
+.archive-nav a:hover { color:var(--accent); }
+h1 { max-width:820px; margin:0; font:700 clamp(34px,5.5vw,62px)/.98 var(--serif); letter-spacing:-.038em; }
+.deck { max-width:730px; margin:17px 0 0; color:var(--muted); font:17px/1.55 var(--sans); }
+.theme-toggle { align-self:start; min-width:86px; min-height:40px; padding:9px 13px; border:1px solid var(--hairline); border-radius:4px; color:var(--ink); background:var(--paper); cursor:pointer; font:700 12px/1 var(--mono); display:inline-flex; align-items:center; gap:8px; }
+.theme-toggle:hover { border-color:var(--accent); color:var(--accent); }
+.theme-dot { width:10px; height:10px; border-radius:50%; background:var(--accent); display:inline-block; flex-shrink:0; }
+.theme-text { line-height:1; }
+.story-list { display:grid; gap:20px; list-style:none; margin:26px 0 0; padding:0; counter-reset:story; }
+.story { counter-increment:story; display:grid; grid-template-columns:72px minmax(0,1fr); gap:26px; padding:26px 30px 28px; background:var(--paper); border-top:4px solid var(--ink); box-shadow:var(--shadow); scroll-margin-top:24px; }
+.story-number { color:var(--accent); font:900 22px/1 var(--mono); letter-spacing:-.04em; padding-top:6px; }
+.story-number::before { content:counter(story,decimal-leading-zero); }
+.tagline { margin:0; max-width:840px; font:700 clamp(24px,3vw,36px)/1.1 var(--serif); letter-spacing:-.028em; }
+.exec { margin:14px 0 0; max-width:840px; font:17px/1.58 var(--sans); }
+.cat-lists { margin:14px 0 0; padding:0; list-style:none; display:grid; gap:10px; max-width:840px; }
+.cat-lists li.cat { font:15px/1.6 var(--sans); }
+.cat-lists .cat-label { font:700 12px/1.6 var(--mono); letter-spacing:.06em; text-transform:uppercase; color:var(--accent); }
+.cat-lists ul { margin:4px 0 0; padding-left:20px; }
+.cat-lists ul li { margin:3px 0; }
+.meta-line { margin:16px 0 0; color:var(--muted); font:700 12px/1.9 var(--mono); overflow-wrap:anywhere; }
+.meta-line a { color:var(--ink); font-weight:800; }
+.meta-line .metrics { color:var(--ink); white-space:nowrap; }
+.story-bar { display:flex; align-items:flex-start; gap:14px; margin-top:4px; }
+.copy-button { flex:0 0 auto; align-self:flex-start; min-height:36px; padding:9px 12px; border:1px solid var(--hairline); border-radius:4px; background:var(--paper); color:var(--ink); cursor:pointer; font:700 12px/1 var(--mono); }
+.copy-button:hover { border-color:var(--accent); color:var(--accent); }
+.hn-comments { margin:18px 0 0; padding:14px 18px; background:var(--comment); border:1px solid var(--hairline); font:15px/1.62 var(--serif); color:var(--ink); }
+.hn-comments strong { font:700 12px/1.6 var(--mono); color:var(--accent); display:block; margin-bottom:6px; }
+.page-footer { display:flex; justify-content:space-between; flex-wrap:wrap; gap:14px; margin-top:64px; padding-top:12px; border-top:1px solid var(--hairline); color:var(--muted); font:12px/1.6 var(--mono); }
+.footer-links { display:flex; flex-wrap:wrap; gap:8px 20px; }
+.footer-links a { min-height:36px; display:inline-flex; align-items:center; color:var(--ink); font-weight:800; }
+.footer-links a:hover { color:var(--accent); }
+.shortcut-bar { display:flex; flex-wrap:wrap; gap:18px; margin-top:28px; color:var(--muted); font:11px/1.5 var(--mono); }
+kbd { display:inline-grid; place-items:center; min-width:22px; height:22px; margin-right:6px; padding:0 6px; border:1px solid var(--hairline); border-bottom-width:2px; border-radius:3px; background:var(--comment); color:var(--ink); font:inherit; font-weight:700; }
+.toast { position:fixed; right:max(18px,env(safe-area-inset-right)); bottom:max(18px,env(safe-area-inset-bottom)); z-index:10; padding:11px 14px; color:var(--paper); background:var(--ink); border:1px solid var(--ink); font:700 12px/1 var(--mono); opacity:0; transform:translateY(8px); pointer-events:none; transition:opacity 160ms ease,transform 160ms ease; }
+.toast.show { opacity:1; transform:translateY(0); }
+@media (max-width:760px) {
+  .page { width:min(100% - 22px,1080px); padding-top:16px; }
+  .issue-header { grid-template-columns:1fr auto; gap:12px; padding-bottom:20px; }
+  h1 { font-size:clamp(34px,10vw,48px); }
+  .deck { grid-column:1 / -1; margin-top:3px; font-size:15px; }
+  .theme-toggle { grid-column:2; grid-row:1; min-width:72px; }
+  .story { grid-template-columns:44px minmax(0,1fr); gap:14px; padding:20px 18px 22px; }
+  .story-number { font-size:16px; padding-top:4px; }
+  .story-bar { flex-direction:column; align-items:stretch; }
+  .copy-button { align-self:flex-start; }
+  .page-footer { display:block; }
+}
+@media (max-width:420px) {
+  .page { width:calc(100% - 16px); }
+  .story { grid-template-columns:1fr; gap:8px; padding:20px 16px 22px; }
+  .story-number { padding-top:0; }
+  .copy-button { width:100%; }
+}
+@media (prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } *,*::before,*::after { transition:none !important; } }
+@media print { :root { --page:#fff;--paper:#fff;--ink:#000;--muted:#444;--hairline:#bbb;--comment:#f5f5f5;--shadow:none; } .page{width:100%;padding:0}.theme-toggle,.copy-button,.toast,.shortcut-bar{display:none}.story{break-inside:avoid;box-shadow:none} }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="issue-header">
+      <div>
+        <nav class="archive-nav" aria-label="HN Daily archive links"><a href="../">← Archive</a><a href="https://tk3369.github.io/hn-daily/" target="_blank" rel="noopener">Published archive ↗</a></nav>
+        <p class="edition"><time datetime="2026-10-14">2026-10-14</time> · Daily brief · Pacific time</p>
+        <h1>HN Daily</h1>
+        <p class="deck">Direct, low-fluff top 10 from Hacker News, daily at 7am PT — hottest by points</p>
+      </div>
+      <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch color theme" title="Toggle theme (T)"><span class="theme-dot" aria-hidden="true"></span><span class="theme-text">Dark</span></button>
+    </header>
+
+    <ol class="story-list" aria-label="Top 10 Hacker News stories">
+<article class="story" id="story-1" data-story="1" data-source="https://deepmind.google/models/gemini/" data-hn="https://news.ycombinator.com/item?id=50073879" data-metric="1364 pts / 969 comments" tabindex="0" aria-label="Story 1: Gemini 4 Argon: Google&#x27;s new flagship leads most benchmarks, with 1M-token output for long proofs and full-repo work">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">Gemini 4 Argon: Google&#x27;s new flagship leads most benchmarks, with 1M-token output for long proofs and full-repo work</h2>
+<p class="exec">Google DeepMind&#x27;s Gemini page presents Gemini 4 Argon as its new flagship, available to AI Pro and Ultra subscribers. The pitch is long, uninterrupted work: up to 1M output tokens for exhaustive proofs and solvers, full-repository generation and refactoring in one pass, and video-to-physics-simulation for robotics. On its own table Argon leads most listed benchmarks against GPT-6 Astra and Claude models, ties on CWE-Bench vulnerability remediation at 68%, and trails on a few coding and science benches.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The claims</span><ul><li>First or tied-first on most of DeepMind&#x27;s table: knowledge work, finance and legal agent benches, long-context GraphWalks, and multimodal tests</li><li>Partner quotes cite long-running tasks completing reliably, SEC-filing financial models matching reference figures, and 3D reconstruction speedups</li></ul></li><li class="cat"><span class="cat-label">Why it matters</span><ul><li>The differentiator claimed is endurance, not a single score: finishing 100K+ token reasoning and multi-tool runs without losing context</li><li>All numbers here are vendor-published; independent replication is the test that counts</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://deepmind.google/models/gemini/" target="_blank" rel="noopener">deepmind.google</a> · Discuss: <a href="https://news.ycombinator.com/item?id=50073879" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">1364 pts / 969 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>At 969 comments the thread&#x27;s first complaint is access: many say Argon is not available in their org or region, or shows as Ultra-only in AI Studio despite the Pro claim — classic Google rollout friction. The substantive split is over trajectory: one camp argues capability gains are shrinking toward an asymptote and the win will be speed and local optimisation, the other points to year-over-year jumps in code, math and multimodal work and says the curve has not flattened. A middle view credits better harnesses and agentic training for much of the felt improvement, not the raw model alone.</p>
+</div>
+</article>
+<article class="story" id="story-2" data-story="2" data-source="https://www.bleepingcomputer.com/news/security/ledger-confirms-hardware-wallet-spy-implant-behind-crypto-thefts/" data-hn="https://news.ycombinator.com/item?id=50054092" data-metric="750 pts / 468 comments" tabindex="0" aria-label="Story 2: Ledger confirms a spy-chip implant in resold wallets stole seed phrases over LTE">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">Ledger confirms a spy-chip implant in resold wallets stole seed phrases over LTE</h2>
+<p class="exec">BleepingComputer reports Ledger confirmed an unauthorised hardware implant in at least one wallet sold through Southeast Asian reseller CryptoBilis, and linked all reported fund drains to that channel. Researchers found a designed flex-PCB implant — a small MCU plus a 2x2mm eSIM and LTE module, in one variant replacing the battery with a smaller one — that captured display output and button presses to recover the seed phrase and transmit it. Ledger&#x27;s own genuine check cannot detect an added implant when the original Secure Element is intact.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The advice</span><ul><li>Do not set up a device bought from that reseller; if already set up, move assets to a new device with a new seed</li><li>Buy only through authorised channels; resellers are told not to restock returned products</li></ul></li><li class="cat"><span class="cat-label">Why it matters</span><ul><li>The secure element was never broken — the attack reads what the device legitimately shows its owner, outside the chip&#x27;s protection</li><li>A manufactured, panelised implant is a supply-chain operation, not a hand-soldered one-off</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://www.bleepingcomputer.com/news/security/ledger-confirms-hardware-wallet-spy-implant-behind-crypto-thefts/" target="_blank" rel="noopener">bleepingcomputer.com</a> · Discuss: <a href="https://news.ycombinator.com/item?id=50054092" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">750 pts / 468 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>Commenters call it the paranoid scenario made real: a tiny eSIM implant doing screen capture on a device whose whole job is keeping secrets offline. Others correct the framing — hardware implants are decades-old intelligence practice; what is new is thieves running one against ordinary consumers at retail scale. Practical fallout dominates the rest: distrust of the whole reseller network, arguments that phone wallets now feel safer to some users, and the admission from several that secure self-custody was always harder than the marketing suggested.</p>
+</div>
+</article>
+<article class="story" id="story-3" data-story="3" data-source="https://guitoro.com/" data-hn="https://news.ycombinator.com/item?id=50077020" data-metric="494 pts / 130 comments" tabindex="0" aria-label="Story 3: Show HN: Guitoro — a virtual guitar you strum with your keyboard">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">Show HN: Guitoro — a virtual guitar you strum with your keyboard</h2>
+<p class="exec">Guitoro is a Show HN web app that turns a computer keyboard into a strummable virtual guitar, with Player and Audience views and chord displays aimed at beginners. It is the day&#x27;s pure delight entry: no account, no install, just open the page and play. The design choice that drives the discussion is orientation — Player view mirrors what a right-handed player sees looking down at their own guitar.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The app</span><ul><li>Browser-based virtual guitar at guitoro.com; keyboard strumming, chord views for learning</li><li>Player view shows a left-handed layout by design; Audience view shows the conventional right-handed presentation</li></ul></li><li class="cat"><span class="cat-label">Why it matters</span><ul><li>Zero-friction music toys lower the first step to learning an instrument — the comments are full of first-chord intent</li><li>Orientation is a real UX fork: mirror-the-player versus match-the-diagram, and users feel the difference immediately</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://guitoro.com/" target="_blank" rel="noopener">guitoro.com</a> · Discuss: <a href="https://news.ycombinator.com/item?id=50077020" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">494 pts / 130 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>Reception is warm — praise for design and feel, and at least one plan to finally learn Wonderwall. The one sustained argument is the Player view orientation: the maker explains it matches a right-handed player&#x27;s own view looking down, low E on top, and lines up with the keyboard on the left; several players reply that it breaks their brain against standard chord diagrams and ask for a toggle. That is the whole thread in miniature: a thoughtful default, honestly defended, that half its audience wants switchable.</p>
+</div>
+</article>
+<article class="story" id="story-4" data-story="4" data-source="https://github.com/android/ndk/issues/2260" data-hn="https://news.ycombinator.com/item?id=50083130" data-metric="370 pts / 174 comments" tabindex="0" aria-label="Story 4: AOSP releases are so late that a developer disassembled Android&#x27;s shipped libc to report a Unicode bug">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">AOSP releases are so late that a developer disassembled Android&#x27;s shipped libc to report a Unicode bug</h2>
+<p class="exec">An android/ndk issue reports that on Android 17 September builds, bionic&#x27;s wcscspn() and wcspbrk() stop at any character at or above U+0100 when the reject set is two or more low characters — breaking wide-string scans on emoji, CJK, Cyrillic or Greek text. The public June AOSP source builds these functions correctly from llvm-libc, so the regression arrived between June and September; with no current source published, the reporter reverse-engineered the shipped libc.so disassembly to find the mechanism and show why the complement functions alone are wrong.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The bug</span><ul><li>Measured impact: over 1.1 million code points misreported; a real app broke when an emoji in a script comment ended a line scan early</li><li>Existing bionic tests use only ASCII input, so nothing caught it; a single non-ASCII test case would</li></ul></li><li class="cat"><span class="cat-label">Why it matters</span><ul><li>When source lags shipped binaries by months, outside developers cannot diff, bisect or patch — disassembly becomes the debugging tool</li><li>That is the open-source bargain eroding in practice, whatever the licence says</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://github.com/android/ndk/issues/2260" target="_blank" rel="noopener">github.com</a> · Discuss: <a href="https://news.ycombinator.com/item?id=50083130" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">370 pts / 174 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>The thread moves quickly from the bug to the platform politics: calls to fork AOSP, countered by the scale problem — even large manufacturers struggle to keep up with Google&#x27;s pace, and Play Services plus users&#x27; existing purchases are the moat that keeps forks marginal. A darker strand argues the centre of gravity is shifting anyway, with most top manufacturers Chinese and HarmonyOS as the worked example of life after Android. The bug itself gets respect as a model report: reproducer, sweep, mechanism, and a proposed test.</p>
+</div>
+</article>
+<article class="story" id="story-5" data-story="5" data-source="https://ourworldindata.org/data-insights/electricity-generation-per-person-in-the-united-kingdom-has-fallen-by-a-third-from-its-early-2000s-peak" data-hn="https://news.ycombinator.com/item?id=50072994" data-metric="361 pts / 582 comments" tabindex="0" aria-label="Story 5: UK electricity generation per person is back below 1970s levels — down a third from its 2003 peak">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">UK electricity generation per person is back below 1970s levels — down a third from its 2003 peak</h2>
+<p class="exec">Our World in Data charts UK electricity generation per person falling from about 6,700 kWh at its 2003 peak to about 4,200 kWh, below the late-1960s level, while global generation per person has risen over 50% this century. Part is accounting — net imports rose from 1% of demand in 2010 to 9% in 2025 — but consumption itself fell: IEA sector data shows industrial use down a quarter since 2005, with residential and commercial use down just as much, driven by deindustrialisation plus real efficiency gains such as LED lighting and appliance standards.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The split</span><ul><li>Efficiency: better insulation, LEDs and standards cut use without cutting service</li><li>Demand destruction: high prices and lost industry cut use by shrinking the economy that used it</li></ul></li><li class="cat"><span class="cat-label">Why it matters</span><ul><li>The same falling line is either a policy success or a planning failure depending on which cause dominates — the data supports both, in different sectors</li><li>Electrifying heat and transport needs generation growth; a system shrinking per person starts that transition behind</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://ourworldindata.org/data-insights/electricity-generation-per-person-in-the-united-kingdom-has-fallen-by-a-third-from-its-early-2000s-peak" target="_blank" rel="noopener">ourworldindata.org</a> · Discuss: <a href="https://news.ycombinator.com/item?id=50072994" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">361 pts / 582 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>At 582 comments this is the day&#x27;s most argued chart. One side reads it as broadly good: insulation and efficiency mean the same comfort for fewer kilowatt-hours, and nobody is going without power. The other calls it a catastrophic failure of planning and nerve, pointing to some of the world&#x27;s highest electricity prices and industries that left because of them. Housing stock dominates the middle of the thread — most commenters&#x27; homes predate 1945, let alone the 1970s — with a running dispute over how much old, damp housing offsets the efficiency story.</p>
+</div>
+</article>
+<article class="story" id="story-6" data-story="6" data-source="https://typeof.net/Iosevka/" data-hn="https://news.ycombinator.com/item?id=50084240" data-metric="323 pts / 114 comments" tabindex="0" aria-label="Story 6: Iosevka: the slender open-source monospace family built for code, terminals and technical documents">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">Iosevka: the slender open-source monospace family built for code, terminals and technical documents</h2>
+<p class="exec">Iosevka is an open-source sans-serif and slab-serif monospace family designed for writing code, terminals and technical documents. Its default glyphs are exactly half an em wide, so more columns fit the same screen; it ships Normal and Extended widths, specialised Term and Fixed variants for terminal compatibility (Fixed disables ligatures), 146 configurable characters with 19 stylistic sets, language-specific ligations, and quasi-proportional Aile and Etoile companions for prose, across 248 supported languages.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The family</span><ul><li>Six monospace variants plus two quasi-proportional ones; build-your-own flavour from stylistic sets or per-character picks</li><li>Long ligatures for arrows and bars, plus language-specific ligation sets</li></ul></li><li class="cat"><span class="cat-label">Why it matters</span><ul><li>A coding font is daily tooling: density versus skimmability is a measured trade each user settles differently</li><li>Fully open and configurable beats the old model of one designer&#x27;s fixed choices</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://typeof.net/Iosevka/" target="_blank" rel="noopener">typeof.net</a> · Discuss: <a href="https://news.ycombinator.com/item?id=50084240" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">323 pts / 114 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>Long-time users are loyal — several say every challenger font gets tried and Iosevka wins on density — while others make the opposite measured claim: at the same text density they skim faster in a wider font like Fira Code, and font choice is irreducibly personal. Rival recommendations fill the thread: Maple Mono, Input, Pragmata Pro. The funniest complaint is technical: the specimen site uses font-display swap, so visitors first see Courier — several thought the font itself was indistinguishable from it until the real files loaded.</p>
+</div>
+</article>
+<article class="story" id="story-7" data-story="7" data-source="https://www.cphiri.dev/presentations/recreational-programming" data-hn="https://news.ycombinator.com/item?id=50079865" data-metric="243 pts / 100 comments" tabindex="0" aria-label="Story 7: Recreational programming: code for joy, with five styles and one rule — stop if it stops being fun">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">Recreational programming: code for joy, with five styles and one rule — stop if it stops being fun</h2>
+<p class="exec">Christopher Phiri&#x27;s presentation defines recreational programming as programming for the joy of it — not work, money or career — and maps five styles: the Live Explorer who builds in public, the Deep Diver who rebuilds systems to understand them, the Creative Technologist, the Problem Solver scratching personal itches, and the Language Explorer. The shared patterns are permission to build useless things, following energy over plans, and documenting the journey; the closing challenge is one small experiment, with stopping when it stops being fun as the only rule.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The frame</span><ul><li>Internal motivation versus external pressure is the key distinction; side hustles and interview grinding are explicitly not it</li><li>Abandoned repos are exploration, not failure; boredom is data</li></ul></li><li class="cat"><span class="cat-label">Why it matters</span><ul><li>Burnout prevention by reconnecting with intrinsic motivation is the stated payoff, with intuition built in low-stakes play</li><li>Named examples span streamers and builders locals recognise — Tsoding, Casey Muratori, Ben Eater, Dan Luu</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://www.cphiri.dev/presentations/recreational-programming" target="_blank" rel="noopener">cphiri.dev</a> · Discuss: <a href="https://news.ycombinator.com/item?id=50079865" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">243 pts / 100 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>Commenters recognise themselves and confess the failure mode: a small joyful copy of a big project acquires big hopes, then guilt over it being unfinished blocks starting anything else. Favourite practitioners get named repeatedly — Tsoding above all, plus Bisqwit — and one reply distils the talk to a rule: if you have talked about how cool doing something would be for longer than it would take, just do it. A pushback on Style 4 argues problem-solving is not a style but a way of living with code daily, like cooking your own breakfast.</p>
+</div>
+</article>
+<article class="story" id="story-8" data-story="8" data-source="https://felixrieseberg.com/" data-hn="https://news.ycombinator.com/item?id=50082470" data-metric="240 pts / 87 comments" tabindex="0" aria-label="Story 8: Felix Rieseberg&#x27;s homepage: an Electron pioneer&#x27;s writing archive, from Electron Fiddle to defeating Electron">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">Felix Rieseberg&#x27;s homepage: an Electron pioneer&#x27;s writing archive, from Electron Fiddle to defeating Electron</h2>
+<p class="exec">Felix Rieseberg&#x27;s homepage is a spare index of 42 essays spanning his career in open source and desktop apps: introducing Electron Fiddle, running Electron contributor training, code-signing apps in CI, debugging native crashes and addons, and — with some range — both a guide to Electron and a piece titled Defeating Electron. Newer entries turn to working with AI models, including a tutorial on being more ambitious with them. The HN interest is the person and the body of work as much as any single post.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The archive</span><ul><li>42 linked essays: Electron internals, native Node addons, WebGL shaders, JavaScript measurement, rebases and dependencies</li><li>A career record from Azure and Node tooling through Electron&#x27;s growth years</li></ul></li><li class="cat"><span class="cat-label">Why it matters</span><ul><li>Electron is the contested substrate of modern desktop apps; its early builders&#x27; notes are primary sources</li><li>A plain list homepage, no feed machinery, still works as a durable personal archive</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://felixrieseberg.com/" target="_blank" rel="noopener">felixrieseberg.com</a> · Discuss: <a href="https://news.ycombinator.com/item?id=50082470" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">240 pts / 87 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>The thread splits into the site and the legacy. On the site: a delighted report of falling into a simulation of simulations, and an autoplay argument — some visitors on iOS Safari got sound without interacting, others got a muted entry with an explicit button; the maker-side defence is that a muted option is offered up front. On the legacy, Electron itself gets re-litigated: bloat to its critics, but to one defender the platform that made Linux a first-class desktop target and erased the which-OS question for everyday apps.</p>
+</div>
+</article>
+<article class="story" id="story-9" data-story="9" data-source="https://news.mit.edu/2026/mit-class-project-turns-into-fda-cleared-treatment-for-tremors-1002" data-hn="https://news.ycombinator.com/item?id=50061659" data-metric="239 pts / 47 comments" tabindex="0" aria-label="Story 9: An MIT class project becomes an FDA-cleared tremor treatment, nine years after one on-stage demo">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">An MIT class project becomes an FDA-cleared tremor treatment, nine years after one on-stage demo</h2>
+<p class="exec">MIT News tells how a 2017 product-design class (2.009) prototype — a wristband sending mechanical vibration signals via wrist stretch receptors toward the brain regions targeted by tremor surgery — became Encora Therapeutics. In trials, over 70% of essential-tremor patients saw meaningful improvement, and 78% reported benefits after 90 days of home use in one study. The FDA granted 510(k) clearance in February 2026 for adults with essential tremor; the company is now building a sales force and seeking insurance coverage.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The path</span><ul><li>2017 classroom demo with a Parkinson&#x27;s patient drawing a spiral; company formed 2020; trials in 2022, 2024 and 2025</li><li>Pivoted from Parkinson&#x27;s to essential tremor, where the unmet need was greater and drug innovation thinner</li></ul></li><li class="cat"><span class="cat-label">Why it matters</span><ul><li>A non-invasive wearable aiming at the same brain effect as implanted-electrode surgery is a different risk class entirely</li><li>Nine years from foamcore prototype to clearance is the real timeline of medical hardware — classroom demos are the start, not the story</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://news.mit.edu/2026/mit-class-project-turns-into-fda-cleared-treatment-for-tremors-1002" target="_blank" rel="noopener">news.mit.edu</a> · Discuss: <a href="https://news.ycombinator.com/item?id=50061659" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">239 pts / 47 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>Scepticism and hope in roughly equal measure. One strand corrects the headline word: FDA clearance via 510(k) means substantial equivalence to an existing device, a more lenient bar than approval — with a practitioner confirming the distinction while defending the process. Another doubts self-reported improvement can exclude placebo. Against that, a commenter with essential tremor since high school describes existing drug options and their side effects and says they will look into the device if it is financially feasible — the thread&#x27;s clearest statement of what is at stake.</p>
+</div>
+</article>
+<article class="story" id="story-10" data-story="10" data-source="https://www.not-ship.com/how-amazon-pushes-up-prices-all-across-the-internet/" data-hn="https://news.ycombinator.com/item?id=50084757" data-metric="228 pts / 217 comments" tabindex="0" aria-label="Story 10: Amazon pushes prices up across the whole internet: fees near half a sale, and no charging less elsewhere">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">Amazon pushes prices up across the whole internet: fees near half a sale, and no charging less elsewhere</h2>
+<p class="exec">Not-Ship&#x27;s Amanda Shendruk lays out the mechanism at the centre of the FTC&#x27;s antitrust case against Amazon, set for trial next year. Sellers&#x27; total take by Amazon has risen from about 19% of sales in 2014 to close to half for a fulfilled, advertised apparel sale — referral fee plus fulfilment plus effectively mandatory advertising. Sellers must pass that on in price; Amazon&#x27;s Fair Pricing Policy can then strip the Buy Box or suspend a seller whose item is cheaper elsewhere, so the Amazon price becomes the price everywhere, including the seller&#x27;s own site. Amazon accounts for about 40% of US online retail and denies wrongdoing.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The evidence cited</span><ul><li>Sellers lost the Buy Box in 2024 after Target discounted their products; California&#x27;s AG alleges pressure on other retailers to raise prices; one seller was reportedly suspended over a one-cent gap</li><li>Germany ordered Amazon to stop controlling sellers&#x27; prices this year; the decision is not yet final</li></ul></li><li class="cat"><span class="cat-label">Why it matters</span><ul><li>If the FTC is right, avoiding Amazon does not avoid Amazon&#x27;s prices — the policy exports them to every channel</li><li>Leaving is not a practical check when the platform is where the shoppers are</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://www.not-ship.com/how-amazon-pushes-up-prices-all-across-the-internet/" target="_blank" rel="noopener">not-ship.com</a> · Discuss: <a href="https://news.ycombinator.com/item?id=50084757" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">228 pts / 217 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>A seller-side witness opens the thread: a company they examined paid roughly half its sale price to Amazon across all fees, sponsored placement included. The argument that follows is about whether competition can answer it: one side says shoppers can simply go elsewhere, the reply being that the policy being discussed is precisely the one that blocks cheaper elsewhere; another argues Amazon&#x27;s delivery scale — more packages than FedEx or UPS individually — makes a like-for-like competitor effectively impossible to start now, whatever the capital. Breadth gets named as part of the moat: competing means fighting on many fronts at once.</p>
+</div>
+</article>
+    </ol>
+
+    <div class="shortcut-bar" aria-label="Keyboard shortcuts">
+      <span><kbd>J</kbd> next story</span>
+      <span><kbd>K</kbd> previous story</span>
+      <span><kbd>T</kbd> theme</span>
+    </div>
+
+    <footer class="page-footer">
+      <div class="footer-links"><a href="../">← Daily archive</a><a href="https://tk3369.github.io/hn-daily/" target="_blank" rel="noopener">Published archive ↗</a></div>
+      <span>Wednesday 2026-10-14 · 10 stories</span>
+    </footer>
+  </main>
+  <div class="toast" role="status" aria-live="polite"></div>
+  <script>
+(() => {
+  const root = document.documentElement;
+  const toggle = document.getElementById('theme-toggle');
+  const entries = [...document.querySelectorAll('[data-story]')];
+  function storedTheme() { try { const t = localStorage.getItem('hn-daily-theme'); return t === 'dark' || t === 'light' ? t : null; } catch (_) { return null; } }
+  function preferredTheme() { return matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'; }
+  function currentTheme() { const a = root.dataset.theme; if (a === 'dark' || a === 'light') return a; return storedTheme() || preferredTheme(); }
+  function setTheme(theme) { const next = theme === 'dark' ? 'dark' : 'light'; const opposite = next === 'dark' ? 'Light' : 'Dark';
+    if (root.dataset.theme !== next) root.dataset.theme = next;
+    toggle.querySelector('.theme-text').textContent = opposite;
+    toggle.setAttribute('aria-label', `Switch to ${opposite} theme (T)`); toggle.title = `Switch to ${opposite} theme (T)`;
+    try { localStorage.setItem('hn-daily-theme', next); } catch (_) {} }
+  function flipTheme() { setTheme(currentTheme() === 'dark' ? 'light' : 'dark'); }
+  setTheme(storedTheme() || preferredTheme());
+  toggle.addEventListener('click', flipTheme);
+  const toast = document.querySelector('.toast'); let toastTimer;
+  function showToast(msg) { toast.textContent = msg; toast.classList.add('show'); clearTimeout(toastTimer); toastTimer = setTimeout(() => toast.classList.remove('show'), 1800); }
+  document.querySelectorAll('.copy-button').forEach((button) => {
+    button.addEventListener('click', async () => {
+      const story = button.closest('.story');
+      const n = story.dataset.story;
+      const tagline = story.querySelector('.tagline').textContent.trim();
+      const execSum = story.querySelector('.exec').textContent.trim();
+      const bullets = [...story.querySelectorAll('.cat-lists .cat')].map(li => {
+        const label = li.querySelector('.cat-label').textContent.trim();
+        const pts = [...li.querySelectorAll('ul li')].map(p => '  \u2022 ' + p.textContent.trim()).join('\n');
+        return '- ' + label + ':\n' + pts;
+      }).join('\n');
+      const link = 'https://tk3369.github.io/hn-daily/2026-10-14/#story-' + n;
+      const text = n + '. ' + tagline + '\n\n' + execSum + '\n' + bullets + '\n\n' + link;
+      try { await navigator.clipboard.writeText(text); button.textContent = 'Copied'; showToast('Story ' + n + ' copied for Threads'); setTimeout(() => { button.textContent = 'Copy for Threads'; }, 1600); }
+      catch (_) { showToast('Copy was blocked by this browser'); }
+    });
+  });
+  document.addEventListener('keydown', (event) => {
+    if (event.metaKey || event.ctrlKey || event.altKey || event.shiftKey) return;
+    const tag = event.target.tagName;
+    if (tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT') return;
+    const key = event.key.toLowerCase();
+    if (key === 't') { event.preventDefault(); flipTheme(); }
+    else if ((key === 'j' || key === 'k') && entries.length) {
+      event.preventDefault();
+      const active = entries.indexOf(document.activeElement);
+      const delta = key === 'j' ? 1 : -1;
+      const next = active < 0 ? (key === 'j' ? 0 : entries.length - 1) : Math.max(0, Math.min(entries.length - 1, active + 1 * delta));
+      entries[next].focus();
+    }
+  });
+})();
+  </script>
+</body>
+</html>
