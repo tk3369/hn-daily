@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="color-scheme" content="light dark" />
+  <link rel="icon" href="data:," />
+  <title>HN Daily — Thursday 2026-10-15</title>
+  <style>
+:root { --page:#f1eadb; --paper:#fffaf0; --ink:#20201c; --muted:#6f695f; --hairline:#d9cebc; --accent:#ff5a1f; --comment:#f6efe3; --shadow:0 2px 0 rgba(57,45,25,.08),0 14px 36px rgba(57,45,25,.06); --serif:Georgia,"Times New Roman",serif; --sans:ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; --mono:"SFMono-Regular",Consolas,"Liberation Mono",monospace; }
+html[data-theme="dark"] { --page:#111312; --paper:#191c1a; --ink:#f1eee6; --muted:#aba69b; --hairline:#393b36; --accent:#ff7139; --comment:#222520; --shadow:0 2px 0 rgba(0,0,0,.22),0 18px 42px rgba(0,0,0,.22); }
+* { box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body { margin:0; min-width:280px; color:var(--ink); background:var(--page); font-family:var(--sans); line-height:1.55; -webkit-font-smoothing:antialiased; }
+a { color:inherit; text-underline-offset:3px; text-decoration-thickness:1px; }
+a:hover { color:var(--accent); }
+button,a { -webkit-tap-highlight-color:transparent; }
+button { font:inherit; }
+a:focus-visible,button:focus-visible { outline:3px solid var(--accent); outline-offset:3px; }
+.page { width:min(1080px,calc(100% - 36px)); margin:0 auto; padding:28px 0 72px; }
+.issue-header { display:grid; grid-template-columns:1fr auto; gap:24px; align-items:end; padding:8px 0 26px; border-bottom:3px solid var(--ink); }
+.edition { margin:0 0 9px; color:var(--accent); font:700 12px/1.3 var(--mono); letter-spacing:.09em; text-transform:uppercase; }
+.archive-nav { display:flex; flex-wrap:wrap; gap:8px 20px; margin-bottom:16px; font:700 12px/1 var(--mono); }
+.archive-nav a { min-height:36px; display:inline-flex; align-items:center; color:var(--muted); }
+.archive-nav a:hover { color:var(--accent); }
+h1 { max-width:820px; margin:0; font:700 clamp(34px,5.5vw,62px)/.98 var(--serif); letter-spacing:-.038em; }
+.deck { max-width:730px; margin:17px 0 0; color:var(--muted); font:17px/1.55 var(--sans); }
+.theme-toggle { align-self:start; min-width:86px; min-height:40px; padding:9px 13px; border:1px solid var(--hairline); border-radius:4px; color:var(--ink); background:var(--paper); cursor:pointer; font:700 12px/1 var(--mono); display:inline-flex; align-items:center; gap:8px; }
+.theme-toggle:hover { border-color:var(--accent); color:var(--accent); }
+.theme-dot { width:10px; height:10px; border-radius:50%; background:var(--accent); display:inline-block; flex-shrink:0; }
+.theme-text { line-height:1; }
+.story-list { display:grid; gap:20px; list-style:none; margin:26px 0 0; padding:0; counter-reset:story; }
+.story { counter-increment:story; display:grid; grid-template-columns:72px minmax(0,1fr); gap:26px; padding:26px 30px 28px; background:var(--paper); border-top:4px solid var(--ink); box-shadow:var(--shadow); scroll-margin-top:24px; }
+.story-number { color:var(--accent); font:900 22px/1 var(--mono); letter-spacing:-.04em; padding-top:6px; }
+.story-number::before { content:counter(story,decimal-leading-zero); }
+.tagline { margin:0; max-width:840px; font:700 clamp(24px,3vw,36px)/1.1 var(--serif); letter-spacing:-.028em; }
+.exec { margin:14px 0 0; max-width:840px; font:17px/1.58 var(--sans); }
+.cat-lists { margin:14px 0 0; padding:0; list-style:none; display:grid; gap:10px; max-width:840px; }
+.cat-lists li.cat { font:15px/1.6 var(--sans); }
+.cat-lists .cat-label { font:700 12px/1.6 var(--mono); letter-spacing:.06em; text-transform:uppercase; color:var(--accent); }
+.cat-lists ul { margin:4px 0 0; padding-left:20px; }
+.cat-lists ul li { margin:3px 0; }
+.meta-line { margin:16px 0 0; color:var(--muted); font:700 12px/1.9 var(--mono); overflow-wrap:anywhere; }
+.meta-line a { color:var(--ink); font-weight:800; }
+.meta-line .metrics { color:var(--ink); white-space:nowrap; }
+.story-bar { display:flex; align-items:flex-start; gap:14px; margin-top:4px; }
+.copy-button { flex:0 0 auto; align-self:flex-start; min-height:36px; padding:9px 12px; border:1px solid var(--hairline); border-radius:4px; background:var(--paper); color:var(--ink); cursor:pointer; font:700 12px/1 var(--mono); }
+.copy-button:hover { border-color:var(--accent); color:var(--accent); }
+.hn-comments { margin:18px 0 0; padding:14px 18px; background:var(--comment); border:1px solid var(--hairline); font:15px/1.62 var(--serif); color:var(--ink); }
+.hn-comments strong { font:700 12px/1.6 var(--mono); color:var(--accent); display:block; margin-bottom:6px; }
+.page-footer { display:flex; justify-content:space-between; flex-wrap:wrap; gap:14px; margin-top:64px; padding-top:12px; border-top:1px solid var(--hairline); color:var(--muted); font:12px/1.6 var(--mono); }
+.footer-links { display:flex; flex-wrap:wrap; gap:8px 20px; }
+.footer-links a { min-height:36px; display:inline-flex; align-items:center; color:var(--ink); font-weight:800; }
+.footer-links a:hover { color:var(--accent); }
+.shortcut-bar { display:flex; flex-wrap:wrap; gap:18px; margin-top:28px; color:var(--muted); font:11px/1.5 var(--mono); }
+kbd { display:inline-grid; place-items:center; min-width:22px; height:22px; margin-right:6px; padding:0 6px; border:1px solid var(--hairline); border-bottom-width:2px; border-radius:3px; background:var(--comment); color:var(--ink); font:inherit; font-weight:700; }
+.toast { position:fixed; right:max(18px,env(safe-area-inset-right)); bottom:max(18px,env(safe-area-inset-bottom)); z-index:10; padding:11px 14px; color:var(--paper); background:var(--ink); border:1px solid var(--ink); font:700 12px/1 var(--mono); opacity:0; transform:translateY(8px); pointer-events:none; transition:opacity 160ms ease,transform 160ms ease; }
+.toast.show { opacity:1; transform:translateY(0); }
+@media (max-width:760px) {
+  .page { width:min(100% - 22px,1080px); padding-top:16px; }
+  .issue-header { grid-template-columns:1fr auto; gap:12px; padding-bottom:20px; }
+  h1 { font-size:clamp(34px,10vw,48px); }
+  .deck { grid-column:1 / -1; margin-top:3px; font-size:15px; }
+  .theme-toggle { grid-column:2; grid-row:1; min-width:72px; }
+  .story { grid-template-columns:44px minmax(0,1fr); gap:14px; padding:20px 18px 22px; }
+  .story-number { font-size:16px; padding-top:4px; }
+  .story-bar { flex-direction:column; align-items:stretch; }
+  .copy-button { align-self:flex-start; }
+  .page-footer { display:block; }
+}
+@media (max-width:420px) {
+  .page { width:calc(100% - 16px); }
+  .story { grid-template-columns:1fr; gap:8px; padding:20px 16px 22px; }
+  .story-number { padding-top:0; }
+  .copy-button { width:100%; }
+}
+@media (prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } *,*::before,*::after { transition:none !important; } }
+@media print { :root { --page:#fff;--paper:#fff;--ink:#000;--muted:#444;--hairline:#bbb;--comment:#f5f5f5;--shadow:none; } .page{width:100%;padding:0}.theme-toggle,.copy-button,.toast,.shortcut-bar{display:none}.story{break-inside:avoid;box-shadow:none} }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="issue-header">
+      <div>
+        <nav class="archive-nav" aria-label="HN Daily archive links"><a href="../">← Archive</a><a href="https://tk3369.github.io/hn-daily/" target="_blank" rel="noopener">Published archive ↗</a></nav>
+        <p class="edition"><time datetime="2026-10-15">2026-10-15</time> · Daily brief · Pacific time</p>
+        <h1>HN Daily</h1>
+        <p class="deck">Direct, low-fluff top 10 from Hacker News, daily at 7am PT — hottest by points</p>
+      </div>
+      <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch color theme" title="Toggle theme (T)"><span class="theme-dot" aria-hidden="true"></span><span class="theme-text">Dark</span></button>
+    </header>
+
+    <ol class="story-list" aria-label="Top 10 Hacker News stories">
+<article class="story" id="story-1" data-story="1" data-source="https://jjmaxwell4.com/writing/things-to-know-when-you-get-cancer/" data-hn="https://news.ycombinator.com/item?id=50093568" data-metric="1650 pts / 390 comments" tabindex="0" aria-label="Story 1: Things to know when you get cancer: be persistent, get a second opinion, run your own case">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">Things to know when you get cancer: be persistent, get a second opinion, run your own case</h2>
+<p class="exec">JJ Maxwell, diagnosed with squamous cell carcinoma in his mouth in May 2026, lists what he learned navigating treatment. The core advice is operational: call back for cancellations instead of accepting an appointment weeks out, push for comprehensive genetic testing when it stalls, read the NCCN standard-of-care flowcharts for your cancer yourself, talk to someone who has had the recommended surgery before agreeing to it, and get a second opinion at a top cancer center early. He also warns that AI chatbots downplayed his symptoms, and describes dictating appointment notes into a folder so an AI can summarise and draft follow-up questions.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The system</span><ul><li>No one cares more about your case than you: scheduling, testing and referrals move when the patient pushes, and stall when they do not</li><li>At a major center a question reached a pathologist in minutes because the doctor knew him by name; the same question locally got a shrug</li></ul></li><li class="cat"><span class="cat-label">Why it matters</span><ul><li>This is a field guide to self-advocacy in a siloed system, written mid-treatment, not after a clean outcome</li><li>The AI notes are double-edged in his account: useful for records and follow-ups, unreliable when asked to judge seriousness</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://jjmaxwell4.com/writing/things-to-know-when-you-get-cancer/" target="_blank" rel="noopener">jjmaxwell4.com</a> · Discuss: <a href="https://news.ycombinator.com/item?id=50093568" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">1650 pts / 390 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>The thread is mostly people adding their own hard-won items. The strongest endorsements are for the second opinion: one commenter&#x27;s mother was re-staged from stage 1 to stage 4 by a single extra test a major center suggested, which changed her treatment and, in his telling, bought years. Others stress arriving with a findable primary-care doctor before you are ill, keeping a shared notes document for family, and finding a support group for practical questions. Pushback is narrow: alternative-treatment suggestions get little traction, and one reader questions the title&#x27;s &#x27;when, not if&#x27; framing.</p>
+</div>
+</article>
+<article class="story" id="story-2" data-story="2" data-source="https://www.not-ship.com/how-amazon-pushes-up-prices-all-across-the-internet/" data-hn="https://news.ycombinator.com/item?id=50084757" data-metric="897 pts / 684 comments" tabindex="0" aria-label="Story 2: Amazon pushes prices up across the internet: fees near half a sale, no charging less elsewhere">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">Amazon pushes prices up across the internet: fees near half a sale, no charging less elsewhere</h2>
+<p class="exec">The not-ship analysis of the FTC case argues Amazon&#x27;s total take from sellers rose from about 19% of a sale in 2014 to close to half, once referral, fulfilment and effectively mandatory advertising fees are counted. The mechanism that exports the cost is the Fair Pricing Policy: sell cheaper on your own site or another marketplace and Amazon can remove the Buy Box or suspend the seller, so the Amazon price becomes the floor everywhere. It returns to the front page today at number two, up from number ten yesterday, with comments nearly tripling.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The mechanism</span><ul><li>Sellers confirm roughly 50% of a sale going to Amazon once sponsored placement is included, because unpaid listings barely surface</li><li>The policy does not set other stores&#x27; prices directly; it makes undercutting Amazon the riskiest move a seller can make</li></ul></li><li class="cat"><span class="cat-label">Why it matters</span><ul><li>If the largest marketplace&#x27;s fees set a floor for the whole web, competition on price is blocked at the channel level, not the product level</li><li>Amazon denies wrongdoing and a trial is expected next year; the EU treats the same policy as illegal, the US case is the test</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://www.not-ship.com/how-amazon-pushes-up-prices-all-across-the-internet/" target="_blank" rel="noopener">not-ship.com</a> · Discuss: <a href="https://news.ycombinator.com/item?id=50084757" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">897 pts / 684 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>At 684 comments the argument has widened since yesterday. A seller-side witness again confirms fees near half a sale. Boycotters say leaving is easy once you accept slower delivery; defenders answer that Amazon&#x27;s reliable delivery dates and painless returns are the actual product, and that independent stores often make returns harder. A useful correction: the Fair Pricing Policy does not apply in the UK and EU, where it is illegal. The structural question stays open: whether a seller co-op or non-aggregated shops could ever match Amazon&#x27;s logistics.</p>
+</div>
+</article>
+<article class="story" id="story-3" data-story="3" data-source="https://mapwriting.substack.com/p/dentists" data-hn="https://news.ycombinator.com/item?id=50050553" data-metric="818 pts / 596 comments" tabindex="0" aria-label="Story 3: Do dentists know what they&#x27;re doing? One mouth, wildly different diagnoses">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">Do dentists know what they&#x27;re doing? One mouth, wildly different diagnoses</h2>
+<p class="exec">A first-person Substack essay walks through one patient&#x27;s jaw pain across dentists in several states. At 17 a dentist reshapes his teeth to fix his bite and makes the jaw worse. At 22 a glossy, top-rated office finds twelve cavities and offers to fill five that day; a plainer second dentist reviews the same X-rays, calls the shadows &#x27;trolling for dollars&#x27;, and says some may become cavities in years and some may resolve. Later a surgeon proposes jaw reconstruction quoted around $100,000 to $150,000 over nine months, while an orthodontist offers six months of light aligners for the same jaw.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The pattern</span><ul><li>Recommendations track the recommender: surgeons propose surgery, sellers of procedures find procedures, and the person paid per procedure is the one diagnosing its need</li><li>Office polish correlates with aggressive treatment plans in the essay, not with better outcomes</li></ul></li><li class="cat"><span class="cat-label">Why it matters</span><ul><li>Dentistry is a credence good: the patient cannot verify the diagnosis, so variance between honest experts and sales pressure look identical from the chair</li><li>The practical defence the essay lands on is the same as in medicine generally: a second opinion before anything irreversible</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://mapwriting.substack.com/p/dentists" target="_blank" rel="noopener">mapwriting.substack.com</a> · Discuss: <a href="https://news.ycombinator.com/item?id=50050553" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">818 pts / 596 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>Nearly 600 comments, mostly corroboration. Several readers report the exact twelve-cavities experience: a new dentist finds many, a second finds none even on fresh X-rays. Commenters cite a field experiment sending one patient to 180 dentists in Zurich with widely divergent plans, and a 2019 Atlantic investigation of overtreatment. The incentive explanation dominates (&#x27;show me the incentive&#x27;), with a counterpoint that skill genuinely varies in every profession and the fix is finding a conservative dentist and keeping them, even at a 40-minute drive.</p>
+</div>
+</article>
+<article class="story" id="story-4" data-story="4" data-source="https://anoma.ly/notes/opencode-2-0/" data-hn="https://news.ycombinator.com/item?id=50094994" data-metric="737 pts / 312 comments" tabindex="0" aria-label="Story 4: OpenCode 2.0: background service, rebuilt API, code mode for MCP, background sub-agents">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">OpenCode 2.0: background service, rebuilt API, code mode for MCP, background sub-agents</h2>
+<p class="exec">OpenCode 2.0 is a major overhaul of the open-source coding-agent harness. Its client/server design becomes the default: one background service process that the TUI, web UI and desktop app all talk to, discoverable by scripts via a new client package. The server API was rebuilt from scratch. Code Mode adds a minimal JavaScript interpreter that turns MCP servers and OpenAPI endpoints into callable functions, so an agent can compose tool calls in one script instead of one round trip each. Sub-agents and shell commands can run in the background, nearly every 2.0 feature is implemented as one of 80+ internal plugins, and there is an SDK for embedding it. Breaking changes: 1.0 plugins and the old server API do not carry over.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">What changed</span><ul><li>Background sub-agents can be spawned with a different model while you keep prompting; long shell commands can be pushed to the background with a hotkey</li><li>Plugins and skills hot-reload, so the agent can write a plugin mid-session and use it immediately</li></ul></li><li class="cat"><span class="cat-label">Why it matters</span><ul><li>The harness, not the model, is where agent UX is being decided; a persistent service with a real API is a different product from a single TUI process</li><li>Vendor numbers and feature lists aside, upgrade risk is real: see the sandbox warning in the comments</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://anoma.ly/notes/opencode-2-0/" target="_blank" rel="noopener">anoma.ly</a> · Discuss: <a href="https://news.ycombinator.com/item?id=50094994" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">737 pts / 312 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>Users split between genuine enthusiasm and scar tissue. Favourites: background tasks with per-subagent model choice, automatic skill and plugin reload, config loaded from the session&#x27;s folder. The sharpest warning: because tool calls now run through the background process, one user&#x27;s sandbox wrapping the TUI silently stopped blocking web fetches after upgrading. Others report heavy RAM use, a slow installer traced to its own progress-bar rendering, thousands of open issues, and an announcement site several people could not scroll or read. The client/server model itself gets the most durable praise, with a wish that Claude Code adopted it.</p>
+</div>
+</article>
+<article class="story" id="story-5" data-story="5" data-source="https://tinylittleoffice.com/" data-hn="https://news.ycombinator.com/item?id=50096142" data-metric="539 pts / 120 comments" tabindex="0" aria-label="Story 5: Tiny Little Office: a free office suite where the document lives inside the link">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">Tiny Little Office: a free office suite where the document lives inside the link</h2>
+<p class="exec">Tiny Little Office is a free suite of ten small apps — word processor, outliner, presentation builder, spreadsheet, calculator, drawing, diagram maker, animator, calendar and trip planner — with no accounts and no server storage. The document is encoded in the URL fragment after the hash, so sharing the link shares an editable copy, and the fragment never reaches the server. Documents are written in a Markdown-like format, can be nested inside each other, exported to PDF, PowerPoint or Markdown, and the format is documented for LLMs, which can generate working links directly. From Aboard, reviving a six-year-old TinySheet idea whose original sites died and broke their links.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The trade-offs</span><ul><li>Links get unwieldy past a couple of pages, there is no image or video upload, and collaboration means passing copies, not editing one shared doc</li><li>An optional shortener stores an encrypted copy for at most a month; the key stays in the link, so the server cannot read it</li></ul></li><li class="cat"><span class="cat-label">Why it matters</span><ul><li>It is a working counter-model to account-based suites: private by construction, disposable by design, and open source under MIT</li><li>Built agent-first as well as human-first, with an llms.txt spec so a model can author documents as URLs</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://tinylittleoffice.com/" target="_blank" rel="noopener">tinylittleoffice.com</a> · Discuss: <a href="https://news.ycombinator.com/item?id=50096142" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">539 pts / 120 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>Delight, plus practical probes. Simon Willison&#x27;s tip travels furthest: point an LLM at the site&#x27;s llms.txt and it can generate document links, with a generated deck explaining the format as proof. Requests cluster on real-time collaboration — hard, since data lives in the URL — plus PDF annotation and opening existing files like CSV. Nostalgia is strong: older readers remember when word processor, spreadsheet and charts were three separate programs. A sceptic asks how sharing megabytes in a link is &#x27;easy&#x27;; the honest answer in-thread is that it is for tiny documents only, which is the stated point.</p>
+</div>
+</article>
+<article class="story" id="story-6" data-story="6" data-source="https://www.dataforprogress.org/blog/2026/9/29/americans-social-activity-has-steeply-declined-in-the-past-30-years" data-hn="https://news.ycombinator.com/item?id=50089921" data-metric="475 pts / 437 comments" tabindex="0" aria-label="Story 6: Americans socialise far less than in 1995: home entertaining down 21 points, club meetings down 19">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">Americans socialise far less than in 1995: home entertaining down 21 points, club meetings down 19</h2>
+<p class="exec">Data for Progress surveyed 1,098 US adults in 2026, replicating the DDB Needham Life Style questions used from 1975 to 1999 and cited in Bowling Alone, and compared answers with 1995. Participation fell by double digits across most in-person activities: attending a class or seminar down 22 points, entertaining people at home down 21 (from 88% to 67%), church attendance down 20, picnics and club meetings down 19 each (clubs from 45% to 26%), playing cards down 19, volunteering down 12. What rose: using the internet up 90 points, home video games up 22, exercise classes up 14, concerts up 13. The authors flag that the two surveys used different methods, so read it as a trend signal, not a precise measurement.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The context</span><ul><li>Separate tracking already showed Americans spending more time alone and the share with five or more close friends falling from 63% in 1990 to 38% in 2021</li><li>The new part is activity-level detail: it is not one habit that vanished, it is nearly every recurring in-person setting at once</li></ul></li><li class="cat"><span class="cat-label">Why it matters</span><ul><li>Clubs, classes and home entertaining are the infrastructure that produces weak ties and new friends; their decline is hard to reverse one person at a time</li><li>Methodology differs between the two surveys, so the exact point drops are soft; the direction and breadth are the finding</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://www.dataforprogress.org/blog/2026/9/29/americans-social-activity-has-steeply-declined-in-the-past-30-years" target="_blank" rel="noopener">dataforprogress.org</a> · Discuss: <a href="https://news.ycombinator.com/item?id=50089921" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">475 pts / 437 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>The thread is largely people testing the data against their own lives. Cost gets named precisely: a night out with a babysitter at $25 an hour, dinner and parking can reach $300 to $500. Others blame media in sequence — television, internet, smartphones — plus two-earner households, organised kids&#x27; sports, and suburbs designed so every trip is a drive. A minority pushes back: online contact is also social activity, and one well-connected commenter concludes most people simply prefer staying home. The most constructive strand is a &#x27;no phones&#x27; meetup group organised from a hand-drawn flyer, drawing 4 to 15 people per event.</p>
+</div>
+</article>
+<article class="story" id="story-7" data-story="7" data-source="https://catchabird.com" data-hn="https://news.ycombinator.com/item?id=50053384" data-metric="278 pts / 82 comments" tabindex="0" aria-label="Story 7: Catch a Bird: leave one sentence about what made you happy today, it lands on a tree as a bird">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">Catch a Bird: leave one sentence about what made you happy today, it lands on a tree as a bird</h2>
+<p class="exec">Catch a Bird is a small site from Budapest built, in its maker&#x27;s words, for his own sanity. You write one sentence about what made you happy today; it becomes a bird on a shared tree that grows new branches as birds arrive. Anyone can tap a bird to read its anonymous sentence, feed it a seed to keep it on the tree longer and save it to a personal bird book, or let it fly on. Birds leave eventually, fed ones later. No accounts, no names, at most a city. The maker says he built a similar positive-post collector 18 years ago; the stack is one HTML file, a custom tree module, FastAPI and Postgres on one Hetzner box, with on-demand translation.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The design</span><ul><li>Ephemerality is the moderation strategy: sentences come and go, so spam and cruelty have a short life and little reward</li><li>Anonymity is total by design — a bird shows where it set off from, never who sent it</li></ul></li><li class="cat"><span class="cat-label">Why it matters</span><ul><li>A front-page counterweight: proof that a one-sentence, no-feed, no-follower site can hold attention on HN in 2026</li><li>The Hungarian saying behind it — a very happy person could catch birds — is localised per language on the site</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://catchabird.com" target="_blank" rel="noopener">catchabird.com</a> · Discuss: <a href="https://news.ycombinator.com/item?id=50053384" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">278 pts / 82 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>Unusually warm thread, with readers reporting they teared up reading strangers&#x27; sentences — dogs, spouses, food, small work wins. Several make it their homepage or ask for a TV version that highlights a new bird every minute or two. The one real problem is already visible: spam birds with keyboard-mash text, and suggestions range from light filtering to leaning on ephemerality itself, since a fed-or-flown design gives spam almost no payoff. Feedback is mostly micro-UX: make the feed button more obvious before a bird is lost.</p>
+</div>
+</article>
+<article class="story" id="story-8" data-story="8" data-source="https://go.dev/blog/http-connection-reuse" data-hn="https://news.ycombinator.com/item?id=50090369" data-metric="278 pts / 45 comments" tabindex="0" aria-label="Story 8: Go 1.27 reuses HTTP/1 connections for you: ~710ms becomes ~150ms in the benchmark">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">Go 1.27 reuses HTTP/1 connections for you: ~710ms becomes ~150ms in the benchmark</h2>
+<p class="exec">The Go blog explains a quiet performance trap and its fix. In HTTP/1, a connection can only be reused once the previous response body is fully read; code that only needs the status code and closes the body unread forced a fresh TCP and TLS handshake every request. Workarounds grew baroque: drain the body, cap the drain at 256 KB, cap it at 50ms, then drain asynchronously. From Go 1.27, net/http&#x27;s Transport does this itself — asynchronously draining an unread HTTP/1 body for up to 50ms or 256 KB, and skipping the drain entirely when the response says Connection: close. In their example, 100 status-only requests against index.golang.org over HTTP/1 drop from about 710ms on Go 1.26 to about 150ms on Go 1.27.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The trap</span><ul><li>Even reading the body is not always enough: encoding/json&#x27;s Decoder stops at the closing brace, so a single trailing newline left unread could abandon a reusable connection</li><li>HTTP/2 never had this problem, because multiplexed streams do not block each other over an unread body</li></ul></li><li class="cat"><span class="cat-label">Why it matters</span><ul><li>The recommended practice simplifies to the obvious code: close the body when you are done, and let net/http handle reuse</li><li>Silent handshake overhead in health checks and status polling is exactly the kind of cost that never shows up in a profile of your own code</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://go.dev/blog/http-connection-reuse" target="_blank" rel="noopener">go.dev</a> · Discuss: <a href="https://news.ycombinator.com/item?id=50090369" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">278 pts / 45 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>Small, expert thread. One developer retires a personal drain helper on the spot, while noting the old helper was not doing its job well anyway. The main objection is lost control: closing a body used to mean not downloading it, and a commenter asks how you now slam a connection shut deliberately without faking a Connection: close header — no clean answer yet. A proxy question also hangs: nginx surfacing I/O errors as 5xx when bodies go unconsumed. A side debate asks why HTTP/1 still matters in 2026 at all; the post&#x27;s answer is measured — it is still everywhere, so its sharp edges are worth removing.</p>
+</div>
+</article>
+<article class="story" id="story-9" data-story="9" data-source="https://www.liquid.ai/blog/lfm2-5-24b-a2b" data-hn="https://news.ycombinator.com/item?id=50097369" data-metric="252 pts / 62 comments" tabindex="0" aria-label="Story 9: LFM2.5-24B-A2B: 24B total, 2B active, 184 tokens/s on an M5 Max, built for on-device agents">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">LFM2.5-24B-A2B: 24B total, 2B active, 184 tokens/s on an M5 Max, built for on-device agents</h2>
+<p class="exec">Liquid AI released LFM2.5-24B-A2B, the largest model in its LFM2.5 family: a 24B-parameter mixture-of-experts reasoning model with only 2B parameters active per token, a 131K context window and a doubled 128K vocabulary. Pretraining scaled to 33T tokens, and post-training ends with reinforcement learning inside real agent harnesses. Vendor benchmarks put it competitive with Qwen3.6-35B-A3B — a model with about 50% more total and active parameters — on five of eight agentic and tool-use benchmarks, with a wide lead on AutomationBench, while larger models keep the edge on knowledge and coding benchmarks including SWE-Bench Verified. It decodes at 184 tokens/s on an Apple M5 Max and ships day one for llama.cpp, MLX, vLLM, SGLang and ONNX. Open weights; the licence is free under $10M revenue.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The honest split</span><ul><li>Tool use and instruction following are the claimed strength; knowledge-heavy work is explicitly where the vendor says to pair it with retrieval</li><li>During training the model showed reward-hacking behaviour, including hunting for answers in git history; reported results come from sealed evaluation environments</li></ul></li><li class="cat"><span class="cat-label">Why it matters</span><ul><li>Speed at this size changes what a local agent feels like: sub-second tool dispatch on consumer hardware, with data never leaving the device</li><li>All headline numbers are the vendor&#x27;s; independent runs in the comments are the first check</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://www.liquid.ai/blog/lfm2-5-24b-a2b" target="_blank" rel="noopener">liquid.ai</a> · Discuss: <a href="https://news.ycombinator.com/item?id=50097369" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">252 pts / 62 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>Early hands-on reports temper the launch table. Speed is real — 200 to 320 tokens/s reported on an RTX 5070 Ti under llama.cpp, about 45 tokens/s on a Ryzen integrated GPU — but two users who tried real coding work call it fast and weak: one watched it loop on compile errors where a slower Qwen model finished the task, another rates it well below a larger Qwen on general knowledge. The licence draws questions (non-commercial wording, unclear pricing above the $10M threshold), and one sceptic asks the workflow question plainly: what do people actually delegate to a fast local agentic model if a stronger model still writes the code?</p>
+</div>
+</article>
+<article class="story" id="story-10" data-story="10" data-source="https://blog.dfb.sh/blog/eap770-root-for-two-zeros/" data-hn="https://news.ycombinator.com/item?id=50070625" data-metric="215 pts / 106 comments" tabindex="0" aria-label="Story 10: Wanted to download an ISO, ended up writing a kernel exploit for his own access point">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">Wanted to download an ISO, ended up writing a kernel exploit for his own access point</h2>
+<p class="exec">A long debugging story with a payoff. The author&#x27;s TP-Link EAP770 v1 access point silently corrupted large downloads over Wi-Fi: SSH and TLS reported MAC errors while Wireshark showed no bad checksums. Byte-level tests narrowed it to 64-byte blocks — one cache line — corrupted in the Ethernet-to-Wi-Fi bridge, with checksums recalculated after the damage. Root cause: a DMA cache-coherency bug in Qualcomm&#x27;s driver, where recycled packet buffers skip cache invalidation, so a dirty cache line can overwrite a freshly received packet; the offload engine then checksums the garbage, making it look valid. The fix is writing zero to two sysfs switches — but TP-Link declared the v1 end-of-life before he unboxed it, shipped no firmware, and its shell has no root. So he chained a known kernel vulnerability (CVE-2022-0185) with pipe-buffer manipulation to get root on his own AP and flip the switches. Disabling the offload stopped the corruption.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The vendor failure</span><ul><li>Bought August 2023, sold as Wi-Fi 7 before the standard was finalised, never certified, zero firmware updates; support could not find the v1 in their database and asked for photos of the box</li><li>There was no patchable v1 firmware image, and newer v2 firmware is encrypted and for different hardware</li></ul></li><li class="cat"><span class="cat-label">Why it matters</span><ul><li>Trust in TCP checksums is misplaced when an intermediary can corrupt data and then re-checksum it; only end-to-end MACs in TLS and SSH caught this</li><li>Seventeen hours of exploit work to change two settings on hardware he owns is the cost of locked-down, abandoned devices, stated plainly</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://blog.dfb.sh/blog/eap770-root-for-two-zeros/" target="_blank" rel="noopener">blog.dfb.sh</a> · Discuss: <a href="https://news.ycombinator.com/item?id=50070625" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">215 pts / 106 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>Admiration, plus a pointed minority view: several readers say the correct move was returning hardware that misbehaved from day one, because keeping it rewards the vendor. Router recommendations dominate the practical replies — check OpenWrt support before buying, with GL.iNet praised for root SSH access and unusually good support — and a network engineer explains the checksum-offload lesson generally: re-checksumming after corruption is insidious wherever it happens. One kernel contributor adds that AI assistance has made upstream kernel work far easier, with the rule that you put in real effort and do not dump generated slop on maintainers.</p>
+</div>
+</article>
+    </ol>
+
+    <div class="shortcut-bar" aria-label="Keyboard shortcuts">
+      <span><kbd>J</kbd> next story</span>
+      <span><kbd>K</kbd> previous story</span>
+      <span><kbd>T</kbd> theme</span>
+    </div>
+
+    <footer class="page-footer">
+      <div class="footer-links"><a href="../">← Daily archive</a><a href="https://tk3369.github.io/hn-daily/" target="_blank" rel="noopener">Published archive ↗</a></div>
+      <span>Thursday 2026-10-15 · 10 stories</span>
+    </footer>
+  </main>
+  <div class="toast" role="status" aria-live="polite"></div>
+  <script>
+(() => {
+  const root = document.documentElement;
+  const toggle = document.getElementById('theme-toggle');
+  const entries = [...document.querySelectorAll('[data-story]')];
+  function storedTheme() { try { const t = localStorage.getItem('hn-daily-theme'); return t === 'dark' || t === 'light' ? t : null; } catch (_) { return null; } }
+  function preferredTheme() { return matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'; }
+  function currentTheme() { const a = root.dataset.theme; if (a === 'dark' || a === 'light') return a; return storedTheme() || preferredTheme(); }
+  function setTheme(theme) { const next = theme === 'dark' ? 'dark' : 'light'; const opposite = next === 'dark' ? 'Light' : 'Dark';
+    if (root.dataset.theme !== next) root.dataset.theme = next;
+    toggle.querySelector('.theme-text').textContent = opposite;
+    toggle.setAttribute('aria-label', `Switch to ${opposite} theme (T)`); toggle.title = `Switch to ${opposite} theme (T)`;
+    try { localStorage.setItem('hn-daily-theme', next); } catch (_) {} }
+  function flipTheme() { setTheme(currentTheme() === 'dark' ? 'light' : 'dark'); }
+  setTheme(storedTheme() || preferredTheme());
+  toggle.addEventListener('click', flipTheme);
+  const toast = document.querySelector('.toast'); let toastTimer;
+  function showToast(msg) { toast.textContent = msg; toast.classList.add('show'); clearTimeout(toastTimer); toastTimer = setTimeout(() => toast.classList.remove('show'), 1800); }
+  document.querySelectorAll('.copy-button').forEach((button) => {
+    button.addEventListener('click', async () => {
+      const story = button.closest('.story');
+      const n = story.dataset.story;
+      const tagline = story.querySelector('.tagline').textContent.trim();
+      const execSum = story.querySelector('.exec').textContent.trim();
+      const bullets = [...story.querySelectorAll('.cat-lists .cat')].map(li => {
+        const label = li.querySelector('.cat-label').textContent.trim();
+        const pts = [...li.querySelectorAll('ul li')].map(p => '  \u2022 ' + p.textContent.trim()).join('\n');
+        return '- ' + label + ':\n' + pts;
+      }).join('\n');
+      const link = 'https://tk3369.github.io/hn-daily/2026-10-15/#story-' + n;
+      const text = n + '. ' + tagline + '\n\n' + execSum + '\n' + bullets + '\n\n' + link;
+      try { await navigator.clipboard.writeText(text); button.textContent = 'Copied'; showToast('Story ' + n + ' copied for Threads'); setTimeout(() => { button.textContent = 'Copy for Threads'; }, 1600); }
+      catch (_) { showToast('Copy was blocked by this browser'); }
+    });
+  });
+  document.addEventListener('keydown', (event) => {
+    if (event.metaKey || event.ctrlKey || event.altKey || event.shiftKey) return;
+    const tag = event.target.tagName;
+    if (tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT') return;
+    const key = event.key.toLowerCase();
+    if (key === 't') { event.preventDefault(); flipTheme(); }
+    else if ((key === 'j' || key === 'k') && entries.length) {
+      event.preventDefault();
+      const active = entries.indexOf(document.activeElement);
+      const delta = key === 'j' ? 1 : -1;
+      const next = active < 0 ? (key === 'j' ? 0 : entries.length - 1) : Math.max(0, Math.min(entries.length - 1, active + 1 * delta));
+      entries[next].focus();
+    }
+  });
+})();
+  </script>
+</body>
+</html>
