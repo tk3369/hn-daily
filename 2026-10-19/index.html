@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="color-scheme" content="light dark" />
+  <link rel="icon" href="data:," />
+  <title>HN Daily — Monday 2026-10-19</title>
+  <style>
+:root { --page:#f1eadb; --paper:#fffaf0; --ink:#20201c; --muted:#6f695f; --hairline:#d9cebc; --accent:#ff5a1f; --comment:#f6efe3; --shadow:0 2px 0 rgba(57,45,25,.08),0 14px 36px rgba(57,45,25,.06); --serif:Georgia,"Times New Roman",serif; --sans:ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; --mono:"SFMono-Regular",Consolas,"Liberation Mono",monospace; }
+html[data-theme="dark"] { --page:#111312; --paper:#191c1a; --ink:#f1eee6; --muted:#aba69b; --hairline:#393b36; --accent:#ff7139; --comment:#222520; --shadow:0 2px 0 rgba(0,0,0,.22),0 18px 42px rgba(0,0,0,.22); }
+* { box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body { margin:0; min-width:280px; color:var(--ink); background:var(--page); font-family:var(--sans); line-height:1.55; -webkit-font-smoothing:antialiased; }
+a { color:inherit; text-underline-offset:3px; text-decoration-thickness:1px; }
+a:hover { color:var(--accent); }
+button,a { -webkit-tap-highlight-color:transparent; }
+button { font:inherit; }
+a:focus-visible,button:focus-visible { outline:3px solid var(--accent); outline-offset:3px; }
+.page { width:min(1080px,calc(100% - 36px)); margin:0 auto; padding:28px 0 72px; }
+.issue-header { display:grid; grid-template-columns:1fr auto; gap:24px; align-items:end; padding:8px 0 26px; border-bottom:3px solid var(--ink); }
+.edition { margin:0 0 9px; color:var(--accent); font:700 12px/1.3 var(--mono); letter-spacing:.09em; text-transform:uppercase; }
+.archive-nav { display:flex; flex-wrap:wrap; gap:8px 20px; margin-bottom:16px; font:700 12px/1 var(--mono); }
+.archive-nav a { min-height:36px; display:inline-flex; align-items:center; color:var(--muted); }
+.archive-nav a:hover { color:var(--accent); }
+h1 { max-width:820px; margin:0; font:700 clamp(34px,5.5vw,62px)/.98 var(--serif); letter-spacing:-.038em; }
+.deck { max-width:730px; margin:17px 0 0; color:var(--muted); font:17px/1.55 var(--sans); }
+.theme-toggle { align-self:start; min-width:86px; min-height:40px; padding:9px 13px; border:1px solid var(--hairline); border-radius:4px; color:var(--ink); background:var(--paper); cursor:pointer; font:700 12px/1 var(--mono); display:inline-flex; align-items:center; gap:8px; }
+.theme-toggle:hover { border-color:var(--accent); color:var(--accent); }
+.theme-dot { width:10px; height:10px; border-radius:50%; background:var(--accent); display:inline-block; flex-shrink:0; }
+.theme-text { line-height:1; }
+.story-list { display:grid; gap:20px; list-style:none; margin:26px 0 0; padding:0; counter-reset:story; }
+.story { counter-increment:story; display:grid; grid-template-columns:72px minmax(0,1fr); gap:26px; padding:26px 30px 28px; background:var(--paper); border-top:4px solid var(--ink); box-shadow:var(--shadow); scroll-margin-top:24px; }
+.story-number { color:var(--accent); font:900 22px/1 var(--mono); letter-spacing:-.04em; padding-top:6px; }
+.story-number::before { content:counter(story,decimal-leading-zero); }
+.tagline { margin:0; max-width:840px; font:700 clamp(24px,3vw,36px)/1.1 var(--serif); letter-spacing:-.028em; }
+.exec { margin:14px 0 0; max-width:840px; font:17px/1.58 var(--sans); }
+.cat-lists { margin:14px 0 0; padding:0; list-style:none; display:grid; gap:10px; max-width:840px; }
+.cat-lists li.cat { font:15px/1.6 var(--sans); }
+.cat-lists .cat-label { font:700 12px/1.6 var(--mono); letter-spacing:.06em; text-transform:uppercase; color:var(--accent); }
+.cat-lists ul { margin:4px 0 0; padding-left:20px; }
+.cat-lists ul li { margin:3px 0; }
+.meta-line { margin:16px 0 0; color:var(--muted); font:700 12px/1.9 var(--mono); overflow-wrap:anywhere; }
+.meta-line a { color:var(--ink); font-weight:800; }
+.meta-line .metrics { color:var(--ink); white-space:nowrap; }
+.story-bar { display:flex; align-items:flex-start; gap:14px; margin-top:4px; }
+.copy-button { flex:0 0 auto; align-self:flex-start; min-height:36px; padding:9px 12px; border:1px solid var(--hairline); border-radius:4px; background:var(--paper); color:var(--ink); cursor:pointer; font:700 12px/1 var(--mono); }
+.copy-button:hover { border-color:var(--accent); color:var(--accent); }
+.hn-comments { margin:18px 0 0; padding:14px 18px; background:var(--comment); border:1px solid var(--hairline); font:15px/1.62 var(--serif); color:var(--ink); }
+.hn-comments strong { font:700 12px/1.6 var(--mono); color:var(--accent); display:block; margin-bottom:6px; }
+.page-footer { display:flex; justify-content:space-between; flex-wrap:wrap; gap:14px; margin-top:64px; padding-top:12px; border-top:1px solid var(--hairline); color:var(--muted); font:12px/1.6 var(--mono); }
+.footer-links { display:flex; flex-wrap:wrap; gap:8px 20px; }
+.footer-links a { min-height:36px; display:inline-flex; align-items:center; color:var(--ink); font-weight:800; }
+.footer-links a:hover { color:var(--accent); }
+.shortcut-bar { display:flex; flex-wrap:wrap; gap:18px; margin-top:28px; color:var(--muted); font:11px/1.5 var(--mono); }
+kbd { display:inline-grid; place-items:center; min-width:22px; height:22px; margin-right:6px; padding:0 6px; border:1px solid var(--hairline); border-bottom-width:2px; border-radius:3px; background:var(--comment); color:var(--ink); font:inherit; font-weight:700; }
+.toast { position:fixed; right:max(18px,env(safe-area-inset-right)); bottom:max(18px,env(safe-area-inset-bottom)); z-index:10; padding:11px 14px; color:var(--paper); background:var(--ink); border:1px solid var(--ink); font:700 12px/1 var(--mono); opacity:0; transform:translateY(8px); pointer-events:none; transition:opacity 160ms ease,transform 160ms ease; }
+.toast.show { opacity:1; transform:translateY(0); }
+@media (max-width:760px) {
+  .page { width:min(100% - 22px,1080px); padding-top:16px; }
+  .issue-header { grid-template-columns:1fr auto; gap:12px; padding-bottom:20px; }
+  h1 { font-size:clamp(34px,10vw,48px); }
+  .deck { grid-column:1 / -1; margin-top:3px; font-size:15px; }
+  .theme-toggle { grid-column:2; grid-row:1; min-width:72px; }
+  .story { grid-template-columns:44px minmax(0,1fr); gap:14px; padding:20px 18px 22px; }
+  .story-number { font-size:16px; padding-top:4px; }
+  .story-bar { flex-direction:column; align-items:stretch; }
+  .copy-button { align-self:flex-start; }
+  .page-footer { display:block; }
+}
+@media (max-width:420px) {
+  .page { width:calc(100% - 16px); }
+  .story { grid-template-columns:1fr; gap:8px; padding:20px 16px 22px; }
+  .story-number { padding-top:0; }
+  .copy-button { width:100%; }
+}
+@media (prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } *,*::before,*::after { transition:none !important; } }
+@media print { :root { --page:#fff;--paper:#fff;--ink:#000;--muted:#444;--hairline:#bbb;--comment:#f5f5f5;--shadow:none; } .page{width:100%;padding:0}.theme-toggle,.copy-button,.toast,.shortcut-bar{display:none}.story{break-inside:avoid;box-shadow:none} }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="issue-header">
+      <div>
+        <nav class="archive-nav" aria-label="HN Daily archive links"><a href="../">← Archive</a><a href="https://tk3369.github.io/hn-daily/" target="_blank" rel="noopener">Published archive ↗</a></nav>
+        <p class="edition"><time datetime="2026-10-19">2026-10-19</time> · Daily brief · Pacific time</p>
+        <h1>HN Daily</h1>
+        <p class="deck">Direct, low-fluff top 10 from Hacker News, daily at 7am PT — hottest by points</p>
+      </div>
+      <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch color theme" title="Toggle theme (T)"><span class="theme-dot" aria-hidden="true"></span><span class="theme-text">Dark</span></button>
+    </header>
+
+    <ol class="story-list" aria-label="Top 10 Hacker News stories">
+<article class="story" id="story-1" data-story="1" data-source="https://karrisaarinen.com/posts/someone-behind-the-software/" data-hn="https://news.ycombinator.com/item?id=50142573" data-metric="499 pts / 180 comments" tabindex="0" aria-label="Story 1: Someone behind the software: Linear&#x27;s Karri Saarinen argues products need a maker&#x27;s point of view, not a factory">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">Someone behind the software: Linear&#x27;s Karri Saarinen argues products need a maker&#x27;s point of view, not a factory</h2>
+<p class="exec">Karri Saarinen (writing from inside Linear) argues good products carry their makers: experience, taste and what they choose not to build. The industry talks factory — requirements in, features out, measure — and now wants agents to automate that pipeline. His counter: two teams with the same customers and technology build very different things, and the difference is judgment built from talking to customers and making mistakes. The warning is current: agent-produced changes, each sensible alone, can add up to a Frankenstein product with no unified point of view — more things work, less soul remains.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The argument</span><ul><li>Intuition, in his definition, is not preference without evidence — it is a point of view earned through experience, customer contact and errors, used instead of hiding behind faceless data</li><li>A feature can work perfectly on its own and still make the product worse; recognising that takes a belief about what the product should be</li></ul></li><li class="cat"><span class="cat-label">Why it matters</span><ul><li>As making software gets cheaper, the scarce input shifts from code production to deciding what to build and what to refuse</li><li>The additive trap is measurable in most mature products: capabilities accumulate faster than the core problem gets rethought</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://karrisaarinen.com/posts/someone-behind-the-software/" target="_blank" rel="noopener">karrisaarinen.com</a> · Discuss: <a href="https://news.ycombinator.com/item?id=50142573" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">499 pts / 180 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>The top comment adds the structural caveat: Linear is its own customer — it tracks building Linear in Linear — so its makers get judgment calls right more easily than teams translating requirements across unfamiliar domains, and even Linear staff cannot actively use every feature (SAML, onboarding flows). A second thread pulls in Brooks quoting Dorothy Sayers on the mind of the maker. The AI split follows: if AI writes better code and architecture, why not better product decisions? Replies point to feedback loops — code is testable, product taste is subjective, context-heavy and competitive in ways a compile check is not.</p>
+</div>
+</article>
+<article class="story" id="story-2" data-story="2" data-source="https://arxiv.org/abs/2610.18861" data-hn="https://news.ycombinator.com/item?id=50145337" data-metric="454 pts / 222 comments" tabindex="0" aria-label="Story 2: Hybrid Reasoning Agents think in latent space and act through text, claiming 10.4% better results at half the tokens">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">Hybrid Reasoning Agents think in latent space and act through text, claiming 10.4% better results at half the tokens</h2>
+<p class="exec">A new arXiv paper (Zou et al., submitted 13 October) proposes HybridAgents: agents that reason in continuous latent space internally, but switch to text when they need tools or the outside world. A lightweight HybridLink component handles transitions between the two modes, continuous working memory preserves context across turns, and dedicated post-training (HybridSFT, then HybridRL) teaches the model when to think latently and when to act in text. Across 11 benchmarks at 3 model scales, the authors report +10.4% performance, 35.5–54.7% fewer tokens, 1.8–2.6x faster inference and 2.7–3.7x cost savings — all the authors&#x27; own figures.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The design</span><ul><li>Latent reasoning is efficient but has no native tool access and is hard to inspect; text reasoning is the opposite — the hybrid tries to keep both properties by switching modes in one generation process</li><li>The paper claims latent thoughts remain directly inspectable via the HybridLink design; how much information that inspection actually preserves is the contested point in-thread</li></ul></li><li class="cat"><span class="cat-label">Why it matters</span><ul><li>Token cost and latency are the binding constraints on agent workloads; halving tokens at equal quality reprices a lot of deployments</li><li>Monitorability is the trade: text chain-of-thought, however imperfect, is currently the main way to audit what a model was doing</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://arxiv.org/abs/2610.18861" target="_blank" rel="noopener">arxiv.org</a> · Discuss: <a href="https://news.ycombinator.com/item?id=50145337" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">454 pts / 222 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>Scepticism is technical, not dismissive. One line argues looped/latent approaches are equivalent to a deeper network with shared parameters, so &#x27;reasoning in latent space&#x27; is a matter of degree, not kind — and that latent states can be probed after the fact. The counter-thread worries about monitorability: projecting latent states to nearby tokens throws away most of the vector, and text CoT remains the best audit tool available. A practical note: one commenter ran a small GGUF build of the model and watched it loop forever on &#x27;Who is the pope?&#x27; — others suspect an inference-stack EOS bug rather than the architecture.</p>
+</div>
+</article>
+<article class="story" id="story-3" data-story="3" data-source="https://www.youtube.com/watch?v=LKrwhjOI8Nc" data-hn="https://news.ycombinator.com/item?id=50136150" data-metric="443 pts / 555 comments" tabindex="0" aria-label="Story 3: 3Blue1Brown: there&#x27;s never been a better time to go into math, even as AI learns to prove things [video]">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">3Blue1Brown: there&#x27;s never been a better time to go into math, even as AI learns to prove things [video]</h2>
+<p class="exec">Grant Sanderson&#x27;s new 3Blue1Brown video takes on math-student angst about AI directly. Its chapter structure is the argument: how math actually works, then a &#x27;proof machine&#x27;, a &#x27;conjecture machine&#x27; and a &#x27;theory machine&#x27; — successive levels at which AI assistance changes the work rather than simply replacing it — then the hard case, &#x27;if AI is better at everything&#x27;, and a closing case that this is the best time to enter the field. The description points viewers to a &#x27;Proofs and Prompt&#x27; post for how working mathematicians are feeling right now. It is a video essay; the claims are Sanderson&#x27;s, argued on camera.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The structure</span><ul><li>Chapters run from student angst (0:00) through how math works (3:10), proof machine (11:24), conjecture machine (25:12) and theory machine (26:59) to the closing case (34:58)</li><li>The distinction that does the work: automating a level of math moves the human contribution up a level — from proving to conjecturing to building theories — rather than deleting it</li></ul></li><li class="cat"><span class="cat-label">Why it matters</span><ul><li>The same automation anxiety is live in software, law and research; math is the cleanest test case because its outputs are verifiable</li><li>Verifiability cuts both ways: it makes AI progress in math unusually real, and unusually measurable</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://www.youtube.com/watch?v=LKrwhjOI8Nc" target="_blank" rel="noopener">youtube.com</a> · Discuss: <a href="https://news.ycombinator.com/item?id=50136150" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">443 pts / 555 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>The largest thread of the day, and it is mostly about craft, not math. A long quoted comment argues many people chose math and software as an art form — being the one who could solve the hard problem — and compares it to a leather craftsman told overnight that bags are now machine-made. Pushback is sharp: several commenters say that describes one person&#x27;s motives, not a generation&#x27;s, and that they enjoy design while happily delegating tedious coding. A darker economic line runs underneath: if AI captures the value, efficiency gains do not automatically buy anyone more leisure.</p>
+</div>
+</article>
+<article class="story" id="story-4" data-story="4" data-source="https://github.com/VikOlliver/RepRapMicron/wiki" data-hn="https://news.ycombinator.com/item?id=50141076" data-metric="419 pts / 66 comments" tabindex="0" aria-label="Story 4: RepRapMicron: a self-replicating printer aiming at micron and sub-micron fabrication from common materials">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">RepRapMicron: a self-replicating printer aiming at micron and sub-micron fabrication from common materials</h2>
+<p class="exec">The RepRapMicron wiki documents µRepRap: a RepRap — a replicating 3D printer — scaled down to micron (1µm) and sub-micron fabrication, built only from common, accessible materials, using 3D-printed microscope platforms from the OpenFlexure Project. The current recommended build, PIKA V0.02, is reported to achieve repeatable positioning of approximately 1µm and reliable 10µm-or-better accuracy in an roughly 8mm cubic volume, depositing UV-resin droplets as small as 4µm and curing 9µm resin lines with a fibre-optic probe. The wiki&#x27;s own demo includes a 0.5mm Benchy printed at 4µm layer height. Figures are the project&#x27;s.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The state of it</span><ul><li>PIKA V0.02 is the recommended build (circa May 2026 in the wiki); the earlier MAUS testbed reached about 5µm positioning best case over a 4mm square and is deprecated except as documentation</li><li>The stated aim mirrors original RepRap: bring microelectronics/MEMS-style fabrication to users the way RepRap brought macro fabrication, and let the designs evolve in the open</li></ul></li><li class="cat"><span class="cat-label">Why it matters</span><ul><li>Positioning at 1µm from printed parts and common materials moves precision fabrication from cleanroom capital toward hobbyist iteration</li><li>The working volume is tiny — about 8mm cubed — so this is probes, microfluidics and MEMS-scale parts, not a desktop chip fab yet</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://github.com/VikOlliver/RepRapMicron/wiki" target="_blank" rel="noopener">github.com</a> · Discuss: <a href="https://news.ycombinator.com/item?id=50141076" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">419 pts / 66 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>Delight, plus history. The top comment frames it as reliving the late 1790s — Ramsden, Maudslay and Wilkinson turning one-off craft into reliable machine tools — now reaching manipulation at near-atomic scales by determined amateurs. Practical threads compare code-CAD tools (OpenSCAD and its BOSL2 library versus FreeCAD and build123d) for designing at this scale. Jokes about making your own RAM in 18 months get grounded by readers who know the shed-fab scene: the well-known home chip makers are PhDs and founders, and a reliable mini-fab is orders of magnitude more work than a one-off demo.</p>
+</div>
+</article>
+<article class="story" id="story-5" data-story="5" data-source="https://lwn.net/Articles/1101143/" data-hn="https://news.ycombinator.com/item?id=50149392" data-metric="389 pts / 170 comments" tabindex="0" aria-label="Story 5: Linux 7.3 released: record 18,765 commits from 3,021 developers, plus a filesystem that fails everything on purpose">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">Linux 7.3 released: record 18,765 commits from 3,021 developers, plus a filesystem that fails everything on purpose</h2>
+<p class="exec">LWN reports Linus Torvalds released Linux 7.3 on Sunday 18 October, on schedule before his annual family vacation — the 7.4 merge window opens with him, in his words, on a boat and under water part of the day. LWN calls it a record-breaker: 18,765 non-merge commits from 3,021 developers, 807 of them first-time contributors, per the release summary. Notable changes listed by LWN include significant binfmt_misc extensions, group-scheduling work for large systems, the new failfs filesystem (which fails all operations, for testing), an fchroot() system call, global per-CPU data for BPF, completion of the sched_ext subscheduler feature, working-set tracking for VMs, and a long list of SMB server improvements.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The release</span><ul><li>Record scale on LWN&#x27;s numbers: 18,765 non-merge commits, 3,021 developers, 807 first-timers — the contributor pipeline is widening, not just the codebase</li><li>failfs is the emblematic change: a filesystem whose job is to fail every operation, so error paths get tested instead of discovered in production</li></ul></li><li class="cat"><span class="cat-label">Why it matters</span><ul><li>Scheduler and BPF changes (group scheduling, sched_ext completion, per-CPU BPF data) are aimed at large, multi-tenant machines — the AI-datacentre fleet profile</li><li>Torvalds notes his merge schedule will be unusual for a while; 7.4&#x27;s window opens regardless</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://lwn.net/Articles/1101143/" target="_blank" rel="noopener">lwn.net</a> · Discuss: <a href="https://news.ycombinator.com/item?id=50149392" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">389 pts / 170 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>The sampled thread leads with one specific change: ksmbd&#x27;s opt-in Apple Time Machine support — AAPL negotiation plus Finder, COPYCHUNK and related compatibility so macOS backupd can back up to a Linux SMB server — with the rueful note that it still has to be reverse-engineered. From there the thread drifts, as kernel threads do, into supporting non-technical family members: whether Linux, macOS or Windows is truly &#x27;fire-and-forget&#x27; for parents, with experienced voices on every side and the honest summary that a papercut eventually always needs a terminal, a local shop, or a patient relative.</p>
+</div>
+</article>
+<article class="story" id="story-6" data-story="6" data-source="https://www.wjcl.com/article/savannah-police-officer-ice-agent-flock-access/74135816" data-hn="https://news.ycombinator.com/item?id=50150750" data-metric="385 pts / 189 comments" tabindex="0" aria-label="Story 6: Savannah officer fired after giving her ICE-agent husband her Flock plate-reader login: 983 searches, 97 plates, six states">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">Savannah officer fired after giving her ICE-agent husband her Flock plate-reader login: 983 searches, 97 plates, six states</h2>
+<p class="exec">WJCL reports, from newly obtained department documents, that Savannah police officer Amber Harpe gave her husband — an ICE agent who had no Flock account of his own through DHS — her Savannah Police Department username and password for the Flock license-plate-reader system. An internal audit flagged the volume: 983 search entries between January and July 2026, covering 97 identifiable plates across Georgia, New Jersey, Maryland, Florida, South Carolina and North Carolina, with most registered owners identified in the audit described as Hispanic. Her husband told investigators every search targeted people with active arrest warrants from ICE &#x27;target packages&#x27; and denied personal use. The department fired Harpe for knowingly giving an unauthorised person access to a sensitive system and compromising its audit safeguards.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The numbers</span><ul><li>983 entries / 97 plates / six states in about seven months, per the department records WJCL reviewed; 48 South Carolina plates alone accounted for 788 entries</li><li>Detection worked as designed: it was the internal audit&#x27;s volume flag, not a complaint, that started the investigation</li></ul></li><li class="cat"><span class="cat-label">Why it matters</span><ul><li>This is the credential-sharing failure mode in concrete form: access controls and audit trails only bind the account holder, not whoever they hand the password to</li><li>The searches were, on the husband&#x27;s account, for his own agency&#x27;s work — the violation is the unauthorised channel, which is exactly what makes oversight impossible</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://www.wjcl.com/article/savannah-police-officer-ice-agent-flock-access/74135816" target="_blank" rel="noopener">wjcl.com</a> · Discuss: <a href="https://news.ycombinator.com/item?id=50150750" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">385 pts / 189 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>The thread generalises immediately: every surveillance tool given to law enforcement gets abused by some authorised users, screening cannot catch future circumstances, and politicians are naive — or, a minority counters, not naive at all — about that. A legal note gets repeated: warrantless use of third-party systems like Flock has not been fully tested in court, and several commenters expect the current Supreme Court to allow it if it arrives there. Others pivot to what the tools do to priorities: enforcement drifts toward easy, measurable offences while harder problems go untouched.</p>
+</div>
+</article>
+<article class="story" id="story-7" data-story="7" data-source="https://www.sciencealert.com/dogs-seem-to-agree-with-humans-that-bouba-is-round-and-kiki-is-spiky" data-hn="https://news.ycombinator.com/item?id=50136979" data-metric="291 pts / 169 comments" tabindex="0" aria-label="Story 7: Dogs seem to agree with humans that &#x27;bouba&#x27; is round and &#x27;kiki&#x27; is spiky">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">Dogs seem to agree with humans that &#x27;bouba&#x27; is round and &#x27;kiki&#x27; is spiky</h2>
+<p class="exec">ScienceAlert reports a study in Proceedings of the Royal Society B (Biffi et al., University of Parma): 70 domestic dogs, in two experiments, watched screens showing a rounded and a spiky shape while speakers played the made-up words &#x27;bouba&#x27; and &#x27;kiki&#x27;. Head-tracking analysis found dogs looked significantly more at the rounded shape while &#x27;bouba&#x27; played, and looked at and explored the spiky shape when &#x27;kiki&#x27; played. A second run put owners in headphones playing rock music to rule out owner cueing; the matching pattern held, though a general bias toward spiky shapes seen in the first run disappeared. The authors and the article both frame it as a starting point, not a settled result.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The method</span><ul><li>70 dogs across two experiments (51, then 19 with owners acoustically blinded); gaze was inferred from AI-tracked head orientation in GoPro video, a proxy for looking</li><li>The bouba/kiki effect in humans is cross-language and dates to the 1920s; finding a version in dogs would push its origin below language, toward shared sound-shape physics</li></ul></li><li class="cat"><span class="cat-label">Why it matters</span><ul><li>If the mapping predates language, it is evidence about how brains bind sound to shape generally — relevant to why dogs pick up human words so readily</li><li>Single study, proxy measurement, modest sample: grade it as suggestive, with replication still owed</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://www.sciencealert.com/dogs-seem-to-agree-with-humans-that-bouba-is-round-and-kiki-is-spiky" target="_blank" rel="noopener">sciencealert.com</a> · Discuss: <a href="https://news.ycombinator.com/item?id=50136979" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">291 pts / 169 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>The first question is the right one: would this hold for sounds from a very different language, like Arabic — and if a dog maps English sounds, is the mechanism linguistic at all? The favoured hypothesis in-thread is physical: sharp shapes make percussive sounds, round shapes make softer ones, and good hearing lets dogs model the world that way — which may also be where the human effect comes from. After that the thread cheerfully derails into sour-versus-sweet kiki/bouba guesses and a long etymology tour of &#x27;kaka&#x27; across Swedish, Slavic languages, Spanish, French and Dutch.</p>
+</div>
+</article>
+<article class="story" id="story-8" data-story="8" data-source="https://blog.picheta.me/post/killswitch-lang/" data-hn="https://news.ycombinator.com/item?id=50135762" data-metric="239 pts / 177 comments" tabindex="0" aria-label="Story 8: KillSwitch: a programming language built to be unusable by LLMs — and the best model still scores 66.8">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">KillSwitch: a programming language built to be unusable by LLMs — and the best model still scores 66.8</h2>
+<p class="exec">Dominik Picheta built KillSwitch, an esoteric stack-based language designed to be adversarial to LLMs and coding agents, to test whether model coding skill is understanding or recall of training data. The traps are specific: the spec contains hidden lies a human would spot, identifier rules depend on counting letters (a known LLM weakness), some constructs are phrased to trigger safety guardrails (&#x27;ignore previous instructions&#x27; is meaningful syntax), and scripts are mostly story noise in which literals are referenced by line count. He then benchmarked major models and agent harnesses on simple tasks — hello world, explaining a max-of-two script, inverting a Celsius-to-Fahrenheit program. Best score: Claude Opus 5 at 66.8 (his leaderboard); some models scored poorly mainly on over-sensitive guardrails.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The design</span><ul><li>Open-source interpreter and spec; under the traps it is a conventional stack language with functions, variables and if statements, deliberately familiar in structure</li><li>The benchmark tasks are intentionally simple — the point is measuring how much novel-spec reasoning costs, not production coding ability</li></ul></li><li class="cat"><span class="cat-label">Why it matters</span><ul><li>A clean-ish probe of a real question: how far does an LLM get in a language with zero training-data presence, given only the spec?</li><li>Picheta&#x27;s own verdict is restrained: solving these tasks is impressive, but not clear evidence the models &#x27;understand&#x27; the language</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://blog.picheta.me/post/killswitch-lang/" target="_blank" rel="noopener">blog.picheta.me</a> · Discuss: <a href="https://news.ycombinator.com/item?id=50135762" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">239 pts / 177 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>The thread splits on fairness. Critics say this is not &#x27;a language LLMs can&#x27;t use&#x27; but one adversarial to LLMs not trained on it — and that the guardrail-triggering constructs measure safety systems, not capability. Defenders counter that a genuinely thinking system should build its own tools for letter-counting, the way humans build tools for mental arithmetic, and that coding agents can route around state-tracking traps by writing simulators. A related-language detour delights in Darmok, a Tamarian-inspired language. Malbolge gets its customary mention: adversarial to everyone, not just models.</p>
+</div>
+</article>
+<article class="story" id="story-9" data-story="9" data-source="https://jrdsgl.com/if-you-dont-run-your-own-llm-proxy-how-the-fuck-do-you-even-know-whats-going-on/" data-hn="https://news.ycombinator.com/item?id=50145507" data-metric="233 pts / 157 comments" tabindex="0" aria-label="Story 9: Run your own LLM proxy or you don&#x27;t know what&#x27;s going on: one endpoint, real token data, your logs">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">Run your own LLM proxy or you don&#x27;t know what&#x27;s going on: one endpoint, real token data, your logs</h2>
+<p class="exec">Jared Siegel argues that subscription dashboards are decoration, not instrumentation: they show no usable time-series token data, so you cannot make engineering decisions from them. His fix is a self-hosted LLM proxy as the single endpoint you control — multi-provider and multi-model behind one address, logs of which key called which model from which client at what time and with what status, virtual API keys instead of scattering your main key across agents and harnesses, and the ability to pivot provider without reconfiguring everything. He mods his own proxy (custom MCP endpoints, cache-miss diagnosis in seconds) and gives no vendor recommendation: the point is owning the data path.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The case</span><ul><li>Five stated reasons beyond dashboards: multi-provider routing, per-key/per-client logs, virtual keys, infrastructure you control, and fast provider pivots</li><li>The concrete payoff he cites is operational: seeing a cache miss mid-session and pinpointing why by hand in about 20 seconds from proxy logs</li></ul></li><li class="cat"><span class="cat-label">Why it matters</span><ul><li>Agent workloads make token spend a real line item; without per-call logs, cost and quality regressions are invisible until the bill arrives</li><li>A proxy is also a control point — for key hygiene and provider independence — not just a chart</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://jrdsgl.com/if-you-dont-run-your-own-llm-proxy-how-the-fuck-do-you-even-know-whats-going-on/" target="_blank" rel="noopener">jrdsgl.com</a> · Discuss: <a href="https://news.ycombinator.com/item?id=50145507" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">233 pts / 157 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>The top comment makes the engineering counter-case: you do not need a proxy, and a proxy is a single point of failure sitting in your productivity path — Codex and Claude Code already emit OpenTelemetry traces with tool calls, prompts and token cost, and OTEL collection is best-effort, so losing traces costs nothing while a dead proxy strands the team. The longer argument is money: subscription versus API pricing, with heavy users reporting $200 of API spend gone in two or three days against a $200/month Max plan they ride to the weekly limit, and a split over whether today&#x27;s subsidised subscription prices are an acquisition funnel that will eventually close.</p>
+</div>
+</article>
+<article class="story" id="story-10" data-story="10" data-source="https://colo.to/cyberspace.html" data-hn="https://news.ycombinator.com/item?id=50146625" data-metric="227 pts / 107 comments" tabindex="0" aria-label="Story 10: William Gibson and the trademarking of cyberspace: the retaliation story was Timothy Leary&#x27;s prank">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">William Gibson and the trademarking of cyberspace: the retaliation story was Timothy Leary&#x27;s prank</h2>
+<p class="exec">Eric Gullichsen, who worked on Autodesk&#x27;s early VR project in 1989, settles a web-era rumour from primary sources — his own letters. The facts as he documents them: Autodesk did apply to register &#x27;cyberspace&#x27; as a trademark for its VR system; William Gibson, a fan of whose Neuromancer the lab was, was &#x27;plenty miffed&#x27;; Gullichsen wrote Gibson a conciliatory letter ending by quoting Gibson back at himself (&#x27;the street finds its own use for things&#x27;); Gibson&#x27;s lawyers replied and were ignored. The famous retaliation — Gibson trying to trademark &#x27;Eric Gullichsen&#x27; — never happened: Timothy Leary invented it as a prank, John Perry Barlow embellished it, Rudy Rucker amplified it, and it hardened into accepted history. Gibson&#x27;s own verdict, delivered in person at Art Futura 1990 in Barcelona: &#x27;Autodesk is not the street.&#x27;</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The record</span><ul><li>First-hand account with the actual correspondence linked: Autodesk&#x27;s application and Gibson&#x27;s objection are real; only the retaliation half of the legend is fabricated</li><li>The lab&#x27;s hardware grounds the era: a 386 with Matrox cards, a VPL EyePhone and a data glove running at six to ten frames per second on a few hundred polygons</li></ul></li><li class="cat"><span class="cat-label">Why it matters</span><ul><li>A tidy case study in how a good story outruns documents — and what it takes, decades later, to correct it with primary sources</li><li>Also a reminder that &#x27;cyberspace&#x27; entered commerce contested from the start: a novelist&#x27;s word, a company&#x27;s trademark application, a prankster&#x27;s rumour</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://colo.to/cyberspace.html" target="_blank" rel="noopener">colo.to</a> · Discuss: <a href="https://news.ycombinator.com/item?id=50146625" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">227 pts / 107 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>Nostalgia with fact-checking. Gibson&#x27;s &#x27;the future is already here — it&#x27;s just not evenly distributed&#x27; gets its customary airing, and the thread argues the psychedelic adjacency: Leary did call the PC &#x27;the LSD of the 1990s&#x27;, but commenters split on Grateful Dead influence versus dub and Bob Marley for Gibson himself. First-time Neuromancer readers report it has aged remarkably well despite expensive Hitachi RAM and surviving payphones. A participant memory stands out: Autodesk&#x27;s 3D Pong demo for Nolan Bushnell, and the verdict that mid-air VR CAD was like drawing with oven mitts — precision work still is not human-compatible in open air.</p>
+</div>
+</article>
+    </ol>
+
+    <div class="shortcut-bar" aria-label="Keyboard shortcuts">
+      <span><kbd>J</kbd> next story</span>
+      <span><kbd>K</kbd> previous story</span>
+      <span><kbd>T</kbd> theme</span>
+    </div>
+
+    <footer class="page-footer">
+      <div class="footer-links"><a href="../">← Daily archive</a><a href="https://tk3369.github.io/hn-daily/" target="_blank" rel="noopener">Published archive ↗</a></div>
+      <span>Monday 2026-10-19 · 10 stories</span>
+    </footer>
+  </main>
+  <div class="toast" role="status" aria-live="polite"></div>
+  <script>
+(() => {
+  const root = document.documentElement;
+  const toggle = document.getElementById('theme-toggle');
+  const entries = [...document.querySelectorAll('[data-story]')];
+  function storedTheme() { try { const t = localStorage.getItem('hn-daily-theme'); return t === 'dark' || t === 'light' ? t : null; } catch (_) { return null; } }
+  function preferredTheme() { return matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'; }
+  function currentTheme() { const a = root.dataset.theme; if (a === 'dark' || a === 'light') return a; return storedTheme() || preferredTheme(); }
+  function setTheme(theme) { const next = theme === 'dark' ? 'dark' : 'light'; const opposite = next === 'dark' ? 'Light' : 'Dark';
+    if (root.dataset.theme !== next) root.dataset.theme = next;
+    toggle.querySelector('.theme-text').textContent = opposite;
+    toggle.setAttribute('aria-label', `Switch to ${opposite} theme (T)`); toggle.title = `Switch to ${opposite} theme (T)`;
+    try { localStorage.setItem('hn-daily-theme', next); } catch (_) {} }
+  function flipTheme() { setTheme(currentTheme() === 'dark' ? 'light' : 'dark'); }
+  setTheme(storedTheme() || preferredTheme());
+  toggle.addEventListener('click', flipTheme);
+  const toast = document.querySelector('.toast'); let toastTimer;
+  function showToast(msg) { toast.textContent = msg; toast.classList.add('show'); clearTimeout(toastTimer); toastTimer = setTimeout(() => toast.classList.remove('show'), 1800); }
+  document.querySelectorAll('.copy-button').forEach((button) => {
+    button.addEventListener('click', async () => {
+      const story = button.closest('.story');
+      const n = story.dataset.story;
+      const tagline = story.querySelector('.tagline').textContent.trim();
+      const execSum = story.querySelector('.exec').textContent.trim();
+      const bullets = [...story.querySelectorAll('.cat-lists .cat')].map(li => {
+        const label = li.querySelector('.cat-label').textContent.trim();
+        const pts = [...li.querySelectorAll('ul li')].map(p => '  \u2022 ' + p.textContent.trim()).join('\n');
+        return '- ' + label + ':\n' + pts;
+      }).join('\n');
+      const link = 'https://tk3369.github.io/hn-daily/2026-10-19/#story-' + n;
+      const text = n + '. ' + tagline + '\n\n' + execSum + '\n' + bullets + '\n\n' + link;
+      try { await navigator.clipboard.writeText(text); button.textContent = 'Copied'; showToast('Story ' + n + ' copied for Threads'); setTimeout(() => { button.textContent = 'Copy for Threads'; }, 1600); }
+      catch (_) { showToast('Copy was blocked by this browser'); }
+    });
+  });
+  document.addEventListener('keydown', (event) => {
+    if (event.metaKey || event.ctrlKey || event.altKey || event.shiftKey) return;
+    const tag = event.target.tagName;
+    if (tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT') return;
+    const key = event.key.toLowerCase();
+    if (key === 't') { event.preventDefault(); flipTheme(); }
+    else if ((key === 'j' || key === 'k') && entries.length) {
+      event.preventDefault();
+      const active = entries.indexOf(document.activeElement);
+      const delta = key === 'j' ? 1 : -1;
+      const next = active < 0 ? (key === 'j' ? 0 : entries.length - 1) : Math.max(0, Math.min(entries.length - 1, active + 1 * delta));
+      entries[next].focus();
+    }
+  });
+})();
+  </script>
+</body>
+</html>
