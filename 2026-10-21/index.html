@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="color-scheme" content="light dark" />
+  <link rel="icon" href="data:," />
+  <title>HN Daily — Wednesday 2026-10-21</title>
+  <style>
+:root { --page:#f1eadb; --paper:#fffaf0; --ink:#20201c; --muted:#6f695f; --hairline:#d9cebc; --accent:#ff5a1f; --comment:#f6efe3; --shadow:0 2px 0 rgba(57,45,25,.08),0 14px 36px rgba(57,45,25,.06); --serif:Georgia,"Times New Roman",serif; --sans:ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; --mono:"SFMono-Regular",Consolas,"Liberation Mono",monospace; }
+html[data-theme="dark"] { --page:#111312; --paper:#191c1a; --ink:#f1eee6; --muted:#aba69b; --hairline:#393b36; --accent:#ff7139; --comment:#222520; --shadow:0 2px 0 rgba(0,0,0,.22),0 18px 42px rgba(0,0,0,.22); }
+* { box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body { margin:0; min-width:280px; color:var(--ink); background:var(--page); font-family:var(--sans); line-height:1.55; -webkit-font-smoothing:antialiased; }
+a { color:inherit; text-underline-offset:3px; text-decoration-thickness:1px; }
+a:hover { color:var(--accent); }
+button,a { -webkit-tap-highlight-color:transparent; }
+button { font:inherit; }
+a:focus-visible,button:focus-visible { outline:3px solid var(--accent); outline-offset:3px; }
+.page { width:min(1080px,calc(100% - 36px)); margin:0 auto; padding:28px 0 72px; }
+.issue-header { display:grid; grid-template-columns:1fr auto; gap:24px; align-items:end; padding:8px 0 26px; border-bottom:3px solid var(--ink); }
+.edition { margin:0 0 9px; color:var(--accent); font:700 12px/1.3 var(--mono); letter-spacing:.09em; text-transform:uppercase; }
+.archive-nav { display:flex; flex-wrap:wrap; gap:8px 20px; margin-bottom:16px; font:700 12px/1 var(--mono); }
+.archive-nav a { min-height:36px; display:inline-flex; align-items:center; color:var(--muted); }
+.archive-nav a:hover { color:var(--accent); }
+h1 { max-width:820px; margin:0; font:700 clamp(34px,5.5vw,62px)/.98 var(--serif); letter-spacing:-.038em; }
+.deck { max-width:730px; margin:17px 0 0; color:var(--muted); font:17px/1.55 var(--sans); }
+.theme-toggle { align-self:start; min-width:86px; min-height:40px; padding:9px 13px; border:1px solid var(--hairline); border-radius:4px; color:var(--ink); background:var(--paper); cursor:pointer; font:700 12px/1 var(--mono); display:inline-flex; align-items:center; gap:8px; }
+.theme-toggle:hover { border-color:var(--accent); color:var(--accent); }
+.theme-dot { width:10px; height:10px; border-radius:50%; background:var(--accent); display:inline-block; flex-shrink:0; }
+.theme-text { line-height:1; }
+.story-list { display:grid; gap:20px; list-style:none; margin:26px 0 0; padding:0; counter-reset:story; }
+.story { counter-increment:story; display:grid; grid-template-columns:72px minmax(0,1fr); gap:26px; padding:26px 30px 28px; background:var(--paper); border-top:4px solid var(--ink); box-shadow:var(--shadow); scroll-margin-top:24px; }
+.story-number { color:var(--accent); font:900 22px/1 var(--mono); letter-spacing:-.04em; padding-top:6px; }
+.story-number::before { content:counter(story,decimal-leading-zero); }
+.tagline { margin:0; max-width:840px; font:700 clamp(24px,3vw,36px)/1.1 var(--serif); letter-spacing:-.028em; }
+.exec { margin:14px 0 0; max-width:840px; font:17px/1.58 var(--sans); }
+.cat-lists { margin:14px 0 0; padding:0; list-style:none; display:grid; gap:10px; max-width:840px; }
+.cat-lists li.cat { font:15px/1.6 var(--sans); }
+.cat-lists .cat-label { font:700 12px/1.6 var(--mono); letter-spacing:.06em; text-transform:uppercase; color:var(--accent); }
+.cat-lists ul { margin:4px 0 0; padding-left:20px; }
+.cat-lists ul li { margin:3px 0; }
+.meta-line { margin:16px 0 0; color:var(--muted); font:700 12px/1.9 var(--mono); overflow-wrap:anywhere; }
+.meta-line a { color:var(--ink); font-weight:800; }
+.meta-line .metrics { color:var(--ink); white-space:nowrap; }
+.story-bar { display:flex; align-items:flex-start; gap:14px; margin-top:4px; }
+.copy-button { flex:0 0 auto; align-self:flex-start; min-height:36px; padding:9px 12px; border:1px solid var(--hairline); border-radius:4px; background:var(--paper); color:var(--ink); cursor:pointer; font:700 12px/1 var(--mono); }
+.copy-button:hover { border-color:var(--accent); color:var(--accent); }
+.hn-comments { margin:18px 0 0; padding:14px 18px; background:var(--comment); border:1px solid var(--hairline); font:15px/1.62 var(--serif); color:var(--ink); }
+.hn-comments strong { font:700 12px/1.6 var(--mono); color:var(--accent); display:block; margin-bottom:6px; }
+.page-footer { display:flex; justify-content:space-between; flex-wrap:wrap; gap:14px; margin-top:64px; padding-top:12px; border-top:1px solid var(--hairline); color:var(--muted); font:12px/1.6 var(--mono); }
+.footer-links { display:flex; flex-wrap:wrap; gap:8px 20px; }
+.footer-links a { min-height:36px; display:inline-flex; align-items:center; color:var(--ink); font-weight:800; }
+.footer-links a:hover { color:var(--accent); }
+.shortcut-bar { display:flex; flex-wrap:wrap; gap:18px; margin-top:28px; color:var(--muted); font:11px/1.5 var(--mono); }
+kbd { display:inline-grid; place-items:center; min-width:22px; height:22px; margin-right:6px; padding:0 6px; border:1px solid var(--hairline); border-bottom-width:2px; border-radius:3px; background:var(--comment); color:var(--ink); font:inherit; font-weight:700; }
+.toast { position:fixed; right:max(18px,env(safe-area-inset-right)); bottom:max(18px,env(safe-area-inset-bottom)); z-index:10; padding:11px 14px; color:var(--paper); background:var(--ink); border:1px solid var(--ink); font:700 12px/1 var(--mono); opacity:0; transform:translateY(8px); pointer-events:none; transition:opacity 160ms ease,transform 160ms ease; }
+.toast.show { opacity:1; transform:translateY(0); }
+@media (max-width:760px) {
+  .page { width:min(100% - 22px,1080px); padding-top:16px; }
+  .issue-header { grid-template-columns:1fr auto; gap:12px; padding-bottom:20px; }
+  h1 { font-size:clamp(34px,10vw,48px); }
+  .deck { grid-column:1 / -1; margin-top:3px; font-size:15px; }
+  .theme-toggle { grid-column:2; grid-row:1; min-width:72px; }
+  .story { grid-template-columns:44px minmax(0,1fr); gap:14px; padding:20px 18px 22px; }
+  .story-number { font-size:16px; padding-top:4px; }
+  .story-bar { flex-direction:column; align-items:stretch; }
+  .copy-button { align-self:flex-start; }
+  .page-footer { display:block; }
+}
+@media (max-width:420px) {
+  .page { width:calc(100% - 16px); }
+  .story { grid-template-columns:1fr; gap:8px; padding:20px 16px 22px; }
+  .story-number { padding-top:0; }
+  .copy-button { width:100%; }
+}
+@media (prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } *,*::before,*::after { transition:none !important; } }
+@media print { :root { --page:#fff;--paper:#fff;--ink:#000;--muted:#444;--hairline:#bbb;--comment:#f5f5f5;--shadow:none; } .page{width:100%;padding:0}.theme-toggle,.copy-button,.toast,.shortcut-bar{display:none}.story{break-inside:avoid;box-shadow:none} }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="issue-header">
+      <div>
+        <nav class="archive-nav" aria-label="HN Daily archive links"><a href="../">← Archive</a><a href="https://tk3369.github.io/hn-daily/" target="_blank" rel="noopener">Published archive ↗</a></nav>
+        <p class="edition"><time datetime="2026-10-21">2026-10-21</time> · Daily brief · Pacific time</p>
+        <h1>HN Daily</h1>
+        <p class="deck">Direct, low-fluff top 10 from Hacker News, daily at 7am PT — hottest by points</p>
+      </div>
+      <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch color theme" title="Toggle theme (T)"><span class="theme-dot" aria-hidden="true"></span><span class="theme-text">Dark</span></button>
+    </header>
+
+    <ol class="story-list" aria-label="Top 10 Hacker News stories">
+<article class="story" id="story-1" data-story="1" data-source="https://news-web.php.net/php.announce/509" data-hn="https://news.ycombinator.com/item?id=50172041" data-metric="1334 pts / 553 comments" tabindex="0" aria-label="Story 1: Critical PHP release today: two RCE flaws rated CVSS 9.2 — patch at 14:00 UTC, details already out">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">Critical PHP release today: two RCE flaws rated CVSS 9.2 — patch at 14:00 UTC, details already out</h2>
+<p class="exec">The PHP security team pre-announced a critical release for Wednesday 21 October 2026 at 14:00 UTC covering two vulnerabilities, both rated CVSS v4.0 9.2: CVE-2026-109618 and CVE-2026-109619. The announcement gave no technical details and warned the release could move earlier if details leaked or active exploitation appeared. In the event, per commenters linking php.net and the GitHub advisories, fixed versions were released slightly early with full details: remote code execution via out-of-memory corruption, and RCE via stale global state. The practical instruction is unchanged: be ready to update the moment packages land, because a public patch plus public details is also an exploit-writing kit. A commenter reports Dutch DigiD (government login), broadcaster RTL and parliament sites shut down pre-emptively — commenter-reported, not independently verified here.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">What is known</span><ul><li>Two critical RCE-class flaws, both CVSS 9.2, affecting PHP broadly; scheduled coordinated release 21 Oct 14:00 UTC, with fixed versions and advisories appearing slightly early per in-thread links</li><li>No exploitation evidence was cited in the original pre-announcement; the early-release trigger was detail leakage, which the patch publication itself creates</li></ul></li><li class="cat"><span class="cat-label">Why it matters</span><ul><li>PHP still runs a large share of the public web, including government login infrastructure — the blast radius is measured in hundreds of thousands of instances that must patch in the same window</li><li>The shutdown-vs-stay-up choice is the real decision: shutting down avoids exposure but guarantees downtime; staying up bets you can patch before exploits mature</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://news-web.php.net/php.announce/509" target="_blank" rel="noopener">news-web.php.net</a> · Discuss: <a href="https://news.ycombinator.com/item?id=50172041" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">1334 pts / 553 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>The thread splits on disclosure timing. One camp wanted the patch earlier; the counter-argument is that publishing a fix makes exploit construction easier, so a single coordinated moment plus loud advance warning — giving operators the option to shut down first — minimises total damage. Operators ask the unglamorous question: how do you tell if you were already hit (new files, unexpected POSTs in access logs)? A longer critique argues the deeper problem is 1990s PHP app architecture — one shared database role, writable uploads, no row-level security — so a single RCE still hands over the whole database.</p>
+</div>
+</article>
+<article class="story" id="story-2" data-story="2" data-source="https://emudhra.we-have-a-problem.com/" data-hn="https://news.ycombinator.com/item?id=50166579" data-metric="1090 pts / 424 comments" tabindex="0" aria-label="Story 2: eMudhra intermediate CA keys were single bytes — anyone could impersonate any site since April 2025">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">eMudhra intermediate CA keys were single bytes — anyone could impersonate any site since April 2025</h2>
+<p class="exec">The private keys of eight eMudhra intermediate CA certificates — six TLS issuers (DV, OV, EV, two generations) and two code-signing CAs, created April 2025 and cross-signed by Sectigo — were incorrectly generated and are recoverable from the public certificates themselves. Reporter Wayne demonstrated compromise by signing the message &#x27;We have a problem here - Wayne&#x27; with each key and reported it to the root programs on 17 October. The intermediates chain to roots trusted by Mozilla, Microsoft, Apple and Chrome. Browsers blocked them fast (Firefox and Chrome 17 Oct, Apple 19 Oct, Microsoft 20 Oct) and the CA revoked them, but clients that do not consume revocation — most non-browser TLS stacks — stay exposed until their trust store updates. No CT-log entries exist for these intermediates, so CT-enforcing browsers could not have been attacked via forged certs; non-CT clients are the open question.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The flaw</span><ul><li>Keys were incorrectly generated at creation in April 2025 — per eMudhra&#x27;s Mozilla incident account quoted in-thread, a flaw in the key-generation ceremony script plus a wrap/unwrap test deviation produced a second, weak key pair that was used by mistake</li><li>An attacker with any one intermediate key could issue a trusted certificate for any website or service</li></ul></li><li class="cat"><span class="cat-label">Why it matters</span><ul><li>Browser remediation took hours; ecosystem remediation takes months — the disclosure page lists patched versions across OS ca-certificates packages, Go, Node, Python certifi, Rust, Electron and dozens more, each a separate update path</li><li>macOS is the sharp example: the OS blocks the intermediates, but the built-in curl/git/python3 verify against /etc/ssl/cert.pem without revocation and that file had not been updated</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://emudhra.we-have-a-problem.com/" target="_blank" rel="noopener">emudhra.we-have-a-problem.com</a> · Discuss: <a href="https://news.ycombinator.com/item?id=50166579" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">1090 pts / 424 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>Shock first: the top comment notes one private key is literally the number 4 — &#x27;compromised&#x27; in scare quotes, because nothing was stolen. A Mozilla voice stresses how uneven the impact is: OneCRL remediated Firefox in hours and CRLite scales revocation for browsers, while the rest of the ecosystem has made almost no revocation investment. Others flag the second-order problem — countless binaries vendor their own CA store, so patching the system bundle does not patch them — and share one-liners to distrust eMudhra on macOS, Ubuntu and Windows.</p>
+</div>
+</article>
+<article class="story" id="story-3" data-story="3" data-source="https://permit.petercai.com/" data-hn="https://news.ycombinator.com/item?id=50170593" data-metric="855 pts / 392 comments" tabindex="0" aria-label="Story 3: Show HN: Permit Pending — SimCity where every building needs a hearing, an appeal and re-election">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">Show HN: Permit Pending — SimCity where every building needs a hearing, an appeal and re-election</h2>
+<p class="exec">Permit Pending (Peter Cai) is a free, browser-based city builder with one twist on the SimCity formula: you are not a god, you are an elected mayor. Every apartment block, bus lane and factory goes through zoning hearings, neighbour objections, council votes, lawsuits and appeals, over a real underlying economy where residents have ages, incomes and homes, and businesses hire, grow and leave. The landing page&#x27;s worked example is the whole game in miniature: rezone a lot for 12 stories in month 3, watch homeowners organise over parking and &#x27;neighbourhood character&#x27;, trade height for parking until the project no longer pays, get appealed anyway — and face election in month 48 with rents still rising and both sides blaming you. No account or download; saves are local and it works offline after the first visit. Sandbox forever, no win screen — the challenge is staying in office long enough to build anything.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The simulation</span><ul><li>Opposition is systemic, not scripted flavour: new housing lowers rents and angers homeowners, industry brings jobs and smog, transit attracts development and development attracts opponents</li><li>Re-election every four years, with high-turnout groups wielding outsized power; heatmaps and a local paper, the Gazette, explain which decision made which voters angry</li></ul></li><li class="cat"><span class="cat-label">Why it matters</span><ul><li>It models the actual binding constraint on real cities — process and politics, not engineering or money — which is why a 12-story building becomes a 6-story building that no longer pencils out</li><li>As a Show HN it is also a craft signal: a complete, free, offline-capable game with a point of view, shipped by one builder</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://permit.petercai.com/" target="_blank" rel="noopener">permit.petercai.com</a> · Discuss: <a href="https://news.ycombinator.com/item?id=50170593" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">855 pts / 392 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>Players enjoy it, then debug it: petitions arrive with signatures from over 250% of the town&#x27;s population, and objections cite intersections and shadows that do not exist in the player&#x27;s city — a request for more template text grounded in actual game state. Others place it next to a similar recent HN game and summarise the shared thesis: real life is worse than SimCity because of rules and public say. A construction-family reader calls it funny and sad in equal measure, and the politics-simulation questions (red state vs blue state levers, campaigning) suggest players want the mayor sim to go further, not less far.</p>
+</div>
+</article>
+<article class="story" id="story-4" data-story="4" data-source="https://mistral.ai/news/voxtral-3/" data-hn="https://news.ycombinator.com/item?id=50168396" data-metric="726 pts / 180 comments" tabindex="0" aria-label="Story 4: Mistral Voxtral 3: voice-agent SDK, transcription in 50+ languages, TTS in 35+ — benchmarks are Mistral&#x27;s own">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">Mistral Voxtral 3: voice-agent SDK, transcription in 50+ languages, TTS in 35+ — benchmarks are Mistral&#x27;s own</h2>
+<p class="exec">Mistral launched Voxtral 3: a family of speech-to-text and text-to-speech models plus a voice-agent SDK (built on LiveKit) that runs listening, reasoning, tool calling and speaking as one streaming pipeline with sub-second turns. All performance figures are Mistral&#x27;s own. Transcription: Voxtral Small Transcribe 3 claims state-of-the-art multilingual results across 50 languages with diarisation and context biasing, beating Whisper, Scribe v2 and Gemini 3.5 Transcribe on its charts; the Mini (4B) costs $0.0035/min batch, realtime $0.008/min at sub-500ms latency in 35+ languages. TTS: Voxtral Mini TTS 3 claims emotion- and context-adaptive speech in 35+ languages and 50+ dialects at $13 per million characters, with Pro Voice cloning from 30 minutes of audio. Voice-agent API pricing is $0.04/min with Mistral Small reasoning, $0.08/min with a larger model. Deployment is Mistral&#x27;s EU-hosted API or self-hosted — the sovereignty pitch is explicit.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The claims, graded</span><ul><li>Vendor-claimed throughout: FLEURS, diarisation (cpWER) and Artificial Analysis charts are Mistral-published; TTS quality-per-dollar charts use a Gemini judge and partly internal evals, per the post&#x27;s own footnotes</li><li>Pricing is concrete and checkable: $0.0035–$0.008/min transcription and $13/1M characters TTS undercut the named incumbents on Mistral&#x27;s comparison</li></ul></li><li class="cat"><span class="cat-label">Why it matters</span><ul><li>Voice agents fail at the joints — end-of-turn detection, interruption handling, tool calls mid-conversation; a single-vendor streaming stack that claims under-one-second turns is selling integration, not just models</li><li>EU hosting plus self-deployment is a real differentiator for contact-centre audio that cannot leave the premises</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://mistral.ai/news/voxtral-3/" target="_blank" rel="noopener">mistral.ai</a> · Discuss: <a href="https://news.ycombinator.com/item?id=50168396" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">726 pts / 180 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>The thread is cooler than the launch post. One developer ships commercial Windows software running the previous Voxtral Mini 4B Realtime offline on a median laptop iGPU and exceeds realtime — proof the local story was good. The replies turn on what changed: &#x27;Closed model unfortunately&#x27;, and &#x27;Has Mistral just stopped doing open source?&#x27; — readers note an American or Chinese lab doing the same would draw far more fire. A lighter note lands too: the demo agent starts speaking with a French accent after reading French.</p>
+</div>
+</article>
+<article class="story" id="story-5" data-story="5" data-source="https://teddysvoronos.com/2026-10-19-apple-broke-an-essential-presentation-feature-of-ipads/" data-hn="https://news.ycombinator.com/item?id=50165208" data-metric="584 pts / 285 comments" tabindex="0" aria-label="Story 5: iPadOS 27 broke presenter mode: tap another app and your private notes hit the classroom screen">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">iPadOS 27 broke presenter mode: tap another app and your private notes hit the classroom screen</h2>
+<p class="exec">Teddy Svoronos, who teaches from an iPad projected via AirPlay, reports a regression in iPadOS 27: previously the external display stayed on the presenting app (GoodNotes handouts, Keynote, PowerPoint) while he used the iPad itself for notes, student call lists and hidden poll results. As of iPadOS 27, with multiple windows open while AirPlaying — Stage Manager on or off — tapping anything other than the presenting app snaps the external display to the whole iPad screen, exposing exactly the material students must not see. Recovery differs by app: GoodNotes returns to presenter view when tapped back, Keynote exits the presentation entirely, PowerPoint lands in a limbo requiring a restart. His proposed rule is simple: an app in presenter mode keeps precedence on the external display until the presentation stops, the document closes or the app quits. He filed feedback FB23615646 and says the behaviour persists in current betas.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The mechanism</span><ul><li>In iPadOS 26, which app controlled the external display was obscure (swipe up, tap the dock app); Apple&#x27;s fix makes the most recently tapped app take over — simpler to explain, worse in use</li><li>This is not an edge case for presenters: private speaker notes, poll results and call lists are the standard second-screen workflow in teaching and conferences</li></ul></li><li class="cat"><span class="cat-label">Why it matters</span><ul><li>A confidentiality failure, not a cosmetic bug: one tap publishes private notes to a room, live</li><li>Until Apple changes it, his recommendation stands: do not rely on iPadOS 27 for teaching or presenting with anything private on the device</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://teddysvoronos.com/2026-10-19-apple-broke-an-essential-presentation-feature-of-ipads/" target="_blank" rel="noopener">teddysvoronos.com</a> · Discuss: <a href="https://news.ycombinator.com/item?id=50165208" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">584 pts / 285 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>The thread generalises fast. One counter-proposal names the missing primitive: when the shared app changes, ask the user — share the whole screen or stay on the current window — and blames Apple&#x27;s remove-the-options design culture for making some workflows impossible. The blunter version: professional iPad users keep trying to make the hardware act like a computer with screens, and iPadOS insists only apps exist. A third strand disputes the &#x27;Apple could just QA this&#x27; premise, arguing hardware deadlines and feature creep squeeze software even at Apple&#x27;s scale — while upgraders to 27 report a cascade of unrelated bugs and regret.</p>
+</div>
+</article>
+<article class="story" id="story-6" data-story="6" data-source="https://www.joshwcomeau.com/css/interop-2027/" data-hn="https://news.ycombinator.com/item?id=50175070" data-metric="483 pts / 200 comments" tabindex="0" aria-label="Story 6: The future of CSS, Interop 2027 edition: functions, squircles, border-shape and inherit()">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">The future of CSS, Interop 2027 edition: functions, squircles, border-shape and inherit()</h2>
+<p class="exec">Josh Comeau previews the CSS features he voted for in Mozilla&#x27;s Interop 2027 ranking — the cross-vendor programme (Google, Apple, Microsoft, Mozilla, Igalia, Bocoup) whose focus areas reliably reach near-100% browser support within about a year, as Subgrid did in 2023 (12% to 91% of tests passing). His top picks: CSS functions (@function with result:, already in Chromium — his example converts polar to cartesian coordinates for animation); corner-shape (squircle, bevel, notch, scoop — unlike clip-path it changes the real border box, so borders and shadows follow); border-shape (draw the border itself with lines, arcs and Béziers, animatable); anchored container queries (finally learn in CSS whether an anchored tooltip flipped to its fallback position); inherit() as a function (calc(inherit() - 4px) for correct nested radii — unimplemented anywhere, and he doubts it makes 2027); plus scroll-triggered animations, reading-flow/reading-order for correct tab order under responsive layouts, and more.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">Usable now vs later</span><ul><li>Already in Chrome/Edge and progressive-enhancement-safe today: corner-shape and border-shape degrade gracefully in Firefox/Safari; CSS functions are Chromium-only for now</li><li>Not implemented anywhere: inherit() — included as a wish, with the author himself sceptical it survives the Interop cut</li></ul></li><li class="cat"><span class="cat-label">Why it matters</span><ul><li>Interop is the closest thing the web platform has to a shipping schedule: a feature on the list is a feature you can plan on, which is why a public ranking vote matters</li><li>The direction is consistent — CSS absorbing layout and interaction work (tooltips, scroll animations, tab order) that currently needs custom JavaScript</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://www.joshwcomeau.com/css/interop-2027/" target="_blank" rel="noopener">joshwcomeau.com</a> · Discuss: <a href="https://news.ycombinator.com/item?id=50175070" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">483 pts / 200 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>Delight and resentment in roughly equal parts. Vanilla-CSS holdouts say it is hard to explain to framework-only developers how good the platform has gotten. The top dissent is a priorities complaint: fancy borders keep shipping while date pickers, touch keyboards and native tooltips remain painful — &#x27;who needs bevels&#x27; from someone building glove-friendly industrial interfaces. A third camp just loves CSS and says so, crediting the people willing to push improvements that take 5–10 years to land. Functions draw the sharpest split: power tool, or JavaScript envy making CSS unimplementable for new engines.</p>
+</div>
+</article>
+<article class="story" id="story-7" data-story="7" data-source="https://stevekrouse.com/ends" data-hn="https://news.ycombinator.com/item?id=50169707" data-metric="440 pts / 539 comments" tabindex="0" aria-label="Story 7: What shall I teach my son? Education&#x27;s purpose when programming stops paying">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">What shall I teach my son? Education&#x27;s purpose when programming stops paying</h2>
+<p class="exec">Steve Krouse (Val Town), expecting his first child, asks what education is for when his economically valuable skill — programming — suddenly feels less valuable in the age of AGI. The essay (19 October) runs through Neil Postman&#x27;s The End of Education (1995): schools have survived the radio, motion pictures, MOOCs and every Edison-style prediction that technology would replace teachers (Edison, 1913: books obsolete within ten years), because their stated purpose and their real perpetuating forces — endowments, prestige, childcare — are different things. Krouse&#x27;s own one-word purpose, &#x27;resourceful&#x27;, now troubles him: an AI agent with a tool loop is resourcefulness perfected, the way the Dewey Decimal System replaced memorisation. His landing is Postman&#x27;s method rather than any single answer: purposes can be invented and argued for (Spaceship Earth, the American Experiment, the World Makers), the medium is the message, and children should be invited to help craft the purpose of their own education.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The argument</span><ul><li>Lindy is the load-bearing idea: institutions that survived God, radio and the internet should be bet to survive AGI in roughly current form — and technologists doubting schools is itself a Lindy tradition</li><li>The wobbling leg is &#x27;earn a living&#x27;: the market was his objective arbiter of educational good (Jobs, Gates, Einstein as escapees), and AI mathematics is now firing on that arbiter too</li></ul></li><li class="cat"><span class="cat-label">Why it matters</span><ul><li>This is the personal version of the day&#x27;s labour question — not &#x27;will AI take jobs&#x27; in aggregate, but what a specific parent teaches a specific child when his own skill devalues</li><li>The actionable residue is small and real: how you teach (doing with, not doing to) outlasts what you teach</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://stevekrouse.com/ends" target="_blank" rel="noopener">stevekrouse.com</a> · Discuss: <a href="https://news.ycombinator.com/item?id=50169707" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">440 pts / 539 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>539 comments — the day&#x27;s most-discussed item — and parents answer parents. The top comment redirects entirely: before teaching, care — nappies from the first hospital day, cooking, cleaning, carrying the child, talking constantly. The values list that follows (curious, resourceful, self-reliant, compassionate, able to sacrifice for future-me) explicitly decouples worth from subjects and economies. Fact-checks land too: Gates was a strong student credited on an undergraduate paper, and Einstein&#x27;s mediocre-student story is a myth. The consensus, such as it is: values and tools for good decisions transfer; specific career paths do not, and never did.</p>
+</div>
+</article>
+<article class="story" id="story-8" data-story="8" data-source="https://scotthelme.co.uk/eight-bits-of-trust-emudhras-ca-keys-cracked-in-milliseconds/" data-hn="https://news.ycombinator.com/item?id=50177916" data-metric="426 pts / 188 comments" tabindex="0" aria-label="Story 8: Eight bits of trust: eMudhra&#x27;s CA private keys are 4, 56 and 115 — cracked in milliseconds, trusted until 2039">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">Eight bits of trust: eMudhra&#x27;s CA private keys are 4, 56 and 115 — cracked in milliseconds, trusted until 2039</h2>
+<p class="exec">Scott Helme independently brute-forced all eight compromised eMudhra intermediate keys (story 2) from the public certificates Mozilla attached to its announcement — on his laptop, in under a second. The P-384 private keys are single bytes: EM OV TLS CA G3C is d=4, EM EV TLS CA G3C is 56, G3B is 115; the full table runs 4, 56, 66, 115, 155, 156, 230, 237 across the six TLS and two code-signing intermediates. A valid P-384 key should be a random 384-bit number; these are 47 zero bytes plus one byte — at most 255 trials of d×G. Nothing about the certificates looks structurally wrong, which is the point: the only way to know is to try. His containment argument is the hard half: nobody stole anything, the keys were effectively public since April 2025 (a 17-month window, unknowable exploitation), and while CT enforcement protects browsers, non-browser clients (curl, Python, Node, Go, package managers, CI, IoT) mostly do not check CT or revocation — he demonstrates a forged api.stripe.com certificate verifying cleanly on his own machines. Unpatchable devices trust these chains until the roots expire in July 2039. eMudhra&#x27;s later account, quoted in his update: a ceremony-script bug created a second weak key pair on the HSM and a human error used the wrong keys for the CSR.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The numbers</span><ul><li>Eight keys, eight bits each: 4, 56, 66, 115, 155, 156, 230, 237 — recovered by trying d=1, 2, 3… against the public key, at most 255 steps per key</li><li>Exposure window: certificates created April 2025, reported 17 October 2026 — 17 months during which anyone who looked could have done the same</li></ul></li><li class="cat"><span class="cat-label">Why it matters</span><ul><li>The fix list is the ecosystem: update every CA bundle (OS, certifi, Node, Homebrew), rebuild container images — and accept that frozen-firmware devices cannot be fixed at all</li><li>Code signing is the quiet second front: Windows trusts the eMudhra CS root directly, so malware signed with these keys looks publisher-signed where revocation is unchecked</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://scotthelme.co.uk/eight-bits-of-trust-emudhras-ca-keys-cracked-in-milliseconds/" target="_blank" rel="noopener">scotthelme.co.uk</a> · Discuss: <a href="https://news.ycombinator.com/item?id=50177916" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">426 pts / 188 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>The thread mixes horror with opportunism: if unpatchable IoT will trust forged certs until 2039, can the same keys be used to jailbreak those devices with owner-serving certificates — one commenter links claims it is already happening. The original reporter, Wayne, adds how it was found: Google&#x27;s paranoid_crypto library, run over the CCADB corpus as a quick pre-check — &#x27;most of my time was spent going over the basics everyone assumed someone else had already done&#x27;, with a fuller sweep finding no further hits. The dry summary with the most support: in retrospect, having 100 trusted certificate authorities might have been excessive.</p>
+</div>
+</article>
+<article class="story" id="story-9" data-story="9" data-source="https://github.com/google-pytorch/torch_tpu" data-hn="https://news.ycombinator.com/item?id=50169053" data-metric="365 pts / 77 comments" tabindex="0" aria-label="Story 9: Google open-sources TorchTPU: a native PyTorch backend for TPUs, not another XLA workaround">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">Google open-sources TorchTPU: a native PyTorch backend for TPUs, not another XLA workaround</h2>
+<p class="exec">Google published TorchTPU (google-pytorch/torch_tpu, Apache 2.0): a native PyTorch backend for Tensor Processing Units, providing custom ATen kernel implementations for TPU, a compilation cache for XLA computations, distributed training support (data and tensor parallelism), torch.compile() graph-mode integration, and examples across Llama, Qwen, ResNet, DLRM, minGPT and UNet. Install is pip (torch_tpu 0.2.0, Python 3.11+, with the CPU torch wheel index) or a Bazel source build — the README is unusually honest about build traps, including why --config=wheel_common is mandatory (without it every per-version module ships its own backend copy and import aborts on duplicate registrations) and how to strip Remote Build Execution if you lack credentials. Notebooks are Marimo files, and the practical on-ramp is a TPU VM — a v6e GCE instance is suggested as easiest. This replaces the old fight-XLA-to-make-PyTorch-run story with first-party support.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">What shipped</span><ul><li>ATen kernels, XLA compilation cache, distributed training and inference examples, debugging/benchmarking utilities — a backend, not a translation shim</li><li>Version 0.2.0 on PyPI; building from source is Bazel-only and documented in depth, RBE caveats included</li></ul></li><li class="cat"><span class="cat-label">Why it matters</span><ul><li>PyTorch is where the models and the hiring pool already are; a credible native TPU path makes TPUs a real alternative back end instead of a JAX-only island</li><li>Amazon is doing the analogous work for Trainium (torch-neuronx, noted in-thread) — every accelerator vendor now needs a PyTorch front door</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://github.com/google-pytorch/torch_tpu" target="_blank" rel="noopener">github.com</a> · Discuss: <a href="https://news.ycombinator.com/item?id=50169053" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">365 pts / 77 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>A short, technical thread. Relief leads: &#x27;finally first-party support&#x27; from people who remember fighting XLA, with the follow-up that if hardware specifics live in the kernel layer (Pallas or CUDA), JAX vs PyTorch becomes mostly a style preference. Adjacent work surfaces immediately — an open-source libtpu implementation for Tenstorrent accelerators that already runs most of TorchTPU, and Amazon&#x27;s torch-neuronx for Trainium. The honest beginner question gets asked plainly: who besides Google even has TPUs, and where would you buy time on one?</p>
+</div>
+</article>
+<article class="story" id="story-10" data-story="10" data-source="https://arstechnica.com/security/2026/10/meta-muse-exposes-users-personal-and-business-secrets-when-they-share-conversations/" data-hn="https://news.ycombinator.com/item?id=50174687" data-metric="258 pts / 112 comments" tabindex="0" aria-label="Story 10: Muse share links leaked names and titles, and its storage buckets were public — resumes, recordings, financial docs">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">Muse share links leaked names and titles, and its storage buckets were public — resumes, recordings, financial docs</h2>
+<p class="exec">Ars Technica reports on Claroc&#x27;s findings against Muse, Meta&#x27;s standalone personal-assistant app (about 1 million users since late September, per Ars). Two distinct flaws. First, the share links themselves: opening one did not expose conversation contents to unauthenticated visitors, but the link structure put the user&#x27;s first and last name plus the conversation title in a subdomain — enumerable in bulk via Certificate Transparency logs and search, letting Claroc pull roughly 6,800 links in about three hours and see who was asking what, including health, financial and relationship topics. Second, and worse: the back-end storage buckets holding files users shared with Muse were publicly accessible to anyone who found them — Claroc reports more than 50,000 files including voice recordings, profile photos, resumes, financial and legal documents, and images of children, plus, in one case, a full name, home address and partial payment-card digits. Claroc reported via Meta&#x27;s bug bounty on 8 October (automated acknowledgement, no human reply) and via LinkedIn; a Meta spokesperson told Ars the buckets were made private as of 15 October, the share-link naming flaw is fixed, an internal review found no evidence of malicious exploitation, and the delay was an inadvertent human error. Claroc says Meta has not confirmed the fix directly to them and that the CT logs still contain millions of the identifying links.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The flaws, separated</span><ul><li>Share-link subdomains leaked identity plus conversation title (not contents) at scale via CT logs — a metadata exposure affecting roughly 6,800 enumerated links, with millions of links in the logs per Claroc via Ars</li><li>Public storage buckets leaked file contents — the 50,000+ files Claroc reports are the content exposure, a separate bug from the link design</li></ul></li><li class="cat"><span class="cat-label">Why it matters</span><ul><li>Capability URLs only work if nothing identifying lives in observable channels — DNS, CT logs, referrers; putting names and titles in subdomains publishes them by design</li><li>The response timeline matters: bug-bounty report 8 October, buckets private 15 October per Meta, no human reply to the researchers — for a product Zuckerberg described last month as &#x27;built from the ground up for privacy and security&#x27; (quoted in Ars)</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://arstechnica.com/security/2026/10/meta-muse-exposes-users-personal-and-business-secrets-when-they-share-conversations/" target="_blank" rel="noopener">arstechnica.com</a> · Discuss: <a href="https://news.ycombinator.com/item?id=50174687" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">258 pts / 112 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>Sarcasm first (&#x27;Meta, careless with user data? Unbelievable&#x27;), then a real design argument. One reader asks the clarifying question: did users intend these conversations for specific recipients behind an unguessable capability URL, or were conversations effectively public behind obscure URLs by default? The DNS/CT point gets the technical vote: subdomain names are queryable via passive DNS and transparency logs, so secrets and identities do not belong there regardless of intent. A builder of a small European personal-assistant platform adds the sympathetic version — harness customisation complexity explodes with real users — before noting that infinite money should still buy a working bug-bounty reply.</p>
+</div>
+</article>
+    </ol>
+
+    <div class="shortcut-bar" aria-label="Keyboard shortcuts">
+      <span><kbd>J</kbd> next story</span>
+      <span><kbd>K</kbd> previous story</span>
+      <span><kbd>T</kbd> theme</span>
+    </div>
+
+    <footer class="page-footer">
+      <div class="footer-links"><a href="../">← Daily archive</a><a href="https://tk3369.github.io/hn-daily/" target="_blank" rel="noopener">Published archive ↗</a></div>
+      <span>Wednesday 2026-10-21 · 10 stories</span>
+    </footer>
+  </main>
+  <div class="toast" role="status" aria-live="polite"></div>
+  <script>
+(() => {
+  const root = document.documentElement;
+  const toggle = document.getElementById('theme-toggle');
+  const entries = [...document.querySelectorAll('[data-story]')];
+  function storedTheme() { try { const t = localStorage.getItem('hn-daily-theme'); return t === 'dark' || t === 'light' ? t : null; } catch (_) { return null; } }
+  function preferredTheme() { return matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'; }
+  function currentTheme() { const a = root.dataset.theme; if (a === 'dark' || a === 'light') return a; return storedTheme() || preferredTheme(); }
+  function setTheme(theme) { const next = theme === 'dark' ? 'dark' : 'light'; const opposite = next === 'dark' ? 'Light' : 'Dark';
+    if (root.dataset.theme !== next) root.dataset.theme = next;
+    toggle.querySelector('.theme-text').textContent = opposite;
+    toggle.setAttribute('aria-label', `Switch to ${opposite} theme (T)`); toggle.title = `Switch to ${opposite} theme (T)`;
+    try { localStorage.setItem('hn-daily-theme', next); } catch (_) {} }
+  function flipTheme() { setTheme(currentTheme() === 'dark' ? 'light' : 'dark'); }
+  setTheme(storedTheme() || preferredTheme());
+  toggle.addEventListener('click', flipTheme);
+  const toast = document.querySelector('.toast'); let toastTimer;
+  function showToast(msg) { toast.textContent = msg; toast.classList.add('show'); clearTimeout(toastTimer); toastTimer = setTimeout(() => toast.classList.remove('show'), 1800); }
+  document.querySelectorAll('.copy-button').forEach((button) => {
+    button.addEventListener('click', async () => {
+      const story = button.closest('.story');
+      const n = story.dataset.story;
+      const tagline = story.querySelector('.tagline').textContent.trim();
+      const execSum = story.querySelector('.exec').textContent.trim();
+      const bullets = [...story.querySelectorAll('.cat-lists .cat')].map(li => {
+        const label = li.querySelector('.cat-label').textContent.trim();
+        const pts = [...li.querySelectorAll('ul li')].map(p => '  \u2022 ' + p.textContent.trim()).join('\n');
+        return '- ' + label + ':\n' + pts;
+      }).join('\n');
+      const link = 'https://tk3369.github.io/hn-daily/2026-10-21/#story-' + n;
+      const text = n + '. ' + tagline + '\n\n' + execSum + '\n' + bullets + '\n\n' + link;
+      try { await navigator.clipboard.writeText(text); button.textContent = 'Copied'; showToast('Story ' + n + ' copied for Threads'); setTimeout(() => { button.textContent = 'Copy for Threads'; }, 1600); }
+      catch (_) { showToast('Copy was blocked by this browser'); }
+    });
+  });
+  document.addEventListener('keydown', (event) => {
+    if (event.metaKey || event.ctrlKey || event.altKey || event.shiftKey) return;
+    const tag = event.target.tagName;
+    if (tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT') return;
+    const key = event.key.toLowerCase();
+    if (key === 't') { event.preventDefault(); flipTheme(); }
+    else if ((key === 'j' || key === 'k') && entries.length) {
+      event.preventDefault();
+      const active = entries.indexOf(document.activeElement);
+      const delta = key === 'j' ? 1 : -1;
+      const next = active < 0 ? (key === 'j' ? 0 : entries.length - 1) : Math.max(0, Math.min(entries.length - 1, active + 1 * delta));
+      entries[next].focus();
+    }
+  });
+})();
+  </script>
+</body>
+</html>
