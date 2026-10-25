@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="color-scheme" content="light dark" />
+  <link rel="icon" href="data:," />
+  <title>HN Daily — Sunday 2026-10-25</title>
+  <style>
+:root { --page:#f1eadb; --paper:#fffaf0; --ink:#20201c; --muted:#6f695f; --hairline:#d9cebc; --accent:#ff5a1f; --comment:#f6efe3; --shadow:0 2px 0 rgba(57,45,25,.08),0 14px 36px rgba(57,45,25,.06); --serif:Georgia,"Times New Roman",serif; --sans:ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; --mono:"SFMono-Regular",Consolas,"Liberation Mono",monospace; }
+html[data-theme="dark"] { --page:#111312; --paper:#191c1a; --ink:#f1eee6; --muted:#aba69b; --hairline:#393b36; --accent:#ff7139; --comment:#222520; --shadow:0 2px 0 rgba(0,0,0,.22),0 18px 42px rgba(0,0,0,.22); }
+* { box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body { margin:0; min-width:280px; color:var(--ink); background:var(--page); font-family:var(--sans); line-height:1.55; -webkit-font-smoothing:antialiased; }
+a { color:inherit; text-underline-offset:3px; text-decoration-thickness:1px; }
+a:hover { color:var(--accent); }
+button,a { -webkit-tap-highlight-color:transparent; }
+button { font:inherit; }
+a:focus-visible,button:focus-visible { outline:3px solid var(--accent); outline-offset:3px; }
+.page { width:min(1080px,calc(100% - 36px)); margin:0 auto; padding:28px 0 72px; }
+.issue-header { display:grid; grid-template-columns:1fr auto; gap:24px; align-items:end; padding:8px 0 26px; border-bottom:3px solid var(--ink); }
+.edition { margin:0 0 9px; color:var(--accent); font:700 12px/1.3 var(--mono); letter-spacing:.09em; text-transform:uppercase; }
+.archive-nav { display:flex; flex-wrap:wrap; gap:8px 20px; margin-bottom:16px; font:700 12px/1 var(--mono); }
+.archive-nav a { min-height:36px; display:inline-flex; align-items:center; color:var(--muted); }
+.archive-nav a:hover { color:var(--accent); }
+h1 { max-width:820px; margin:0; font:700 clamp(34px,5.5vw,62px)/.98 var(--serif); letter-spacing:-.038em; }
+.deck { max-width:730px; margin:17px 0 0; color:var(--muted); font:17px/1.55 var(--sans); }
+.theme-toggle { align-self:start; min-width:86px; min-height:40px; padding:9px 13px; border:1px solid var(--hairline); border-radius:4px; color:var(--ink); background:var(--paper); cursor:pointer; font:700 12px/1 var(--mono); display:inline-flex; align-items:center; gap:8px; }
+.theme-toggle:hover { border-color:var(--accent); color:var(--accent); }
+.theme-dot { width:10px; height:10px; border-radius:50%; background:var(--accent); display:inline-block; flex-shrink:0; }
+.theme-text { line-height:1; }
+.story-list { display:grid; gap:20px; list-style:none; margin:26px 0 0; padding:0; counter-reset:story; }
+.story { counter-increment:story; display:grid; grid-template-columns:72px minmax(0,1fr); gap:26px; padding:26px 30px 28px; background:var(--paper); border-top:4px solid var(--ink); box-shadow:var(--shadow); scroll-margin-top:24px; }
+.story-number { color:var(--accent); font:900 22px/1 var(--mono); letter-spacing:-.04em; padding-top:6px; }
+.story-number::before { content:counter(story,decimal-leading-zero); }
+.tagline { margin:0; max-width:840px; font:700 clamp(24px,3vw,36px)/1.1 var(--serif); letter-spacing:-.028em; }
+.exec { margin:14px 0 0; max-width:840px; font:17px/1.58 var(--sans); }
+.cat-lists { margin:14px 0 0; padding:0; list-style:none; display:grid; gap:10px; max-width:840px; }
+.cat-lists li.cat { font:15px/1.6 var(--sans); }
+.cat-lists .cat-label { font:700 12px/1.6 var(--mono); letter-spacing:.06em; text-transform:uppercase; color:var(--accent); }
+.cat-lists ul { margin:4px 0 0; padding-left:20px; }
+.cat-lists ul li { margin:3px 0; }
+.meta-line { margin:16px 0 0; color:var(--muted); font:700 12px/1.9 var(--mono); overflow-wrap:anywhere; }
+.meta-line a { color:var(--ink); font-weight:800; }
+.meta-line .metrics { color:var(--ink); white-space:nowrap; }
+.story-bar { display:flex; align-items:flex-start; gap:14px; margin-top:4px; }
+.copy-button { flex:0 0 auto; align-self:flex-start; min-height:36px; padding:9px 12px; border:1px solid var(--hairline); border-radius:4px; background:var(--paper); color:var(--ink); cursor:pointer; font:700 12px/1 var(--mono); }
+.copy-button:hover { border-color:var(--accent); color:var(--accent); }
+.hn-comments { margin:18px 0 0; padding:14px 18px; background:var(--comment); border:1px solid var(--hairline); font:15px/1.62 var(--serif); color:var(--ink); }
+.hn-comments strong { font:700 12px/1.6 var(--mono); color:var(--accent); display:block; margin-bottom:6px; }
+.page-footer { display:flex; justify-content:space-between; flex-wrap:wrap; gap:14px; margin-top:64px; padding-top:12px; border-top:1px solid var(--hairline); color:var(--muted); font:12px/1.6 var(--mono); }
+.footer-links { display:flex; flex-wrap:wrap; gap:8px 20px; }
+.footer-links a { min-height:36px; display:inline-flex; align-items:center; color:var(--ink); font-weight:800; }
+.footer-links a:hover { color:var(--accent); }
+.shortcut-bar { display:flex; flex-wrap:wrap; gap:18px; margin-top:28px; color:var(--muted); font:11px/1.5 var(--mono); }
+kbd { display:inline-grid; place-items:center; min-width:22px; height:22px; margin-right:6px; padding:0 6px; border:1px solid var(--hairline); border-bottom-width:2px; border-radius:3px; background:var(--comment); color:var(--ink); font:inherit; font-weight:700; }
+.toast { position:fixed; right:max(18px,env(safe-area-inset-right)); bottom:max(18px,env(safe-area-inset-bottom)); z-index:10; padding:11px 14px; color:var(--paper); background:var(--ink); border:1px solid var(--ink); font:700 12px/1 var(--mono); opacity:0; transform:translateY(8px); pointer-events:none; transition:opacity 160ms ease,transform 160ms ease; }
+.toast.show { opacity:1; transform:translateY(0); }
+@media (max-width:760px) {
+  .page { width:min(100% - 22px,1080px); padding-top:16px; }
+  .issue-header { grid-template-columns:1fr auto; gap:12px; padding-bottom:20px; }
+  h1 { font-size:clamp(34px,10vw,48px); }
+  .deck { grid-column:1 / -1; margin-top:3px; font-size:15px; }
+  .theme-toggle { grid-column:2; grid-row:1; min-width:72px; }
+  .story { grid-template-columns:44px minmax(0,1fr); gap:14px; padding:20px 18px 22px; }
+  .story-number { font-size:16px; padding-top:4px; }
+  .story-bar { flex-direction:column; align-items:stretch; }
+  .copy-button { align-self:flex-start; }
+  .page-footer { display:block; }
+}
+@media (max-width:420px) {
+  .page { width:calc(100% - 16px); }
+  .story { grid-template-columns:1fr; gap:8px; padding:20px 16px 22px; }
+  .story-number { padding-top:0; }
+  .copy-button { width:100%; }
+}
+@media (prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } *,*::before,*::after { transition:none !important; } }
+@media print { :root { --page:#fff;--paper:#fff;--ink:#000;--muted:#444;--hairline:#bbb;--comment:#f5f5f5;--shadow:none; } .page{width:100%;padding:0}.theme-toggle,.copy-button,.toast,.shortcut-bar{display:none}.story{break-inside:avoid;box-shadow:none} }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="issue-header">
+      <div>
+        <nav class="archive-nav" aria-label="HN Daily archive links"><a href="../">← Archive</a><a href="https://tk3369.github.io/hn-daily/" target="_blank" rel="noopener">Published archive ↗</a></nav>
+        <p class="edition"><time datetime="2026-10-25">2026-10-25</time> · Daily brief · Pacific time</p>
+        <h1>HN Daily</h1>
+        <p class="deck">Direct, low-fluff top 10 from Hacker News, daily at 7am PT — hottest by points</p>
+      </div>
+      <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch color theme" title="Toggle theme (T)"><span class="theme-dot" aria-hidden="true"></span><span class="theme-text">Dark</span></button>
+    </header>
+
+    <ol class="story-list" aria-label="Top 10 Hacker News stories">
+<article class="story" id="story-1" data-story="1" data-source="https://edjefferson.com/localwiki/" data-hn="https://news.ycombinator.com/item?id=50202285" data-metric="1618 pts / 251 comments" tabindex="0" aria-label="Story 1: Local Wikipedia holds #1 for a third day: Wikipedia, but only for things a half-hour walk from you — now 1,618 points">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">Local Wikipedia holds #1 for a third day: Wikipedia, but only for things a half-hour walk from you — now 1,618 points</h2>
+<p class="exec">Local Wikipedia rebuilds Wikipedia around one location: only geocoded articles within about a half-hour walk are included. If fewer than 25 things are close, it takes the closest 25 within about 6 miles; if more than 500 qualify, only the closest 500 are included. You can start from a town, area, landmark or postcode, or use your browser location — the site says your location stays in your browser and shared links do not include it. Content is taken directly from Wikipedia and the site has no affiliation with Wikipedia. The run is now three days long: #2 on Oct 23 at 693 points, #1 on Oct 24 at 1,434, and still #1 today at 1,618 — a small, finished idea still compounding instead of spiking and dying.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">How it works</span><ul><li>Geocoded Wikipedia pages only, filtered by walking distance; floor of 25 closest within ~6 miles, cap of 500 closest</li><li>Location stays in the browser; shared links do not carry your location</li></ul></li><li class="cat"><span class="cat-label">Why it matters</span><ul><li>It inverts the usual feed: no algorithm, no engagement ranking — just what physically exists near you, with an article attached</li><li>Three days at the top says the appeal is the constraint itself, not novelty: nearby first, everything else excluded</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://edjefferson.com/localwiki/" target="_blank" rel="noopener">edjefferson.com</a> · Discuss: <a href="https://news.ycombinator.com/item?id=50202285" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">1618 pts / 251 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>Day three of the thread is quieter and more practical. Rural readers are now the test case: one reports the nearest Wikipedia entry is a 3-hour-15-minute walk away and jokes about adding his own landmarks — a shady canyon spot, a half-eaten elk — before deciding some places are better hoarded. The standing requests repeat: a configurable radius (a 15 km circle would help sparse areas), metric units instead of yards for European destinations, and secondary ranking so a great place slightly farther away is not hidden by a nearer dull one. Several readers again note Wikipedia already has a Special:Nearby feature with identical results for some places, and one reader names the psychology directly: otherwise banal articles feel pertinent simply because they happened nearby.</p>
+</div>
+</article>
+<article class="story" id="story-2" data-story="2" data-source="https://danluu.com/ambitious/" data-hn="https://news.ycombinator.com/item?id=50225695" data-metric="529 pts / 479 comments" tabindex="0" aria-label="Story 2: Dan Luu: we should be more ambitious with the software we build — AI makes pgrust-scale projects feasible, if the testing is real">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">Dan Luu: we should be more ambitious with the software we build — AI makes pgrust-scale projects feasible, if the testing is real</h2>
+<p class="exec">Dan Luu, relaying Michael Malis of pgrust, argues the bottleneck has moved: projects that were too large to attempt are now feasible, and the filter is no longer whether AI helped write the code but whether the testing is serious. His evidence is pgrust itself — in testing it, Malis has uncovered real upstream Postgres bugs, including a numerical bug that can fail valid SP-GiST operations, a format-cache bug that can return incorrect JSONPath results, a pgcrypto bug, memory-safety bugs in the dictionary loader, and a money overflow bug. Luu concedes most rewrite projects really are low-quality AI output, which is why readers dismiss pgrust on sight — but the durable win does not depend on pgrust winning: the bugs it finds get fixed in Postgres either way, and some of its performance work could land in Postgres or ClickHouse.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The argument</span><ul><li>Capability, not permission: Luu says he would write “we can be more ambitious”; the “should” is Malis chatting, not a manifesto</li><li>Quality gate is measurement: thorough testing and benchmarking are what separate an ambitious project from generated slop with a fast-looking benchmark</li></ul></li><li class="cat"><span class="cat-label">Why it matters</span><ul><li>If the claim holds, the scarce skill shifts from writing code to specifying, testing and reviewing it — the parts that were never the typing</li><li>Even failed ambitious rewrites pay rent: upstream bug fixes and demonstrated optimisations outlive the rewrite itself</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://danluu.com/ambitious/" target="_blank" rel="noopener">danluu.com</a> · Discuss: <a href="https://news.ycombinator.com/item?id=50225695" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">529 pts / 479 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>The thread splits between builders and process sceptics. Builders trade receipts: a Kobo e-ink app platform with sandboxing and permissions, a native Rust desktop GUI instead of another Electron shell, a Python interpreter in Rust (failed), a low-poly Google Earth (worked) — several say they now deliberately attempt month-scale projects with each new model. The counterweight is coordination: one commenter watched a team regress to fully manual development because PR and review throughput could not absorb faster code production, and argues process has to come before ambition. Others push sideways — be more diverse, not just faster; a faster ripgrep is the faster-horse answer, and the valuable project is the one only you can specify.</p>
+</div>
+</article>
+<article class="story" id="story-3" data-story="3" data-source="https://aardappel.github.io/goose/" data-hn="https://news.ycombinator.com/item?id=50224100" data-metric="470 pts / 283 comments" tabindex="0" aria-label="Story 3: Goose: a memory-safe systems language with no heap, no GC and no lifetime annotations — and benchmarks claiming 3.3× idiomatic C++">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">Goose: a memory-safe systems language with no heap, no GC and no lifetime annotations — and benchmarks claiming 3.3× idiomatic C++</h2>
+<p class="exec">Goose is a new systems language built on one memory model: there is no heap. Every dynamic value lives inline on compiler-managed data stacks, growth advances a pointer, references stay valid as structures grow, and memory is freed when its scope exits — freeing a million-element structure is one store, however deeply it nests. The site claims memory safety with zero annotations: no lifetime syntax, no aliasing rules, no unsafe, because the compiler infers what every reference is rooted in and rejects references that could outlive their owner. Threads share nothing: a worker is compiled as a separate program with its own memory, and flat values cross typed queues as a memcpy, so data races, locks and atomics do not exist in the language. The headline numbers are the author’s own benchmarks: across sixteen benchmarks Goose runs at 3.3× the speed of idiomatic C++, 1.16× hand-optimised C++ and 1.12× the best safe Rust, on less memory — vendor-reported, and the thread treats them accordingly.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The model</span><ul><li>Stacks only: no allocator, no GC, no reference counting, no destructors; nested data stays inline and links are narrower than pointers</li><li>Plain C in, plain C out; your data layout is already a file format, built in place</li></ul></li><li class="cat"><span class="cat-label">Why it matters</span><ul><li>If the model holds beyond benchmarks, it attacks the real cost of Rust-style safety — annotation burden — rather than the safety itself</li><li>The catch is representability: programs must statically bound their growable regions, which fits data-oriented and game-style workloads better than arbitrary dynamic ones</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://aardappel.github.io/goose/" target="_blank" rel="noopener">aardappel.github.io</a> · Discuss: <a href="https://news.ycombinator.com/item?id=50224100" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">470 pts / 283 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>The author (aardappel, of WASM-4 and Lobster) runs an AMA in-thread and takes direct fire: the first tutorial claim is challenged as factually wrong because mainstream C++ string implementations use small-string optimisation, so the per-string allocation example does not hold as written. The deep questions are about representability — how a hash table of arbitrarily sized strings works when only a fixed number of stacks can grow, and how a JSON document of unknown size is read — plus a pointer to the older ML region-inference literature, where memory blow-up pushed the field away from this route. The most interesting report is empirical: one commenter ported algorithms from a large commercial Rust codebase, saw real gains, then found Goose had mostly led the LLM helping with the port to pick better data structures — porting those back to Rust kept nearly all the gain. A John Carmack quote praising the automatic stack analysis is quoted approvingly in-thread.</p>
+</div>
+</article>
+<article class="story" id="story-4" data-story="4" data-source="https://www.apricitas.io/p/ai-and-the-fall-of-the-creative-class" data-hn="https://news.ycombinator.com/item?id=50226419" data-metric="408 pts / 436 comments" tabindex="0" aria-label="Story 4: America has lost 200k+ media, film and arts jobs in four years — Apricitas asks how much of it is actually AI">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">America has lost 200k+ media, film and arts jobs in four years — Apricitas asks how much of it is actually AI</h2>
+<p class="exec">Joseph Politano at Apricitas does the unglamorous version of the AI-jobs question: count first, attribute second. The count: US employment in creative industries is down more than 200,000 over four years, roughly 50,000 in the last year alone — a stretch he compares, in intensity and duration, only to the 2001 and 2008 recessions, except there is no general recession now. The attribution is deliberately hedged. Media firms are coy about AI use, partly to avoid backlash and partly to preserve the legal basis of their copyrights, and AI is entangled with Hollywood consolidation, offshoring, and the long shift from traditional media to social creators. His clearest signal is the split: nearly every digital subsector is losing jobs at once, while in-person entertainment is still growing at a healthy pace. Some losses are old trends continuing (publishing), but for live broadcasting, streaming and graphic design the downturn breaks a long calm.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The numbers</span><ul><li>200k+ creative-industry jobs lost in four years, ~50k in the last year; losses running at ~50k/year and accelerating in recent months per the piece</li><li>Digital subsectors fall together while in-person entertainment grows — the pattern AI exposure would predict, not proof of it</li></ul></li><li class="cat"><span class="cat-label">Why it matters</span><ul><li>This is the honest shape of most AI-displacement data: a real, measured decline with a contested cause, where the timing matches AI capability and the confounds are also real</li><li>Firms hiding AI use to protect copyright claims means official attribution will lag the labour data by years</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://www.apricitas.io/p/ai-and-the-fall-of-the-creative-class" target="_blank" rel="noopener">apricitas.io</a> · Discuss: <a href="https://news.ycombinator.com/item?id=50226419" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">408 pts / 436 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>Commenters mostly respect the hedging and then fight over the missing variables. One points to the attention economy: content supply was already subsidised far beyond demand by telcos and platforms pushing other products, so a correction was coming with or without AI. Commercial art is named as the clearest real loss — ad illustration automated since Stable Diffusion, clothing ads no longer shot colour-by-colour on live models. Captioning workers report a direct hit split between AI tools and clients quietly lowering the accuracy standard from the old 99.9% broadcast norm. The strongest counter is accounting: influencer work is excluded, with one commenter citing 3.2M people earning over $100,000 as creators last year — a large, growing creative economy the payroll series does not see — and others note the film graph may show a post-COVID hiring spike unwinding toward its median rather than a line to zero.</p>
+</div>
+</article>
+<article class="story" id="story-5" data-story="5" data-source="https://www.aikido.dev/blog/python-packages-vulnerable-node2shell-brotli-cve-2026-111497" data-hn="https://news.ycombinator.com/item?id=50219177" data-metric="346 pts / 168 comments" tabindex="0" aria-label="Story 5: HTTP2Shell: the Brotli decoder flaw (CVE-2026-111497, CVSS 9.2) is not a Node bug — it is in every stack that bundles Brotli">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">HTTP2Shell: the Brotli decoder flaw (CVE-2026-111497, CVSS 9.2) is not a Node bug — it is in every stack that bundles Brotli</h2>
+<p class="exec">Aikido’s update widens the week’s worst bug. CVE-2026-111497 is a flaw in Google’s Brotli decoder, versions 1.0.3 through 1.2.0: the decoder keeps accepting bytes it should reject, overflowing a small working buffer, so a remote unauthenticated attacker sending a crafted Brotli stream can corrupt memory, leak data, crash the process, or potentially execute code. It carries a CVSS v4.0 score of 9.2. It surfaced as “Node2Shell” when Node.js disclosed on Oct 21, Python packages were confirmed vulnerable the next day, and by Oct 23 the blast radius was the point: any library or app bundling Brotli inherits it, and each bundler has to ship its own fix — a fix had existed in Brotli source since February without being recognised as a security issue, so no release carried it. Aikido’s patch list is concrete: Brotli/libbrotli 1.2.1 (or patched 1.0.10 / 1.1.1), Python Brotli 1.2.1 and brotlicffi 1.2.1.0 — which HTTP clients like requests, httpx and aiohttp load automatically when present — Node.js 22.23.4 / 24.22.1 / 26.12.1, Bun 1.4.4; Apache and Nginx do not decode Brotli by default.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">Patch now</span><ul><li>Upgrade the runtime or the Brotli library wherever it is installed; bundled or statically linked copies need a rebuilt application, not a package bump</li><li>Where no patch exists yet for an affected app, Aikido’s interim advice is to disable Brotli decoding until one ships</li></ul></li><li class="cat"><span class="cat-label">Why it matters</span><ul><li>This is the bundled-dependency failure mode in pure form: one decoder, dozens of downstreams, each shipping its own release on its own clock</li><li>The February detail is the lesson — a fix sitting unlabelled in source for eight months is not a fix; severity triage is part of the patch</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://www.aikido.dev/blog/python-packages-vulnerable-node2shell-brotli-cve-2026-111497" target="_blank" rel="noopener">aikido.dev</a> · Discuss: <a href="https://news.ycombinator.com/item?id=50219177" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">346 pts / 168 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>The thread spends half its energy on the name — HTTP2Shell is called meaningless and undescriptive (Broccoli2Shell and Brotli2Shell both get proposed, with a site for the former), since plain HTTP is not the flaw and manual Brotli decoding without HTTP is equally exposed. The technical argument is about real exposure: how many services actually decompress Brotli request bodies, an obscure feature, versus merely linking Brotli somewhere less critical — the article, several say, does not separate the two, and the sensationalism makes triage harder. Two process points land: the February fix-that-wasn’t asks how an RCE-class bug gets patched without anyone flagging severity, and the old “cool down package upgrades for a few days” advice is now colliding with incidents that are exploited immediately.</p>
+</div>
+</article>
+<article class="story" id="story-6" data-story="6" data-source="https://www.southampton.ac.uk/~doug/quantum_physics/index.html" data-hn="https://news.ycombinator.com/item?id=50219666" data-metric="336 pts / 262 comments" tabindex="0" aria-label="Story 6: “I don’t understand quantum physics” (2018): a full no-prerequisites course from classical physics to interpretations — resurfacing at 336 points">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">“I don’t understand quantum physics” (2018): a full no-prerequisites course from classical physics to interpretations — resurfacing at 336 points</h2>
+<p class="exec">Douglas Ross’s Southampton lecture series is the rare explainer that starts from its title: the author does not understand quantum physics either, in the sense that nobody has a physical picture of it — what exists is a formalism that predicts. The complete article walks the whole road in order: classical physics, the experiments that shook it, wave-particle duality, matter waves, particles and fields, Heisenberg uncertainty, wavefunctions, tunnelling, superposition, two-state systems, wavefunction collapse, interpretations (with an openly sceptical take on Many Worlds, which Ross calls no better explained than collapse), hidden variables, why the quantum world is small, and probabilistic determinism, closing with a glossary, the mathematical formulae, and references. It is a 2018 text resurfacing unchanged — the demand it answers has not moved: a route in that does not either lie with billiard-ball pictures or jump straight to Hilbert spaces.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">What is in it</span><ul><li>Full arc in one document: duality, uncertainty, tunnelling, superposition, collapse, interpretations, hidden variables — plus glossary and formulae sections for readers who want the maths after the concepts</li><li>Position stated, not hidden: the author identifies as a minority sceptic of Many Worlds and says so in the text</li></ul></li><li class="cat"><span class="cat-label">Why it matters</span><ul><li>Evergreen explainers resurfacing at 336 points is a demand signal: eight years on, the standard on-ramps still lose people at “wave of what, exactly?”</li><li>An explainer that separates what the theory predicts from what anyone pictures is the honest format for this subject</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://www.southampton.ac.uk/~doug/quantum_physics/index.html" target="_blank" rel="noopener">southampton.ac.uk</a> · Discuss: <a href="https://news.ycombinator.com/item?id=50219666" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">336 pts / 262 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>Two reading paths compete in-thread. Several readers say QM only clicked via the linear algebra of one- and two-qubit systems — pre-calculus maths, no conceptual baggage — and recommend Picturing Quantum Processes and QFT for the Gifted Amateur; others defend Ross’s classical-first route, with one reader praising it as the first text to answer “a wave of what?” upfront instead of leaving the photon as a sine-wave picture. The errata are specific: a physicist commenter says the work perpetuates a common misunderstanding of Bell’s theorem and hidden variables, pointing to the Scholarpedia article and Bell’s own frustration; another flags the ultraviolet-catastrophe section for saying “number of wavelengths” where it means allowed standing-wave modes. Alain Aspect’s line is quoted as the truce: use visualisation to generate ideas, but only calculations tell you whether they are true.</p>
+</div>
+</article>
+<article class="story" id="story-7" data-story="7" data-source="https://www.scientificamerican.com/article/physicists-trap-a-single-antimatter-particle-for-a-month/" data-hn="https://news.ycombinator.com/item?id=50186450" data-metric="321 pts / 96 comments" tabindex="0" aria-label="Story 7: Physicists trap a single positron for a month — a wall-less container at 0.3 degrees above absolute zero, and quantum measurements on one antimatter particle">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">Physicists trap a single positron for a month — a wall-less container at 0.3 degrees above absolute zero, and quantum measurements on one antimatter particle</h2>
+<p class="exec">Scientific American reports a first: a single positron — one antimatter particle — held for a month in a trap that allows quantum measurements on it. The problem is contact: antimatter annihilates on meeting matter, so the container has no walls. Gerald Gabrielse’s Northwestern team starts from sodium-22, whose decay emits positrons, slows them by pinballing them through a cold tungsten crystal (“every time they bang into something, there’s a chance of annihilation, but it doesn’t always happen”), steers the survivors with electromagnetic fields, and holds one in a vacuum three tenths of a degree above absolute zero, confined by an electric field top and bottom and a magnetic field on the sides. The work was reported in Physical Review Letters. The payoff is precision: the positron’s magnetic moment was last measured in 1987, while the electron’s is known to 13 digits — matching that precision on the antimatter side tests whether matter and antimatter really are mirror images, which bears on why the universe is made of matter at all.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">How it works</span><ul><li>Source: sodium-22 decay; slowing: cold tungsten lattice; trap: electric + magnetic fields in a near-absolute-zero vacuum — no material walls anywhere near the particle</li><li>Duration is the advance: a month with one particle, long enough for quantum-state measurements rather than a fleeting detection</li></ul></li><li class="cat"><span class="cat-label">Why it matters</span><ul><li>A matter/antimatter asymmetry measurement is one of the few lab-scale routes into a cosmological question — why anything exists instead of annihilation ash</li><li>Single-particle precision physics is slow by design: the comparison value (1987) is nearly four decades old</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://www.scientificamerican.com/article/physicists-trap-a-single-antimatter-particle-for-a-month/" target="_blank" rel="noopener">scientificamerican.com</a> · Discuss: <a href="https://news.ycombinator.com/item?id=50186450" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">321 pts / 96 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>The thread mixes awe with “how do you even know.” The serious point is measurement: a commenter notes the electron magnetic moment is the most precise Standard Model prediction we have, measured to 13 digits by Gabrielse’s group, and the positron value has not been matched since 1987 — this trap is how you finally close that gap. The obvious question — how do you know there is exactly one particle in there — gets asked and answered by pointing into the paper, with the asker conceding it needs background reading. The rest is HN being HN: “Quantunamo Bay,” a one-electron-universe joke (if there is only one positron, they have it, which would complicate every PET scan of the past month), space-propulsion speculation about antimatter-catalysed drives, and a practical question nobody answers cleanly: how do you safely dispose of it at the end — release is destruction.</p>
+</div>
+</article>
+<article class="story" id="story-8" data-story="8" data-source="https://freedns.afraid.org/" data-hn="https://news.ycombinator.com/item?id=50222133" data-metric="316 pts / 83 comments" tabindex="0" aria-label="Story 8: FreeDNS (afraid.org): free dynamic and static DNS, unchanged for two decades — and HN still runs on it">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">FreeDNS (afraid.org): free dynamic and static DNS, unchanged for two decades — and HN still runs on it</h2>
+<p class="exec">FreeDNS is exactly what the name says: free DNS hosting — dynamic DNS, static DNS, subdomain and domain hosting, web forwarding, IPv6 reverse, and backup DNS — run from afraid.org on multiple redundant servers, with a site design that has visibly not been redesigned in decades. Dynamic updates are a single curl against a per-account sync URL; hosts can point at private LAN addresses and still resolve inside your network. A premium tier exists (the site’s news banners are currently about members funding replacement servers, with the first already ordered), but the free tier is the institution: people build first servers, test rigs and home labs on subdomains they never pay for. Its HN moment is pure recognition — a working piece of old internet infrastructure, still up, still free, still doing one job.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">What you get</span><ul><li>Dynamic/static DNS, subdomains under shared domains, web forwarding, IPv6 reverse and backup DNS; updates via one curl call</li><li>Backup DNS is the sleeper feature: run your own primary on one server and let afraid.org be the redundant second</li></ul></li><li class="cat"><span class="cat-label">Why it matters</span><ul><li>Longevity is the feature: a free service that outlives most startups lowers the real cost of experimenting to zero, which is how people learn networking at all</li><li>The risk is symmetric: single-operator continuity — what happens if the maintainer stops — is asked in-thread and not answered on the site</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://freedns.afraid.org/" target="_blank" rel="noopener">freedns.afraid.org</a> · Discuss: <a href="https://news.ycombinator.com/item?id=50222133" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">316 pts / 83 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>Mostly gratitude with specifics. Longevity reports stack up — “almost two decades, nothing’s changed,” “happy freeloader for 15 years,” one commenter saying he literally launched his development career on it as a broke twenty-something and got goosebumps seeing the link. Use cases are concrete: test domains, one-off experiments, cheap backup DNS instead of a second server, with nic.eu.org named for free domains and deSEC.io as the API-friendly alternative. The one structural criticism is the public suffix list: afraid.org domains are absent from it (a long-standing pull request is linked), which affects cookie scoping on shared subdomains — a real security consideration for anything beyond experiments. Continuity is the open question: no stated succession or acquisition answer, just a long track record.</p>
+</div>
+</article>
+<article class="story" id="story-9" data-story="9" data-source="https://github.com/Zagitta/gpu-unlock" data-hn="https://news.ycombinator.com/item?id=50219700" data-metric="280 pts / 73 comments" tabindex="0" aria-label="Story 9: gpu-unlock: a Linux kernel module that doubles FP/BF16 issue rate on RTX 3000 cards — 3090 Ti BF16 GEMM 87.5 → 157.4 TFLOPS in the author’s table">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">gpu-unlock: a Linux kernel module that doubles FP/BF16 issue rate on RTX 3000 cards — 3090 Ti BF16 GEMM 87.5 → 157.4 TFLOPS in the author’s table</h2>
+<p class="exec">gpu-unlock removes a market-segmentation limit, not a hardware one. Nvidia’s consumer GA102/103/104/106 cards (RTX 3090 Ti down through the 3070 class) issue FP/BF16 fused multiply-adds at half the rate of their professional equivalents; this Linux kernel module unlocks the full rate before the stock driver binds — it combines the CMP unlocker’s V67/PLM technique with pre-driver timing, writes the speed selectors (SS0 for the full BF16 rate, SS1 for IMLA4), and performs a function-level reset, so no patched driver and no per-driver-release repatching. The repo’s own table (3090 Ti, dense 8192³ GEMM at 450 W, five-sample medians, FP32 accumulation) reports FP16 87.46 → 118.39 TFLOPS, BF16 87.50 → 157.41, TF32 42.58 → 82.61. Per-card reports vary: 3090 BF16 gains of +25–67%, 3080 10 GB +70–73%, and at least one OEM 3080 Ti 20 GB where the unlock completes but BF16 stays at half rate. Linux only, kernel-module risk, and it works via a firmware exploit path documented in the repo.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">Measured, author- and user-reported</span><ul><li>Headline: BF16 GEMM roughly +80% on a 3090 Ti at 450 W; the same unlock at a 200 W cap is reported in-thread at closer to +25%, and real training gains are smaller than GEMM gains</li><li>Compatibility is per-card and crowdsourced: a tested-cards table with PCI IDs and issue-linked reports, including failures</li></ul></li><li class="cat"><span class="cat-label">Why it matters</span><ul><li>The limit was a price ladder, not physics: the silicon already does this rate for professional buyers, which is why the unlock exists at all</li><li>For local LLM work the binding constraint is usually prefill and training throughput on cards people already own — a 25–70% gain there is worth real money against a forced upgrade</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://github.com/Zagitta/gpu-unlock" target="_blank" rel="noopener">github.com</a> · Discuss: <a href="https://news.ycombinator.com/item?id=50219700" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">280 pts / 73 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>The author is in-thread (“the exploits aren’t my ideas — this wraps them in a much less annoying package than patching the driver”) and independent testers confirm it works, with caveats stacked honestly: the full payoff on some cards needs a 450 W power limit, well above stock cooler design; at saner caps the GEMM gain is ~25% and end-to-end training gains smaller still (one 3060 owner reports ~6% on nanochat, power-limited at 170 W, after extra work to run it on kernel 5.15). It composes with the existing peer-to-peer unlock, and the thread collects the family: NVENC session-limit patches, a Turing unlock, an Ada (4090) variant. The closing prediction is unanimous and glum: the next card generation will ship signed firmware that sets these registers in a way that prevents exactly this.</p>
+</div>
+</article>
+<article class="story" id="story-10" data-story="10" data-source="https://www.cerebras.ai/blog/how-we-deploy-trillion-parameter-frontier-models-on-cerebras" data-hn="https://news.ycombinator.com/item?id=50227356" data-metric="233 pts / 73 comments" tabindex="0" aria-label="Story 10: Cerebras on deploying trillion-parameter models: one layer per wafer, 59 wafers for Kimi K3, activations only over RDMA — 1,000–2,000+ tokens/sec, vendor-reported">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">Cerebras on deploying trillion-parameter models: one layer per wafer, 59 wafers for Kimi K3, activations only over RDMA — 1,000–2,000+ tokens/sec, vendor-reported</h2>
+<p class="exec">Cerebras’s engineering post answers its most-asked question with arithmetic. A WSE-3T wafer holds 44 GB of on-chip SRAM; a trillion-parameter model needs terabytes of weights, so the model is split by layer across wafers and never split within a layer. Worked example, in the vendor’s numbers: the open Kimi K3 (~3T parameters, 69 linear-attention layers and 24 dense layers) at 4-bit weights works out to about 16 GB per layer; linear layers pack two per wafer, dense layers get a wafer each for KV-cache room — 35 + 24 = 59 wafers total. Weights then never move: only activations cross between wafers, over RDMA over Ethernet at roughly 2 microseconds per hop, and requests stream through the pipeline continuously instead of batching. The claimed serving rate for multi-trillion-parameter models is 1,000–2,000+ tokens per second. All figures are Cerebras’s own, for its own hardware, with stated assumptions (256k average request size, 4-bit weights, 8-bit KV cache) — useful as a design document, not an independent benchmark.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The design</span><ul><li>Layer-per-wafer placement keeps weights stationary in SRAM; pipeline parallelism with activation-only interconnect is the whole trick</li><li>Concurrency is bounded by KV cache: dense layers get a wafer each precisely because per-request cache, not weights, is the scarce resource</li></ul></li><li class="cat"><span class="cat-label">Why it matters</span><ul><li>It is a genuinely different serving shape from GPU clusters — no weight sharding traffic, no batching delay — and the post shows its working instead of just quoting a tokens/sec number</li><li>The open questions are the ones the post does not price: prefill cost over that interconnect, and total power — a commenter’s estimate puts 59 wafers near 1.18 MW</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://www.cerebras.ai/blog/how-we-deploy-trillion-parameter-frontier-models-on-cerebras" target="_blank" rel="noopener">cerebras.ai</a> · Discuss: <a href="https://news.ycombinator.com/item?id=50227356" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">233 pts / 73 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>Respect for the arithmetic, suspicion of the framing. The sharpest technical pushback: citing full-precision-class benchmark scores for K3 and then deploying at 4-bit quantisation is doing two different arguments at once, and a user reports their accessible Cerebras models (GPT-OSS 120B, a 27B Qwen) do not hit the headline speeds on their workload — fast, but “mostly wrong” at the model tier they can actually get. Hardware questions are precise: how prefill stays fast when only decode is activation-light, where KV caches for queued requests live (a lot of RAM somewhere), and why a whole wafer carries only 44 GB. One commenter does the power maths — ~20 kW per wafer × 59 ≈ 1.18 MW, about 4.1 J/token at the stated rates — and the thread’s verdict splits between “the Transmeta of the AI wave” and the genuinely interested: if tool calls become the bottleneck, 100× generation speed stops being a benchmark trick and starts feeling like a different kind of system.</p>
+</div>
+</article>
+    </ol>
+
+    <div class="shortcut-bar" aria-label="Keyboard shortcuts">
+      <span><kbd>J</kbd> next story</span>
+      <span><kbd>K</kbd> previous story</span>
+      <span><kbd>T</kbd> theme</span>
+    </div>
+
+    <footer class="page-footer">
+      <div class="footer-links"><a href="../">← Daily archive</a><a href="https://tk3369.github.io/hn-daily/" target="_blank" rel="noopener">Published archive ↗</a></div>
+      <span>Sunday 2026-10-25 · 10 stories</span>
+    </footer>
+  </main>
+  <div class="toast" role="status" aria-live="polite"></div>
+  <script>
+(() => {
+  const root = document.documentElement;
+  const toggle = document.getElementById('theme-toggle');
+  const entries = [...document.querySelectorAll('[data-story]')];
+  function storedTheme() { try { const t = localStorage.getItem('hn-daily-theme'); return t === 'dark' || t === 'light' ? t : null; } catch (_) { return null; } }
+  function preferredTheme() { return matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'; }
+  function currentTheme() { const a = root.dataset.theme; if (a === 'dark' || a === 'light') return a; return storedTheme() || preferredTheme(); }
+  function setTheme(theme) { const next = theme === 'dark' ? 'dark' : 'light'; const opposite = next === 'dark' ? 'Light' : 'Dark';
+    if (root.dataset.theme !== next) root.dataset.theme = next;
+    toggle.querySelector('.theme-text').textContent = opposite;
+    toggle.setAttribute('aria-label', `Switch to ${opposite} theme (T)`); toggle.title = `Switch to ${opposite} theme (T)`;
+    try { localStorage.setItem('hn-daily-theme', next); } catch (_) {} }
+  function flipTheme() { setTheme(currentTheme() === 'dark' ? 'light' : 'dark'); }
+  setTheme(storedTheme() || preferredTheme());
+  toggle.addEventListener('click', flipTheme);
+  const toast = document.querySelector('.toast'); let toastTimer;
+  function showToast(msg) { toast.textContent = msg; toast.classList.add('show'); clearTimeout(toastTimer); toastTimer = setTimeout(() => toast.classList.remove('show'), 1800); }
+  document.querySelectorAll('.copy-button').forEach((button) => {
+    button.addEventListener('click', async () => {
+      const story = button.closest('.story');
+      const n = story.dataset.story;
+      const tagline = story.querySelector('.tagline').textContent.trim();
+      const execSum = story.querySelector('.exec').textContent.trim();
+      const bullets = [...story.querySelectorAll('.cat-lists .cat')].map(li => {
+        const label = li.querySelector('.cat-label').textContent.trim();
+        const pts = [...li.querySelectorAll('ul li')].map(p => '  \u2022 ' + p.textContent.trim()).join('\n');
+        return '- ' + label + ':\n' + pts;
+      }).join('\n');
+      const link = 'https://tk3369.github.io/hn-daily/2026-10-25/#story-' + n;
+      const text = n + '. ' + tagline + '\n\n' + execSum + '\n' + bullets + '\n\n' + link;
+      try { await navigator.clipboard.writeText(text); button.textContent = 'Copied'; showToast('Story ' + n + ' copied for Threads'); setTimeout(() => { button.textContent = 'Copy for Threads'; }, 1600); }
+      catch (_) { showToast('Copy was blocked by this browser'); }
+    });
+  });
+  document.addEventListener('keydown', (event) => {
+    if (event.metaKey || event.ctrlKey || event.altKey || event.shiftKey) return;
+    const tag = event.target.tagName;
+    if (tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT') return;
+    const key = event.key.toLowerCase();
+    if (key === 't') { event.preventDefault(); flipTheme(); }
+    else if ((key === 'j' || key === 'k') && entries.length) {
+      event.preventDefault();
+      const active = entries.indexOf(document.activeElement);
+      const delta = key === 'j' ? 1 : -1;
+      const next = active < 0 ? (key === 'j' ? 0 : entries.length - 1) : Math.max(0, Math.min(entries.length - 1, active + 1 * delta));
+      entries[next].focus();
+    }
+  });
+})();
+  </script>
+</body>
+</html>
