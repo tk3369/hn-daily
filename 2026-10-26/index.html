@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="color-scheme" content="light dark" />
+  <link rel="icon" href="data:," />
+  <title>HN Daily — Monday 2026-10-26</title>
+  <style>
+:root { --page:#f1eadb; --paper:#fffaf0; --ink:#20201c; --muted:#6f695f; --hairline:#d9cebc; --accent:#ff5a1f; --comment:#f6efe3; --shadow:0 2px 0 rgba(57,45,25,.08),0 14px 36px rgba(57,45,25,.06); --serif:Georgia,"Times New Roman",serif; --sans:ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; --mono:"SFMono-Regular",Consolas,"Liberation Mono",monospace; }
+html[data-theme="dark"] { --page:#111312; --paper:#191c1a; --ink:#f1eee6; --muted:#aba69b; --hairline:#393b36; --accent:#ff7139; --comment:#222520; --shadow:0 2px 0 rgba(0,0,0,.22),0 18px 42px rgba(0,0,0,.22); }
+* { box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body { margin:0; min-width:280px; color:var(--ink); background:var(--page); font-family:var(--sans); line-height:1.55; -webkit-font-smoothing:antialiased; }
+a { color:inherit; text-underline-offset:3px; text-decoration-thickness:1px; }
+a:hover { color:var(--accent); }
+button,a { -webkit-tap-highlight-color:transparent; }
+button { font:inherit; }
+a:focus-visible,button:focus-visible { outline:3px solid var(--accent); outline-offset:3px; }
+.page { width:min(1080px,calc(100% - 36px)); margin:0 auto; padding:28px 0 72px; }
+.issue-header { display:grid; grid-template-columns:1fr auto; gap:24px; align-items:end; padding:8px 0 26px; border-bottom:3px solid var(--ink); }
+.edition { margin:0 0 9px; color:var(--accent); font:700 12px/1.3 var(--mono); letter-spacing:.09em; text-transform:uppercase; }
+.archive-nav { display:flex; flex-wrap:wrap; gap:8px 20px; margin-bottom:16px; font:700 12px/1 var(--mono); }
+.archive-nav a { min-height:36px; display:inline-flex; align-items:center; color:var(--muted); }
+.archive-nav a:hover { color:var(--accent); }
+h1 { max-width:820px; margin:0; font:700 clamp(34px,5.5vw,62px)/.98 var(--serif); letter-spacing:-.038em; }
+.deck { max-width:730px; margin:17px 0 0; color:var(--muted); font:17px/1.55 var(--sans); }
+.theme-toggle { align-self:start; min-width:86px; min-height:40px; padding:9px 13px; border:1px solid var(--hairline); border-radius:4px; color:var(--ink); background:var(--paper); cursor:pointer; font:700 12px/1 var(--mono); display:inline-flex; align-items:center; gap:8px; }
+.theme-toggle:hover { border-color:var(--accent); color:var(--accent); }
+.theme-dot { width:10px; height:10px; border-radius:50%; background:var(--accent); display:inline-block; flex-shrink:0; }
+.theme-text { line-height:1; }
+.story-list { display:grid; gap:20px; list-style:none; margin:26px 0 0; padding:0; counter-reset:story; }
+.story { counter-increment:story; display:grid; grid-template-columns:72px minmax(0,1fr); gap:26px; padding:26px 30px 28px; background:var(--paper); border-top:4px solid var(--ink); box-shadow:var(--shadow); scroll-margin-top:24px; }
+.story-number { color:var(--accent); font:900 22px/1 var(--mono); letter-spacing:-.04em; padding-top:6px; }
+.story-number::before { content:counter(story,decimal-leading-zero); }
+.tagline { margin:0; max-width:840px; font:700 clamp(24px,3vw,36px)/1.1 var(--serif); letter-spacing:-.028em; }
+.exec { margin:14px 0 0; max-width:840px; font:17px/1.58 var(--sans); }
+.cat-lists { margin:14px 0 0; padding:0; list-style:none; display:grid; gap:10px; max-width:840px; }
+.cat-lists li.cat { font:15px/1.6 var(--sans); }
+.cat-lists .cat-label { font:700 12px/1.6 var(--mono); letter-spacing:.06em; text-transform:uppercase; color:var(--accent); }
+.cat-lists ul { margin:4px 0 0; padding-left:20px; }
+.cat-lists ul li { margin:3px 0; }
+.meta-line { margin:16px 0 0; color:var(--muted); font:700 12px/1.9 var(--mono); overflow-wrap:anywhere; }
+.meta-line a { color:var(--ink); font-weight:800; }
+.meta-line .metrics { color:var(--ink); white-space:nowrap; }
+.story-bar { display:flex; align-items:flex-start; gap:14px; margin-top:4px; }
+.copy-button { flex:0 0 auto; align-self:flex-start; min-height:36px; padding:9px 12px; border:1px solid var(--hairline); border-radius:4px; background:var(--paper); color:var(--ink); cursor:pointer; font:700 12px/1 var(--mono); }
+.copy-button:hover { border-color:var(--accent); color:var(--accent); }
+.hn-comments { margin:18px 0 0; padding:14px 18px; background:var(--comment); border:1px solid var(--hairline); font:15px/1.62 var(--serif); color:var(--ink); }
+.hn-comments strong { font:700 12px/1.6 var(--mono); color:var(--accent); display:block; margin-bottom:6px; }
+.page-footer { display:flex; justify-content:space-between; flex-wrap:wrap; gap:14px; margin-top:64px; padding-top:12px; border-top:1px solid var(--hairline); color:var(--muted); font:12px/1.6 var(--mono); }
+.footer-links { display:flex; flex-wrap:wrap; gap:8px 20px; }
+.footer-links a { min-height:36px; display:inline-flex; align-items:center; color:var(--ink); font-weight:800; }
+.footer-links a:hover { color:var(--accent); }
+.shortcut-bar { display:flex; flex-wrap:wrap; gap:18px; margin-top:28px; color:var(--muted); font:11px/1.5 var(--mono); }
+kbd { display:inline-grid; place-items:center; min-width:22px; height:22px; margin-right:6px; padding:0 6px; border:1px solid var(--hairline); border-bottom-width:2px; border-radius:3px; background:var(--comment); color:var(--ink); font:inherit; font-weight:700; }
+.toast { position:fixed; right:max(18px,env(safe-area-inset-right)); bottom:max(18px,env(safe-area-inset-bottom)); z-index:10; padding:11px 14px; color:var(--paper); background:var(--ink); border:1px solid var(--ink); font:700 12px/1 var(--mono); opacity:0; transform:translateY(8px); pointer-events:none; transition:opacity 160ms ease,transform 160ms ease; }
+.toast.show { opacity:1; transform:translateY(0); }
+@media (max-width:760px) {
+  .page { width:min(100% - 22px,1080px); padding-top:16px; }
+  .issue-header { grid-template-columns:1fr auto; gap:12px; padding-bottom:20px; }
+  h1 { font-size:clamp(34px,10vw,48px); }
+  .deck { grid-column:1 / -1; margin-top:3px; font-size:15px; }
+  .theme-toggle { grid-column:2; grid-row:1; min-width:72px; }
+  .story { grid-template-columns:44px minmax(0,1fr); gap:14px; padding:20px 18px 22px; }
+  .story-number { font-size:16px; padding-top:4px; }
+  .story-bar { flex-direction:column; align-items:stretch; }
+  .copy-button { align-self:flex-start; }
+  .page-footer { display:block; }
+}
+@media (max-width:420px) {
+  .page { width:calc(100% - 16px); }
+  .story { grid-template-columns:1fr; gap:8px; padding:20px 16px 22px; }
+  .story-number { padding-top:0; }
+  .copy-button { width:100%; }
+}
+@media (prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } *,*::before,*::after { transition:none !important; } }
+@media print { :root { --page:#fff;--paper:#fff;--ink:#000;--muted:#444;--hairline:#bbb;--comment:#f5f5f5;--shadow:none; } .page{width:100%;padding:0}.theme-toggle,.copy-button,.toast,.shortcut-bar{display:none}.story{break-inside:avoid;box-shadow:none} }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="issue-header">
+      <div>
+        <nav class="archive-nav" aria-label="HN Daily archive links"><a href="../">← Archive</a><a href="https://tk3369.github.io/hn-daily/" target="_blank" rel="noopener">Published archive ↗</a></nav>
+        <p class="edition"><time datetime="2026-10-26">2026-10-26</time> · Daily brief · Pacific time</p>
+        <h1>HN Daily</h1>
+        <p class="deck">Direct, low-fluff top 10 from Hacker News, daily at 7am PT — hottest by points</p>
+      </div>
+      <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch color theme" title="Toggle theme (T)"><span class="theme-dot" aria-hidden="true"></span><span class="theme-text">Dark</span></button>
+    </header>
+
+    <ol class="story-list" aria-label="Top 10 Hacker News stories">
+<article class="story" id="story-1" data-story="1" data-source="https://danluu.com/ambitious/" data-hn="https://news.ycombinator.com/item?id=50225695" data-metric="840 pts / 726 comments" tabindex="0" aria-label="Story 1: Dan Luu: we should be more ambitious with the software we build — now 840 points, and the testing is the filter">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">Dan Luu: we should be more ambitious with the software we build — now 840 points, and the testing is the filter</h2>
+<p class="exec">Dan Luu, relaying Michael Malis of pgrust, argues the bottleneck has moved: projects that were too large to attempt are now feasible, and the filter is no longer whether AI helped write the code but whether the testing is serious. His evidence is pgrust itself — in testing it, Malis has uncovered real upstream Postgres bugs, including a numerical bug that can fail valid SP-GiST operations, a format-cache bug that can return incorrect JSONPath results, a pgcrypto bug, memory-safety bugs in the dictionary loader, and a money overflow bug. The story held the front page for a second day and climbed from 529 to 840 points. Luu concedes most rewrite projects really are low-quality AI output, which is why readers dismiss pgrust on sight — but the durable win does not depend on pgrust winning: the bugs it finds get fixed in Postgres either way.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The argument</span><ul><li>Capability, not permission: Luu says he would write “we can be more ambitious”; the “should” is Malis chatting, not a manifesto</li><li>Quality gate is measurement: thorough testing and benchmarking are what separate an ambitious project from generated slop</li></ul></li><li class="cat"><span class="cat-label">Why it matters</span><ul><li>If the claim holds, the scarce skill shifts from writing code to specifying, testing and reviewing it</li><li>Even failed ambitious rewrites pay rent: upstream bug fixes and demonstrated optimisations outlive the rewrite itself</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://danluu.com/ambitious/" target="_blank" rel="noopener">danluu.com</a> · Discuss: <a href="https://news.ycombinator.com/item?id=50225695" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">840 pts / 726 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>The second-day thread turns from the essay to incentives. Supporters say too many experienced builders have settled for telling AI to do the old job, instead of attempting the month-scale project that was previously impossible. The sharp pushback is cloning and commerce: if one person with an LLM can build it, another can copy it immediately, so differentiation moves to marketing, speed and exit timing — a trend several commenters say predates AI by at least 20 years. A third line reframes it around problems rather than products: build for a specific problem you understand, not a one-size-fits-all clone, and income security first can be a stepping stone to more ambitious work later.</p>
+</div>
+</article>
+<article class="story" id="story-2" data-story="2" data-source="https://lynchlab.net/llm-skin-cancer" data-hn="https://news.ycombinator.com/item?id=50233779" data-metric="613 pts / 259 comments" tabindex="0" aria-label="Story 2: A 10-year-old CNN beats frontier LLMs at skin cancer diagnosis: 62% vs 42% on 200 biopsy-proven lesions">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">A 10-year-old CNN beats frontier LLMs at skin cancer diagnosis: 62% vs 42% on 200 biopsy-proven lesions</h2>
+<p class="exec">Dermatologist Magnus Lynch tested frontier LLMs against a fine-tuned Inception v3 CNN — a Google network first published in 2015, fine-tuned here in about twenty minutes on public dermatology images. The test set was 200 biopsy-proven lesions from the MILK10k dataset, each shown as a clinical photo and a dermoscopic image, with six possible diagnoses. The CNN named the right diagnosis for 125 lesions (62%); the two LLMs named it for 84 and 85 (42%). The lead example is stark: an invasive melanoma under 0.8 mm thick that both LLMs called a harmless seborrhoeic keratosis suitable for discharge, and the CNN called melanoma. It is one clinician’s test on one dataset, not a clinical trial — but the direction matches the task: narrow, trained pattern recognition versus general models asked to judge specialised images.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The test</span><ul><li>200 lesions, all biopsy-confirmed: 100 that should not be discharged (melanoma, basal and squamous cell carcinoma, actinic keratosis) and 100 safe to discharge (benign naevi, seborrhoeic keratoses)</li><li>CNN: 125/200 correct. LLMs: 84 and 85/200. Same images, same six-way choice</li></ul></li><li class="cat"><span class="cat-label">Why it matters</span><ul><li>Specialised models still win specialised tasks: twenty minutes of fine-tuning beat general frontier capability on this benchmark</li><li>The failure mode matters more than the score: the missed case was a melanoma confidently labelled safe to discharge</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://lynchlab.net/llm-skin-cancer" target="_blank" rel="noopener">lynchlab.net</a> · Discuss: <a href="https://news.ycombinator.com/item?id=50233779" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">613 pts / 259 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>The top thread is the calculator analogy: a calculator also outperforms LLMs at multiplication, and most people still need reminding that general models are not the best tool for every task. That sparks a long efficiency argument — giving an LLM a calculator tool removes the accuracy gap, others reply, but not the cost, speed or watts-per-task gap, and “effectively instant” only holds at small scale. The underlying agreement is broad: use the specialised tool for the specialised job, and be suspicious of any workflow that routes a narrow classification problem through a general chat model because it is convenient.</p>
+</div>
+</article>
+<article class="story" id="story-3" data-story="3" data-source="https://imaginationlibrary.com/" data-hn="https://news.ycombinator.com/item?id=50234474" data-metric="592 pts / 99 comments" tabindex="0" aria-label="Story 3: Dolly Parton&#x27;s Imagination Library: free books monthly from birth to age five, in five countries since 1995">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">Dolly Parton&#x27;s Imagination Library: free books monthly from birth to age five, in five countries since 1995</h2>
+<p class="exec">The Imagination Library mails a free, age-appropriate book every month to children from birth to age five, funded by Dolly Parton and local community partners. Parton started it in 1995 for her home county in East Tennessee, inspired by her father’s inability to read and write; it now operates in the United States, Canada, the United Kingdom, Australia and the Republic of Ireland, and gifts millions of books each month. Eligibility is local — a community has to run and fund its side of the programme — so the site’s main action is a postcode check for whether your area is covered. No product, no app, no growth metric: a book in the post, addressed to the child, every month for five years.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">How it works</span><ul><li>One book per month per child, birth to fifth birthday, at no cost to the family; funding is shared between the Dollywood Foundation and local partners</li><li>Coverage is community-by-community across five countries — if your area is not covered, the programme’s pitch is to start a local chapter</li></ul></li><li class="cat"><span class="cat-label">Why it matters</span><ul><li>Thirty-one years of one simple, physical intervention: books in the home before school starts, regardless of family income</li><li>The submitter framed it plainly — shared “with today’s news” as a counterweight story, and the front page agreed at 592 points</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://imaginationlibrary.com/" target="_blank" rel="noopener">imaginationlibrary.com</a> · Discuss: <a href="https://news.ycombinator.com/item?id=50234474" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">592 pts / 99 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>The thread is unusually warm and stays on the person as much as the programme: “we should be more ambitious with the people we build” is the top reframing, followed by noblesse oblige and an argument that people who make the world better should get the celebrity attention. Commenters catalogue why Parton is hard to replicate — voice, songwriting, acting, self-deprecating humour (“it takes a lot of money to look this cheap”), and comfort with fans of every kind — and conclude the trait list matters less than the pattern: sustained, unglamorous giving over decades, starting with her own county.</p>
+</div>
+</article>
+<article class="story" id="story-4" data-story="4" data-source="https://www.theregister.com/systems/2026/10/22/ibm-ceo-says-open-weight-models-are-now-irresistibly-good-and-cheap-on-prem/5304640" data-hn="https://news.ycombinator.com/item?id=50238088" data-metric="352 pts / 252 comments" tabindex="0" aria-label="Story 4: IBM CEO: open-weight models are now 90% as good at 10% of the cost — so run them on-prem in two or three racks">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">IBM CEO: open-weight models are now 90% as good at 10% of the cost — so run them on-prem in two or three racks</h2>
+<p class="exec">On IBM’s Q3 earnings call, CEO Arvind Krishna gave investors a simple ratio. In 2024, he said, a broad benchmark might score a frontier model 70 and an open model 20 or 30; by late 2025 that was 70 to 50; now open-weight models deliver, in The Register’s quote, “anywhere from 25 percent to 10 percent of the token cost of the frontier models” while being “90 percent as effective.” His enterprise pitch follows directly: most tasks — summarising an email, examining a contract, answering a customer call, composing an email — do not need the last 10%, and the cheaper stack fits in “just two or three racks” on-prem. The hard part, he conceded, is operations: kernel engineers, GPU networking proximity and caching — which is, of course, the part IBM sells help with.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The claim</span><ul><li>Benchmark gap as Krishna stated it: 70 vs 20–30 in 2024, 70 vs 50 in late 2025, now ~90% as effective at 10–25% of token cost</li><li>Context from the same call: IBM total quarterly revenue $17.1bn, up 5%; infrastructure revenue $3.7bn, up 5%; software $7.8bn, up 9%</li></ul></li><li class="cat"><span class="cat-label">Why it matters</span><ul><li>This is the open-weight argument reaching an earnings call: not ideology, unit economics — if 90% is enough, the frontier premium is a line item to cut</li><li>On-prem changes the buyer: the constraint moves from API price to whether an enterprise can staff and run GPU infrastructure well</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://www.theregister.com/systems/2026/10/22/ibm-ceo-says-open-weight-models-are-now-irresistibly-good-and-cheap-on-prem/5304640" target="_blank" rel="noopener">theregister.com</a> · Discuss: <a href="https://news.ycombinator.com/item?id=50238088" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">352 pts / 252 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>Scepticism about the messenger dominates: the hardware to run these models is conveniently something IBM would be happy to sell you, and “affordable” and “IBM” do not belong in the same sentence. A minority defends the history — IBM made the PC revolution possible with hardware businesses could actually buy, and still has money, talent and a hardware department that would relish taking on Nvidia — before conceding that has not been IBM for decades and that it is small next to the firms training and serving frontier models. The ratio itself gets little dispute; who captures the saving does.</p>
+</div>
+</article>
+<article class="story" id="story-5" data-story="5" data-source="https://charliegerard.dev/blog/overgrown-extension/" data-hn="https://news.ycombinator.com/item?id=50197108" data-metric="348 pts / 119 comments" tabindex="0" aria-label="Story 5: Overgrown: a Chrome extension where plants invade your abandoned tabs — slash the vines to read the page again">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">Overgrown: a Chrome extension where plants invade your abandoned tabs — slash the vines to read the page again</h2>
+<p class="exec">Charlie Gerard built the tab-hoarding metaphor literally. Every tab has a neglect clock that runs while the tab is out of view and stops while you look at it; the longer it is neglected, the more plants grow over the page from the edges toward the middle. Past about 5% overgrown, the page is walled off — you can scroll but cannot click, select or drag — until you slash the vines back by dragging your mouse across them, with a choice of rusty machete, chainsaw or flamethrower. Get it back to 5% and the last bits fall off; abandon it again and the jungle restarts. The growth time is configurable, and the author deliberately did not block closing overgrown tabs, judging that too annoying. The code is the expected three parts: background worker, content-script overlay, and popup UI.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">How it works</span><ul><li>Neglect is measured per tab, only while out of view; growth is SVG plants positioned over the page, cleared by mouse-drag slashing</li><li>Weapons and full-overgrowth time are user settings; the tab list and per-tab state live in the popup</li></ul></li><li class="cat"><span class="cat-label">Why it matters</span><ul><li>It makes an invisible cost visible: tab age becomes something you can see at a glance instead of a row of identical favicons</li><li>A joke project with a real interaction idea inside it — friction as the interface, applied to your own neglect</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://charliegerard.dev/blog/overgrown-extension/" target="_blank" rel="noopener">charliegerard.dev</a> · Discuss: <a href="https://news.ycombinator.com/item?id=50197108" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">348 pts / 119 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>“So useless yet so cool” is the consensus, with one commenter adding that it does nothing for shareholder value and loving it anyway. Then the thread finds the use: it is a visual representation of tab age that you control, so you can tell at a glance which tabs you are using and which you are merely storing, and it creates a feedback loop that trains you not to keep old tabs open. The main feature request is the one the author rejected — an option to block closing an overgrown tab until it is cleared, wanted by a reader who keeps accidentally closing tabs he meant to keep. A calibration request follows: at 100% coverage all information except the title is lost.</p>
+</div>
+</article>
+<article class="story" id="story-6" data-story="6" data-source="https://www.sec.gov/Archives/edgar/data/2130357/000162828026067168/anthropicpbc-sx1.htm" data-hn="https://news.ycombinator.com/item?id=50242939" data-metric="333 pts / 276 comments" tabindex="0" aria-label="Story 6: Anthropic files its S-1: Nasdaq “ANT”, a public-benefit structure, and a trust that elects a board majority">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">Anthropic files its S-1: Nasdaq “ANT”, a public-benefit structure, and a trust that elects a board majority</h2>
+<p class="exec">Anthropic, PBC filed a Form S-1 with the SEC — the document in the source link is the filing itself, headed as filed on October 26, 2026 — applying to list Class A common stock on the Nasdaq Global Select Market under the symbol “ANT.” The governance is the story. Anthropic is a Delaware public benefit corporation whose stated purpose is the responsible development of advanced AI for the long-term benefit of humanity. Its Long-Term Benefit Trust, through Class T stock with no economic rights, generally elects the Class T directors, who will constitute a majority of the board. A separate Class F share, held by a founder LLC whose initial members are the seven co-founders including Dario and Daniela Amodei, carries 50.1% of the total voting power on matters other than Class T directors, also with no economic rights. Price range and share counts are blank in this preliminary filing — what is being registered, and how control is locked in, is what can be read today.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The structure</span><ul><li>Public benefit corporation + Long-Term Benefit Trust: financially disinterested trustees with AI safety, national security and policy expertise elect a board majority via Class T stock</li><li>Founders keep 50.1% of general voting power via a single Class F share held by their LLC; Class T and Class F carry no economic rights</li></ul></li><li class="cat"><span class="cat-label">Why it matters</span><ul><li>An IPO prospectus is where mission language becomes enforceable structure — here, safety governance and founder control are written into the share classes themselves</li><li>Read it as a primary source: risk factors and financials are in the filing; summaries that skip the governance classes miss the point of this one</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://www.sec.gov/Archives/edgar/data/2130357/000162828026067168/anthropicpbc-sx1.htm" target="_blank" rel="noopener">sec.gov</a> · Discuss: <a href="https://news.ycombinator.com/item?id=50242939" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">333 pts / 276 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>The thread opens with a joke that becomes an argument: what stops someone feeding the S-1 into Claude and reconstructing the company for $200 — the submitter says he is unironically trying, with an adversarial subagent swarm validating the strategy write-up. Replies name the actual moats — endless capital and talent — which triggers the counter that the filing’s own premise is that talent matters less now, then the sharper point: using a model to build a competing model is already against the provider’s terms, and one commenter claims quality was silently degraded for suspected competitor-building in the past. Governance gets less attention in-thread than the meta-question of whether an AI company can be copied by its own product.</p>
+</div>
+</article>
+<article class="story" id="story-7" data-story="7" data-source="https://titleart.dvy.io/" data-hn="https://news.ycombinator.com/item?id=50238708" data-metric="305 pts / 54 comments" tabindex="0" aria-label="Story 7: Show HN: TitleArt — faithful 1997 WordArt in the browser, rebuilt by eye from screenshots">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">Show HN: TitleArt — faithful 1997 WordArt in the browser, rebuilt by eye from screenshots</h2>
+<p class="exec">TitleArt recreates the original WordArt — the rainbow gradients, arched and inflated lettering, and chrome effects of late-1990s Microsoft Word — as a web tool. The author says it is a faithful recreation rather than a parody: he went through screenshots of the original and tweaked the built-in styles by eye until they matched, and only in the thread admits he never ran up a Windows 98 VM with the old Word to check. The result is instant recognition for anyone who sat in a school ICT room in the late 1990s: type text, pick a style, get the title graphic every school project and church newsletter once had. Small, finished, and exactly as deep as it needs to be.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">What it is</span><ul><li>Browser recreation of classic WordArt styles, matched by eye from screenshots of the original — no VM, no ripped assets</li><li>Built as a toy to play with and share results from; contact details are in the help menu, per the author</li></ul></li><li class="cat"><span class="cat-label">Why it matters</span><ul><li>Nostalgia tools work when the details are right: the thread’s praise is specifically that the styles feel correct, not approximately retro</li><li>Another data point for the weekend front page: small, complete, joyful software is holding four of today’s top ten slots</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://titleart.dvy.io/" target="_blank" rel="noopener">titleart.dvy.io</a> · Discuss: <a href="https://news.ycombinator.com/item?id=50238708" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">305 pts / 54 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>Pure nostalgia, with corrections offered fondly. Readers remember the shimmer and sparkle text effects the recreation lacks — the author says he had forgotten them and asks for references, and is pointed to a video of Word 2000 running on a modern Mac via Wine. Others mourn how instantly responsive computers felt then, joke that it fails short without a dot-matrix printer for hanging banners, and that a proper recreation should let you crash the Windows behind the page. The author is present throughout, treating missing effects as bug reports to fix rather than criticism.</p>
+</div>
+</article>
+<article class="story" id="story-8" data-story="8" data-source="https://blocks.manifold3d.ch/" data-hn="https://news.ycombinator.com/item?id=50240922" data-metric="300 pts / 135 comments" tabindex="0" aria-label="Story 8: Switzerland at 1:1 in Minecraft: one block is one metre, 41,285 km² from open swisstopo data — 24 GB for the whole country">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">Switzerland at 1:1 in Minecraft: one block is one metre, 41,285 km² from open swisstopo data — 24 GB for the whole country</h2>
+<p class="exec">Blocks rebuilds all of Switzerland in Minecraft at true scale: one block equals one metre, so the country is 41,285 km² of terrain, the Dufourspitze rises 4,634 blocks, and the Matterhorn is exactly as high and steep as the real one. Terrain, glaciers, lakes, forests and dams come from swisstopo’s open geodata; it runs on Minecraft Java 1.12.2 with Cubic Chunks. The full country is a 24 GB download from 15 CHF; a free 1.1 GB sample covers the Jungfrau-Aletsch UNESCO area — Eiger, Mönch, Jungfrau and the Aletsch glacier — as the compatibility test: if the sample runs, the country runs. An in-browser map lets you click any spot for the in-game teleport command, with a slider overlaying swisstopo’s real aerial imagery on the block map.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The numbers</span><ul><li>Scale 1:1, one block = one metre; 41,285 km²; highest point 4,634 blocks; full download 24 GB, free UNESCO sample 1.1 GB</li><li>Sources are public: swisstopo terrain and imagery (SWISSIMAGE, swissBOUNDARIES3D, swissNAMES3D), credited on the site</li></ul></li><li class="cat"><span class="cat-label">Why it matters</span><ul><li>Open government geodata is the enabling asset here — a one-person-scale project can rebuild a country because the state publishes survey-grade data</li><li>True scale changes the experience: mountains are not dioramas, they are the actual distances and climbs, which is the appeal and the impracticality</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://blocks.manifold3d.ch/" target="_blank" rel="noopener">blocks.manifold3d.ch</a> · Discuss: <a href="https://news.ycombinator.com/item?id=50240922" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">300 pts / 135 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>“The map is the territory” opens it, followed by a informed demurrer: at 1 m resolution much is necessarily faked — road centrelines and small features cannot resolve at that scale, satellite imagery goes far finer, and one commenter who looked closely found transformation errors. The affectionate use case wins the thread anyway: put furniture in your own apartment, make your actual home your base, explore surroundings you already know, and — the joke — blow up your annoying neighbour’s house. Price gets Swiss humour in return: 15 CHF for the full map is called a travesty because an authentically Swiss price would be at least 150 CHF, and a reader asks why full-map sales are restricted to people living in Switzerland.</p>
+</div>
+</article>
+<article class="story" id="story-9" data-story="9" data-source="https://www.alfie.wtf/programming/why-i-am-a-programmer.html" data-hn="https://news.ycombinator.com/item?id=50235017" data-metric="275 pts / 85 comments" tabindex="0" aria-label="Story 9: Why I Am a Programmer: a demoscene childhood, hex-edited save files, and a 1993 quote that still lands">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">Why I Am a Programmer: a demoscene childhood, hex-edited save files, and a 1993 quote that still lands</h2>
+<p class="exec">Alfie John’s essay opens with Denthor of Asphyxia’s 1993 demoscene text — a child telling his class he wants to “code demos,” to write something that reaches out of the screen and grabs people, “either that or I want to be a fireman” — then tells the matching life: a pre-mainstream-internet childhood in a rough neighbourhood where having a computer was kept quiet because computers got stolen, kids finding each other anyway, pirating games on drilled-out single-density floppies, and discovering that a hex editor (XTreeGold’s Hex View) could give you unlimited lives and skip stages in save files. The programmers who made games were his idols; editing their work was the on-ramp. It is a memoir of programming as fascination first — collecting, tinkering and showing people something unreal — resurfacing today in a very different labour mood, which is exactly why the thread splits.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The arc</span><ul><li>1993 demoscene epigraph (TUT7.TXT) frames the whole piece: program to change people’s perception of reality, or be a fireman</li><li>Childhood specifics do the work: hidden computers, floppy piracy, hex-edited saves — fascination and access, in that order, before any career</li></ul></li><li class="cat"><span class="cat-label">Why it matters</span><ul><li>A useful reminder of the non-economic motive that built a generation of programmers — demos, games and showing off — now being re-read under AI job anxiety</li><li>HN has been here before: commenters link the 2015 discussion of the same piece (89 points, 59 comments) for comparison</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://www.alfie.wtf/programming/why-i-am-a-programmer.html" target="_blank" rel="noopener">alfie.wtf</a> · Discuss: <a href="https://news.ycombinator.com/item?id=50235017" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">275 pts / 85 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>History is the first verdict, then the mood turns: one commenter applies a global find-and-replace — %s/Am/Was/g — and describes watching friends and family lose jobs while waiting for the Friday “three person 1:1.” Others resist the obituary: he never claimed to be employed as a programmer, “I’ll always be a programmer” even if the job goes; LLMs cannot actually program well enough, one argues, and this will be walked back like cheap offshore outsourcing was, by the people paid to undo the mess. The split is the story — the same essay read as heritage by one half of the thread and as an elegy by the other.</p>
+</div>
+</article>
+<article class="story" id="story-10" data-story="10" data-source="https://oligarchwatch.substack.com/p/amazons-digital-pacifier-for-toddlers" data-hn="https://news.ycombinator.com/item?id=50185534" data-metric="241 pts / 346 comments" tabindex="0" aria-label="Story 10: Amazon’s “digital pacifier”: Fire tablets marketed as a first tablet for three-year-olds, against the paediatric evidence">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">Amazon’s “digital pacifier”: Fire tablets marketed as a first tablet for three-year-olds, against the paediatric evidence</h2>
+<p class="exec">Caleb Ecarma’s piece criticises Amazon’s new Kids tablets, marketed for children as young as three as a “first tablet,” with copy promising all-day battery to help toddlers “remain seated” on flights and stay occupied on car rides, a child-sized handle and case for independent carrying everywhere — backpack, back seat, kitchen table — and generative AI features pitched as premium. University of Michigan paediatrician Jenny Radesky, who researches children’s screen use, is the expert voice: problems arise when a tablet becomes a child’s “always-available buddy” for managing behaviour and calming down, the handle design itself concerns her, and AI apps that do the creative work for kids risk stunting independent thinking. The piece also notes Amazon’s claim that blue-light filtering keeps eyes comfortable on long stretches, against a 2025 study linking consistent handheld use to nearsightedness in children. Amazon’s response is included in the article.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The product pitch</span><ul><li>Age floor in the marketing: three years old; selling points are endurance and occupation — all-day battery, durability, portability — plus made-for-kids generative AI</li><li>The expert objection is about role, not minutes alone: a device designed to be carried everywhere and used to regulate behaviour becomes the default soother</li></ul></li><li class="cat"><span class="cat-label">Why it matters</span><ul><li>Design intent is the argument: a handle, a case and “first tablet” framing normalise constant access at an age the cited research flags as sensitive</li><li>346 comments against 241 points — the most contested ratio in today’s top ten; this is a values argument, not a product review</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://oligarchwatch.substack.com/p/amazons-digital-pacifier-for-toddlers" target="_blank" rel="noopener">oligarchwatch.substack.com</a> · Discuss: <a href="https://news.ycombinator.com/item?id=50185534" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">241 pts / 346 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>The thread is the argument itself. One side: children will end up on devices anyway because parents want to avoid parenting, so a device designed for them is the lesser evil. The other: enabling avoidance incentivises more of it, marketing dedicated devices to toddlers normalises what should not be normal, and the line is not zero screens but no dedicated always-carried device and not hours a day at three years old. Shaming parents is proposed and immediately challenged as ineffective. Nobody defends the marketing copy itself — the disagreement is entirely about whether “parents will do it anyway” is a reason to build and sell the pacifier.</p>
+</div>
+</article>
+    </ol>
+
+    <div class="shortcut-bar" aria-label="Keyboard shortcuts">
+      <span><kbd>J</kbd> next story</span>
+      <span><kbd>K</kbd> previous story</span>
+      <span><kbd>T</kbd> theme</span>
+    </div>
+
+    <footer class="page-footer">
+      <div class="footer-links"><a href="../">← Daily archive</a><a href="https://tk3369.github.io/hn-daily/" target="_blank" rel="noopener">Published archive ↗</a></div>
+      <span>Monday 2026-10-26 · 10 stories</span>
+    </footer>
+  </main>
+  <div class="toast" role="status" aria-live="polite"></div>
+  <script>
+(() => {
+  const root = document.documentElement;
+  const toggle = document.getElementById('theme-toggle');
+  const entries = [...document.querySelectorAll('[data-story]')];
+  function storedTheme() { try { const t = localStorage.getItem('hn-daily-theme'); return t === 'dark' || t === 'light' ? t : null; } catch (_) { return null; } }
+  function preferredTheme() { return matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'; }
+  function currentTheme() { const a = root.dataset.theme; if (a === 'dark' || a === 'light') return a; return storedTheme() || preferredTheme(); }
+  function setTheme(theme) { const next = theme === 'dark' ? 'dark' : 'light'; const opposite = next === 'dark' ? 'Light' : 'Dark';
+    if (root.dataset.theme !== next) root.dataset.theme = next;
+    toggle.querySelector('.theme-text').textContent = opposite;
+    toggle.setAttribute('aria-label', `Switch to ${opposite} theme (T)`); toggle.title = `Switch to ${opposite} theme (T)`;
+    try { localStorage.setItem('hn-daily-theme', next); } catch (_) {} }
+  function flipTheme() { setTheme(currentTheme() === 'dark' ? 'light' : 'dark'); }
+  setTheme(storedTheme() || preferredTheme());
+  toggle.addEventListener('click', flipTheme);
+  const toast = document.querySelector('.toast'); let toastTimer;
+  function showToast(msg) { toast.textContent = msg; toast.classList.add('show'); clearTimeout(toastTimer); toastTimer = setTimeout(() => toast.classList.remove('show'), 1800); }
+  document.querySelectorAll('.copy-button').forEach((button) => {
+    button.addEventListener('click', async () => {
+      const story = button.closest('.story');
+      const n = story.dataset.story;
+      const tagline = story.querySelector('.tagline').textContent.trim();
+      const execSum = story.querySelector('.exec').textContent.trim();
+      const bullets = [...story.querySelectorAll('.cat-lists .cat')].map(li => {
+        const label = li.querySelector('.cat-label').textContent.trim();
+        const pts = [...li.querySelectorAll('ul li')].map(p => '  \u2022 ' + p.textContent.trim()).join('\n');
+        return '- ' + label + ':\n' + pts;
+      }).join('\n');
+      const link = 'https://tk3369.github.io/hn-daily/2026-10-26/#story-' + n;
+      const text = n + '. ' + tagline + '\n\n' + execSum + '\n' + bullets + '\n\n' + link;
+      try { await navigator.clipboard.writeText(text); button.textContent = 'Copied'; showToast('Story ' + n + ' copied for Threads'); setTimeout(() => { button.textContent = 'Copy for Threads'; }, 1600); }
+      catch (_) { showToast('Copy was blocked by this browser'); }
+    });
+  });
+  document.addEventListener('keydown', (event) => {
+    if (event.metaKey || event.ctrlKey || event.altKey || event.shiftKey) return;
+    const tag = event.target.tagName;
+    if (tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT') return;
+    const key = event.key.toLowerCase();
+    if (key === 't') { event.preventDefault(); flipTheme(); }
+    else if ((key === 'j' || key === 'k') && entries.length) {
+      event.preventDefault();
+      const active = entries.indexOf(document.activeElement);
+      const delta = key === 'j' ? 1 : -1;
+      const next = active < 0 ? (key === 'j' ? 0 : entries.length - 1) : Math.max(0, Math.min(entries.length - 1, active + 1 * delta));
+      entries[next].focus();
+    }
+  });
+})();
+  </script>
+</body>
+</html>
