@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="color-scheme" content="light dark" />
+  <link rel="icon" href="data:," />
+  <title>HN Daily — Tuesday 2026-10-27</title>
+  <style>
+:root { --page:#f1eadb; --paper:#fffaf0; --ink:#20201c; --muted:#6f695f; --hairline:#d9cebc; --accent:#ff5a1f; --comment:#f6efe3; --shadow:0 2px 0 rgba(57,45,25,.08),0 14px 36px rgba(57,45,25,.06); --serif:Georgia,"Times New Roman",serif; --sans:ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; --mono:"SFMono-Regular",Consolas,"Liberation Mono",monospace; }
+html[data-theme="dark"] { --page:#111312; --paper:#191c1a; --ink:#f1eee6; --muted:#aba69b; --hairline:#393b36; --accent:#ff7139; --comment:#222520; --shadow:0 2px 0 rgba(0,0,0,.22),0 18px 42px rgba(0,0,0,.22); }
+* { box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body { margin:0; min-width:280px; color:var(--ink); background:var(--page); font-family:var(--sans); line-height:1.55; -webkit-font-smoothing:antialiased; }
+a { color:inherit; text-underline-offset:3px; text-decoration-thickness:1px; }
+a:hover { color:var(--accent); }
+button,a { -webkit-tap-highlight-color:transparent; }
+button { font:inherit; }
+a:focus-visible,button:focus-visible { outline:3px solid var(--accent); outline-offset:3px; }
+.page { width:min(1080px,calc(100% - 36px)); margin:0 auto; padding:28px 0 72px; }
+.issue-header { display:grid; grid-template-columns:1fr auto; gap:24px; align-items:end; padding:8px 0 26px; border-bottom:3px solid var(--ink); }
+.edition { margin:0 0 9px; color:var(--accent); font:700 12px/1.3 var(--mono); letter-spacing:.09em; text-transform:uppercase; }
+.archive-nav { display:flex; flex-wrap:wrap; gap:8px 20px; margin-bottom:16px; font:700 12px/1 var(--mono); }
+.archive-nav a { min-height:36px; display:inline-flex; align-items:center; color:var(--muted); }
+.archive-nav a:hover { color:var(--accent); }
+h1 { max-width:820px; margin:0; font:700 clamp(34px,5.5vw,62px)/.98 var(--serif); letter-spacing:-.038em; }
+.deck { max-width:730px; margin:17px 0 0; color:var(--muted); font:17px/1.55 var(--sans); }
+.theme-toggle { align-self:start; min-width:86px; min-height:40px; padding:9px 13px; border:1px solid var(--hairline); border-radius:4px; color:var(--ink); background:var(--paper); cursor:pointer; font:700 12px/1 var(--mono); display:inline-flex; align-items:center; gap:8px; }
+.theme-toggle:hover { border-color:var(--accent); color:var(--accent); }
+.theme-dot { width:10px; height:10px; border-radius:50%; background:var(--accent); display:inline-block; flex-shrink:0; }
+.theme-text { line-height:1; }
+.story-list { display:grid; gap:20px; list-style:none; margin:26px 0 0; padding:0; counter-reset:story; }
+.story { counter-increment:story; display:grid; grid-template-columns:72px minmax(0,1fr); gap:26px; padding:26px 30px 28px; background:var(--paper); border-top:4px solid var(--ink); box-shadow:var(--shadow); scroll-margin-top:24px; }
+.story-number { color:var(--accent); font:900 22px/1 var(--mono); letter-spacing:-.04em; padding-top:6px; }
+.story-number::before { content:counter(story,decimal-leading-zero); }
+.tagline { margin:0; max-width:840px; font:700 clamp(24px,3vw,36px)/1.1 var(--serif); letter-spacing:-.028em; }
+.exec { margin:14px 0 0; max-width:840px; font:17px/1.58 var(--sans); }
+.cat-lists { margin:14px 0 0; padding:0; list-style:none; display:grid; gap:10px; max-width:840px; }
+.cat-lists li.cat { font:15px/1.6 var(--sans); }
+.cat-lists .cat-label { font:700 12px/1.6 var(--mono); letter-spacing:.06em; text-transform:uppercase; color:var(--accent); }
+.cat-lists ul { margin:4px 0 0; padding-left:20px; }
+.cat-lists ul li { margin:3px 0; }
+.meta-line { margin:16px 0 0; color:var(--muted); font:700 12px/1.9 var(--mono); overflow-wrap:anywhere; }
+.meta-line a { color:var(--ink); font-weight:800; }
+.meta-line .metrics { color:var(--ink); white-space:nowrap; }
+.story-bar { display:flex; align-items:flex-start; gap:14px; margin-top:4px; }
+.copy-button { flex:0 0 auto; align-self:flex-start; min-height:36px; padding:9px 12px; border:1px solid var(--hairline); border-radius:4px; background:var(--paper); color:var(--ink); cursor:pointer; font:700 12px/1 var(--mono); }
+.copy-button:hover { border-color:var(--accent); color:var(--accent); }
+.hn-comments { margin:18px 0 0; padding:14px 18px; background:var(--comment); border:1px solid var(--hairline); font:15px/1.62 var(--serif); color:var(--ink); }
+.hn-comments strong { font:700 12px/1.6 var(--mono); color:var(--accent); display:block; margin-bottom:6px; }
+.page-footer { display:flex; justify-content:space-between; flex-wrap:wrap; gap:14px; margin-top:64px; padding-top:12px; border-top:1px solid var(--hairline); color:var(--muted); font:12px/1.6 var(--mono); }
+.footer-links { display:flex; flex-wrap:wrap; gap:8px 20px; }
+.footer-links a { min-height:36px; display:inline-flex; align-items:center; color:var(--ink); font-weight:800; }
+.footer-links a:hover { color:var(--accent); }
+.shortcut-bar { display:flex; flex-wrap:wrap; gap:18px; margin-top:28px; color:var(--muted); font:11px/1.5 var(--mono); }
+kbd { display:inline-grid; place-items:center; min-width:22px; height:22px; margin-right:6px; padding:0 6px; border:1px solid var(--hairline); border-bottom-width:2px; border-radius:3px; background:var(--comment); color:var(--ink); font:inherit; font-weight:700; }
+.toast { position:fixed; right:max(18px,env(safe-area-inset-right)); bottom:max(18px,env(safe-area-inset-bottom)); z-index:10; padding:11px 14px; color:var(--paper); background:var(--ink); border:1px solid var(--ink); font:700 12px/1 var(--mono); opacity:0; transform:translateY(8px); pointer-events:none; transition:opacity 160ms ease,transform 160ms ease; }
+.toast.show { opacity:1; transform:translateY(0); }
+@media (max-width:760px) {
+  .page { width:min(100% - 22px,1080px); padding-top:16px; }
+  .issue-header { grid-template-columns:1fr auto; gap:12px; padding-bottom:20px; }
+  h1 { font-size:clamp(34px,10vw,48px); }
+  .deck { grid-column:1 / -1; margin-top:3px; font-size:15px; }
+  .theme-toggle { grid-column:2; grid-row:1; min-width:72px; }
+  .story { grid-template-columns:44px minmax(0,1fr); gap:14px; padding:20px 18px 22px; }
+  .story-number { font-size:16px; padding-top:4px; }
+  .story-bar { flex-direction:column; align-items:stretch; }
+  .copy-button { align-self:flex-start; }
+  .page-footer { display:block; }
+}
+@media (max-width:420px) {
+  .page { width:calc(100% - 16px); }
+  .story { grid-template-columns:1fr; gap:8px; padding:20px 16px 22px; }
+  .story-number { padding-top:0; }
+  .copy-button { width:100%; }
+}
+@media (prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } *,*::before,*::after { transition:none !important; } }
+@media print { :root { --page:#fff;--paper:#fff;--ink:#000;--muted:#444;--hairline:#bbb;--comment:#f5f5f5;--shadow:none; } .page{width:100%;padding:0}.theme-toggle,.copy-button,.toast,.shortcut-bar{display:none}.story{break-inside:avoid;box-shadow:none} }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="issue-header">
+      <div>
+        <nav class="archive-nav" aria-label="HN Daily archive links"><a href="../">← Archive</a><a href="https://tk3369.github.io/hn-daily/" target="_blank" rel="noopener">Published archive ↗</a></nav>
+        <p class="edition"><time datetime="2026-10-27">2026-10-27</time> · Daily brief · Pacific time</p>
+        <h1>HN Daily</h1>
+        <p class="deck">Direct, low-fluff top 10 from Hacker News, daily at 7am PT — hottest by points</p>
+      </div>
+      <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch color theme" title="Toggle theme (T)"><span class="theme-dot" aria-hidden="true"></span><span class="theme-text">Dark</span></button>
+    </header>
+
+    <ol class="story-list" aria-label="Top 10 Hacker News stories">
+<article class="story" id="story-1" data-story="1" data-source="https://www.sec.gov/Archives/edgar/data/2130357/000162828026067168/anthropicpbc-sx1.htm" data-hn="https://news.ycombinator.com/item?id=50242939" data-metric="1659 pts / 1591 comments" tabindex="0" aria-label="Story 1: Anthropic S-1 second day: 1,659 points and 1,591 comments — the filing is now the front page">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">Anthropic S-1 second day: 1,659 points and 1,591 comments — the filing is now the front page</h2>
+<p class="exec">Anthropic, PBC&#x27;s Form S-1 — filed October 26, 2026, applying to list Class A stock on Nasdaq as “ANT” — held the top slot for a second day and more than quintupled its score, from 333 points yesterday to 1,659. The governance is still the story: a Delaware public benefit corporation, a Long-Term Benefit Trust whose Class T stock elects a board majority, and a founder Class F share carrying 50.1% of general voting power, with Class T and Class F carrying no economic rights. Price range and share counts remain blank in the preliminary filing.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The structure</span><ul><li>Public benefit corporation + Long-Term Benefit Trust: financially disinterested trustees elect a board majority via Class T stock</li><li>Founders keep 50.1% of general voting power via a single Class F share held by their LLC; Class T and Class F carry no economic rights</li></ul></li><li class="cat"><span class="cat-label">Why it matters</span><ul><li>An IPO prospectus turns mission language into enforceable structure — here safety governance and founder control are written into the share classes</li><li>Scale of reaction is the signal: 1,591 comments is the largest thread in today’s top ten by a wide margin</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://www.sec.gov/Archives/edgar/data/2130357/000162828026067168/anthropicpbc-sx1.htm" target="_blank" rel="noopener">sec.gov</a> · Discuss: <a href="https://news.ycombinator.com/item?id=50242939" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">1659 pts / 1591 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>The thread again opens with the joke that becomes an argument: what stops someone feeding the S-1 into Claude and reconstructing the company for $200 — the submitter says he is unironically doing it, with an adversarial subagent swarm validating the strategy write-up. Replies name the actual blockers — endless capital, talent and GPUs — which triggers the counter that the filing’s premise is that talent matters less now, then the sharper trust argument: developing a competing model with Claude is already against the terms, commenters claim quality was silently degraded for suspected competitor-building in the past, and one cites the Fable 5 model card’s disclosed safeguards as “sabotage.” Capital, not the document, is the consensus moat.</p>
+</div>
+</article>
+<article class="story" id="story-2" data-story="2" data-source="https://openai.com/index/building-scientific-understanding-with-academic-communities/" data-hn="https://news.ycombinator.com/item?id=50251344" data-metric="1008 pts / 553 comments" tabindex="0" aria-label="Story 2: OpenAI claims three discoveries: local smoothing and Kakeya in all dimensions, ETH false, and QCD existence">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">OpenAI claims three discoveries: local smoothing and Kakeya in all dimensions, ETH false, and QCD existence</h2>
+<p class="exec">OpenAI says its internal models produced three results — a proof of Sogge’s local smoothing conjecture in every dimension, which it says also resolves the Kakeya and Stein restriction conjectures; a refutation of the Exponential Time Hypothesis; and a rigorous existence proof for interacting four-dimensional quantum field theories including QCD. None is peer-reviewed yet. The release process is the experiment: outside experts act as unpaid, NDA-free “shepherds,” the math and computer science papers ship public with Lean formalizations, and the physics group — led by Nobel laureate David Gross — is holding its materials back to write them up itself.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The claims</span><ul><li>Math: local smoothing via a novel auxiliary PDE, AI output Oct 18, Lean formalization Oct 19, paper and Lean public</li><li>Physics: Yang-Mills and QCD existence, shepherded by Gross, Douglas, Jaffe, Klebanov and Nekrasov; artifacts held by the group</li></ul></li><li class="cat"><span class="cat-label">Why it matters</span><ul><li>Machine-checkable Lean proofs separate these claims from a press release: specialists can verify the statement and inspect the proof</li><li>Company-claimed, not settled science — OpenAI itself says it does not seek academic credit and shepherds’ conclusions are their own</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://openai.com/index/building-scientific-understanding-with-academic-communities/" target="_blank" rel="noopener">openai.com</a> · Discuss: <a href="https://news.ycombinator.com/item?id=50251344" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">1008 pts / 553 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>“The title buries the lede” is the opening verdict — the lede being that ETH is false. Much of the thread is verification hygiene: readers confused by a “sorry” at the end of a Lean file are walked to the distinction between the problem-statement file and the actual proof spread across thousands of files in the Algorithms folder, too large for GitHub to show at once. Newcomers ask whether SETH falls too (answer given: yes), and a long explainer concedes the layers of buildup needed while arguing the outside implication is accessible — a system demonstrating unusually clever algorithmic reasoning on k-SAT, the most-studied hard problem in theoretical computer science. Excitement and caution coexist: “What a time to be alive” sits next to repeated insistence on checking the Lean.</p>
+</div>
+</article>
+<article class="story" id="story-3" data-story="3" data-source="https://magazine.sebastianraschka.com/p/building-reasoning-models" data-hn="https://news.ycombinator.com/item?id=50245138" data-metric="768 pts / 104 comments" tabindex="0" aria-label="Story 3: Sebastian Raschka’s reasoning-models-from-scratch course: eight videos, 11+ hours, PyTorch throughout">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">Sebastian Raschka’s reasoning-models-from-scratch course: eight videos, 11+ hours, PyTorch throughout</h2>
+<p class="exec">Sebastian Raschka released the video companion to Build a Reasoning Model (From Scratch): eight videos and over 11 hours of coding, starting from a pre-trained LLM and implementing evaluation, inference-time scaling, reinforcement learning and distillation in Python and PyTorch, using a small pre-trained Qwen3 model. His framing is useful on its own: a reasoning model is a conventional LLM plus post-training — reinforcement learning with verifiable rewards, optionally inference scaling — and that model is the engine inside an agent harness, which adds context management and tools.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">What it covers</span><ul><li>Evaluation, inference-time scaling, reinforcement learning and distillation, coded from scratch — the sequel to his Coding LLMs from the Ground Up course, watchable standalone</li><li>Prerequisite is working PyTorch/tensor familiarity; the method is Raschka’s usual one: every concept introduced, justified, then built</li></ul></li><li class="cat"><span class="cat-label">Why it matters</span><ul><li>From-scratch is a verification strategy: you learn where reasoning behaviour actually comes from instead of treating the model as a black box API</li><li>Free, long and code-first teaching at this level is the scarce input in AI education — most material is either marketing or papers</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://magazine.sebastianraschka.com/p/building-reasoning-models" target="_blank" rel="noopener">magazine.sebastianraschka.com</a> · Discuss: <a href="https://news.ycombinator.com/item?id=50245138" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">768 pts / 104 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>Praise dominates, with a running joke about priority: “Karpathy 2.0” is corrected to contemporaries — CS231n and Raschka’s first ML book both date to 2015, so if anything Karpathy might be Raschka 2.0. Readers testify to the earlier book specifically: super readable, holds your hand, finally made backpropagation via autograd click, and worked well in a study group; several followed it with the reasoning-model book as a second step. The one dissent asks who this is for — if you will truly train a model, tutorials will not cut it, and if you will not, is this a monetisation strategy for a personal brand? The thread does not take the bait; the consensus use case is understanding, not production training.</p>
+</div>
+</article>
+<article class="story" id="story-4" data-story="4" data-source="https://github.com/openai/math/blob/main/preprints/The-Exponential-Time-Hypothesis-is-False-October-25-2026/paper.pdf" data-hn="https://news.ycombinator.com/item?id=50251661" data-metric="690 pts / 256 comments" tabindex="0" aria-label="Story 4: “The Exponential Time Hypothesis Is False” [PDF]: a subexponential exact counter for k-SAT, with Lean proof">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">“The Exponential Time Hypothesis Is False” [PDF]: a subexponential exact counter for k-SAT, with Lean proof</h2>
+<p class="exec">This is the standalone paper behind story 2’s computer science claim, posted separately and voted up on its own: a deterministic algorithm that exactly counts the satisfying assignments of an arbitrary k-CNF formula in superpolynomial but subexponential time — stated in summaries of the Lean formalization as 2^O(n·(log log n)²/√log n) with polynomial space. ETH, used in hundreds of papers to prove lower bounds across graph theory, biology, databases and geometry, says 3-SAT cannot be solved that fast. The paper itself is careful about scope: bounds of the form 2^o(n) do not transfer under general polynomial-time reductions, so this does not by itself give subexponential algorithms for all NP problems.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The result</span><ul><li>Exact counting for fixed-width k-CNF in subexponential time refutes ETH via 3-SAT; Lean verification accompanies the natural-language proof on GitHub (openai/math)</li><li>Shepherds for the CS collaboration: Impagliazzo, Paturi and Williams — established complexity theorists, unpaid and independent</li></ul></li><li class="cat"><span class="cat-label">Why it matters</span><ul><li>If it holds, every conditional lower bound that assumed ETH needs re-examination — the assumption was load-bearing across multiple fields</li><li>It is not P=NP: subexponential is still far from polynomial, and the authors flag the reduction-transfer limit in the paper itself</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://github.com/openai/math/blob/main/preprints/The-Exponential-Time-Hypothesis-is-False-October-25-2026/paper.pdf" target="_blank" rel="noopener">github.com</a> · Discuss: <a href="https://news.ycombinator.com/item?id=50251661" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">690 pts / 256 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>“This seems huge, like not quite P=NP but in the same league — am I missing something?” gets a flat “No. It’s huge.” Then the thread does the careful work: it is not P=NP, and the claim that NP is therefore subexponential is corrected in detail — reductions to 3-SAT can blow up variables, and the paper’s own note says 2^o(n) bounds do not survive general polynomial reductions. The counterargument that survives is narrower and still large: anything linearly reducible to k-SAT is now subexponential, linear reductions just became much more important, and the technique may apply to other problems for different reasons. Scepticism is about scope, not dismissal.</p>
+</div>
+</article>
+<article class="story" id="story-5" data-story="5" data-source="https://css-tricks.com/css-tricks-has-a-new-owner/" data-hn="https://news.ycombinator.com/item?id=50245831" data-metric="511 pts / 108 comments" tabindex="0" aria-label="Story 5: CSS-Tricks is independent again: Geoff Graham buys it back from DigitalOcean, four years after the $4m sale">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">CSS-Tricks is independent again: Geoff Graham buys it back from DigitalOcean, four years after the $4m sale</h2>
+<p class="exec">CSS-Tricks has a new owner — longtime editor Geoff Graham, who has worked on the site for 12 years and is making it his full-time job. DigitalOcean bought the site in 2022 from founder Chris Coyier, who started it in 2007; Graham says DigitalOcean later left it in limbo, and now he has “the keys to the castle.” The economics are stated plainly: return to the pre-DigitalOcean advertising model — display ads, sponsored posts and newsletter sponsors sold as real packages — because that is how the lights stay on. A companion post reports Coyier floated a $100,000 figure on ShopTalk Show, against the $4 million 2022 sale price; that figure is not in Graham’s own announcement.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The change</span><ul><li>Owner: Geoff Graham, editor for 12 years, with a small team; stated aim is a real, inclusive community for front-end learners at every level</li><li>Revenue plan is the old one: advertising packages, sponsored posts and newsletter sponsorship, approached differently than under DigitalOcean</li></ul></li><li class="cat"><span class="cat-label">Why it matters</span><ul><li>A 2007 archive of front-end knowledge stays in the hands of the people who wrote it, instead of decaying inside a cloud company whose priorities moved on</li><li>The hard question is unchanged: developer education traffic has been shrinking in the AI era, so independence solves ownership, not demand</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://css-tricks.com/css-tricks-has-a-new-owner/" target="_blank" rel="noopener">css-tricks.com</a> · Discuss: <a href="https://news.ycombinator.com/item?id=50245831" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">511 pts / 108 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>Affection first: readers who learned the basics of web development from CSS-Tricks say it has been with them their entire careers, and wish Graham luck while admitting they do not know how an independent blog works in this era. Viability is the main worry — selling to DigitalOcean is called a mistake in hindsight, Tailwind’s team shrinking is offered as the cautionary parallel, and one reader asks bluntly how anyone pulls a six-figure salary from a blog in 2026; another notes a mostly static site can scale its costs down. The second argument is about CSS itself: one side says LLMs are bad at design and taste cannot be distilled, the other replies LLMs excel at CSS precisely because explainers like CSS-Tricks trained them — and that the appetite to lower quality to cut cost is the real threat.</p>
+</div>
+</article>
+<article class="story" id="story-6" data-story="6" data-source="https://blog.enlyth.com/posts/oldest-windows-gui-app-win-11/" data-hn="https://news.ycombinator.com/item?id=50248055" data-metric="479 pts / 282 comments" tabindex="0" aria-label="Story 6: Oldest GUI app that still runs on Windows 11: CDPLAYER.EXE linked 16 Nov 1992, almost 34 years old">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">Oldest GUI app that still runs on Windows 11: CDPLAYER.EXE linked 16 Nov 1992, almost 34 years old</h2>
+<p class="exec">The hunt rules out 16-bit Windows programs — 64-bit Windows has no NTVDM — so the search is early NT. FreeCell from Win32s, dated 22 Feb 1993 and fully playable, was the previous answer. Digging through NT 3.1 pre-release builds on the Internet Archive found older: CDPLAYER.EXE from Build 347, linked 16 November 1992. Early builds mostly fail — draft PE formats and a cdecl-vs-stdcall calling-convention change crash them — but CD Player avoids the bundled C runtime and uses the system crtdll.dll, which Windows 11 still ships in SysWOW64. It runs; with a small cdemu.dll emulating a CD-ROM drive, it actually plays. Cheating section included: via otvdm, Reversi from Windows 1.01 (15 Nov 1985) also runs.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The result</span><ul><li>Unmodified winner: CDPLAYER.EXE, 16 Nov 1992, almost 34 years old, running on current Windows 11; earlier answer was FreeCell, 22 Feb 1993</li><li>Why it survives: fixed stdcall convention by that build, no bundled runtime — it links the system crtdll.dll that Windows still ships</li></ul></li><li class="cat"><span class="cat-label">Why it matters</span><ul><li>A measured data point on backward compatibility as a platform strategy: a 1992 binary runs because Microsoft kept the ABI and the DLL</li><li>The contrast in-thread is Linux, where commenters note even cross-distro binaries from this decade are unreliable without containers</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://blog.enlyth.com/posts/oldest-windows-gui-app-win-11/" target="_blank" rel="noopener">blog.enlyth.com</a> · Discuss: <a href="https://news.ycombinator.com/item?id=50248055" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">479 pts / 282 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>Nostalgia for legible UI opens it — buttons that looked like buttons, functionality not hidden, and a pre-convention shuffle icon next to a repeat icon that survived. Then the thread tries to beat the date: an X11 app from the 1980s via XWayland is proposed and doubted as an unmodified binary, BSDs are nominated because FreeBSD and NetBSD document a.out / 4.3BSD ABI support and NetBSD still runs SunOS binaries including graphical ones, possibly pre-1992 on SPARC. The other half is the Linux comparison — “I can’t even run a binary from one distro to another” — with containers defended as the fix and criticised as an admission: the model some use for why Docker exists is Linux ABI incompatibility.</p>
+</div>
+</article>
+<article class="story" id="story-7" data-story="7" data-source="https://www.bbc.com/future/article/20261023-how-solar-became-bigger-than-nuclear" data-hn="https://news.ycombinator.com/item?id=50245385" data-metric="435 pts / 612 comments" tabindex="0" aria-label="Story 7: Solar overtakes nuclear: 1% of world power a decade ago, ~10% in 2026, and “offensively cheap”">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">Solar overtakes nuclear: 1% of world power a decade ago, ~10% in 2026, and “offensively cheap”</h2>
+<p class="exec">BBC Future, analysing Ember data, reports solar generation quietly overtook nuclear in 2025 and, over the 12 months to September 2026, produced 13% more electricity than all the world’s nuclear plants. A decade ago solar was 1% of global power; in 2026 it will almost certainly reach 10%. In 2025 solar met three-quarters of the growth in world electricity demand — the fastest-growing source of new electricity in history. Oxford’s Jan Rosenow names the forecasting failure directly: mainstream outlooks assumed linear growth and slowly falling costs, and got both wrong, year after year. Drivers in the piece include Chinese manufacturing scale pushing module prices to record lows, and batteries largely solving the daily shift of midday sun into the evening; seasonal storage remains hard.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The numbers</span><ul><li>Ember via BBC: solar passed nuclear in 2025; +13% over nuclear in the 12 months to Sep 2026; ~1% of world power a decade ago to ~10% in 2026</li><li>Pakistan as the speed case, per Rosenow: solar went from its fifth-largest electricity source in 2023 to its largest in 2025</li></ul></li><li class="cat"><span class="cat-label">Why it matters</span><ul><li>Generation share, not capacity announcements: solar is now producing more electricity than a technology that has been a mainstay since the late 1970s</li><li>Forecasting lesson generalises: exponential cost-and-deployment curves beat linear institutional projections — the experts quoted say so about their own field</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://www.bbc.com/future/article/20261023-how-solar-became-bigger-than-nuclear" target="_blank" rel="noopener">bbc.com</a> · Discuss: <a href="https://news.ycombinator.com/item?id=50245385" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">435 pts / 612 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>The global story immediately becomes a US rooftop quote: why $20k quotes if panels are offensively cheap? Labour is proposed and disputed — Australia pays higher wages yet installs at a third to a quarter of US cost. From there the thread converges on regulation, permitting, code requirements and grid-connection gatekeeping, with installers described by some as financing scams whose margin is the 20-year loan, not the hardware; others counter with cheaper direct installers and sub-$100 panels bought direct. California’s adoption of instant online permitting (SB 379) is offered as evidence permitting alone did not fix costs. Nobody disputes the Ember numbers — the fight is entirely about why cheap hardware does not produce cheap installed systems in the US. At 612 comments against 435 points, it is today’s most contested energy thread.</p>
+</div>
+</article>
+<article class="story" id="story-8" data-story="8" data-source="https://brennenputh.me/blog/printable-websites/" data-hn="https://news.ycombinator.com/item?id=50241664" data-metric="370 pts / 207 comments" tabindex="0" aria-label="Story 8: Websites should be printable: a @media print stylesheet, 12pt body text, and no gray links on paper">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">Websites should be printable: a @media print stylesheet, 12pt body text, and no gray links on paper</h2>
+<p class="exec">Brennen Puth reads a lot of printed papers, marks them up at a whiteboard, and tested his own site’s Ctrl-P output: text too big, header awful, links gray and unreadable in black-and-white. His fix is a small, copyable print stylesheet — .onlyPrint and .noPrint classes to include an attribution and drop the header, body text set to 12pt with headers scaled above it, code-block tweaks, and links forced black. He invites anyone to take the CSS. The post already carries an update: feedback from Lobsters and HN identified obvious misses, and he is simplifying the stylesheet further.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The snippet</span><ul><li>@media print rules: hide screen-only elements, show print-only ones, 12pt body / 13–16pt headings, black links, bordered code blocks</li><li>Known unsolved problem, stated in the post: code blocks want to stay in one chunk and not break across page borders</li></ul></li><li class="cat"><span class="cat-label">Why it matters</span><ul><li>Print is an accessibility and archiving surface that costs one stylesheet: print-to-PDF is how many readers save, annotate and share articles</li><li>Neglect is measurable in minutes: his own untested site failed on type size, header and link colour — the three things a print pass fixes first</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://brennenputh.me/blog/printable-websites/" target="_blank" rel="noopener">brennenputh.me</a> · Discuss: <a href="https://news.ycombinator.com/item?id=50241664" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">370 pts / 207 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>Half the thread barely prints any more; the other half prints constantly and explains why — papers side by side on a desk, coloured fineliner annotation, no menus, no mode errors, and AI plans printed to think through away from the screen. E-ink is proposed and respectfully declined for multi-page work. The strongest evidence is commercial: a vehicle-listing UX designer recounts users printing pages and spreadsheets to compare cars on kitchen tables, a React redesign that printed mangled, angry feedback, and print fixes done off the record because the work was never prioritised — with the suspected reason stated plainly: a printed page shows no new ads. Print-to-PDF archiving is the quiet majority use case.</p>
+</div>
+</article>
+<article class="story" id="story-9" data-story="9" data-source="https://humantransit.org/2024/12/one-of-the-greatest-inventions-in-the-history-of-human-transport.html" data-hn="https://news.ycombinator.com/item?id=50200152" data-metric="302 pts / 157 comments" tabindex="0" aria-label="Story 9: Blaise Pascal invented fixed-route public transport: Paris, 1662, five sols, every 7.5–15 minutes (2024)">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">Blaise Pascal invented fixed-route public transport: Paris, 1662, five sols, every 7.5–15 minutes (2024)</h2>
+<p class="exec">Jarrett Walker’s Human Transit essay argues Pascal’s last project was not theology but transit: the carrosses à cinq sols, launched 18 March 1662 and network-complete by July, weeks before his death at 39. Eight-passenger horse-drawn carriages ran fixed, signed routes at 7.5–15 minute frequencies — frequent enough to just go out and wait — across multiple connecting lines including an orbital. Walker’s point is the invention is the constraint: carriages could go anywhere, and the usefulness came from choosing not to, following paths people could remember and plan around. The network design already shows modern principles — lines spaced apart, perpendicular crossings to maximise connections, straight cross-city routes, and an orbital loop. Its main failure was overcrowding.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The system</span><ul><li>Paris 1662: fixed routes with endpoint signs, fixed five-sol fare, 7.5–15 min headways, multiple lines forming a network, first line 18 March, complete by July</li><li>Source is a Dec 2024 essay resurfacing today; Walker credits Taras Grescoe’s reporting and notes Wikipedia’s “invented the bus line” is too narrow</li></ul></li><li class="cat"><span class="cat-label">Why it matters</span><ul><li>Fixed-route service is an information invention, not a vehicle invention: predictability is what lets strangers plan trips without negotiation</li><li>Design principles visible in a 1662 hand-drawn network — spacing, perpendicularity, orbitals — are the same ones transit planners still teach</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://humantransit.org/2024/12/one-of-the-greatest-inventions-in-the-history-of-human-transport.html" target="_blank" rel="noopener">humantransit.org</a> · Discuss: <a href="https://news.ycombinator.com/item?id=50200152" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">302 pts / 157 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>The priority claim gets a well-sourced challenge: the Dutch trekschuit, from 1632, ran fixed passenger routes on canals dug straight for the purpose and carried 30 passengers — land-adjacent, scheduled and cheap, with an extensive network by 1700. Others debate whether ancient ferries and Roman scheduled sailings count, noting wind and tide made true scheduling unreliable before steam. A second thread argues about the century of maximum change — 1865–1965, extended to 1969 for the Moon landing — via grandparents who drove horse wagons and later lived with personal computers. The forward-looking comment asks the modern version of Pascal’s question: with anonymised travel data and existing fleets, how much efficiency is current route design leaving on the table?</p>
+</div>
+</article>
+<article class="story" id="story-10" data-story="10" data-source="https://open3dlab.com/news/roblox-downloaded-145-gb-of-models-from-our-sites/" data-hn="https://news.ycombinator.com/item?id=50256985" data-metric="294 pts / 183 comments" tabindex="0" aria-label="Story 10: Roblox crawler downloaded 145.5 GB from Open3DLab sites — 1,027 files, 712 projects, adult content included, no reply">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">Roblox crawler downloaded 145.5 GB from Open3DLab sites — 1,027 files, 712 projects, adult content included, no reply</h2>
+<p class="exec">Open3DLab says a crawler identifying as trellis2-data-sourcing/1.0 (3D foundation model research, with a Roblox contact address) read the main page of 18,926 projects — practically the entire catalogue across Open3DLab, SFMLab and SmutBase — in 26,429 requests over 34 hours from a single AWS address on 15–16 October, then downloaded complete copies of 1,027 files from 712 projects, 145.5 GB in all. It retrieved their robots.txt and ignored it, and ignored terms forbidding scraping; 423 of the 712 projects are licensed non-commercial only. Included: 364 files (54.8 GB) from the adults-only SmutBase. The sites blocked it on 18 October, emailed the user-agent address twice, and report no reply from Roblox. Their stated assumption — labelled speculation in the post — is AI training data for Roblox’s Cube 3D foundation model work.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The numbers</span><ul><li>26,429 requests / 34 hours / one AWS address; 1,027 files, 145.5 GB, 712 projects; free download-server caps were the main limit on how much was taken</li><li>Licence exposure: 423 of 712 projects non-commercial only; 345 projects (62.6 GB) adult content when SFMLab adult projects are included</li></ul></li><li class="cat"><span class="cat-label">Why it matters</span><ul><li>Robots.txt and terms are norms, not enforcement: a crawler that identifies itself honestly can still take everything before a small site notices</li><li>Non-response is part of the story — two emails, no reply, and scraping attempts resumed on 19–20 October against the blocks</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://open3dlab.com/news/roblox-downloaded-145-gb-of-models-from-our-sites/" target="_blank" rel="noopener">open3dlab.com</a> · Discuss: <a href="https://news.ycombinator.com/item?id=50256985" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">294 pts / 183 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>The practical defence thread dominates: block all AWS, DigitalOcean and Azure traffic unless you have a valid reason to serve datacentres, since major providers publish their IP ranges. Counterarguments arrive fast — most bot traffic now comes from residential proxies (one commenter’s traffic this week is mostly residential IPs all claiming the same Chrome 155 on Linux, possibly from “superbox” TV-streamer devices), and blocking cloud ranges locks out office and VDI users whose egress is Azure or GCP, which one business learned after banning datacentre IPs and having to remove the rule. Cloudflare Turnstile is offered as the middle path. The Roblox conduct itself draws little defence in the captured comments; the argument is about what a small site can actually do.</p>
+</div>
+</article>
+    </ol>
+
+    <div class="shortcut-bar" aria-label="Keyboard shortcuts">
+      <span><kbd>J</kbd> next story</span>
+      <span><kbd>K</kbd> previous story</span>
+      <span><kbd>T</kbd> theme</span>
+    </div>
+
+    <footer class="page-footer">
+      <div class="footer-links"><a href="../">← Daily archive</a><a href="https://tk3369.github.io/hn-daily/" target="_blank" rel="noopener">Published archive ↗</a></div>
+      <span>Tuesday 2026-10-27 · 10 stories</span>
+    </footer>
+  </main>
+  <div class="toast" role="status" aria-live="polite"></div>
+  <script>
+(() => {
+  const root = document.documentElement;
+  const toggle = document.getElementById('theme-toggle');
+  const entries = [...document.querySelectorAll('[data-story]')];
+  function storedTheme() { try { const t = localStorage.getItem('hn-daily-theme'); return t === 'dark' || t === 'light' ? t : null; } catch (_) { return null; } }
+  function preferredTheme() { return matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'; }
+  function currentTheme() { const a = root.dataset.theme; if (a === 'dark' || a === 'light') return a; return storedTheme() || preferredTheme(); }
+  function setTheme(theme) { const next = theme === 'dark' ? 'dark' : 'light'; const opposite = next === 'dark' ? 'Light' : 'Dark';
+    if (root.dataset.theme !== next) root.dataset.theme = next;
+    toggle.querySelector('.theme-text').textContent = opposite;
+    toggle.setAttribute('aria-label', `Switch to ${opposite} theme (T)`); toggle.title = `Switch to ${opposite} theme (T)`;
+    try { localStorage.setItem('hn-daily-theme', next); } catch (_) {} }
+  function flipTheme() { setTheme(currentTheme() === 'dark' ? 'light' : 'dark'); }
+  setTheme(storedTheme() || preferredTheme());
+  toggle.addEventListener('click', flipTheme);
+  const toast = document.querySelector('.toast'); let toastTimer;
+  function showToast(msg) { toast.textContent = msg; toast.classList.add('show'); clearTimeout(toastTimer); toastTimer = setTimeout(() => toast.classList.remove('show'), 1800); }
+  document.querySelectorAll('.copy-button').forEach((button) => {
+    button.addEventListener('click', async () => {
+      const story = button.closest('.story');
+      const n = story.dataset.story;
+      const tagline = story.querySelector('.tagline').textContent.trim();
+      const execSum = story.querySelector('.exec').textContent.trim();
+      const bullets = [...story.querySelectorAll('.cat-lists .cat')].map(li => {
+        const label = li.querySelector('.cat-label').textContent.trim();
+        const pts = [...li.querySelectorAll('ul li')].map(p => '  \u2022 ' + p.textContent.trim()).join('\n');
+        return '- ' + label + ':\n' + pts;
+      }).join('\n');
+      const link = 'https://tk3369.github.io/hn-daily/2026-10-27/#story-' + n;
+      const text = n + '. ' + tagline + '\n\n' + execSum + '\n' + bullets + '\n\n' + link;
+      try { await navigator.clipboard.writeText(text); button.textContent = 'Copied'; showToast('Story ' + n + ' copied for Threads'); setTimeout(() => { button.textContent = 'Copy for Threads'; }, 1600); }
+      catch (_) { showToast('Copy was blocked by this browser'); }
+    });
+  });
+  document.addEventListener('keydown', (event) => {
+    if (event.metaKey || event.ctrlKey || event.altKey || event.shiftKey) return;
+    const tag = event.target.tagName;
+    if (tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT') return;
+    const key = event.key.toLowerCase();
+    if (key === 't') { event.preventDefault(); flipTheme(); }
+    else if ((key === 'j' || key === 'k') && entries.length) {
+      event.preventDefault();
+      const active = entries.indexOf(document.activeElement);
+      const delta = key === 'j' ? 1 : -1;
+      const next = active < 0 ? (key === 'j' ? 0 : entries.length - 1) : Math.max(0, Math.min(entries.length - 1, active + 1 * delta));
+      entries[next].focus();
+    }
+  });
+})();
+  </script>
+</body>
+</html>
