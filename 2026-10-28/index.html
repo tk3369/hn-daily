@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="color-scheme" content="light dark" />
+  <link rel="icon" href="data:," />
+  <title>HN Daily — Wednesday 2026-10-28</title>
+  <style>
+:root { --page:#f1eadb; --paper:#fffaf0; --ink:#20201c; --muted:#6f695f; --hairline:#d9cebc; --accent:#ff5a1f; --comment:#f6efe3; --shadow:0 2px 0 rgba(57,45,25,.08),0 14px 36px rgba(57,45,25,.06); --serif:Georgia,"Times New Roman",serif; --sans:ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; --mono:"SFMono-Regular",Consolas,"Liberation Mono",monospace; }
+html[data-theme="dark"] { --page:#111312; --paper:#191c1a; --ink:#f1eee6; --muted:#aba69b; --hairline:#393b36; --accent:#ff7139; --comment:#222520; --shadow:0 2px 0 rgba(0,0,0,.22),0 18px 42px rgba(0,0,0,.22); }
+* { box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body { margin:0; min-width:280px; color:var(--ink); background:var(--page); font-family:var(--sans); line-height:1.55; -webkit-font-smoothing:antialiased; }
+a { color:inherit; text-underline-offset:3px; text-decoration-thickness:1px; }
+a:hover { color:var(--accent); }
+button,a { -webkit-tap-highlight-color:transparent; }
+button { font:inherit; }
+a:focus-visible,button:focus-visible { outline:3px solid var(--accent); outline-offset:3px; }
+.page { width:min(1080px,calc(100% - 36px)); margin:0 auto; padding:28px 0 72px; }
+.issue-header { display:grid; grid-template-columns:1fr auto; gap:24px; align-items:end; padding:8px 0 26px; border-bottom:3px solid var(--ink); }
+.edition { margin:0 0 9px; color:var(--accent); font:700 12px/1.3 var(--mono); letter-spacing:.09em; text-transform:uppercase; }
+.archive-nav { display:flex; flex-wrap:wrap; gap:8px 20px; margin-bottom:16px; font:700 12px/1 var(--mono); }
+.archive-nav a { min-height:36px; display:inline-flex; align-items:center; color:var(--muted); }
+.archive-nav a:hover { color:var(--accent); }
+h1 { max-width:820px; margin:0; font:700 clamp(34px,5.5vw,62px)/.98 var(--serif); letter-spacing:-.038em; }
+.deck { max-width:730px; margin:17px 0 0; color:var(--muted); font:17px/1.55 var(--sans); }
+.theme-toggle { align-self:start; min-width:86px; min-height:40px; padding:9px 13px; border:1px solid var(--hairline); border-radius:4px; color:var(--ink); background:var(--paper); cursor:pointer; font:700 12px/1 var(--mono); display:inline-flex; align-items:center; gap:8px; }
+.theme-toggle:hover { border-color:var(--accent); color:var(--accent); }
+.theme-dot { width:10px; height:10px; border-radius:50%; background:var(--accent); display:inline-block; flex-shrink:0; }
+.theme-text { line-height:1; }
+.story-list { display:grid; gap:20px; list-style:none; margin:26px 0 0; padding:0; counter-reset:story; }
+.story { counter-increment:story; display:grid; grid-template-columns:72px minmax(0,1fr); gap:26px; padding:26px 30px 28px; background:var(--paper); border-top:4px solid var(--ink); box-shadow:var(--shadow); scroll-margin-top:24px; }
+.story-number { color:var(--accent); font:900 22px/1 var(--mono); letter-spacing:-.04em; padding-top:6px; }
+.story-number::before { content:counter(story,decimal-leading-zero); }
+.tagline { margin:0; max-width:840px; font:700 clamp(24px,3vw,36px)/1.1 var(--serif); letter-spacing:-.028em; }
+.exec { margin:14px 0 0; max-width:840px; font:17px/1.58 var(--sans); }
+.cat-lists { margin:14px 0 0; padding:0; list-style:none; display:grid; gap:10px; max-width:840px; }
+.cat-lists li.cat { font:15px/1.6 var(--sans); }
+.cat-lists .cat-label { font:700 12px/1.6 var(--mono); letter-spacing:.06em; text-transform:uppercase; color:var(--accent); }
+.cat-lists ul { margin:4px 0 0; padding-left:20px; }
+.cat-lists ul li { margin:3px 0; }
+.meta-line { margin:16px 0 0; color:var(--muted); font:700 12px/1.9 var(--mono); overflow-wrap:anywhere; }
+.meta-line a { color:var(--ink); font-weight:800; }
+.meta-line .metrics { color:var(--ink); white-space:nowrap; }
+.story-bar { display:flex; align-items:flex-start; gap:14px; margin-top:4px; }
+.copy-button { flex:0 0 auto; align-self:flex-start; min-height:36px; padding:9px 12px; border:1px solid var(--hairline); border-radius:4px; background:var(--paper); color:var(--ink); cursor:pointer; font:700 12px/1 var(--mono); }
+.copy-button:hover { border-color:var(--accent); color:var(--accent); }
+.hn-comments { margin:18px 0 0; padding:14px 18px; background:var(--comment); border:1px solid var(--hairline); font:15px/1.62 var(--serif); color:var(--ink); }
+.hn-comments strong { font:700 12px/1.6 var(--mono); color:var(--accent); display:block; margin-bottom:6px; }
+.page-footer { display:flex; justify-content:space-between; flex-wrap:wrap; gap:14px; margin-top:64px; padding-top:12px; border-top:1px solid var(--hairline); color:var(--muted); font:12px/1.6 var(--mono); }
+.footer-links { display:flex; flex-wrap:wrap; gap:8px 20px; }
+.footer-links a { min-height:36px; display:inline-flex; align-items:center; color:var(--ink); font-weight:800; }
+.footer-links a:hover { color:var(--accent); }
+.shortcut-bar { display:flex; flex-wrap:wrap; gap:18px; margin-top:28px; color:var(--muted); font:11px/1.5 var(--mono); }
+kbd { display:inline-grid; place-items:center; min-width:22px; height:22px; margin-right:6px; padding:0 6px; border:1px solid var(--hairline); border-bottom-width:2px; border-radius:3px; background:var(--comment); color:var(--ink); font:inherit; font-weight:700; }
+.toast { position:fixed; right:max(18px,env(safe-area-inset-right)); bottom:max(18px,env(safe-area-inset-bottom)); z-index:10; padding:11px 14px; color:var(--paper); background:var(--ink); border:1px solid var(--ink); font:700 12px/1 var(--mono); opacity:0; transform:translateY(8px); pointer-events:none; transition:opacity 160ms ease,transform 160ms ease; }
+.toast.show { opacity:1; transform:translateY(0); }
+@media (max-width:760px) {
+  .page { width:min(100% - 22px,1080px); padding-top:16px; }
+  .issue-header { grid-template-columns:1fr auto; gap:12px; padding-bottom:20px; }
+  h1 { font-size:clamp(34px,10vw,48px); }
+  .deck { grid-column:1 / -1; margin-top:3px; font-size:15px; }
+  .theme-toggle { grid-column:2; grid-row:1; min-width:72px; }
+  .story { grid-template-columns:44px minmax(0,1fr); gap:14px; padding:20px 18px 22px; }
+  .story-number { font-size:16px; padding-top:4px; }
+  .story-bar { flex-direction:column; align-items:stretch; }
+  .copy-button { align-self:flex-start; }
+  .page-footer { display:block; }
+}
+@media (max-width:420px) {
+  .page { width:calc(100% - 16px); }
+  .story { grid-template-columns:1fr; gap:8px; padding:20px 16px 22px; }
+  .story-number { padding-top:0; }
+  .copy-button { width:100%; }
+}
+@media (prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } *,*::before,*::after { transition:none !important; } }
+@media print { :root { --page:#fff;--paper:#fff;--ink:#000;--muted:#444;--hairline:#bbb;--comment:#f5f5f5;--shadow:none; } .page{width:100%;padding:0}.theme-toggle,.copy-button,.toast,.shortcut-bar{display:none}.story{break-inside:avoid;box-shadow:none} }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="issue-header">
+      <div>
+        <nav class="archive-nav" aria-label="HN Daily archive links"><a href="../">← Archive</a><a href="https://tk3369.github.io/hn-daily/" target="_blank" rel="noopener">Published archive ↗</a></nav>
+        <p class="edition"><time datetime="2026-10-28">2026-10-28</time> · Daily brief · Pacific time</p>
+        <h1>HN Daily</h1>
+        <p class="deck">Direct, low-fluff top 10 from Hacker News, daily at 7am PT — hottest by points</p>
+      </div>
+      <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch color theme" title="Toggle theme (T)"><span class="theme-dot" aria-hidden="true"></span><span class="theme-text">Dark</span></button>
+    </header>
+
+    <ol class="story-list" aria-label="Top 10 Hacker News stories">
+<article class="story" id="story-1" data-story="1" data-source="https://ghostty.org/docs/install/release-notes/1-4-0" data-hn="https://news.ycombinator.com/item?id=50261998" data-metric="1148 pts / 366 comments" tabindex="0" aria-label="Story 1: Ghostty 1.4: first non-Kitty terminal with a 100% complete Kitty graphics implementation, animation included">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">Ghostty 1.4: first non-Kitty terminal with a 100% complete Kitty graphics implementation, animation included</h2>
+<p class="exec">Ghostty 1.4.0, released October 27, 2026, is seven months of work from 172 contributors across 2,889 commits. Headline items: large performance and memory improvements, a complete Kitty graphics implementation including animation and relative placements — the first non-Kitty terminal to do so, after a full conformance pass against the spec and Kitty itself — SSH integration improvements, and macOS 27 support. The notes also carry a stack of security fixes for hostile terminal output: paste protection that missed carriage returns, Kitty graphics commands that could crash the terminal or touch files outside allowed temp directories, and tmux control-mode crashes that needed no tmux installed.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">What shipped</span><ul><li>Kitty graphics: frame transmission, composition, playback control and relative placements; animations pause while the terminal is not visible</li><li>Security: fixes for paste-protection bypass via carriage returns, malicious graphics/tmux-control output, and macOS cmd-click on crafted OSC 8 links</li></ul></li><li class="cat"><span class="cat-label">Why it matters</span><ul><li>Terminals render untrusted output all day — several of these bugs triggered on display alone, no click needed</li><li>A complete second implementation of the Kitty graphics protocol makes it a real standard instead of one program’s feature</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://ghostty.org/docs/install/release-notes/1-4-0" target="_blank" rel="noopener">ghostty.org</a> · Discuss: <a href="https://news.ycombinator.com/item?id=50261998" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">1148 pts / 366 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>Loyalty and defection reports alternate. Long-time users call it snappy and settled; one says most of their work has shifted into Emacs via ghostel, built on libghostty, whose progress a maintainer stops by to highlight. The sceptical line is portability: WezTerm users stay for Windows support and one shared config across machines, and a Konsole user asks what any of the new terminals offers over it, missing only iTerm2-style tmux -CC integration. Two smaller threads: a user who left over strange SSH behaviour hopes this release fixes it and lets them ditch iTerm2, and another hopes no LLM features get added — “it’s honestly perfect as it is, just nerd performance tweaks.” A question to Mitchell Hashimoto about the promised move away from GitHub sits in the captured comments without an answer.</p>
+</div>
+</article>
+<article class="story" id="story-2" data-story="2" data-source="https://deepmind.google/blog/genie-4-a-new-generation-of-world-simulation/" data-hn="https://news.ycombinator.com/item?id=50261319" data-metric="955 pts / 547 comments" tabindex="0" aria-label="Story 2: Genie 4: DeepMind’s world model generates native audio and dialogue, with Gemini steering the simulation">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">Genie 4: DeepMind’s world model generates native audio and dialogue, with Gemini steering the simulation</h2>
+<p class="exec">Google DeepMind announced Genie 4 on October 27: a real-time interactive world model that is natively multimodal — music, ambient sound and interactive dialogue generated together with the world. Gemini Omni anchors appearance and behaviour, and Gemini 3.8 Flash sits in the loop as a guiding agent, watching frames, breaking goals into steps and checking each step landed; a robotics experiment pairs it with Gemini 4 Argon to steer an Apptronik Apollo humanoid through a game of checkers inside the simulation. Rollout is a research preview for trusted testers, then Google AI Ultra subscribers via Project Genie and early-access Gemini API / AI Studio partners. DeepMind states the limits itself: object permanence and visual detail still drift over longer sessions and after many prompt edits.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The claims</span><ul><li>Real-time steering by natural language — change weather, camera, add people — while Gemini keeps the scene coherent between inputs</li><li>All generated video and audio carries SynthID watermarking; testers so far span film pre-visualization, photojournalism and game prototyping</li></ul></li><li class="cat"><span class="cat-label">Why it matters</span><ul><li>The pitch is training environments: infinitely variable, safe simulations for robots and agents before real-world trials</li><li>Stated limitations are the honest part — coherence holds over short sessions, not yet over long ones</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://deepmind.google/blog/genie-4-a-new-generation-of-world-simulation/" target="_blank" rel="noopener">deepmind.google</a> · Discuss: <a href="https://news.ycombinator.com/item?id=50261319" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">955 pts / 547 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>Scepticism leads, and it is specific. Viewers freeze-frame the demos: part of a castle, catapult included, disappears between camera turns on the dragon flight; a marble bust dropped on a watermelon should have toppled and does not; a character’s expression and tone miss the scene she is in. Several say player control looks worse than Genie 3 — closer to AI-generated video with key widgets drawn on top than to a responsive world. The impressed minority points to the painting-becomes-interactive-scene clip. The strategic argument runs separately: world models as the future game-distribution layer — no shipped binary, simulation streamed from the vendor’s cloud, “Stadia plus world models equals a new generation of DRM” — and an open cost question nobody answers: how much compute sits behind each 30-second world?</p>
+</div>
+</article>
+<article class="story" id="story-3" data-story="3" data-source="https://lwn.net/SubscriberLink/1102102/0c00e4d550f25f8c/" data-hn="https://news.ycombinator.com/item?id=50257419" data-metric="545 pts / 297 comments" tabindex="0" aria-label="Story 3: Python’s experimental JIT is on its way out: PEP 836 withdrawn after the steering council asked for guarantees">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">Python’s experimental JIT is on its way out: PEP 836 withdrawn after the steering council asked for guarantees</h2>
+<p class="exec">LWN reports (October 26) that CPython’s experimental just-in-time compiler, merged by Brandt Bucher in early 2024 for the 3.13 release under the informational PEP 744, is to be removed. In June the steering council paused JIT work on the main branch until a standards-track PEP addressed maintenance, compatibility, clear success metrics and a timeline. The maintainers wrote that PEP — 836, “JIT Go Brrr” — and, after months of discussion, have now withdrawn it. The council’s stated worry was interference: getting the JIT to play well with instrumentation, debugging and profiling, alongside external JITs such as CinderX and JIT-adjacent tools like Numba and PyTorch’s compile. Subscriber-link story; the headline facts are in LWN’s free summary.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The sequence</span><ul><li>2024: JIT lands experimentally for 3.13 without a standards-track PEP; PEP 744 documents it after the fact</li><li>June 2026: council pauses the work pending a real PEP; October 2026: PEP 836 withdrawn, development effectively ends</li></ul></li><li class="cat"><span class="cat-label">Why it matters</span><ul><li>Process outcome, not just a performance one: a major feature merged first and justified later did not survive being asked for guarantees</li><li>The performance problem does not go away — the answers remain the specialist tools: PyPy, Numba, Cython, C extensions</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://lwn.net/SubscriberLink/1102102/0c00e4d550f25f8c/" target="_blank" rel="noopener">lwn.net</a> · Discuss: <a href="https://news.ycombinator.com/item?id=50257419" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">545 pts / 297 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>Bittersweet is the dominant register. Several commenters are tired of rewriting Python hot paths in Cython or Rust and had pinned hopes on the Faster CPython era; one notes part of the JIT’s value was offsetting free-threading’s performance penalty, and asks whether free-threading is next in doubt. The defence is equally concrete: the PEP process and its bureaucracy are what keep Python stable, the JIT’s measured gains were always modest, and working alternatives already exist. The sharpest objection quotes the discussion thread back: the PEP was expected to make the JIT team responsible for solving every downstream tool’s compatibility — “absurdly impossible, to the point of willfully killing the project.” Verdict in-thread: a reasonable outcome, reached expensively.</p>
+</div>
+</article>
+<article class="story" id="story-4" data-story="4" data-source="https://www.brangus.io/survival-llm" data-hn="https://news.ycombinator.com/item?id=50264853" data-metric="419 pts / 157 comments" tabindex="0" aria-label="Story 4: Survival LLM: a free offline AI assistant and emergency library — 930,000 Wikipedia articles, zero internet after setup">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">Survival LLM: a free offline AI assistant and emergency library — 930,000 Wikipedia articles, zero internet after setup</h2>
+<p class="exec">Survival LLM is a free, open-source Mac and Windows app that downloads a local model sized to your machine’s memory plus a cited emergency library — medical references, FEMA and CDC guidance, survival and repair manuals, iFixit guides and about 930,000 Wikipedia articles (9 GB full download, 1.3 GB without Wikipedia and iFixit). The honest part is the published test table: on 22 blind-graded blackout and first-aid questions, the top configurations (NVIDIA Nemotron, Qwen3.8 27B on 32 GB+ machines) got 21 of 22 main points right, while the 16–31 GB tier’s IBM Granite 4.2 8B got 14 of 22. Every answer lists its sources with the exact passage highlighted, precisely because the smaller models make more mistakes. Setup is one online session of 20 minutes to 2.5 hours, mostly downloading.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The design</span><ul><li>Model scales with RAM: better hardware gets a bigger model; the app checks memory at first run and downloads what fits</li><li>Source-first answers: citations with highlighted passages are the mitigation for model error, stated plainly by the makers</li></ul></li><li class="cat"><span class="cat-label">Why it matters</span><ul><li>Offline is a real requirement class — blackouts, disasters, dead zones — and this is a complete, testable attempt at it</li><li>The published 14/22 is the useful number: it tells you exactly how much to trust the small-model tier, which is “verify against the source”</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://www.brangus.io/survival-llm" target="_blank" rel="noopener">brangus.io</a> · Discuss: <a href="https://news.ycombinator.com/item?id=50264853" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">419 pts / 157 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>The thread’s central argument is whether the LLM layer should exist at all. Critics say the same corpus behind plain search — Kiwix is the named example — is smaller, runs on weaker hardware and cannot hallucinate a first-aid step; one commenter describes building exactly that in 2018 for air-gapped schools: partial Wikipedia, an inverted index and TextRank summaries on a Raspberry Pi. The 14-of-22 figure draws the predictable joke about emergency appendectomies and a “just buy some books” verdict. Supporters like the direction — small, local, task-specific models instead of frontier everything-models — and offer llamafile and Project Nomad as alternatives, while a wishlist forms for cheaper endpoints: a finetuned small model on a $25 phone in an EMP-proof box with a solar charger. Nobody disputes the makers’ transparency about scores; the dispute is the architecture.</p>
+</div>
+</article>
+<article class="story" id="story-5" data-story="5" data-source="https://www.apple.com/in/newsroom/2026/10/apple-introduces-the-new-14-inch-macbook-pro-with-m6/" data-hn="https://news.ycombinator.com/item?id=50261352" data-metric="387 pts / 535 comments" tabindex="0" aria-label="Story 5: 14-inch MacBook Pro with M6: 12-core CPU, up to 30% faster graphics than M5, 24-hour battery — and a 32GB RAM ceiling">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">14-inch MacBook Pro with M6: 12-core CPU, up to 30% faster graphics than M5, 24-hour battery — and a 32GB RAM ceiling</h2>
+<p class="exec">Apple’s October 27 press release: the 14-inch MacBook Pro moves to the base M6 — 12-core CPU with what Apple calls the world’s fastest CPU core, a 12-core GPU claimed up to 30 percent faster for graphics and 25 percent faster for AI workloads than M5, a Dual 16-core Neural Engine, Wi-Fi 7 and Bluetooth 6, and up to 24 hours of battery life. Against M1 the claimed gains are up to 11x graphics and 13x AI performance. Space black and silver; pre-orders open October 28, availability November 6. Note the positioning in Apple’s own text: M6 “joins M5 Pro and M5 Max” in the lineup — this is the entry Pro model, not a Pro/Max refresh.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The specs</span><ul><li>M6: 12-core CPU / 12-core GPU, Dual 16-core Neural Engine, additional Neural Accelerators in the GPU</li><li>Same formula otherwise: Liquid Retina XDR with nano-texture option, 12MP Center Stage camera, six-speaker system, macOS 27</li></ul></li><li class="cat"><span class="cat-label">Why it matters</span><ul><li>On-device AI is now the headline metric in Apple’s own copy — AI workload speed leads the comparison table</li><li>535 comments against 387 points: the reaction is mostly about what did not change, which is its own signal</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://www.apple.com/in/newsroom/2026/10/apple-introduces-the-new-14-inch-macbook-pro-with-m6/" target="_blank" rel="noopener">apple.com</a> · Discuss: <a href="https://news.ycombinator.com/item?id=50261352" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">387 pts / 535 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>Grumbling dominates, organised around ceilings. The quoted spec line — 16GB unified memory standard, up to 32GB, up to 170GB/s bandwidth — prompts the local-LLM question directly: an M5 Max offers up to 600GB/s, so is the base M6 the wrong machine for local models, and is 32GB really the cap on a “Pro” laptop in 2026? Display complaints follow: still no OLED, and no touchscreen despite the rumours (“the rumors promised touch!!!”). Apple’s marketing gets its own thread — leading with gains over Intel machines is called embarrassing by the sixth M-series generation. The holdouts are explicit too: an M1 Pro owner is marathoning toward an M7 Pro/Max rather than paying $6,000+ for a decent spec now, and several ask whether this base-chip model’s price sits where the entry Pro used to.</p>
+</div>
+</article>
+<article class="story" id="story-6" data-story="6" data-source="https://www.apple.com/imac/" data-hn="https://news.ycombinator.com/item?id=50258538" data-metric="353 pts / 447 comments" tabindex="0" aria-label="Story 6: New iMac with M6: same 24-inch 4.5K design in seven colours, up to 32GB — pre-orders October 28, ships November 6">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">New iMac with M6: same 24-inch 4.5K design in seven colours, up to 32GB — pre-orders October 28, ships November 6</h2>
+<p class="exec">Apple’s iMac page now leads with M6: the all-in-one keeps its strikingly thin 24-inch 4.5K Retina design and seven colours, adds the M6 with a Neural Accelerator in each GPU core and the first Dual 16-core Neural Engine in an iMac — claimed up to 5x faster than iMac with M4 for on-device AI and up to 12x faster than M1 — with unified memory up to 32GB. Pre-orders start 10:10 a.m. PT on October 28, availability November 6. The pitch is unchanged in shape: a family and small-business desktop whose new capability is local AI — Apple Intelligence features, local models, “vibe coding” — on the same industrial design.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">What changed</span><ul><li>Chip only, in substance: M6, Dual 16-core Neural Engine, up to 32GB unified memory</li><li>What did not: 24-inch 4.5K panel, chin design, colour lineup, Magic Mouse in the promo photos</li></ul></li><li class="cat"><span class="cat-label">Why it matters</span><ul><li>A spec-bump iMac tests how far the base chip’s AI story carries a desktop line with no redesign</li><li>447 comments against 353 points again — the thread is a design-stasis referendum, not a chip discussion</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://www.apple.com/imac/" target="_blank" rel="noopener">apple.com</a> · Discuss: <a href="https://news.ycombinator.com/item?id=50258538" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">353 pts / 447 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>The top comment is four words of review: “24” and 60hz…” From there: why the chin survives when Apple has made borderless displays for years, why no 27-inch option when panels that size cost less than a stick of RAM, and thinness past a point called a meaningless aesthetic choice once the stand’s footprint is counted. The Magic Mouse still appearing in promo photos gets flagged, as does the 32GB memory ceiling with no Pro variant. The local-AI thread is more analytical: commenters split Macs into those with the memory bandwidth to run local models (Max and Ultra) and those without (base and Pro), arguing the generation matters less than the bandwidth class. Affection without intent closes it out: “I love these things. Never going to buy one.”</p>
+</div>
+</article>
+<article class="story" id="story-7" data-story="7" data-source="https://lexifina.com/blog/git-for-the-us-code" data-hn="https://news.ycombinator.com/item?id=50268380" data-metric="341 pts / 175 comments" tabindex="0" aria-label="Story 7: Git for the US Code: statutes deserve blame and point-in-time lookup, not an afternoon in the amendment notes">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">Git for the US Code: statutes deserve blame and point-in-time lookup, not an afternoon in the amendment notes</h2>
+<p class="exec">A Lexifina opinion piece (October 28) makes a tooling argument: a programmer can point at any line and see who wrote it, when, and what the file looked like on any past day; a lawyer reading a federal statute usually cannot. Outside the titles enacted as positive law, the Code is only prima facie evidence — the Statutes at Large govern — and the Office of the Law Revision Counsel publishes it as release points current through a named public law. Which law wrote a sentence lives in prose amendment notes; effective dates live in separate notes. The worked example is 11 USC § 1182(1): the small-business debt limit was set at $7.5 million by the CARES Act in March 2020, lapsed March 27, 2022, was restored that June retroactively over the gap, expired again in June 2024, and stands at $3,424,000 after the April 2025 adjustment. The AI angle is explicit: first-pass legal research now runs through language models that cannot use a law’s lineage.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The proposal</span><ul><li>Version-control semantics for statutes: per-line provenance, effective-date tracking, point-in-time text</li><li>Motivation includes machine readers: LLMs doing legal research are “handcuffed” without lineage, per the author</li></ul></li><li class="cat"><span class="cat-label">Why it matters</span><ul><li>The § 1182(1) example is the proof: four regimes in five years for one definition, recoverable today only from prose notes</li><li>Provenance is infrastructure — whoever maintains it shapes what both lawyers and models can answer</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://lexifina.com/blog/git-for-the-us-code" target="_blank" rel="noopener">lexifina.com</a> · Discuss: <a href="https://news.ycombinator.com/item?id=50268380" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">341 pts / 175 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>The thread splits on whether the thing exists. The top comment calls the title fraudulent — “you can’t git-clone this” — and others cannot find anywhere on the page to try a product, reading it as a concept essay wearing a product title. Prior art surfaces quickly: France’s Law Factory versioned bills in git with visualisations a decade ago. A linked lawyer’s take tempers the premise: git-style change tracking is less helpful in practice than it sounds, partly because basic change tracking already exists. Ownership is the other fault line — a private company should not be the system of record for law, with a profit motive to rewrite history; the counter-proposal is to lobby the Office of the Law Revision Counsel to maintain the repo itself, retroactively. The naming committee contributes “legitslate,” and several commenters confess they had the same idea ten years ago and never finished it.</p>
+</div>
+</article>
+<article class="story" id="story-8" data-story="8" data-source="https://emudhra.we-have-a-problem.com/apple.html" data-hn="https://news.ycombinator.com/item?id=50271640" data-metric="336 pts / 137 comments" tabindex="0" aria-label="Story 8: Ten days later, macOS developer tools still trust the compromised eMudhra certificates — and 27.2 undid the manual fix">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">Ten days later, macOS developer tools still trust the compromised eMudhra certificates — and 27.2 undid the manual fix</h2>
+<p class="exec">A follow-up report dated October 28: Apple was notified of the eMudhra compromise on October 17, and the developer tools Apple ships with macOS — git, curl, python3 and the rest that read the system trust store — still trust the compromised certificates. macOS 27.2, released October 26, did not fix it and reverted the workaround users had applied by hand, leaving them exposed again; meanwhile, the post notes, dozens of other projects, many volunteer-run, shipped fixes days ago. Impact is stated plainly: anyone on the network path can intercept HTTPS connections these tools make — git clones and pulls can deliver attacker-chosen code, pushes can be altered, tokens can be captured. Safari and apps on Apple’s networking framework are already protected; the vendor fix is to remove the affected roots from /etc/ssl/cert.pem, and the page provides test commands (a test git remote and two test hosts) that should fail with a certificate error on a protected machine.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The state</span><ul><li>Notified Oct 17; still trusted Oct 28; macOS 27.2 (Oct 26) shipped without the fix and undid manual removals</li><li>Affected surface: tools using /etc/ssl/cert.pem — git, curl, openssl, python3 and peers; Safari-class apps already fixed</li></ul></li><li class="cat"><span class="cat-label">Why it matters</span><ul><li>This is a supply-chain hole with a one-command test: if the demo clone succeeds, your git HTTPS path is interceptable</li><li>Update behaviour is part of the bug — an OS update silently restoring a removed bad root teaches users their fix did not stick</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://emudhra.we-have-a-problem.com/apple.html" target="_blank" rel="noopener">emudhra.we-have-a-problem.com</a> · Discuss: <a href="https://news.ycombinator.com/item?id=50271640" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">336 pts / 137 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>Framing is the first fight: the title blames Git, commenters correct it — git is “just a victim,” the bug is the system CA store and applies to curl, openssl, Python, Perl and Ruby on macOS alike. Homebrew users check whether their builds dodge it (they use the same store unless built otherwise, is the working assumption in-thread), and several report running the test commands with mixed local results. Threat scale is the second fight: one side calls interception risk overblown because a MITM position is itself a big compromise; the other asks how a vendor that shipped an OS release mid-incident did not include a root removal. Commenters link Apple’s own support statement for the official line, and the practical advice that recurs is habit-forming: prefer SSH remotes, because “this is gonna keep happening.”</p>
+</div>
+</article>
+<article class="story" id="story-9" data-story="9" data-source="https://tailscale.com/ssh-investigation-update" data-hn="https://news.ycombinator.com/item?id=50264857" data-metric="323 pts / 170 comments" tabindex="0" aria-label="Story 9: Tailscale SSH investigation update: four bulletins, mostly privilege escalation inside the root-running daemon">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">Tailscale SSH investigation update: four bulletins, mostly privilege escalation inside the root-running daemon</h2>
+<p class="exec">Tailscale’s investigation page, updated October 27, now points to four security bulletins and a findings post. TS-2026-014: Tailscale SSH’s Unix socket forwarding could grant peers access to root-only sockets — privileged dials via local forwarding, socket replacement via remote forwarding, and a race that defeated the path allowlist. TS-2026-015: unbounded memory growth in SSH session handling (window-change messages, environment appends) as a denial of service, fixed in 1.104.4. TS-2026-016: tailscale serve Unix backends could reach privileged sockets, including the tailscaled local API socket, dialed as root. TS-2026-017: an HTTP/2 shared serve context could bleed Tailscale-App-Capabilities values across mounts. The company’s own summary: most Tailscale SSH issues concern privilege escalation — someone already authorized to connect may be able to act beyond their configured local user’s permissions.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The pattern</span><ul><li>Four findings, one shape: a root-privileged daemon doing per-user work — forwarding, proxying, session state — with checks done lexically, at config time, or in shared state</li><li>Action: review the bulletins and update; the DoS fix is in client 1.104.4 or newer</li></ul></li><li class="cat"><span class="cat-label">Why it matters</span><ul><li>Tailscale SSH replaces key management with identity and ACLs — a privesc inside it breaks exactly the boundary the ACLs promise</li><li>Headscale users are affected too, per the thread: the vulnerable code is in tailscaled, not the control plane</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://tailscale.com/ssh-investigation-update" target="_blank" rel="noopener">tailscale.com</a> · Discuss: <a href="https://news.ycombinator.com/item?id=50264857" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">323 pts / 170 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>Scope is the argument. A former Tailscale employee who reviewed the fixes narrows it: this bites where ACLs permit Tailscale SSH into a node without a sudo/root path — if you only SSH as yourself or to sudoers, little changes. Others push back that least-privilege teams are precisely the exposed ones, and quote a restricted backup user on a NAS as the canonical victim. The language gets read closely too — “most,” “in some circumstances” — with one camp calling it mid-investigation caution and another calling it weaselly. Two corrections recur: Tailscale SSH is opt-in, not shipped on by default, and the researcher write-up at tailworm.com is linked repeatedly as the more detailed source. The exit thread is predictable and split: some are moving homelabs to plain WireGuard or stock OpenSSH and accepting the key-management work; others answer that they never removed that attack surface, they just took ownership of it.</p>
+</div>
+</article>
+<article class="story" id="story-10" data-story="10" data-source="https://arstechnica.com/science/2026/10/meet-the-2026-winner-of-nikons-small-world-photomicrography-contest/" data-hn="https://news.ycombinator.com/item?id=50234796" data-metric="304 pts / 51 comments" tabindex="0" aria-label="Story 10: Ink droplets in flight win Nikon Small World 2026: a deconstructed inkjet, a dark room, and a flash for a shutter">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">Ink droplets in flight win Nikon Small World 2026: a deconstructed inkjet, a dark room, and a flash for a shutter</h2>
+<p class="exec">Ars Technica reports the 2026 Nikon Small World photomicrography winner: Ole Bielfeldt, a 25-year-old experimental photographer from Germany, photographed ink droplets being deposited on paper by an inkjet printer — beating 1,802 other entries from 69 countries. The droplets move faster than a camera shutter, so he deconstructed the printer to move the paper under a stationary printhead and shot in a dark room, using the flash as the shutter to freeze the drops mid-air. No pricey equipment and no AI — traditional technique, per the report. Bielfeldt started during COVID lockdown with an old microscope found in his parents’ attic, a homemade tube-and-wood camera adaptor, and trial and error; he posts behind-the-scenes work as macrofying.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The shot</span><ul><li>20x magnification for the winning image; his earlier highly ranked candle and match photographs used 2.5x</li><li>Technique over gear: stationary head, moving paper, darkness, flash-as-shutter</li></ul></li><li class="cat"><span class="cat-label">Why it matters</span><ul><li>A mundane machine becomes unrecognisable at droplet scale — the contest’s point, made without AI generation</li><li>Small thread, high delight: 51 comments and almost no argument, which on this front page is itself notable</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://arstechnica.com/science/2026/10/meet-the-2026-winner-of-nikons-small-world-photomicrography-contest/" target="_blank" rel="noopener">arstechnica.com</a> · Discuss: <a href="https://news.ycombinator.com/item?id=50234796" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">304 pts / 51 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>Delight, mostly. Several commenters admit they first assumed the image was AI-generated and are pleased to be wrong; others call inkjet printers some of the most insane technology in ordinary life once you see what the printhead is actually doing. The runners-up get their share: the second-place jumping spider has declared fans (“just so adorable,” with sinister-looking pollen beside it), and third place — neurons in an expanded mouse brain — prompts a genuine “I didn’t know brains actually look like this inside.” Practical readers go looking for the rig: the photographer’s earlier contest entries were chemical-reaction shots of a candle and a match at 2.5x magnification, and a linked video shows the custom setup behind the ink shot.</p>
+</div>
+</article>
+    </ol>
+
+    <div class="shortcut-bar" aria-label="Keyboard shortcuts">
+      <span><kbd>J</kbd> next story</span>
+      <span><kbd>K</kbd> previous story</span>
+      <span><kbd>T</kbd> theme</span>
+    </div>
+
+    <footer class="page-footer">
+      <div class="footer-links"><a href="../">← Daily archive</a><a href="https://tk3369.github.io/hn-daily/" target="_blank" rel="noopener">Published archive ↗</a></div>
+      <span>Wednesday 2026-10-28 · 10 stories</span>
+    </footer>
+  </main>
+  <div class="toast" role="status" aria-live="polite"></div>
+  <script>
+(() => {
+  const root = document.documentElement;
+  const toggle = document.getElementById('theme-toggle');
+  const entries = [...document.querySelectorAll('[data-story]')];
+  function storedTheme() { try { const t = localStorage.getItem('hn-daily-theme'); return t === 'dark' || t === 'light' ? t : null; } catch (_) { return null; } }
+  function preferredTheme() { return matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'; }
+  function currentTheme() { const a = root.dataset.theme; if (a === 'dark' || a === 'light') return a; return storedTheme() || preferredTheme(); }
+  function setTheme(theme) { const next = theme === 'dark' ? 'dark' : 'light'; const opposite = next === 'dark' ? 'Light' : 'Dark';
+    if (root.dataset.theme !== next) root.dataset.theme = next;
+    toggle.querySelector('.theme-text').textContent = opposite;
+    toggle.setAttribute('aria-label', `Switch to ${opposite} theme (T)`); toggle.title = `Switch to ${opposite} theme (T)`;
+    try { localStorage.setItem('hn-daily-theme', next); } catch (_) {} }
+  function flipTheme() { setTheme(currentTheme() === 'dark' ? 'light' : 'dark'); }
+  setTheme(storedTheme() || preferredTheme());
+  toggle.addEventListener('click', flipTheme);
+  const toast = document.querySelector('.toast'); let toastTimer;
+  function showToast(msg) { toast.textContent = msg; toast.classList.add('show'); clearTimeout(toastTimer); toastTimer = setTimeout(() => toast.classList.remove('show'), 1800); }
+  document.querySelectorAll('.copy-button').forEach((button) => {
+    button.addEventListener('click', async () => {
+      const story = button.closest('.story');
+      const n = story.dataset.story;
+      const tagline = story.querySelector('.tagline').textContent.trim();
+      const execSum = story.querySelector('.exec').textContent.trim();
+      const bullets = [...story.querySelectorAll('.cat-lists .cat')].map(li => {
+        const label = li.querySelector('.cat-label').textContent.trim();
+        const pts = [...li.querySelectorAll('ul li')].map(p => '  \u2022 ' + p.textContent.trim()).join('\n');
+        return '- ' + label + ':\n' + pts;
+      }).join('\n');
+      const link = 'https://tk3369.github.io/hn-daily/2026-10-28/#story-' + n;
+      const text = n + '. ' + tagline + '\n\n' + execSum + '\n' + bullets + '\n\n' + link;
+      try { await navigator.clipboard.writeText(text); button.textContent = 'Copied'; showToast('Story ' + n + ' copied for Threads'); setTimeout(() => { button.textContent = 'Copy for Threads'; }, 1600); }
+      catch (_) { showToast('Copy was blocked by this browser'); }
+    });
+  });
+  document.addEventListener('keydown', (event) => {
+    if (event.metaKey || event.ctrlKey || event.altKey || event.shiftKey) return;
+    const tag = event.target.tagName;
+    if (tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT') return;
+    const key = event.key.toLowerCase();
+    if (key === 't') { event.preventDefault(); flipTheme(); }
+    else if ((key === 'j' || key === 'k') && entries.length) {
+      event.preventDefault();
+      const active = entries.indexOf(document.activeElement);
+      const delta = key === 'j' ? 1 : -1;
+      const next = active < 0 ? (key === 'j' ? 0 : entries.length - 1) : Math.max(0, Math.min(entries.length - 1, active + 1 * delta));
+      entries[next].focus();
+    }
+  });
+})();
+  </script>
+</body>
+</html>
