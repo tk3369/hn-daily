@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="color-scheme" content="light dark" />
+  <link rel="icon" href="data:," />
+  <title>HN Daily — Saturday 2026-10-10</title>
+  <style>
+:root { --page:#f1eadb; --paper:#fffaf0; --ink:#20201c; --muted:#6f695f; --hairline:#d9cebc; --accent:#ff5a1f; --comment:#f6efe3; --shadow:0 2px 0 rgba(57,45,25,.08),0 14px 36px rgba(57,45,25,.06); --serif:Georgia,"Times New Roman",serif; --sans:ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; --mono:"SFMono-Regular",Consolas,"Liberation Mono",monospace; }
+html[data-theme="dark"] { --page:#111312; --paper:#191c1a; --ink:#f1eee6; --muted:#aba69b; --hairline:#393b36; --accent:#ff7139; --comment:#222520; --shadow:0 2px 0 rgba(0,0,0,.22),0 18px 42px rgba(0,0,0,.22); }
+* { box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body { margin:0; min-width:280px; color:var(--ink); background:var(--page); font-family:var(--sans); line-height:1.55; -webkit-font-smoothing:antialiased; }
+a { color:inherit; text-underline-offset:3px; text-decoration-thickness:1px; }
+a:hover { color:var(--accent); }
+button,a { -webkit-tap-highlight-color:transparent; }
+button { font:inherit; }
+a:focus-visible,button:focus-visible { outline:3px solid var(--accent); outline-offset:3px; }
+.page { width:min(1080px,calc(100% - 36px)); margin:0 auto; padding:28px 0 72px; }
+.issue-header { display:grid; grid-template-columns:1fr auto; gap:24px; align-items:end; padding:8px 0 26px; border-bottom:3px solid var(--ink); }
+.edition { margin:0 0 9px; color:var(--accent); font:700 12px/1.3 var(--mono); letter-spacing:.09em; text-transform:uppercase; }
+.archive-nav { display:flex; flex-wrap:wrap; gap:8px 20px; margin-bottom:16px; font:700 12px/1 var(--mono); }
+.archive-nav a { min-height:36px; display:inline-flex; align-items:center; color:var(--muted); }
+.archive-nav a:hover { color:var(--accent); }
+h1 { max-width:820px; margin:0; font:700 clamp(34px,5.5vw,62px)/.98 var(--serif); letter-spacing:-.038em; }
+.deck { max-width:730px; margin:17px 0 0; color:var(--muted); font:17px/1.55 var(--sans); }
+.theme-toggle { align-self:start; min-width:86px; min-height:40px; padding:9px 13px; border:1px solid var(--hairline); border-radius:4px; color:var(--ink); background:var(--paper); cursor:pointer; font:700 12px/1 var(--mono); display:inline-flex; align-items:center; gap:8px; }
+.theme-toggle:hover { border-color:var(--accent); color:var(--accent); }
+.theme-dot { width:10px; height:10px; border-radius:50%; background:var(--accent); display:inline-block; flex-shrink:0; }
+.theme-text { line-height:1; }
+.story-list { display:grid; gap:20px; list-style:none; margin:26px 0 0; padding:0; counter-reset:story; }
+.story { counter-increment:story; display:grid; grid-template-columns:72px minmax(0,1fr); gap:26px; padding:26px 30px 28px; background:var(--paper); border-top:4px solid var(--ink); box-shadow:var(--shadow); scroll-margin-top:24px; }
+.story-number { color:var(--accent); font:900 22px/1 var(--mono); letter-spacing:-.04em; padding-top:6px; }
+.story-number::before { content:counter(story,decimal-leading-zero); }
+.tagline { margin:0; max-width:840px; font:700 clamp(24px,3vw,36px)/1.1 var(--serif); letter-spacing:-.028em; }
+.exec { margin:14px 0 0; max-width:840px; font:17px/1.58 var(--sans); }
+.cat-lists { margin:14px 0 0; padding:0; list-style:none; display:grid; gap:10px; max-width:840px; }
+.cat-lists li.cat { font:15px/1.6 var(--sans); }
+.cat-lists .cat-label { font:700 12px/1.6 var(--mono); letter-spacing:.06em; text-transform:uppercase; color:var(--accent); }
+.cat-lists ul { margin:4px 0 0; padding-left:20px; }
+.cat-lists ul li { margin:3px 0; }
+.meta-line { margin:16px 0 0; color:var(--muted); font:700 12px/1.9 var(--mono); overflow-wrap:anywhere; }
+.meta-line a { color:var(--ink); font-weight:800; }
+.meta-line .metrics { color:var(--ink); white-space:nowrap; }
+.story-bar { display:flex; align-items:flex-start; gap:14px; margin-top:4px; }
+.copy-button { flex:0 0 auto; align-self:flex-start; min-height:36px; padding:9px 12px; border:1px solid var(--hairline); border-radius:4px; background:var(--paper); color:var(--ink); cursor:pointer; font:700 12px/1 var(--mono); }
+.copy-button:hover { border-color:var(--accent); color:var(--accent); }
+.hn-comments { margin:18px 0 0; padding:14px 18px; background:var(--comment); border:1px solid var(--hairline); font:15px/1.62 var(--serif); color:var(--ink); }
+.hn-comments strong { font:700 12px/1.6 var(--mono); color:var(--accent); display:block; margin-bottom:6px; }
+.page-footer { display:flex; justify-content:space-between; flex-wrap:wrap; gap:14px; margin-top:64px; padding-top:12px; border-top:1px solid var(--hairline); color:var(--muted); font:12px/1.6 var(--mono); }
+.footer-links { display:flex; flex-wrap:wrap; gap:8px 20px; }
+.footer-links a { min-height:36px; display:inline-flex; align-items:center; color:var(--ink); font-weight:800; }
+.footer-links a:hover { color:var(--accent); }
+.shortcut-bar { display:flex; flex-wrap:wrap; gap:18px; margin-top:28px; color:var(--muted); font:11px/1.5 var(--mono); }
+kbd { display:inline-grid; place-items:center; min-width:22px; height:22px; margin-right:6px; padding:0 6px; border:1px solid var(--hairline); border-bottom-width:2px; border-radius:3px; background:var(--comment); color:var(--ink); font:inherit; font-weight:700; }
+.toast { position:fixed; right:max(18px,env(safe-area-inset-right)); bottom:max(18px,env(safe-area-inset-bottom)); z-index:10; padding:11px 14px; color:var(--paper); background:var(--ink); border:1px solid var(--ink); font:700 12px/1 var(--mono); opacity:0; transform:translateY(8px); pointer-events:none; transition:opacity 160ms ease,transform 160ms ease; }
+.toast.show { opacity:1; transform:translateY(0); }
+@media (max-width:760px) {
+  .page { width:min(100% - 22px,1080px); padding-top:16px; }
+  .issue-header { grid-template-columns:1fr auto; gap:12px; padding-bottom:20px; }
+  h1 { font-size:clamp(34px,10vw,48px); }
+  .deck { grid-column:1 / -1; margin-top:3px; font-size:15px; }
+  .theme-toggle { grid-column:2; grid-row:1; min-width:72px; }
+  .story { grid-template-columns:44px minmax(0,1fr); gap:14px; padding:20px 18px 22px; }
+  .story-number { font-size:16px; padding-top:4px; }
+  .story-bar { flex-direction:column; align-items:stretch; }
+  .copy-button { align-self:flex-start; }
+  .page-footer { display:block; }
+}
+@media (max-width:420px) {
+  .page { width:calc(100% - 16px); }
+  .story { grid-template-columns:1fr; gap:8px; padding:20px 16px 22px; }
+  .story-number { padding-top:0; }
+  .copy-button { width:100%; }
+}
+@media (prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } *,*::before,*::after { transition:none !important; } }
+@media print { :root { --page:#fff;--paper:#fff;--ink:#000;--muted:#444;--hairline:#bbb;--comment:#f5f5f5;--shadow:none; } .page{width:100%;padding:0}.theme-toggle,.copy-button,.toast,.shortcut-bar{display:none}.story{break-inside:avoid;box-shadow:none} }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="issue-header">
+      <div>
+        <nav class="archive-nav" aria-label="HN Daily archive links"><a href="../">← Archive</a><a href="https://tk3369.github.io/hn-daily/" target="_blank" rel="noopener">Published archive ↗</a></nav>
+        <p class="edition"><time datetime="2026-10-10">2026-10-10</time> · Daily brief · Pacific time</p>
+        <h1>HN Daily</h1>
+        <p class="deck">Direct, low-fluff top 10 from Hacker News, daily at 7am PT — hottest by points</p>
+      </div>
+      <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch color theme" title="Toggle theme (T)"><span class="theme-dot" aria-hidden="true"></span><span class="theme-text">Dark</span></button>
+    </header>
+
+    <ol class="story-list" aria-label="Top 10 Hacker News stories">
+<article class="story" id="story-1" data-story="1" data-source="https://deno.com/blog/cloudflare" data-hn="https://news.ycombinator.com/item?id=50019911" data-metric="1273 pts / 655 comments" tabindex="0" aria-label="Story 1: Cloudflare acquires Deno: the whole team joins, the runtime gets one more year, Deploy gets six months">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">Cloudflare acquires Deno: the whole team joins, the runtime gets one more year, Deploy gets six months</h2>
+<p class="exec">Deno announces its entire team is joining Cloudflare to work on the Workers and Durable Objects model, including Ryan Dahl&#x27;s celld effort. The concrete terms matter more than the headline: the Deno runtime gets one year of monthly bug-fix and security releases, then the team&#x27;s own development ends (it stays open source); Deno Deploy runs six more months before shutdown, with migration help to Workers; JSR keeps operating on Cloudflare infrastructure.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The timeline</span><ul><li>Runtime: supported for one more year with monthly bug-fix and security releases, then team development ends</li><li>Deno Deploy: six months left, then shutdown; paying customers get migration support to Workers</li><li>JSR continues, moving onto Cloudflare infrastructure; rusty_v8 support continues toward workerd integration</li></ul></li><li class="cat"><span class="cat-label">The stated logic</span><ul><li>Dahl frames it as a progression — runtime, then Deploy, then celld — each step simplifying the layer underneath</li><li>The target is a programming model where scaling is built in, whether code runs on Cloudflare or your own infrastructure</li><li>Durable Objects are pitched as a fit for agent harnesses: cheap serverless execution, persistent state, WebSockets</li></ul></li><li class="cat"><span class="cat-label">Why it matters</span><ul><li>Deno users have a dated migration decision, not a vague roadmap</li><li>Cloudflare absorbs a respected runtime team and folds its work into Workers instead of running a rival platform</li><li>What survives is the model, not the standalone runtime — plan accordingly</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://deno.com/blog/cloudflare" target="_blank" rel="noopener">deno.com</a> · Discuss: <a href="https://news.ycombinator.com/item?id=50019911" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">1273 pts / 655 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>Reaction splits between genuine affection for the runtime — daily users praise the no-surprises developer experience, the flawless VS Code extension and batteries-included balance — and a plain reading of the sunset clause: unless someone else picks it up, Deno is unsupported after a year. A few initially feared the deal was meant to kill celld as a rival runtime, then corrected themselves on seeing the plan to make workerd an open, self-hostable runtime. The open question in the thread is why Cloudflare is not running with the runtime itself, which many took to be Deno&#x27;s secret sauce.</p>
+</div>
+</article>
+<article class="story" id="story-2" data-story="2" data-source="https://minesweeper.mikelacher.com/" data-hn="https://news.ycombinator.com/item?id=50022292" data-metric="1115 pts / 218 comments" tabindex="0" aria-label="Story 2: Triple-A Minesweeper: the Windows classic rebuilt as a bombastic big-budget parody — and it is fully playable">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">Triple-A Minesweeper: the Windows classic rebuilt as a bombastic big-budget parody — and it is fully playable</h2>
+<p class="exec">Mike Lacher&#x27;s browser game wraps ordinary Minesweeper in every big-budget cliché: pretentious title cards name-dropping engines and middleware, a brooding hero named Sweeper, phone calls from a love interest, an underworld figure and a radio DJ, and a plot that builds to a twist ending. Underneath the satire the game plays almost exactly like the original, and it can be completed.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The joke, precisely aimed</span><ul><li>Fake AAA presentation: engine and middleware title cards, long credits, lore-heavy dialogue</li><li>Sweeper ignores every caller and keeps repeating his one obsession — sweeping the mines</li><li>Reviewers say the best way to enjoy it is to do nothing and let the calls and muttering pile up</li></ul></li><li class="cat"><span class="cat-label">Under the parody</span><ul><li>Core play is faithful: open tiles, avoid mines, clear the board</li><li>It teaches the rules better than Windows ever did, per several write-ups</li><li>Short and completable, with an ending reviewers are careful not to spoil</li></ul></li><li class="cat"><span class="cat-label">Why it matters</span><ul><li>A precise satire of how presentation budgets swallow simple games</li><li>Also a working game, not a trailer or mock-up — the craft is the punchline</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://minesweeper.mikelacher.com/" target="_blank" rel="noopener">minesweeper.mikelacher.com</a> · Discuss: <a href="https://news.ycombinator.com/item?id=50022292" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">1115 pts / 218 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>Mostly delight, plus a crowd-sourced list of missing AAA tropes: a side quest to sweep ten mines, an achievement after five, a scent trail to the objective marker, mocapped mines and a $70 price tag. Several commenters suggest leaning harder into Metal Gear-style codec dialogue — long exchanges explaining what a mine is and how you know when you are done — and others link earlier versions of the same joke for other classics. Nobody is analysing; the thread is people quoting the bits that made them laugh.</p>
+</div>
+</article>
+<article class="story" id="story-3" data-story="3" data-source="https://rea.tools/" data-hn="https://news.ycombinator.com/item?id=50028275" data-metric="513 pts / 219 comments" tabindex="0" aria-label="Story 3: REA gives your coding agent reverse-engineering tools: inspect a program, explain it, rebuild the behaviour">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">REA gives your coding agent reverse-engineering tools: inspect a program, explain it, rebuild the behaviour</h2>
+<p class="exec">REA connects to a coding agent and supplies the evidence reverse engineering needs — a handler&#x27;s instructions, decompiled code and call relationships — so the agent can explain, change or rebuild what a program does. Its worked examples recover Windows Calculator&#x27;s percentage rules (different branches after + and ×) from the installed app and rebuild them, and extract Chrome&#x27;s dinosaur-game speed rule from the running script to build an adjustable-speed clone.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">How it works</span><ul><li>Setup via an npx command pasted into your coding agent, with a plan shown for approval first</li><li>Targets: native binaries, JavaScript and Electron apps, and browser or runtime activity</li><li>REA returns the inspected code and settings; the agent interprets and rebuilds</li></ul></li><li class="cat"><span class="cat-label">The demos</span><ul><li>Calculator: one percentage branch divides by 100, the other also multiplies by the first number — recovered from the installed DLL and cross-checked</li><li>Dinosaur game: start speed 6, +0.001 per update, capped at 13 — read from the running script, then rebuilt with a slider</li><li>Further case studies include reconstructing a game from its executable</li></ul></li><li class="cat"><span class="cat-label">Why it matters</span><ul><li>Shifts reverse engineering from manual decoding to agent-led investigation with primary evidence</li><li>Useful for interoperability, legacy behaviour and security work — the same reasons the thread asks hard questions about it</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://rea.tools/" target="_blank" rel="noopener">rea.tools</a> · Discuss: <a href="https://news.ycombinator.com/item?id=50028275" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">513 pts / 219 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>Two questions dominate. First, the sceptical one, asked several ways: what does this do that an agent with Ghidra or radare2 already set up does not? Second, the installation joke: pasting an npx setup command into an agent is described as the next evolution of curl-piped-to-bash — approval plan notwithstanding. Enthusiasts are already planning to try it on open game-engine projects, and one long comment argues the work gets more important as frontier models get more locked down, pointing to legal exemptions for reverse engineering. The value question is left open; nobody in the top thread reports a head-to-head comparison.</p>
+</div>
+</article>
+<article class="story" id="story-4" data-story="4" data-source="https://typesafe.ai/blog/series-ai" data-hn="https://news.ycombinator.com/item?id=50023450" data-metric="395 pts / 317 comments" tabindex="0" aria-label="Story 4: Typesafe AI raises $870M at a $7.5B valuation for Jev, its machine-native decision models">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">Typesafe AI raises $870M at a $7.5B valuation for Jev, its machine-native decision models</h2>
+<p class="exec">Typesafe AI announces a very large Series A — $870 million at a $7.5 billion valuation, led by Andreessen Horowitz with Sequoia and DCVC participating, and Martin Casado joining the board. The product is Jev, a family of small machine-native decision models built for fast, cheap classification-style judgements inside larger systems. The company says a third of the Fortune 500 already use it and that it has saved customers millions in production.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The raise (company-reported)</span><ul><li>$870M Series A at a $7.5B valuation; a16z leads, Sequoia and DCVC participate</li><li>Martin Casado joins the board</li><li>Pitch: more machine-native models, plus infrastructure for building smart software</li></ul></li><li class="cat"><span class="cat-label">The adoption claim</span><ul><li>A third of the Fortune 500 are customers, per the company</li><li>Millions of dollars in production savings claimed, no figures published in the post</li><li>The announcement itself is deliberately short on product detail</li></ul></li><li class="cat"><span class="cat-label">Why it matters</span><ul><li>Small, cheap decision models are becoming a distinct layer next to frontier models — gating, routing and screening at cents per million words</li><li>A $7.5B price on that layer is the claim to test: moat, or timing?</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://typesafe.ai/blog/series-ai" target="_blank" rel="noopener">typesafe.ai</a> · Discuss: <a href="https://news.ycombinator.com/item?id=50023450" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">395 pts / 317 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>The thread is openly incredulous about the valuation. The recurring argument: Jev was duplicated within days of release, open-source decision models multiplied within a week, and platform vendors have since shipped their own — one commenter notes Microsoft released its Decision-1 model while they were typing. Others ask what edge or patents could justify $7.5B and say they will just use open source. A minority shrug that moats do not decide rounds at this stage. There is also the ritual confusion with the older Scala company of a similar name.</p>
+</div>
+</article>
+<article class="story" id="story-5" data-story="5" data-source="https://carrierexplode.com/" data-hn="https://news.ycombinator.com/item?id=50024499" data-metric="355 pts / 44 comments" tabindex="0" aria-label="Story 5: Show HN: Carrier-Explode decodes iPhone, Pixel and Galaxy carrier settings — APNs, VoLTE, 5G, compared">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">Show HN: Carrier-Explode decodes iPhone, Pixel and Galaxy carrier settings — APNs, VoLTE, 5G, compared</h2>
+<p class="exec">Carrier-Explode extracts the carrier configuration buried in iPhone, Pixel and Galaxy firmware and makes it searchable: look up a carrier&#x27;s APNs, VoLTE, Wi-Fi Calling and 5G settings per phone, pick features and see which carriers support them, and diff any two versions or carriers to see what a build changed. Version 2.0 ships a reworked backend, and everything is available as JSON via an API or as a daily CC0 dataset.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">What you can do</span><ul><li>Per-carrier, per-phone lookup of APN, VoLTE, Wi-Fi Calling and 5G settings</li><li>Feature-first search: choose what you need, see which carriers have it</li><li>Comparisons between versions and carriers show what each build changed</li></ul></li><li class="cat"><span class="cat-label">Open by default</span><ul><li>Full data via API as JSON</li><li>Daily dataset released CC0</li><li>A wiki documents each carrier format; decoder contributions invited</li></ul></li><li class="cat"><span class="cat-label">Why it matters</span><ul><li>Carrier settings decide real behaviour — roaming, calling features, 5G — and are normally opaque inside firmware</li><li>A comparable, public record makes carrier and OEM changes auditable</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://carrierexplode.com/" target="_blank" rel="noopener">carrierexplode.com</a> · Discuss: <a href="https://news.ycombinator.com/item?id=50024499" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">355 pts / 44 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>Appreciative but puzzled is the tone: several commenters love the interface and the sheer completeness, then ask the same question — what do you actually do with this? One links their own carrier&#x27;s settings page; another is reminded of leaked CDMA-era Qualcomm tooling. The practical suggestions are to feed applicable data into GNOME&#x27;s mobile-broadband provider database, and the open technical question is whether these configs are read-only on the phone or can be manipulated to enable or disable services. The author had not answered that in the top comments.</p>
+</div>
+</article>
+<article class="story" id="story-6" data-story="6" data-source="https://animationobsessive.substack.com/p/wallace-and-gromit-90-alone" data-hn="https://news.ycombinator.com/item?id=50020533" data-metric="246 pts / 38 comments" tabindex="0" aria-label="Story 6: Wallace and Gromit, 90% alone: Nick Park made A Grand Day Out mostly by himself, over most of a decade">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">Wallace and Gromit, 90% alone: Nick Park made A Grand Day Out mostly by himself, over most of a decade</h2>
+<p class="exec">Animation Obsessive reconstructs how Nick Park&#x27;s first Wallace and Gromit film began in 1982 as a graduation project and consumed most of the 1980s: Park estimates he did about 90% of it himself, commuting by bus, out of grant money, with seven minutes finished after four years — until Aardman put him on salary and let him finish it in spare hours behind a curtain. It premiered in Bristol in November 1989 alongside Creature Comforts, took the BAFTA, and defined his style: Gromit&#x27;s expressions carried entirely by his eyes after the character&#x27;s dialogue was cut in the first week.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The grind, measured</span><ul><li>Began 1982 as a student film; Park thought ten minutes would take six months</li><li>One script paragraph — build a rocket — took a year and a half to shoot</li><li>By 1985: over four years in, about seven minutes of a roughly 24-minute film done</li></ul></li><li class="cat"><span class="cat-label">Decisions that stuck</span><ul><li>Gromit was originally a cat, and had dialogue; both changed early in the shoot</li><li>Wallace&#x27;s wide mouth grew out of animating the word cheese</li><li>No video assist: results unseen until film came back a week later</li></ul></li><li class="cat"><span class="cat-label">Why it matters</span><ul><li>The case for learning by making: the style that took over Aardman was formed alone, on one over-ambitious film</li><li>A useful corrective to the overnight-success reading — the premiere was 1989, the start was 1982</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://animationobsessive.substack.com/p/wallace-and-gromit-90-alone" target="_blank" rel="noopener">animationobsessive.substack.com</a> · Discuss: <a href="https://news.ycombinator.com/item?id=50020533" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">246 pts / 38 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>Warm and personal: people recall watching with their fathers decades ago, and several say they had no idea the film was a solo school project rather than a full studio production — the bus commute and the years behind a curtain reframe it for them. Minor threads pick at details: what 3D animation meant to someone growing up in the 1960s, whether the early features&#x27; pauses and wide shots gave a sense of scale later films lost, and relief that Aardman still makes stop motion the old way. No disagreement of substance; it is an appreciation thread.</p>
+</div>
+</article>
+<article class="story" id="story-7" data-story="7" data-source="https://beaksec.github.io/posts/telegram-desktop-one-click-account-takeover/" data-hn="https://news.ycombinator.com/item?id=50029123" data-metric="243 pts / 128 comments" tabindex="0" aria-label="Story 7: Telegram Desktop flaw chained a clicked link to arbitrary file theft — and full account takeover">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">Telegram Desktop flaw chained a clicked link to arbitrary file theft — and full account takeover</h2>
+<p class="exec">A security write-up chains two defects in Telegram Desktop (through 7.2.8, fixed in 7.2.9; CVE-2026-107181, CVSS 8.1): clicked tg:// links are handed to the already-running instance as semicolon-separated text without escaping, so one link can smuggle in extra commands; and an internal interpret: scheme — built to publish Telegram&#x27;s own releases — reads a named file and sends it to a chat with no confirmation or authorization check. Plant an instruction file via an auto-downloaded group attachment, link to it, and the chain reads arbitrary local files; aimed at the tdata session files, with no local passcode set, that is account takeover.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The chain</span><ul><li>Unescaped separator in the local-socket handoff turns one clicked link into several commands</li><li>interpret: reads any file named in an instruction file and sends it to a channel or supergroup, no prompt</li><li>Instruction files land at predictable paths via default group auto-download (up to 8 MiB)</li></ul></li><li class="cat"><span class="cat-label">Scope (researcher-reported)</span><ul><li>Affected through 7.2.8, confirmed on Windows; fixed in 7.2.9</li><li>CVE-2026-107181, CVSS 8.1 High</li><li>Session theft needs the default no-passcode setup; a local passcode changes the key derivation</li></ul></li><li class="cat"><span class="cat-label">Why it matters</span><ul><li>Update Telegram Desktop to 7.2.9 or later, and set a local passcode</li><li>A textbook composition failure: a safe-from-the-command-line feature became dangerous once reachable from a link</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://beaksec.github.io/posts/telegram-desktop-one-click-account-takeover/" target="_blank" rel="noopener">beaksec.github.io</a> · Discuss: <a href="https://news.ycombinator.com/item?id=50029123" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">243 pts / 128 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>The submitter&#x27;s own framing leads: the headline-worthy part is not just account takeover but arbitrary theft of any user-readable file, which the original write-up underplays. From there the thread widens — one camp says this is a desktop-OS problem, since any user process can read any user file and proper per-app isolation would blunt it; another rehearses Telegram&#x27;s longer security reputation, from phone-number-tied accounts to optional-only 2FA. Defenders and critics mostly talk past each other; on the narrow point — patch, and the internal scheme should never have been link-reachable — there is no real dispute.</p>
+</div>
+</article>
+<article class="story" id="story-8" data-story="8" data-source="https://cphpost.dk/2026-10-10/news/round-up/123456-password-used-in-massive-danish-cpr-data-breach/" data-hn="https://news.ycombinator.com/item?id=50031269" data-metric="221 pts / 135 comments" tabindex="0" aria-label="Story 8: Danish CPR breach: access to 8.8 million records reportedly stood behind the password &#x27;123456&#x27;">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">Danish CPR breach: access to 8.8 million records reportedly stood behind the password &#x27;123456&#x27;</h2>
+<p class="exec">Copenhagen Post reporting, via Politiken, says the breach of Denmark&#x27;s Central Person Register ran through a small private IT company&#x27;s legitimate search access — and that at least three of its accounts, including an admin account, used the password 123456, with a former employee&#x27;s leaked credential and no multi-factor authentication in the hacker&#x27;s account of the entry. About 8.8 million records — names, addresses and CPR numbers, including deceased and emigrated people — were accessed over roughly three weeks in September before detection in early October.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">What happened (reported)</span><ul><li>Attackers misused a vetted company&#x27;s authorised CPR search access; the register itself was not broken into</li><li>About 8.8 million of roughly 11 million records accessed; Denmark&#x27;s living population is about 5.9 million</li><li>Access has been blocked, police are investigating, and the case is with the data protection agency</li></ul></li><li class="cat"><span class="cat-label">The credential claim</span><ul><li>Hacker told Politiken the entry was a former employee&#x27;s leaked password: 123456 — not officially confirmed</li><li>Follow-on reporting says at least three accounts at the company shared that password, one of them admin, with no MFA</li><li>Volume over weeks was not flagged — the monitoring question is still open</li></ul></li><li class="cat"><span class="cat-label">Why it matters</span><ul><li>CPR numbers are persistent identifiers; they cannot be reissued like a password, so the exposure is durable</li><li>Delegated access makes the weakest intermediary&#x27;s password hygiene the national perimeter</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://cphpost.dk/2026-10-10/news/round-up/123456-password-used-in-massive-danish-cpr-data-breach/" target="_blank" rel="noopener">cphpost.dk</a> · Discuss: <a href="https://news.ycombinator.com/item?id=50031269" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">221 pts / 135 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>Disbelief first — several commenters assume the password detail must be a joke — then the useful context: a CPR number is Denmark&#x27;s 10-digit personal identifier, roughly the US Social Security number&#x27;s role, which is why the scale matters. One commenter praises getting an actual root cause at all and contrasts incidents that close with no post-mortem for anyone to learn from. The rest is gallows humour (the luggage-combination joke appears on cue) and a bleaker aside about companies running on autopilot with nobody minding default configurations.</p>
+</div>
+</article>
+<article class="story" id="story-9" data-story="9" data-source="https://www.usenix.org/conference/usenixsecurity24/presentation/zhang-qibo" data-hn="https://news.ycombinator.com/item?id=49997481" data-metric="208 pts / 43 comments" tabindex="0" aria-label="Story 9: Eye of Sauron (2024): detecting hidden spy cameras at 20+ metres from memory electromagnetic radiation">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">Eye of Sauron (2024): detecting hidden spy cameras at 20+ metres from memory electromagnetic radiation</h2>
+<p class="exec">This USENIX Security 2024 paper presents ESauron, a proof-of-concept that detects wireless, wired and offline spy cameras alike by listening to electromagnetic radiation from the camera&#x27;s own memory. The mechanism: every camera digests raw images (encoding, compression) in read-write memory before storage or transmission, and scene changes spike that workload, producing EMR patterns at the memory clock frequency. Deliberately stimulate scene changes, sense the surge, then pinpoint the device. Across 50 camera products the authors report 100% detection after four stimuli, at ranges over 20 metres even through blockages.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The side channel</span><ul><li>Video digestion in inbuilt memory emits EMR tied to processing workload</li><li>Stimulated scene changes create a detectable, repeatable signature</li><li>Works on offline cameras too, since it targets processing, not transmission</li></ul></li><li class="cat"><span class="cat-label">Results (paper-reported)</span><ul><li>50 camera products tested; all detected after only 4 stimuli</li><li>Detection range exceeds 20 metres, including with blockages</li><li>Locations pinpointed accurately for all tested cameras</li></ul></li><li class="cat"><span class="cat-label">Why it matters</span><ul><li>Most detectors hunt radios or lenses; this hunts the computation every camera must do</li><li>The countermeasure question — shielding and workload smoothing — is now part of camera design</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://www.usenix.org/conference/usenixsecurity24/presentation/zhang-qibo" target="_blank" rel="noopener">usenix.org</a> · Discuss: <a href="https://news.ycombinator.com/item?id=49997481" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">208 pts / 43 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>Short, impressed thread. The first question is simply who can build one. Commenters are surprised EMR fluctuations are usable from metres away and suspect weak shielding in current products does much of the work — implying vendors could mitigate it. The sharpest technical probe asks whether a deliberately crude codec that dumps near-raw pixels would flatten the workload variation and evade detection. Others note the national-security and corporate-espionage value. Nobody disputes the paper&#x27;s reported results; the argument is about how long the advantage lasts once camera makers care.</p>
+</div>
+</article>
+<article class="story" id="story-10" data-story="10" data-source="https://jessewaites.com/blog/post/i-pointed-ai-at-400-years-of-archives/" data-hn="https://news.ycombinator.com/item?id=50019056" data-metric="163 pts / 82 comments" tabindex="0" aria-label="Story 10: Pointing AI at 400 years of archives surfaced a forgotten meteorite, three lost rhinos and unrecorded eruptions">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">Pointing AI at 400 years of archives surfaced a forgotten meteorite, three lost rhinos and unrecorded eruptions</h2>
+<p class="exec">Jesse Waites replicated and extended a recent dodo-discovery method: embed millions of Dutch East India Company pages (4.35 million, via the GLOBALISE transcriptions) and digitised newspapers into searchable meaning, screen candidates with a cheap decision model (Jev), read survivors with a larger model, and verify every claim against the original scan and specialist catalogues. One overnight run did the archive pass. Reported finds: an 1812 meteorite fall in Maharashtra absent from six catalogues, three Javan rhinos shipped toward Kandy in 1738–1740 that all died en route, and eruptions missing from the standard volcano list. The workflow is open-sourced as a toolkit called Antiquity.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The pipeline</span><ul><li>Semantic search over 5.7 million passages handles 17th-century spelling chaos that defeats keywords</li><li>Cheap model screens tens of thousands of hits (about $3 for 59,000 elephant mentions); larger model reads the flagged few dozen</li><li>Controls first: the pipeline had to rediscover known events — the dodo account, Laki, Tambora — before its new finds counted</li></ul></li><li class="cat"><span class="cat-label">The finds (author-reported, catalogue-checked)</span><ul><li>1812 Maharashtra meteorite: would predate the region&#x27;s earliest recorded fall by 26 years once confirmed</li><li>Three Javan rhinos, 1738–1740: documented with dates, a named ship and sworn crew statements; none reached Kandy</li><li>Volcanic eruptions witnessed by Company officials but absent from the Smithsonian list</li></ul></li><li class="cat"><span class="cat-label">Why it matters</span><ul><li>The verification discipline is the transferable part: every claim ends at a checkable original page</li><li>Archives at this scale are newly searchable — the bottleneck moves from reading to judging</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://jessewaites.com/blog/post/i-pointed-ai-at-400-years-of-archives/" target="_blank" rel="noopener">jessewaites.com</a> · Discuss: <a href="https://news.ycombinator.com/item?id=50019056" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">163 pts / 82 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>Praise with one aesthetic revolt: a commenter calls the page&#x27;s rotating rhino and animated effects unnecessary cruft that makes serious work look satirical — the author replies in-thread that he has added a button to turn the effects off. A second project doing similar structured extraction over modern political media asks whether heavy preprocessing is worth co-investing in for historical documents. The sceptical note asks how much the author himself learned about the Company when a machine did the reading — junk-food calories is the charge — while others simply link the original dodo post that inspired the whole thing.</p>
+</div>
+</article>
+    </ol>
+
+    <div class="shortcut-bar" aria-label="Keyboard shortcuts">
+      <span><kbd>J</kbd> next story</span>
+      <span><kbd>K</kbd> previous story</span>
+      <span><kbd>T</kbd> theme</span>
+    </div>
+
+    <footer class="page-footer">
+      <div class="footer-links"><a href="../">← Daily archive</a><a href="https://tk3369.github.io/hn-daily/" target="_blank" rel="noopener">Published archive ↗</a></div>
+      <span>Saturday 2026-10-10 · 10 stories</span>
+    </footer>
+  </main>
+  <div class="toast" role="status" aria-live="polite"></div>
+  <script>
+(() => {
+  const root = document.documentElement;
+  const toggle = document.getElementById('theme-toggle');
+  const entries = [...document.querySelectorAll('[data-story]')];
+  function storedTheme() { try { const t = localStorage.getItem('hn-daily-theme'); return t === 'dark' || t === 'light' ? t : null; } catch (_) { return null; } }
+  function preferredTheme() { return matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'; }
+  function currentTheme() { const a = root.dataset.theme; if (a === 'dark' || a === 'light') return a; return storedTheme() || preferredTheme(); }
+  function setTheme(theme) { const next = theme === 'dark' ? 'dark' : 'light'; const opposite = next === 'dark' ? 'Light' : 'Dark';
+    if (root.dataset.theme !== next) root.dataset.theme = next;
+    toggle.querySelector('.theme-text').textContent = opposite;
+    toggle.setAttribute('aria-label', `Switch to ${opposite} theme (T)`); toggle.title = `Switch to ${opposite} theme (T)`;
+    try { localStorage.setItem('hn-daily-theme', next); } catch (_) {} }
+  function flipTheme() { setTheme(currentTheme() === 'dark' ? 'light' : 'dark'); }
+  setTheme(storedTheme() || preferredTheme());
+  toggle.addEventListener('click', flipTheme);
+  const toast = document.querySelector('.toast'); let toastTimer;
+  function showToast(msg) { toast.textContent = msg; toast.classList.add('show'); clearTimeout(toastTimer); toastTimer = setTimeout(() => toast.classList.remove('show'), 1800); }
+  document.querySelectorAll('.copy-button').forEach((button) => {
+    button.addEventListener('click', async () => {
+      const story = button.closest('.story');
+      const n = story.dataset.story;
+      const tagline = story.querySelector('.tagline').textContent.trim();
+      const execSum = story.querySelector('.exec').textContent.trim();
+      const bullets = [...story.querySelectorAll('.cat-lists .cat')].map(li => {
+        const label = li.querySelector('.cat-label').textContent.trim();
+        const pts = [...li.querySelectorAll('ul li')].map(p => '  \u2022 ' + p.textContent.trim()).join('\n');
+        return '- ' + label + ':\n' + pts;
+      }).join('\n');
+      const link = 'https://tk3369.github.io/hn-daily/2026-10-10/#story-' + n;
+      const text = n + '. ' + tagline + '\n\n' + execSum + '\n' + bullets + '\n\n' + link;
+      try { await navigator.clipboard.writeText(text); button.textContent = 'Copied'; showToast('Story ' + n + ' copied for Threads'); setTimeout(() => { button.textContent = 'Copy for Threads'; }, 1600); }
+      catch (_) { showToast('Copy was blocked by this browser'); }
+    });
+  });
+  document.addEventListener('keydown', (event) => {
+    if (event.metaKey || event.ctrlKey || event.altKey || event.shiftKey) return;
+    const tag = event.target.tagName;
+    if (tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT') return;
+    const key = event.key.toLowerCase();
+    if (key === 't') { event.preventDefault(); flipTheme(); }
+    else if ((key === 'j' || key === 'k') && entries.length) {
+      event.preventDefault();
+      const active = entries.indexOf(document.activeElement);
+      const delta = key === 'j' ? 1 : -1;
+      const next = active < 0 ? (key === 'j' ? 0 : entries.length - 1) : Math.max(0, Math.min(entries.length - 1, active + 1 * delta));
+      entries[next].focus();
+    }
+  });
+})();
+  </script>
+</body>
+</html>
