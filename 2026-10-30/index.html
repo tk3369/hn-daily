@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="color-scheme" content="light dark" />
+  <link rel="icon" href="data:," />
+  <title>HN Daily — Friday 2026-10-30</title>
+  <style>
+:root { --page:#f1eadb; --paper:#fffaf0; --ink:#20201c; --muted:#6f695f; --hairline:#d9cebc; --accent:#ff5a1f; --comment:#f6efe3; --shadow:0 2px 0 rgba(57,45,25,.08),0 14px 36px rgba(57,45,25,.06); --serif:Georgia,"Times New Roman",serif; --sans:ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; --mono:"SFMono-Regular",Consolas,"Liberation Mono",monospace; }
+html[data-theme="dark"] { --page:#111312; --paper:#191c1a; --ink:#f1eee6; --muted:#aba69b; --hairline:#393b36; --accent:#ff7139; --comment:#222520; --shadow:0 2px 0 rgba(0,0,0,.22),0 18px 42px rgba(0,0,0,.22); }
+* { box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body { margin:0; min-width:280px; color:var(--ink); background:var(--page); font-family:var(--sans); line-height:1.55; -webkit-font-smoothing:antialiased; }
+a { color:inherit; text-underline-offset:3px; text-decoration-thickness:1px; }
+a:hover { color:var(--accent); }
+button,a { -webkit-tap-highlight-color:transparent; }
+button { font:inherit; }
+a:focus-visible,button:focus-visible { outline:3px solid var(--accent); outline-offset:3px; }
+.page { width:min(1080px,calc(100% - 36px)); margin:0 auto; padding:28px 0 72px; }
+.issue-header { display:grid; grid-template-columns:1fr auto; gap:24px; align-items:end; padding:8px 0 26px; border-bottom:3px solid var(--ink); }
+.edition { margin:0 0 9px; color:var(--accent); font:700 12px/1.3 var(--mono); letter-spacing:.09em; text-transform:uppercase; }
+.archive-nav { display:flex; flex-wrap:wrap; gap:8px 20px; margin-bottom:16px; font:700 12px/1 var(--mono); }
+.archive-nav a { min-height:36px; display:inline-flex; align-items:center; color:var(--muted); }
+.archive-nav a:hover { color:var(--accent); }
+h1 { max-width:820px; margin:0; font:700 clamp(34px,5.5vw,62px)/.98 var(--serif); letter-spacing:-.038em; }
+.deck { max-width:730px; margin:17px 0 0; color:var(--muted); font:17px/1.55 var(--sans); }
+.theme-toggle { align-self:start; min-width:86px; min-height:40px; padding:9px 13px; border:1px solid var(--hairline); border-radius:4px; color:var(--ink); background:var(--paper); cursor:pointer; font:700 12px/1 var(--mono); display:inline-flex; align-items:center; gap:8px; }
+.theme-toggle:hover { border-color:var(--accent); color:var(--accent); }
+.theme-dot { width:10px; height:10px; border-radius:50%; background:var(--accent); display:inline-block; flex-shrink:0; }
+.theme-text { line-height:1; }
+.story-list { display:grid; gap:20px; list-style:none; margin:26px 0 0; padding:0; counter-reset:story; }
+.story { counter-increment:story; display:grid; grid-template-columns:72px minmax(0,1fr); gap:26px; padding:26px 30px 28px; background:var(--paper); border-top:4px solid var(--ink); box-shadow:var(--shadow); scroll-margin-top:24px; }
+.story-number { color:var(--accent); font:900 22px/1 var(--mono); letter-spacing:-.04em; padding-top:6px; }
+.story-number::before { content:counter(story,decimal-leading-zero); }
+.tagline { margin:0; max-width:840px; font:700 clamp(24px,3vw,36px)/1.1 var(--serif); letter-spacing:-.028em; }
+.exec { margin:14px 0 0; max-width:840px; font:17px/1.58 var(--sans); }
+.cat-lists { margin:14px 0 0; padding:0; list-style:none; display:grid; gap:10px; max-width:840px; }
+.cat-lists li.cat { font:15px/1.6 var(--sans); }
+.cat-lists .cat-label { font:700 12px/1.6 var(--mono); letter-spacing:.06em; text-transform:uppercase; color:var(--accent); }
+.cat-lists ul { margin:4px 0 0; padding-left:20px; }
+.cat-lists ul li { margin:3px 0; }
+.meta-line { margin:16px 0 0; color:var(--muted); font:700 12px/1.9 var(--mono); overflow-wrap:anywhere; }
+.meta-line a { color:var(--ink); font-weight:800; }
+.meta-line .metrics { color:var(--ink); white-space:nowrap; }
+.story-bar { display:flex; align-items:flex-start; gap:14px; margin-top:4px; }
+.copy-button { flex:0 0 auto; align-self:flex-start; min-height:36px; padding:9px 12px; border:1px solid var(--hairline); border-radius:4px; background:var(--paper); color:var(--ink); cursor:pointer; font:700 12px/1 var(--mono); }
+.copy-button:hover { border-color:var(--accent); color:var(--accent); }
+.hn-comments { margin:18px 0 0; padding:14px 18px; background:var(--comment); border:1px solid var(--hairline); font:15px/1.62 var(--serif); color:var(--ink); }
+.hn-comments strong { font:700 12px/1.6 var(--mono); color:var(--accent); display:block; margin-bottom:6px; }
+.page-footer { display:flex; justify-content:space-between; flex-wrap:wrap; gap:14px; margin-top:64px; padding-top:12px; border-top:1px solid var(--hairline); color:var(--muted); font:12px/1.6 var(--mono); }
+.footer-links { display:flex; flex-wrap:wrap; gap:8px 20px; }
+.footer-links a { min-height:36px; display:inline-flex; align-items:center; color:var(--ink); font-weight:800; }
+.footer-links a:hover { color:var(--accent); }
+.shortcut-bar { display:flex; flex-wrap:wrap; gap:18px; margin-top:28px; color:var(--muted); font:11px/1.5 var(--mono); }
+kbd { display:inline-grid; place-items:center; min-width:22px; height:22px; margin-right:6px; padding:0 6px; border:1px solid var(--hairline); border-bottom-width:2px; border-radius:3px; background:var(--comment); color:var(--ink); font:inherit; font-weight:700; }
+.toast { position:fixed; right:max(18px,env(safe-area-inset-right)); bottom:max(18px,env(safe-area-inset-bottom)); z-index:10; padding:11px 14px; color:var(--paper); background:var(--ink); border:1px solid var(--ink); font:700 12px/1 var(--mono); opacity:0; transform:translateY(8px); pointer-events:none; transition:opacity 160ms ease,transform 160ms ease; }
+.toast.show { opacity:1; transform:translateY(0); }
+@media (max-width:760px) {
+  .page { width:min(100% - 22px,1080px); padding-top:16px; }
+  .issue-header { grid-template-columns:1fr auto; gap:12px; padding-bottom:20px; }
+  h1 { font-size:clamp(34px,10vw,48px); }
+  .deck { grid-column:1 / -1; margin-top:3px; font-size:15px; }
+  .theme-toggle { grid-column:2; grid-row:1; min-width:72px; }
+  .story { grid-template-columns:44px minmax(0,1fr); gap:14px; padding:20px 18px 22px; }
+  .story-number { font-size:16px; padding-top:4px; }
+  .story-bar { flex-direction:column; align-items:stretch; }
+  .copy-button { align-self:flex-start; }
+  .page-footer { display:block; }
+}
+@media (max-width:420px) {
+  .page { width:calc(100% - 16px); }
+  .story { grid-template-columns:1fr; gap:8px; padding:20px 16px 22px; }
+  .story-number { padding-top:0; }
+  .copy-button { width:100%; }
+}
+@media (prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } *,*::before,*::after { transition:none !important; } }
+@media print { :root { --page:#fff;--paper:#fff;--ink:#000;--muted:#444;--hairline:#bbb;--comment:#f5f5f5;--shadow:none; } .page{width:100%;padding:0}.theme-toggle,.copy-button,.toast,.shortcut-bar{display:none}.story{break-inside:avoid;box-shadow:none} }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="issue-header">
+      <div>
+        <nav class="archive-nav" aria-label="HN Daily archive links"><a href="../">← Archive</a><a href="https://tk3369.github.io/hn-daily/" target="_blank" rel="noopener">Published archive ↗</a></nav>
+        <p class="edition"><time datetime="2026-10-30">2026-10-30</time> · Daily brief · Pacific time</p>
+        <h1>HN Daily</h1>
+        <p class="deck">Direct, low-fluff top 10 from Hacker News, daily at 7am PT — hottest by points</p>
+      </div>
+      <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch color theme" title="Toggle theme (T)"><span class="theme-dot" aria-hidden="true"></span><span class="theme-text">Dark</span></button>
+    </header>
+
+    <ol class="story-list" aria-label="Top 10 Hacker News stories">
+<article class="story" id="story-1" data-story="1" data-source="https://mistral.ai/news/mistral-large-4-oss/" data-hn="https://news.ycombinator.com/item?id=50289418" data-metric="1584 pts / 414 comments" tabindex="0" aria-label="Story 1: Mistral Large 4&#x27;s weights are out — 1T parameters, aimed at coding and cyber defence">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">Mistral Large 4&#x27;s weights are out — 1T parameters, aimed at coding and cyber defence</h2>
+<p class="exec">Mistral released the weights of Large 4 (Le Chonk), a 1-trillion-parameter multimodal model, after three more weeks of reinforcement learning since its preview. It claims the open-weight lead in coding and defensive cybersecurity, at $0.70 input / $2.10 output per million tokens.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">What it claims</span><ul><li>FrontierCode 2.0 lead at 19.7%; Terminal-Bench 4.0 up 13 points to 41% since preview.</li><li>Tied with GLM-5.3 at 48% on the Artificial Analysis Coding Agent Index, using 47% fewer tokens per task.</li></ul></li><li class="cat"><span class="cat-label">Tradeoffs</span><ul><li>The licence is a modified MIT: Model-as-a-Service businesses need a separate commercial licence, so commenters dispute calling it fully open.</li><li>A 96.6% refusal rate on malicious cyber requests is claimed — but the thread asks about false refusals on legitimate defensive work.</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://mistral.ai/news/mistral-large-4-oss/" target="_blank" rel="noopener">mistral.ai</a> · Discuss: <a href="https://news.ycombinator.com/item?id=50289418" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">1584 pts / 414 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>Welcome for a European sovereign open model dominates, with pricing halved from preview making a reassessment worthwhile. Debate centres on the modified-MIT licence, missing benchmark rivals such as Kimi, and whether refusal stats mean anything without false-refusal rates.</p>
+</div>
+</article>
+<article class="story" id="story-2" data-story="2" data-source="https://arkm.com/explorer/entity/21a94755-f604-45e5-9501-6542e23005e8" data-hn="https://news.ycombinator.com/item?id=50296470" data-metric="1570 pts / 1036 comments" tabindex="0" aria-label="Story 2: A $5.6B Binance theft claim is circulating — and still unverified">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">A $5.6B Binance theft claim is circulating — and still unverified</h2>
+<p class="exec">An Arkham-labelled entity page titled Binance-hacker-1029 lists about $5.6B allegedly stolen from Binance. No confirmed Binance statement appears in the thread, so this is a circulating claim, not an established theft — treat the headline number as unverified.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">What is circulating</span><ul><li>On-chain posts cited in the thread say about $2.4B in USDT/USDC is already frozen by Circle and Tether.</li><li>One commenter cites Molly White as treating the claim as real, which is a second-hand signal, not primary confirmation.</li></ul></li><li class="cat"><span class="cat-label">Why scepticism matters</span><ul><li>Stablecoin freezes show issuers can claw funds back, undercutting the no-takesies-backsies crypto story.</li><li>The cash-out route for the rest is unclear — no exchange will knowingly take flagged coins, commenters note.</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://arkm.com/explorer/entity/21a94755-f604-45e5-9501-6542e23005e8" target="_blank" rel="noopener">arkm.com</a> · Discuss: <a href="https://news.ycombinator.com/item?id=50296470" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">1570 pts / 1036 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>The thread splits between alarm and scepticism: &#x27;oof&#x27; and links to frozen funds on one side, &#x27;how do we know? it could be nonsense&#x27; on the other. The irony most noted is a supposedly irreversible system depending on issuers freezing assets.</p>
+</div>
+</article>
+<article class="story" id="story-3" data-story="3" data-source="https://cyberplace.social/@GossiTheDog/117528831681803563" data-hn="https://news.ycombinator.com/item?id=50302334" data-metric="531 pts / 156 comments" tabindex="0" aria-label="Story 3: A backdoored Claude Code extension slipped into Cursor&#x27;s marketplace">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">A backdoored Claude Code extension slipped into Cursor&#x27;s marketplace</h2>
+<p class="exec">Reports say a maliciously modified Claude Code VS Code extension appeared on the Cursor marketplace and Open VSX, and Cursor has published a security notice. Early thread discussion said the official Microsoft marketplace build was clean, but that was later marked uncertain — check your version and source before trusting it.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">What happened</span><ul><li>The suspect build reportedly delivered a backdoor to developer machines; one commenter links it to the Binance theft claim, unconfirmed.</li><li>Cursor&#x27;s notice is the firmest source in the thread; the original post is a social-media report, not a vendor advisory.</li></ul></li><li class="cat"><span class="cat-label">What to do</span><ul><li>Check which marketplace and version you installed, remove any suspect build, and audit for a reverse shell.</li><li>Some machines may have escaped by luck: new versions become eligible for auto-update only 12 hours after publication.</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://cyberplace.social/@GossiTheDog/117528831681803563" target="_blank" rel="noopener">cyberplace.social</a> · Discuss: <a href="https://news.ycombinator.com/item?id=50302334" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">531 pts / 156 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>Shock at the distribution scale dominates, alongside a bleaker point: developers running coding CLIs daily already grant near-RCE trust, so &#x27;don&#x27;t curl | bash&#x27; rings hollow. Timing and version details are still being pinned down, with several users unsure whether they ever received the bad build.</p>
+</div>
+</article>
+<article class="story" id="story-4" data-story="4" data-source="https://martinfowler.com/bliki/LLM-Voice.html" data-hn="https://news.ycombinator.com/item?id=50290177" data-metric="523 pts / 279 comments" tabindex="0" aria-label="Story 4: Martin Fowler: LLM prose has a voice, and it kills the urge to read">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">Martin Fowler: LLM prose has a voice, and it kills the urge to read</h2>
+<p class="exec">Martin Fowler argues LLM-generated prose triggers an uncanny-valley reaction — low information density, familiar tics, nothing to gain from engaging — and that delegating writing means delegating thinking. His rule: write the prose yourself, use an LLM at most for an outline, and declare any AI help.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">Core argument</span><ul><li>Detectors miss the point: the reaction is human, and by the time you reach for a detector it is already too late.</li><li>Even a human-edited LLM draft is hard to purge of LLM voice; one known exception needed a professional editor at a major periodical.</li></ul></li><li class="cat"><span class="cat-label">Exceptions</span><ul><li>Accessibility is a genuine exception — a contributor with Parkinson&#x27;s disease relies on LLM help to keep writing.</li><li>Translation and form letters are awkward cases, but Fowler still prefers clunky human prose to smooth, soulless text.</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://martinfowler.com/bliki/LLM-Voice.html" target="_blank" rel="noopener">martinfowler.com</a> · Discuss: <a href="https://news.ycombinator.com/item?id=50290177" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">523 pts / 279 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>Many readers recognise themselves adopting LLM style even without using one, simply from reading so much of it. The split is between accessibility and empowerment — LLM help lets some people communicate at all — and prose judgement punishing real technical insight; several expect indistinguishability within months to a couple of years.</p>
+</div>
+</article>
+<article class="story" id="story-5" data-story="5" data-source="https://sidbala.com/h-264-is-magic/" data-hn="https://news.ycombinator.com/item?id=50291054" data-metric="474 pts / 155 comments" tabindex="0" aria-label="Story 5: H.264 is magic — a 2016 explainer that still gets re-read yearly">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">H.264 is magic — a 2016 explainer that still gets re-read yearly</h2>
+<p class="exec">Sid Bala&#x27;s 2016 classic walks through how 300 frames of video fit in 175KB while a single PNG frame takes 1,015KB: motion prediction, transforms and entropy coding, not a miracle. It resurfaces on HN every year or two, and this round is no exception.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The trick</span><ul><li>Inter-frame prediction stores only what changes, then lossy transforms discard what eyes barely notice.</li><li>The PNG comparison is lossy versus lossless, so the 1,500x figure is illustrative, not a fair benchmark.</li></ul></li><li class="cat"><span class="cat-label">Why it resurfaces</span><ul><li>Readers call re-reading it a tradition, alongside the 3Blue1Brown &#x27;Compression is Intelligence&#x27; video.</li><li>The 2026 follow-up in the thread: AV1 adoption is the current magic, with AV2 on the way.</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://sidbala.com/h-264-is-magic/" target="_blank" rel="noopener">sidbala.com</a> · Discuss: <a href="https://news.ycombinator.com/item?id=50291054" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">474 pts / 155 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>Nostalgia and practice mix: annual re-reads, a practical &#x27;should I use H.264 or H.265?&#x27; thread, and a note that the article itself is dated 2016. Previous HN discussions in 2016, 2019, 2022 and 2024 each drew 180–219 comments.</p>
+</div>
+</article>
+<article class="story" id="story-6" data-story="6" data-source="https://labs.ycombinator.com/projects/games/index.html" data-hn="https://news.ycombinator.com/item?id=50296486" data-metric="335 pts / 134 comments" tabindex="0" aria-label="Story 6: 50 AI agents built a rationing bureaucracy in Minecraft">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">50 AI agents built a rationing bureaucracy in Minecraft</h2>
+<p class="exec">YC Labs and Olam Labs ran 50 GPT-6.1 Sol agents for three hours in Minecraft with one goal — &#x27;build a thriving civilization&#x27; — plus Mindustry swarms. The agents formed a hierarchy, a ration ledger, written rules and permits, and sent about 5,900 messages; 22 of 34 deaths came on the first night, and caution took over.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">What emerged</span><ul><li>Ada, first in the directory, became de facto leader; Ines ran the food queue from a shared ledger.</li><li>After the first-night deaths, agents huddled in lit shelters and abandoned ambitious tasks, rationing scarce food.</li></ul></li><li class="cat"><span class="cat-label">Limits</span><ul><li>The play felt turn-based, and three hours with an open goal gave weak incentives for lively, reactive play.</li><li>The hierarchy may be an artefact of alphabetical directory order, not earned leadership — a confound the thread flags.</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://labs.ycombinator.com/projects/games/index.html" target="_blank" rel="noopener">labs.ycombinator.com</a> · Discuss: <a href="https://news.ycombinator.com/item?id=50296486" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">335 pts / 134 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>Delight dominates — a three-minute &#x27;no blame&#x27; inquiry over a stolen cooked chicken, agents as &#x27;super-serious little senior engineers&#x27; — plus praise for the embedded gameplay widget. The serious question is cost: how much KV cache do 50 game agents use, and could they fit on one consumer GPU?</p>
+</div>
+</article>
+<article class="story" id="story-7" data-story="7" data-source="https://doublepulsar.com/anthropic-hacked-to-deliver-remote-access-trojan-to-claude-developer-laptops-worldwide-1148a92baae2" data-hn="https://news.ycombinator.com/item?id=50301983" data-metric="312 pts / 58 comments" tabindex="0" aria-label="Story 7: The &#x27;Anthropic hacked&#x27; post is really a Cursor marketplace extension scare">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">The &#x27;Anthropic hacked&#x27; post is really a Cursor marketplace extension scare</h2>
+<p class="exec">A widely shared post claims Anthropic was hacked to deliver a remote-access trojan to Claude developer laptops worldwide. Cursor&#x27;s own notice, cited in the thread, says something narrower: a maliciously modified Claude Code extension was made available in its marketplace. The headline overstates what is confirmed.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">What Cursor confirmed, per the thread</span><ul><li>A malicious version of the Claude Code extension appeared in the Cursor VS Code extension marketplace.</li><li>The trojan angle is an SSH reverse backdoor, per the post — a machine-level compromise, not just a data leak.</li></ul></li><li class="cat"><span class="cat-label">What remains thin</span><ul><li>The original post is low on details, its social links are hard to follow, and scope and timing are still unclear.</li><li>Commenters correct the framing: Anthropic itself was not shown hacked; a marketplace distribution channel was abused.</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://doublepulsar.com/anthropic-hacked-to-deliver-remote-access-trojan-to-claude-developer-laptops-worldwide-1148a92baae2" target="_blank" rel="noopener">doublepulsar.com</a> · Discuss: <a href="https://news.ycombinator.com/item?id=50301983" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">312 pts / 58 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>&#x27;How legit is this? How worried should we be?&#x27; is the dominant question, from users whose organisations run the extension. One silver lining offered: if the motive was crypto theft, non-crypto machines may have lost nothing of value — but the reverse shell still has to be removed.</p>
+</div>
+</article>
+<article class="story" id="story-8" data-story="8" data-source="https://elect.horse/" data-hn="https://news.ycombinator.com/item?id=50301462" data-metric="293 pts / 79 comments" tabindex="0" aria-label="Story 8: elect.horse: gerrymandering, as a playable puzzle">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">elect.horse: gerrymandering, as a playable puzzle</h2>
+<p class="exec">elect.horse is a browser puzzle about drawing electoral districts — horses versus donkeys — that makes gerrymandering concrete instead of abstract. It follows enclose.horse and draws comparisons to Gerrymandle, with a colour-accessibility complaint in the thread.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">Why it works</span><ul><li>District lines, not just votes, decide the outcome — a lesson several commenters say should be assigned in schools.</li><li>Short, replayable puzzles: one player reports finishing the day-8 expert level in about 40 seconds.</li></ul></li><li class="cat"><span class="cat-label">Controversy</span><ul><li>Commenters accuse the new owners of reskinning Gerrymandle 1:1, down to odd UI choices, with ads and LLM-generated copy.</li><li>Others defend it as fun regardless of provenance; the horse/donkey colours are hard to distinguish for some players.</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://elect.horse/" target="_blank" rel="noopener">elect.horse</a> · Discuss: <a href="https://news.ycombinator.com/item?id=50301462" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">293 pts / 79 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>Players call it fun and genuinely instructive, and the school-assignment suggestion recurs. The counter-thread is about ownership: enclose.horse was sold off, and the new version is seen as a shameless cash grab rather than an improvement.</p>
+</div>
+</article>
+<article class="story" id="story-9" data-story="9" data-source="https://github.com/herdrdev/herdr-app" data-hn="https://news.ycombinator.com/item?id=50298436" data-metric="272 pts / 181 comments" tabindex="0" aria-label="Story 9: Herdr ships a native app for running coding agents in terminals">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">Herdr ships a native app for running coding agents in terminals</h2>
+<p class="exec">Herdr, a terminal multiplexer built for coding-agent sessions, has released a native app. It uses libghostty under the hood, avoiding a terminal-inside-a-terminal, and a GUI variant, herdr-gpui, adds remote phone pairing plus browser integration for sending screenshots and notes to agents.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">Why users switch</span><ul><li>Long-time tmux users in the thread say they switched this year and have not looked back, citing agent integrations.</li><li>Sessions stay rock-solid across multiple linked machines, with phone check-ins via a companion app.</li></ul></li><li class="cat"><span class="cat-label">Open questions</span><ul><li>Monetisation for VC-backed multiplexers is unanswered, and comparisons to CMUX and Mjolnir recur.</li><li>One reader reports Chrome flagging herdr.dev&#x27;s SSL certificate as invalid and is waiting before trying it.</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://github.com/herdrdev/herdr-app" target="_blank" rel="noopener">github.com</a> · Discuss: <a href="https://news.ycombinator.com/item?id=50298436" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">272 pts / 181 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>Enthusiasm from existing users dominates, including a Windows 98 mode with Minesweeper, Solitaire and Clippy. Sceptics ask what the business model is, and how it compares with CMUX and the ACP-based Mjolnir, which offers cross-provider subagents and session-log sync.</p>
+</div>
+</article>
+<article class="story" id="story-10" data-story="10" data-source="https://github.com/SheepSeb/tinyworldformer" data-hn="https://news.ycombinator.com/item?id=50295450" data-metric="243 pts / 16 comments" tabindex="0" aria-label="Story 10: A tiny world model plays games on a Raspberry Pi Pico 2 W">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">A tiny world model plays games on a Raspberry Pi Pico 2 W</h2>
+<p class="exec">One tiny world model learns the dynamics of several games and runs on a Raspberry Pi Pico 2 W, a microcontroller, not a GPU box. Looped transformers were needed for mini-Doom but not for the simpler games, according to the thread.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">What impresses</span><ul><li>The same model covers multiple games, with a determinism commenters did not expect from neural nets.</li><li>The Pico framing cuts both ways: it proves efficiency, but some say it distracts from the world-model capability itself.</li></ul></li><li class="cat"><span class="cat-label">Questions</span><ul><li>Training hardware is not in the readme, one commenter notes, and the actor&#x27;s training on world-model mistakes is open.</li><li>If the actor learns from the model&#x27;s errors, it could learn to force hallucinations into easier game states.</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://github.com/SheepSeb/tinyworldformer" target="_blank" rel="noopener">github.com</a> · Discuss: <a href="https://news.ycombinator.com/item?id=50295450" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">243 pts / 16 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>Reactions are near-uniform delight — &#x27;incredibly cool&#x27;, &#x27;fascinating&#x27; — with a WebGPU port question and a broader claim: small, locally run models like this are the real long-term future of AI, not ever-larger cloud models.</p>
+</div>
+</article>
+</ol>
+
+    <footer class="page-footer">
+      <div class="footer-links"><a href="../">← Daily archive</a><a href="https://tk3369.github.io/hn-daily/" target="_blank" rel="noopener">Published archive ↗</a></div>
+      <span>Friday 2026-10-30 · 10 stories</span>
+    </footer>
+  </main>
+  <div class="toast" role="status" aria-live="polite"></div>
+  <script>
+(() => {
+  const root = document.documentElement;
+  const toggle = document.getElementById('theme-toggle');
+  const entries = [...document.querySelectorAll('[data-story]')];
+  function storedTheme() { try { const t = localStorage.getItem('hn-daily-theme'); return t === 'dark' || t === 'light' ? t : null; } catch (_) { return null; } }
+  function preferredTheme() { return matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'; }
+  function currentTheme() { const a = root.dataset.theme; if (a === 'dark' || a === 'light') return a; return storedTheme() || preferredTheme(); }
+  function setTheme(theme) { const next = theme === 'dark' ? 'dark' : 'light'; const opposite = next === 'dark' ? 'Light' : 'Dark';
+    if (root.dataset.theme !== next) root.dataset.theme = next;
+    toggle.querySelector('.theme-text').textContent = opposite;
+    toggle.setAttribute('aria-label', `Switch to ${opposite} theme (T)`); toggle.title = `Switch to ${opposite} theme (T)`;
+    try { localStorage.setItem('hn-daily-theme', next); } catch (_) {} }
+  function flipTheme() { setTheme(currentTheme() === 'dark' ? 'light' : 'dark'); }
+  setTheme(storedTheme() || preferredTheme());
+  toggle.addEventListener('click', flipTheme);
+  const toast = document.querySelector('.toast'); let toastTimer;
+  function showToast(msg) { toast.textContent = msg; toast.classList.add('show'); clearTimeout(toastTimer); toastTimer = setTimeout(() => toast.classList.remove('show'), 1800); }
+  document.querySelectorAll('.copy-button').forEach((button) => {
+    button.addEventListener('click', async () => {
+      const story = button.closest('.story');
+      const n = story.dataset.story;
+      const tagline = story.querySelector('.tagline').textContent.trim();
+      const execSum = story.querySelector('.exec').textContent.trim();
+      const bullets = [...story.querySelectorAll('.cat-lists .cat')].map(li => {
+        const label = li.querySelector('.cat-label').textContent.trim();
+        const pts = [...li.querySelectorAll('ul li')].map(p => '  \u2022 ' + p.textContent.trim()).join('\n');
+        return '- ' + label + ':\n' + pts;
+      }).join('\n');
+      const link = 'https://tk3369.github.io/hn-daily/2026-10-30/#story-' + n;
+      const text = n + '. ' + tagline + '\n\n' + execSum + '\n' + bullets + '\n\n' + link;
+      try { await navigator.clipboard.writeText(text); button.textContent = 'Copied'; showToast('Story ' + n + ' copied for Threads'); setTimeout(() => { button.textContent = 'Copy for Threads'; }, 1600); }
+      catch (_) { showToast('Copy was blocked by this browser'); }
+    });
+  });
+  document.addEventListener('keydown', (event) => {
+    if (event.metaKey || event.ctrlKey || event.altKey || event.shiftKey) return;
+    const tag = event.target.tagName;
+    if (tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT') return;
+    const key = event.key.toLowerCase();
+    if (key === 't') { event.preventDefault(); flipTheme(); }
+    else if ((key === 'j' || key === 'k') && entries.length) {
+      event.preventDefault();
+      const active = entries.indexOf(document.activeElement);
+      const delta = key === 'j' ? 1 : -1;
+      const next = active < 0 ? (key === 'j' ? 0 : entries.length - 1) : Math.max(0, Math.min(entries.length - 1, active + 1 * delta));
+      entries[next].focus();
+    }
+  });
+})();
+  </script>
+</body>
+</html>
