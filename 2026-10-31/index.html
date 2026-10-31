@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="color-scheme" content="light dark" />
+  <link rel="icon" href="data:," />
+  <title>HN Daily — Saturday 2026-10-31</title>
+  <style>
+:root { --page:#f1eadb; --paper:#fffaf0; --ink:#20201c; --muted:#6f695f; --hairline:#d9cebc; --accent:#ff5a1f; --comment:#f6efe3; --shadow:0 2px 0 rgba(57,45,25,.08),0 14px 36px rgba(57,45,25,.06); --serif:Georgia,"Times New Roman",serif; --sans:ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; --mono:"SFMono-Regular",Consolas,"Liberation Mono",monospace; }
+html[data-theme="dark"] { --page:#111312; --paper:#191c1a; --ink:#f1eee6; --muted:#aba69b; --hairline:#393b36; --accent:#ff7139; --comment:#222520; --shadow:0 2px 0 rgba(0,0,0,.22),0 18px 42px rgba(0,0,0,.22); }
+* { box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body { margin:0; min-width:280px; color:var(--ink); background:var(--page); font-family:var(--sans); line-height:1.55; -webkit-font-smoothing:antialiased; }
+a { color:inherit; text-underline-offset:3px; text-decoration-thickness:1px; }
+a:hover { color:var(--accent); }
+button,a { -webkit-tap-highlight-color:transparent; }
+button { font:inherit; }
+a:focus-visible,button:focus-visible { outline:3px solid var(--accent); outline-offset:3px; }
+.page { width:min(1080px,calc(100% - 36px)); margin:0 auto; padding:28px 0 72px; }
+.issue-header { display:grid; grid-template-columns:1fr auto; gap:24px; align-items:end; padding:8px 0 26px; border-bottom:3px solid var(--ink); }
+.edition { margin:0 0 9px; color:var(--accent); font:700 12px/1.3 var(--mono); letter-spacing:.09em; text-transform:uppercase; }
+.archive-nav { display:flex; flex-wrap:wrap; gap:8px 20px; margin-bottom:16px; font:700 12px/1 var(--mono); }
+.archive-nav a { min-height:36px; display:inline-flex; align-items:center; color:var(--muted); }
+.archive-nav a:hover { color:var(--accent); }
+h1 { max-width:820px; margin:0; font:700 clamp(34px,5.5vw,62px)/.98 var(--serif); letter-spacing:-.038em; }
+.deck { max-width:730px; margin:17px 0 0; color:var(--muted); font:17px/1.55 var(--sans); }
+.theme-toggle { align-self:start; min-width:86px; min-height:40px; padding:9px 13px; border:1px solid var(--hairline); border-radius:4px; color:var(--ink); background:var(--paper); cursor:pointer; font:700 12px/1 var(--mono); display:inline-flex; align-items:center; gap:8px; }
+.theme-toggle:hover { border-color:var(--accent); color:var(--accent); }
+.theme-dot { width:10px; height:10px; border-radius:50%; background:var(--accent); display:inline-block; flex-shrink:0; }
+.theme-text { line-height:1; }
+.story-list { display:grid; gap:20px; list-style:none; margin:26px 0 0; padding:0; counter-reset:story; }
+.story { counter-increment:story; display:grid; grid-template-columns:72px minmax(0,1fr); gap:26px; padding:26px 30px 28px; background:var(--paper); border-top:4px solid var(--ink); box-shadow:var(--shadow); scroll-margin-top:24px; }
+.story-number { color:var(--accent); font:900 22px/1 var(--mono); letter-spacing:-.04em; padding-top:6px; }
+.story-number::before { content:counter(story,decimal-leading-zero); }
+.tagline { margin:0; max-width:840px; font:700 clamp(24px,3vw,36px)/1.1 var(--serif); letter-spacing:-.028em; }
+.exec { margin:14px 0 0; max-width:840px; font:17px/1.58 var(--sans); }
+.cat-lists { margin:14px 0 0; padding:0; list-style:none; display:grid; gap:10px; max-width:840px; }
+.cat-lists li.cat { font:15px/1.6 var(--sans); }
+.cat-lists .cat-label { font:700 12px/1.6 var(--mono); letter-spacing:.06em; text-transform:uppercase; color:var(--accent); }
+.cat-lists ul { margin:4px 0 0; padding-left:20px; }
+.cat-lists ul li { margin:3px 0; }
+.meta-line { margin:16px 0 0; color:var(--muted); font:700 12px/1.9 var(--mono); overflow-wrap:anywhere; }
+.meta-line a { color:var(--ink); font-weight:800; }
+.meta-line .metrics { color:var(--ink); white-space:nowrap; }
+.story-bar { display:flex; align-items:flex-start; gap:14px; margin-top:4px; }
+.copy-button { flex:0 0 auto; align-self:flex-start; min-height:36px; padding:9px 12px; border:1px solid var(--hairline); border-radius:4px; background:var(--paper); color:var(--ink); cursor:pointer; font:700 12px/1 var(--mono); }
+.copy-button:hover { border-color:var(--accent); color:var(--accent); }
+.hn-comments { margin:18px 0 0; padding:14px 18px; background:var(--comment); border:1px solid var(--hairline); font:15px/1.62 var(--serif); color:var(--ink); }
+.hn-comments strong { font:700 12px/1.6 var(--mono); color:var(--accent); display:block; margin-bottom:6px; }
+.page-footer { display:flex; justify-content:space-between; flex-wrap:wrap; gap:14px; margin-top:64px; padding-top:12px; border-top:1px solid var(--hairline); color:var(--muted); font:12px/1.6 var(--mono); }
+.footer-links { display:flex; flex-wrap:wrap; gap:8px 20px; }
+.footer-links a { min-height:36px; display:inline-flex; align-items:center; color:var(--ink); font-weight:800; }
+.footer-links a:hover { color:var(--accent); }
+.shortcut-bar { display:flex; flex-wrap:wrap; gap:18px; margin-top:28px; color:var(--muted); font:11px/1.5 var(--mono); }
+kbd { display:inline-grid; place-items:center; min-width:22px; height:22px; margin-right:6px; padding:0 6px; border:1px solid var(--hairline); border-bottom-width:2px; border-radius:3px; background:var(--comment); color:var(--ink); font:inherit; font-weight:700; }
+.toast { position:fixed; right:max(18px,env(safe-area-inset-right)); bottom:max(18px,env(safe-area-inset-bottom)); z-index:10; padding:11px 14px; color:var(--paper); background:var(--ink); border:1px solid var(--ink); font:700 12px/1 var(--mono); opacity:0; transform:translateY(8px); pointer-events:none; transition:opacity 160ms ease,transform 160ms ease; }
+.toast.show { opacity:1; transform:translateY(0); }
+@media (max-width:760px) {
+  .page { width:min(100% - 22px,1080px); padding-top:16px; }
+  .issue-header { grid-template-columns:1fr auto; gap:12px; padding-bottom:20px; }
+  h1 { font-size:clamp(34px,10vw,48px); }
+  .deck { grid-column:1 / -1; margin-top:3px; font-size:15px; }
+  .theme-toggle { grid-column:2; grid-row:1; min-width:72px; }
+  .story { grid-template-columns:44px minmax(0,1fr); gap:14px; padding:20px 18px 22px; }
+  .story-number { font-size:16px; padding-top:4px; }
+  .story-bar { flex-direction:column; align-items:stretch; }
+  .copy-button { align-self:flex-start; }
+  .page-footer { display:block; }
+}
+@media (max-width:420px) {
+  .page { width:calc(100% - 16px); }
+  .story { grid-template-columns:1fr; gap:8px; padding:20px 16px 22px; }
+  .story-number { padding-top:0; }
+  .copy-button { width:100%; }
+}
+@media (prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } *,*::before,*::after { transition:none !important; } }
+@media print { :root { --page:#fff;--paper:#fff;--ink:#000;--muted:#444;--hairline:#bbb;--comment:#f5f5f5;--shadow:none; } .page{width:100%;padding:0}.theme-toggle,.copy-button,.toast,.shortcut-bar{display:none}.story{break-inside:avoid;box-shadow:none} }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="issue-header">
+      <div>
+        <nav class="archive-nav" aria-label="HN Daily archive links"><a href="../">← Archive</a><a href="https://tk3369.github.io/hn-daily/" target="_blank" rel="noopener">Published archive ↗</a></nav>
+        <p class="edition"><time datetime="2026-10-31">2026-10-31</time> · Daily brief · Pacific time</p>
+        <h1>HN Daily</h1>
+        <p class="deck">Direct, low-fluff top 10 from Hacker News, daily at 7am PT — hottest by points</p>
+      </div>
+      <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch color theme" title="Toggle theme (T)"><span class="theme-dot" aria-hidden="true"></span><span class="theme-text">Dark</span></button>
+    </header>
+
+    <ol class="story-list" aria-label="Top 10 Hacker News stories">
+<article class="story" id="story-1" data-story="1" data-source="https://phorion.io/blog/offical-claude-code-vsx-compromise/" data-hn="https://news.ycombinator.com/item?id=50300683" data-metric="925 pts / 537 comments" tabindex="0" aria-label="Story 1: Backdoored Claude Code extension on Cursor&#x27;s marketplace drops a persistent SSH backdoor">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">Backdoored Claude Code extension on Cursor&#x27;s marketplace drops a persistent SSH backdoor</h2>
+<p class="exec">Phorion reports a backdoor in the official Claude Code for VS Code extension bundle on the Cursor Marketplace; Cursor&#x27;s Oct 31 notice names versions 2.1.312 and 2.1.313 for macOS and Windows as affected, and Cursor removed them. The implant plants an SSH key, a reverse tunnel and persistence — a macOS bug may break the inbound path when Remote Login is off, but that is not a defence to rely on.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">What it does</span><ul><li>An injected prefix runs on load, appends an attacker Ed25519 key (comment svc-telemetry) to ~/.ssh/authorized_keys, and opens a reverse SSH tunnel with a detached retry loop.</li><li>Persistence is platform-specific: a LaunchAgent disguised as com.apple.sysmond on macOS, a cron @reboot script on Linux, a Startup/scheduled-task path on Windows.</li></ul></li><li class="cat"><span class="cat-label">What to check</span><ul><li>Check which marketplace and version you installed, and hunt for the planted key, ~/.config/.smt files and the sysmond LaunchAgent — removing the extension does not clean an infected machine.</li><li>No privilege-escalation exploit is included, so starting system services may fail for a standard user — but a machine with Remote Login already on is ready for the planted key.</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://phorion.io/blog/offical-claude-code-vsx-compromise/" target="_blank" rel="noopener">phorion.io</a> · Discuss: <a href="https://news.ycombinator.com/item?id=50300683" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">925 pts / 537 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>Alarm dominates, led by the scale — one commenter notes the extension has over 27 million installs — and by the practical point that yanking the affected version from the marketplace does not clean machines already infected. Commenters argue over scope: the write-up is Cursor-marketplace specific, and whether the official VS Code marketplace build was compromised too is still being picked apart, with some asking how legit the early, detail-light reports were.</p>
+</div>
+</article>
+<article class="story" id="story-2" data-story="2" data-source="https://www.wired.com/story/the-dollar63-billion-binance-hack-was-pulled-off-in-just-20-minutes/" data-hn="https://news.ycombinator.com/item?id=50303172" data-metric="498 pts / 352 comments" tabindex="0" aria-label="Story 2: The $6.3B Binance hack was pulled off in just 20 minutes">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">The $6.3B Binance hack was pulled off in just 20 minutes</h2>
+<p class="exec">Binance has disclosed a record crypto theft: about $6.3B moved out of its wallets, most of it in about 20 minutes across at least ten blockchains. Binance says it will cover all losses from company funds, about $3B has been frozen with partners, and its initial account points to a compromised DevOps engineer&#x27;s laptop used to submit unauthorised withdrawals — with no evidence, so far, of a wallet private-key leak.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">Why the number moved</span><ul><li>Oct 30&#x27;s circulating $5.6B claim was an early, unverified tally; TRM Labs now puts the movement at $6.36B, Chainalysis at $5.9B at the moment of theft, and Binance at over $6.34B reserved to cover losses — measurer and timing explain the spread.</li><li>About $3B frozen is mostly stablecoins; the unfrozen remainder, largely bitcoin, is the part investigators expect to be hardest to recover.</li></ul></li><li class="cat"><span class="cat-label">Attribution, still developing</span><ul><li>TRM Labs and Chainalysis say TraderTraitor, North Korea&#x27;s elite crypto-theft unit, may be behind it, with methods matching earlier North Korea-linked heists — but Wired stresses this is tentative: neither Binance nor law enforcement had named such a link.</li><li>Preparation reportedly began at least 36 hours earlier, with test withdrawals and a wallet funded through Tornado Cash; a self-destruct mechanism destroyed tooling and traces, Binance&#x27;s co-CEO said.</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://www.wired.com/story/the-dollar63-billion-binance-hack-was-pulled-off-in-just-20-minutes/" target="_blank" rel="noopener">wired.com</a> · Discuss: <a href="https://news.ycombinator.com/item?id=50303172" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">498 pts / 352 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>Top comments are mostly dry jokes — patching in days to weeks when seconds matter, wanting to watch all 20 minutes of the screen share — rather than a technical dispute of the timeline. That thinness is itself a signal: the thread is reacting to the headline, not yet auditing the heist.</p>
+</div>
+</article>
+<article class="story" id="story-3" data-story="3" data-source="https://status.northflank.com" data-hn="https://news.ycombinator.com/item?id=50305025" data-metric="455 pts / 330 comments" tabindex="0" aria-label="Story 3: Northflank breached — assume every environment variable was decrypted">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">Northflank breached — assume every environment variable was decrypted</h2>
+<p class="exec">Northflank&#x27;s status page tells all customers to assume their environment variables have been decrypted and to rotate every secret immediately. Users report unauthorised use of AI API keys supplied to the platform, and Northflank has since enabled secret rotation for Postgres, MongoDB, MySQL and Redis, plus audit logs for all users.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">What happened</span><ul><li>Investigating from Oct 30 after a Wiz threat alert; by Oct 30 evening, multiple users confirmed AI keys had been used, in a pattern Northflank links to Wiz&#x27;s “Black October” reporting on AI-credential attacks.</li><li>Guidance escalated from rotating environment variables to disabling public access on addons and reviewing AI provider usage and billing for unexpected activity.</li></ul></li><li class="cat"><span class="cat-label">What to do</span><ul><li>Rotate all workload, secret-group and global secrets, revoke credentials at their issuing providers, and check provider billing — not just the secrets stored in Northflank.</li><li>Free users now get audit logs too; use them to look for use you did not make.</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://status.northflank.com" target="_blank" rel="noopener">status.northflank.com</a> · Discuss: <a href="https://news.ycombinator.com/item?id=50305025" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">455 pts / 330 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>Surprise at how many neoclouds exist is the first reaction, followed by a strategic one: incidents like this and Railway&#x27;s push enterprises back toward hyperscalers, because no amount of nicer developer experience replaces security. Others ask the harder question — how PaaS platforms keep getting breached, and whether self-hosting is actually less painful now.</p>
+</div>
+</article>
+<article class="story" id="story-4" data-story="4" data-source="https://www.science.org/content/article/serbia-just-elected-world-s-brainiest-parliament" data-hn="https://news.ycombinator.com/item?id=50314654" data-metric="422 pts / 254 comments" tabindex="0" aria-label="Story 4: Serbia just elected the world&#x27;s brainiest parliament">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">Serbia just elected the world&#x27;s brainiest parliament</h2>
+<p class="exec">After a student-led opposition movement won in Serbia on Oct 25, its Student List holds 141 of 250 National Assembly seats. Dozens of the new representatives come from academia, and more than half hold a Ph.D. or M.D. — a parliament that may be the brainiest in the world, now tasked with forming a government after 13 years of populist authoritarian rule.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">Who they are</span><ul><li>Not just academics: farmers, lawyers, artists, teachers and a former basketball player sit on a slate pulled together by students, topped by cardiologist Ilija Srdanović — who is not the group&#x27;s official leader.</li><li>The platform promises anti-corruption, meritocracy, rule of law, academic autonomy, stable science funding and an end to political meddling in research funding.</li></ul></li><li class="cat"><span class="cat-label">The test ahead</span><ul><li>Forming a government without a figurehead leader, staffing institutions from a movement rather than an established party, and keeping academic careers alongside politics.</li><li>Researchers warn recovery will be slow: restoring rule of law and fighting corruption comes first, and science funding reform will not be quick.</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://www.science.org/content/article/serbia-just-elected-world-s-brainiest-parliament" target="_blank" rel="noopener">science.org</a> · Discuss: <a href="https://news.ycombinator.com/item?id=50314654" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">422 pts / 254 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>Commenters are torn between hope and scepticism about technocracy: some want to believe expert-led government must beat career politicians, others recall technocratic governments ending up more corrupt than average. The practical worry recurs — a movement with 250 people on its list cannot staff a state alone — while others simply want to see whether leaderless government formation works.</p>
+</div>
+</article>
+<article class="story" id="story-5" data-story="5" data-source="https://virtuallyfun.com/2026/10/29/my-favourite-powermac-is-a-nintendo-wii/" data-hn="https://news.ycombinator.com/item?id=50307190" data-metric="334 pts / 99 comments" tabindex="0" aria-label="Story 5: My favourite PowerMac is a Nintendo Wii">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">My favourite PowerMac is a Nintendo Wii</h2>
+<p class="exec">A guest post documents classic Mac OS reaching the desktop on a Nintendo Wii: Mac OS 7.6 and 9.2.2 booted via a ported OpenBIOS, patched Trampoline bootloader and kernel, and a fake-SCSI block driver. It is a milestone, not a release — the author says the port is nowhere near ready for the public.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">How it got there</span><ul><li>The Wii&#x27;s ArtX-derived chipset is PowerPC, like classic Macs, but its memory map, interrupt controller and missing ADB/power-management hardware all had to be faked or patched around.</li><li>Real hardware booted 7.6 in about 40 seconds over SD; in emulation the same boot took 20 minutes to an hour before MacsBug and Open Transport were removed.</li></ul></li><li class="cat"><span class="cat-label">Why it matters</span><ul><li>It is likely the first time since the CHRP clone era that someone outside Apple brought classic Mac OS to the desktop on new hardware.</li><li>The author did it by hand, with no coding agent or LLM — a point of pride in the post, and a reminder of how much low-level reversing this kind of port still takes.</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://virtuallyfun.com/2026/10/29/my-favourite-powermac-is-a-nintendo-wii/" target="_blank" rel="noopener">virtuallyfun.com</a> · Discuss: <a href="https://news.ycombinator.com/item?id=50307190" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">334 pts / 99 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>The thread immediately asks the reverse question — can you make a PowerMac into a Wii? — and trades in the modded-Wii community: updated homebrew, restored online play, and the Open Shop Channel. Several commenters simply love the jank of classic Mac OS, hacks upon hacks back to the 1980s, and one wonders whether AmigaOS 4 or MorphOS is the next target for the same hardware.</p>
+</div>
+</article>
+<article class="story" id="story-6" data-story="6" data-source="https://github.com/kevinraymond/florilegium" data-hn="https://news.ycombinator.com/item?id=50305637" data-metric="322 pts / 49 comments" tabindex="0" aria-label="Story 6: Florilegium: procedural flowers in LaTeX">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">Florilegium: procedural flowers in LaTeX</h2>
+<p class="exec">Florilegium is a LuaLaTeX package that draws Delft-blue floral page margins procedurally, in Lua, while the page is written. No images, no imported paths: every petal, leaf and stem is a parametric curve, so every page gets its own garden — grown to fill the space the text leaves free.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">What it does</span><ul><li>Two modes: authored compositions placed by hand, and a grown mode where a greedy space-filling loop plants the largest free disc first, then smaller ones, with butterflies, bees, a snail and occasionally a bird.</li><li>The margin can read the text: drop caps in tiled initials, flowers beside headings, blooms on demand, and seasons that age the garden from spring to autumn across the document.</li></ul></li><li class="cat"><span class="cat-label">Tradeoffs</span><ul><li>Geometric and math themes swap the drawing primitives — flat shapes, or cascading figures and equations — without changing the growth loop, and a geometric page is about a tenth the size of a flora page.</li><li>The project was made with AI assistance (Claude) and documents its process openly; one commenter flags the AI-written readme, others just call the result beautiful.</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://github.com/kevinraymond/florilegium" target="_blank" rel="noopener">github.com</a> · Discuss: <a href="https://news.ycombinator.com/item?id=50305637" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">322 pts / 49 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>Reaction is almost pure delight — “quite beautiful”, “this is what I need” — from readers who say work software has left them disillusioned and a project like this restores a little faith. The one dissenting note is about the readme being AI-written, which sits oddly beside a hand-crafted aesthetic.</p>
+</div>
+</article>
+<article class="story" id="story-7" data-story="7" data-source="https://www.binarysecurity.no/posts/2026/10/one-root-case" data-hn="https://news.ycombinator.com/item?id=50301854" data-metric="318 pts / 59 comments" tabindex="0" aria-label="Story 7: Azure&#x27;s weakest link — five full cross-tenant compromises">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">Azure&#x27;s weakest link — five full cross-tenant compromises</h2>
+<p class="exec">A researcher details five ways Azure API Connections allowed full cross-tenant compromise — reading another tenant&#x27;s Key Vault or writing to its SQL database through its own connection — netting $200,000 in bounties. The root cause is architectural: the shared API Management layer swaps in the victim connection&#x27;s token, and input validation was the only barrier.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The primitives</span><ul><li>Path traversal in DynamicInvoke reached other connections&#x27; backends; when that was fixed by a path blocklist, undocumented sibling endpoints (DynamicList and others) had the same flaw.</li><li>A third route abused Consumption Logic Apps&#x27; implicit access to Version 1 connections via a host.api.RuntimeUrl override, then path traversal inside that URL.</li></ul></li><li class="cat"><span class="cat-label">The fix pattern</span><ul><li>Each report was met with a narrow fix — a blocklist, then blocking the endpoints outright — rather than removing the underlying token confusion, the author argues.</li><li>If the blocked endpoints ever become accessible again, he assumes they would be vulnerable, since no other mitigation is in place.</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://www.binarysecurity.no/posts/2026/10/one-root-case" target="_blank" rel="noopener">binarysecurity.no</a> · Discuss: <a href="https://news.ycombinator.com/item?id=50301854" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">318 pts / 59 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>Commenters read this as a long-standing design flaw, not a one-off bug: path traversal and IDOR in these capabilities have likely been active since the features launched, and the “add randomness to resource names” advice looks like security by obscurity. One thread wonders why enterprises still flock to Azure given how far ahead it looks on cross-tenant leaks; another sympathises with the engineer who had to learn Azure deeply enough to find these.</p>
+</div>
+</article>
+<article class="story" id="story-8" data-story="8" data-source="https://tangled.org/blog/forge/" data-hn="https://news.ycombinator.com/item?id=50305573" data-metric="301 pts / 89 comments" tabindex="0" aria-label="Story 8: The federated code forge">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">The federated code forge</h2>
+<p class="exec">Tangled is launching as a federated code forge on the AT Protocol: host code on your own servers and still collaborate with everyone else. This release brings a new Svelte UI, a Rust in-memory indexer deployed at the edge, repo-owned issues and pull requests, organisation accounts and stacked PRs for all.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">Architecture</span><ul><li>The old Go appview monolith is split: bobbin, a diskless Rust indexer in 11+ regions, serves reads, while knot2 — a Rust Git + SSH server — stores issues, PRs, comments and reactions as collaborative Git objects inside the repo itself.</li><li>Attestations stop a knot putting words in your mouth: every record you create also writes a signed attestation to your own PDS pointing at that exact version.</li></ul></li><li class="cat"><span class="cat-label">What is new, what is next</span><ul><li>Organisations are real AT Protocol accounts with their own DID, at &lt;name&gt;.tngl.sh, with delegated, passwordless membership; stacked PRs now work for Git as well as Jujutsu, with interdiff between versions.</li><li>Private repos, a CLI, SDKs and agent skills are staggered over the coming weeks; self-hosters must upgrade knots to v1.20.0.</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://tangled.org/blog/forge/" target="_blank" rel="noopener">tangled.org</a> · Discuss: <a href="https://news.ycombinator.com/item?id=50305573" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">301 pts / 89 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>The co-founder&#x27;s launch comment sets the tone — stabilised lexicons, overhauled architecture and UI, self-hosting made easy — and regulars agree: Tangled is now the only forge some of them want to use, precisely because code sits alongside their other AT Protocol social data. The practical thread is migration: moving a self-hosted Gitea setup over for code and releases while keeping GitHub for discoverability, and wanting git-bug bridging and self-hosted client instructions.</p>
+</div>
+</article>
+<article class="story" id="story-9" data-story="9" data-source="https://www.techpolicy.press/breaking-the-open-web-wont-stop-the-bad-bots/" data-hn="https://news.ycombinator.com/item?id=50263837" data-metric="286 pts / 125 comments" tabindex="0" aria-label="Story 9: Breaking the open web won&#x27;t stop the bad bots">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">Breaking the open web won&#x27;t stop the bad bots</h2>
+<p class="exec">TechPolicy.Press argues the Stealth Bot and Stealth Crawler bills would force anyone accessing a website automatically to disclose their identity and purpose — and would still not stop abusive crawling. Unmasking a crawler does not reduce its request rate, pay publishers, or restore referral traffic; it mainly chills the legitimate anonymous crawling journalists, researchers and archivists rely on.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">What the bills do</span><ul><li>The federal Stealth Bot Prohibition Act lets the FTC pursue penalties up to $53,000 for a stealth bot “reasonably likely to damage, impair, or burden” a site&#x27;s operation — with no definition of that threshold.</li><li>New York&#x27;s version lets a covered news publisher subpoena a crawler&#x27;s identity without showing any harm. A disclosed bot hammering a site 10,000 times a minute complies; an anonymous journalist investigating anti-competitive behaviour does not.</li></ul></li><li class="cat"><span class="cat-label">The better target</span><ul><li>Liability should turn on identifiable harm — overwhelming servers, fraud, prohibited uses — not on anonymity itself, the authors argue, alongside technical standards for managing machine access.</li><li>Existing privacy, copyright and consumer-protection law already covers many harmful uses of scraped data; the First Amendment history against compelled identification for receiving information points the same way.</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://www.techpolicy.press/breaking-the-open-web-wont-stop-the-bad-bots/" target="_blank" rel="noopener">techpolicy.press</a> · Discuss: <a href="https://news.ycombinator.com/item?id=50263837" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">286 pts / 125 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>The thread&#x27;s sharpest point is the identity-versus-harm distinction: knowing who runs a crawler tells you little about whether its behaviour is harmful, and the bill&#x27;s vagueness will deter archivists and researchers who cannot afford to test it. Others are blunter — enforcement looks impossible, bots mostly operate on behalf of humans, and if the conventional web were efficient, nobody would be complaining about bots in the first place.</p>
+</div>
+</article>
+<article class="story" id="story-10" data-story="10" data-source="https://github.com/dbreunig/nesformer" data-hn="https://news.ycombinator.com/item?id=50306442" data-metric="268 pts / 130 comments" tabindex="0" aria-label="Story 10: Show HN: a working Nintendo in ~1GB of Qwen weights">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">Show HN: a working Nintendo in ~1GB of Qwen weights</h2>
+<p class="exec">NESformer compiles an NES CPU into the weights of a stock Qwen3.5 model: the 6502 core, 2KB of work RAM and a cartridge&#x27;s ROM run inside a standard checkpoint, with no training — a compiler computed every weight. A small host program draws the picture, reads the controller and fires vblank; bundled test games match a conventional emulator frame for frame.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">How it works</span><ul><li>The model&#x27;s Gated DeltaNet state is the machine&#x27;s memory: each state-matrix row is a memory cell, and the cartridge, RAM and registers live in those rows. Most instructions take a single token; real game code averages 1.1–1.3 tokens per instruction.</li><li>The checkpoint is 466.6M parameters in bf16 (~933MB), but only 9.3M weights are nonzero, so it zips to 3.3MB; the reference CPU matches nestest&#x27;s golden log and 5.7M instructions of game code.</li></ul></li><li class="cat"><span class="cat-label">Limits</span><ul><li>NROM cartridges only (mapper 0), and it is slow: 1–6 seconds per frame, 150–290× slower than a real console, needing about 700,000 tokens per second to run in real time.</li><li>The host handles the PPU, controllers and APU registers — the weights are the CPU, not the whole console.</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://github.com/dbreunig/nesformer" target="_blank" rel="noopener">github.com</a> · Discuss: <a href="https://news.ycombinator.com/item?id=50306442" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">268 pts / 130 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>Commenters love the hack while recoiling at the efficiency — “horrifying to my assembly-code-golfing brain” — and it gives them new appreciation for how much more efficient deterministic programs are than AI. The sceptical thread asks what “working” means here, whether every input/output combination was tested, and whether reducing digital logic circuits to weights is surprising at all.</p>
+</div>
+</article>
+</ol>
+
+    <footer class="page-footer">
+      <div class="footer-links"><a href="../">← Daily archive</a><a href="https://tk3369.github.io/hn-daily/" target="_blank" rel="noopener">Published archive ↗</a></div>
+      <span>Saturday 2026-10-31 · 10 stories</span>
+    </footer>
+  </main>
+  <div class="toast" role="status" aria-live="polite"></div>
+  <script>
+(() => {
+  const root = document.documentElement;
+  const toggle = document.getElementById('theme-toggle');
+  const entries = [...document.querySelectorAll('[data-story]')];
+  function storedTheme() { try { const t = localStorage.getItem('hn-daily-theme'); return t === 'dark' || t === 'light' ? t : null; } catch (_) { return null; } }
+  function preferredTheme() { return matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'; }
+  function currentTheme() { const a = root.dataset.theme; if (a === 'dark' || a === 'light') return a; return storedTheme() || preferredTheme(); }
+  function setTheme(theme) { const next = theme === 'dark' ? 'dark' : 'light'; const opposite = next === 'dark' ? 'Light' : 'Dark';
+    if (root.dataset.theme !== next) root.dataset.theme = next;
+    toggle.querySelector('.theme-text').textContent = opposite;
+    toggle.setAttribute('aria-label', `Switch to ${opposite} theme (T)`); toggle.title = `Switch to ${opposite} theme (T)`;
+    try { localStorage.setItem('hn-daily-theme', next); } catch (_) {} }
+  function flipTheme() { setTheme(currentTheme() === 'dark' ? 'light' : 'dark'); }
+  setTheme(storedTheme() || preferredTheme());
+  toggle.addEventListener('click', flipTheme);
+  const toast = document.querySelector('.toast'); let toastTimer;
+  function showToast(msg) { toast.textContent = msg; toast.classList.add('show'); clearTimeout(toastTimer); toastTimer = setTimeout(() => toast.classList.remove('show'), 1800); }
+  document.querySelectorAll('.copy-button').forEach((button) => {
+    button.addEventListener('click', async () => {
+      const story = button.closest('.story');
+      const n = story.dataset.story;
+      const tagline = story.querySelector('.tagline').textContent.trim();
+      const execSum = story.querySelector('.exec').textContent.trim();
+      const bullets = [...story.querySelectorAll('.cat-lists .cat')].map(li => {
+        const label = li.querySelector('.cat-label').textContent.trim();
+        const pts = [...li.querySelectorAll('ul li')].map(p => '  \u2022 ' + p.textContent.trim()).join('\n');
+        return '- ' + label + ':\n' + pts;
+      }).join('\n');
+      const link = 'https://tk3369.github.io/hn-daily/2026-10-31/#story-' + n;
+      const text = n + '. ' + tagline + '\n\n' + execSum + '\n' + bullets + '\n\n' + link;
+      try { await navigator.clipboard.writeText(text); button.textContent = 'Copied'; showToast('Story ' + n + ' copied for Threads'); setTimeout(() => { button.textContent = 'Copy for Threads'; }, 1600); }
+      catch (_) { showToast('Copy was blocked by this browser'); }
+    });
+  });
+  document.addEventListener('keydown', (event) => {
+    if (event.metaKey || event.ctrlKey || event.altKey || event.shiftKey) return;
+    const tag = event.target.tagName;
+    if (tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT') return;
+    const key = event.key.toLowerCase();
+    if (key === 't') { event.preventDefault(); flipTheme(); }
+    else if ((key === 'j' || key === 'k') && entries.length) {
+      event.preventDefault();
+      const active = entries.indexOf(document.activeElement);
+      const delta = key === 'j' ? 1 : -1;
+      const next = active < 0 ? (key === 'j' ? 0 : entries.length - 1) : Math.max(0, Math.min(entries.length - 1, active + 1 * delta));
+      entries[next].focus();
+    }
+  });
+})();
+  </script>
+</body>
+</html>
