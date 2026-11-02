@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="color-scheme" content="light dark" />
+  <link rel="icon" href="data:," />
+  <title>HN Daily — Monday 2026-11-02</title>
+  <style>
+:root { --page:#f1eadb; --paper:#fffaf0; --ink:#20201c; --muted:#6f695f; --hairline:#d9cebc; --accent:#ff5a1f; --comment:#f6efe3; --shadow:0 2px 0 rgba(57,45,25,.08),0 14px 36px rgba(57,45,25,.06); --serif:Georgia,"Times New Roman",serif; --sans:ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; --mono:"SFMono-Regular",Consolas,"Liberation Mono",monospace; }
+html[data-theme="dark"] { --page:#111312; --paper:#191c1a; --ink:#f1eee6; --muted:#aba69b; --hairline:#393b36; --accent:#ff7139; --comment:#222520; --shadow:0 2px 0 rgba(0,0,0,.22),0 18px 42px rgba(0,0,0,.22); }
+* { box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body { margin:0; min-width:280px; color:var(--ink); background:var(--page); font-family:var(--sans); line-height:1.55; -webkit-font-smoothing:antialiased; }
+a { color:inherit; text-underline-offset:3px; text-decoration-thickness:1px; }
+a:hover { color:var(--accent); }
+button,a { -webkit-tap-highlight-color:transparent; }
+button { font:inherit; }
+a:focus-visible,button:focus-visible { outline:3px solid var(--accent); outline-offset:3px; }
+.page { width:min(1080px,calc(100% - 36px)); margin:0 auto; padding:28px 0 72px; }
+.issue-header { display:grid; grid-template-columns:1fr auto; gap:24px; align-items:end; padding:8px 0 26px; border-bottom:3px solid var(--ink); }
+.edition { margin:0 0 9px; color:var(--accent); font:700 12px/1.3 var(--mono); letter-spacing:.09em; text-transform:uppercase; }
+.archive-nav { display:flex; flex-wrap:wrap; gap:8px 20px; margin-bottom:16px; font:700 12px/1 var(--mono); }
+.archive-nav a { min-height:36px; display:inline-flex; align-items:center; color:var(--muted); }
+.archive-nav a:hover { color:var(--accent); }
+h1 { max-width:820px; margin:0; font:700 clamp(34px,5.5vw,62px)/.98 var(--serif); letter-spacing:-.038em; }
+.deck { max-width:730px; margin:17px 0 0; color:var(--muted); font:17px/1.55 var(--sans); }
+.theme-toggle { align-self:start; min-width:86px; min-height:40px; padding:9px 13px; border:1px solid var(--hairline); border-radius:4px; color:var(--ink); background:var(--paper); cursor:pointer; font:700 12px/1 var(--mono); display:inline-flex; align-items:center; gap:8px; }
+.theme-toggle:hover { border-color:var(--accent); color:var(--accent); }
+.theme-dot { width:10px; height:10px; border-radius:50%; background:var(--accent); display:inline-block; flex-shrink:0; }
+.theme-text { line-height:1; }
+.story-list { display:grid; gap:20px; list-style:none; margin:26px 0 0; padding:0; counter-reset:story; }
+.story { counter-increment:story; display:grid; grid-template-columns:72px minmax(0,1fr); gap:26px; padding:26px 30px 28px; background:var(--paper); border-top:4px solid var(--ink); box-shadow:var(--shadow); scroll-margin-top:24px; }
+.story-number { color:var(--accent); font:900 22px/1 var(--mono); letter-spacing:-.04em; padding-top:6px; }
+.story-number::before { content:counter(story,decimal-leading-zero); }
+.tagline { margin:0; max-width:840px; font:700 clamp(24px,3vw,36px)/1.1 var(--serif); letter-spacing:-.028em; }
+.exec { margin:14px 0 0; max-width:840px; font:17px/1.58 var(--sans); }
+.cat-lists { margin:14px 0 0; padding:0; list-style:none; display:grid; gap:10px; max-width:840px; }
+.cat-lists li.cat { font:15px/1.6 var(--sans); }
+.cat-lists .cat-label { font:700 12px/1.6 var(--mono); letter-spacing:.06em; text-transform:uppercase; color:var(--accent); }
+.cat-lists ul { margin:4px 0 0; padding-left:20px; }
+.cat-lists ul li { margin:3px 0; }
+.meta-line { margin:16px 0 0; color:var(--muted); font:700 12px/1.9 var(--mono); overflow-wrap:anywhere; }
+.meta-line a { color:var(--ink); font-weight:800; }
+.meta-line .metrics { color:var(--ink); white-space:nowrap; }
+.story-bar { display:flex; align-items:flex-start; gap:14px; margin-top:4px; }
+.copy-button { flex:0 0 auto; align-self:flex-start; min-height:36px; padding:9px 12px; border:1px solid var(--hairline); border-radius:4px; background:var(--paper); color:var(--ink); cursor:pointer; font:700 12px/1 var(--mono); }
+.copy-button:hover { border-color:var(--accent); color:var(--accent); }
+.hn-comments { margin:18px 0 0; padding:14px 18px; background:var(--comment); border:1px solid var(--hairline); font:15px/1.62 var(--serif); color:var(--ink); }
+.hn-comments strong { font:700 12px/1.6 var(--mono); color:var(--accent); display:block; margin-bottom:6px; }
+.page-footer { display:flex; justify-content:space-between; flex-wrap:wrap; gap:14px; margin-top:64px; padding-top:12px; border-top:1px solid var(--hairline); color:var(--muted); font:12px/1.6 var(--mono); }
+.footer-links { display:flex; flex-wrap:wrap; gap:8px 20px; }
+.footer-links a { min-height:36px; display:inline-flex; align-items:center; color:var(--ink); font-weight:800; }
+.footer-links a:hover { color:var(--accent); }
+.shortcut-bar { display:flex; flex-wrap:wrap; gap:18px; margin-top:28px; color:var(--muted); font:11px/1.5 var(--mono); }
+kbd { display:inline-grid; place-items:center; min-width:22px; height:22px; margin-right:6px; padding:0 6px; border:1px solid var(--hairline); border-bottom-width:2px; border-radius:3px; background:var(--comment); color:var(--ink); font:inherit; font-weight:700; }
+.toast { position:fixed; right:max(18px,env(safe-area-inset-right)); bottom:max(18px,env(safe-area-inset-bottom)); z-index:10; padding:11px 14px; color:var(--paper); background:var(--ink); border:1px solid var(--ink); font:700 12px/1 var(--mono); opacity:0; transform:translateY(8px); pointer-events:none; transition:opacity 160ms ease,transform 160ms ease; }
+.toast.show { opacity:1; transform:translateY(0); }
+@media (max-width:760px) {
+  .page { width:min(100% - 22px,1080px); padding-top:16px; }
+  .issue-header { grid-template-columns:1fr auto; gap:12px; padding-bottom:20px; }
+  h1 { font-size:clamp(34px,10vw,48px); }
+  .deck { grid-column:1 / -1; margin-top:3px; font-size:15px; }
+  .theme-toggle { grid-column:2; grid-row:1; min-width:72px; }
+  .story { grid-template-columns:44px minmax(0,1fr); gap:14px; padding:20px 18px 22px; }
+  .story-number { font-size:16px; padding-top:4px; }
+  .story-bar { flex-direction:column; align-items:stretch; }
+  .copy-button { align-self:flex-start; }
+  .page-footer { display:block; }
+}
+@media (max-width:420px) {
+  .page { width:calc(100% - 16px); }
+  .story { grid-template-columns:1fr; gap:8px; padding:20px 16px 22px; }
+  .story-number { padding-top:0; }
+  .copy-button { width:100%; }
+}
+@media (prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } *,*::before,*::after { transition:none !important; } }
+@media print { :root { --page:#fff;--paper:#fff;--ink:#000;--muted:#444;--hairline:#bbb;--comment:#f5f5f5;--shadow:none; } .page{width:100%;padding:0}.theme-toggle,.copy-button,.toast,.shortcut-bar{display:none}.story{break-inside:avoid;box-shadow:none} }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="issue-header">
+      <div>
+        <nav class="archive-nav" aria-label="HN Daily archive links"><a href="../">← Archive</a><a href="https://tk3369.github.io/hn-daily/" target="_blank" rel="noopener">Published archive ↗</a></nav>
+        <p class="edition"><time datetime="2026-11-02">2026-11-02</time> · Daily brief · Pacific time</p>
+        <h1>HN Daily</h1>
+        <p class="deck">Direct, low-fluff top 10 from Hacker News, daily at 7am PT — hottest by points</p>
+      </div>
+      <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch color theme" title="Toggle theme (T)"><span class="theme-dot" aria-hidden="true"></span><span class="theme-text">Dark</span></button>
+    </header>
+
+    <ol class="story-list" aria-label="Top 10 Hacker News stories">
+<article class="story" id="story-1" data-story="1" data-source="https://karpathy.bearblog.dev/hacker-tube/" data-hn="https://news.ycombinator.com/item?id=50319510" data-metric="2726 pts / 602 comments" tabindex="0" aria-label="Story 1: HackerTube still tops HN: YouTube rebuilt from videos HN itself recommended">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">HackerTube still tops HN: YouTube rebuilt from videos HN itself recommended</h2>
+<p class="exec">Karpathy&#x27;s HackerTube puts a YouTube-style interface over 6,454 videos pulled from 39,834 HN comments since 2007. It is still the day&#x27;s runaway story: curation by HN&#x27;s own taste, not an engagement algorithm.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">What it is</span><ul><li>A catalogue sourced entirely from HN comment recommendations, with the underlying data downloadable from the site&#x27;s about page.</li><li>Built largely with Claude: about 504M input tokens (90% cached) and 7.6M output tokens, mostly Sonnet labelling comments, with the app itself roughly 1M Opus tokens.</li></ul></li><li class="cat"><span class="cat-label">Why it matters</span><ul><li>It is a working answer to algorithmic-feed fatigue: curation by a community you already trust beats curation by retention metrics.</li><li>It also prices the new normal — a side project can cost hundreds of dollars in model calls, prompting calls for a 10–100x cheaper Sonnet-class decision model.</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://karpathy.bearblog.dev/hacker-tube/" target="_blank" rel="noopener">karpathy.bearblog.dev</a> · Discuss: <a href="https://news.ycombinator.com/item?id=50319510" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">2726 pts / 602 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>: Cost still dominates: the author puts the Sonnet labelling near $300, others say it fits several times over in a $20 subscription, and several ask for a cheaper decision model. Others want the same treatment for kids&#x27; content and social feeds, and several ask where to download the data — the author points to the site&#x27;s about page.</p>
+</div>
+</article>
+<article class="story" id="story-2" data-story="2" data-source="https://hackerbooks.org" data-hn="https://news.ycombinator.com/item?id=50326821" data-metric="1679 pts / 278 comments" tabindex="0" aria-label="Story 2: HackerBooks does HackerTube for books — 16,500 books HN actually mentioned">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">HackerBooks does HackerTube for books — 16,500 books HN actually mentioned</h2>
+<p class="exec">HackerBooks, inspired directly by HackerTube, catalogues about 16,500 books mentioned by at least two different HN commenters since 2007, each linking back to the comments that mentioned it. The author says Claude Opus 5.5 wrote almost all of it, including the data pipeline.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">How it works</span><ul><li>Plain JavaScript and static JSON on Cloudflare: a small top-books index up front, the full list loading behind it, covers on R2, data from the HN dump via Python and DuckDB.</li><li>The homepage shuffles its books daily, and each book page links back to the HN comments that mentioned it.</li></ul></li><li class="cat"><span class="cat-label">The catch</span><ul><li>It counts mentions, not praise — trashing a book counts the same as recommending it, so the ranking is “most mentioned”, not “most loved”.</li><li>The author is upfront about this in the post itself, and commenters immediately propose splitting the two rankings.</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://hackerbooks.org" target="_blank" rel="noopener">hackerbooks.org</a> · Discuss: <a href="https://news.ycombinator.com/item?id=50326821" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">1679 pts / 278 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>: Speed is the first reaction — commenters praise sub-second paints and a tiny payload, with one posting detailed lab timings. The second is the mentions flaw: a high ranking for Ayn Rand prompts jokes and a call to split “most mentioned” from “most recommended”, plus bug reports on the “mentions since” filter.</p>
+</div>
+</article>
+<article class="story" id="story-3" data-story="3" data-source="http://rhaas.blogspot.com/2026/10/postgres-19-is-late-and-its-ais-fault.html" data-hn="https://news.ycombinator.com/item?id=50312408" data-metric="670 pts / 409 comments" tabindex="0" aria-label="Story 3: Postgres 19 is late because AI review is finding bugs faster than humans can fix them">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">Postgres 19 is late because AI review is finding bugs faster than humans can fix them</h2>
+<p class="exec">Postgres 19 is delayed, and the blog&#x27;s argument is that AI-assisted review is surfacing far more bugs than before. Discovery is no longer the bottleneck — the small maintainer group that must validate reports and review fixes is.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">Why now</span><ul><li>AI review gives a tight, deterministic feedback loop on “find the bug” tasks, unlike open-ended “write the feature” work, so reports pile up.</li><li>The same asymmetry is why analysis tools can scale where generation cannot: the checker is cheap, the human verdict is not.</li></ul></li><li class="cat"><span class="cat-label">The correction</span><ul><li>Commenters stress the code itself was not AI-written — AI helped review and find bugs, so this is not a “slop” story; it is a verification-capacity story.</li><li>If anything, the delay is evidence the review process works: bugs that would have shipped later are being caught now.</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="http://rhaas.blogspot.com/2026/10/postgres-19-is-late-and-its-ais-fault.html" target="_blank" rel="noopener">rhaas.blogspot.com</a> · Discuss: <a href="https://news.ycombinator.com/item?id=50312408" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">670 pts / 409 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>: The thread splits on whether this is good news or a warning: finding bugs earlier is strictly better, say some, while others note AI only adds work if fixes still need humans. Several argue the real lesson is to point AI at analysis and verification first, where the loop is checkable, rather than at generation.</p>
+</div>
+</article>
+<article class="story" id="story-4" data-story="4" data-source="https://news.ycombinator.com/item?id=50328896" data-hn="https://news.ycombinator.com/item?id=50328896" data-metric="546 pts / 658 comments" tabindex="0" aria-label="Story 4: Ask HN: is there a TV that respects privacy? The answer is mostly “don&#x27;t connect it”">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">Ask HN: is there a TV that respects privacy? The answer is mostly “don&#x27;t connect it”</h2>
+<p class="exec">The asker wants a 60–80-inch 4K TV at 60Hz or better, is happy to pay a premium, and wants it to be nothing but a display for an Apple TV. The honest HN answer: no brand earns full trust — the privacy comes from how you set it up.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The consensus setup</span><ul><li>Buy on panel quality, never connect the TV to the network, and run everything through an Apple TV or a local media server like Jellyfin.</li><li>The purist version is a dumb large monitor with no smarts at all — no account, no telemetry, nothing to update.</li></ul></li><li class="cat"><span class="cat-label">The disagreement</span><ul><li>Whether an unconnected TV can still phone home via neighbours&#x27; Wi-Fi, Bluetooth mesh or Amazon Sidewalk — some call that unproven, others say untrustworthy hardware should be treated as compromised anyway.</li><li>A practical warning: some sets nag constantly, or refuse to work properly, without an account and a network connection.</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://news.ycombinator.com/item?id=50328896" target="_blank" rel="noopener">news.ycombinator.com</a> · Discuss: <a href="https://news.ycombinator.com/item?id=50328896" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">546 pts / 658 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>: The top advice is blunt — “none” and “keep the glass disconnected forever” — but the thread then argues about the edge cases: sets that nag or refuse to work without an account and network, guests connecting a TV to a phone hotspot, and whether Sidewalk-style mesh links are a real TV risk today or a theory without a documented case.</p>
+</div>
+</article>
+<article class="story" id="story-5" data-story="5" data-source="https://www.reddit.com/r/technology/comments/1xl2pr3/lenovos_encrypted_fingerprint_usb_drive_is_just/" data-hn="https://news.ycombinator.com/item?id=50326099" data-metric="523 pts / 168 comments" tabindex="0" aria-label="Story 5: Lenovo&#x27;s “encrypted” fingerprint USB is, per a teardown, just an unencrypted SD card in a case">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">Lenovo&#x27;s “encrypted” fingerprint USB is, per a teardown, just an unencrypted SD card in a case</h2>
+<p class="exec">A teardown report linked from Reddit finds Lenovo&#x27;s fingerprint “encrypted” drive stores data on an ordinary, unencrypted SD card behind the fingerprint gate. Remove the gate and the data is there — the encryption claim, on this report, is not a storage property at all.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">Why it matters</span><ul><li>Hardware encryption you cannot audit is a trust claim, not a verified property — the user has no access to the engine or the raw storage format to check it.</li><li>That is the difference between “encrypted” as a marketing label and encryption as something you can verify with independent implementations.</li></ul></li><li class="cat"><span class="cat-label">The alternative</span><ul><li>Open software cryptography on ordinary storage, where the algorithm and output can be checked, or keypad drives that unlock before plugging in.</li><li>One detailed commenter names Apricorn keypad drives as the better-tested option, with a battery so you can unlock before the USB rail is even live.</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://www.reddit.com/r/technology/comments/1xl2pr3/lenovos_encrypted_fingerprint_usb_drive_is_just/" target="_blank" rel="noopener">reddit.com</a> · Discuss: <a href="https://news.ycombinator.com/item?id=50326099" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">523 pts / 168 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>: Commenters call this worse than a bad implementation — no security at all, not weak security — and note the compliance angle: some buyers were required to use such drives by regulation, not choice. The broader thread distrusts black-box hardware encryption generally, while others counter that phones&#x27; inline crypto engines are validated the same opaque way.</p>
+</div>
+</article>
+<article class="story" id="story-6" data-story="6" data-source="https://nolanlawson.com/2026/10/28/the-ai-cost-of-javascript-frameworks/" data-hn="https://news.ycombinator.com/item?id=50323088" data-metric="422 pts / 322 comments" tabindex="0" aria-label="Story 6: The AI cost of JavaScript frameworks: Astro is cheapest to have an agent build">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">The AI cost of JavaScript frameworks: Astro is cheapest to have an agent build</h2>
+<p class="exec">Nolan Lawson&#x27;s benchmark has AI agents build the same app in different JavaScript frameworks and measures time and tokens. Astro comes out on top on time, second-lowest on spend, with zero client-side JavaScript — a tax schedule for framework choice in the agent era.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">What won and why</span><ul><li>Content-driven apps suit Astro&#x27;s server-rendered, low-JS model; commenters confirm it is pleasant in practice, with escape hatches — including React islands — when real interactivity is needed.</li><li>That is the practical version of the benchmark: pay the model to wade through as little client machinery as possible.</li></ul></li><li class="cat"><span class="cat-label">The caveat</span><ul><li>The benchmark app is small and content-driven, so it flatters Astro; an interactive, realtime, form-heavy app could reorder the table.</li><li>SolidStart&#x27;s new V2 gets praised in the thread for exactly that case, and framework choice also turns on maintainability and team knowledge.</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://nolanlawson.com/2026/10/28/the-ai-cost-of-javascript-frameworks/" target="_blank" rel="noopener">nolanlawson.com</a> · Discuss: <a href="https://news.ycombinator.com/item?id=50323088" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">422 pts / 322 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>: Astro users confirm the result from experience, while sceptics attack the benchmark&#x27;s scope rather than its numbers: a to-do-style app is light-years from a commercial product, framework choice also turns on maintainability and team knowledge, and several commenters simply relitigate Angular — loved by some, “always at the bottom” by others.</p>
+</div>
+</article>
+<article class="story" id="story-7" data-story="7" data-source="https://occupysaas.com/" data-hn="https://news.ycombinator.com/item?id=50331402" data-metric="413 pts / 257 comments" tabindex="0" aria-label="Story 7: OccupySaaS: laid-off engineers rebuilding SaaS in the open, starting with Auth0 and Salesforce">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">OccupySaaS: laid-off engineers rebuilding SaaS in the open, starting with Auth0 and Salesforce</h2>
+<p class="exec">OccupySaaS is a protest movement written in code: laid-off engineers using AI and public documentation to build clean-room, open-source, drop-in replacements for per-seat SaaS. Its first two targets are identity (ZeroAuthy, Auth0-compatible) and CRM (SalesCompel, Salesforce-compatible), both early and Apache-2.0.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The method</span><ul><li>Specs written from public API docs and open standards, builders kept behind a clean-room firewall from spec writers, AI implementing from the spec alone.</li><li>Compatibility is proven by running the vendors&#x27; own public SDKs against the replacement — if existing code does not work unchanged, it is not done.</li></ul></li><li class="cat"><span class="cat-label">The catch, stated on the site</span><ul><li>Neither project is production-ready yet — early, with only a slice of each API working, and the site itself says to try them, break them, and file issues.</li><li>Per-seat pricing and lock-in are the grievance; a compatible open alternative is the proposed answer, not just a cheaper clone.</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://occupysaas.com/" target="_blank" rel="noopener">occupysaas.com</a> · Discuss: <a href="https://news.ycombinator.com/item?id=50331402" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">413 pts / 257 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>: The thread splits between enthusiasm for the idea and doubt about the execution: some call anger a poor substitute for product vision and note open-source CRMs predate AI without taking off, while others argue per-seat pricing and lock-in are exactly why a compatible open alternative matters. A recurring jab: funding the AI vendors with subscriptions while fighting the layoffs AI caused.</p>
+</div>
+</article>
+<article class="story" id="story-8" data-story="8" data-source="https://terrytao.wordpress.com/2026/11/01/mathematics-has-changed-lets-act-like-it/" data-hn="https://news.ycombinator.com/item?id=50328251" data-metric="345 pts / 437 comments" tabindex="0" aria-label="Story 8: Mathematics has changed — Calegari, on Tao&#x27;s blog: reward the question, not just the theorem">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">Mathematics has changed — Calegari, on Tao&#x27;s blog: reward the question, not just the theorem</h2>
+<p class="exec">In a guest post on Terry Tao&#x27;s blog, Frank Calegari argues OpenAI&#x27;s October 6 release of over 700 claimed research papers is a watershed: AI can now make groundbreaking contributions across mathematics, so the profession should change how it hires, publishes and trains — starting with evaluating every paper as if it were AI-assisted.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">The proposal</span><ul><li>Hire on in-person conversation and a narrative of where mathematics should go, not a paper file; demand journals adapt or abandon them.</li><li>Put more weight on breadth in graduate training and on seminars, and give senior mathematicians the job of creating future problems, not just answering existing ones.</li></ul></li><li class="cat"><span class="cat-label">The warning</span><ul><li>A rush to be first to publish AI-assisted proofs creates a gulf between producing proofs and understanding them.</li><li>Choosing worthwhile problems and developing new directions may matter more than producing the proof itself — and the current reward structure undervalues exactly that exploratory work.</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://terrytao.wordpress.com/2026/11/01/mathematics-has-changed-lets-act-like-it/" target="_blank" rel="noopener">terrytao.wordpress.com</a> · Discuss: <a href="https://news.ycombinator.com/item?id=50328251" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">345 pts / 437 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>: Commenters divide on whether AI can invent or only recombine: some say paradigm shifts and novel techniques remain unproven for machines, others say trillions in investment tend to produce breakthroughs. The practical thread is about Lean and formalisation — a checked proof still depends on the human-written specification, and a bug in the formal statement can “prove” the wrong theorem.</p>
+</div>
+</article>
+<article class="story" id="story-9" data-story="9" data-source="https://github.com/ivankovic/omnidiff" data-hn="https://news.ycombinator.com/item?id=50325253" data-metric="287 pts / 90 comments" tabindex="0" aria-label="Story 9: OmniDiff: a content-aware Git difftool in Rust that handles moved code properly">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">OmniDiff: a content-aware Git difftool in Rust that handles moved code properly</h2>
+<p class="exec">OmniDiff diffs code in 25 languages plus config, images, PDFs, archives and fonts, and the author says it can diff tens of thousands of lines of C++ in under 100ms on a 2023 ThinkPad. It is built from 2,000 real diffs sampled across Gentoo-listed repositories, and it is AGPLv3, at v0.3.0.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">Why it differs</span><ul><li>Language-aware diffing treats moved code as moved, not as deleted-here and inserted-there; the author reports it is perfect on 90% of diffs it shares with difftastic, versus 64% for difftastic, and much faster at the median.</li><li>It also diffs the non-code majority of real diffs — config, images, PDFs — that code-only tools skip.</li></ul></li><li class="cat"><span class="cat-label">The licence fight</span><ul><li>The author chose AGPL deliberately as a political choice against big-tech adoption; critics say that kills the project in infancy and that a permissive fork will win.</li><li>The author answers that inspiring a better differ, even under another licence, is still a win for the open-source community.</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://github.com/ivankovic/omnidiff" target="_blank" rel="noopener">github.com</a> · Discuss: <a href="https://news.ycombinator.com/item?id=50325253" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">287 pts / 90 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>: Comparisons to delta and difftastic dominate: delta only colours standard git diff, say commenters, while OmniDiff changes the algorithm — but several want side-by-side view on wide terminals and more packaging. The AGPL thread is the longest argument, including whether AI-assisted code can even carry a copyleft licence at all.</p>
+</div>
+</article>
+<article class="story" id="story-10" data-story="10" data-source="https://outcrop.rocks/" data-hn="https://news.ycombinator.com/item?id=50290533" data-metric="234 pts / 48 comments" tabindex="0" aria-label="Story 10: Point your camera at a landscape and learn its geology — AR maps, deep time included">
+<span class="story-number" aria-hidden="true"></span>
+<div class="story-main"><h2 class="tagline">Point your camera at a landscape and learn its geology — AR maps, deep time included</h2>
+<p class="exec">Outcrop paints geologic maps over the landscape through your phone camera, identifying the mapped rocks, describing them, and rewinding continent positions to show the Earth as it looked when those rocks formed. It grew out of the author&#x27;s Flyover Country app for airplane-window geology, and it is out on Android with iOS in TestFlight.</p>
+<ul class="cat-lists"><li class="cat"><span class="cat-label">What to try</span><ul><li>The “where it formed” view is the crowd favourite — including with kids — plus soils and quaternary layers for areas with little bedrock exposure.</li><li>Maps and the main view work offline; fossil finds and live fault data still need a connection.</li></ul></li><li class="cat"><span class="cat-label">The rough edges</span><ul><li>Some Android phones fail to start motion tracking, and commenters ask for a web version instead of another app install.</li><li>The landing-page copy also takes criticism — several commenters call it AI-smelling, and the author asks for more examples of what rings false.</li></ul></li></ul>
+<div class="story-bar"><div class="meta-line">Source: <a href="https://outcrop.rocks/" target="_blank" rel="noopener">outcrop.rocks</a> · Discuss: <a href="https://news.ycombinator.com/item?id=50290533" target="_blank" rel="noopener">HN Discuss</a> · <span class="metrics">234 pts / 48 comments</span></div><button class="copy-button" type="button">Copy for Threads</button></div>
+<p class="hn-comments"><strong>What HN commenters are saying</strong>: The reaction is warm — families report hours down the rabbit hole — but practical requests pile up: a web version, importable ASTER and Landsat data layers for field geology, and a fix for the marketing copy, which several commenters call AI-smelling. The author takes the copy criticism on the chin and asks for more examples of what rings false.</p>
+</div>
+</article>
+</ol>
+
+    <footer class="page-footer">
+      <div class="footer-links"><a href="../">← Daily archive</a><a href="https://tk3369.github.io/hn-daily/" target="_blank" rel="noopener">Published archive ↗</a></div>
+      <span>Monday 2026-11-02 · 10 stories</span>
+    </footer>
+  </main>
+  <div class="toast" role="status" aria-live="polite"></div>
+  <script>
+(() => {
+  const root = document.documentElement;
+  const toggle = document.getElementById('theme-toggle');
+  const entries = [...document.querySelectorAll('[data-story]')];
+  function storedTheme() { try { const t = localStorage.getItem('hn-daily-theme'); return t === 'dark' || t === 'light' ? t : null; } catch (_) { return null; } }
+  function preferredTheme() { return matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'; }
+  function currentTheme() { const a = root.dataset.theme; if (a === 'dark' || a === 'light') return a; return storedTheme() || preferredTheme(); }
+  function setTheme(theme) { const next = theme === 'dark' ? 'dark' : 'light'; const opposite = next === 'dark' ? 'Light' : 'Dark';
+    if (root.dataset.theme !== next) root.dataset.theme = next;
+    toggle.querySelector('.theme-text').textContent = opposite;
+    toggle.setAttribute('aria-label', `Switch to ${opposite} theme (T)`); toggle.title = `Switch to ${opposite} theme (T)`;
+    try { localStorage.setItem('hn-daily-theme', next); } catch (_) {} }
+  function flipTheme() { setTheme(currentTheme() === 'dark' ? 'light' : 'dark'); }
+  setTheme(storedTheme() || preferredTheme());
+  toggle.addEventListener('click', flipTheme);
+  const toast = document.querySelector('.toast'); let toastTimer;
+  function showToast(msg) { toast.textContent = msg; toast.classList.add('show'); clearTimeout(toastTimer); toastTimer = setTimeout(() => toast.classList.remove('show'), 1800); }
+  document.querySelectorAll('.copy-button').forEach((button) => {
+    button.addEventListener('click', async () => {
+      const story = button.closest('.story');
+      const n = story.dataset.story;
+      const tagline = story.querySelector('.tagline').textContent.trim();
+      const execSum = story.querySelector('.exec').textContent.trim();
+      const bullets = [...story.querySelectorAll('.cat-lists .cat')].map(li => {
+        const label = li.querySelector('.cat-label').textContent.trim();
+        const pts = [...li.querySelectorAll('ul li')].map(p => '  \u2022 ' + p.textContent.trim()).join('\n');
+        return '- ' + label + ':\n' + pts;
+      }).join('\n');
+      const link = 'https://tk3369.github.io/hn-daily/2026-11-02/#story-' + n;
+      const text = n + '. ' + tagline + '\n\n' + execSum + '\n' + bullets + '\n\n' + link;
+      try { await navigator.clipboard.writeText(text); button.textContent = 'Copied'; showToast('Story ' + n + ' copied for Threads'); setTimeout(() => { button.textContent = 'Copy for Threads'; }, 1600); }
+      catch (_) { showToast('Copy was blocked by this browser'); }
+    });
+  });
+  document.addEventListener('keydown', (event) => {
+    if (event.metaKey || event.ctrlKey || event.altKey || event.shiftKey) return;
+    const tag = event.target.tagName;
+    if (tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT') return;
+    const key = event.key.toLowerCase();
+    if (key === 't') { event.preventDefault(); flipTheme(); }
+    else if ((key === 'j' || key === 'k') && entries.length) {
+      event.preventDefault();
+      const active = entries.indexOf(document.activeElement);
+      const delta = key === 'j' ? 1 : -1;
+      const next = active < 0 ? (key === 'j' ? 0 : entries.length - 1) : Math.max(0, Math.min(entries.length - 1, active + 1 * delta));
+      entries[next].focus();
+    }
+  });
+})();
+  </script>
+</body>
+</html>
