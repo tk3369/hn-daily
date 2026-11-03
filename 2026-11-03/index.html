@@ -1,0 +1,604 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="light dark" />
+    <link rel="icon" href="data:," />
+    <title>HN Daily — 2026-11-03</title>
+    <style>
+      :root {
+        --bg: #f3f1eb;
+        --surface: #fbfaf6;
+        --ink: #1c1a16;
+        --muted: #5d574c;
+        --faint: #8a8375;
+        --accent: #e85d04;
+        --accent-ink: #b34a03;
+        --border: #ddd6c6;
+        --border-strong: #c9c0ab;
+        --chip: #ece8dc;
+        --focus: #e85d04;
+        color-scheme: light;
+      }
+      :root[data-theme="dark"] {
+        --bg: #171512;
+        --surface: #201d19;
+        --ink: #ece7da;
+        --muted: #b3ab9c;
+        --faint: #8d8577;
+        --accent: #ff7a29;
+        --accent-ink: #ff9a52;
+        --border: #3a362e;
+        --border-strong: #4d483d;
+        --chip: #2a2721;
+        --focus: #ff7a29;
+        color-scheme: dark;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root:not([data-theme]) {
+          --bg: #171512;
+          --surface: #201d19;
+          --ink: #ece7da;
+          --muted: #b3ab9c;
+          --faint: #8d8577;
+          --accent: #ff7a29;
+          --accent-ink: #ff9a52;
+          --border: #3a362e;
+          --border-strong: #4d483d;
+          --chip: #2a2721;
+          --focus: #ff7a29;
+          color-scheme: dark;
+        }
+      }
+
+      * { box-sizing: border-box; }
+      html { -webkit-text-size-adjust: 100%; }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--ink);
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        font-size: 17px;
+        line-height: 1.55;
+      }
+      a { color: var(--accent-ink); }
+      a:focus-visible, button:focus-visible {
+        outline: 2px solid var(--focus);
+        outline-offset: 2px;
+        border-radius: 3px;
+      }
+
+      .wrap {
+        max-width: 1080px;
+        margin: 0 auto;
+        padding: 0 20px 56px;
+      }
+
+      /* ---------- Header ---------- */
+      header.masthead {
+        padding: 34px 0 22px;
+        border-bottom: 3px double var(--border-strong);
+        margin-bottom: 8px;
+      }
+      .masthead-top {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 16px;
+      }
+      .kicker {
+        font-family: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas, monospace;
+        font-size: 12px;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--accent-ink);
+        margin: 0 0 10px;
+      }
+      h1 {
+        font-family: Georgia, "Times New Roman", Times, serif;
+        font-size: clamp(30px, 5.2vw, 46px);
+        line-height: 1.12;
+        font-weight: 700;
+        margin: 0;
+      }
+      .dateline {
+        font-family: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas, monospace;
+        font-size: 13.5px;
+        color: var(--muted);
+        margin: 12px 0 0;
+      }
+      .dateline .sep { color: var(--faint); margin: 0 6px; }
+
+      .theme-toggle {
+        flex: none;
+        width: 86px;
+        height: 40px;
+        min-height: 40px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        background: var(--surface);
+        color: var(--ink);
+        border: 1.5px solid var(--border-strong);
+        border-radius: 999px;
+        font-family: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas, monospace;
+        font-size: 13px;
+        cursor: pointer;
+        padding: 0;
+      }
+      .theme-toggle .dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: var(--accent);
+        flex: none;
+      }
+      .theme-toggle:hover { border-color: var(--accent); }
+
+      /* ---------- Story cards ---------- */
+      article.story {
+        display: grid;
+        grid-template-columns: 72px 1fr;
+        column-gap: 20px;
+        padding: 26px 0 24px;
+        border-bottom: 1px solid var(--border);
+      }
+      .num {
+        font-family: Georgia, "Times New Roman", Times, serif;
+        font-size: 40px;
+        font-weight: 700;
+        line-height: 1;
+        color: var(--accent);
+        text-align: right;
+        padding-top: 2px;
+      }
+      .story h2 {
+        font-family: Georgia, "Times New Roman", Times, serif;
+        font-size: clamp(21px, 3.4vw, 27px);
+        line-height: 1.25;
+        font-weight: 700;
+        margin: 0 0 8px;
+      }
+      .story p.body {
+        margin: 0 0 12px;
+        max-width: 68ch;
+      }
+      .meta {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 8px 14px;
+        font-family: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas, monospace;
+        font-size: 13px;
+        color: var(--muted);
+        margin-bottom: 14px;
+      }
+      .meta .score { color: var(--ink); font-weight: 700; white-space: nowrap; }
+      .meta a { white-space: nowrap; min-height: 36px; display: inline-flex; align-items: center; }
+      .meta .sep { color: var(--faint); }
+      .copy-btn {
+        margin-left: auto;
+        min-height: 36px;
+        padding: 6px 14px;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        background: var(--chip);
+        color: var(--ink);
+        border: 1px solid var(--border-strong);
+        border-radius: 6px;
+        font-family: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas, monospace;
+        font-size: 12.5px;
+        cursor: pointer;
+      }
+      .copy-btn:hover { border-color: var(--accent); color: var(--accent-ink); }
+      .copy-btn.copied { border-color: var(--accent); color: var(--accent-ink); }
+
+      .comments {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        padding: 14px 16px;
+        max-width: 72ch;
+      }
+      .comments .label {
+        display: block;
+        font-family: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas, monospace;
+        font-size: 11.5px;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--accent-ink);
+        margin-bottom: 6px;
+      }
+      .comments p { margin: 0; font-size: 15.5px; color: var(--muted); }
+
+      /* ---------- Footer ---------- */
+      footer {
+        padding-top: 26px;
+        font-family: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas, monospace;
+        font-size: 13.5px;
+        color: var(--muted);
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px 22px;
+        align-items: center;
+      }
+      footer a { min-height: 36px; display: inline-flex; align-items: center; }
+
+      .toast {
+        position: fixed;
+        left: 50%;
+        bottom: 24px;
+        transform: translateX(-50%) translateY(16px);
+        background: var(--ink);
+        color: var(--bg);
+        font-family: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas, monospace;
+        font-size: 13px;
+        padding: 10px 18px;
+        border-radius: 999px;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.18s ease, transform 0.18s ease;
+        z-index: 20;
+      }
+      .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+      @media (max-width: 600px) {
+        body { font-size: 16px; }
+        .wrap { padding: 0 16px 44px; }
+        article.story {
+          grid-template-columns: 44px 1fr;
+          column-gap: 12px;
+          padding: 22px 0 20px;
+        }
+        .num { font-size: 28px; }
+        .copy-btn { margin-left: 0; }
+        .masthead-top { flex-wrap: wrap; }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .toast { transition: none; }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <header class="masthead">
+        <div class="masthead-top">
+          <div>
+            <p class="kicker">HN Daily</p>
+            <h1>HN Top 10 — Tuesday, November 3, 2026</h1>
+            <p class="dateline">07:00 PT<span class="sep">·</span>Hottest by points<span class="sep">·</span>Press T to toggle theme</p>
+          </div>
+          <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle light and dark theme">
+            <span class="dot" aria-hidden="true"></span><span id="themeLabel">Dark</span>
+          </button>
+        </div>
+      </header>
+
+      <main id="stories">
+
+        <article class="story" id="story-1">
+          <div class="num" aria-hidden="true">1</div>
+          <div>
+            <h2>Astra edits model weights directly — and it works</h2>
+            <p class="body">OpenAI's Astra reportedly inspected and edited neural network weights directly — identifying what small networks were trained on and improving a small Qwen model's math performance several-fold, without conventional training tooling. If it generalizes, weight-space work could shortcut how models are tuned.</p>
+            <div class="meta">
+              <span class="score">2875 pts · 867 comments</span>
+              <span class="sep" aria-hidden="true">|</span>
+              <a class="src" href="https://rikiyat.github.io/blog/weight-space-programming/" target="_blank" rel="noopener">Source</a>
+              <span class="sep" aria-hidden="true">|</span>
+              <a class="disc" href="https://news.ycombinator.com/item?id=50341174" target="_blank" rel="noopener">HN Discuss</a>
+              <button class="copy-btn" type="button">Copy for Threads</button>
+            </div>
+            <div class="comments">
+              <span class="label">What HN commenters are saying</span>
+              <p>Consensus is genuine surprise — most commenters say they would not have predicted a model could reason about raw weights at all, and several frame it as a possible fast lane to recursive self-improvement. The pushback is about scale: the striking demos run on tiny networks, and skeptics argue tooling-assisted edits on small models are a long way from rewriting a frontier model.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="story" id="story-2">
+          <div class="num" aria-hidden="true">2</div>
+          <div>
+            <h2>Subvocal: talk to your computer without a sound</h2>
+            <p class="body">Glasses-mounted radar reads silent mouth movements and turns them into text and commands, so you can talk to your computer in a library, plane, or open office without making a sound. Open-source alternatives exist but are less polished.</p>
+            <div class="meta">
+              <span class="score">773 pts · 360 comments</span>
+              <span class="sep" aria-hidden="true">|</span>
+              <a class="src" href="https://news.ycombinator.com/item?id=50340088" target="_blank" rel="noopener">Source</a>
+              <span class="sep" aria-hidden="true">|</span>
+              <a class="disc" href="https://news.ycombinator.com/item?id=50340088" target="_blank" rel="noopener">HN Discuss</a>
+              <button class="copy-btn" type="button">Copy for Threads</button>
+            </div>
+            <div class="comments">
+              <span class="label">What HN commenters are saying</span>
+              <p>Enthusiasm for quiet computing in shared spaces, with sign language and throat mics raised as alternatives; the recurring objection is social awkwardness — mouthing words silently in public feels stranger than whispering — plus questions about why glasses are required and whether a throat mic would be simpler. Some dismiss it as over-engineering when typing is already fast.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="story" id="story-3">
+          <div class="num" aria-hidden="true">3</div>
+          <div>
+            <h2>If you love a website, back it up before it vanishes</h2>
+            <p class="body">A personal essay arguing the web rots fast — bookmarks 404, domains lapse — and urging readers to archive the sites they care about with tools like SingleFile, ArchiveBox, or ArchiveWeb.</p>
+            <div class="meta">
+              <span class="score">625 pts · 145 comments</span>
+              <span class="sep" aria-hidden="true">|</span>
+              <a class="src" href="https://blog.mistys-internet.website/post/2026/10/29/if-you-love-a-website-back-it-up/" target="_blank" rel="noopener">Source</a>
+              <span class="sep" aria-hidden="true">|</span>
+              <a class="disc" href="https://news.ycombinator.com/item?id=50336518" target="_blank" rel="noopener">HN Discuss</a>
+              <button class="copy-btn" type="button">Copy for Threads</button>
+            </div>
+            <div class="comments">
+              <span class="label">What HN commenters are saying</span>
+              <p>Broad agreement, with personal stories of lost sites (one commenter rebuilt a dead visual emulator with an LLM) and a tool swap: SingleFile for one-offs, ArchiveBox for serious collections, gwern's archiving essay as further reading. Nostalgia runs through it — several say the old, hand-made web is genuinely gone, not just misremembered.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="story" id="story-4">
+          <div class="num" aria-hidden="true">4</div>
+          <div>
+            <h2>Boy names are becoming girl names — and rarely the reverse</h2>
+            <p class="body">Analysis of US name data: 42 names drifted toward girls versus 12 toward boys, and in both directions the movement was mostly driven by girls' usage — girls' names are simply more dynamic. Celebrity effects explain individual flips.</p>
+            <div class="meta">
+              <span class="score">447 pts · 431 comments</span>
+              <span class="sep" aria-hidden="true">|</span>
+              <a class="src" href="https://namedaisy.com/blog/boy-names-that-became-girl-names" target="_blank" rel="noopener">Source</a>
+              <span class="sep" aria-hidden="true">|</span>
+              <a class="disc" href="https://news.ycombinator.com/item?id=50339397" target="_blank" rel="noopener">HN Discuss</a>
+              <button class="copy-btn" type="button">Copy for Threads</button>
+            </div>
+            <div class="comments">
+              <span class="label">What HN commenters are saying</span>
+              <p>Commenters credit celebrity effects for individual flips and note the asymmetry finding — girls' names move more — as the real story. Quibbles: surprise at omissions like Jordan, and debate over whether vowel endings or shortenings (Ash, Toni) drive the perception.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="story" id="story-5">
+          <div class="num" aria-hidden="true">5</div>
+          <div>
+            <h2>The Astra weight-editing hype needs a correction</h2>
+            <p class="body">Matthew Honnibal argues the Astra post overstates its case: the raw-floats-in-context experiments ran only on 17K–172K-weight networks, and much of the rest used tools or ran the network — still interesting, but not AI rewriting Qwen by staring at weights.</p>
+            <div class="meta">
+              <span class="score">391 pts · 79 comments</span>
+              <span class="sep" aria-hidden="true">|</span>
+              <a class="src" href="https://honnibal.dev/blog/astra-read-write-misleading" target="_blank" rel="noopener">Source</a>
+              <span class="sep" aria-hidden="true">|</span>
+              <a class="disc" href="https://news.ycombinator.com/item?id=50351111" target="_blank" rel="noopener">HN Discuss</a>
+              <button class="copy-btn" type="button">Copy for Threads</button>
+            </div>
+            <div class="comments">
+              <span class="label">What HN commenters are saying</span>
+              <p>A split thread. Some say the rebuttal adds nothing the original didn't already disclose; others say the raw-weights-only caveat is exactly the part that got lost in the hype. A middle camp stays impressed — LLMs understanding weights at all is novel — while noting the techniques echo existing weight-editing research.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="story" id="story-6">
+          <div class="num" aria-hidden="true">6</div>
+          <div>
+            <h2>Hacker Times: Hacker News, typeset like the NYT</h2>
+            <p class="body">A New York Times-styled front page for Hacker News stories, with sectioned layout and serif headlines — the day's interesting tech reading, presented as a newspaper.</p>
+            <div class="meta">
+              <span class="score">387 pts · 123 comments</span>
+              <span class="sep" aria-hidden="true">|</span>
+              <a class="src" href="https://hackertimes.ca/" target="_blank" rel="noopener">Source</a>
+              <span class="sep" aria-hidden="true">|</span>
+              <a class="disc" href="https://news.ycombinator.com/item?id=50346981" target="_blank" rel="noopener">HN Discuss</a>
+              <button class="copy-btn" type="button">Copy for Threads</button>
+            </div>
+            <div class="comments">
+              <span class="label">What HN commenters are saying</span>
+              <p>Readers like the idea enough to ask for a daily or weekly paper edition as an antidote to feed scrolling, and for an AI section filter. Critiques: the headline font (Georgia at large sizes) doesn't suit, and one note that ChatGPT-hosted sites are blocked in some countries, Hong Kong included, which limits reach.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="story" id="story-7">
+          <div class="num" aria-hidden="true">7</div>
+          <div>
+            <h2>Warsaw in voxels: the city centre as a 3D toy</h2>
+            <p class="body">An interactive 3D voxel map of Warsaw's city centre with weather, golden-hour light, and landmark labels — fly around the streets in miniature.</p>
+            <div class="meta">
+              <span class="score">304 pts · 50 comments</span>
+              <span class="sep" aria-hidden="true">|</span>
+              <a class="src" href="https://p.migdal.pl/warsaw-vibe-voxel/" target="_blank" rel="noopener">Source</a>
+              <span class="sep" aria-hidden="true">|</span>
+              <a class="disc" href="https://news.ycombinator.com/item?id=50339221" target="_blank" rel="noopener">HN Discuss</a>
+              <button class="copy-btn" type="button">Copy for Threads</button>
+            </div>
+            <div class="comments">
+              <span class="label">What HN commenters are saying</span>
+              <p>Praise for the autumn trees and golden-hour feel; wishes it extended to the Old Town and Royal Palace, and a preference for sunny default weather over rain. Mobile Safari struggles with the weight, and similar projects (Streets of Prague) get cited as the genre to watch.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="story" id="story-8">
+          <div class="num" aria-hidden="true">8</div>
+          <div>
+            <h2>DiscImageStudio burns artwork onto the disc itself</h2>
+            <p class="body">Software that burns visible artwork onto the data side of CDs, DVDs, and Blu-rays — a LightScribe-like effect without special media.</p>
+            <div class="meta">
+              <span class="score">303 pts · 65 comments</span>
+              <span class="sep" aria-hidden="true">|</span>
+              <a class="src" href="https://github.com/JiaFeiMiao-K-Cat/DiscImageStudio" target="_blank" rel="noopener">Source</a>
+              <span class="sep" aria-hidden="true">|</span>
+              <a class="disc" href="https://news.ycombinator.com/item?id=50346849" target="_blank" rel="noopener">HN Discuss</a>
+              <button class="copy-btn" type="button">Copy for Threads</button>
+            </div>
+            <div class="comments">
+              <span class="label">What HN commenters are saying</span>
+              <p>Nostalgia for LightScribe dominates, with the obvious question — do the discs still play and hold data? — unanswered in the thread so far. Some marvel at the technique, others wonder about hologram applications or note the star-graph demo looks inorganic.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="story" id="story-9">
+          <div class="num" aria-hidden="true">9</div>
+          <div>
+            <h2>NIST wrote a cybersecurity guide for the self-employed</h2>
+            <p class="body">A plain-language cybersecurity guide aimed at the self-employed and solopreneurs — passwords, phishing, backups, and device basics, without enterprise jargon.</p>
+            <div class="meta">
+              <span class="score">292 pts · 82 comments</span>
+              <span class="sep" aria-hidden="true">|</span>
+              <a class="src" href="https://www.nist.gov/news-events/news/2026/11/self-employed-solopreneur-nist-has-cybersecurity-guide-just-you" target="_blank" rel="noopener">Source</a>
+              <span class="sep" aria-hidden="true">|</span>
+              <a class="disc" href="https://news.ycombinator.com/item?id=50340619" target="_blank" rel="noopener">HN Discuss</a>
+              <button class="copy-btn" type="button">Copy for Threads</button>
+            </div>
+            <div class="comments">
+              <span class="label">What HN commenters are saying</span>
+              <p>Reception is mixed: a welcome attempt at plain language, but several say it still misses true beginners, and the guide loses credibility points for using the buzzword “Super Intelligence” in a document meant to ground non-technical readers. Security pros in the thread ask whether practitioners actually rate it.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="story" id="story-10">
+          <div class="num" aria-hidden="true">10</div>
+          <div>
+            <h2>Resisting cognitive surrender to AI</h2>
+            <p class="body">An essay arguing that rubber-stamping AI output erodes the skill to judge it — proposing review scaffolding, like a 4-column PR view, to keep humans genuinely in the loop.</p>
+            <div class="meta">
+              <span class="score">252 pts · 124 comments</span>
+              <span class="sep" aria-hidden="true">|</span>
+              <a class="src" href="https://knlb.dev/essays/surrender" target="_blank" rel="noopener">Source</a>
+              <span class="sep" aria-hidden="true">|</span>
+              <a class="disc" href="https://news.ycombinator.com/item?id=50323123" target="_blank" rel="noopener">HN Discuss</a>
+              <button class="copy-btn" type="button">Copy for Threads</button>
+            </div>
+            <div class="comments">
+              <span class="label">What HN commenters are saying</span>
+              <p>Strong resonance from engineers reviewing AI-generated code they no longer fully understand, with warnings that codebases become unmaintainable and non-AI contributors leave. The counter is that this resistance is temporary — once output meets the bar, most people will just send it — plus a call to keep reinvesting in human capability rather than only consuming model output.</p>
+            </div>
+          </div>
+        </article>
+
+      </main>
+
+      <footer>
+        <a href="../">← HN Daily archive</a>
+        <a href="https://tk3369.github.io/hn-daily/" target="_blank" rel="noopener">tk3369.github.io/hn-daily</a>
+        <span>Stories from Hacker News, ranked by points at 07:00 PT.</span>
+      </footer>
+    </div>
+
+    <div class="toast" id="toast" role="status" aria-live="polite">Copied</div>
+
+    <script>
+      (function () {
+        var root = document.documentElement;
+        var KEY = "hn-daily-theme";
+        var label = document.getElementById("themeLabel");
+        var toggle = document.getElementById("themeToggle");
+
+        function stored() {
+          try { return localStorage.getItem(KEY); } catch (e) { return null; }
+        }
+        function systemDark() {
+          return window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+        }
+        function effective() {
+          var t = root.getAttribute("data-theme") || stored();
+          if (t === "dark" || t === "light") return t;
+          return systemDark() ? "dark" : "light";
+        }
+        function syncLabel() {
+          label.textContent = effective() === "dark" ? "Light" : "Dark";
+        }
+        function apply(theme) {
+          root.setAttribute("data-theme", theme);
+          try { localStorage.setItem(KEY, theme); } catch (e) {}
+          syncLabel();
+        }
+
+        var saved = stored();
+        if (saved === "dark" || saved === "light") {
+          root.setAttribute("data-theme", saved);
+        }
+        syncLabel();
+
+        function flip() {
+          apply(effective() === "dark" ? "light" : "dark");
+        }
+        toggle.addEventListener("click", flip);
+        document.addEventListener("keydown", function (e) {
+          if ((e.key === "t" || e.key === "T") && !e.metaKey && !e.ctrlKey && !e.altKey) {
+            var tag = (document.activeElement && document.activeElement.tagName) || "";
+            if (tag !== "INPUT" && tag !== "TEXTAREA") flip();
+          }
+        });
+        if (window.matchMedia) {
+          var mq = window.matchMedia("(prefers-color-scheme: dark)");
+          if (mq.addEventListener) mq.addEventListener("change", syncLabel);
+        }
+
+        /* Copy buttons: number + tagline + body + source + HN link + points/comments.
+           The commenters paragraph is deliberately excluded. */
+        var toast = document.getElementById("toast");
+        var toastTimer = null;
+        function showToast(msg) {
+          toast.textContent = msg;
+          toast.classList.add("show");
+          if (toastTimer) clearTimeout(toastTimer);
+          toastTimer = setTimeout(function () { toast.classList.remove("show"); }, 1800);
+        }
+        function fallbackCopy(text) {
+          var ta = document.createElement("textarea");
+          ta.value = text;
+          ta.style.position = "fixed";
+          ta.style.opacity = "0";
+          document.body.appendChild(ta);
+          ta.select();
+          var ok = false;
+          try { ok = document.execCommand("copy"); } catch (e) {}
+          document.body.removeChild(ta);
+          return ok;
+        }
+        var buttons = document.querySelectorAll(".copy-btn");
+        for (var i = 0; i < buttons.length; i++) {
+          (function (btn) {
+            btn.addEventListener("click", function () {
+              var card = btn.closest(".story");
+              var num = card.querySelector(".num").textContent.trim();
+              var tagline = card.querySelector("h2").textContent.trim();
+              var body = card.querySelector(".body").textContent.trim();
+              var src = card.querySelector(".src").href;
+              var disc = card.querySelector(".disc").href;
+              var score = card.querySelector(".score").textContent.trim()
+                .replace(" pts · ", " pts / ").replace(" comments", " comments");
+              var text = num + ". " + tagline + "\n\n" + body +
+                "\n\nSource: " + src +
+                "\nHN Discuss: " + disc +
+                "\n" + score;
+              function done() {
+                btn.classList.add("copied");
+                var old = btn.textContent;
+                btn.textContent = "Copied ✓";
+                showToast("Story " + num + " copied");
+                setTimeout(function () {
+                  btn.classList.remove("copied");
+                  btn.textContent = old;
+                }, 1800);
+              }
+              if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(text).then(done, function () {
+                  if (fallbackCopy(text)) done(); else showToast("Copy failed");
+                });
+              } else if (fallbackCopy(text)) {
+                done();
+              } else {
+                showToast("Copy failed");
+              }
+            });
+          })(buttons[i]);
+        }
+      })();
+    </script>
+  </body>
+</html>
