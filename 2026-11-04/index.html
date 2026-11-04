@@ -1,0 +1,535 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="light dark" />
+    <link rel="icon" href="data:," />
+    <title>HN Daily — Wednesday, November 4, 2026</title>
+    <style>
+      :root {
+        --bg: #f3f1eb;
+        --surface: #fbf9f4;
+        --ink: #1c1a16;
+        --ink-soft: #4a463e;
+        --ink-faint: #6f6a5e;
+        --line: #d8d2c4;
+        --accent: #ff6600;
+        --accent-ink: #b34700;
+        --comment-bg: #efe9dc;
+        --focus: #b34700;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root:not([data-theme="light"]) {
+          --bg: #16140f;
+          --surface: #1f1c16;
+          --ink: #f0ead9;
+          --ink-soft: #c9c2b0;
+          --ink-faint: #9a937f;
+          --line: #3a362b;
+          --accent: #ff7a1a;
+          --accent-ink: #ff9440;
+          --comment-bg: #262219;
+          --focus: #ff9440;
+        }
+      }
+      :root[data-theme="dark"] {
+        --bg: #16140f;
+        --surface: #1f1c16;
+        --ink: #f0ead9;
+        --ink-soft: #c9c2b0;
+        --ink-faint: #9a937f;
+        --line: #3a362b;
+        --accent: #ff7a1a;
+        --accent-ink: #ff9440;
+        --comment-bg: #262219;
+        --focus: #ff9440;
+      }
+
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--ink);
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: 17px;
+        line-height: 1.55;
+        -webkit-font-smoothing: antialiased;
+      }
+      a { color: var(--accent-ink); text-decoration: underline; text-underline-offset: 2px; }
+      a:hover { color: var(--accent); }
+      a:focus-visible, button:focus-visible {
+        outline: 2px solid var(--focus);
+        outline-offset: 2px;
+        border-radius: 2px;
+      }
+
+      .wrap {
+        max-width: 1080px;
+        margin: 0 auto;
+        padding: 32px 24px 64px;
+      }
+
+      header.masthead {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 20px;
+        border-bottom: 3px solid var(--ink);
+        padding-bottom: 20px;
+        margin-bottom: 8px;
+      }
+      .masthead h1 {
+        margin: 0 0 6px;
+        font-size: clamp(30px, 5vw, 46px);
+        line-height: 1.1;
+        font-weight: 700;
+        letter-spacing: -0.01em;
+      }
+      .masthead .subtitle {
+        margin: 0;
+        font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+        font-size: 14px;
+        color: var(--ink-soft);
+      }
+      .masthead .kicker {
+        margin: 0 0 10px;
+        font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+        font-size: 12px;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--accent-ink);
+      }
+
+      .theme-toggle {
+        flex: 0 0 auto;
+        width: 86px;
+        height: 40px;
+        min-height: 40px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        background: var(--surface);
+        color: var(--ink);
+        border: 1.5px solid var(--ink);
+        border-radius: 999px;
+        font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+        font-size: 13px;
+        cursor: pointer;
+        padding: 0 10px;
+      }
+      .theme-toggle .dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: var(--accent);
+        flex: 0 0 auto;
+      }
+      .theme-toggle:hover { border-color: var(--accent); }
+
+      .story {
+        display: grid;
+        grid-template-columns: 72px 1fr;
+        gap: 4px 20px;
+        padding: 28px 0 26px;
+        border-bottom: 1px solid var(--line);
+        scroll-margin-top: 16px;
+      }
+      .story .num {
+        font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+        font-size: 40px;
+        font-weight: 700;
+        line-height: 1;
+        color: var(--accent);
+        padding-top: 2px;
+      }
+      .story h2 {
+        margin: 0 0 10px;
+        font-size: clamp(21px, 3vw, 26px);
+        line-height: 1.25;
+        font-weight: 700;
+      }
+      .story .body { margin: 0 0 14px; color: var(--ink); max-width: 68ch; }
+
+      .meta {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 8px 18px;
+        font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+        font-size: 13.5px;
+        color: var(--ink-soft);
+        margin-bottom: 16px;
+      }
+      .meta a { min-height: 36px; display: inline-flex; align-items: center; }
+      .meta .stats { color: var(--ink-faint); white-space: nowrap; }
+      .copy-btn {
+        margin-left: auto;
+        min-height: 36px;
+        padding: 6px 14px;
+        background: transparent;
+        color: var(--ink);
+        border: 1px solid var(--line);
+        border-radius: 6px;
+        font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+        font-size: 13px;
+        cursor: pointer;
+      }
+      .copy-btn:hover { border-color: var(--accent); color: var(--accent-ink); }
+      .copy-btn.copied { border-color: var(--accent); color: var(--accent-ink); }
+
+      .commenters {
+        background: var(--comment-bg);
+        border-radius: 6px;
+        padding: 14px 18px;
+        max-width: 72ch;
+      }
+      .commenters .label {
+        display: block;
+        font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+        font-size: 11.5px;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--accent-ink);
+        margin-bottom: 6px;
+      }
+      .commenters p { margin: 0; font-size: 15.5px; color: var(--ink-soft); }
+
+      footer {
+        margin-top: 36px;
+        padding-top: 20px;
+        border-top: 3px solid var(--ink);
+        font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+        font-size: 13.5px;
+        color: var(--ink-soft);
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px 24px;
+        align-items: center;
+      }
+      footer a { min-height: 36px; display: inline-flex; align-items: center; }
+
+      @media (max-width: 600px) {
+        .wrap { padding: 22px 16px 48px; }
+        .story { grid-template-columns: 46px 1fr; gap: 2px 12px; padding: 22px 0 20px; }
+        .story .num { font-size: 28px; }
+        header.masthead { flex-wrap: wrap; }
+        .copy-btn { margin-left: 0; }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        html { scroll-behavior: auto; }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <header class="masthead">
+        <div>
+          <p class="kicker">Hacker News · Daily Digest</p>
+          <h1>HN Daily — Wednesday, November 4, 2026</h1>
+          <p class="subtitle">HN Top 10 — 2026-11-04 07:00 PT (hottest by points)</p>
+        </div>
+        <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle dark mode" aria-pressed="false">
+          <span class="dot" aria-hidden="true"></span><span id="themeLabel">Dark</span>
+        </button>
+      </header>
+
+      <main>
+        <article class="story" id="story-1">
+          <div class="num" aria-hidden="true">1</div>
+          <div>
+            <h2 class="tagline">Postman crosses a line: silent AI plugins, API data at stake</h2>
+            <p class="body">A GitHub issue reports Postman silently auto-installing AI plugins and attempting to share all API data. For a tool that routinely holds production keys and internal endpoints, that is not a cosmetic annoyance — it is a trust break. The pragmatic move is to audit what is installed and shared, and keep secrets out of any client that can phone home.</p>
+            <div class="meta">
+              <a class="source" href="https://github.com/postmanlabs/postman-app-support/issues/14370" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50354960" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">1409 pts · 464 comments</span>
+              <button class="copy-btn" type="button" data-copy="1">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>Commenters largely agree Postman has drifted from lightweight tool to bloated upsell machine, and swap recommendations for Bruno, Yaak and older Insomnia. The split is over monetisation itself: some argue developers deserve paid tools, others say account and cloud pressure is now inevitable in this category.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="story" id="story-2">
+          <div class="num" aria-hidden="true">2</div>
+          <div>
+            <h2 class="tagline">Jailbreaking a Renault nav unit just to fix the clock</h2>
+            <p class="body">An owner reverse-engineered a Renault navigation system because changing the time required a proprietary, easily lost SD card. It is a small fix exposing a larger design failure: a basic setting locked behind vendor-controlled hardware. The lesson is boring and useful — if users cannot set the clock, the system is not finished.</p>
+            <div class="meta">
+              <a class="source" href="https://blog.nns.ee/2026/11/02/renault-hack/" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50339288" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">890 pts · 334 comments</span>
+              <button class="copy-btn" type="button" data-copy="2">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>The thread turns into a catalogue of head-unit grievances, from Honda Bluetooth auto-play to VCR-clock nostalgia, plus warnings that un-updated DST rules will bite again in spring, especially in Canadian provinces dropping clock changes. Some say just fit an aftermarket unit; others want full custom firmware.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="story" id="story-3">
+          <div class="num" aria-hidden="true">3</div>
+          <div>
+            <h2 class="tagline">Stringman: an $800 cable robot that grips a whole room</h2>
+            <p class="body">Stringman is an open-source, room-scale gripper robot built around cables and tension rather than a rigid arm. At $800 it is cheap for the category and deliberately simple in concept. The open question is practical range: what it can reliably lift, reach and do in a real room, not just a demo.</p>
+            <div class="meta">
+              <a class="source" href="https://neufangled.com/" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50354358" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">694 pts · 212 comments</span>
+              <button class="copy-btn" type="button" data-copy="3">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>Commenters praise the ingenuity and the &ldquo;tension is all you need&rdquo; idea, then immediately joke about strangulation and dropped objects. A longer split follows over robot form: humanoid generalists for human-shaped rooms versus cheaper, specialised designs that do one job well.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="story" id="story-4">
+          <div class="num" aria-hidden="true">4</div>
+          <div>
+            <h2 class="tagline">A laptop model that can read other models&rsquo; weights</h2>
+            <p class="body">Simon Willison reports Qwen 3.8 27B running on a laptop interpreting model weights, echoing the Astra work on reading and editing weights. If small open models can inspect weights usefully, interpretability stops being a frontier-only exercise. The catch is scope: reading a pattern is not the same as safely improving a model.</p>
+            <div class="meta">
+              <a class="source" href="https://simonwillison.net/2026/Nov/3/qwen-can-interpret-model-weights/" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50355251" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">682 pts · 197 comments</span>
+              <button class="copy-btn" type="button" data-copy="4">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>Commenters ask how far this scales — to Qwen 3.5 0.8B, or to its own weights — and push back on hype, noting single-task gains, looping fixes and abliteration-style tweaks are narrower than &ldquo;self-improvement.&rdquo; Others see a path to fixing heavily quantised models that loop.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="story" id="story-5">
+          <div class="num" aria-hidden="true">5</div>
+          <div>
+            <h2 class="tagline">Fujifilm bets 5x on tape as AI archiving explodes</h2>
+            <p class="body">Fujifilm plans to boost tape production fivefold as AI-driven data growth fuels archiving demand. Tape&rsquo;s pitch is simple: cheap, dense, offline and air-gappable in a ransomware era. The risk is reading too much into one multiplier — capacity, drive prices and restore workflows decide whether archives are actually usable.</p>
+            <div class="meta">
+              <a class="source" href="https://arstechnica.com/gadgets/2026/10/fujifilm-to-boost-tape-production-5x-as-ai-fuels-archiving-demand/" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50336918" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">509 pts · 216 comments</span>
+              <button class="copy-btn" type="button" data-copy="5">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>Commenters are sceptical that AI alone explains a 5x jump, pointing to never-deleted HPC data, harvest-now-decrypt-later fears and war-driven cold-storage demand. The sharper consensus is operational: many organisations have backups but few test restores, and LTO drive costs and shrinking backwards compatibility complicate the plan.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="story" id="story-6">
+          <div class="num" aria-hidden="true">6</div>
+          <div>
+            <h2 class="tagline">Safari 27.3 will dark-mode sites that never asked for it</h2>
+            <p class="body">Safari introduces Adaptive Dark Mode in 27.3, automatically transforming light-only pages for dark-mode users while shielding the transformation from site JavaScript. That is a user win and a developer headache in one feature: fewer blinding white pages, but less control over how a design actually renders.</p>
+            <div class="meta">
+              <a class="source" href="https://webkit.org/blog/18541/introducing-adaptive-dark-mode/" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50358562" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">472 pts · 246 comments</span>
+              <button class="copy-btn" type="button" data-copy="6">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>Users mostly cheer, designers welcome the push to support prefers-color-scheme properly, and developers split: some call it a nightmare for pixel control, others say the web was never a fixed canvas. A privacy thread defends the browser &ldquo;lying&rdquo; to sites about transformed colours as fingerprinting protection.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="story" id="story-7">
+          <div class="num" aria-hidden="true">7</div>
+          <div>
+            <h2 class="tagline">HackerTV turns HN&rsquo;s best YouTube picks into 24/7 channels</h2>
+            <p class="body">HackerTV packages Hacker News&rsquo;s most-recommended YouTube videos as always-on TV channels, complete with a retro channel-surfing feel. It is a small, charming filter: community curation instead of an algorithmic feed. Its test is longevity — whether channels stay fresh once the novelty wears off.</p>
+            <div class="meta">
+              <a class="source" href="https://hackertv.org" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50346755" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">397 pts · 75 comments</span>
+              <button class="copy-btn" type="button" data-copy="7">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>Reaction is warm, with channel requests, praise for the skeuomorphic presentation and links to earlier HN-remix projects. The sceptical thread is familiar: vibe-coded Hacker* sites risk abandonment, and commenters question how YouTube embeds and ads work in this format.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="story" id="story-8">
+          <div class="num" aria-hidden="true">8</div>
+          <div>
+            <h2 class="tagline">C++26 fails approval — and the fight is really about contracts</h2>
+            <p class="body">C++26 has been disapproved at the final ballot stage, with the dispute centred on contracts — pre- and post-conditions for functions, pitched as better assertions. A failed standard is rare and costly: it delays the whole release and exposes a committee struggling to agree on scope, safety and process.</p>
+            <div class="meta">
+              <a class="source" href="https://andreasfertig.com/blog/2026/11/cpp26-dis-failed-how-does-cpp-survive/" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50360164" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">371 pts · 271 comments</span>
+              <button class="copy-btn" type="button" data-copy="8">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>Commenters explain contracts as improved assertions, then split sharply: supporters see a readable safety and performance tool, critics call the proposal poorly specified and pushed despite unresolved concerns. A wider thread laments C++ complexity, with some arguing memory-safety pieces should be salvaged without the full contracts package.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="story" id="story-9">
+          <div class="num" aria-hidden="true">9</div>
+          <div>
+            <h2 class="tagline">AI is surfacing 40 years of technical debt, one vuln at a time</h2>
+            <p class="body">IEEE Spectrum&rsquo;s php2shell case argues AI-assisted discovery is forcing payment on decades of accumulated technical debt in old, widely used code. Finding bugs faster does not fix the underlying problem — sprawling, rarely reviewed code paths in critical software. The work now is triage, simplification and patching, not just detection.</p>
+            <div class="meta">
+              <a class="source" href="https://spectrum.ieee.org/ai-in-cybersecurity-php2shell-vulnerability" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50364336" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">355 pts · 244 comments</span>
+              <button class="copy-btn" type="button" data-copy="9">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>Commenters split between &ldquo;return to KISS&rdquo; — software that does less has less attack surface — and scepticism that KISS alone explains or fixes AI-found bugs. A parallel debate revives memory-safe languages, with some blaming NSA vulnerability stockpiling and others noting rewrites introduce new bugs and Ada&rsquo;s mandated history.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="story" id="story-10">
+          <div class="num" aria-hidden="true">10</div>
+          <div>
+            <h2 class="tagline">Jelly Sheet: the web at its squishiest</h2>
+            <p class="body">Mr Doob&rsquo;s Jelly Sheet is a playful, interactive web toy for Codevember 2026: a sheet of jelly you can poke, stretch and pour. It is deliberately unserious, and that is the point — a reminder that the browser can still be a place for tactile, joyful experiments, not just dashboards and feeds.</p>
+            <div class="meta">
+              <a class="source" href="https://mrdoob.github.io/codevember-2026/01/" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50361268" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">339 pts · 88 comments</span>
+              <button class="copy-btn" type="button" data-copy="10">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>Commenters love the squishy, classic-web feel and identify the creator as Three.js author Mr Doob, while reporting mixed mobile compatibility and lag as jelly accumulates. A larger argument breaks out over whether a vibe-coded entry fits a human-creativity challenge, with some calling it AI slop and others defending LLM-assisted craft.</p>
+            </div>
+          </div>
+        </article>
+      </main>
+
+      <footer>
+        <a href="../">&larr; HN Daily archive</a>
+        <a href="https://tk3369.github.io/hn-daily/">tk3369.github.io/hn-daily</a>
+        <span>Press T to toggle theme.</span>
+      </footer>
+    </div>
+
+    <script>
+      (function () {
+        var KEY = "hn-daily-theme";
+        var root = document.documentElement;
+        var toggle = document.getElementById("themeToggle");
+        var label = document.getElementById("themeLabel");
+
+        function storedTheme() {
+          try { return window.localStorage.getItem(KEY); } catch (e) { return null; }
+        }
+        function systemDark() {
+          return window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+        }
+        function isDark() {
+          var t = root.getAttribute("data-theme");
+          if (t === "dark") return true;
+          if (t === "light") return false;
+          return systemDark();
+        }
+        function render() {
+          var dark = isDark();
+          label.textContent = dark ? "Light" : "Dark";
+          toggle.setAttribute("aria-pressed", dark ? "true" : "false");
+        }
+        function setTheme(theme) {
+          root.setAttribute("data-theme", theme);
+          try { window.localStorage.setItem(KEY, theme); } catch (e) {}
+          render();
+        }
+        function flip() {
+          setTheme(isDark() ? "light" : "dark");
+        }
+
+        var saved = storedTheme();
+        if (saved === "dark" || saved === "light") {
+          root.setAttribute("data-theme", saved);
+        }
+        render();
+
+        toggle.addEventListener("click", flip);
+        document.addEventListener("keydown", function (e) {
+          if (e.key === "t" || e.key === "T") {
+            var tag = (e.target && e.target.tagName) || "";
+            if (tag === "INPUT" || tag === "TEXTAREA") return;
+            if (e.metaKey || e.ctrlKey || e.altKey) return;
+            flip();
+          }
+        });
+        if (window.matchMedia) {
+          var mq = window.matchMedia("(prefers-color-scheme: dark)");
+          if (mq.addEventListener) mq.addEventListener("change", render);
+        }
+
+        // Copy buttons: number + tagline + body + source + HN link + points/comments.
+        // The "What HN commenters are saying" paragraph is deliberately excluded.
+        var copyData = {
+          "1": "1. Postman crosses a line: silent AI plugins, API data at stake\n\nA GitHub issue reports Postman silently auto-installing AI plugins and attempting to share all API data. For a tool that routinely holds production keys and internal endpoints, that is not a cosmetic annoyance — it is a trust break. The pragmatic move is to audit what is installed and shared, and keep secrets out of any client that can phone home.\n\nSource: https://github.com/postmanlabs/postman-app-support/issues/14370\nHN Discuss: https://news.ycombinator.com/item?id=50354960\n1409 pts / 464 comments",
+          "2": "2. Jailbreaking a Renault nav unit just to fix the clock\n\nAn owner reverse-engineered a Renault navigation system because changing the time required a proprietary, easily lost SD card. It is a small fix exposing a larger design failure: a basic setting locked behind vendor-controlled hardware. The lesson is boring and useful — if users cannot set the clock, the system is not finished.\n\nSource: https://blog.nns.ee/2026/11/02/renault-hack/\nHN Discuss: https://news.ycombinator.com/item?id=50339288\n890 pts / 334 comments",
+          "3": "3. Stringman: an $800 cable robot that grips a whole room\n\nStringman is an open-source, room-scale gripper robot built around cables and tension rather than a rigid arm. At $800 it is cheap for the category and deliberately simple in concept. The open question is practical range: what it can reliably lift, reach and do in a real room, not just a demo.\n\nSource: https://neufangled.com/\nHN Discuss: https://news.ycombinator.com/item?id=50354358\n694 pts / 212 comments",
+          "4": "4. A laptop model that can read other models' weights\n\nSimon Willison reports Qwen 3.8 27B running on a laptop interpreting model weights, echoing the Astra work on reading and editing weights. If small open models can inspect weights usefully, interpretability stops being a frontier-only exercise. The catch is scope: reading a pattern is not the same as safely improving a model.\n\nSource: https://simonwillison.net/2026/Nov/3/qwen-can-interpret-model-weights/\nHN Discuss: https://news.ycombinator.com/item?id=50355251\n682 pts / 197 comments",
+          "5": "5. Fujifilm bets 5x on tape as AI archiving explodes\n\nFujifilm plans to boost tape production fivefold as AI-driven data growth fuels archiving demand. Tape's pitch is simple: cheap, dense, offline and air-gappable in a ransomware era. The risk is reading too much into one multiplier — capacity, drive prices and restore workflows decide whether archives are actually usable.\n\nSource: https://arstechnica.com/gadgets/2026/10/fujifilm-to-boost-tape-production-5x-as-ai-fuels-archiving-demand/\nHN Discuss: https://news.ycombinator.com/item?id=50336918\n509 pts / 216 comments",
+          "6": "6. Safari 27.3 will dark-mode sites that never asked for it\n\nSafari introduces Adaptive Dark Mode in 27.3, automatically transforming light-only pages for dark-mode users while shielding the transformation from site JavaScript. That is a user win and a developer headache in one feature: fewer blinding white pages, but less control over how a design actually renders.\n\nSource: https://webkit.org/blog/18541/introducing-adaptive-dark-mode/\nHN Discuss: https://news.ycombinator.com/item?id=50358562\n472 pts / 246 comments",
+          "7": "7. HackerTV turns HN's best YouTube picks into 24/7 channels\n\nHackerTV packages Hacker News's most-recommended YouTube videos as always-on TV channels, complete with a retro channel-surfing feel. It is a small, charming filter: community curation instead of an algorithmic feed. Its test is longevity — whether channels stay fresh once the novelty wears off.\n\nSource: https://hackertv.org\nHN Discuss: https://news.ycombinator.com/item?id=50346755\n397 pts / 75 comments",
+          "8": "8. C++26 fails approval — and the fight is really about contracts\n\nC++26 has been disapproved at the final ballot stage, with the dispute centred on contracts — pre- and post-conditions for functions, pitched as better assertions. A failed standard is rare and costly: it delays the whole release and exposes a committee struggling to agree on scope, safety and process.\n\nSource: https://andreasfertig.com/blog/2026/11/cpp26-dis-failed-how-does-cpp-survive/\nHN Discuss: https://news.ycombinator.com/item?id=50360164\n371 pts / 271 comments",
+          "9": "9. AI is surfacing 40 years of technical debt, one vuln at a time\n\nIEEE Spectrum's php2shell case argues AI-assisted discovery is forcing payment on decades of accumulated technical debt in old, widely used code. Finding bugs faster does not fix the underlying problem — sprawling, rarely reviewed code paths in critical software. The work now is triage, simplification and patching, not just detection.\n\nSource: https://spectrum.ieee.org/ai-in-cybersecurity-php2shell-vulnerability\nHN Discuss: https://news.ycombinator.com/item?id=50364336\n355 pts / 244 comments",
+          "10": "10. Jelly Sheet: the web at its squishiest\n\nMr Doob's Jelly Sheet is a playful, interactive web toy for Codevember 2026: a sheet of jelly you can poke, stretch and pour. It is deliberately unserious, and that is the point — a reminder that the browser can still be a place for tactile, joyful experiments, not just dashboards and feeds.\n\nSource: https://mrdoob.github.io/codevember-2026/01/\nHN Discuss: https://news.ycombinator.com/item?id=50361268\n339 pts / 88 comments"
+        };
+
+        function fallbackCopy(text) {
+          var ta = document.createElement("textarea");
+          ta.value = text;
+          ta.setAttribute("readonly", "");
+          ta.style.position = "absolute";
+          ta.style.left = "-9999px";
+          document.body.appendChild(ta);
+          ta.select();
+          var ok = false;
+          try { ok = document.execCommand("copy"); } catch (e) { ok = false; }
+          document.body.removeChild(ta);
+          return ok;
+        }
+
+        var buttons = document.querySelectorAll(".copy-btn");
+        Array.prototype.forEach.call(buttons, function (btn) {
+          btn.addEventListener("click", function () {
+            var text = copyData[btn.getAttribute("data-copy")] || "";
+            function done() {
+              var original = "Copy";
+              btn.textContent = "Copied ✓";
+              btn.classList.add("copied");
+              setTimeout(function () {
+                btn.textContent = original;
+                btn.classList.remove("copied");
+              }, 1600);
+            }
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+              navigator.clipboard.writeText(text).then(done, function () {
+                if (fallbackCopy(text)) done();
+              });
+            } else if (fallbackCopy(text)) {
+              done();
+            }
+          });
+        });
+      })();
+    </script>
+  </body>
+</html>
