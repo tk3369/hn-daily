@@ -1,0 +1,535 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="light dark" />
+    <link rel="icon" href="data:," />
+    <title>HN Daily — Thursday, November 5, 2026</title>
+    <style>
+      :root {
+        --bg: #f3f1eb;
+        --surface: #fbf9f4;
+        --ink: #1c1a16;
+        --ink-soft: #4a463e;
+        --ink-faint: #6f6a5e;
+        --line: #d8d2c4;
+        --accent: #ff6600;
+        --accent-ink: #b34700;
+        --comment-bg: #efe9dc;
+        --focus: #b34700;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root:not([data-theme="light"]) {
+          --bg: #16140f;
+          --surface: #1f1c16;
+          --ink: #f0ead9;
+          --ink-soft: #c9c2b0;
+          --ink-faint: #9a937f;
+          --line: #3a362b;
+          --accent: #ff7a1a;
+          --accent-ink: #ff9440;
+          --comment-bg: #262219;
+          --focus: #ff9440;
+        }
+      }
+      :root[data-theme="dark"] {
+        --bg: #16140f;
+        --surface: #1f1c16;
+        --ink: #f0ead9;
+        --ink-soft: #c9c2b0;
+        --ink-faint: #9a937f;
+        --line: #3a362b;
+        --accent: #ff7a1a;
+        --accent-ink: #ff9440;
+        --comment-bg: #262219;
+        --focus: #ff9440;
+      }
+
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--ink);
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: 17px;
+        line-height: 1.55;
+        -webkit-font-smoothing: antialiased;
+      }
+      a { color: var(--accent-ink); text-decoration: underline; text-underline-offset: 2px; }
+      a:hover { color: var(--accent); }
+      a:focus-visible, button:focus-visible {
+        outline: 2px solid var(--focus);
+        outline-offset: 2px;
+        border-radius: 2px;
+      }
+
+      .wrap {
+        max-width: 1080px;
+        margin: 0 auto;
+        padding: 32px 24px 64px;
+      }
+
+      header.masthead {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 20px;
+        border-bottom: 3px solid var(--ink);
+        padding-bottom: 20px;
+        margin-bottom: 8px;
+      }
+      .masthead h1 {
+        margin: 0 0 6px;
+        font-size: clamp(30px, 5vw, 46px);
+        line-height: 1.1;
+        font-weight: 700;
+        letter-spacing: -0.01em;
+      }
+      .masthead .subtitle {
+        margin: 0;
+        font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+        font-size: 14px;
+        color: var(--ink-soft);
+      }
+      .masthead .kicker {
+        margin: 0 0 10px;
+        font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+        font-size: 12px;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--accent-ink);
+      }
+
+      .theme-toggle {
+        flex: 0 0 auto;
+        width: 86px;
+        height: 40px;
+        min-height: 40px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        background: var(--surface);
+        color: var(--ink);
+        border: 1.5px solid var(--ink);
+        border-radius: 999px;
+        font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+        font-size: 13px;
+        cursor: pointer;
+        padding: 0 10px;
+      }
+      .theme-toggle .dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: var(--accent);
+        flex: 0 0 auto;
+      }
+      .theme-toggle:hover { border-color: var(--accent); }
+
+      .story {
+        display: grid;
+        grid-template-columns: 72px 1fr;
+        gap: 4px 20px;
+        padding: 28px 0 26px;
+        border-bottom: 1px solid var(--line);
+        scroll-margin-top: 16px;
+      }
+      .story .num {
+        font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+        font-size: 40px;
+        font-weight: 700;
+        line-height: 1;
+        color: var(--accent);
+        padding-top: 2px;
+      }
+      .story h2 {
+        margin: 0 0 10px;
+        font-size: clamp(21px, 3vw, 26px);
+        line-height: 1.25;
+        font-weight: 700;
+      }
+      .story .body { margin: 0 0 14px; color: var(--ink); max-width: 68ch; }
+
+      .meta {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 8px 18px;
+        font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+        font-size: 13.5px;
+        color: var(--ink-soft);
+        margin-bottom: 16px;
+      }
+      .meta a { min-height: 36px; display: inline-flex; align-items: center; }
+      .meta .stats { color: var(--ink-faint); white-space: nowrap; }
+      .copy-btn {
+        margin-left: auto;
+        min-height: 36px;
+        padding: 6px 14px;
+        background: transparent;
+        color: var(--ink);
+        border: 1px solid var(--line);
+        border-radius: 6px;
+        font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+        font-size: 13px;
+        cursor: pointer;
+      }
+      .copy-btn:hover { border-color: var(--accent); color: var(--accent-ink); }
+      .copy-btn.copied { border-color: var(--accent); color: var(--accent-ink); }
+
+      .commenters {
+        background: var(--comment-bg);
+        border-radius: 6px;
+        padding: 14px 18px;
+        max-width: 72ch;
+      }
+      .commenters .label {
+        display: block;
+        font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+        font-size: 11.5px;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--accent-ink);
+        margin-bottom: 6px;
+      }
+      .commenters p { margin: 0; font-size: 15.5px; color: var(--ink-soft); }
+
+      footer {
+        margin-top: 36px;
+        padding-top: 20px;
+        border-top: 3px solid var(--ink);
+        font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+        font-size: 13.5px;
+        color: var(--ink-soft);
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px 24px;
+        align-items: center;
+      }
+      footer a { min-height: 36px; display: inline-flex; align-items: center; }
+
+      @media (max-width: 600px) {
+        .wrap { padding: 22px 16px 48px; }
+        .story { grid-template-columns: 46px 1fr; gap: 2px 12px; padding: 22px 0 20px; }
+        .story .num { font-size: 28px; }
+        header.masthead { flex-wrap: wrap; }
+        .copy-btn { margin-left: 0; }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        html { scroll-behavior: auto; }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <header class="masthead">
+        <div>
+          <p class="kicker">Hacker News · Daily Digest</p>
+          <h1>HN Daily — Thursday, November 5, 2026</h1>
+          <p class="subtitle">HN Top 10 — 2026-11-05 07:00 PT (hottest by points)</p>
+        </div>
+        <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle dark mode" aria-pressed="false">
+          <span class="dot" aria-hidden="true"></span><span id="themeLabel">Dark</span>
+        </button>
+      </header>
+
+      <main>
+        <article class="story" id="story-1">
+          <div class="num" aria-hidden="true">1</div>
+          <div>
+            <h2 class="tagline">Residential proxies are exiting through the White House network</h2>
+            <p class="body">Layer3Intel&#x27;s new proxy observatory caught residential proxy traffic exiting the White House network (AS2650) 236 times over 30 days, through 28 services and 6 addresses. The evening-heavy pattern points to an infected device on the network, not guest Wi-Fi — and a flawed proxy SDK could expose internal systems.</p>
+            <div class="meta">
+              <a class="source" href="https://layer3intel.com/blog/residential-proxies-white-house-network" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50371246" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">1192 pts · 384 comments</span>
+              <button class="copy-btn" type="button" data-copy="1">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>Jokes dominate the top of the thread — SuperBox setups for late-night cable news, vibe coders on side quests — but the serious read is that a network like the White House&#x27;s should be monitored more closely. Others widen the lens to supply-chain risk: smart TVs, IoT devices and proxy SDKs are everywhere, and poorly secured ones have spread botnets before.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="story" id="story-2">
+          <div class="num" aria-hidden="true">2</div>
+          <div>
+            <h2 class="tagline">Sshole: a 14-year-old musl quirk lets any long password into locked SSH accounts</h2>
+            <p class="body">A chain of small decisions — musl&#x27;s crypt() returning &#x27;*&#x27; on failure, OpenSSH borrowing another account&#x27;s salt for &#x27;*&#x27; accounts — means any 257–1024 character password logs into a locked account on musl systems without PAM. Alpine and OpenWrt are exposed; OpenSSH 10.6p2 fixes it.</p>
+            <div class="meta">
+              <a class="source" href="https://sshhole.com" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50378228" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">730 pts · 208 comments</span>
+              <button class="copy-btn" type="button" data-copy="2">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>The name gets an A+ from the thread, but the substance is the scope: this only bites on musl without PAM — Alpine, OpenWrt, Buildroot — and the fix is to update to OpenSSH 10.6p2 or turn password logins off entirely. Several note the bug sat in the open for a decade because OpenSSH tests on glibc and most distros route through PAM.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="story" id="story-3">
+          <div class="num" aria-hidden="true">3</div>
+          <div>
+            <h2 class="tagline">Kimi K3.1 Pro weights are out — open, and very heavy</h2>
+            <p class="body">Moonshot has released the weights for Kimi K3.1 Pro on Hugging Face, the latest big open-weight drop. The catch is practical: running it takes roughly an 8× B300-class node, so this release is aimed at companies with serious hardware, not hobbyists.</p>
+            <div class="meta">
+              <a class="source" href="https://huggingface.co/moonshotai/Kimi-K3.1-Pro" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50366999" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">590 pts · 167 comments</span>
+              <button class="copy-btn" type="button" data-copy="3">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>The first reaction is hardware: you probably need an 8× B300 node to run it, so most commenters will keep trailing the frontier on smaller quantised models. Others say it doesn&#x27;t clearly outpace DeepSeek V4.1-Flash and scores modestly on internal benchmarks, calling it benchmaxxed — while noting these releases are meant for companies, not individuals.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="story" id="story-4">
+          <div class="num" aria-hidden="true">4</div>
+          <div>
+            <h2 class="tagline">Ask HN: What&#x27;s your current AI agentic setup?</h2>
+            <p class="body">The thread is a census of how people actually run coding agents now — and the trend is simpler, not fancier. Claude IDE with Opus 5.5, OpenClaw, Pi with GPT-5.6, and Codex dominate; several report deleting elaborate skill setups and just describing what they want.</p>
+            <div class="meta">
+              <a class="source" href="https://news.ycombinator.com/item?id=50366117" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50366117" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">437 pts · 507 comments</span>
+              <button class="copy-btn" type="button" data-copy="4">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>Setups cluster around a few stacks: Claude IDE with Opus 5.5 and a stripped-down skill set, OpenClaw running an agent per channel, Pi with GPT-5.6 models, and Codex subscriptions. The recurring theme is simplification — people who used to switch between elaborate setups now describe what they want in vague terms and let the model do the rest.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="story" id="story-5">
+          <div class="num" aria-hidden="true">5</div>
+          <div>
+            <h2 class="tagline">OpenAI patched 948 Linux privilege-escalation flaws with an autonomous pipeline</h2>
+            <p class="body">OpenAI built an autonomous pipeline that discovers, exploits and patches vulnerabilities, and in one run it validated and patched 948 local privilege-escalation flaws in Linux — at $1.2M in API cost. The uncomfortable takeaway: an unpatched low-privilege account is functionally root against a well-resourced attacker.</p>
+            <div class="meta">
+              <a class="source" href="https://openai.com/index/a-thousand-fewer-paths-to-root/" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50372929" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">431 pts · 317 comments</span>
+              <button class="copy-btn" type="button" data-copy="5">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>An OpenAI team member shows up to answer questions and note they&#x27;re hiring. The thread&#x27;s sharpest point is cost: $1.2M of API usage is out of reach for most open-source projects, so the technique doesn&#x27;t scale to everyone. Others ask the structural question — how does a kernel accumulate a thousand privilege-escalation flaws — and absorb the warning that unpatched low-privilege access is effectively root.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="story" id="story-6">
+          <div class="num" aria-hidden="true">6</div>
+          <div>
+            <h2 class="tagline">Go gets a new JSON API — encoding/json/v2</h2>
+            <p class="body">Go&#x27;s new encoding/json/v2 reworks the JSON API the standard library has shipped for years. The reception is warm but practical: developers like the direction, miss MarshalIndent, and still grumble that Marshal returns an error for what is really a code bug.</p>
+            <div class="meta">
+              <a class="source" href="https://go.dev/blog/jsonv2" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50369106" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">361 pts · 184 comments</span>
+              <button class="copy-btn" type="button" data-copy="6">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>Developers generally like encoding/json/v2 and are glad it exists, but the missing MarshalIndent draws the most complaints — the replacement code is complicated and non-obvious, a pain when migrating or dumping readable JSON quickly. Others relitigate Marshal returning an error at all, and one long-time Go user notes they now have models write most of their Go while still wanting it to be Go.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="story" id="story-7">
+          <div class="num" aria-hidden="true">7</div>
+          <div>
+            <h2 class="tagline">OpenAI Images 2.6: 4 billion images a week, now with SVG and animation grids</h2>
+            <p class="body">OpenAI&#x27;s Images 2.6 adds SVG output and an explicit animation grid trick, and the company says people now generate four billion images a week. The model is getting more capable and more visible at once — watermarking and frame-to-frame consistency are the open complaints.</p>
+            <div class="meta">
+              <a class="source" href="https://openai.com/index/introducing-images-2-6/" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50372945" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">350 pts · 211 comments</span>
+              <button class="copy-btn" type="button" data-copy="7">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>Four billion images a week stops the thread cold. The grid trick for animations isn&#x27;t new, note commenters, but it&#x27;s the first time a major provider has made it explicit — though frame adherence is still noisy in the examples. The visible watermarking draws unfavourable comparisons with Google&#x27;s near-invisible Nano Banana marks; SVG support is the part people actually like.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="story" id="story-8">
+          <div class="num" aria-hidden="true">8</div>
+          <div>
+            <h2 class="tagline">Ripple-65B claims U.S. open-weight SOTA on agentic coding</h2>
+            <p class="body">Ricursive&#x27;s Ripple-65B preview claims the U.S. open-weight lead on agentic coding. The claim is doing the work here: commenters call the comparison chart befuddling and note the absence of Qwen — the obvious rival — from the benchmarks entirely.</p>
+            <div class="meta">
+              <a class="source" href="https://www.ricursive.com/ripple" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50369925" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">316 pts · 113 comments</span>
+              <button class="copy-btn" type="button" data-copy="8">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>The comparison chart is the thread&#x27;s main target — befuddling, say commenters — and the omission of Qwen from the benchmarks reads as a tell. Others note the company name confusion (R e cursive vs R i cursive) and call it a bad look not to mention rival open-weight models at all.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="story" id="story-9">
+          <div class="num" aria-hidden="true">9</div>
+          <div>
+            <h2 class="tagline">Insects don&#x27;t swarm at LED lights, study says</h2>
+            <p class="body">A study finds insects don&#x27;t swarm at LED lights the way they did at older lamps, a small win for street lighting. The thread pushes back from experience — plenty of people still see moths at their home LEDs — and asks whether flicker, not spectrum, is doing the repelling.</p>
+            <div class="meta">
+              <a class="source" href="https://www.birdsoutsidemywindow.org/2026/11/03/insects-dont-swarm-at-led-lights/" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50370610" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">298 pts · 151 comments</span>
+              <button class="copy-btn" type="button" data-copy="9">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>Personal experience is the main counter-evidence: commenters with LED-only homes still see moths and bees drawn to the light. The leading theory is flicker — PWM dimming and rapid flashing that insects can see and humans can&#x27;t — and several note the study didn&#x27;t cover high-pressure sodium lamps, the previous street-light standard.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="story" id="story-10">
+          <div class="num" aria-hidden="true">10</div>
+          <div>
+            <h2 class="tagline">Lemmings, rebuilt in pure CSS</h2>
+            <p class="body">A pure-CSS tribute to Psygnosis&#x27; Lemmings, with the little green-haired walkers marching across the page. It is deliberately unserious and technically neat — exact per-character block sizing in CSS — and commenters mostly just enjoy it, plus a few mobile zoom bug reports.</p>
+            <div class="meta">
+              <a class="source" href="https://markblah.github.io/lemmings/" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50375354" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">296 pts · 55 comments</span>
+              <button class="copy-btn" type="button" data-copy="10">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>The reaction is mostly delight, with one commenter sharing their own page where clicking a hexagon turns it into a robot that SLAM-maps the page. The technical question is how the author got exact per-character block sizes in CSS; the practical note is a couple of mobile zoom bugs, with a suggested CSS fix.</p>
+            </div>
+          </div>
+        </article>
+      </main>
+
+      <footer>
+        <a href="../">&larr; HN Daily archive</a>
+        <a href="https://tk3369.github.io/hn-daily/">tk3369.github.io/hn-daily</a>
+        <span>Press T to toggle theme.</span>
+      </footer>
+    </div>
+
+    <script>
+      (function () {
+        var KEY = "hn-daily-theme";
+        var root = document.documentElement;
+        var toggle = document.getElementById("themeToggle");
+        var label = document.getElementById("themeLabel");
+
+        function storedTheme() {
+          try { return window.localStorage.getItem(KEY); } catch (e) { return null; }
+        }
+        function systemDark() {
+          return window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+        }
+        function isDark() {
+          var t = root.getAttribute("data-theme");
+          if (t === "dark") return true;
+          if (t === "light") return false;
+          return systemDark();
+        }
+        function render() {
+          var dark = isDark();
+          label.textContent = dark ? "Light" : "Dark";
+          toggle.setAttribute("aria-pressed", dark ? "true" : "false");
+        }
+        function setTheme(theme) {
+          root.setAttribute("data-theme", theme);
+          try { window.localStorage.setItem(KEY, theme); } catch (e) {}
+          render();
+        }
+        function flip() {
+          setTheme(isDark() ? "light" : "dark");
+        }
+
+        var saved = storedTheme();
+        if (saved === "dark" || saved === "light") {
+          root.setAttribute("data-theme", saved);
+        }
+        render();
+
+        toggle.addEventListener("click", flip);
+        document.addEventListener("keydown", function (e) {
+          if (e.key === "t" || e.key === "T") {
+            var tag = (e.target && e.target.tagName) || "";
+            if (tag === "INPUT" || tag === "TEXTAREA") return;
+            if (e.metaKey || e.ctrlKey || e.altKey) return;
+            flip();
+          }
+        });
+        if (window.matchMedia) {
+          var mq = window.matchMedia("(prefers-color-scheme: dark)");
+          if (mq.addEventListener) mq.addEventListener("change", render);
+        }
+
+        // Copy buttons: number + tagline + body + source + HN link + points/comments.
+        // The "What HN commenters are saying" paragraph is deliberately excluded.
+        var copyData = {
+          "1": "1. Residential proxies are exiting through the White House network\n\nLayer3Intel's new proxy observatory caught residential proxy traffic exiting the White House network (AS2650) 236 times over 30 days, through 28 services and 6 addresses. The evening-heavy pattern points to an infected device on the network, not guest Wi-Fi — and a flawed proxy SDK could expose internal systems.\n\nSource: https://layer3intel.com/blog/residential-proxies-white-house-network\nHN Discuss: https://news.ycombinator.com/item?id=50371246\n1192 pts / 384 comments",
+          "2": "2. Sshole: a 14-year-old musl quirk lets any long password into locked SSH accounts\n\nA chain of small decisions — musl's crypt() returning '*' on failure, OpenSSH borrowing another account's salt for '*' accounts — means any 257–1024 character password logs into a locked account on musl systems without PAM. Alpine and OpenWrt are exposed; OpenSSH 10.6p2 fixes it.\n\nSource: https://sshhole.com\nHN Discuss: https://news.ycombinator.com/item?id=50378228\n730 pts / 208 comments",
+          "3": "3. Kimi K3.1 Pro weights are out — open, and very heavy\n\nMoonshot has released the weights for Kimi K3.1 Pro on Hugging Face, the latest big open-weight drop. The catch is practical: running it takes roughly an 8× B300-class node, so this release is aimed at companies with serious hardware, not hobbyists.\n\nSource: https://huggingface.co/moonshotai/Kimi-K3.1-Pro\nHN Discuss: https://news.ycombinator.com/item?id=50366999\n590 pts / 167 comments",
+          "4": "4. Ask HN: What's your current AI agentic setup?\n\nThe thread is a census of how people actually run coding agents now — and the trend is simpler, not fancier. Claude IDE with Opus 5.5, OpenClaw, Pi with GPT-5.6, and Codex dominate; several report deleting elaborate skill setups and just describing what they want.\n\nSource: https://news.ycombinator.com/item?id=50366117\nHN Discuss: https://news.ycombinator.com/item?id=50366117\n437 pts / 507 comments",
+          "5": "5. OpenAI patched 948 Linux privilege-escalation flaws with an autonomous pipeline\n\nOpenAI built an autonomous pipeline that discovers, exploits and patches vulnerabilities, and in one run it validated and patched 948 local privilege-escalation flaws in Linux — at $1.2M in API cost. The uncomfortable takeaway: an unpatched low-privilege account is functionally root against a well-resourced attacker.\n\nSource: https://openai.com/index/a-thousand-fewer-paths-to-root/\nHN Discuss: https://news.ycombinator.com/item?id=50372929\n431 pts / 317 comments",
+          "6": "6. Go gets a new JSON API — encoding/json/v2\n\nGo's new encoding/json/v2 reworks the JSON API the standard library has shipped for years. The reception is warm but practical: developers like the direction, miss MarshalIndent, and still grumble that Marshal returns an error for what is really a code bug.\n\nSource: https://go.dev/blog/jsonv2\nHN Discuss: https://news.ycombinator.com/item?id=50369106\n361 pts / 184 comments",
+          "7": "7. OpenAI Images 2.6: 4 billion images a week, now with SVG and animation grids\n\nOpenAI's Images 2.6 adds SVG output and an explicit animation grid trick, and the company says people now generate four billion images a week. The model is getting more capable and more visible at once — watermarking and frame-to-frame consistency are the open complaints.\n\nSource: https://openai.com/index/introducing-images-2-6/\nHN Discuss: https://news.ycombinator.com/item?id=50372945\n350 pts / 211 comments",
+          "8": "8. Ripple-65B claims U.S. open-weight SOTA on agentic coding\n\nRicursive's Ripple-65B preview claims the U.S. open-weight lead on agentic coding. The claim is doing the work here: commenters call the comparison chart befuddling and note the absence of Qwen — the obvious rival — from the benchmarks entirely.\n\nSource: https://www.ricursive.com/ripple\nHN Discuss: https://news.ycombinator.com/item?id=50369925\n316 pts / 113 comments",
+          "9": "9. Insects don't swarm at LED lights, study says\n\nA study finds insects don't swarm at LED lights the way they did at older lamps, a small win for street lighting. The thread pushes back from experience — plenty of people still see moths at their home LEDs — and asks whether flicker, not spectrum, is doing the repelling.\n\nSource: https://www.birdsoutsidemywindow.org/2026/11/03/insects-dont-swarm-at-led-lights/\nHN Discuss: https://news.ycombinator.com/item?id=50370610\n298 pts / 151 comments",
+          "10": "10. Lemmings, rebuilt in pure CSS\n\nA pure-CSS tribute to Psygnosis' Lemmings, with the little green-haired walkers marching across the page. It is deliberately unserious and technically neat — exact per-character block sizing in CSS — and commenters mostly just enjoy it, plus a few mobile zoom bug reports.\n\nSource: https://markblah.github.io/lemmings/\nHN Discuss: https://news.ycombinator.com/item?id=50375354\n296 pts / 55 comments"
+};
+
+        function fallbackCopy(text) {
+          var ta = document.createElement("textarea");
+          ta.value = text;
+          ta.setAttribute("readonly", "");
+          ta.style.position = "absolute";
+          ta.style.left = "-9999px";
+          document.body.appendChild(ta);
+          ta.select();
+          var ok = false;
+          try { ok = document.execCommand("copy"); } catch (e) { ok = false; }
+          document.body.removeChild(ta);
+          return ok;
+        }
+
+        var buttons = document.querySelectorAll(".copy-btn");
+        Array.prototype.forEach.call(buttons, function (btn) {
+          btn.addEventListener("click", function () {
+            var text = copyData[btn.getAttribute("data-copy")] || "";
+            function done() {
+              var original = "Copy";
+              btn.textContent = "Copied ✓";
+              btn.classList.add("copied");
+              setTimeout(function () {
+                btn.textContent = original;
+                btn.classList.remove("copied");
+              }, 1600);
+            }
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+              navigator.clipboard.writeText(text).then(done, function () {
+                if (fallbackCopy(text)) done();
+              });
+            } else if (fallbackCopy(text)) {
+              done();
+            }
+          });
+        });
+      })();
+    </script>
+  </body>
+</html>
