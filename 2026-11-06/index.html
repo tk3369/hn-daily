@@ -1,0 +1,535 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="light dark" />
+    <link rel="icon" href="data:," />
+    <title>HN Daily — Friday, November 6, 2026</title>
+    <style>
+      :root {
+        --bg: #f3f1eb;
+        --surface: #fbf9f4;
+        --ink: #1c1a16;
+        --ink-soft: #4a463e;
+        --ink-faint: #6f6a5e;
+        --line: #d8d2c4;
+        --accent: #ff6600;
+        --accent-ink: #b34700;
+        --comment-bg: #efe9dc;
+        --focus: #b34700;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root:not([data-theme="light"]) {
+          --bg: #16140f;
+          --surface: #1f1c16;
+          --ink: #f0ead9;
+          --ink-soft: #c9c2b0;
+          --ink-faint: #9a937f;
+          --line: #3a362b;
+          --accent: #ff7a1a;
+          --accent-ink: #ff9440;
+          --comment-bg: #262219;
+          --focus: #ff9440;
+        }
+      }
+      :root[data-theme="dark"] {
+        --bg: #16140f;
+        --surface: #1f1c16;
+        --ink: #f0ead9;
+        --ink-soft: #c9c2b0;
+        --ink-faint: #9a937f;
+        --line: #3a362b;
+        --accent: #ff7a1a;
+        --accent-ink: #ff9440;
+        --comment-bg: #262219;
+        --focus: #ff9440;
+      }
+
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--ink);
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: 17px;
+        line-height: 1.55;
+        -webkit-font-smoothing: antialiased;
+      }
+      a { color: var(--accent-ink); text-decoration: underline; text-underline-offset: 2px; }
+      a:hover { color: var(--accent); }
+      a:focus-visible, button:focus-visible {
+        outline: 2px solid var(--focus);
+        outline-offset: 2px;
+        border-radius: 2px;
+      }
+
+      .wrap {
+        max-width: 1080px;
+        margin: 0 auto;
+        padding: 32px 24px 64px;
+      }
+
+      header.masthead {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 20px;
+        border-bottom: 3px solid var(--ink);
+        padding-bottom: 20px;
+        margin-bottom: 8px;
+      }
+      .masthead h1 {
+        margin: 0 0 6px;
+        font-size: clamp(30px, 5vw, 46px);
+        line-height: 1.1;
+        font-weight: 700;
+        letter-spacing: -0.01em;
+      }
+      .masthead .subtitle {
+        margin: 0;
+        font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+        font-size: 14px;
+        color: var(--ink-soft);
+      }
+      .masthead .kicker {
+        margin: 0 0 10px;
+        font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+        font-size: 12px;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--accent-ink);
+      }
+
+      .theme-toggle {
+        flex: 0 0 auto;
+        width: 86px;
+        height: 40px;
+        min-height: 40px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        background: var(--surface);
+        color: var(--ink);
+        border: 1.5px solid var(--ink);
+        border-radius: 999px;
+        font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+        font-size: 13px;
+        cursor: pointer;
+        padding: 0 10px;
+      }
+      .theme-toggle .dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: var(--accent);
+        flex: 0 0 auto;
+      }
+      .theme-toggle:hover { border-color: var(--accent); }
+
+      .story {
+        display: grid;
+        grid-template-columns: 72px 1fr;
+        gap: 4px 20px;
+        padding: 28px 0 26px;
+        border-bottom: 1px solid var(--line);
+        scroll-margin-top: 16px;
+      }
+      .story .num {
+        font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+        font-size: 40px;
+        font-weight: 700;
+        line-height: 1;
+        color: var(--accent);
+        padding-top: 2px;
+      }
+      .story h2 {
+        margin: 0 0 10px;
+        font-size: clamp(21px, 3vw, 26px);
+        line-height: 1.25;
+        font-weight: 700;
+      }
+      .story .body { margin: 0 0 14px; color: var(--ink); max-width: 68ch; }
+
+      .meta {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 8px 18px;
+        font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+        font-size: 13.5px;
+        color: var(--ink-soft);
+        margin-bottom: 16px;
+      }
+      .meta a { min-height: 36px; display: inline-flex; align-items: center; }
+      .meta .stats { color: var(--ink-faint); white-space: nowrap; }
+      .copy-btn {
+        margin-left: auto;
+        min-height: 36px;
+        padding: 6px 14px;
+        background: transparent;
+        color: var(--ink);
+        border: 1px solid var(--line);
+        border-radius: 6px;
+        font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+        font-size: 13px;
+        cursor: pointer;
+      }
+      .copy-btn:hover { border-color: var(--accent); color: var(--accent-ink); }
+      .copy-btn.copied { border-color: var(--accent); color: var(--accent-ink); }
+
+      .commenters {
+        background: var(--comment-bg);
+        border-radius: 6px;
+        padding: 14px 18px;
+        max-width: 72ch;
+      }
+      .commenters .label {
+        display: block;
+        font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+        font-size: 11.5px;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--accent-ink);
+        margin-bottom: 6px;
+      }
+      .commenters p { margin: 0; font-size: 15.5px; color: var(--ink-soft); }
+
+      footer {
+        margin-top: 36px;
+        padding-top: 20px;
+        border-top: 3px solid var(--ink);
+        font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+        font-size: 13.5px;
+        color: var(--ink-soft);
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px 24px;
+        align-items: center;
+      }
+      footer a { min-height: 36px; display: inline-flex; align-items: center; }
+
+      @media (max-width: 600px) {
+        .wrap { padding: 22px 16px 48px; }
+        .story { grid-template-columns: 46px 1fr; gap: 2px 12px; padding: 22px 0 20px; }
+        .story .num { font-size: 28px; }
+        header.masthead { flex-wrap: wrap; }
+        .copy-btn { margin-left: 0; }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        html { scroll-behavior: auto; }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <header class="masthead">
+        <div>
+          <p class="kicker">Hacker News · Daily Digest</p>
+          <h1>HN Daily — Friday, November 6, 2026</h1>
+          <p class="subtitle">HN Top 10 — 2026-11-06 07:00 PT (hottest by points)</p>
+        </div>
+        <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle dark mode" aria-pressed="false">
+          <span class="dot" aria-hidden="true"></span><span id="themeLabel">Dark</span>
+        </button>
+      </header>
+
+      <main>
+        <article class="story" id="story-1">
+          <div class="num" aria-hidden="true">1</div>
+          <div>
+            <h2 class="tagline">Sshole: a 14-year-old musl quirk lets any long password into locked SSH accounts</h2>
+            <p class="body">A chain of small decisions — musl&#x27;s crypt() returning &#x27;*&#x27; on failure, OpenSSH borrowing another account&#x27;s salt for &#x27;*&#x27; accounts — means any 257–1024 character password logs into a locked account on musl systems without PAM. Alpine and OpenWrt are exposed; OpenSSH 10.6p2 fixes it.</p>
+            <div class="meta">
+              <a class="source" href="https://sshhole.com" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50378228" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">2823 pts · 688 comments</span>
+              <button class="copy-btn" type="button" data-copy="1">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>The name jokes continue, but the live debate is exposure: what actually runs musl without PAM plus an sshd with password auth? Some point to Docker containers running sshd at million-download scale; others say almost nobody runs sshd in a container, so real-world exposure is small. Remediation is agreed: set PasswordAuthentication=no or update to OpenSSH 10.6p2.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="story" id="story-2">
+          <div class="num" aria-hidden="true">2</div>
+          <div>
+            <h2 class="tagline">Claude Code sends your email address to websites</h2>
+            <p class="body">Claude Code adds a User-Agent header like session-slug/1 &lt;name@example.com&gt; when fetching the web, leaking paying customers&#x27; email addresses to every site it visits. The reporter says it brought dozens of scam and phishing emails a day from sites never personally visited.</p>
+            <div class="meta">
+              <a class="source" href="https://github.com/anthropics/claude-code/issues/107757" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50385272" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">1369 pts · 433 comments</span>
+              <button class="copy-btn" type="button" data-copy="2">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>Outrage is the thread&#x27;s register: a human engineer would never design this, say commenters, and the debate is whether a human or the model chose it — and whether it&#x27;s anti-abuse or promotion. Nobody defends it as sensible; the fix people want is simply to stop sending the address.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="story" id="story-3">
+          <div class="num" aria-hidden="true">3</div>
+          <div>
+            <h2 class="tagline">MS Paint has a remote code execution vulnerability</h2>
+            <p class="body">CVE-2026-83844 is an out-of-bounds read in Windows Paint that, per the CVE record, lets an unauthenticated attacker execute code over the network with no user interaction required. Yes, Paint — the app that now ships with Copilot features.</p>
+            <div class="meta">
+              <a class="source" href="https://www.cve.org/CVERecord?id=CVE-2026-83844" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50384233" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">625 pts · 238 comments</span>
+              <button class="copy-btn" type="button" data-copy="3">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>Disbelief first, then confusion over the mechanism: Paint isn&#x27;t a network service, so how is it remotely reachable? Theories range from a Copilot service talking to Paint over IPC to a command-line print path. The jokes write themselves — Minesweeper is next.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="story" id="story-4">
+          <div class="num" aria-hidden="true">4</div>
+          <div>
+            <h2 class="tagline">Motorola Signature 27 ships with GrapheneOS support — at $1,599</h2>
+            <p class="body">Motorola&#x27;s new flagship will run GrapheneOS, the privacy-hardened Android, with 7 years of security updates from launch. The catch is the $1,599 starting price — Pixel territory — and the thread mostly talks about that.</p>
+            <div class="meta">
+              <a class="source" href="https://motorolanews.com/motorola-signature-27-2/" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50380810" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">533 pts · 382 comments</span>
+              <button class="copy-btn" type="button" data-copy="4">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>Price dominates: many say they&#x27;ll stick with a second-hand Pixel 8 at a tenth of the cost, and some worry poor sales will get blamed on GrapheneOS. The GrapheneOS team shows up to clarify it isn&#x27;t the main OS, just a supported option, and that 7-year support matches Pixel 8 and later.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="story" id="story-5">
+          <div class="num" aria-hidden="true">5</div>
+          <div>
+            <h2 class="tagline">I wish tech companies knew more about me</h2>
+            <p class="body">The author&#x27;s contrarian take: ads feel bad not because companies know too much, but because they know too little — a better profile would mean ads for things you actually want. It&#x27;s a provocation, and the thread treats it as one.</p>
+            <div class="meta">
+              <a class="source" href="https://rakhim.exotext.com/i-wish-tech-companies-knew-more-about-me" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50378942" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">505 pts · 392 comments</span>
+              <button class="copy-btn" type="button" data-copy="5">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>The pushback is structural: advertisers pay for placement, so relevance is priced into the auction and the heaviest spenders are often the brands you least want. Several argue targeted advertising will never feel good because the seller&#x27;s goal is to move their product, not to serve you.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="story" id="story-6">
+          <div class="num" aria-hidden="true">6</div>
+          <div>
+            <h2 class="tagline">Blender&#x27;s UI and runtime: much faster than GPUI</h2>
+            <p class="body">BUI ports Blender&#x27;s battle-tested UI toolkit and runtime to Rust, aiming to beat GPUI on speed for apps where interface latency matters. The pitch is simple: Blender&#x27;s UI has survived decades of professional use.</p>
+            <div class="meta">
+              <a class="source" href="https://github.com/ppmpreetham/BUI" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50389333" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">424 pts · 177 comments</span>
+              <button class="copy-btn" type="button" data-copy="6">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>Enthusiasm from Rust UI builders tired of reimplementing scrolling, inputs and splitters that GPUI still lacks; several call it the right system for 3D modellers, video editors and DAWs. Curiosity about what exactly GPUI lacks runs through the thread.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="story" id="story-7">
+          <div class="num" aria-hidden="true">7</div>
+          <div>
+            <h2 class="tagline">Dutch &#x27;idealist&#x27; bank ASN blocks non-Google Android, including GrapheneOS</h2>
+            <p class="body">ASN Bank — which markets itself on ideals — now blocks its app on non-Google Android, including GrapheneOS, via Play Integrity checks. For a bank whose customers chose it on principle, the thread reads it as a betrayal.</p>
+            <div class="meta">
+              <a class="source" href="https://github.com/PrivSec-dev/banking-apps-compat-report/issues/105" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50390124" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">405 pts · 239 comments</span>
+              <button class="copy-btn" type="button" data-copy="7">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>Other European banks do the same, note commenters — N26 blocks new signups on GrapheneOS — and workarounds are a second phone, or Bunq plus CurvePay for tap-to-pay. The bigger worry is Wero, the European payment system rolling out tap-to-pay in 2027, which will lean on the same checks.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="story" id="story-8">
+          <div class="num" aria-hidden="true">8</div>
+          <div>
+            <h2 class="tagline">Window Sweaters</h2>
+            <p class="body">A macOS app that dresses your windows in knitted sweaters for winter — a small, unserious, seasonal delight built by a product designer using Claude and Codex, then open-sourced after it took off on X.</p>
+            <div class="meta">
+              <a class="source" href="https://github.com/saragordic/window-sweaters" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50381383" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">404 pts · 117 comments</span>
+              <button class="copy-btn" type="button" data-copy="8">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>Mostly charmed, but the thread splits on vibe-coded binaries: supply-chain caution (don&#x27;t run random GitHub binaries) versus the fun of it, with calls to share prompts instead of binaries. The author replies it&#x27;s a first experiment, used daily and still being fixed.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="story" id="story-9">
+          <div class="num" aria-hidden="true">9</div>
+          <div>
+            <h2 class="tagline">Britain to make salary disclosure in job ads mandatory</h2>
+            <p class="body">Britain will require employers to publish salaries in job ads, PM Andy Burnham announced, to help young people applying for first jobs and close pay gaps that disadvantage women. Legislation is coming to parliament, with no timeline given.</p>
+            <div class="meta">
+              <a class="source" href="https://www.reuters.com/business/world-at-work/britain-make-salary-disclosure-job-ads-mandatory-2026-11-05/" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50389222" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">401 pts · 330 comments</span>
+              <button class="copy-btn" type="button" data-copy="9">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>The thread argues the edge cases — roles reshaped around a candidate, bait-and-switch gaming — against the core point, which is information asymmetry: knowing the pay before spending time applying changes the power balance. Most agree negotiation survives; the question is how much gaming the law invites.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="story" id="story-10">
+          <div class="num" aria-hidden="true">10</div>
+          <div>
+            <h2 class="tagline">The Hackintosh Reborn — with AI</h2>
+            <p class="body">AI-assisted reverse engineering — Claude Code plus Ghidra — has revived the Hackintosh scene: macOS 27 now runs on Snapdragon laptops, ARM single-board computers, even iOS 17 on a Switch OLED, with 50-series Nvidia GPU support in progress. The author built a working iOS app in a day on a ThinkPad running macOS 26 without writing a line of code.</p>
+            <div class="meta">
+              <a class="source" href="https://www.naut.ca/blog/2026/11/05/the-hackintosh-reborn-with-ai/" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50383057" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">360 pts · 201 comments</span>
+              <button class="copy-btn" type="button" data-copy="10">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>Nostalgia and scepticism in equal measure — the old scene died on fragility (one update from breaking), and several say macOS on non-Apple hardware only ever made sense for headless build machines or tinkering. Others note the real story is ARM: Switch games now run natively on Macs, and the x86 era is ending.</p>
+            </div>
+          </div>
+        </article>
+      </main>
+
+      <footer>
+        <a href="../">&larr; HN Daily archive</a>
+        <a href="https://tk3369.github.io/hn-daily/">tk3369.github.io/hn-daily</a>
+        <span>Press T to toggle theme.</span>
+      </footer>
+    </div>
+
+    <script>
+      (function () {
+        var KEY = "hn-daily-theme";
+        var root = document.documentElement;
+        var toggle = document.getElementById("themeToggle");
+        var label = document.getElementById("themeLabel");
+
+        function storedTheme() {
+          try { return window.localStorage.getItem(KEY); } catch (e) { return null; }
+        }
+        function systemDark() {
+          return window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+        }
+        function isDark() {
+          var t = root.getAttribute("data-theme");
+          if (t === "dark") return true;
+          if (t === "light") return false;
+          return systemDark();
+        }
+        function render() {
+          var dark = isDark();
+          label.textContent = dark ? "Light" : "Dark";
+          toggle.setAttribute("aria-pressed", dark ? "true" : "false");
+        }
+        function setTheme(theme) {
+          root.setAttribute("data-theme", theme);
+          try { window.localStorage.setItem(KEY, theme); } catch (e) {}
+          render();
+        }
+        function flip() {
+          setTheme(isDark() ? "light" : "dark");
+        }
+
+        var saved = storedTheme();
+        if (saved === "dark" || saved === "light") {
+          root.setAttribute("data-theme", saved);
+        }
+        render();
+
+        toggle.addEventListener("click", flip);
+        document.addEventListener("keydown", function (e) {
+          if (e.key === "t" || e.key === "T") {
+            var tag = (e.target && e.target.tagName) || "";
+            if (tag === "INPUT" || tag === "TEXTAREA") return;
+            if (e.metaKey || e.ctrlKey || e.altKey) return;
+            flip();
+          }
+        });
+        if (window.matchMedia) {
+          var mq = window.matchMedia("(prefers-color-scheme: dark)");
+          if (mq.addEventListener) mq.addEventListener("change", render);
+        }
+
+        // Copy buttons: number + tagline + body + source + HN link + points/comments.
+        // The "What HN commenters are saying" paragraph is deliberately excluded.
+        var copyData = {
+          "1": "1. Sshole: a 14-year-old musl quirk lets any long password into locked SSH accounts\n\nA chain of small decisions — musl's crypt() returning '*' on failure, OpenSSH borrowing another account's salt for '*' accounts — means any 257–1024 character password logs into a locked account on musl systems without PAM. Alpine and OpenWrt are exposed; OpenSSH 10.6p2 fixes it.\n\nSource: https://sshhole.com\nHN Discuss: https://news.ycombinator.com/item?id=50378228\n2823 pts / 688 comments",
+          "2": "2. Claude Code sends your email address to websites\n\nClaude Code adds a User-Agent header like session-slug/1 <name@example.com> when fetching the web, leaking paying customers' email addresses to every site it visits. The reporter says it brought dozens of scam and phishing emails a day from sites never personally visited.\n\nSource: https://github.com/anthropics/claude-code/issues/107757\nHN Discuss: https://news.ycombinator.com/item?id=50385272\n1369 pts / 433 comments",
+          "3": "3. MS Paint has a remote code execution vulnerability\n\nCVE-2026-83844 is an out-of-bounds read in Windows Paint that, per the CVE record, lets an unauthenticated attacker execute code over the network with no user interaction required. Yes, Paint — the app that now ships with Copilot features.\n\nSource: https://www.cve.org/CVERecord?id=CVE-2026-83844\nHN Discuss: https://news.ycombinator.com/item?id=50384233\n625 pts / 238 comments",
+          "4": "4. Motorola Signature 27 ships with GrapheneOS support — at $1,599\n\nMotorola's new flagship will run GrapheneOS, the privacy-hardened Android, with 7 years of security updates from launch. The catch is the $1,599 starting price — Pixel territory — and the thread mostly talks about that.\n\nSource: https://motorolanews.com/motorola-signature-27-2/\nHN Discuss: https://news.ycombinator.com/item?id=50380810\n533 pts / 382 comments",
+          "5": "5. I wish tech companies knew more about me\n\nThe author's contrarian take: ads feel bad not because companies know too much, but because they know too little — a better profile would mean ads for things you actually want. It's a provocation, and the thread treats it as one.\n\nSource: https://rakhim.exotext.com/i-wish-tech-companies-knew-more-about-me\nHN Discuss: https://news.ycombinator.com/item?id=50378942\n505 pts / 392 comments",
+          "6": "6. Blender's UI and runtime: much faster than GPUI\n\nBUI ports Blender's battle-tested UI toolkit and runtime to Rust, aiming to beat GPUI on speed for apps where interface latency matters. The pitch is simple: Blender's UI has survived decades of professional use.\n\nSource: https://github.com/ppmpreetham/BUI\nHN Discuss: https://news.ycombinator.com/item?id=50389333\n424 pts / 177 comments",
+          "7": "7. Dutch 'idealist' bank ASN blocks non-Google Android, including GrapheneOS\n\nASN Bank — which markets itself on ideals — now blocks its app on non-Google Android, including GrapheneOS, via Play Integrity checks. For a bank whose customers chose it on principle, the thread reads it as a betrayal.\n\nSource: https://github.com/PrivSec-dev/banking-apps-compat-report/issues/105\nHN Discuss: https://news.ycombinator.com/item?id=50390124\n405 pts / 239 comments",
+          "8": "8. Window Sweaters\n\nA macOS app that dresses your windows in knitted sweaters for winter — a small, unserious, seasonal delight built by a product designer using Claude and Codex, then open-sourced after it took off on X.\n\nSource: https://github.com/saragordic/window-sweaters\nHN Discuss: https://news.ycombinator.com/item?id=50381383\n404 pts / 117 comments",
+          "9": "9. Britain to make salary disclosure in job ads mandatory\n\nBritain will require employers to publish salaries in job ads, PM Andy Burnham announced, to help young people applying for first jobs and close pay gaps that disadvantage women. Legislation is coming to parliament, with no timeline given.\n\nSource: https://www.reuters.com/business/world-at-work/britain-make-salary-disclosure-job-ads-mandatory-2026-11-05/\nHN Discuss: https://news.ycombinator.com/item?id=50389222\n401 pts / 330 comments",
+          "10": "10. The Hackintosh Reborn — with AI\n\nAI-assisted reverse engineering — Claude Code plus Ghidra — has revived the Hackintosh scene: macOS 27 now runs on Snapdragon laptops, ARM single-board computers, even iOS 17 on a Switch OLED, with 50-series Nvidia GPU support in progress. The author built a working iOS app in a day on a ThinkPad running macOS 26 without writing a line of code.\n\nSource: https://www.naut.ca/blog/2026/11/05/the-hackintosh-reborn-with-ai/\nHN Discuss: https://news.ycombinator.com/item?id=50383057\n360 pts / 201 comments"
+};
+
+        function fallbackCopy(text) {
+          var ta = document.createElement("textarea");
+          ta.value = text;
+          ta.setAttribute("readonly", "");
+          ta.style.position = "absolute";
+          ta.style.left = "-9999px";
+          document.body.appendChild(ta);
+          ta.select();
+          var ok = false;
+          try { ok = document.execCommand("copy"); } catch (e) { ok = false; }
+          document.body.removeChild(ta);
+          return ok;
+        }
+
+        var buttons = document.querySelectorAll(".copy-btn");
+        Array.prototype.forEach.call(buttons, function (btn) {
+          btn.addEventListener("click", function () {
+            var text = copyData[btn.getAttribute("data-copy")] || "";
+            function done() {
+              var original = "Copy";
+              btn.textContent = "Copied ✓";
+              btn.classList.add("copied");
+              setTimeout(function () {
+                btn.textContent = original;
+                btn.classList.remove("copied");
+              }, 1600);
+            }
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+              navigator.clipboard.writeText(text).then(done, function () {
+                if (fallbackCopy(text)) done();
+              });
+            } else if (fallbackCopy(text)) {
+              done();
+            }
+          });
+        });
+      })();
+    </script>
+  </body>
+</html>
