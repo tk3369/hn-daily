@@ -1,0 +1,535 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="light dark" />
+    <link rel="icon" href="data:," />
+    <title>HN Daily — Saturday, November 7, 2026</title>
+    <style>
+      :root {
+        --bg: #f3f1eb;
+        --surface: #fbf9f4;
+        --ink: #1c1a16;
+        --ink-soft: #4a463e;
+        --ink-faint: #6f6a5e;
+        --line: #d8d2c4;
+        --accent: #ff6600;
+        --accent-ink: #b34700;
+        --comment-bg: #efe9dc;
+        --focus: #b34700;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root:not([data-theme="light"]) {
+          --bg: #16140f;
+          --surface: #1f1c16;
+          --ink: #f0ead9;
+          --ink-soft: #c9c2b0;
+          --ink-faint: #9a937f;
+          --line: #3a362b;
+          --accent: #ff7a1a;
+          --accent-ink: #ff9440;
+          --comment-bg: #262219;
+          --focus: #ff9440;
+        }
+      }
+      :root[data-theme="dark"] {
+        --bg: #16140f;
+        --surface: #1f1c16;
+        --ink: #f0ead9;
+        --ink-soft: #c9c2b0;
+        --ink-faint: #9a937f;
+        --line: #3a362b;
+        --accent: #ff7a1a;
+        --accent-ink: #ff9440;
+        --comment-bg: #262219;
+        --focus: #ff9440;
+      }
+
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--ink);
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: 17px;
+        line-height: 1.55;
+        -webkit-font-smoothing: antialiased;
+      }
+      a { color: var(--accent-ink); text-decoration: underline; text-underline-offset: 2px; }
+      a:hover { color: var(--accent); }
+      a:focus-visible, button:focus-visible {
+        outline: 2px solid var(--focus);
+        outline-offset: 2px;
+        border-radius: 2px;
+      }
+
+      .wrap {
+        max-width: 1080px;
+        margin: 0 auto;
+        padding: 32px 24px 64px;
+      }
+
+      header.masthead {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 20px;
+        border-bottom: 3px solid var(--ink);
+        padding-bottom: 20px;
+        margin-bottom: 8px;
+      }
+      .masthead h1 {
+        margin: 0 0 6px;
+        font-size: clamp(30px, 5vw, 46px);
+        line-height: 1.1;
+        font-weight: 700;
+        letter-spacing: -0.01em;
+      }
+      .masthead .subtitle {
+        margin: 0;
+        font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+        font-size: 14px;
+        color: var(--ink-soft);
+      }
+      .masthead .kicker {
+        margin: 0 0 10px;
+        font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+        font-size: 12px;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--accent-ink);
+      }
+
+      .theme-toggle {
+        flex: 0 0 auto;
+        width: 86px;
+        height: 40px;
+        min-height: 40px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        background: var(--surface);
+        color: var(--ink);
+        border: 1.5px solid var(--ink);
+        border-radius: 999px;
+        font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+        font-size: 13px;
+        cursor: pointer;
+        padding: 0 10px;
+      }
+      .theme-toggle .dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: var(--accent);
+        flex: 0 0 auto;
+      }
+      .theme-toggle:hover { border-color: var(--accent); }
+
+      .story {
+        display: grid;
+        grid-template-columns: 72px 1fr;
+        gap: 4px 20px;
+        padding: 28px 0 26px;
+        border-bottom: 1px solid var(--line);
+        scroll-margin-top: 16px;
+      }
+      .story .num {
+        font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+        font-size: 40px;
+        font-weight: 700;
+        line-height: 1;
+        color: var(--accent);
+        padding-top: 2px;
+      }
+      .story h2 {
+        margin: 0 0 10px;
+        font-size: clamp(21px, 3vw, 26px);
+        line-height: 1.25;
+        font-weight: 700;
+      }
+      .story .body { margin: 0 0 14px; color: var(--ink); max-width: 68ch; }
+
+      .meta {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 8px 18px;
+        font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+        font-size: 13.5px;
+        color: var(--ink-soft);
+        margin-bottom: 16px;
+      }
+      .meta a { min-height: 36px; display: inline-flex; align-items: center; }
+      .meta .stats { color: var(--ink-faint); white-space: nowrap; }
+      .copy-btn {
+        margin-left: auto;
+        min-height: 36px;
+        padding: 6px 14px;
+        background: transparent;
+        color: var(--ink);
+        border: 1px solid var(--line);
+        border-radius: 6px;
+        font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+        font-size: 13px;
+        cursor: pointer;
+      }
+      .copy-btn:hover { border-color: var(--accent); color: var(--accent-ink); }
+      .copy-btn.copied { border-color: var(--accent); color: var(--accent-ink); }
+
+      .commenters {
+        background: var(--comment-bg);
+        border-radius: 6px;
+        padding: 14px 18px;
+        max-width: 72ch;
+      }
+      .commenters .label {
+        display: block;
+        font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+        font-size: 11.5px;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--accent-ink);
+        margin-bottom: 6px;
+      }
+      .commenters p { margin: 0; font-size: 15.5px; color: var(--ink-soft); }
+
+      footer {
+        margin-top: 36px;
+        padding-top: 20px;
+        border-top: 3px solid var(--ink);
+        font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+        font-size: 13.5px;
+        color: var(--ink-soft);
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px 24px;
+        align-items: center;
+      }
+      footer a { min-height: 36px; display: inline-flex; align-items: center; }
+
+      @media (max-width: 600px) {
+        .wrap { padding: 22px 16px 48px; }
+        .story { grid-template-columns: 46px 1fr; gap: 2px 12px; padding: 22px 0 20px; }
+        .story .num { font-size: 28px; }
+        header.masthead { flex-wrap: wrap; }
+        .copy-btn { margin-left: 0; }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        html { scroll-behavior: auto; }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <header class="masthead">
+        <div>
+          <p class="kicker">Hacker News · Daily Digest</p>
+          <h1>HN Daily — Saturday, November 7, 2026</h1>
+          <p class="subtitle">HN Top 10 — 2026-11-07 07:00 PT (hottest by points)</p>
+        </div>
+        <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle dark mode" aria-pressed="false">
+          <span class="dot" aria-hidden="true"></span><span id="themeLabel">Dark</span>
+        </button>
+      </header>
+
+      <main>
+        <article class="story" id="story-1">
+          <div class="num" aria-hidden="true">1</div>
+          <div>
+            <h2 class="tagline">Tesla winds down Cybertruck production after years of poor sales</h2>
+            <p class="body">Tesla is ending Cybertruck production after years of weak sales, per NBC News. The angular truck never found a mass market beyond early adopters, and the thread&#x27;s verdict is blunt: a niche product with a niche audience.</p>
+            <div class="meta">
+              <a class="source" href="https://www.nbcnews.com/tech/tech-news/tesla-wind-cybertruck-production-years-poor-sales-markets-rcna607817" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50391456" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">1075 pts · 1929 comments</span>
+              <button class="copy-btn" type="button" data-copy="1">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>The thread drifts from the truck itself to its battery: owners describe powering homes through multi-day outages after Hurricane Helene, and the debate is whether that&#x27;s a real selling point or a niche case — other EVs do vehicle-to-home too, and a generator covers most outages. A side thread turns to brand toxicity, with several saying they&#x27;d skip Tesla solar and Powerwall on principle.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="story" id="story-2">
+          <div class="num" aria-hidden="true">2</div>
+          <div>
+            <h2 class="tagline">Libghostty 1.0: the terminal engine behind Ghostty goes stable</h2>
+            <p class="body">Mitchell Hashimoto&#x27;s libghostty hits 1.0 — a C library that lets any app embed a full terminal emulator, with a stable ABI designed for future additions. Ghostty is the demo; herdr, cmux, JetBrains&#x27; embedded terminal and Ghostel for Emacs already build on it.</p>
+            <div class="meta">
+              <a class="source" href="https://mitchellh.com/writing/libghostty-1-0" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50399933" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">821 pts · 133 comments</span>
+              <button class="copy-btn" type="button" data-copy="2">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>The big confusion is Ghostty vs Rex — commenters settle on a Chromium/Chrome analogy, with Rex as the paid product adding servers and agent integration. Others praise the stable-ABI design, compare libghostty to libvte, and note you can now build a terminal in ~1,500 lines of C.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="story" id="story-3">
+          <div class="num" aria-hidden="true">3</div>
+          <div>
+            <h2 class="tagline">A small model that asks Opus for help matches Opus at 4x lower cost</h2>
+            <p class="body">Hightouch&#x27;s post shows a small model orchestrating identity-resolution work and escalating only the hard calls to Opus, matching Opus accuracy at a quarter of the cost. The pattern: cheap model does the bulk, frontier model handles the edge cases.</p>
+            <div class="meta">
+              <a class="source" href="https://hightouch.com/blog/llm-judges-identity-resolution" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50397429" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">527 pts · 125 comments</span>
+              <button class="copy-btn" type="button" data-copy="3">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>Many run the same pattern already — a local Qwen3 27B as orchestrator or worker, Opus as planner or escalation target — and the debate is direction: big-to-small vs small-to-big. Consensus is it&#x27;s task-dependent: the smartest model needs either the full context or a crisp problem definition, not both.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="story" id="story-4">
+          <div class="num" aria-hidden="true">4</div>
+          <div>
+            <h2 class="tagline">FAA to phase out floppy disks from air traffic control by 2028</h2>
+            <p class="body">The FAA says it will retire floppy disks from air-traffic-control systems by 2028. The disks have outlived every expectation, and the announcement lands as both overdue modernization and a reminder of how slowly safety-critical systems change.</p>
+            <div class="meta">
+              <a class="source" href="https://www.reuters.com/world/us/us-faa-says-it-will-phase-out-floppy-disks-air-traffic-control-by-2028-2026-11-05/" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50388001" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">365 pts · 298 comments</span>
+              <button class="copy-btn" type="button" data-copy="4">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>A former FAA modernization engineer says the safety process itself is the bottleneck — rigorous, but a blocker to reasonable change for 15+ years. The thread then argues floppy reliability at length: data-recovery anecdotes of high failure rates vs. disks that still read after 30 years on a shelf.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="story" id="story-5">
+          <div class="num" aria-hidden="true">5</div>
+          <div>
+            <h2 class="tagline">Google ships Gemini Omni 1.2 Flash</h2>
+            <p class="body">Google&#x27;s new Gemini Omni 1.2 Flash is out — a fast multimodal model aimed at developers. The thread barely discusses the model itself, which says something about how the launch landed.</p>
+            <div class="meta">
+              <a class="source" href="https://blog.google/innovation-and-ai/technology/developers-tools/introducing-gemini-omni-1-2-flash/" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50392118" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">350 pts · 240 comments</span>
+              <button class="copy-btn" type="button" data-copy="5">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>The thread is mostly frustration with Google&#x27;s AI access: AI Studio called the worst UX on the internet, confusing tiers and paywalls, org-level subscription hoops. Several say they route through OpenRouter instead, and one team got Ultra accounts on personal Gmails just to make the CLI work.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="story" id="story-6">
+          <div class="num" aria-hidden="true">6</div>
+          <div>
+            <h2 class="tagline">Need for Speed Underground 2 now runs in the browser</h2>
+            <p class="body">The 2004 classic is playable in a browser tab via WebGPU and WebAssembly — no install, just click and play. It runs at 60fps even on a 5-year-old Android phone, which says as much about modern web bloat as about the port.</p>
+            <div class="meta">
+              <a class="source" href="https://nfsu2.xyz/" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50403052" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">304 pts · 89 comments</span>
+              <button class="copy-btn" type="button" data-copy="6">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>Pure nostalgia — the soundtrack, the car customization, the first race everyone remembers. The &#x27;no download&#x27; claim gets pushback (500MB+ lands in the browser cache), there&#x27;s an EA takedown worry, no Steam Deck controller support yet, and requests for Underground 1 and Hot Pursuit 2.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="story" id="story-7">
+          <div class="num" aria-hidden="true">7</div>
+          <div>
+            <h2 class="tagline">Every Mac ships an undocumented family-member classifier</h2>
+            <p class="body">A researcher found macOS daemons since 2022 build a local graph of who you know and how you&#x27;re related — a &#x27;personal knowledge graph&#x27; feeding Apple Intelligence. It runs even with Siri and Apple Intelligence switched off, and there&#x27;s no documented way to disable it.</p>
+            <div class="meta">
+              <a class="source" href="https://8rank.ai/game/apple-intelligence-personal-knowledge-graph" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50403097" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">299 pts · 146 comments</span>
+              <button class="copy-btn" type="button" data-copy="7">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>Split between &#x27;creepy, can&#x27;t opt out, a GDPR problem&#x27; and &#x27;it&#x27;s local, that&#x27;s the point.&#x27; Many who ran the author&#x27;s iKnow inspector report the classifier is wildly inaccurate — fake contacts labelled family, real partners missing. A long sub-thread criticizes the article itself as AI-written, which the author concedes.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="story" id="story-8">
+          <div class="num" aria-hidden="true">8</div>
+          <div>
+            <h2 class="tagline">Firecracker VM escape: PwnEscape part 2</h2>
+            <p class="body">Researchers demonstrate a VM escape from Firecracker, via a bug in the Linux kernel&#x27;s networking code. The chain gets code execution out of the guest — the second Firecracker escape in days, and cloud providers reportedly panic-bounced fleets.</p>
+            <div class="meta">
+              <a class="source" href="https://pwn.ai/blog/firecracker-escape" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50397219" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">260 pts · 110 comments</span>
+              <button class="copy-btn" type="button" data-copy="8">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>Heated debate over whether it&#x27;s a Firecracker bug or a kernel bug: the demo ran without the jailer, so a properly jailed deployment limits the blast radius — but tptacek argues code execution behind the jailer is still effectively game over. Others pivot to microhypervisors and formal verification.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="story" id="story-9">
+          <div class="num" aria-hidden="true">9</div>
+          <div>
+            <h2 class="tagline">First steps in bare-metal programming using UEFI</h2>
+            <p class="body">A hands-on guide to writing UEFI applications from scratch — no OS, no C standard library, just your code talking to firmware. A solid on-ramp for anyone curious about what happens before the kernel loads.</p>
+            <div class="meta">
+              <a class="source" href="https://kevinboone.me/efitest_index.html" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50394855" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">234 pts · 48 comments</span>
+              <button class="copy-btn" type="button" data-copy="9">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>UEFI&#x27;s Windows-isms draw fire — UTF-16 strings, VFAT, PE32+ — with one commenter calling it &#x27;leveraging the waste disposal methodology.&#x27; Practical tips dominate the rest: edk2-libc, LLVM&#x27;s UEFI libc, and a debate over whether UEFI counts as &#x27;bare metal&#x27; at all.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="story" id="story-10">
+          <div class="num" aria-hidden="true">10</div>
+          <div>
+            <h2 class="tagline">Upload Your RAM: a satire site for the AI hardware crunch</h2>
+            <p class="body">A site playing on the old &#x27;download more RAM&#x27; joke — in an era of AI-driven memory prices, your RAM is something to upload. The thread treats it as satire with a real complaint underneath.</p>
+            <div class="meta">
+              <a class="source" href="https://uploadyourram.org" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50403214" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">208 pts · 176 comments</span>
+              <button class="copy-btn" type="button" data-copy="10">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>The thread agrees the PC market is being hurt by RAM prices — consoles and phones too, with budget phones dropping from 8GB to 4GB at the same price. Debate over whether cheap local frontier AI will ever come back, or whether specialized ASICs are the only way out.</p>
+            </div>
+          </div>
+        </article>
+      </main>
+
+      <footer>
+        <a href="../">&larr; HN Daily archive</a>
+        <a href="https://tk3369.github.io/hn-daily/">tk3369.github.io/hn-daily</a>
+        <span>Press T to toggle theme.</span>
+      </footer>
+    </div>
+
+    <script>
+      (function () {
+        var KEY = "hn-daily-theme";
+        var root = document.documentElement;
+        var toggle = document.getElementById("themeToggle");
+        var label = document.getElementById("themeLabel");
+
+        function storedTheme() {
+          try { return window.localStorage.getItem(KEY); } catch (e) { return null; }
+        }
+        function systemDark() {
+          return window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+        }
+        function isDark() {
+          var t = root.getAttribute("data-theme");
+          if (t === "dark") return true;
+          if (t === "light") return false;
+          return systemDark();
+        }
+        function render() {
+          var dark = isDark();
+          label.textContent = dark ? "Light" : "Dark";
+          toggle.setAttribute("aria-pressed", dark ? "true" : "false");
+        }
+        function setTheme(theme) {
+          root.setAttribute("data-theme", theme);
+          try { window.localStorage.setItem(KEY, theme); } catch (e) {}
+          render();
+        }
+        function flip() {
+          setTheme(isDark() ? "light" : "dark");
+        }
+
+        var saved = storedTheme();
+        if (saved === "dark" || saved === "light") {
+          root.setAttribute("data-theme", saved);
+        }
+        render();
+
+        toggle.addEventListener("click", flip);
+        document.addEventListener("keydown", function (e) {
+          if (e.key === "t" || e.key === "T") {
+            var tag = (e.target && e.target.tagName) || "";
+            if (tag === "INPUT" || tag === "TEXTAREA") return;
+            if (e.metaKey || e.ctrlKey || e.altKey) return;
+            flip();
+          }
+        });
+        if (window.matchMedia) {
+          var mq = window.matchMedia("(prefers-color-scheme: dark)");
+          if (mq.addEventListener) mq.addEventListener("change", render);
+        }
+
+        // Copy buttons: number + tagline + body + source + HN link + points/comments.
+        // The "What HN commenters are saying" paragraph is deliberately excluded.
+        var copyData = {
+          "1": "1. Tesla winds down Cybertruck production after years of poor sales\n\nTesla is ending Cybertruck production after years of weak sales, per NBC News. The angular truck never found a mass market beyond early adopters, and the thread's verdict is blunt: a niche product with a niche audience.\n\nSource: https://www.nbcnews.com/tech/tech-news/tesla-wind-cybertruck-production-years-poor-sales-markets-rcna607817\nHN Discuss: https://news.ycombinator.com/item?id=50391456\n1075 pts / 1929 comments",
+          "2": "2. Libghostty 1.0: the terminal engine behind Ghostty goes stable\n\nMitchell Hashimoto's libghostty hits 1.0 — a C library that lets any app embed a full terminal emulator, with a stable ABI designed for future additions. Ghostty is the demo; herdr, cmux, JetBrains' embedded terminal and Ghostel for Emacs already build on it.\n\nSource: https://mitchellh.com/writing/libghostty-1-0\nHN Discuss: https://news.ycombinator.com/item?id=50399933\n821 pts / 133 comments",
+          "3": "3. A small model that asks Opus for help matches Opus at 4x lower cost\n\nHightouch's post shows a small model orchestrating identity-resolution work and escalating only the hard calls to Opus, matching Opus accuracy at a quarter of the cost. The pattern: cheap model does the bulk, frontier model handles the edge cases.\n\nSource: https://hightouch.com/blog/llm-judges-identity-resolution\nHN Discuss: https://news.ycombinator.com/item?id=50397429\n527 pts / 125 comments",
+          "4": "4. FAA to phase out floppy disks from air traffic control by 2028\n\nThe FAA says it will retire floppy disks from air-traffic-control systems by 2028. The disks have outlived every expectation, and the announcement lands as both overdue modernization and a reminder of how slowly safety-critical systems change.\n\nSource: https://www.reuters.com/world/us/us-faa-says-it-will-phase-out-floppy-disks-air-traffic-control-by-2028-2026-11-05/\nHN Discuss: https://news.ycombinator.com/item?id=50388001\n365 pts / 298 comments",
+          "5": "5. Google ships Gemini Omni 1.2 Flash\n\nGoogle's new Gemini Omni 1.2 Flash is out — a fast multimodal model aimed at developers. The thread barely discusses the model itself, which says something about how the launch landed.\n\nSource: https://blog.google/innovation-and-ai/technology/developers-tools/introducing-gemini-omni-1-2-flash/\nHN Discuss: https://news.ycombinator.com/item?id=50392118\n350 pts / 240 comments",
+          "6": "6. Need for Speed Underground 2 now runs in the browser\n\nThe 2004 classic is playable in a browser tab via WebGPU and WebAssembly — no install, just click and play. It runs at 60fps even on a 5-year-old Android phone, which says as much about modern web bloat as about the port.\n\nSource: https://nfsu2.xyz/\nHN Discuss: https://news.ycombinator.com/item?id=50403052\n304 pts / 89 comments",
+          "7": "7. Every Mac ships an undocumented family-member classifier\n\nA researcher found macOS daemons since 2022 build a local graph of who you know and how you're related — a 'personal knowledge graph' feeding Apple Intelligence. It runs even with Siri and Apple Intelligence switched off, and there's no documented way to disable it.\n\nSource: https://8rank.ai/game/apple-intelligence-personal-knowledge-graph\nHN Discuss: https://news.ycombinator.com/item?id=50403097\n299 pts / 146 comments",
+          "8": "8. Firecracker VM escape: PwnEscape part 2\n\nResearchers demonstrate a VM escape from Firecracker, via a bug in the Linux kernel's networking code. The chain gets code execution out of the guest — the second Firecracker escape in days, and cloud providers reportedly panic-bounced fleets.\n\nSource: https://pwn.ai/blog/firecracker-escape\nHN Discuss: https://news.ycombinator.com/item?id=50397219\n260 pts / 110 comments",
+          "9": "9. First steps in bare-metal programming using UEFI\n\nA hands-on guide to writing UEFI applications from scratch — no OS, no C standard library, just your code talking to firmware. A solid on-ramp for anyone curious about what happens before the kernel loads.\n\nSource: https://kevinboone.me/efitest_index.html\nHN Discuss: https://news.ycombinator.com/item?id=50394855\n234 pts / 48 comments",
+          "10": "10. Upload Your RAM: a satire site for the AI hardware crunch\n\nA site playing on the old 'download more RAM' joke — in an era of AI-driven memory prices, your RAM is something to upload. The thread treats it as satire with a real complaint underneath.\n\nSource: https://uploadyourram.org\nHN Discuss: https://news.ycombinator.com/item?id=50403214\n208 pts / 176 comments"
+};
+
+        function fallbackCopy(text) {
+          var ta = document.createElement("textarea");
+          ta.value = text;
+          ta.setAttribute("readonly", "");
+          ta.style.position = "absolute";
+          ta.style.left = "-9999px";
+          document.body.appendChild(ta);
+          ta.select();
+          var ok = false;
+          try { ok = document.execCommand("copy"); } catch (e) { ok = false; }
+          document.body.removeChild(ta);
+          return ok;
+        }
+
+        var buttons = document.querySelectorAll(".copy-btn");
+        Array.prototype.forEach.call(buttons, function (btn) {
+          btn.addEventListener("click", function () {
+            var text = copyData[btn.getAttribute("data-copy")] || "";
+            function done() {
+              var original = "Copy";
+              btn.textContent = "Copied ✓";
+              btn.classList.add("copied");
+              setTimeout(function () {
+                btn.textContent = original;
+                btn.classList.remove("copied");
+              }, 1600);
+            }
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+              navigator.clipboard.writeText(text).then(done, function () {
+                if (fallbackCopy(text)) done();
+              });
+            } else if (fallbackCopy(text)) {
+              done();
+            }
+          });
+        });
+      })();
+    </script>
+  </body>
+</html>
