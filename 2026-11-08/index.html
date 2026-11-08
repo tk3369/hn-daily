@@ -1,0 +1,535 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="light dark" />
+    <link rel="icon" href="data:," />
+    <title>HN Daily — Sunday, November 8, 2026</title>
+    <style>
+      :root {
+        --bg: #f3f1eb;
+        --surface: #fbf9f4;
+        --ink: #1c1a16;
+        --ink-soft: #4a463e;
+        --ink-faint: #6f6a5e;
+        --line: #d8d2c4;
+        --accent: #ff6600;
+        --accent-ink: #b34700;
+        --comment-bg: #efe9dc;
+        --focus: #b34700;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root:not([data-theme="light"]) {
+          --bg: #16140f;
+          --surface: #1f1c16;
+          --ink: #f0ead9;
+          --ink-soft: #c9c2b0;
+          --ink-faint: #9a937f;
+          --line: #3a362b;
+          --accent: #ff7a1a;
+          --accent-ink: #ff9440;
+          --comment-bg: #262219;
+          --focus: #ff9440;
+        }
+      }
+      :root[data-theme="dark"] {
+        --bg: #16140f;
+        --surface: #1f1c16;
+        --ink: #f0ead9;
+        --ink-soft: #c9c2b0;
+        --ink-faint: #9a937f;
+        --line: #3a362b;
+        --accent: #ff7a1a;
+        --accent-ink: #ff9440;
+        --comment-bg: #262219;
+        --focus: #ff9440;
+      }
+
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--ink);
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: 17px;
+        line-height: 1.55;
+        -webkit-font-smoothing: antialiased;
+      }
+      a { color: var(--accent-ink); text-decoration: underline; text-underline-offset: 2px; }
+      a:hover { color: var(--accent); }
+      a:focus-visible, button:focus-visible {
+        outline: 2px solid var(--focus);
+        outline-offset: 2px;
+        border-radius: 2px;
+      }
+
+      .wrap {
+        max-width: 1080px;
+        margin: 0 auto;
+        padding: 32px 24px 64px;
+      }
+
+      header.masthead {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 20px;
+        border-bottom: 3px solid var(--ink);
+        padding-bottom: 20px;
+        margin-bottom: 8px;
+      }
+      .masthead h1 {
+        margin: 0 0 6px;
+        font-size: clamp(30px, 5vw, 46px);
+        line-height: 1.1;
+        font-weight: 700;
+        letter-spacing: -0.01em;
+      }
+      .masthead .subtitle {
+        margin: 0;
+        font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+        font-size: 14px;
+        color: var(--ink-soft);
+      }
+      .masthead .kicker {
+        margin: 0 0 10px;
+        font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+        font-size: 12px;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--accent-ink);
+      }
+
+      .theme-toggle {
+        flex: 0 0 auto;
+        width: 86px;
+        height: 40px;
+        min-height: 40px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        background: var(--surface);
+        color: var(--ink);
+        border: 1.5px solid var(--ink);
+        border-radius: 999px;
+        font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+        font-size: 13px;
+        cursor: pointer;
+        padding: 0 10px;
+      }
+      .theme-toggle .dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: var(--accent);
+        flex: 0 0 auto;
+      }
+      .theme-toggle:hover { border-color: var(--accent); }
+
+      .story {
+        display: grid;
+        grid-template-columns: 72px 1fr;
+        gap: 4px 20px;
+        padding: 28px 0 26px;
+        border-bottom: 1px solid var(--line);
+        scroll-margin-top: 16px;
+      }
+      .story .num {
+        font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+        font-size: 40px;
+        font-weight: 700;
+        line-height: 1;
+        color: var(--accent);
+        padding-top: 2px;
+      }
+      .story h2 {
+        margin: 0 0 10px;
+        font-size: clamp(21px, 3vw, 26px);
+        line-height: 1.25;
+        font-weight: 700;
+      }
+      .story .body { margin: 0 0 14px; color: var(--ink); max-width: 68ch; }
+
+      .meta {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 8px 18px;
+        font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+        font-size: 13.5px;
+        color: var(--ink-soft);
+        margin-bottom: 16px;
+      }
+      .meta a { min-height: 36px; display: inline-flex; align-items: center; }
+      .meta .stats { color: var(--ink-faint); white-space: nowrap; }
+      .copy-btn {
+        margin-left: auto;
+        min-height: 36px;
+        padding: 6px 14px;
+        background: transparent;
+        color: var(--ink);
+        border: 1px solid var(--line);
+        border-radius: 6px;
+        font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+        font-size: 13px;
+        cursor: pointer;
+      }
+      .copy-btn:hover { border-color: var(--accent); color: var(--accent-ink); }
+      .copy-btn.copied { border-color: var(--accent); color: var(--accent-ink); }
+
+      .commenters {
+        background: var(--comment-bg);
+        border-radius: 6px;
+        padding: 14px 18px;
+        max-width: 72ch;
+      }
+      .commenters .label {
+        display: block;
+        font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+        font-size: 11.5px;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--accent-ink);
+        margin-bottom: 6px;
+      }
+      .commenters p { margin: 0; font-size: 15.5px; color: var(--ink-soft); }
+
+      footer {
+        margin-top: 36px;
+        padding-top: 20px;
+        border-top: 3px solid var(--ink);
+        font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+        font-size: 13.5px;
+        color: var(--ink-soft);
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px 24px;
+        align-items: center;
+      }
+      footer a { min-height: 36px; display: inline-flex; align-items: center; }
+
+      @media (max-width: 600px) {
+        .wrap { padding: 22px 16px 48px; }
+        .story { grid-template-columns: 46px 1fr; gap: 2px 12px; padding: 22px 0 20px; }
+        .story .num { font-size: 28px; }
+        header.masthead { flex-wrap: wrap; }
+        .copy-btn { margin-left: 0; }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        html { scroll-behavior: auto; }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <header class="masthead">
+        <div>
+          <p class="kicker">Hacker News · Daily Digest</p>
+          <h1>HN Daily — Sunday, November 8, 2026</h1>
+          <p class="subtitle">HN Top 10 — 2026-11-08 07:00 PT (hottest by points)</p>
+        </div>
+        <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle dark mode" aria-pressed="false">
+          <span class="dot" aria-hidden="true"></span><span id="themeLabel">Dark</span>
+        </button>
+      </header>
+
+      <main>
+        <article class="story" id="story-1">
+          <div class="num" aria-hidden="true">1</div>
+          <div>
+            <h2 class="tagline">Need for Speed Underground 2 now runs in the browser</h2>
+            <p class="body">The 2004 classic is playable in a browser tab via WebGPU and WebAssembly — no install, just click and play, with free-roam multiplayer. Twenty years after EA shut down online play, the community brought it back to the browser.</p>
+            <div class="meta">
+              <a class="source" href="https://nfsu2.xyz/" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50403052" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">1052 pts · 265 comments</span>
+              <button class="copy-btn" type="button" data-copy="1">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>Nostalgia dominates — the soundtrack, the car customization, the first race everyone remembers. But the legality question keeps surfacing: the site hosts game assets, so an EA takedown is a real worry. Players also report stutters from asset loading, no manual shifting, and no controller support yet.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="story" id="story-2">
+          <div class="num" aria-hidden="true">2</div>
+          <div>
+            <h2 class="tagline">Every Mac ships an undocumented family-member classifier</h2>
+            <p class="body">A researcher found macOS daemons since 2022 build a local graph of who you know and how you&#x27;re related — a &#x27;personal knowledge graph&#x27; feeding Apple Intelligence. It runs even with Siri and Apple Intelligence switched off, and there&#x27;s no documented way to disable it. The author joined the thread to answer questions.</p>
+            <div class="meta">
+              <a class="source" href="https://8rank.ai/game/apple-intelligence-personal-knowledge-graph" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50403097" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">773 pts · 420 comments</span>
+              <button class="copy-btn" type="button" data-copy="2">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>Split between &#x27;creepy, can&#x27;t opt out, a GDPR problem&#x27; and &#x27;it&#x27;s local, that&#x27;s the point.&#x27; Several who poked around report it still runs with all intelligence features off — one says it may push them to Debian. Others ask whether Little Snitch can block the daemons, and whether iPhones do the same.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="story" id="story-3">
+          <div class="num" aria-hidden="true">3</div>
+          <div>
+            <h2 class="tagline">What I run on my $10 OpenStick homelab</h2>
+            <p class="body">A $10 USB 4G stick becomes a full homelab in this write-up — a surprisingly capable stack on a tiny gadget, pitched as a cheap on-ramp to self-hosting while RAM prices stay high. One catch noted in the thread: the linked shop now shows $20, not $10.</p>
+            <div class="meta">
+              <a class="source" href="https://blog.bosscher.ch/posts/openstick/" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50406670" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">662 pts · 121 comments</span>
+              <button class="copy-btn" type="button" data-copy="3">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>Enthusiasm for cheap self-hosting, with ChromeBoxes suggested as another discount homelab route. Practical questions dominate: where to buy the hardware, how to back up configs, and whether the Wi-Fi chip can join a home network instead of only serving as a hotspot.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="story" id="story-4">
+          <div class="num" aria-hidden="true">4</div>
+          <div>
+            <h2 class="tagline">The end of Microsoft Research&#x27;s AI Frontiers group</h2>
+            <p class="body">Microsoft Research&#x27;s AI Frontiers group — focused on fundamental advances in AI — is being wound down, per this post. It reads as the latest sign of the shift from exploratory research toward product-scale transformer work.</p>
+            <div class="meta">
+              <a class="source" href="https://hunch.net/?p=13764006" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50406563" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">477 pts · 290 comments</span>
+              <button class="copy-btn" type="button" data-copy="4">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>The title draws a clarification: it&#x27;s the group ending, not the frontier. The thread splits between &#x27;Microsoft is a shitty place to work right now&#x27; and a bigger debate — hardware overinvestment vs. radical efficiency breakthroughs — with several saying exploratory, non-transformer research is discouraged across big companies.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="story" id="story-5">
+          <div class="num" aria-hidden="true">5</div>
+          <div>
+            <h2 class="tagline">Claude Code&#x27;s “Don&#x27;t Ask Again” exposes passwords in 1,122 public GitHub files</h2>
+            <p class="body">Apiiro scanned GitHub and found 1,122 public files where Claude Code&#x27;s approved-command lists contain passwords and secrets — committed .claude/settings.local.json files. The nuance matters: &#x27;Don&#x27;t Ask Again&#x27; alone doesn&#x27;t leak; committing the local settings file does.</p>
+            <div class="meta">
+              <a class="source" href="https://apiiro.com/blog/coding-agents-leaking-secrets-github-dont-ask-again" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50407882" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">470 pts · 330 comments</span>
+              <button class="copy-btn" type="button" data-copy="5">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>The headline gets called confusing — the files sit in repos, and whether they&#x27;re public depends on repo settings. Boris from the Claude Code team replies that settings.local.json is meant to stay local and is auto-gitignored when Claude creates it, and says the team is looking at secret scrubbing.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="story" id="story-6">
+          <div class="num" aria-hidden="true">6</div>
+          <div>
+            <h2 class="tagline">Goodbye Claude, Hello Pi</h2>
+            <p class="body">A developer ditches Claude Code for Pi, the open-source agent harness — citing product decisions like ignoring AGENTS.md, and noting Anthropic announced AGENTS.md support a day after he decided to leave. The harness, not the model, is the point.</p>
+            <div class="meta">
+              <a class="source" href="https://caleb.software/posts/claude-to-pi.html" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50410107" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">465 pts · 310 comments</span>
+              <button class="copy-btn" type="button" data-copy="6">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>The AGENTS.md vs CLAUDE.md debate: many say ignoring folder context made Claude Code look dumb, others say at this point you may need neither. Harness comparisons follow — opencode vs ohmypi on local models — plus 150 tokens/sec on an M1 Mac with Kapitsa as the inference engine.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="story" id="story-7">
+          <div class="num" aria-hidden="true">7</div>
+          <div>
+            <h2 class="tagline">Every Windows 11 app should kill Electron, and Discord just showed why</h2>
+            <p class="body">Discord&#x27;s native Windows rewrite reportedly drops the startup screen and cuts RAM ~70% even with two accounts signed in — the latest exhibit in the case against Electron. The numbers are pre-production, which the thread is quick to note.</p>
+            <div class="meta">
+              <a class="source" href="https://www.windowslatest.com/2026/11/06/every-windows-11-app-should-kill-electron-and-discord-just-showed-why-no-starting-screen-and-70-less-ram-even-with-two-accounts-signed-in/" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50403507" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">379 pts · 378 comments</span>
+              <button class="copy-btn" type="button" data-copy="7">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>Electron&#x27;s value prop is one team shipping cross-platform with minimal effort — the article doesn&#x27;t address that. Others hope for a native-app wave via Rust/GPUI, while a counter-thread notes Electron&#x27;s real advantages: accessibility and non-English IME support that most Rust GUI toolkits still lack.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="story" id="story-8">
+          <div class="num" aria-hidden="true">8</div>
+          <div>
+            <h2 class="tagline">MaxxBench: “Nice DeepSWE score. But is it true?”</h2>
+            <p class="body">MaxxBench mutates DeepSWE tasks slightly and finds smaller models collapse hardest — raising the question of whether high benchmark scores reflect real capability or benchmark overfitting. The trend line is the story: the smaller the model, the bigger the drop.</p>
+            <div class="meta">
+              <a class="source" href="https://maxxbench.unlap.ai/research/why-maxxbench/" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50406222" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">342 pts · 95 comments</span>
+              <button class="copy-btn" type="button" data-copy="8">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>Chronology argues against deliberate benchmaxxing — DeepSWE shipped in May, DeepSeek v4 Flash in April — but the core question stands: why do minor task changes cause catastrophic drops? The thread&#x27;s summary: &#x27;the good models are good and the benchmaxxed models are benchmaxxed.&#x27;</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="story" id="story-9">
+          <div class="num" aria-hidden="true">9</div>
+          <div>
+            <h2 class="tagline">Show HN: Coldframe, a honeypot that poses as a supermarket fridge controller</h2>
+            <p class="body">A honeypot that pretends to be a supermarket refrigeration controller — default logins open a fake store dashboard with defrost buttons, so researchers see attackers&#x27; second move, not just the first probe. It follows real supermarket fridge hacks.</p>
+            <div class="meta">
+              <a class="source" href="https://github.com/hedgerow-dev/coldframe" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50406292" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">258 pts · 61 comments</span>
+              <button class="copy-btn" type="button" data-copy="9">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>The thread recalls the real fridge-controller hacks and asks whether they were ever confirmed as hacks rather than a mass software update. The recurring point: supermarkets have no security team, so patching has to come from vendors by default — and several suggest posing as HVAC or chemical-plant controllers instead.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="story" id="story-10">
+          <div class="num" aria-hidden="true">10</div>
+          <div>
+            <h2 class="tagline">Person of Interest</h2>
+            <p class="body">A write-up on Person of Interest, the 2011–2016 CBS series about an AI that watches everyone — a rewatch recommendation that, per the thread, holds up remarkably well a decade on.</p>
+            <div class="meta">
+              <a class="source" href="https://krthr.co/person-of-interest/" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50412318" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">180 pts · 116 comments</span>
+              <button class="copy-btn" type="button" data-copy="10">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>Near-universal love for the show and rewatch recommendations, with the caveat that the later seasons turned predictable and &#x27;extended.&#x27; A side thread complains about AI-upscaled and DLSS-edited versions of old shows — viewers annoyed at having shows they watched re-edited after the fact.</p>
+            </div>
+          </div>
+        </article>
+      </main>
+
+      <footer>
+        <a href="../">&larr; HN Daily archive</a>
+        <a href="https://tk3369.github.io/hn-daily/">tk3369.github.io/hn-daily</a>
+        <span>Press T to toggle theme.</span>
+      </footer>
+    </div>
+
+    <script>
+      (function () {
+        var KEY = "hn-daily-theme";
+        var root = document.documentElement;
+        var toggle = document.getElementById("themeToggle");
+        var label = document.getElementById("themeLabel");
+
+        function storedTheme() {
+          try { return window.localStorage.getItem(KEY); } catch (e) { return null; }
+        }
+        function systemDark() {
+          return window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+        }
+        function isDark() {
+          var t = root.getAttribute("data-theme");
+          if (t === "dark") return true;
+          if (t === "light") return false;
+          return systemDark();
+        }
+        function render() {
+          var dark = isDark();
+          label.textContent = dark ? "Light" : "Dark";
+          toggle.setAttribute("aria-pressed", dark ? "true" : "false");
+        }
+        function setTheme(theme) {
+          root.setAttribute("data-theme", theme);
+          try { window.localStorage.setItem(KEY, theme); } catch (e) {}
+          render();
+        }
+        function flip() {
+          setTheme(isDark() ? "light" : "dark");
+        }
+
+        var saved = storedTheme();
+        if (saved === "dark" || saved === "light") {
+          root.setAttribute("data-theme", saved);
+        }
+        render();
+
+        toggle.addEventListener("click", flip);
+        document.addEventListener("keydown", function (e) {
+          if (e.key === "t" || e.key === "T") {
+            var tag = (e.target && e.target.tagName) || "";
+            if (tag === "INPUT" || tag === "TEXTAREA") return;
+            if (e.metaKey || e.ctrlKey || e.altKey) return;
+            flip();
+          }
+        });
+        if (window.matchMedia) {
+          var mq = window.matchMedia("(prefers-color-scheme: dark)");
+          if (mq.addEventListener) mq.addEventListener("change", render);
+        }
+
+        // Copy buttons: number + tagline + body + source + HN link + points/comments.
+        // The "What HN commenters are saying" paragraph is deliberately excluded.
+        var copyData = {
+          "1": "1. Need for Speed Underground 2 now runs in the browser\n\nThe 2004 classic is playable in a browser tab via WebGPU and WebAssembly — no install, just click and play, with free-roam multiplayer. Twenty years after EA shut down online play, the community brought it back to the browser.\n\nSource: https://nfsu2.xyz/\nHN Discuss: https://news.ycombinator.com/item?id=50403052\n1052 pts / 265 comments",
+          "2": "2. Every Mac ships an undocumented family-member classifier\n\nA researcher found macOS daemons since 2022 build a local graph of who you know and how you're related — a 'personal knowledge graph' feeding Apple Intelligence. It runs even with Siri and Apple Intelligence switched off, and there's no documented way to disable it. The author joined the thread to answer questions.\n\nSource: https://8rank.ai/game/apple-intelligence-personal-knowledge-graph\nHN Discuss: https://news.ycombinator.com/item?id=50403097\n773 pts / 420 comments",
+          "3": "3. What I run on my $10 OpenStick homelab\n\nA $10 USB 4G stick becomes a full homelab in this write-up — a surprisingly capable stack on a tiny gadget, pitched as a cheap on-ramp to self-hosting while RAM prices stay high. One catch noted in the thread: the linked shop now shows $20, not $10.\n\nSource: https://blog.bosscher.ch/posts/openstick/\nHN Discuss: https://news.ycombinator.com/item?id=50406670\n662 pts / 121 comments",
+          "4": "4. The end of Microsoft Research's AI Frontiers group\n\nMicrosoft Research's AI Frontiers group — focused on fundamental advances in AI — is being wound down, per this post. It reads as the latest sign of the shift from exploratory research toward product-scale transformer work.\n\nSource: https://hunch.net/?p=13764006\nHN Discuss: https://news.ycombinator.com/item?id=50406563\n477 pts / 290 comments",
+          "5": "5. Claude Code's “Don't Ask Again” exposes passwords in 1,122 public GitHub files\n\nApiiro scanned GitHub and found 1,122 public files where Claude Code's approved-command lists contain passwords and secrets — committed .claude/settings.local.json files. The nuance matters: 'Don't Ask Again' alone doesn't leak; committing the local settings file does.\n\nSource: https://apiiro.com/blog/coding-agents-leaking-secrets-github-dont-ask-again\nHN Discuss: https://news.ycombinator.com/item?id=50407882\n470 pts / 330 comments",
+          "6": "6. Goodbye Claude, Hello Pi\n\nA developer ditches Claude Code for Pi, the open-source agent harness — citing product decisions like ignoring AGENTS.md, and noting Anthropic announced AGENTS.md support a day after he decided to leave. The harness, not the model, is the point.\n\nSource: https://caleb.software/posts/claude-to-pi.html\nHN Discuss: https://news.ycombinator.com/item?id=50410107\n465 pts / 310 comments",
+          "7": "7. Every Windows 11 app should kill Electron, and Discord just showed why\n\nDiscord's native Windows rewrite reportedly drops the startup screen and cuts RAM ~70% even with two accounts signed in — the latest exhibit in the case against Electron. The numbers are pre-production, which the thread is quick to note.\n\nSource: https://www.windowslatest.com/2026/11/06/every-windows-11-app-should-kill-electron-and-discord-just-showed-why-no-starting-screen-and-70-less-ram-even-with-two-accounts-signed-in/\nHN Discuss: https://news.ycombinator.com/item?id=50403507\n379 pts / 378 comments",
+          "8": "8. MaxxBench: “Nice DeepSWE score. But is it true?”\n\nMaxxBench mutates DeepSWE tasks slightly and finds smaller models collapse hardest — raising the question of whether high benchmark scores reflect real capability or benchmark overfitting. The trend line is the story: the smaller the model, the bigger the drop.\n\nSource: https://maxxbench.unlap.ai/research/why-maxxbench/\nHN Discuss: https://news.ycombinator.com/item?id=50406222\n342 pts / 95 comments",
+          "9": "9. Show HN: Coldframe, a honeypot that poses as a supermarket fridge controller\n\nA honeypot that pretends to be a supermarket refrigeration controller — default logins open a fake store dashboard with defrost buttons, so researchers see attackers' second move, not just the first probe. It follows real supermarket fridge hacks.\n\nSource: https://github.com/hedgerow-dev/coldframe\nHN Discuss: https://news.ycombinator.com/item?id=50406292\n258 pts / 61 comments",
+          "10": "10. Person of Interest\n\nA write-up on Person of Interest, the 2011–2016 CBS series about an AI that watches everyone — a rewatch recommendation that, per the thread, holds up remarkably well a decade on.\n\nSource: https://krthr.co/person-of-interest/\nHN Discuss: https://news.ycombinator.com/item?id=50412318\n180 pts / 116 comments"
+};
+
+        function fallbackCopy(text) {
+          var ta = document.createElement("textarea");
+          ta.value = text;
+          ta.setAttribute("readonly", "");
+          ta.style.position = "absolute";
+          ta.style.left = "-9999px";
+          document.body.appendChild(ta);
+          ta.select();
+          var ok = false;
+          try { ok = document.execCommand("copy"); } catch (e) { ok = false; }
+          document.body.removeChild(ta);
+          return ok;
+        }
+
+        var buttons = document.querySelectorAll(".copy-btn");
+        Array.prototype.forEach.call(buttons, function (btn) {
+          btn.addEventListener("click", function () {
+            var text = copyData[btn.getAttribute("data-copy")] || "";
+            function done() {
+              var original = "Copy";
+              btn.textContent = "Copied ✓";
+              btn.classList.add("copied");
+              setTimeout(function () {
+                btn.textContent = original;
+                btn.classList.remove("copied");
+              }, 1600);
+            }
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+              navigator.clipboard.writeText(text).then(done, function () {
+                if (fallbackCopy(text)) done();
+              });
+            } else if (fallbackCopy(text)) {
+              done();
+            }
+          });
+        });
+      })();
+    </script>
+  </body>
+</html>
