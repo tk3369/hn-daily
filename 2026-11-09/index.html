@@ -1,0 +1,535 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="light dark" />
+    <link rel="icon" href="data:," />
+    <title>HN Daily — Monday, November 9, 2026</title>
+    <style>
+      :root {
+        --bg: #f3f1eb;
+        --surface: #fbf9f4;
+        --ink: #1c1a16;
+        --ink-soft: #4a463e;
+        --ink-faint: #6f6a5e;
+        --line: #d8d2c4;
+        --accent: #ff6600;
+        --accent-ink: #b34700;
+        --comment-bg: #efe9dc;
+        --focus: #b34700;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root:not([data-theme="light"]) {
+          --bg: #16140f;
+          --surface: #1f1c16;
+          --ink: #f0ead9;
+          --ink-soft: #c9c2b0;
+          --ink-faint: #9a937f;
+          --line: #3a362b;
+          --accent: #ff7a1a;
+          --accent-ink: #ff9440;
+          --comment-bg: #262219;
+          --focus: #ff9440;
+        }
+      }
+      :root[data-theme="dark"] {
+        --bg: #16140f;
+        --surface: #1f1c16;
+        --ink: #f0ead9;
+        --ink-soft: #c9c2b0;
+        --ink-faint: #9a937f;
+        --line: #3a362b;
+        --accent: #ff7a1a;
+        --accent-ink: #ff9440;
+        --comment-bg: #262219;
+        --focus: #ff9440;
+      }
+
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--ink);
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: 17px;
+        line-height: 1.55;
+        -webkit-font-smoothing: antialiased;
+      }
+      a { color: var(--accent-ink); text-decoration: underline; text-underline-offset: 2px; }
+      a:hover { color: var(--accent); }
+      a:focus-visible, button:focus-visible {
+        outline: 2px solid var(--focus);
+        outline-offset: 2px;
+        border-radius: 2px;
+      }
+
+      .wrap {
+        max-width: 1080px;
+        margin: 0 auto;
+        padding: 32px 24px 64px;
+      }
+
+      header.masthead {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 20px;
+        border-bottom: 3px solid var(--ink);
+        padding-bottom: 20px;
+        margin-bottom: 8px;
+      }
+      .masthead h1 {
+        margin: 0 0 6px;
+        font-size: clamp(30px, 5vw, 46px);
+        line-height: 1.1;
+        font-weight: 700;
+        letter-spacing: -0.01em;
+      }
+      .masthead .subtitle {
+        margin: 0;
+        font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+        font-size: 14px;
+        color: var(--ink-soft);
+      }
+      .masthead .kicker {
+        margin: 0 0 10px;
+        font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+        font-size: 12px;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--accent-ink);
+      }
+
+      .theme-toggle {
+        flex: 0 0 auto;
+        width: 86px;
+        height: 40px;
+        min-height: 40px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        background: var(--surface);
+        color: var(--ink);
+        border: 1.5px solid var(--ink);
+        border-radius: 999px;
+        font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+        font-size: 13px;
+        cursor: pointer;
+        padding: 0 10px;
+      }
+      .theme-toggle .dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: var(--accent);
+        flex: 0 0 auto;
+      }
+      .theme-toggle:hover { border-color: var(--accent); }
+
+      .story {
+        display: grid;
+        grid-template-columns: 72px 1fr;
+        gap: 4px 20px;
+        padding: 28px 0 26px;
+        border-bottom: 1px solid var(--line);
+        scroll-margin-top: 16px;
+      }
+      .story .num {
+        font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+        font-size: 40px;
+        font-weight: 700;
+        line-height: 1;
+        color: var(--accent);
+        padding-top: 2px;
+      }
+      .story h2 {
+        margin: 0 0 10px;
+        font-size: clamp(21px, 3vw, 26px);
+        line-height: 1.25;
+        font-weight: 700;
+      }
+      .story .body { margin: 0 0 14px; color: var(--ink); max-width: 68ch; }
+
+      .meta {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 8px 18px;
+        font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+        font-size: 13.5px;
+        color: var(--ink-soft);
+        margin-bottom: 16px;
+      }
+      .meta a { min-height: 36px; display: inline-flex; align-items: center; }
+      .meta .stats { color: var(--ink-faint); white-space: nowrap; }
+      .copy-btn {
+        margin-left: auto;
+        min-height: 36px;
+        padding: 6px 14px;
+        background: transparent;
+        color: var(--ink);
+        border: 1px solid var(--line);
+        border-radius: 6px;
+        font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+        font-size: 13px;
+        cursor: pointer;
+      }
+      .copy-btn:hover { border-color: var(--accent); color: var(--accent-ink); }
+      .copy-btn.copied { border-color: var(--accent); color: var(--accent-ink); }
+
+      .commenters {
+        background: var(--comment-bg);
+        border-radius: 6px;
+        padding: 14px 18px;
+        max-width: 72ch;
+      }
+      .commenters .label {
+        display: block;
+        font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+        font-size: 11.5px;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--accent-ink);
+        margin-bottom: 6px;
+      }
+      .commenters p { margin: 0; font-size: 15.5px; color: var(--ink-soft); }
+
+      footer {
+        margin-top: 36px;
+        padding-top: 20px;
+        border-top: 3px solid var(--ink);
+        font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+        font-size: 13.5px;
+        color: var(--ink-soft);
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px 24px;
+        align-items: center;
+      }
+      footer a { min-height: 36px; display: inline-flex; align-items: center; }
+
+      @media (max-width: 600px) {
+        .wrap { padding: 22px 16px 48px; }
+        .story { grid-template-columns: 46px 1fr; gap: 2px 12px; padding: 22px 0 20px; }
+        .story .num { font-size: 28px; }
+        header.masthead { flex-wrap: wrap; }
+        .copy-btn { margin-left: 0; }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        html { scroll-behavior: auto; }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <header class="masthead">
+        <div>
+          <p class="kicker">Hacker News · Daily Digest</p>
+          <h1>HN Daily — Monday, November 9, 2026</h1>
+          <p class="subtitle">HN Top 10 — 2026-11-09 07:00 PT (hottest by points)</p>
+        </div>
+        <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle dark mode" aria-pressed="false">
+          <span class="dot" aria-hidden="true"></span><span id="themeLabel">Dark</span>
+        </button>
+      </header>
+
+      <main>
+        <article class="story" id="story-1">
+          <div class="num" aria-hidden="true">1</div>
+          <div>
+            <h2 class="tagline">Goldman Sachs pulls Claude Code from bankers and traders</h2>
+            <p class="body">Goldman is restricting Claude Code for its traders and bankers, per Bloomberg — agent-written code from people who can&#x27;t review it is a bad fit for a regulated trading floor. Tools bankers built get handed to the firm&#x27;s ~12,000 engineers to harden instead.</p>
+            <div class="meta">
+              <a class="source" href="https://www.thestateofai.com/news/goldman-sachs-claude-code-traders-bankers" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50415628" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">832 pts · 448 comments</span>
+              <button class="copy-btn" type="button" data-copy="1">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>The sourcing draws a flag first: the linked site looks AI-written, and the original is Bloomberg. On the policy itself, consensus is that it&#x27;s sensible for a regulated business — unreviewed code on a trading floor, plus information-barrier problems. The counter: design safer abstractions for non-technical users instead of banning the tool, and note Barclays is moving the other way. Skeptics doubt &#x27;improved&#x27; by engineers means much — more likely rewritten, or left in the backlog.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="story" id="story-2">
+          <div class="num" aria-hidden="true">2</div>
+          <div>
+            <h2 class="tagline">Jensen Huang apologizes to staff for affair</h2>
+            <p class="body">Nvidia&#x27;s CEO wrote staff an unusually direct letter: he was unfaithful to his wife, there is no excuse, and he takes full responsibility. No deflection, no &#x27;this is not who I am&#x27; — just an apology to his family and colleagues.</p>
+            <div class="meta">
+              <a class="source" href="https://nvidianews.nvidia.com/news/a-message-to-our-company" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50418016" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">825 pts · 975 comments</span>
+              <button class="copy-btn" type="button" data-copy="2">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>Widely praised as how to apologize — he owned it, no blame-shifting, no blaming the other party. A few note NVDA dipped about 2% in pre-market trading; others find it striking that wealth didn&#x27;t prevent it. The letter itself is short and is quoted in full in the thread.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="story" id="story-3">
+          <div class="num" aria-hidden="true">3</div>
+          <div>
+            <h2 class="tagline">Declarative Dragging: specify where a drag can go, not how</h2>
+            <p class="body">UIST 2026 Best Paper: instead of hand-coding drag geometry, feedback, and animation, you declare which future states dragging an element can lead to — the system renders those possible worlds and blends them into a smooth interaction. Interactive demos included.</p>
+            <div class="meta">
+              <a class="source" href="https://declarative-dragging.github.io/" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50368481" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">644 pts · 81 comments</span>
+              <button class="copy-btn" type="button" data-copy="3">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>Delight at the demos, which commenters call satisfying and genuinely educational. The paper link circulates, and one thread calls it timely for agentic coding: LLMs can&#x27;t QA the &#x27;feel&#x27; of motion, so a provably-correct foundation removes the need. Some ask about prior art, pointing at the Hazel programming environment.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="story" id="story-4">
+          <div class="num" aria-hidden="true">4</div>
+          <div>
+            <h2 class="tagline">KetchUp: open-source SketchUp alternative in Rust and WebGPU</h2>
+            <p class="body">A free 3D modeling app for woodworking and furniture design that runs in the browser — Rust UI, WebGPU rendering, no account. Draw a shape, pull it into 3D, plan a shelf or cabinet with exact measurements.</p>
+            <div class="meta">
+              <a class="source" href="https://ketchup3d.github.io/app/" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50418176" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">622 pts · 186 comments</span>
+              <button class="copy-btn" type="button" data-copy="4">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>The name draws trademark jokes (&#x27;Mikerowsoft&#x27;). Early UX nits: every rectangle drawn asks for a name, which feels like the wrong default. Praise for how good the Rust UI feels in the browser, even the text rendering. Note: the live page now brands the app BenchUp — possibly a rename since the post.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="story" id="story-5">
+          <div class="num" aria-hidden="true">5</div>
+          <div>
+            <h2 class="tagline">Security researchers unlock a major automaker&#x27;s cars worldwide</h2>
+            <p class="body">Shubs and Sam Curry probed a major automaker&#x27;s connected-car platform this July and found flaws letting them unlock vehicles globally. The brand stays undisclosed (&#x27;the automaker&#x27;) — the post walks through the platform, not just the bug.</p>
+            <div class="meta">
+              <a class="source" href="https://shubs.io/unlocking-any-car-from-x-brand-in-most-of-the-world/" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50419215" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">494 pts · 250 comments</span>
+              <button class="copy-btn" type="button" data-copy="5">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>Brand-guessing dominates — Hyundai and RAV4 are floated, nothing confirmed. One commenter warns the embedded video has very loud bleeps. Consensus: wait for the full write-up before naming names; the interesting part is the platform&#x27;s design, not a single bug.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="story" id="story-6">
+          <div class="num" aria-hidden="true">6</div>
+          <div>
+            <h2 class="tagline">Outlook.com now rejects mail from domains without DMARC</h2>
+            <p class="body">Since November 5, Microsoft&#x27;s consumer mail has quietly bounced some mail from domains with no DMARC record — even with valid SPF and DKIM. No announcement; the fix is one DNS record. If you email outlook.com or hotmail.com users, check yours.</p>
+            <div class="meta">
+              <a class="source" href="https://mailroute.net/blog/outlook-rejecting-email-without-dmarc" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50416158" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">472 pts · 325 comments</span>
+              <button class="copy-btn" type="button" data-copy="6">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>Broad agreement it&#x27;s the right direction — phishing risk outweighs the burden — but the unannounced weekend rollout drew fire from people mitigating it for hundreds of customers. The debate: is DMARC now just the cost of doing business, or an undue burden on small self-hosted operators?</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="story" id="story-7">
+          <div class="num" aria-hidden="true">7</div>
+          <div>
+            <h2 class="tagline">Llama-modchip: 284B DeepSeek on 64GB RAM, no GPU</h2>
+            <p class="body">CPU-first inference for 284B and 30B mixture-of-experts models on 16–64GB RAM — v2.4.0 wraps llama.cpp with aggressive quantization and speculative decoding. Antirez notes 128GB unified RAM runs it at coding-agent-usable speed.</p>
+            <div class="meta">
+              <a class="source" href="https://github.com/synchopate/llama-modchip" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50411961" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">451 pts · 197 comments</span>
+              <button class="copy-btn" type="button" data-copy="7">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>The first question is quantization — it looks like 2-bit, and output quality at that level is doubted. Skeptics say a model that size needs ~150GB to run properly and the README reads as AI slop; others want benchmarks before believing it. The counter: even slow local inference of a frontier-class model is a new capability.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="story" id="story-8">
+          <div class="num" aria-hidden="true">8</div>
+          <div>
+            <h2 class="tagline">I&#x27;m not convinced the AI bubble exists</h2>
+            <p class="body">The essay argues the bubble is taken for granted, not proven: AI spending is huge but constrained, usability and profits are real, and over a decade the growth may be justified. The counter in the thread: amortize GPUs over 5–6 years, not 20, and the required revenue quadruples.</p>
+            <div class="meta">
+              <a class="source" href="https://matteoraso.github.io/im-not-convinced-the-ai-bubble-exists.html#im-not-convinced-the-ai-bubble-exists" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50418975" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">431 pts · 731 comments</span>
+              <button class="copy-btn" type="button" data-copy="8">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>Split. Some agree the &#x27;bubble&#x27; talk is wishcasting for a return to normal — people want to hear things will go back to how they used to be. Others say the bubble is about valuations, not the tech: Cisco survived the internet, but its dot-com valuation was still enormously wrong. Meta&#x27;s crushed margins and Anthropic&#x27;s ~$1.2T valuation get cited.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="story" id="story-9">
+          <div class="num" aria-hidden="true">9</div>
+          <div>
+            <h2 class="tagline">Writing as a thinking tool</h2>
+            <p class="body">Murat on why writing isn&#x27;t the epilogue to thinking — it&#x27;s the process: mind maps in middle school, drafts during his PhD that revealed what he was actually researching. The warning: AI writing lets people skip the thinking and mistake output for understanding.</p>
+            <div class="meta">
+              <a class="source" href="http://muratbuffalo.blogspot.com/2026/11/writing-as-thinking-tool.html" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50412067" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">425 pts · 102 comments</span>
+              <button class="copy-btn" type="button" data-copy="9">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>Near-universal agreement — projects start as scribbles, clarity comes from drafts. Most-quoted line: &#x27;Complexity in prose is usually a place to hide sloppy thinking.&#x27; Caveat: AI can&#x27;t do the audience tailoring — the vibe check of the room — so it reads as out of touch when it tries.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="story" id="story-10">
+          <div class="num" aria-hidden="true">10</div>
+          <div>
+            <h2 class="tagline">Is Opus 5.5 nerfed? Thinking patterns changed on November 3</h2>
+            <p class="body">Users report Opus 5.5 feels different since November 3 — thinner reasoning, needing higher reasoning settings for the same results. Anthropic hasn&#x27;t confirmed a change; one counter-theory says it&#x27;s only a new summarizer, with the model itself unchanged.</p>
+            <div class="meta">
+              <a class="source" href="https://twitter.com/shanemelaugh/status/2119192075505893695" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50422069" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">345 pts · 239 comments</span>
+              <button class="copy-btn" type="button" data-copy="10">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>Many confirm the feeling — &#x27;like downgrading to old DeepSeek&#x27; — though some say it has improved since. Speculation: a new model drop is coming, Qwen4 rumored, and Anthropic wants to answer it before its IPO. Open-weights fans: &#x27;YOU get to decide when the model changes.&#x27;</p>
+            </div>
+          </div>
+        </article>
+      </main>
+
+      <footer>
+        <a href="../">&larr; HN Daily archive</a>
+        <a href="https://tk3369.github.io/hn-daily/">tk3369.github.io/hn-daily</a>
+        <span>Press T to toggle theme.</span>
+      </footer>
+    </div>
+
+    <script>
+      (function () {
+        var KEY = "hn-daily-theme";
+        var root = document.documentElement;
+        var toggle = document.getElementById("themeToggle");
+        var label = document.getElementById("themeLabel");
+
+        function storedTheme() {
+          try { return window.localStorage.getItem(KEY); } catch (e) { return null; }
+        }
+        function systemDark() {
+          return window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+        }
+        function isDark() {
+          var t = root.getAttribute("data-theme");
+          if (t === "dark") return true;
+          if (t === "light") return false;
+          return systemDark();
+        }
+        function render() {
+          var dark = isDark();
+          label.textContent = dark ? "Light" : "Dark";
+          toggle.setAttribute("aria-pressed", dark ? "true" : "false");
+        }
+        function setTheme(theme) {
+          root.setAttribute("data-theme", theme);
+          try { window.localStorage.setItem(KEY, theme); } catch (e) {}
+          render();
+        }
+        function flip() {
+          setTheme(isDark() ? "light" : "dark");
+        }
+
+        var saved = storedTheme();
+        if (saved === "dark" || saved === "light") {
+          root.setAttribute("data-theme", saved);
+        }
+        render();
+
+        toggle.addEventListener("click", flip);
+        document.addEventListener("keydown", function (e) {
+          if (e.key === "t" || e.key === "T") {
+            var tag = (e.target && e.target.tagName) || "";
+            if (tag === "INPUT" || tag === "TEXTAREA") return;
+            if (e.metaKey || e.ctrlKey || e.altKey) return;
+            flip();
+          }
+        });
+        if (window.matchMedia) {
+          var mq = window.matchMedia("(prefers-color-scheme: dark)");
+          if (mq.addEventListener) mq.addEventListener("change", render);
+        }
+
+        // Copy buttons: number + tagline + body + source + HN link + points/comments.
+        // The "What HN commenters are saying" paragraph is deliberately excluded.
+        var copyData = {
+          "1": "1. Goldman Sachs pulls Claude Code from bankers and traders\n\nGoldman is restricting Claude Code for its traders and bankers, per Bloomberg — agent-written code from people who can't review it is a bad fit for a regulated trading floor. Tools bankers built get handed to the firm's ~12,000 engineers to harden instead.\n\nSource: https://www.thestateofai.com/news/goldman-sachs-claude-code-traders-bankers\nHN Discuss: https://news.ycombinator.com/item?id=50415628\n832 pts / 448 comments",
+          "2": "2. Jensen Huang apologizes to staff for affair\n\nNvidia's CEO wrote staff an unusually direct letter: he was unfaithful to his wife, there is no excuse, and he takes full responsibility. No deflection, no 'this is not who I am' — just an apology to his family and colleagues.\n\nSource: https://nvidianews.nvidia.com/news/a-message-to-our-company\nHN Discuss: https://news.ycombinator.com/item?id=50418016\n825 pts / 975 comments",
+          "3": "3. Declarative Dragging: specify where a drag can go, not how\n\nUIST 2026 Best Paper: instead of hand-coding drag geometry, feedback, and animation, you declare which future states dragging an element can lead to — the system renders those possible worlds and blends them into a smooth interaction. Interactive demos included.\n\nSource: https://declarative-dragging.github.io/\nHN Discuss: https://news.ycombinator.com/item?id=50368481\n644 pts / 81 comments",
+          "4": "4. KetchUp: open-source SketchUp alternative in Rust and WebGPU\n\nA free 3D modeling app for woodworking and furniture design that runs in the browser — Rust UI, WebGPU rendering, no account. Draw a shape, pull it into 3D, plan a shelf or cabinet with exact measurements.\n\nSource: https://ketchup3d.github.io/app/\nHN Discuss: https://news.ycombinator.com/item?id=50418176\n622 pts / 186 comments",
+          "5": "5. Security researchers unlock a major automaker's cars worldwide\n\nShubs and Sam Curry probed a major automaker's connected-car platform this July and found flaws letting them unlock vehicles globally. The brand stays undisclosed ('the automaker') — the post walks through the platform, not just the bug.\n\nSource: https://shubs.io/unlocking-any-car-from-x-brand-in-most-of-the-world/\nHN Discuss: https://news.ycombinator.com/item?id=50419215\n494 pts / 250 comments",
+          "6": "6. Outlook.com now rejects mail from domains without DMARC\n\nSince November 5, Microsoft's consumer mail has quietly bounced some mail from domains with no DMARC record — even with valid SPF and DKIM. No announcement; the fix is one DNS record. If you email outlook.com or hotmail.com users, check yours.\n\nSource: https://mailroute.net/blog/outlook-rejecting-email-without-dmarc\nHN Discuss: https://news.ycombinator.com/item?id=50416158\n472 pts / 325 comments",
+          "7": "7. Llama-modchip: 284B DeepSeek on 64GB RAM, no GPU\n\nCPU-first inference for 284B and 30B mixture-of-experts models on 16–64GB RAM — v2.4.0 wraps llama.cpp with aggressive quantization and speculative decoding. Antirez notes 128GB unified RAM runs it at coding-agent-usable speed.\n\nSource: https://github.com/synchopate/llama-modchip\nHN Discuss: https://news.ycombinator.com/item?id=50411961\n451 pts / 197 comments",
+          "8": "8. I'm not convinced the AI bubble exists\n\nThe essay argues the bubble is taken for granted, not proven: AI spending is huge but constrained, usability and profits are real, and over a decade the growth may be justified. The counter in the thread: amortize GPUs over 5–6 years, not 20, and the required revenue quadruples.\n\nSource: https://matteoraso.github.io/im-not-convinced-the-ai-bubble-exists.html#im-not-convinced-the-ai-bubble-exists\nHN Discuss: https://news.ycombinator.com/item?id=50418975\n431 pts / 731 comments",
+          "9": "9. Writing as a thinking tool\n\nMurat on why writing isn't the epilogue to thinking — it's the process: mind maps in middle school, drafts during his PhD that revealed what he was actually researching. The warning: AI writing lets people skip the thinking and mistake output for understanding.\n\nSource: http://muratbuffalo.blogspot.com/2026/11/writing-as-thinking-tool.html\nHN Discuss: https://news.ycombinator.com/item?id=50412067\n425 pts / 102 comments",
+          "10": "10. Is Opus 5.5 nerfed? Thinking patterns changed on November 3\n\nUsers report Opus 5.5 feels different since November 3 — thinner reasoning, needing higher reasoning settings for the same results. Anthropic hasn't confirmed a change; one counter-theory says it's only a new summarizer, with the model itself unchanged.\n\nSource: https://twitter.com/shanemelaugh/status/2119192075505893695\nHN Discuss: https://news.ycombinator.com/item?id=50422069\n345 pts / 239 comments"
+};
+
+        function fallbackCopy(text) {
+          var ta = document.createElement("textarea");
+          ta.value = text;
+          ta.setAttribute("readonly", "");
+          ta.style.position = "absolute";
+          ta.style.left = "-9999px";
+          document.body.appendChild(ta);
+          ta.select();
+          var ok = false;
+          try { ok = document.execCommand("copy"); } catch (e) { ok = false; }
+          document.body.removeChild(ta);
+          return ok;
+        }
+
+        var buttons = document.querySelectorAll(".copy-btn");
+        Array.prototype.forEach.call(buttons, function (btn) {
+          btn.addEventListener("click", function () {
+            var text = copyData[btn.getAttribute("data-copy")] || "";
+            function done() {
+              var original = "Copy";
+              btn.textContent = "Copied ✓";
+              btn.classList.add("copied");
+              setTimeout(function () {
+                btn.textContent = original;
+                btn.classList.remove("copied");
+              }, 1600);
+            }
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+              navigator.clipboard.writeText(text).then(done, function () {
+                if (fallbackCopy(text)) done();
+              });
+            } else if (fallbackCopy(text)) {
+              done();
+            }
+          });
+        });
+      })();
+    </script>
+  </body>
+</html>
