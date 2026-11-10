@@ -1,0 +1,535 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="light dark" />
+    <link rel="icon" href="data:," />
+    <title>HN Daily — Tuesday, November 10, 2026</title>
+    <style>
+      :root {
+        --bg: #f3f1eb;
+        --surface: #fbf9f4;
+        --ink: #1c1a16;
+        --ink-soft: #4a463e;
+        --ink-faint: #6f6a5e;
+        --line: #d8d2c4;
+        --accent: #ff6600;
+        --accent-ink: #b34700;
+        --comment-bg: #efe9dc;
+        --focus: #b34700;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root:not([data-theme="light"]) {
+          --bg: #16140f;
+          --surface: #1f1c16;
+          --ink: #f0ead9;
+          --ink-soft: #c9c2b0;
+          --ink-faint: #9a937f;
+          --line: #3a362b;
+          --accent: #ff7a1a;
+          --accent-ink: #ff9440;
+          --comment-bg: #262219;
+          --focus: #ff9440;
+        }
+      }
+      :root[data-theme="dark"] {
+        --bg: #16140f;
+        --surface: #1f1c16;
+        --ink: #f0ead9;
+        --ink-soft: #c9c2b0;
+        --ink-faint: #9a937f;
+        --line: #3a362b;
+        --accent: #ff7a1a;
+        --accent-ink: #ff9440;
+        --comment-bg: #262219;
+        --focus: #ff9440;
+      }
+
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--ink);
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: 17px;
+        line-height: 1.55;
+        -webkit-font-smoothing: antialiased;
+      }
+      a { color: var(--accent-ink); text-decoration: underline; text-underline-offset: 2px; }
+      a:hover { color: var(--accent); }
+      a:focus-visible, button:focus-visible {
+        outline: 2px solid var(--focus);
+        outline-offset: 2px;
+        border-radius: 2px;
+      }
+
+      .wrap {
+        max-width: 1080px;
+        margin: 0 auto;
+        padding: 32px 24px 64px;
+      }
+
+      header.masthead {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 20px;
+        border-bottom: 3px solid var(--ink);
+        padding-bottom: 20px;
+        margin-bottom: 8px;
+      }
+      .masthead h1 {
+        margin: 0 0 6px;
+        font-size: clamp(30px, 5vw, 46px);
+        line-height: 1.1;
+        font-weight: 700;
+        letter-spacing: -0.01em;
+      }
+      .masthead .subtitle {
+        margin: 0;
+        font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+        font-size: 14px;
+        color: var(--ink-soft);
+      }
+      .masthead .kicker {
+        margin: 0 0 10px;
+        font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+        font-size: 12px;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--accent-ink);
+      }
+
+      .theme-toggle {
+        flex: 0 0 auto;
+        width: 86px;
+        height: 40px;
+        min-height: 40px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        background: var(--surface);
+        color: var(--ink);
+        border: 1.5px solid var(--ink);
+        border-radius: 999px;
+        font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+        font-size: 13px;
+        cursor: pointer;
+        padding: 0 10px;
+      }
+      .theme-toggle .dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: var(--accent);
+        flex: 0 0 auto;
+      }
+      .theme-toggle:hover { border-color: var(--accent); }
+
+      .story {
+        display: grid;
+        grid-template-columns: 72px 1fr;
+        gap: 4px 20px;
+        padding: 28px 0 26px;
+        border-bottom: 1px solid var(--line);
+        scroll-margin-top: 16px;
+      }
+      .story .num {
+        font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+        font-size: 40px;
+        font-weight: 700;
+        line-height: 1;
+        color: var(--accent);
+        padding-top: 2px;
+      }
+      .story h2 {
+        margin: 0 0 10px;
+        font-size: clamp(21px, 3vw, 26px);
+        line-height: 1.25;
+        font-weight: 700;
+      }
+      .story .body { margin: 0 0 14px; color: var(--ink); max-width: 68ch; }
+
+      .meta {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 8px 18px;
+        font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+        font-size: 13.5px;
+        color: var(--ink-soft);
+        margin-bottom: 16px;
+      }
+      .meta a { min-height: 36px; display: inline-flex; align-items: center; }
+      .meta .stats { color: var(--ink-faint); white-space: nowrap; }
+      .copy-btn {
+        margin-left: auto;
+        min-height: 36px;
+        padding: 6px 14px;
+        background: transparent;
+        color: var(--ink);
+        border: 1px solid var(--line);
+        border-radius: 6px;
+        font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+        font-size: 13px;
+        cursor: pointer;
+      }
+      .copy-btn:hover { border-color: var(--accent); color: var(--accent-ink); }
+      .copy-btn.copied { border-color: var(--accent); color: var(--accent-ink); }
+
+      .commenters {
+        background: var(--comment-bg);
+        border-radius: 6px;
+        padding: 14px 18px;
+        max-width: 72ch;
+      }
+      .commenters .label {
+        display: block;
+        font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+        font-size: 11.5px;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--accent-ink);
+        margin-bottom: 6px;
+      }
+      .commenters p { margin: 0; font-size: 15.5px; color: var(--ink-soft); }
+
+      footer {
+        margin-top: 36px;
+        padding-top: 20px;
+        border-top: 3px solid var(--ink);
+        font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+        font-size: 13.5px;
+        color: var(--ink-soft);
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px 24px;
+        align-items: center;
+      }
+      footer a { min-height: 36px; display: inline-flex; align-items: center; }
+
+      @media (max-width: 600px) {
+        .wrap { padding: 22px 16px 48px; }
+        .story { grid-template-columns: 46px 1fr; gap: 2px 12px; padding: 22px 0 20px; }
+        .story .num { font-size: 28px; }
+        header.masthead { flex-wrap: wrap; }
+        .copy-btn { margin-left: 0; }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        html { scroll-behavior: auto; }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <header class="masthead">
+        <div>
+          <p class="kicker">Hacker News · Daily Digest</p>
+          <h1>HN Daily — Tuesday, November 10, 2026</h1>
+          <p class="subtitle">HN Top 10 — 2026-11-10 07:00 PT (hottest by points)</p>
+        </div>
+        <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle dark mode" aria-pressed="false">
+          <span class="dot" aria-hidden="true"></span><span id="themeLabel">Dark</span>
+        </button>
+      </header>
+
+      <main>
+        <article class="story" id="story-1">
+          <div class="num" aria-hidden="true">1</div>
+          <div>
+            <h2 class="tagline">Foldable Flight: paper airplanes, engineered properly</h2>
+            <p class="body">A catalog of flight-tested paper airplane designs with step-by-step folding videos — some take 40 minutes to fold. The top design, the Quill, has commenters reaching for paper; purists still swear by Campbell Morris&#x27;s books.</p>
+            <div class="meta">
+              <a class="source" href="https://www.foldableflight.com" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50424581" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">1118 pts · 156 comments</span>
+              <button class="copy-btn" type="button" data-copy="1">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>Fascination with the designs, and disbelief at a 40-minute folding video for the Lancer — the throw happens at 2:13, not the end. Nostalgia for Campbell Morris&#x27;s Advanced Paper Aircraft Construction volumes, and one nit: &#x27;Intermediate&#x27; shows up twice in the difficulty list.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="story" id="story-2">
+          <div class="num" aria-hidden="true">2</div>
+          <div>
+            <h2 class="tagline">Claude Fable 5.2 and Mythos 5.2 beat Opus 5.5, Anthropic says</h2>
+            <p class="body">Anthropic&#x27;s new Fable and Mythos 5.2 — same underlying model, Fable open to all with safeguards, Mythos gated for cyber/bio research — are claimed a step above Opus 5.5 on most benchmarks. Up to 30% faster than 5.1, $8/$40 per million tokens, with an optional 2.5x fast mode.</p>
+            <div class="meta">
+              <a class="source" href="https://www.anthropic.com/claude-fable-and-mythos-5-2" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50429068" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">738 pts · 894 comments</span>
+              <button class="copy-btn" type="button" data-copy="2">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>The naming confuses everyone — Fable 5.2 outranking Opus 5.5 breaks the numbering logic, and commenters ask whether the cited Opus 5.5 benchmarks are pre- or post-November 3. Leaks had predicted &#x27;Fable 5.5&#x27;; one theory is Anthropic is saving that name for the next model. The model is already live in Claude Code, unusually fast for a rollout.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="story" id="story-3">
+          <div class="num" aria-hidden="true">3</div>
+          <div>
+            <h2 class="tagline">USPS now sells official ZIP Code boundary polygons</h2>
+            <p class="body">The Postal Service now offers official ZIP Code boundary data as a licensed product, starting at $10k per the order form linked in the thread — the authoritative answer to &#x27;where does this ZIP end?&#x27; Free approximations exist, but they drift from the official lines.</p>
+            <div class="meta">
+              <a class="source" href="https://postalpro.usps.com/zcb" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50431058" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">680 pts · 345 comments</span>
+              <button class="copy-btn" type="button" data-copy="3">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>Sticker shock first: $10k, and many say this should be public data. Others argue the whole point is that it&#x27;s official, correct, and current — a GitHub copy defeats the purpose, and the license appears to forbid redistribution. Free options are &#x27;good enough&#x27; unless you must match USPS 1:1.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="story" id="story-4">
+          <div class="num" aria-hidden="true">4</div>
+          <div>
+            <h2 class="tagline">Canada launches Real-Time Rail, its FedNow equivalent</h2>
+            <p class="body">Payments Canada has launched Real-Time Rail (RTR), a 24/7 instant-payment system — the FedNow analogue for Canada. Wealthsimple is already in; the pitch is true instant settlement, not just fast messaging.</p>
+            <div class="meta">
+              <a class="source" href="https://www.payments.ca/canada-launches-real-time-rail-bringing-247-payment-infrastructure-national-economy" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50427362" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">559 pts · 321 comments</span>
+              <button class="copy-btn" type="button" data-copy="4">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>The main thread is the Interac comparison: Interac is like Zelle, RTR is like FedNow — real settlement rails, not a messaging layer. On FedNow&#x27;s US track record, one commenter cites ~$800B/year run rate, up to $10M per message at under 5 cents, 20-second SLA; others ask whether $800B is much against total US payment volume.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="story" id="story-5">
+          <div class="num" aria-hidden="true">5</div>
+          <div>
+            <h2 class="tagline">Amazon saves millions swapping Sonnet for a decision model</h2>
+            <p class="body">Two Amazon engineers replaced Sonnet 4.6 with Strands Decider — a small decision model, not a general LLM — for labelling internal tickets, at 98% lower cost with equal performance. Projected saving: millions a year in token costs.</p>
+            <div class="meta">
+              <a class="source" href="https://strandsagents.com/blog/amazon-saves-millions-replacing-sonnet-with-strands-decider/" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50436640" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">478 pts · 174 comments</span>
+              <button class="copy-btn" type="button" data-copy="5">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>Skepticism that this is an ad dressed as a case study — Strands is AWS&#x27;s own agent SDK, and the savings accrue to Amazon itself. The math joke lands anyway: 98% cheaper on millions means the 2% still isn&#x27;t trivial, and the real lesson is make-vs-buy — a small purpose-built model beats a frontier LLM for a narrow classification job.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="story" id="story-6">
+          <div class="num" aria-hidden="true">6</div>
+          <div>
+            <h2 class="tagline">E-means beats k-means in a tenth of the epochs</h2>
+            <p class="body">A new clustering method that outperforms k-means while needing roughly one-tenth the training epochs. The visualizations make the intuition click, and one commenter reports a 146x GPU speedup after adapting it to their IVF index.</p>
+            <div class="meta">
+              <a class="source" href="https://e-means.github.io/" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50429734" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">449 pts · 57 comments</span>
+              <button class="copy-btn" type="button" data-copy="6">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>Enthusiasm — &#x27;obvious in hindsight&#x27; and one of the better ML ideas in a while — plus a request to add it to scipy. The open question is the automatic hyperparameter laws, which even fans find unintuitive, and whether the gains hold outside the paper&#x27;s benchmarks.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="story" id="story-7">
+          <div class="num" aria-hidden="true">7</div>
+          <div>
+            <h2 class="tagline">Magenta solar panels that let crops grow underneath</h2>
+            <p class="body">Semi-transparent, colored cadmium-telluride panels for agrivoltaics: they harvest part of the spectrum for power while passing the wavelengths crops need. Shade plus electricity from the same field.</p>
+            <div class="meta">
+              <a class="source" href="https://www.anthropocenemagazine.org/2026/10/magenta-solar-panels-may-be-agrivoltaics-cleverest-trick-yet/" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50426175" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">335 pts · 227 comments</span>
+              <button class="copy-btn" type="button" data-copy="7">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>Greenhouse owners love the idea — wavelength-selective shading that pays for itself — and the physics thread runs long on spectrum-slicing, from fiber optics to beaming waste heat through the atmosphere&#x27;s infrared window. Practical questions: cost, durability, and which crops actually benefit.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="story" id="story-8">
+          <div class="num" aria-hidden="true">8</div>
+          <div>
+            <h2 class="tagline">AlphaProof Code formally verifies Signal&#x27;s protocol</h2>
+            <p class="body">DeepMind&#x27;s new agentic framework used AI agents to mathematically prove key security properties of the actual code behind Signal&#x27;s cryptographic protocol — a &#x27;grand challenge&#x27; in software security, announced November 10.</p>
+            <div class="meta">
+              <a class="source" href="https://deepmind.google/blog/introducing-alphaproof-code/" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50439193" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">264 pts · 100 comments</span>
+              <button class="copy-btn" type="button" data-copy="8">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>Impressed that a codebase as large as Signal&#x27;s checks out in a strict formal sense — &#x27;engineers of the highest caliber.&#x27; The pushback: the crypto may be proven, but the rest of the code isn&#x27;t, and a verified protocol on an unverified OS still leaves the chain only as strong as its weakest link. One quip: the government uses its own Signal variant, which invites questions.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="story" id="story-9">
+          <div class="num" aria-hidden="true">9</div>
+          <div>
+            <h2 class="tagline">Locating a mysterious beep with browser audio</h2>
+            <p class="body">Simon Willison tracked down a beep in his house using the browser: a web page that listens and triangulates sound. A small, delightful example of solving a real-world problem with tools already in the browser.</p>
+            <div class="meta">
+              <a class="source" href="https://simonwillison.net/2026/Nov/9/mysterious-beeps/" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50434310" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">258 pts · 131 comments</span>
+              <button class="copy-btn" type="button" data-copy="9">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>The thread&#x27;s best answer is a physical binary search: move half the boxes to another room, listen, repeat — O(log n). Counterpoint: that requires unpacking, and inventing a networked sound-locating system is arguably easier. Several want the tool for their own mystery noises.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="story" id="story-10">
+          <div class="num" aria-hidden="true">10</div>
+          <div>
+            <h2 class="tagline">Horrible public key tricks</h2>
+            <p class="body">A walk through the ugly corners of public-key cryptography — the tricks and edge cases that make TLS work in practice. tptacek&#x27;s thread is the one to read: all serious attackers are man-in-the-middle attackers.</p>
+            <div class="meta">
+              <a class="source" href="https://maurycyz.com/projects/badcert/" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50434264" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">208 pts · 72 comments</span>
+              <button class="copy-btn" type="button" data-copy="10">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>tptacek dominates: passive-only attackers went extinct with backbone Sun servers, and the real attack is tricking victims into diverting their own traffic — DNS injection, or SMS links that get a fake bank URL into browser autocomplete. Others note clearing autocomplete suggestions is oddly harder than clearing all other browser data.</p>
+            </div>
+          </div>
+        </article>
+      </main>
+
+      <footer>
+        <a href="../">&larr; HN Daily archive</a>
+        <a href="https://tk3369.github.io/hn-daily/">tk3369.github.io/hn-daily</a>
+        <span>Press T to toggle theme.</span>
+      </footer>
+    </div>
+
+    <script>
+      (function () {
+        var KEY = "hn-daily-theme";
+        var root = document.documentElement;
+        var toggle = document.getElementById("themeToggle");
+        var label = document.getElementById("themeLabel");
+
+        function storedTheme() {
+          try { return window.localStorage.getItem(KEY); } catch (e) { return null; }
+        }
+        function systemDark() {
+          return window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+        }
+        function isDark() {
+          var t = root.getAttribute("data-theme");
+          if (t === "dark") return true;
+          if (t === "light") return false;
+          return systemDark();
+        }
+        function render() {
+          var dark = isDark();
+          label.textContent = dark ? "Light" : "Dark";
+          toggle.setAttribute("aria-pressed", dark ? "true" : "false");
+        }
+        function setTheme(theme) {
+          root.setAttribute("data-theme", theme);
+          try { window.localStorage.setItem(KEY, theme); } catch (e) {}
+          render();
+        }
+        function flip() {
+          setTheme(isDark() ? "light" : "dark");
+        }
+
+        var saved = storedTheme();
+        if (saved === "dark" || saved === "light") {
+          root.setAttribute("data-theme", saved);
+        }
+        render();
+
+        toggle.addEventListener("click", flip);
+        document.addEventListener("keydown", function (e) {
+          if (e.key === "t" || e.key === "T") {
+            var tag = (e.target && e.target.tagName) || "";
+            if (tag === "INPUT" || tag === "TEXTAREA") return;
+            if (e.metaKey || e.ctrlKey || e.altKey) return;
+            flip();
+          }
+        });
+        if (window.matchMedia) {
+          var mq = window.matchMedia("(prefers-color-scheme: dark)");
+          if (mq.addEventListener) mq.addEventListener("change", render);
+        }
+
+        // Copy buttons: number + tagline + body + source + HN link + points/comments.
+        // The "What HN commenters are saying" paragraph is deliberately excluded.
+        var copyData = {
+          "1": "1. Foldable Flight: paper airplanes, engineered properly\n\nA catalog of flight-tested paper airplane designs with step-by-step folding videos — some take 40 minutes to fold. The top design, the Quill, has commenters reaching for paper; purists still swear by Campbell Morris's books.\n\nSource: https://www.foldableflight.com\nHN Discuss: https://news.ycombinator.com/item?id=50424581\n1118 pts / 156 comments",
+          "2": "2. Claude Fable 5.2 and Mythos 5.2 beat Opus 5.5, Anthropic says\n\nAnthropic's new Fable and Mythos 5.2 — same underlying model, Fable open to all with safeguards, Mythos gated for cyber/bio research — are claimed a step above Opus 5.5 on most benchmarks. Up to 30% faster than 5.1, $8/$40 per million tokens, with an optional 2.5x fast mode.\n\nSource: https://www.anthropic.com/claude-fable-and-mythos-5-2\nHN Discuss: https://news.ycombinator.com/item?id=50429068\n738 pts / 894 comments",
+          "3": "3. USPS now sells official ZIP Code boundary polygons\n\nThe Postal Service now offers official ZIP Code boundary data as a licensed product, starting at $10k per the order form linked in the thread — the authoritative answer to 'where does this ZIP end?' Free approximations exist, but they drift from the official lines.\n\nSource: https://postalpro.usps.com/zcb\nHN Discuss: https://news.ycombinator.com/item?id=50431058\n680 pts / 345 comments",
+          "4": "4. Canada launches Real-Time Rail, its FedNow equivalent\n\nPayments Canada has launched Real-Time Rail (RTR), a 24/7 instant-payment system — the FedNow analogue for Canada. Wealthsimple is already in; the pitch is true instant settlement, not just fast messaging.\n\nSource: https://www.payments.ca/canada-launches-real-time-rail-bringing-247-payment-infrastructure-national-economy\nHN Discuss: https://news.ycombinator.com/item?id=50427362\n559 pts / 321 comments",
+          "5": "5. Amazon saves millions swapping Sonnet for a decision model\n\nTwo Amazon engineers replaced Sonnet 4.6 with Strands Decider — a small decision model, not a general LLM — for labelling internal tickets, at 98% lower cost with equal performance. Projected saving: millions a year in token costs.\n\nSource: https://strandsagents.com/blog/amazon-saves-millions-replacing-sonnet-with-strands-decider/\nHN Discuss: https://news.ycombinator.com/item?id=50436640\n478 pts / 174 comments",
+          "6": "6. E-means beats k-means in a tenth of the epochs\n\nA new clustering method that outperforms k-means while needing roughly one-tenth the training epochs. The visualizations make the intuition click, and one commenter reports a 146x GPU speedup after adapting it to their IVF index.\n\nSource: https://e-means.github.io/\nHN Discuss: https://news.ycombinator.com/item?id=50429734\n449 pts / 57 comments",
+          "7": "7. Magenta solar panels that let crops grow underneath\n\nSemi-transparent, colored cadmium-telluride panels for agrivoltaics: they harvest part of the spectrum for power while passing the wavelengths crops need. Shade plus electricity from the same field.\n\nSource: https://www.anthropocenemagazine.org/2026/10/magenta-solar-panels-may-be-agrivoltaics-cleverest-trick-yet/\nHN Discuss: https://news.ycombinator.com/item?id=50426175\n335 pts / 227 comments",
+          "8": "8. AlphaProof Code formally verifies Signal's protocol\n\nDeepMind's new agentic framework used AI agents to mathematically prove key security properties of the actual code behind Signal's cryptographic protocol — a 'grand challenge' in software security, announced November 10.\n\nSource: https://deepmind.google/blog/introducing-alphaproof-code/\nHN Discuss: https://news.ycombinator.com/item?id=50439193\n264 pts / 100 comments",
+          "9": "9. Locating a mysterious beep with browser audio\n\nSimon Willison tracked down a beep in his house using the browser: a web page that listens and triangulates sound. A small, delightful example of solving a real-world problem with tools already in the browser.\n\nSource: https://simonwillison.net/2026/Nov/9/mysterious-beeps/\nHN Discuss: https://news.ycombinator.com/item?id=50434310\n258 pts / 131 comments",
+          "10": "10. Horrible public key tricks\n\nA walk through the ugly corners of public-key cryptography — the tricks and edge cases that make TLS work in practice. tptacek's thread is the one to read: all serious attackers are man-in-the-middle attackers.\n\nSource: https://maurycyz.com/projects/badcert/\nHN Discuss: https://news.ycombinator.com/item?id=50434264\n208 pts / 72 comments"
+};
+
+        function fallbackCopy(text) {
+          var ta = document.createElement("textarea");
+          ta.value = text;
+          ta.setAttribute("readonly", "");
+          ta.style.position = "absolute";
+          ta.style.left = "-9999px";
+          document.body.appendChild(ta);
+          ta.select();
+          var ok = false;
+          try { ok = document.execCommand("copy"); } catch (e) { ok = false; }
+          document.body.removeChild(ta);
+          return ok;
+        }
+
+        var buttons = document.querySelectorAll(".copy-btn");
+        Array.prototype.forEach.call(buttons, function (btn) {
+          btn.addEventListener("click", function () {
+            var text = copyData[btn.getAttribute("data-copy")] || "";
+            function done() {
+              var original = "Copy";
+              btn.textContent = "Copied ✓";
+              btn.classList.add("copied");
+              setTimeout(function () {
+                btn.textContent = original;
+                btn.classList.remove("copied");
+              }, 1600);
+            }
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+              navigator.clipboard.writeText(text).then(done, function () {
+                if (fallbackCopy(text)) done();
+              });
+            } else if (fallbackCopy(text)) {
+              done();
+            }
+          });
+        });
+      })();
+    </script>
+  </body>
+</html>
