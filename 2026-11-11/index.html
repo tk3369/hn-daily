@@ -1,0 +1,535 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="light dark" />
+    <link rel="icon" href="data:," />
+    <title>HN Daily — Wednesday, November 11, 2026</title>
+    <style>
+      :root {
+        --bg: #f3f1eb;
+        --surface: #fbf9f4;
+        --ink: #1c1a16;
+        --ink-soft: #4a463e;
+        --ink-faint: #6f6a5e;
+        --line: #d8d2c4;
+        --accent: #ff6600;
+        --accent-ink: #b34700;
+        --comment-bg: #efe9dc;
+        --focus: #b34700;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root:not([data-theme="light"]) {
+          --bg: #16140f;
+          --surface: #1f1c16;
+          --ink: #f0ead9;
+          --ink-soft: #c9c2b0;
+          --ink-faint: #9a937f;
+          --line: #3a362b;
+          --accent: #ff7a1a;
+          --accent-ink: #ff9440;
+          --comment-bg: #262219;
+          --focus: #ff9440;
+        }
+      }
+      :root[data-theme="dark"] {
+        --bg: #16140f;
+        --surface: #1f1c16;
+        --ink: #f0ead9;
+        --ink-soft: #c9c2b0;
+        --ink-faint: #9a937f;
+        --line: #3a362b;
+        --accent: #ff7a1a;
+        --accent-ink: #ff9440;
+        --comment-bg: #262219;
+        --focus: #ff9440;
+      }
+
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--ink);
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: 17px;
+        line-height: 1.55;
+        -webkit-font-smoothing: antialiased;
+      }
+      a { color: var(--accent-ink); text-decoration: underline; text-underline-offset: 2px; }
+      a:hover { color: var(--accent); }
+      a:focus-visible, button:focus-visible {
+        outline: 2px solid var(--focus);
+        outline-offset: 2px;
+        border-radius: 2px;
+      }
+
+      .wrap {
+        max-width: 1080px;
+        margin: 0 auto;
+        padding: 32px 24px 64px;
+      }
+
+      header.masthead {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 20px;
+        border-bottom: 3px solid var(--ink);
+        padding-bottom: 20px;
+        margin-bottom: 8px;
+      }
+      .masthead h1 {
+        margin: 0 0 6px;
+        font-size: clamp(30px, 5vw, 46px);
+        line-height: 1.1;
+        font-weight: 700;
+        letter-spacing: -0.01em;
+      }
+      .masthead .subtitle {
+        margin: 0;
+        font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+        font-size: 14px;
+        color: var(--ink-soft);
+      }
+      .masthead .kicker {
+        margin: 0 0 10px;
+        font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+        font-size: 12px;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--accent-ink);
+      }
+
+      .theme-toggle {
+        flex: 0 0 auto;
+        width: 86px;
+        height: 40px;
+        min-height: 40px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        background: var(--surface);
+        color: var(--ink);
+        border: 1.5px solid var(--ink);
+        border-radius: 999px;
+        font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+        font-size: 13px;
+        cursor: pointer;
+        padding: 0 10px;
+      }
+      .theme-toggle .dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: var(--accent);
+        flex: 0 0 auto;
+      }
+      .theme-toggle:hover { border-color: var(--accent); }
+
+      .story {
+        display: grid;
+        grid-template-columns: 72px 1fr;
+        gap: 4px 20px;
+        padding: 28px 0 26px;
+        border-bottom: 1px solid var(--line);
+        scroll-margin-top: 16px;
+      }
+      .story .num {
+        font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+        font-size: 40px;
+        font-weight: 700;
+        line-height: 1;
+        color: var(--accent);
+        padding-top: 2px;
+      }
+      .story h2 {
+        margin: 0 0 10px;
+        font-size: clamp(21px, 3vw, 26px);
+        line-height: 1.25;
+        font-weight: 700;
+      }
+      .story .body { margin: 0 0 14px; color: var(--ink); max-width: 68ch; }
+
+      .meta {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 8px 18px;
+        font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+        font-size: 13.5px;
+        color: var(--ink-soft);
+        margin-bottom: 16px;
+      }
+      .meta a { min-height: 36px; display: inline-flex; align-items: center; }
+      .meta .stats { color: var(--ink-faint); white-space: nowrap; }
+      .copy-btn {
+        margin-left: auto;
+        min-height: 36px;
+        padding: 6px 14px;
+        background: transparent;
+        color: var(--ink);
+        border: 1px solid var(--line);
+        border-radius: 6px;
+        font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+        font-size: 13px;
+        cursor: pointer;
+      }
+      .copy-btn:hover { border-color: var(--accent); color: var(--accent-ink); }
+      .copy-btn.copied { border-color: var(--accent); color: var(--accent-ink); }
+
+      .commenters {
+        background: var(--comment-bg);
+        border-radius: 6px;
+        padding: 14px 18px;
+        max-width: 72ch;
+      }
+      .commenters .label {
+        display: block;
+        font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+        font-size: 11.5px;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--accent-ink);
+        margin-bottom: 6px;
+      }
+      .commenters p { margin: 0; font-size: 15.5px; color: var(--ink-soft); }
+
+      footer {
+        margin-top: 36px;
+        padding-top: 20px;
+        border-top: 3px solid var(--ink);
+        font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+        font-size: 13.5px;
+        color: var(--ink-soft);
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px 24px;
+        align-items: center;
+      }
+      footer a { min-height: 36px; display: inline-flex; align-items: center; }
+
+      @media (max-width: 600px) {
+        .wrap { padding: 22px 16px 48px; }
+        .story { grid-template-columns: 46px 1fr; gap: 2px 12px; padding: 22px 0 20px; }
+        .story .num { font-size: 28px; }
+        header.masthead { flex-wrap: wrap; }
+        .copy-btn { margin-left: 0; }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        html { scroll-behavior: auto; }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <header class="masthead">
+        <div>
+          <p class="kicker">Hacker News · Daily Digest</p>
+          <h1>HN Daily — Wednesday, November 11, 2026</h1>
+          <p class="subtitle">HN Top 10 — 2026-11-11 07:00 PT (hottest by points)</p>
+        </div>
+        <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle dark mode" aria-pressed="false">
+          <span class="dot" aria-hidden="true"></span><span id="themeLabel">Dark</span>
+        </button>
+      </header>
+
+      <main>
+        <article class="story" id="story-1">
+          <div class="num" aria-hidden="true">1</div>
+          <div>
+            <h2 class="tagline">Smart home devices should work without the internet</h2>
+            <p class="body">Ten years of home-automation rules from the author: nothing core to the house should depend on a vendor&#x27;s server. The setup is Tasmota, MQTT and Node-RED on a Pi — lights and switches keep working when the Wi-Fi or the cloud goes down.</p>
+            <div class="meta">
+              <a class="source" href="https://docodethatmatters.com/home-automation-overnight-success/" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50441707" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">1100 pts · 394 comments</span>
+              <button class="copy-btn" type="button" data-copy="1">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>Applause for the rules — physical switches must survive automation, &#x27;no network, no problem&#x27; — but skepticism too: 99% of products ship cloud-first, so the fix isn&#x27;t a weekend hack. A side debate over the post&#x27;s AI-polished prose vs the author&#x27;s rougher first draft, which he promised to clean up.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="story" id="story-2">
+          <div class="num" aria-hidden="true">2</div>
+          <div>
+            <h2 class="tagline">Scion is back, selling a kei truck in America</h2>
+            <p class="body">Toyota is reviving Scion to sell a small 4WD kei truck in the US — but only to fleets, capped at 25 mph to meet low-speed-vehicle rules. Farmers, campuses and job sites are the pitch; it&#x27;s a road-legal utility cart, not a daily driver.</p>
+            <div class="meta">
+              <a class="source" href="https://www.theautopian.com/scion-is-back-and-its-going-to-sell-a-freaking-kei-truck-in-america/" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50445401" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">518 pts · 347 comments</span>
+              <button class="copy-btn" type="button" data-copy="2">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>Target-market debate: farmers, universities and groundskeeping fleets, plus retirement communities where LSVs already rule the golf-cart paths. $25k feels steep next to used imports, and others note UTVs and golf carts already fill this niche in rural towns.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="story" id="story-3">
+          <div class="num" aria-hidden="true">3</div>
+          <div>
+            <h2 class="tagline">Starlink Mini 2</h2>
+            <p class="body">SpaceX&#x27;s next-gen portable dish — smaller, faster, aimed at campers, RVers and anyone working off-grid. The thread is less about specs than about whether always-on internet ruins the point of getting away.</p>
+            <div class="meta">
+              <a class="source" href="https://starlink.com/mini-2" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50444129" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">470 pts · 515 comments</span>
+              <button class="copy-btn" type="button" data-copy="3">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>Safety vs the purity of disconnection: pilots and remote workers love it, others carry only an iPhone&#x27;s satellite SOS. Several now work from campsites midweek, which the Mini makes practical — and one commenter jokes about a hiker prompting agents on the trail.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="story" id="story-4">
+          <div class="num" aria-hidden="true">4</div>
+          <div>
+            <h2 class="tagline">Synaptics patent claims stop work on DisplayLink drivers</h2>
+            <p class="body">Synaptics sent a cease-and-desist to the developer of Vino, an open-source DisplayLink driver, claiming patent infringement — and work on the driver has stopped. The letter demanded compliance within five days, and the cited patents may only go up to claim 10.</p>
+            <div class="meta">
+              <a class="source" href="https://lwn.net/SubscriberLink/1102549/acbc92e00cee3a3f/" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50443824" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">441 pts · 254 comments</span>
+              <button class="copy-btn" type="button" data-copy="4">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>Anger at the five-day deadline and the lawyer&#x27;s name (Bateman). One commenter argues the patent likely falls — the claims were narrowed during prosecution to get granted. Others note DisplayLink was acquired by Synaptics in 2022, and the license model is the real revenue.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="story" id="story-5">
+          <div class="num" aria-hidden="true">5</div>
+          <div>
+            <h2 class="tagline">Show HN: Get your coding agent off ~2019 JavaScript, onto modern web primitives</h2>
+            <p class="body">Google Chrome&#x27;s new guide (and agent skill) teaches coding agents to use modern web primitives — one-line CSS instead of 60 lines of ResizeObserver hacks — instead of generating ~2019-era JavaScript.</p>
+            <div class="meta">
+              <a class="source" href="https://github.com/GoogleChrome/modern-web-guidance" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50443812" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">410 pts · 134 comments</span>
+              <button class="copy-btn" type="button" data-copy="5">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>Maintainability is the next frontier as agents accrete 1k-line solutions; a 1-line CSS fix beats 60 lines of JS. Distribution debate: publish a plain Markdown index instead of npm packages. And a warning that Chrome-authored guidance concentrates too much standards power in one browser.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="story" id="story-6">
+          <div class="num" aria-hidden="true">6</div>
+          <div>
+            <h2 class="tagline">Val Town is winding down</h2>
+            <p class="body">Val Town is winding down — the Deno-based platform for running small serverless functions is closing, with the code to be open-sourced on February 1, 2027. The post doesn&#x27;t mention it, but Deno&#x27;s team is joining Cloudflare next year.</p>
+            <div class="meta">
+              <a class="source" href="https://blog.val.town/winding-down" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50443427" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">407 pts · 99 comments</span>
+              <button class="copy-btn" type="button" data-copy="6">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>Surprise it wasn&#x27;t a successful business. Debate whether a devtools era is ending (Astro, Bun, Turso acquired) or this is just normal M&amp;A — with AI soaking up all investor money as the other theory. Self-hosted alternatives floated: Windmill and smallweb.run.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="story" id="story-7">
+          <div class="num" aria-hidden="true">7</div>
+          <div>
+            <h2 class="tagline">Google SWE points 48 AI agents at NASA Lidar, finds unmapped Maya pyramid in 72h</h2>
+            <p class="body">A Google engineer pointed 48 AI agents at public NASA lidar data and found an unmapped Maya pyramid site in 72 hours — &#x27;vibe archaeology.&#x27; The catch: no archaeologist has verified the find yet.</p>
+            <div class="meta">
+              <a class="source" href="https://pietromiotti.com/latest/maya-site/?maya" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50452455" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">406 pts · 150 comments</span>
+              <button class="copy-btn" type="button" data-copy="7">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>Delight (&#x27;actual good use of AI&#x27;) vs caution — agents hallucinate, and the structure identification needs expert ground-truth; the real archaeology is slow, layer by layer. Jokes about scanning billionaire islands next.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="story" id="story-8">
+          <div class="num" aria-hidden="true">8</div>
+          <div>
+            <h2 class="tagline">Apple has new Mac app coming to make running local AI models easy</h2>
+            <p class="body">Apple is reportedly building a Mac app to make running local AI models easy — a native front end for on-device inference, timed with the M-series chips&#x27; growing memory. 9to5Mac reports it ahead of launch.</p>
+            <div class="meta">
+              <a class="source" href="https://9to5mac.com/2026/11/10/apple-has-new-mac-app-coming-to-make-running-local-ai-models-easy/" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50446520" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">396 pts · 399 comments</span>
+              <button class="copy-btn" type="button" data-copy="8">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>The local-vs-cloud split: optimists say distillation makes local good enough for 95% of tasks and Apple wins on privacy and vertical integration. Skeptics say cloud inference&#x27;s economies of scale will always win on price, and local models are a nerd fever dream.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="story" id="story-9">
+          <div class="num" aria-hidden="true">9</div>
+          <div>
+            <h2 class="tagline">Protecting SSH Keys with macOS Secure Enclave</h2>
+            <p class="body">A guide to protecting SSH keys with macOS Secure Enclave — keys generated inside the enclave can&#x27;t be extracted, and every use needs Touch ID approval. Secretive wraps the same mechanism in a friendlier app.</p>
+            <div class="meta">
+              <a class="source" href="https://gatezh.com/posts/macos-secure-enclave-ssh-keys/" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50449748" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">301 pts · 109 comments</span>
+              <button class="copy-btn" type="button" data-copy="9">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>The undocumented-feature worry: Apple could change it, so treat the enclave key as disposable and keep a backup. YubiKey veterans compare the provisioning chicken-and-egg; Secretive gets strong recommendations, and forwarding the agent into VMs earns praise.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="story" id="story-10">
+          <div class="num" aria-hidden="true">10</div>
+          <div>
+            <h2 class="tagline">Six Math Essentials</h2>
+            <p class="body">Terence Tao&#x27;s new book distills six essential mathematical concepts for a general audience — number, algebra, geometry and more, with a 3Blue1Brown collaboration behind it.</p>
+            <div class="meta">
+              <a class="source" href="https://teorth.github.io/tao-web/six-math-essentials.html" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50446246" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">297 pts · 57 comments</span>
+              <button class="copy-btn" type="button" data-copy="10">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>It&#x27;s basic for anyone with a STEM degree, but a solid philosophy-of-math introduction and a good gift for kids. Some were disappointed the Cosmic Distance Ladder book is still only &#x27;in preparation&#x27;; the Science Friday excerpt drew complaints about no figures and no contents page in the Amazon preview.</p>
+            </div>
+          </div>
+        </article>
+      </main>
+
+      <footer>
+        <a href="../">&larr; HN Daily archive</a>
+        <a href="https://tk3369.github.io/hn-daily/">tk3369.github.io/hn-daily</a>
+        <span>Press T to toggle theme.</span>
+      </footer>
+    </div>
+
+    <script>
+      (function () {
+        var KEY = "hn-daily-theme";
+        var root = document.documentElement;
+        var toggle = document.getElementById("themeToggle");
+        var label = document.getElementById("themeLabel");
+
+        function storedTheme() {
+          try { return window.localStorage.getItem(KEY); } catch (e) { return null; }
+        }
+        function systemDark() {
+          return window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+        }
+        function isDark() {
+          var t = root.getAttribute("data-theme");
+          if (t === "dark") return true;
+          if (t === "light") return false;
+          return systemDark();
+        }
+        function render() {
+          var dark = isDark();
+          label.textContent = dark ? "Light" : "Dark";
+          toggle.setAttribute("aria-pressed", dark ? "true" : "false");
+        }
+        function setTheme(theme) {
+          root.setAttribute("data-theme", theme);
+          try { window.localStorage.setItem(KEY, theme); } catch (e) {}
+          render();
+        }
+        function flip() {
+          setTheme(isDark() ? "light" : "dark");
+        }
+
+        var saved = storedTheme();
+        if (saved === "dark" || saved === "light") {
+          root.setAttribute("data-theme", saved);
+        }
+        render();
+
+        toggle.addEventListener("click", flip);
+        document.addEventListener("keydown", function (e) {
+          if (e.key === "t" || e.key === "T") {
+            var tag = (e.target && e.target.tagName) || "";
+            if (tag === "INPUT" || tag === "TEXTAREA") return;
+            if (e.metaKey || e.ctrlKey || e.altKey) return;
+            flip();
+          }
+        });
+        if (window.matchMedia) {
+          var mq = window.matchMedia("(prefers-color-scheme: dark)");
+          if (mq.addEventListener) mq.addEventListener("change", render);
+        }
+
+        // Copy buttons: number + tagline + body + source + HN link + points/comments.
+        // The "What HN commenters are saying" paragraph is deliberately excluded.
+        var copyData = {
+          "1": "1. Smart home devices should work without the internet\n\nTen years of home-automation rules from the author: nothing core to the house should depend on a vendor's server. The setup is Tasmota, MQTT and Node-RED on a Pi — lights and switches keep working when the Wi-Fi or the cloud goes down.\n\nSource: https://docodethatmatters.com/home-automation-overnight-success/\nHN Discuss: https://news.ycombinator.com/item?id=50441707\n1100 pts / 394 comments",
+          "2": "2. Scion is back, selling a kei truck in America\n\nToyota is reviving Scion to sell a small 4WD kei truck in the US — but only to fleets, capped at 25 mph to meet low-speed-vehicle rules. Farmers, campuses and job sites are the pitch; it's a road-legal utility cart, not a daily driver.\n\nSource: https://www.theautopian.com/scion-is-back-and-its-going-to-sell-a-freaking-kei-truck-in-america/\nHN Discuss: https://news.ycombinator.com/item?id=50445401\n518 pts / 347 comments",
+          "3": "3. Starlink Mini 2\n\nSpaceX's next-gen portable dish — smaller, faster, aimed at campers, RVers and anyone working off-grid. The thread is less about specs than about whether always-on internet ruins the point of getting away.\n\nSource: https://starlink.com/mini-2\nHN Discuss: https://news.ycombinator.com/item?id=50444129\n470 pts / 515 comments",
+          "4": "4. Synaptics patent claims stop work on DisplayLink drivers\n\nSynaptics sent a cease-and-desist to the developer of Vino, an open-source DisplayLink driver, claiming patent infringement — and work on the driver has stopped. The letter demanded compliance within five days, and the cited patents may only go up to claim 10.\n\nSource: https://lwn.net/SubscriberLink/1102549/acbc92e00cee3a3f/\nHN Discuss: https://news.ycombinator.com/item?id=50443824\n441 pts / 254 comments",
+          "5": "5. Show HN: Get your coding agent off ~2019 JavaScript, onto modern web primitives\n\nGoogle Chrome's new guide (and agent skill) teaches coding agents to use modern web primitives — one-line CSS instead of 60 lines of ResizeObserver hacks — instead of generating ~2019-era JavaScript.\n\nSource: https://github.com/GoogleChrome/modern-web-guidance\nHN Discuss: https://news.ycombinator.com/item?id=50443812\n410 pts / 134 comments",
+          "6": "6. Val Town is winding down\n\nVal Town is winding down — the Deno-based platform for running small serverless functions is closing, with the code to be open-sourced on February 1, 2027. The post doesn't mention it, but Deno's team is joining Cloudflare next year.\n\nSource: https://blog.val.town/winding-down\nHN Discuss: https://news.ycombinator.com/item?id=50443427\n407 pts / 99 comments",
+          "7": "7. Google SWE points 48 AI agents at NASA Lidar, finds unmapped Maya pyramid in 72h\n\nA Google engineer pointed 48 AI agents at public NASA lidar data and found an unmapped Maya pyramid site in 72 hours — 'vibe archaeology.' The catch: no archaeologist has verified the find yet.\n\nSource: https://pietromiotti.com/latest/maya-site/?maya\nHN Discuss: https://news.ycombinator.com/item?id=50452455\n406 pts / 150 comments",
+          "8": "8. Apple has new Mac app coming to make running local AI models easy\n\nApple is reportedly building a Mac app to make running local AI models easy — a native front end for on-device inference, timed with the M-series chips' growing memory. 9to5Mac reports it ahead of launch.\n\nSource: https://9to5mac.com/2026/11/10/apple-has-new-mac-app-coming-to-make-running-local-ai-models-easy/\nHN Discuss: https://news.ycombinator.com/item?id=50446520\n396 pts / 399 comments",
+          "9": "9. Protecting SSH Keys with macOS Secure Enclave\n\nA guide to protecting SSH keys with macOS Secure Enclave — keys generated inside the enclave can't be extracted, and every use needs Touch ID approval. Secretive wraps the same mechanism in a friendlier app.\n\nSource: https://gatezh.com/posts/macos-secure-enclave-ssh-keys/\nHN Discuss: https://news.ycombinator.com/item?id=50449748\n301 pts / 109 comments",
+          "10": "10. Six Math Essentials\n\nTerence Tao's new book distills six essential mathematical concepts for a general audience — number, algebra, geometry and more, with a 3Blue1Brown collaboration behind it.\n\nSource: https://teorth.github.io/tao-web/six-math-essentials.html\nHN Discuss: https://news.ycombinator.com/item?id=50446246\n297 pts / 57 comments"
+};
+
+        function fallbackCopy(text) {
+          var ta = document.createElement("textarea");
+          ta.value = text;
+          ta.setAttribute("readonly", "");
+          ta.style.position = "absolute";
+          ta.style.left = "-9999px";
+          document.body.appendChild(ta);
+          ta.select();
+          var ok = false;
+          try { ok = document.execCommand("copy"); } catch (e) { ok = false; }
+          document.body.removeChild(ta);
+          return ok;
+        }
+
+        var buttons = document.querySelectorAll(".copy-btn");
+        Array.prototype.forEach.call(buttons, function (btn) {
+          btn.addEventListener("click", function () {
+            var text = copyData[btn.getAttribute("data-copy")] || "";
+            function done() {
+              var original = "Copy";
+              btn.textContent = "Copied ✓";
+              btn.classList.add("copied");
+              setTimeout(function () {
+                btn.textContent = original;
+                btn.classList.remove("copied");
+              }, 1600);
+            }
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+              navigator.clipboard.writeText(text).then(done, function () {
+                if (fallbackCopy(text)) done();
+              });
+            } else if (fallbackCopy(text)) {
+              done();
+            }
+          });
+        });
+      })();
+    </script>
+  </body>
+</html>
