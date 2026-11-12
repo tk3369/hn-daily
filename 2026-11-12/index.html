@@ -1,0 +1,535 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="light dark" />
+    <link rel="icon" href="data:," />
+    <title>HN Daily — Thursday, November 12, 2026</title>
+    <style>
+      :root {
+        --bg: #f3f1eb;
+        --surface: #fbf9f4;
+        --ink: #1c1a16;
+        --ink-soft: #4a463e;
+        --ink-faint: #6f6a5e;
+        --line: #d8d2c4;
+        --accent: #ff6600;
+        --accent-ink: #b34700;
+        --comment-bg: #efe9dc;
+        --focus: #b34700;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root:not([data-theme="light"]) {
+          --bg: #16140f;
+          --surface: #1f1c16;
+          --ink: #f0ead9;
+          --ink-soft: #c9c2b0;
+          --ink-faint: #9a937f;
+          --line: #3a362b;
+          --accent: #ff7a1a;
+          --accent-ink: #ff9440;
+          --comment-bg: #262219;
+          --focus: #ff9440;
+        }
+      }
+      :root[data-theme="dark"] {
+        --bg: #16140f;
+        --surface: #1f1c16;
+        --ink: #f0ead9;
+        --ink-soft: #c9c2b0;
+        --ink-faint: #9a937f;
+        --line: #3a362b;
+        --accent: #ff7a1a;
+        --accent-ink: #ff9440;
+        --comment-bg: #262219;
+        --focus: #ff9440;
+      }
+
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--ink);
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: 17px;
+        line-height: 1.55;
+        -webkit-font-smoothing: antialiased;
+      }
+      a { color: var(--accent-ink); text-decoration: underline; text-underline-offset: 2px; }
+      a:hover { color: var(--accent); }
+      a:focus-visible, button:focus-visible {
+        outline: 2px solid var(--focus);
+        outline-offset: 2px;
+        border-radius: 2px;
+      }
+
+      .wrap {
+        max-width: 1080px;
+        margin: 0 auto;
+        padding: 32px 24px 64px;
+      }
+
+      header.masthead {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 20px;
+        border-bottom: 3px solid var(--ink);
+        padding-bottom: 20px;
+        margin-bottom: 8px;
+      }
+      .masthead h1 {
+        margin: 0 0 6px;
+        font-size: clamp(30px, 5vw, 46px);
+        line-height: 1.1;
+        font-weight: 700;
+        letter-spacing: -0.01em;
+      }
+      .masthead .subtitle {
+        margin: 0;
+        font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+        font-size: 14px;
+        color: var(--ink-soft);
+      }
+      .masthead .kicker {
+        margin: 0 0 10px;
+        font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+        font-size: 12px;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--accent-ink);
+      }
+
+      .theme-toggle {
+        flex: 0 0 auto;
+        width: 86px;
+        height: 40px;
+        min-height: 40px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        background: var(--surface);
+        color: var(--ink);
+        border: 1.5px solid var(--ink);
+        border-radius: 999px;
+        font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+        font-size: 13px;
+        cursor: pointer;
+        padding: 0 10px;
+      }
+      .theme-toggle .dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: var(--accent);
+        flex: 0 0 auto;
+      }
+      .theme-toggle:hover { border-color: var(--accent); }
+
+      .story {
+        display: grid;
+        grid-template-columns: 72px 1fr;
+        gap: 4px 20px;
+        padding: 28px 0 26px;
+        border-bottom: 1px solid var(--line);
+        scroll-margin-top: 16px;
+      }
+      .story .num {
+        font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+        font-size: 40px;
+        font-weight: 700;
+        line-height: 1;
+        color: var(--accent);
+        padding-top: 2px;
+      }
+      .story h2 {
+        margin: 0 0 10px;
+        font-size: clamp(21px, 3vw, 26px);
+        line-height: 1.25;
+        font-weight: 700;
+      }
+      .story .body { margin: 0 0 14px; color: var(--ink); max-width: 68ch; }
+
+      .meta {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 8px 18px;
+        font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+        font-size: 13.5px;
+        color: var(--ink-soft);
+        margin-bottom: 16px;
+      }
+      .meta a { min-height: 36px; display: inline-flex; align-items: center; }
+      .meta .stats { color: var(--ink-faint); white-space: nowrap; }
+      .copy-btn {
+        margin-left: auto;
+        min-height: 36px;
+        padding: 6px 14px;
+        background: transparent;
+        color: var(--ink);
+        border: 1px solid var(--line);
+        border-radius: 6px;
+        font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+        font-size: 13px;
+        cursor: pointer;
+      }
+      .copy-btn:hover { border-color: var(--accent); color: var(--accent-ink); }
+      .copy-btn.copied { border-color: var(--accent); color: var(--accent-ink); }
+
+      .commenters {
+        background: var(--comment-bg);
+        border-radius: 6px;
+        padding: 14px 18px;
+        max-width: 72ch;
+      }
+      .commenters .label {
+        display: block;
+        font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+        font-size: 11.5px;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--accent-ink);
+        margin-bottom: 6px;
+      }
+      .commenters p { margin: 0; font-size: 15.5px; color: var(--ink-soft); }
+
+      footer {
+        margin-top: 36px;
+        padding-top: 20px;
+        border-top: 3px solid var(--ink);
+        font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+        font-size: 13.5px;
+        color: var(--ink-soft);
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px 24px;
+        align-items: center;
+      }
+      footer a { min-height: 36px; display: inline-flex; align-items: center; }
+
+      @media (max-width: 600px) {
+        .wrap { padding: 22px 16px 48px; }
+        .story { grid-template-columns: 46px 1fr; gap: 2px 12px; padding: 22px 0 20px; }
+        .story .num { font-size: 28px; }
+        header.masthead { flex-wrap: wrap; }
+        .copy-btn { margin-left: 0; }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        html { scroll-behavior: auto; }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <header class="masthead">
+        <div>
+          <p class="kicker">Hacker News · Daily Digest</p>
+          <h1>HN Daily — Thursday, November 12, 2026</h1>
+          <p class="subtitle">HN Top 10 — 2026-11-12 07:00 PT (hottest by points)</p>
+        </div>
+        <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle dark mode" aria-pressed="false">
+          <span class="dot" aria-hidden="true"></span><span id="themeLabel">Dark</span>
+        </button>
+      </header>
+
+      <main>
+        <article class="story" id="story-1">
+          <div class="num" aria-hidden="true">1</div>
+          <div>
+            <h2 class="tagline">Tim Peters, author of Timsort and the Zen of Python, has died</h2>
+            <p class="body">Tim Peters, a Python core developer since the 1990s, has died. He wrote Timsort, the sorting algorithm now used in Python, Java and Rust, and the Zen of Python — “import this” — that still ships with every Python install. The community is marking the loss of one of its founding voices.</p>
+            <div class="meta">
+              <a class="source" href="https://discuss.python.org/t/in-memoriam-tim-peters-1952-2026/110028" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50450488" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">1319 pts · 157 comments</span>
+              <button class="copy-btn" type="button" data-copy="1">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>Tributes from people who knew him from the Python Usenet group and bug tracker in the 90s, and from those who only knew his work: Timsort and the Zen. Several hope newer generations keep the Zen alive in the agentic era, though one commenter admits that hope feels shakier by the day.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="story" id="story-2">
+          <div class="num" aria-hidden="true">2</div>
+          <div>
+            <h2 class="tagline">WSJ: Nvidia board is preparing to oust Jensen Huang</h2>
+            <p class="body">The Wall Street Journal reports Nvidia’s board is preparing to remove Jensen Huang as CEO, days after reports of a second affair and a board probe into his personal conduct. It lands the same day Nvidia announced Huang has resigned, effective immediately — two reports of one fast-moving event, told from different sides.</p>
+            <div class="meta">
+              <a class="source" href="https://www.wsj.com/business/nvidia-is-preparing-to-oust-nvidia-ceo-jensen-huang-30f421ad" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50459703" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">1179 pts · 1568 comments</span>
+              <button class="copy-btn" type="button" data-copy="2">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>Speed is the surprise: commenters link it to the NYT affair reporting and an export scandal, but stress the spy angle is unconfirmed. The sharper debate is structural — Musk and Zuckerberg can’t be fired because they control voting shares, while Huang could, so the comparison cuts both ways.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="story" id="story-3">
+          <div class="num" aria-hidden="true">3</div>
+          <div>
+            <h2 class="tagline">AWS emulator: run AWS services locally</h2>
+            <p class="body">AWS released an open-source local emulator for its services, built largely by AI agents iterating on the codebase. The aim: test against S3, Lambda and friends without touching the cloud. The thread wants proof it’s a maintained product, not a one-off demo.</p>
+            <div class="meta">
+              <a class="source" href="https://github.com/aws/aws-emulator" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50456631" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">911 pts · 251 comments</span>
+              <button class="copy-btn" type="button" data-copy="3">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>Skepticism dominates — is this a real product AWS will maintain, or a marketing exercise in agent-built code? An AWS voice in the thread says it’s a real product they plan to maintain. Others point to LocalStack, Floci and Testcontainers as the incumbents, and wonder aloud about the token spend per iteration.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="story" id="story-4">
+          <div class="num" aria-hidden="true">4</div>
+          <div>
+            <h2 class="tagline">NVIDIA announces CEO transition: Huang resigns immediately</h2>
+            <p class="body">Nvidia’s board announced Jensen Huang has resigned as President, CEO and board member, effective immediately. The release gives no reason, coming days after reports of a board probe into Huang’s conduct. The thread is mostly speculation about what pushed the board to act.</p>
+            <div class="meta">
+              <a class="source" href="https://nvidianews.nvidia.com/news/nvidia-announces-ceo-transition" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50467087" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">725 pts · 534 comments</span>
+              <button class="copy-btn" type="button" data-copy="4">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>Commenters quote the release verbatim — resigned as President, CEO and board member, effective immediately — then speculate freely: a board coup, factions opposed to open-weight models and GPU sales into China, national-security hawks. Others just note how embarrassing the downfall looks from the outside.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="story" id="story-5">
+          <div class="num" aria-hidden="true">5</div>
+          <div>
+            <h2 class="tagline">United Airlines bans AI agents from booking flights</h2>
+            <p class="body">United Airlines says AI agents may not book flights on behalf of travelers, joining the pushback against agentic booking. United’s argument: it doesn’t want another powerful intermediary between it and passengers, after search, metasearch and OTAs. The ban is a test case for whether airlines can keep agents out.</p>
+            <div class="meta">
+              <a class="source" href="https://www.cbsnews.com/news/united-airlines-bans-ai-agents-booking-flights/" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50458900" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">617 pts · 636 comments</span>
+              <button class="copy-btn" type="button" data-copy="5">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>The quoted line — United doesn’t want “yet another, and potentially even more powerful, intermediary” — draws the obvious reply: focus on service and price instead. Others push back: the market has decided, price beats everything, and airlines that tried service-first went bankrupt. Alaska gets a mixed report card.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="story" id="story-6">
+          <div class="num" aria-hidden="true">6</div>
+          <div>
+            <h2 class="tagline">A false smoke alarm almost drowned Jane Street’s only NYC datacenter</h2>
+            <p class="body">A false smoke alarm triggered the water-based fire suppression in Jane Street’s only New York datacenter — nearly flooding the room. The author, who lived minutes away, got the 3am call. It’s a war story about single points of failure, and about the cost of telling coworkers you live close to the office.</p>
+            <div class="meta">
+              <a class="source" href="https://michael.bacarella.com/2026/11/10/false-smoke-alarm-jane-street-datacenter/" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50455394" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">534 pts · 256 comments</span>
+              <button class="copy-btn" type="button" data-copy="6">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>Recognition, mostly: many commenters have been the “emergency office guy” after casually mentioning they live nearby, and learned to keep coworker conversations utilitarian. The counter-view: if you know your worth and set boundaries, being the nearby person isn’t automatically exploitation.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="story" id="story-7">
+          <div class="num" aria-hidden="true">7</div>
+          <div>
+            <h2 class="tagline">93% of paint splatters are valid Perl programs (2019)</h2>
+            <p class="body">A 2019 SIGBOVIK paper found 93% of randomly generated paint splatters parse as valid Perl programs, thanks mostly to Perl’s unquoted-string quirk — a bare word like ME evaluates as the string “ME”. It’s a joke paper with a real point about how permissive Perl’s parser is.</p>
+            <div class="meta">
+              <a class="source" href="https://www.mcmillen.dev/sigbovik/" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50459745" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">512 pts · 66 comments</span>
+              <button class="copy-btn" type="button" data-copy="7">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>Delight at the paper itself — one commenter flags “Figure − 3. − 3 .” as a good easter egg — plus the technical explanation: unquoted strings do most of the work. A side thread notes older PHP had the same feature, deprecated in PHP 7 and gone in 8.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="story" id="story-8">
+          <div class="num" aria-hidden="true">8</div>
+          <div>
+            <h2 class="tagline">Gemini Decisions API: Google’s new model for structured decisions</h2>
+            <p class="body">Google launched the Gemini Decisions API, a model tuned for structured decisions over text, images, audio and video. It’s pricier than rival decision models, but multimodal input — especially images — is the selling point. Commenters note Google is also killing Jules today, so longevity is an open question.</p>
+            <div class="meta">
+              <a class="source" href="https://blog.google/innovation-and-ai/technology/developers-tools/gemini-decisions-api/" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50456791" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">503 pts · 148 comments</span>
+              <button class="copy-btn" type="button" data-copy="8">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>Image input is the practical draw: one commenter runs a home-rolled version over photos at about 3 images a second for tagging. The other half of the thread is about Jules being suffocated with no migration path beyond “use Antigravity” — several doubt the Decisions API survives six months at this rate.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="story" id="story-9">
+          <div class="num" aria-hidden="true">9</div>
+          <div>
+            <h2 class="tagline">Jane Street publishes a Socratic Tutor agent skill</h2>
+            <p class="body">Jane Street open-sourced a Socratic Tutor skill for coding agents: instead of answering, the agent asks questions that lead you to the answer. It’s a teaching pattern, not a new idea — dozens of similar skills already exist — but Jane Street’s version is the most elaborate of the bunch.</p>
+            <div class="meta">
+              <a class="source" href="https://github.com/janestreet/agent_skills/blob/master/socratic-tutor/SKILL.md" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50438261" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">472 pts · 107 comments</span>
+              <button class="copy-btn" type="button" data-copy="9">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>Novelty is the debate: a GitHub search returns 92 repositories for “socratic tutor skill,” and several commenters built their own in 2024. Defenders say Jane Street’s is genuinely more complex than the lookalikes, and Socratic questioning is a well-known technique nobody owns.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="story" id="story-10">
+          <div class="num" aria-hidden="true">10</div>
+          <div>
+            <h2 class="tagline">Lock your GitHub Actions: pin by commit, verify with lockfiles</h2>
+            <p class="body">A guide to locking down GitHub Actions: pin actions by commit hash instead of a movable tag, and use Actions lockfiles so an impostor commit can’t slip in. The debate is about who you trust — the repo owner not to move a tag, or the person who merged the hash.</p>
+            <div class="meta">
+              <a class="source" href="https://hugovk.dev/blog/2026/lock-github-actions/" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50459485" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">306 pts · 60 comments</span>
+              <button class="copy-btn" type="button" data-copy="10">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>The core trade-off, argued both ways: hash-pinning trusts whoever merged the commit to have checked it’s a real release, not some fork’s commit — and any fork is the same repo on GitHub. Lockfiles are the agreed fix: they won’t lock an impostor commit. Some only use actions they can review in under an hour.</p>
+            </div>
+          </div>
+        </article>
+      </main>
+
+      <footer>
+        <a href="../">&larr; HN Daily archive</a>
+        <a href="https://tk3369.github.io/hn-daily/">tk3369.github.io/hn-daily</a>
+        <span>Press T to toggle theme.</span>
+      </footer>
+    </div>
+
+    <script>
+      (function () {
+        var KEY = "hn-daily-theme";
+        var root = document.documentElement;
+        var toggle = document.getElementById("themeToggle");
+        var label = document.getElementById("themeLabel");
+
+        function storedTheme() {
+          try { return window.localStorage.getItem(KEY); } catch (e) { return null; }
+        }
+        function systemDark() {
+          return window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+        }
+        function isDark() {
+          var t = root.getAttribute("data-theme");
+          if (t === "dark") return true;
+          if (t === "light") return false;
+          return systemDark();
+        }
+        function render() {
+          var dark = isDark();
+          label.textContent = dark ? "Light" : "Dark";
+          toggle.setAttribute("aria-pressed", dark ? "true" : "false");
+        }
+        function setTheme(theme) {
+          root.setAttribute("data-theme", theme);
+          try { window.localStorage.setItem(KEY, theme); } catch (e) {}
+          render();
+        }
+        function flip() {
+          setTheme(isDark() ? "light" : "dark");
+        }
+
+        var saved = storedTheme();
+        if (saved === "dark" || saved === "light") {
+          root.setAttribute("data-theme", saved);
+        }
+        render();
+
+        toggle.addEventListener("click", flip);
+        document.addEventListener("keydown", function (e) {
+          if (e.key === "t" || e.key === "T") {
+            var tag = (e.target && e.target.tagName) || "";
+            if (tag === "INPUT" || tag === "TEXTAREA") return;
+            if (e.metaKey || e.ctrlKey || e.altKey) return;
+            flip();
+          }
+        });
+        if (window.matchMedia) {
+          var mq = window.matchMedia("(prefers-color-scheme: dark)");
+          if (mq.addEventListener) mq.addEventListener("change", render);
+        }
+
+        // Copy buttons: number + tagline + body + source + HN link + points/comments.
+        // The "What HN commenters are saying" paragraph is deliberately excluded.
+        var copyData = {
+          "1": "1. Tim Peters, author of Timsort and the Zen of Python, has died\n\nTim Peters, a Python core developer since the 1990s, has died. He wrote Timsort, the sorting algorithm now used in Python, Java and Rust, and the Zen of Python — “import this” — that still ships with every Python install. The community is marking the loss of one of its founding voices.\n\nSource: https://discuss.python.org/t/in-memoriam-tim-peters-1952-2026/110028\nHN Discuss: https://news.ycombinator.com/item?id=50450488\n1319 pts / 157 comments",
+          "2": "2. WSJ: Nvidia board is preparing to oust Jensen Huang\n\nThe Wall Street Journal reports Nvidia’s board is preparing to remove Jensen Huang as CEO, days after reports of a second affair and a board probe into his personal conduct. It lands the same day Nvidia announced Huang has resigned, effective immediately — two reports of one fast-moving event, told from different sides.\n\nSource: https://www.wsj.com/business/nvidia-is-preparing-to-oust-nvidia-ceo-jensen-huang-30f421ad\nHN Discuss: https://news.ycombinator.com/item?id=50459703\n1179 pts / 1568 comments",
+          "3": "3. AWS emulator: run AWS services locally\n\nAWS released an open-source local emulator for its services, built largely by AI agents iterating on the codebase. The aim: test against S3, Lambda and friends without touching the cloud. The thread wants proof it’s a maintained product, not a one-off demo.\n\nSource: https://github.com/aws/aws-emulator\nHN Discuss: https://news.ycombinator.com/item?id=50456631\n911 pts / 251 comments",
+          "4": "4. NVIDIA announces CEO transition: Huang resigns immediately\n\nNvidia’s board announced Jensen Huang has resigned as President, CEO and board member, effective immediately. The release gives no reason, coming days after reports of a board probe into Huang’s conduct. The thread is mostly speculation about what pushed the board to act.\n\nSource: https://nvidianews.nvidia.com/news/nvidia-announces-ceo-transition\nHN Discuss: https://news.ycombinator.com/item?id=50467087\n725 pts / 534 comments",
+          "5": "5. United Airlines bans AI agents from booking flights\n\nUnited Airlines says AI agents may not book flights on behalf of travelers, joining the pushback against agentic booking. United’s argument: it doesn’t want another powerful intermediary between it and passengers, after search, metasearch and OTAs. The ban is a test case for whether airlines can keep agents out.\n\nSource: https://www.cbsnews.com/news/united-airlines-bans-ai-agents-booking-flights/\nHN Discuss: https://news.ycombinator.com/item?id=50458900\n617 pts / 636 comments",
+          "6": "6. A false smoke alarm almost drowned Jane Street’s only NYC datacenter\n\nA false smoke alarm triggered the water-based fire suppression in Jane Street’s only New York datacenter — nearly flooding the room. The author, who lived minutes away, got the 3am call. It’s a war story about single points of failure, and about the cost of telling coworkers you live close to the office.\n\nSource: https://michael.bacarella.com/2026/11/10/false-smoke-alarm-jane-street-datacenter/\nHN Discuss: https://news.ycombinator.com/item?id=50455394\n534 pts / 256 comments",
+          "7": "7. 93% of paint splatters are valid Perl programs (2019)\n\nA 2019 SIGBOVIK paper found 93% of randomly generated paint splatters parse as valid Perl programs, thanks mostly to Perl’s unquoted-string quirk — a bare word like ME evaluates as the string “ME”. It’s a joke paper with a real point about how permissive Perl’s parser is.\n\nSource: https://www.mcmillen.dev/sigbovik/\nHN Discuss: https://news.ycombinator.com/item?id=50459745\n512 pts / 66 comments",
+          "8": "8. Gemini Decisions API: Google’s new model for structured decisions\n\nGoogle launched the Gemini Decisions API, a model tuned for structured decisions over text, images, audio and video. It’s pricier than rival decision models, but multimodal input — especially images — is the selling point. Commenters note Google is also killing Jules today, so longevity is an open question.\n\nSource: https://blog.google/innovation-and-ai/technology/developers-tools/gemini-decisions-api/\nHN Discuss: https://news.ycombinator.com/item?id=50456791\n503 pts / 148 comments",
+          "9": "9. Jane Street publishes a Socratic Tutor agent skill\n\nJane Street open-sourced a Socratic Tutor skill for coding agents: instead of answering, the agent asks questions that lead you to the answer. It’s a teaching pattern, not a new idea — dozens of similar skills already exist — but Jane Street’s version is the most elaborate of the bunch.\n\nSource: https://github.com/janestreet/agent_skills/blob/master/socratic-tutor/SKILL.md\nHN Discuss: https://news.ycombinator.com/item?id=50438261\n472 pts / 107 comments",
+          "10": "10. Lock your GitHub Actions: pin by commit, verify with lockfiles\n\nA guide to locking down GitHub Actions: pin actions by commit hash instead of a movable tag, and use Actions lockfiles so an impostor commit can’t slip in. The debate is about who you trust — the repo owner not to move a tag, or the person who merged the hash.\n\nSource: https://hugovk.dev/blog/2026/lock-github-actions/\nHN Discuss: https://news.ycombinator.com/item?id=50459485\n306 pts / 60 comments"
+};
+
+        function fallbackCopy(text) {
+          var ta = document.createElement("textarea");
+          ta.value = text;
+          ta.setAttribute("readonly", "");
+          ta.style.position = "absolute";
+          ta.style.left = "-9999px";
+          document.body.appendChild(ta);
+          ta.select();
+          var ok = false;
+          try { ok = document.execCommand("copy"); } catch (e) { ok = false; }
+          document.body.removeChild(ta);
+          return ok;
+        }
+
+        var buttons = document.querySelectorAll(".copy-btn");
+        Array.prototype.forEach.call(buttons, function (btn) {
+          btn.addEventListener("click", function () {
+            var text = copyData[btn.getAttribute("data-copy")] || "";
+            function done() {
+              var original = "Copy";
+              btn.textContent = "Copied ✓";
+              btn.classList.add("copied");
+              setTimeout(function () {
+                btn.textContent = original;
+                btn.classList.remove("copied");
+              }, 1600);
+            }
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+              navigator.clipboard.writeText(text).then(done, function () {
+                if (fallbackCopy(text)) done();
+              });
+            } else if (fallbackCopy(text)) {
+              done();
+            }
+          });
+        });
+      })();
+    </script>
+  </body>
+</html>
