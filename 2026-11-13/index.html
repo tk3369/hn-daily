@@ -1,0 +1,535 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="light dark" />
+    <link rel="icon" href="data:," />
+    <title>HN Daily — Friday, November 13, 2026</title>
+    <style>
+      :root {
+        --bg: #f3f1eb;
+        --surface: #fbf9f4;
+        --ink: #1c1a16;
+        --ink-soft: #4a463e;
+        --ink-faint: #6f6a5e;
+        --line: #d8d2c4;
+        --accent: #ff6600;
+        --accent-ink: #b34700;
+        --comment-bg: #efe9dc;
+        --focus: #b34700;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root:not([data-theme="light"]) {
+          --bg: #16140f;
+          --surface: #1f1c16;
+          --ink: #f0ead9;
+          --ink-soft: #c9c2b0;
+          --ink-faint: #9a937f;
+          --line: #3a362b;
+          --accent: #ff7a1a;
+          --accent-ink: #ff9440;
+          --comment-bg: #262219;
+          --focus: #ff9440;
+        }
+      }
+      :root[data-theme="dark"] {
+        --bg: #16140f;
+        --surface: #1f1c16;
+        --ink: #f0ead9;
+        --ink-soft: #c9c2b0;
+        --ink-faint: #9a937f;
+        --line: #3a362b;
+        --accent: #ff7a1a;
+        --accent-ink: #ff9440;
+        --comment-bg: #262219;
+        --focus: #ff9440;
+      }
+
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--ink);
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: 17px;
+        line-height: 1.55;
+        -webkit-font-smoothing: antialiased;
+      }
+      a { color: var(--accent-ink); text-decoration: underline; text-underline-offset: 2px; }
+      a:hover { color: var(--accent); }
+      a:focus-visible, button:focus-visible {
+        outline: 2px solid var(--focus);
+        outline-offset: 2px;
+        border-radius: 2px;
+      }
+
+      .wrap {
+        max-width: 1080px;
+        margin: 0 auto;
+        padding: 32px 24px 64px;
+      }
+
+      header.masthead {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 20px;
+        border-bottom: 3px solid var(--ink);
+        padding-bottom: 20px;
+        margin-bottom: 8px;
+      }
+      .masthead h1 {
+        margin: 0 0 6px;
+        font-size: clamp(30px, 5vw, 46px);
+        line-height: 1.1;
+        font-weight: 700;
+        letter-spacing: -0.01em;
+      }
+      .masthead .subtitle {
+        margin: 0;
+        font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+        font-size: 14px;
+        color: var(--ink-soft);
+      }
+      .masthead .kicker {
+        margin: 0 0 10px;
+        font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+        font-size: 12px;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--accent-ink);
+      }
+
+      .theme-toggle {
+        flex: 0 0 auto;
+        width: 86px;
+        height: 40px;
+        min-height: 40px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        background: var(--surface);
+        color: var(--ink);
+        border: 1.5px solid var(--ink);
+        border-radius: 999px;
+        font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+        font-size: 13px;
+        cursor: pointer;
+        padding: 0 10px;
+      }
+      .theme-toggle .dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: var(--accent);
+        flex: 0 0 auto;
+      }
+      .theme-toggle:hover { border-color: var(--accent); }
+
+      .story {
+        display: grid;
+        grid-template-columns: 72px 1fr;
+        gap: 4px 20px;
+        padding: 28px 0 26px;
+        border-bottom: 1px solid var(--line);
+        scroll-margin-top: 16px;
+      }
+      .story .num {
+        font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+        font-size: 40px;
+        font-weight: 700;
+        line-height: 1;
+        color: var(--accent);
+        padding-top: 2px;
+      }
+      .story h2 {
+        margin: 0 0 10px;
+        font-size: clamp(21px, 3vw, 26px);
+        line-height: 1.25;
+        font-weight: 700;
+      }
+      .story .body { margin: 0 0 14px; color: var(--ink); max-width: 68ch; }
+
+      .meta {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 8px 18px;
+        font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+        font-size: 13.5px;
+        color: var(--ink-soft);
+        margin-bottom: 16px;
+      }
+      .meta a { min-height: 36px; display: inline-flex; align-items: center; }
+      .meta .stats { color: var(--ink-faint); white-space: nowrap; }
+      .copy-btn {
+        margin-left: auto;
+        min-height: 36px;
+        padding: 6px 14px;
+        background: transparent;
+        color: var(--ink);
+        border: 1px solid var(--line);
+        border-radius: 6px;
+        font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+        font-size: 13px;
+        cursor: pointer;
+      }
+      .copy-btn:hover { border-color: var(--accent); color: var(--accent-ink); }
+      .copy-btn.copied { border-color: var(--accent); color: var(--accent-ink); }
+
+      .commenters {
+        background: var(--comment-bg);
+        border-radius: 6px;
+        padding: 14px 18px;
+        max-width: 72ch;
+      }
+      .commenters .label {
+        display: block;
+        font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+        font-size: 11.5px;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--accent-ink);
+        margin-bottom: 6px;
+      }
+      .commenters p { margin: 0; font-size: 15.5px; color: var(--ink-soft); }
+
+      footer {
+        margin-top: 36px;
+        padding-top: 20px;
+        border-top: 3px solid var(--ink);
+        font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+        font-size: 13.5px;
+        color: var(--ink-soft);
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px 24px;
+        align-items: center;
+      }
+      footer a { min-height: 36px; display: inline-flex; align-items: center; }
+
+      @media (max-width: 600px) {
+        .wrap { padding: 22px 16px 48px; }
+        .story { grid-template-columns: 46px 1fr; gap: 2px 12px; padding: 22px 0 20px; }
+        .story .num { font-size: 28px; }
+        header.masthead { flex-wrap: wrap; }
+        .copy-btn { margin-left: 0; }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        html { scroll-behavior: auto; }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <header class="masthead">
+        <div>
+          <p class="kicker">Hacker News · Daily Digest</p>
+          <h1>HN Daily — Friday, November 13, 2026</h1>
+          <p class="subtitle">HN Top 10 — 2026-11-13 07:00 PT (hottest by points)</p>
+        </div>
+        <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle dark mode" aria-pressed="false">
+          <span class="dot" aria-hidden="true"></span><span id="themeLabel">Dark</span>
+        </button>
+      </header>
+
+      <main>
+        <article class="story" id="story-1">
+          <div class="num" aria-hidden="true">1</div>
+          <div>
+            <h2 class="tagline">Jensen Huang resigns as Nvidia CEO, effective immediately</h2>
+            <p class="body">Nvidia CEO Jensen Huang resigned Thursday as President, CEO and board member, effective immediately, after weeks of scandal reports — a NYT report tying him to a woman US officials say was a Chinese spy, and a second alleged affair with an employee. CFO Colette Kress is interim CEO; shares fell 14% at the open before closing down about 4%.</p>
+            <div class="meta">
+              <a class="source" href="https://apnews.com/article/nvidia-megaspeed-china-singapore-huang-5403f152a601cf82ce939f1d24fffa0f" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50467087" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">3783 pts · 3266 comments</span>
+              <button class="copy-btn" type="button" data-copy="1">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>Consensus: enormous — one commenter puts the market-cap swing at ~$600B, and the downfall is embarrassing to watch. Disagreement: whether the affairs are the real cause or cover for a board coup or another agenda; several doubt the official story, while others note the company, not AI itself, takes the hit.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="story" id="story-2">
+          <div class="num" aria-hidden="true">2</div>
+          <div>
+            <h2 class="tagline">Microsoft 365 degraded: Exchange Online down across the Americas</h2>
+            <p class="body">Microsoft is investigating degraded Exchange Online access across the Americas — users can’t reach mailboxes through multiple connection methods. Incident EX1550543: Microsoft says it’s pursuing all paths to reduce impact and has paused deployments and config changes. Even the status page itself was slow to load.</p>
+            <div class="meta">
+              <a class="source" href="https://status.cloud.microsoft/" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50471731" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">1063 pts · 888 comments</span>
+              <button class="copy-btn" type="button" data-copy="2">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>Outages confirmed org-wide; the status page being down too draws the obvious jokes. Some commenters admit they enjoy the forced break, while others just want their mail back.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="story" id="story-3">
+          <div class="num" aria-hidden="true">3</div>
+          <div>
+            <h2 class="tagline">Anthropic files for IPO: Nasdaq ‘ANT’, trading expected Nov 19</h2>
+            <p class="body">Anthropic’s IPO roadshow started Nov 10; the price is set Nov 18 and shares trade Nov 19 on Nasdaq as ANT. Q3 revenue hit $17.0B, up 12x year over year, with 15% adjusted operating margin — but a $23.3B net loss, mostly a $21.9B non-cash charge from revaluing convertible notes and SAFEs.</p>
+            <div class="meta">
+              <a class="source" href="https://ipo.anthropic.com/us/" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50465829" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">976 pts · 883 comments</span>
+              <button class="copy-btn" type="button" data-copy="3">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>Skepticism dominates — ‘enshittification’ jokes, eye-rolls at the public-benefit-corporation framing, and a reported &gt;$1T valuation against a $23B quarterly loss. Others ask whether three mega-IPOs at once — SpaceX, Anthropic, OpenAI — will drain capital from the rest of the market.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="story" id="story-4">
+          <div class="num" aria-hidden="true">4</div>
+          <div>
+            <h2 class="tagline">Rust 1.100 stabilizes the never type and custom allocators</h2>
+            <p class="body">Rust 1.100 is out, headlined by the long-awaited stabilization of the never type (!) and custom allocators, plus dependency cooldowns — Cargo can now ignore crate versions published too recently — and cargo install reusing the existing lockfile. A milestone release after years of work on these features.</p>
+            <div class="meta">
+              <a class="source" href="https://blog.rust-lang.org/2026/11/12/Rust-1.100.0/" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50472038" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">786 pts · 286 comments</span>
+              <button class="copy-btn" type="button" data-copy="4">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>Celebration, mostly — ‘finally, never happened’ — with one commenter still yearning for a stable ABI. Another just fixed arena leaks with allocator-api2 and can now drop the dependency.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="story" id="story-5">
+          <div class="num" aria-hidden="true">5</div>
+          <div>
+            <h2 class="tagline">Show HN: a $300 embroidery machine demanded a subscription, so he built his own app</h2>
+            <p class="body">A $300 embroidery machine needed a paid subscription to run, so its owner built Zigzag, an open-source app that talks to the machine over Bluetooth instead. A small, concrete win against subscription-locked hardware — and a demo of what one person plus an LLM can now ship.</p>
+            <div class="meta">
+              <a class="source" href="https://github.com/simpsoka/zigzag" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50470488" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">632 pts · 211 comments</span>
+              <button class="copy-btn" type="button" data-copy="5">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>Praise for the DIY spirit and the LLM-empowered angle. Practical questions follow — which machines are supported, is there a standard protocol? — and a broader call to kill hardware subscriptions app by app until vendors sell hardware with no strings attached.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="story" id="story-6">
+          <div class="num" aria-hidden="true">6</div>
+          <div>
+            <h2 class="tagline">Gemini 4 Hydrogen and Orchestrator: Google’s two-model coding loop</h2>
+            <p class="body">Google launched Gemini 4 Hydrogen in Antigravity with Orchestrator, which hands work back and forth between models in one trajectory: Carbon explores, plans and resolves ambiguity read-only, then Hydrogen writes the edits, updates packages and runs tests — switching back when it hits friction.</p>
+            <div class="meta">
+              <a class="source" href="https://antigravity.google/blog/gemini-4-hydrogen-in-google-antigravity/" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50472260" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">458 pts · 142 comments</span>
+              <button class="copy-btn" type="button" data-copy="6">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>Fans like not switching models manually; skeptics are nervous about delegating model choice to a model, which tends to be optimistic about its own capabilities. Others compare it to Anthropic’s advisor mode and GitHub’s multi-model pipeline — and mock the name scheme.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="story" id="story-7">
+          <div class="num" aria-hidden="true">7</div>
+          <div>
+            <h2 class="tagline">Running 16B LLMs on an iPad Air 1 and a Xiaomi TV box</h2>
+            <p class="body">One developer got 16B-parameter models running on a first-gen iPad Air and a Xiaomi TV box — both with under 1GB of usable memory — at usable speeds, and open-sourced the kernels, modified models and results so anyone can reproduce it. Old hardware, new tricks.</p>
+            <div class="meta">
+              <a class="source" href="https://github.com/hyperionaidev/smolmaxxing/" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50468888" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">421 pts · 159 comments</span>
+              <button class="copy-btn" type="button" data-copy="7">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>Delight at resurrecting obsolete gear, with comparisons to TinyStories running on a Wii with GPU acceleration. The open question is utility — are small models on tiny devices smart enough for practical tasks?</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="story" id="story-8">
+          <div class="num" aria-hidden="true">8</div>
+          <div>
+            <h2 class="tagline">Reuters: Huang had a relationship with a second Nvidia employee</h2>
+            <p class="body">Reuters reports, citing sources, that Jensen Huang had an intimate relationship with a second employee — this one a subordinate — days after the NYT reported his affair with a woman US officials concluded was a Chinese spy. The drip of revelations preceded his resignation by hours.</p>
+            <div class="meta">
+              <a class="source" href="https://www.reuters.com/technology/former-nvidia-ceo-huang-had-relationship-with-second-employee-sources-say-2026-11-12/" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50473190" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">365 pts · 396 comments</span>
+              <button class="copy-btn" type="button" data-copy="8">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>The dominant read is coordination — ‘slowly releasing more and more information’ — with jokes about leather jackets and a third affair. Others ask whether the timing, just after the midterms, and the Anthropic IPO are connected.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="story" id="story-9">
+          <div class="num" aria-hidden="true">9</div>
+          <div>
+            <h2 class="tagline">Claude is down: elevated errors across claude.ai, Claude Code and the API</h2>
+            <p class="body">Anthropic reports elevated errors on claude.ai, Claude Code and platform.claude.com. Users in Europe report sessions that can’t connect, or instances that crash while pretending to work; some reconnect after a few minutes, others are still down after half an hour.</p>
+            <div class="meta">
+              <a class="source" href="https://status.claude.com/incidents/nn11wk485zfn" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50481187" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">358 pts · 312 comments</span>
+              <button class="copy-btn" type="button" data-copy="9">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>Reports from France and Italy, gallows humor about an enforced tech sabbatical and family time. One commenter notes the irony: with Microsoft 365 also degraded today, both clouds are having a bad day.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="story" id="story-10">
+          <div class="num" aria-hidden="true">10</div>
+          <div>
+            <h2 class="tagline">A new dwarf planet candidate, 2026 ED138, takes ~280 years to orbit the Sun</h2>
+            <p class="body">Astronomers found a possible new dwarf planet far beyond Pluto — 2026 ED138, on a 280-year orbit tilted nearly 25 degrees. It was spotted in modern survey data and traced back to photographic plates from 1937. Confirmation would add another member to the family Pluto joined in 2006.</p>
+            <div class="meta">
+              <a class="source" href="https://www.smithsonianmag.com/smart-news/astronomers-found-a-mysterious-object-orbiting-far-beyond-pluto-it-could-be-a-new-dwarf-planet-hidden-in-our-solar-system-180989857/" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50472490" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">353 pts · 151 comments</span>
+              <button class="copy-btn" type="button" data-copy="10">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>Excitement at finding it in 1937 plates, and ‘is this Planet X?’ The Pluto debate resurfaces too: with Ceres, Eris, Haumea and Makemake, several say the dwarf-planet class was the right call all along.</p>
+            </div>
+          </div>
+        </article>
+      </main>
+
+      <footer>
+        <a href="../">&larr; HN Daily archive</a>
+        <a href="https://tk3369.github.io/hn-daily/">tk3369.github.io/hn-daily</a>
+        <span>Press T to toggle theme.</span>
+      </footer>
+    </div>
+
+    <script>
+      (function () {
+        var KEY = "hn-daily-theme";
+        var root = document.documentElement;
+        var toggle = document.getElementById("themeToggle");
+        var label = document.getElementById("themeLabel");
+
+        function storedTheme() {
+          try { return window.localStorage.getItem(KEY); } catch (e) { return null; }
+        }
+        function systemDark() {
+          return window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+        }
+        function isDark() {
+          var t = root.getAttribute("data-theme");
+          if (t === "dark") return true;
+          if (t === "light") return false;
+          return systemDark();
+        }
+        function render() {
+          var dark = isDark();
+          label.textContent = dark ? "Light" : "Dark";
+          toggle.setAttribute("aria-pressed", dark ? "true" : "false");
+        }
+        function setTheme(theme) {
+          root.setAttribute("data-theme", theme);
+          try { window.localStorage.setItem(KEY, theme); } catch (e) {}
+          render();
+        }
+        function flip() {
+          setTheme(isDark() ? "light" : "dark");
+        }
+
+        var saved = storedTheme();
+        if (saved === "dark" || saved === "light") {
+          root.setAttribute("data-theme", saved);
+        }
+        render();
+
+        toggle.addEventListener("click", flip);
+        document.addEventListener("keydown", function (e) {
+          if (e.key === "t" || e.key === "T") {
+            var tag = (e.target && e.target.tagName) || "";
+            if (tag === "INPUT" || tag === "TEXTAREA") return;
+            if (e.metaKey || e.ctrlKey || e.altKey) return;
+            flip();
+          }
+        });
+        if (window.matchMedia) {
+          var mq = window.matchMedia("(prefers-color-scheme: dark)");
+          if (mq.addEventListener) mq.addEventListener("change", render);
+        }
+
+        // Copy buttons: number + tagline + body + source + HN link + points/comments.
+        // The "What HN commenters are saying" paragraph is deliberately excluded.
+        var copyData = {
+          "1": "1. Jensen Huang resigns as Nvidia CEO, effective immediately\n\nNvidia CEO Jensen Huang resigned Thursday as President, CEO and board member, effective immediately, after weeks of scandal reports — a NYT report tying him to a woman US officials say was a Chinese spy, and a second alleged affair with an employee. CFO Colette Kress is interim CEO; shares fell 14% at the open before closing down about 4%.\n\nSource: https://apnews.com/article/nvidia-megaspeed-china-singapore-huang-5403f152a601cf82ce939f1d24fffa0f\nHN Discuss: https://news.ycombinator.com/item?id=50467087\n3783 pts / 3266 comments",
+          "2": "2. Microsoft 365 degraded: Exchange Online down across the Americas\n\nMicrosoft is investigating degraded Exchange Online access across the Americas — users can’t reach mailboxes through multiple connection methods. Incident EX1550543: Microsoft says it’s pursuing all paths to reduce impact and has paused deployments and config changes. Even the status page itself was slow to load.\n\nSource: https://status.cloud.microsoft/\nHN Discuss: https://news.ycombinator.com/item?id=50471731\n1063 pts / 888 comments",
+          "3": "3. Anthropic files for IPO: Nasdaq ‘ANT’, trading expected Nov 19\n\nAnthropic’s IPO roadshow started Nov 10; the price is set Nov 18 and shares trade Nov 19 on Nasdaq as ANT. Q3 revenue hit $17.0B, up 12x year over year, with 15% adjusted operating margin — but a $23.3B net loss, mostly a $21.9B non-cash charge from revaluing convertible notes and SAFEs.\n\nSource: https://ipo.anthropic.com/us/\nHN Discuss: https://news.ycombinator.com/item?id=50465829\n976 pts / 883 comments",
+          "4": "4. Rust 1.100 stabilizes the never type and custom allocators\n\nRust 1.100 is out, headlined by the long-awaited stabilization of the never type (!) and custom allocators, plus dependency cooldowns — Cargo can now ignore crate versions published too recently — and cargo install reusing the existing lockfile. A milestone release after years of work on these features.\n\nSource: https://blog.rust-lang.org/2026/11/12/Rust-1.100.0/\nHN Discuss: https://news.ycombinator.com/item?id=50472038\n786 pts / 286 comments",
+          "5": "5. Show HN: a $300 embroidery machine demanded a subscription, so he built his own app\n\nA $300 embroidery machine needed a paid subscription to run, so its owner built Zigzag, an open-source app that talks to the machine over Bluetooth instead. A small, concrete win against subscription-locked hardware — and a demo of what one person plus an LLM can now ship.\n\nSource: https://github.com/simpsoka/zigzag\nHN Discuss: https://news.ycombinator.com/item?id=50470488\n632 pts / 211 comments",
+          "6": "6. Gemini 4 Hydrogen and Orchestrator: Google’s two-model coding loop\n\nGoogle launched Gemini 4 Hydrogen in Antigravity with Orchestrator, which hands work back and forth between models in one trajectory: Carbon explores, plans and resolves ambiguity read-only, then Hydrogen writes the edits, updates packages and runs tests — switching back when it hits friction.\n\nSource: https://antigravity.google/blog/gemini-4-hydrogen-in-google-antigravity/\nHN Discuss: https://news.ycombinator.com/item?id=50472260\n458 pts / 142 comments",
+          "7": "7. Running 16B LLMs on an iPad Air 1 and a Xiaomi TV box\n\nOne developer got 16B-parameter models running on a first-gen iPad Air and a Xiaomi TV box — both with under 1GB of usable memory — at usable speeds, and open-sourced the kernels, modified models and results so anyone can reproduce it. Old hardware, new tricks.\n\nSource: https://github.com/hyperionaidev/smolmaxxing/\nHN Discuss: https://news.ycombinator.com/item?id=50468888\n421 pts / 159 comments",
+          "8": "8. Reuters: Huang had a relationship with a second Nvidia employee\n\nReuters reports, citing sources, that Jensen Huang had an intimate relationship with a second employee — this one a subordinate — days after the NYT reported his affair with a woman US officials concluded was a Chinese spy. The drip of revelations preceded his resignation by hours.\n\nSource: https://www.reuters.com/technology/former-nvidia-ceo-huang-had-relationship-with-second-employee-sources-say-2026-11-12/\nHN Discuss: https://news.ycombinator.com/item?id=50473190\n365 pts / 396 comments",
+          "9": "9. Claude is down: elevated errors across claude.ai, Claude Code and the API\n\nAnthropic reports elevated errors on claude.ai, Claude Code and platform.claude.com. Users in Europe report sessions that can’t connect, or instances that crash while pretending to work; some reconnect after a few minutes, others are still down after half an hour.\n\nSource: https://status.claude.com/incidents/nn11wk485zfn\nHN Discuss: https://news.ycombinator.com/item?id=50481187\n358 pts / 312 comments",
+          "10": "10. A new dwarf planet candidate, 2026 ED138, takes ~280 years to orbit the Sun\n\nAstronomers found a possible new dwarf planet far beyond Pluto — 2026 ED138, on a 280-year orbit tilted nearly 25 degrees. It was spotted in modern survey data and traced back to photographic plates from 1937. Confirmation would add another member to the family Pluto joined in 2006.\n\nSource: https://www.smithsonianmag.com/smart-news/astronomers-found-a-mysterious-object-orbiting-far-beyond-pluto-it-could-be-a-new-dwarf-planet-hidden-in-our-solar-system-180989857/\nHN Discuss: https://news.ycombinator.com/item?id=50472490\n353 pts / 151 comments"
+};
+
+        function fallbackCopy(text) {
+          var ta = document.createElement("textarea");
+          ta.value = text;
+          ta.setAttribute("readonly", "");
+          ta.style.position = "absolute";
+          ta.style.left = "-9999px";
+          document.body.appendChild(ta);
+          ta.select();
+          var ok = false;
+          try { ok = document.execCommand("copy"); } catch (e) { ok = false; }
+          document.body.removeChild(ta);
+          return ok;
+        }
+
+        var buttons = document.querySelectorAll(".copy-btn");
+        Array.prototype.forEach.call(buttons, function (btn) {
+          btn.addEventListener("click", function () {
+            var text = copyData[btn.getAttribute("data-copy")] || "";
+            function done() {
+              var original = "Copy";
+              btn.textContent = "Copied ✓";
+              btn.classList.add("copied");
+              setTimeout(function () {
+                btn.textContent = original;
+                btn.classList.remove("copied");
+              }, 1600);
+            }
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+              navigator.clipboard.writeText(text).then(done, function () {
+                if (fallbackCopy(text)) done();
+              });
+            } else if (fallbackCopy(text)) {
+              done();
+            }
+          });
+        });
+      })();
+    </script>
+  </body>
+</html>
