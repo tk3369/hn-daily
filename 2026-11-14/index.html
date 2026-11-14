@@ -1,0 +1,526 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="light dark" />
+    <link rel="icon" href="data:," />
+    <title>HN Daily — Saturday, November 14, 2026</title>
+    <style>
+      :root {
+        --bg: #f3f1eb;
+        --surface: #fbf9f4;
+        --ink: #1c1a16;
+        --ink-soft: #4a463e;
+        --ink-faint: #6f6a5e;
+        --line: #d8d2c4;
+        --accent: #ff6600;
+        --accent-ink: #b34700;
+        --comment-bg: #efe9dc;
+        --focus: #b34700;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root:not([data-theme="light"]) {
+          --bg: #16140f;
+          --surface: #1f1c16;
+          --ink: #f0ead9;
+          --ink-soft: #c9c2b0;
+          --ink-faint: #9a937f;
+          --line: #3a362b;
+          --accent: #ff7a1a;
+          --accent-ink: #ff9440;
+          --comment-bg: #262219;
+          --focus: #ff9440;
+        }
+      }
+      :root[data-theme="dark"] {
+        --bg: #16140f;
+        --surface: #1f1c16;
+        --ink: #f0ead9;
+        --ink-soft: #c9c2b0;
+        --ink-faint: #9a937f;
+        --line: #3a362b;
+        --accent: #ff7a1a;
+        --accent-ink: #ff9440;
+        --comment-bg: #262219;
+        --focus: #ff9440;
+      }
+
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--ink);
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: 17px;
+        line-height: 1.55;
+        -webkit-font-smoothing: antialiased;
+      }
+      a { color: var(--accent-ink); text-decoration: underline; text-underline-offset: 2px; }
+      a:hover { color: var(--accent); }
+      a:focus-visible, button:focus-visible {
+        outline: 2px solid var(--focus);
+        outline-offset: 2px;
+        border-radius: 2px;
+      }
+
+      .wrap {
+        max-width: 1080px;
+        margin: 0 auto;
+        padding: 32px 24px 64px;
+      }
+
+      header.masthead {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 20px;
+        border-bottom: 3px solid var(--ink);
+        padding-bottom: 20px;
+        margin-bottom: 8px;
+      }
+      .masthead h1 {
+        margin: 0 0 6px;
+        font-size: clamp(30px, 5vw, 46px);
+        line-height: 1.1;
+        font-weight: 700;
+        letter-spacing: -0.01em;
+      }
+      .masthead .subtitle {
+        margin: 0;
+        font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+        font-size: 14px;
+        color: var(--ink-soft);
+      }
+      .masthead .kicker {
+        margin: 0 0 10px;
+        font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+        font-size: 12px;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--accent-ink);
+      }
+
+      .theme-toggle {
+        flex: 0 0 auto;
+        width: 86px;
+        height: 40px;
+        min-height: 40px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        background: var(--surface);
+        color: var(--ink);
+        border: 1.5px solid var(--ink);
+        border-radius: 999px;
+        font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+        font-size: 13px;
+        cursor: pointer;
+        padding: 0 10px;
+      }
+      .theme-toggle .dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: var(--accent);
+        flex: 0 0 auto;
+      }
+      .theme-toggle:hover { border-color: var(--accent); }
+
+      .story {
+        display: grid;
+        grid-template-columns: 72px 1fr;
+        gap: 4px 20px;
+        padding: 28px 0 26px;
+        border-bottom: 1px solid var(--line);
+        scroll-margin-top: 16px;
+      }
+      .story .num {
+        font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+        font-size: 40px;
+        font-weight: 700;
+        line-height: 1;
+        color: var(--accent);
+        padding-top: 2px;
+      }
+      .story h2 {
+        margin: 0 0 10px;
+        font-size: clamp(21px, 3vw, 26px);
+        line-height: 1.25;
+        font-weight: 700;
+      }
+      .story .body { margin: 0 0 14px; color: var(--ink); max-width: 68ch; }
+
+      .meta {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 8px 18px;
+        font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+        font-size: 13.5px;
+        color: var(--ink-soft);
+        margin-bottom: 16px;
+      }
+      .meta a { min-height: 36px; display: inline-flex; align-items: center; }
+      .meta .stats { color: var(--ink-faint); white-space: nowrap; }
+      .copy-btn {
+        margin-left: auto;
+        min-height: 36px;
+        padding: 6px 14px;
+        background: transparent;
+        color: var(--ink);
+        border: 1px solid var(--line);
+        border-radius: 6px;
+        font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+        font-size: 13px;
+        cursor: pointer;
+      }
+      .copy-btn:hover { border-color: var(--accent); color: var(--accent-ink); }
+      .copy-btn.copied { border-color: var(--accent); color: var(--accent-ink); }
+
+      .commenters {
+        background: var(--comment-bg);
+        border-radius: 6px;
+        padding: 14px 18px;
+        max-width: 72ch;
+      }
+      .commenters .label {
+        display: block;
+        font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+        font-size: 11.5px;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--accent-ink);
+        margin-bottom: 6px;
+      }
+      .commenters p { margin: 0; font-size: 15.5px; color: var(--ink-soft); }
+
+      footer {
+        margin-top: 36px;
+        padding-top: 20px;
+        border-top: 3px solid var(--ink);
+        font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+        font-size: 13.5px;
+        color: var(--ink-soft);
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px 24px;
+        align-items: center;
+      }
+      footer a { min-height: 36px; display: inline-flex; align-items: center; }
+
+      @media (max-width: 600px) {
+        .wrap { padding: 22px 16px 48px; }
+        .story { grid-template-columns: 46px 1fr; gap: 2px 12px; padding: 22px 0 20px; }
+        .story .num { font-size: 28px; }
+        header.masthead { flex-wrap: wrap; }
+        .copy-btn { margin-left: 0; }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        html { scroll-behavior: auto; }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <header class="masthead">
+        <div>
+          <p class="kicker">Hacker News · Daily Digest</p>
+          <h1>HN Daily — Saturday, November 14, 2026</h1>
+          <p class="subtitle">HN Top 10 — 2026-11-14 07:00 PT (hottest by points)</p>
+        </div>
+        <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle dark mode" aria-pressed="false">
+          <span class="dot" aria-hidden="true"></span><span id="themeLabel">Dark</span>
+        </button>
+      </header>
+
+      <main>
+        <article class="story" id="story-1">
+          <div class="num" aria-hidden="true">1</div>
+          <div>
+            <h2 class="tagline">FAA ground-stops all US departures for 4+ hours, then lifts it</h2>
+            <p class="body">Routers overloaded with data knocked out radar and comms at FAA centers Friday. Stop ran 3:54–8:15pm ET, departures only — airborne planes stayed up. 7,000+ flights canceled, 300k–400k stranded. DHS: no sign of a cyberattack.</p>
+            <div class="meta">
+              <a class="source" href="https://www.nbcnews.com/news/us-news/faa-orders-nationwide-ground-stop-departing-flights-reasons-safety-rcna609247" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50489641" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">1598 pts · 1213 comments</span>
+              <button class="copy-btn" type="button" data-copy="1">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>Consensus: the vague “extraordinary circumstances” wording frustrated everyone, and the fix — locating the offending system and taking it offline — reads as overdue. Disagreement: whether this was a one-off router failure or proof the decades-old ATC system needs the $50B overhaul Duffy is pushing; several tracked the chaos live on flight trackers.</p>
+            </div>
+          </div>
+        </article>
+        <article class="story" id="story-2">
+          <div class="num" aria-hidden="true">2</div>
+          <div>
+            <h2 class="tagline">Nvidia allegedly funded AI startups to buy its own GPUs</h2>
+            <p class="body">A WSJ report alleges Nvidia invested in AI startups and small cloud providers that then bought its GPUs, propping up demand while moving a TSMC chip oversupply. CFO Kress reportedly pushed to cut the circular deals.</p>
+            <div class="meta">
+              <a class="source" href="https://www.techpowerup.com/354814/nvidia-allegedly-engineered-scarcity-by-funding-ai-startups-to-buy-its-gpus" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50493251" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">823 pts · 492 comments</span>
+              <button class="copy-btn" type="button" data-copy="2">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>Many say this was already public a year ago — the Guardian covered circular financing in Dec 2025 — so the news is the scale and the internal fight. Disagreement: whether it’s smart business (deploying capital into high-growth equity) or demand manipulation; gamers just hope GPU prices finally fall.</p>
+            </div>
+          </div>
+        </article>
+        <article class="story" id="story-3">
+          <div class="num" aria-hidden="true">3</div>
+          <div>
+            <h2 class="tagline">If AI solved coding, why is my software still the same?</h2>
+            <p class="body">Jonathan Blow’s argument: AI gives you more of what you already optimize for, faster — but orgs haven’t changed what they optimize or how they work, so the software feels identical. Coding was never the bottleneck; culture and goals were.</p>
+            <div class="meta">
+              <a class="source" href="https://www.youtube.com/watch?v=IRK8h67ol7Q" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50484658" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">385 pts · 541 comments</span>
+              <button class="copy-btn" type="button" data-copy="3">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>Consensus: the bottleneck is organizational, not technical — “a thousand times this.” Disagreement: some report dramatically better personal software and astounding individual output, while others say teammates actively resist the tools and nothing changes.</p>
+            </div>
+          </div>
+        </article>
+        <article class="story" id="story-4">
+          <div class="num" aria-hidden="true">4</div>
+          <div>
+            <h2 class="tagline">Terminal borders that don’t cost a cell</h2>
+            <p class="body">A Ratatui proposal renders terminal borders without consuming a character cell — borders as protocol-level decoration instead of grid space. Small change, real payoff for dense TUIs that currently waste a cell per edge.</p>
+            <div class="meta">
+              <a class="source" href="https://www.joshka.net/cell-borders/" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50491423" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">341 pts · 148 comments</span>
+              <button class="copy-btn" type="button" data-copy="4">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>Appreciation for the craft, with a split: some like the extra room, others say borders need breathing space to look right. The thread escalates to whether terminals should become full UI frameworks — or just serve HTML over SSH.</p>
+            </div>
+          </div>
+        </article>
+        <article class="story" id="story-5">
+          <div class="num" aria-hidden="true">5</div>
+          <div>
+            <h2 class="tagline">Ggml hits 1.0.0</h2>
+            <p class="body">The C library behind llama.cpp — the engine of local LLM inference — reached v1.0.0. A milestone for the project that put serious models on ordinary hardware, from laptops to AMD cards over Vulkan.</p>
+            <div class="meta">
+              <a class="source" href="https://github.com/ggml-org/ggml/releases/tag/v1.0.0" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50493062" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">338 pts · 53 comments</span>
+              <button class="copy-btn" type="button" data-copy="5">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>Celebration, mostly — “the Linux of the AI world.” Long-time users on modest hardware praise its staying power; the naming trivia (GG = Georgi Gerganov) gets its usual round, with Linux offered as precedent.</p>
+            </div>
+          </div>
+        </article>
+        <article class="story" id="story-6">
+          <div class="num" aria-hidden="true">6</div>
+          <div>
+            <h2 class="tagline">Monkey Island: all 13 versions side by side</h2>
+            <p class="body">A single page lines up all 13 versions of Monkey Island for direct comparison — same scenes, different eras of pixel art and sound. A tidy piece of game-preservation nostalgia.</p>
+            <div class="meta">
+              <a class="source" href="https://monkeyisland.pages.dev/" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50493904" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">288 pts · 85 comments</span>
+              <button class="copy-btn" type="button" data-copy="6">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>Delight, with one correction: technically not all — the anniversary re-release is missing. UX gets a 10/10, mobile works, and several commenters want to hear each version’s opening theme back to back.</p>
+            </div>
+          </div>
+        </article>
+        <article class="story" id="story-7">
+          <div class="num" aria-hidden="true">7</div>
+          <div>
+            <h2 class="tagline">Live airband on every frequency, from a hangar on Orcas Island</h2>
+            <p class="body">A software-defined radio in an Orcas Island hangar receives the entire airband, splits it into 700+ channels, and streams and transcribes the voice traffic with a voice model and LLM. It went viral mid-ground-stop — Victoria, CA was stopped too.</p>
+            <div class="meta">
+              <a class="source" href="https://orcasairband.com/" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50490593" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">281 pts · 66 comments</span>
+              <button class="copy-btn" type="button" data-copy="7">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>The two-part title confused people at first; the author explains the SDR setup in-thread and reports Node held up under the load. One commenter, flying tomorrow to a wedding via Toronto, just wants to know if they’ll get there.</p>
+            </div>
+          </div>
+        </article>
+        <article class="story" id="story-8">
+          <div class="num" aria-hidden="true">8</div>
+          <div>
+            <h2 class="tagline">After 600 experiments, what JEPA world models actually teach</h2>
+            <p class="body">One researcher ran 600 experiments on JEPA world models — LeCun’s predict-in-latent-space architecture — and wrote up what worked, what didn’t, and where the approach stalls. Hands-on learning, published as a blog post.</p>
+            <div class="meta">
+              <a class="source" href="https://haddyalchaer.com/jepa" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50487185" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">273 pts · 46 comments</span>
+              <button class="copy-btn" type="button" data-copy="8">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>The author offers Q&amp;A; the animations draw complaints on mobile and OLED. The main split is framing: critics say hierarchical planning and sub-goals are well understood, so “discovered” overclaims — defenders say a personal learning journey isn’t a paper.</p>
+            </div>
+          </div>
+        </article>
+        <article class="story" id="story-9">
+          <div class="num" aria-hidden="true">9</div>
+          <div>
+            <h2 class="tagline">FM-1 Workbench: a $50 FM synth that became a groovebox</h2>
+            <p class="body">M-Vave’s FM-1 is a $50 pocket synth that loads DX7 patches — and an explosion of third-party firmware turns it into a groovebox. Open firmware, manufacturer embrace, and a price that invites tinkering.</p>
+            <div class="meta">
+              <a class="source" href="https://open.m-vave.com/fm1-workbench" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50488325" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">254 pts · 164 comments</span>
+              <button class="copy-btn" type="button" data-copy="9">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>Excitement from DAWless musicians and parents buying one for kids. The firmware ecosystem is called a rare bright spot in post-LLM music tech; one counterpoint notes cheap Chinese hardware pricing reflects different labor costs and standards.</p>
+            </div>
+          </div>
+        </article>
+        <article class="story" id="story-10">
+          <div class="num" aria-hidden="true">10</div>
+          <div>
+            <h2 class="tagline">Why buy an expensive Pi when an old phone will do?</h2>
+            <p class="body">An old phone has the CPU, RAM, storage, Wi-Fi and battery a Pi project needs — for free, from a drawer. The case for repurposing instead of buying new, with the caveats: no GPIO header, and Android is harder to tame than Raspberry Pi OS.</p>
+            <div class="meta">
+              <a class="source" href="https://so.long.thanks.fish/why-pi-when-i-have-an-old-phone/" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50440709" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">251 pts · 159 comments</span>
+              <button class="copy-btn" type="button" data-copy="10">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>Consensus: for software-only homelab work, a phone wins; the Pi’s edge is GPIO and a tinker-friendly dev experience. The open question is supply — finding hundreds of matching phones with healthy batteries — plus a safety tip: pull the battery and use an emulator circuit.</p>
+            </div>
+          </div>
+        </article>
+      </main>
+
+      <footer>
+        <a href="../">&larr; HN Daily archive</a>
+        <a href="https://tk3369.github.io/hn-daily/">tk3369.github.io/hn-daily</a>
+        <span>Press T to toggle theme.</span>
+      </footer>
+    </div>
+
+    <script>
+      (function () {
+        var KEY = "hn-daily-theme";
+        var root = document.documentElement;
+        var toggle = document.getElementById("themeToggle");
+        var label = document.getElementById("themeLabel");
+
+        function storedTheme() {
+          try { return window.localStorage.getItem(KEY); } catch (e) { return null; }
+        }
+        function systemDark() {
+          return window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+        }
+        function isDark() {
+          var t = root.getAttribute("data-theme");
+          if (t === "dark") return true;
+          if (t === "light") return false;
+          return systemDark();
+        }
+        function render() {
+          var dark = isDark();
+          label.textContent = dark ? "Light" : "Dark";
+          toggle.setAttribute("aria-pressed", dark ? "true" : "false");
+        }
+        function setTheme(theme) {
+          root.setAttribute("data-theme", theme);
+          try { window.localStorage.setItem(KEY, theme); } catch (e) {}
+          render();
+        }
+        function flip() {
+          setTheme(isDark() ? "light" : "dark");
+        }
+
+        var saved = storedTheme();
+        if (saved === "dark" || saved === "light") {
+          root.setAttribute("data-theme", saved);
+        }
+        render();
+
+        toggle.addEventListener("click", flip);
+        document.addEventListener("keydown", function (e) {
+          if (e.key === "t" || e.key === "T") {
+            var tag = (e.target && e.target.tagName) || "";
+            if (tag === "INPUT" || tag === "TEXTAREA") return;
+            if (e.metaKey || e.ctrlKey || e.altKey) return;
+            flip();
+          }
+        });
+        if (window.matchMedia) {
+          var mq = window.matchMedia("(prefers-color-scheme: dark)");
+          if (mq.addEventListener) mq.addEventListener("change", render);
+        }
+
+        // Copy buttons: number + tagline + body + source + HN link + points/comments.
+        // The "What HN commenters are saying" paragraph is deliberately excluded.
+        var copyData = {
+          "1": "1. FAA ground-stops all US departures for 4+ hours, then lifts it\n\nRouters overloaded with data knocked out radar and comms at FAA centers Friday. Stop ran 3:54–8:15pm ET, departures only — airborne planes stayed up. 7,000+ flights canceled, 300k–400k stranded. DHS: no sign of a cyberattack.\n\nSource: https://www.nbcnews.com/news/us-news/faa-orders-nationwide-ground-stop-departing-flights-reasons-safety-rcna609247\nHN Discuss: https://news.ycombinator.com/item?id=50489641\n1598 pts / 1213 comments",
+          "2": "2. Nvidia allegedly funded AI startups to buy its own GPUs\n\nA WSJ report alleges Nvidia invested in AI startups and small cloud providers that then bought its GPUs, propping up demand while moving a TSMC chip oversupply. CFO Kress reportedly pushed to cut the circular deals.\n\nSource: https://www.techpowerup.com/354814/nvidia-allegedly-engineered-scarcity-by-funding-ai-startups-to-buy-its-gpus\nHN Discuss: https://news.ycombinator.com/item?id=50493251\n823 pts / 492 comments",
+          "3": "3. If AI solved coding, why is my software still the same?\n\nJonathan Blow’s argument: AI gives you more of what you already optimize for, faster — but orgs haven’t changed what they optimize or how they work, so the software feels identical. Coding was never the bottleneck; culture and goals were.\n\nSource: https://www.youtube.com/watch?v=IRK8h67ol7Q\nHN Discuss: https://news.ycombinator.com/item?id=50484658\n385 pts / 541 comments",
+          "4": "4. Terminal borders that don’t cost a cell\n\nA Ratatui proposal renders terminal borders without consuming a character cell — borders as protocol-level decoration instead of grid space. Small change, real payoff for dense TUIs that currently waste a cell per edge.\n\nSource: https://www.joshka.net/cell-borders/\nHN Discuss: https://news.ycombinator.com/item?id=50491423\n341 pts / 148 comments",
+          "5": "5. Ggml hits 1.0.0\n\nThe C library behind llama.cpp — the engine of local LLM inference — reached v1.0.0. A milestone for the project that put serious models on ordinary hardware, from laptops to AMD cards over Vulkan.\n\nSource: https://github.com/ggml-org/ggml/releases/tag/v1.0.0\nHN Discuss: https://news.ycombinator.com/item?id=50493062\n338 pts / 53 comments",
+          "6": "6. Monkey Island: all 13 versions side by side\n\nA single page lines up all 13 versions of Monkey Island for direct comparison — same scenes, different eras of pixel art and sound. A tidy piece of game-preservation nostalgia.\n\nSource: https://monkeyisland.pages.dev/\nHN Discuss: https://news.ycombinator.com/item?id=50493904\n288 pts / 85 comments",
+          "7": "7. Live airband on every frequency, from a hangar on Orcas Island\n\nA software-defined radio in an Orcas Island hangar receives the entire airband, splits it into 700+ channels, and streams and transcribes the voice traffic with a voice model and LLM. It went viral mid-ground-stop — Victoria, CA was stopped too.\n\nSource: https://orcasairband.com/\nHN Discuss: https://news.ycombinator.com/item?id=50490593\n281 pts / 66 comments",
+          "8": "8. After 600 experiments, what JEPA world models actually teach\n\nOne researcher ran 600 experiments on JEPA world models — LeCun’s predict-in-latent-space architecture — and wrote up what worked, what didn’t, and where the approach stalls. Hands-on learning, published as a blog post.\n\nSource: https://haddyalchaer.com/jepa\nHN Discuss: https://news.ycombinator.com/item?id=50487185\n273 pts / 46 comments",
+          "9": "9. FM-1 Workbench: a $50 FM synth that became a groovebox\n\nM-Vave’s FM-1 is a $50 pocket synth that loads DX7 patches — and an explosion of third-party firmware turns it into a groovebox. Open firmware, manufacturer embrace, and a price that invites tinkering.\n\nSource: https://open.m-vave.com/fm1-workbench\nHN Discuss: https://news.ycombinator.com/item?id=50488325\n254 pts / 164 comments",
+          "10": "10. Why buy an expensive Pi when an old phone will do?\n\nAn old phone has the CPU, RAM, storage, Wi-Fi and battery a Pi project needs — for free, from a drawer. The case for repurposing instead of buying new, with the caveats: no GPIO header, and Android is harder to tame than Raspberry Pi OS.\n\nSource: https://so.long.thanks.fish/why-pi-when-i-have-an-old-phone/\nHN Discuss: https://news.ycombinator.com/item?id=50440709\n251 pts / 159 comments"
+};
+
+        function fallbackCopy(text) {
+          var ta = document.createElement("textarea");
+          ta.value = text;
+          ta.setAttribute("readonly", "");
+          ta.style.position = "absolute";
+          ta.style.left = "-9999px";
+          document.body.appendChild(ta);
+          ta.select();
+          var ok = false;
+          try { ok = document.execCommand("copy"); } catch (e) { ok = false; }
+          document.body.removeChild(ta);
+          return ok;
+        }
+
+        var buttons = document.querySelectorAll(".copy-btn");
+        Array.prototype.forEach.call(buttons, function (btn) {
+          btn.addEventListener("click", function () {
+            var text = copyData[btn.getAttribute("data-copy")] || "";
+            function done() {
+              var original = "Copy";
+              btn.textContent = "Copied ✓";
+              btn.classList.add("copied");
+              setTimeout(function () {
+                btn.textContent = original;
+                btn.classList.remove("copied");
+              }, 1600);
+            }
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+              navigator.clipboard.writeText(text).then(done, function () {
+                if (fallbackCopy(text)) done();
+              });
+            } else if (fallbackCopy(text)) {
+              done();
+            }
+          });
+        });
+      })();
+    </script>
+  </body>
+</html>
