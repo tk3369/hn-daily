@@ -1,0 +1,535 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="light dark" />
+    <link rel="icon" href="data:," />
+    <title>HN Daily — Monday, November 16, 2026</title>
+    <style>
+      :root {
+        --bg: #f3f1eb;
+        --surface: #fbf9f4;
+        --ink: #1c1a16;
+        --ink-soft: #4a463e;
+        --ink-faint: #6f6a5e;
+        --line: #d8d2c4;
+        --accent: #ff6600;
+        --accent-ink: #b34700;
+        --comment-bg: #efe9dc;
+        --focus: #b34700;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root:not([data-theme="light"]) {
+          --bg: #16140f;
+          --surface: #1f1c16;
+          --ink: #f0ead9;
+          --ink-soft: #c9c2b0;
+          --ink-faint: #9a937f;
+          --line: #3a362b;
+          --accent: #ff7a1a;
+          --accent-ink: #ff9440;
+          --comment-bg: #262219;
+          --focus: #ff9440;
+        }
+      }
+      :root[data-theme="dark"] {
+        --bg: #16140f;
+        --surface: #1f1c16;
+        --ink: #f0ead9;
+        --ink-soft: #c9c2b0;
+        --ink-faint: #9a937f;
+        --line: #3a362b;
+        --accent: #ff7a1a;
+        --accent-ink: #ff9440;
+        --comment-bg: #262219;
+        --focus: #ff9440;
+      }
+
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--ink);
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: 17px;
+        line-height: 1.55;
+        -webkit-font-smoothing: antialiased;
+      }
+      a { color: var(--accent-ink); text-decoration: underline; text-underline-offset: 2px; }
+      a:hover { color: var(--accent); }
+      a:focus-visible, button:focus-visible {
+        outline: 2px solid var(--focus);
+        outline-offset: 2px;
+        border-radius: 2px;
+      }
+
+      .wrap {
+        max-width: 1080px;
+        margin: 0 auto;
+        padding: 32px 24px 64px;
+      }
+
+      header.masthead {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 20px;
+        border-bottom: 3px solid var(--ink);
+        padding-bottom: 20px;
+        margin-bottom: 8px;
+      }
+      .masthead h1 {
+        margin: 0 0 6px;
+        font-size: clamp(30px, 5vw, 46px);
+        line-height: 1.1;
+        font-weight: 700;
+        letter-spacing: -0.01em;
+      }
+      .masthead .subtitle {
+        margin: 0;
+        font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+        font-size: 14px;
+        color: var(--ink-soft);
+      }
+      .masthead .kicker {
+        margin: 0 0 10px;
+        font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+        font-size: 12px;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--accent-ink);
+      }
+
+      .theme-toggle {
+        flex: 0 0 auto;
+        width: 86px;
+        height: 40px;
+        min-height: 40px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        background: var(--surface);
+        color: var(--ink);
+        border: 1.5px solid var(--ink);
+        border-radius: 999px;
+        font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+        font-size: 13px;
+        cursor: pointer;
+        padding: 0 10px;
+      }
+      .theme-toggle .dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: var(--accent);
+        flex: 0 0 auto;
+      }
+      .theme-toggle:hover { border-color: var(--accent); }
+
+      .story {
+        display: grid;
+        grid-template-columns: 72px 1fr;
+        gap: 4px 20px;
+        padding: 28px 0 26px;
+        border-bottom: 1px solid var(--line);
+        scroll-margin-top: 16px;
+      }
+      .story .num {
+        font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+        font-size: 40px;
+        font-weight: 700;
+        line-height: 1;
+        color: var(--accent);
+        padding-top: 2px;
+      }
+      .story h2 {
+        margin: 0 0 10px;
+        font-size: clamp(21px, 3vw, 26px);
+        line-height: 1.25;
+        font-weight: 700;
+      }
+      .story .body { margin: 0 0 14px; color: var(--ink); max-width: 68ch; }
+
+      .meta {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 8px 18px;
+        font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+        font-size: 13.5px;
+        color: var(--ink-soft);
+        margin-bottom: 16px;
+      }
+      .meta a { min-height: 36px; display: inline-flex; align-items: center; }
+      .meta .stats { color: var(--ink-faint); white-space: nowrap; }
+      .copy-btn {
+        margin-left: auto;
+        min-height: 36px;
+        padding: 6px 14px;
+        background: transparent;
+        color: var(--ink);
+        border: 1px solid var(--line);
+        border-radius: 6px;
+        font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+        font-size: 13px;
+        cursor: pointer;
+      }
+      .copy-btn:hover { border-color: var(--accent); color: var(--accent-ink); }
+      .copy-btn.copied { border-color: var(--accent); color: var(--accent-ink); }
+
+      .commenters {
+        background: var(--comment-bg);
+        border-radius: 6px;
+        padding: 14px 18px;
+        max-width: 72ch;
+      }
+      .commenters .label {
+        display: block;
+        font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+        font-size: 11.5px;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--accent-ink);
+        margin-bottom: 6px;
+      }
+      .commenters p { margin: 0; font-size: 15.5px; color: var(--ink-soft); }
+
+      footer {
+        margin-top: 36px;
+        padding-top: 20px;
+        border-top: 3px solid var(--ink);
+        font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+        font-size: 13.5px;
+        color: var(--ink-soft);
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px 24px;
+        align-items: center;
+      }
+      footer a { min-height: 36px; display: inline-flex; align-items: center; }
+
+      @media (max-width: 600px) {
+        .wrap { padding: 22px 16px 48px; }
+        .story { grid-template-columns: 46px 1fr; gap: 2px 12px; padding: 22px 0 20px; }
+        .story .num { font-size: 28px; }
+        header.masthead { flex-wrap: wrap; }
+        .copy-btn { margin-left: 0; }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        html { scroll-behavior: auto; }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <header class="masthead">
+        <div>
+          <p class="kicker">Hacker News · Daily Digest</p>
+          <h1>HN Daily — Monday, November 16, 2026</h1>
+          <p class="subtitle">HN Top 10 — 2026-11-16 07:00 PT (hottest by points)</p>
+        </div>
+        <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle dark mode" aria-pressed="false">
+          <span class="dot" aria-hidden="true"></span><span id="themeLabel">Dark</span>
+        </button>
+      </header>
+
+      <main>
+        <article class="story" id="story-1">
+          <div class="num" aria-hidden="true">1</div>
+          <div>
+            <h2 class="tagline">Qwen4-Max goes live — Alibaba&#x27;s new flagship, 1M context, $1.50 per million tokens</h2>
+            <p class="body">Alibaba launched Qwen4-Max today: a new MoE flagship with native vision and a 1M-token context, now generally available on QwenCloud at $1.50 input / $4.50 output per million tokens — 25% cheaper than Qwen3.8-Max. Open weights for smaller Qwen4 models are promised, with no date yet.</p>
+            <div class="meta">
+              <a class="source" href="https://qwen.ai/blog?id=qwen4-max" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50513215" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">697 pts · 334 comments</span>
+              <button class="copy-btn" type="button" data-copy="1">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>Excitement about efficiency alongside quality, and many are waiting for the smaller open 27B model. One caution: Artificial Analysis scores don&#x27;t yet beat Kimi 3.1, and Qwen 3.8&#x27;s slow serving (~30 tok/s vs ~80 for Opus) hurt it in agent benchmarks.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="story" id="story-2">
+          <div class="num" aria-hidden="true">2</div>
+          <div>
+            <h2 class="tagline">MIT&#x27;s &#x27;How to Make (Almost) Anything&#x27; — one semester, every fabrication skill</h2>
+            <p class="body">The course site for Neil Gershenfeld&#x27;s famous MIT class: a single semester spanning CAD, PCB milling, 3D printing, molding, casting, and embedded programming, ending with students building a working machine. The full syllabus and lecture notes are open.</p>
+            <div class="meta">
+              <a class="source" href="https://pub.cba.mit.edu/863.26/site/" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50514470" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">524 pts · 97 comments</span>
+              <button class="copy-btn" type="button" data-copy="2">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>The pace is the story — one lecture reportedly enumerates ~50 CAD tools, and the syllabus is huge even if the projects are manageable. Veterans of the TechShop era swap notes; the running joke is the first assignment: make a pencil.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="story" id="story-3">
+          <div class="num" aria-hidden="true">3</div>
+          <div>
+            <h2 class="tagline">One click, universal XSS in uBlock Origin — fixed, but the trick is instructive</h2>
+            <p class="body">A researcher found a one-click universal XSS in uBlock Origin&#x27;s Firefox element picker: a malicious site could embed the picker&#x27;s privileged iframe invisibly, trick the user into clicking &#x27;Create&#x27;, and plant a trusted filter that runs JS on any site. Fixed now; uBO Lite had a milder variant.</p>
+            <div class="meta">
+              <a class="source" href="https://iter.ca/post/ubo-uxss/" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50513160" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">495 pts · 142 comments</span>
+              <button class="copy-btn" type="button" data-copy="3">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>uBO&#x27;s broad permissions make any bug worse — and the same hook leaks your install-unique extension UUID to any site, a tracking identifier. Readers praise the disclosure that GPT-5.6 Sol found the bug while the author wrote the prose and Claude wrote the PoC.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="story" id="story-4">
+          <div class="num" aria-hidden="true">4</div>
+          <div>
+            <h2 class="tagline">Self-hosting map tiles is now cheap and easy — one file, one bucket</h2>
+            <p class="body">PMTiles packs a whole map into a single file served over HTTP Range requests — no tile server needed. Download a daily world build, drop it in a storage bucket behind a CDN that caches Range requests, and embed it. The contrast: Mapbox charges $5 per 1k loads past the free tier.</p>
+            <div class="meta">
+              <a class="source" href="https://bruceroettgers.eu/blog/protomaps/" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50509837" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">408 pts · 72 comments</span>
+              <button class="copy-btn" type="button" data-copy="4">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>Questions about which clients work with the approach, and one reader&#x27;s Malwarebytes flagged the demo&#x27;s Bunny proxy domain. Others report running the same setup behind Cloudflare R2 for privacy and access control.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="story" id="story-5">
+          <div class="num" aria-hidden="true">5</div>
+          <div>
+            <h2 class="tagline">Turn your handwriting into a working font — Ductus</h2>
+            <p class="body">Ductus is a web tool that turns your handwriting into a usable font: trace each character in the browser, tweak the shapes, and export. No install, just a stylus or mouse — neat for notes, comics, or personal branding.</p>
+            <div class="meta">
+              <a class="source" href="https://ductus.sorenblank.com" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50509972" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">380 pts · 65 comments</span>
+              <button class="copy-btn" type="button" data-copy="5">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>People love the UX but want a preview before tracing the whole alphabet, and several gave up around &#x27;e&#x27; — tedious input is the main complaint. Top request: photo or OCR import instead of tracing by hand.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="story" id="story-6">
+          <div class="num" aria-hidden="true">6</div>
+          <div>
+            <h2 class="tagline">What&#x27;s next for Nvidia after Jensen Huang&#x27;s exit</h2>
+            <p class="body">Steve Blank&#x27;s take on Nvidia post-Huang: the biggest threat isn&#x27;t a rival chipmaker but Nvidia&#x27;s own customers — hyperscalers building custom silicon with Broadcom — plus AI agents that can spin up CUDA alternatives. The squeeze lands on margins, not technology.</p>
+            <div class="meta">
+              <a class="source" href="https://steveblank.com/2026/11/15/whats-next-for-nvidia/" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50512235" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">358 pts · 450 comments</span>
+              <button class="copy-btn" type="button" data-copy="6">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>Split between &#x27;Jensen&#x27;s coming back — the exports were government-authorized&#x27; and &#x27;customers becoming competitors is the real story.&#x27; Others say lawsuits and an AI-bubble pop matter more than innovation worries.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="story" id="story-7">
+          <div class="num" aria-hidden="true">7</div>
+          <div>
+            <h2 class="tagline">Old Bitly links hijacked — Burger King, McDonald&#x27;s, even Trump tweets</h2>
+            <p class="body">Attackers re-registered expired domains behind old bit.ly links, redirecting decades-old posts from Burger King, McDonald&#x27;s, Trump, Bill Gates, the FBI and the DoD to unrelated content. Bitly confirmed it Nov 15, suspended the accounts, and is disabling the links.</p>
+            <div class="meta">
+              <a class="source" href="https://ransomnews.com/burger-king-tweet-bitly-link-hijack-2026/" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50511395" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">333 pts · 168 comments</span>
+              <button class="copy-btn" type="button" data-copy="7">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>&#x27;This is why I&#x27;ve always been against link shorteners.&#x27; The same trick works with lapsed CNAME domains of universities and other trusted orgs. Most of the hijacked examples were already taken down by the time readers checked.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="story" id="story-8">
+          <div class="num" aria-hidden="true">8</div>
+          <div>
+            <h2 class="tagline">Crows make decisions faster than we can — and it&#x27;s not just instinct</h2>
+            <p class="body">New research covered by the NYT finds crows making decisions faster than humans — another data point in a long run of corvid cognition studies showing planning, tool use, and fast judgment. The &#x27;birdbrain&#x27; insult looks increasingly wrong.</p>
+            <div class="meta">
+              <a class="source" href="https://www.nytimes.com/2026/11/15/science/birdbrain-crows-birds-research-decision.html" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50509023" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">271 pts · 181 comments</span>
+              <button class="copy-btn" type="button" data-copy="8">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>The title itself draws a quibble — &#x27;birdbrain&#x27; never implied slow decisions. Jokes follow: their neural net is less deep, and at 40 mph they have to be fast. Others note the research keeps chipping away at human exceptionalism.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="story" id="story-9">
+          <div class="num" aria-hidden="true">9</div>
+          <div>
+            <h2 class="tagline">El Niño, explained in 10 minutes — and what it means for winter 2026–27</h2>
+            <p class="body">A short video explainer on how El Niño works: warm Pacific water, shifted trade winds, and the knock-on effects for weather worldwide. Commenters note the real title is &#x27;El Niño Winter 2026–27: What Pilots Should Expect&#x27; — and that this one arrives in a record-warm climate.</p>
+            <div class="meta">
+              <a class="source" href="https://www.youtube.com/watch?v=7_JF3etiAv8" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50509308" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">268 pts · 152 comments</span>
+              <button class="copy-btn" type="button" data-copy="9">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>Context dominates: this El Niño arrives in a climate warmer than any in the last 125,000 years, so the risks keep growing. Readers point to Climate Reanalyzer&#x27;s daily sea-surface-temperature graphs as the chart to watch.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="story" id="story-10">
+          <div class="num" aria-hidden="true">10</div>
+          <div>
+            <h2 class="tagline">Tor ships rapid-response DoS fix as DDoS hammers the network</h2>
+            <p class="body">Tor 0.4.9.17, released Nov 13, is a rapid-response security release aimed at a sustained DDoS flooding relays with client circuits — including an IPv6-related relay DoS defense fix. Relay operators should upgrade now; more releases are expected as defenses are evaluated.</p>
+            <div class="meta">
+              <a class="source" href="https://forum.torproject.org/t/security-release-0-4-9-17/22454" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50512441" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">200 pts · 55 comments</span>
+              <button class="copy-btn" type="button" data-copy="10">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>DoS defense on Tor is a permanent cat-and-mouse game, and readers wonder who benefits from shutting the network down. One commenter got a 403 loading Tor&#x27;s own site through Tor; another wonders if the goal is steering traffic to adversarial relays.</p>
+            </div>
+          </div>
+        </article>
+      </main>
+
+      <footer>
+        <a href="../">&larr; HN Daily archive</a>
+        <a href="https://tk3369.github.io/hn-daily/">tk3369.github.io/hn-daily</a>
+        <span>Press T to toggle theme.</span>
+      </footer>
+    </div>
+
+    <script>
+      (function () {
+        var KEY = "hn-daily-theme";
+        var root = document.documentElement;
+        var toggle = document.getElementById("themeToggle");
+        var label = document.getElementById("themeLabel");
+
+        function storedTheme() {
+          try { return window.localStorage.getItem(KEY); } catch (e) { return null; }
+        }
+        function systemDark() {
+          return window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+        }
+        function isDark() {
+          var t = root.getAttribute("data-theme");
+          if (t === "dark") return true;
+          if (t === "light") return false;
+          return systemDark();
+        }
+        function render() {
+          var dark = isDark();
+          label.textContent = dark ? "Light" : "Dark";
+          toggle.setAttribute("aria-pressed", dark ? "true" : "false");
+        }
+        function setTheme(theme) {
+          root.setAttribute("data-theme", theme);
+          try { window.localStorage.setItem(KEY, theme); } catch (e) {}
+          render();
+        }
+        function flip() {
+          setTheme(isDark() ? "light" : "dark");
+        }
+
+        var saved = storedTheme();
+        if (saved === "dark" || saved === "light") {
+          root.setAttribute("data-theme", saved);
+        }
+        render();
+
+        toggle.addEventListener("click", flip);
+        document.addEventListener("keydown", function (e) {
+          if (e.key === "t" || e.key === "T") {
+            var tag = (e.target && e.target.tagName) || "";
+            if (tag === "INPUT" || tag === "TEXTAREA") return;
+            if (e.metaKey || e.ctrlKey || e.altKey) return;
+            flip();
+          }
+        });
+        if (window.matchMedia) {
+          var mq = window.matchMedia("(prefers-color-scheme: dark)");
+          if (mq.addEventListener) mq.addEventListener("change", render);
+        }
+
+        // Copy buttons: number + tagline + body + source + HN link + points/comments.
+        // The "What HN commenters are saying" paragraph is deliberately excluded.
+        var copyData = {
+          "1": "1. Qwen4-Max goes live — Alibaba's new flagship, 1M context, $1.50 per million tokens\n\nAlibaba launched Qwen4-Max today: a new MoE flagship with native vision and a 1M-token context, now generally available on QwenCloud at $1.50 input / $4.50 output per million tokens — 25% cheaper than Qwen3.8-Max. Open weights for smaller Qwen4 models are promised, with no date yet.\n\nSource: https://qwen.ai/blog?id=qwen4-max\nHN Discuss: https://news.ycombinator.com/item?id=50513215\n697 pts / 334 comments",
+          "2": "2. MIT's 'How to Make (Almost) Anything' — one semester, every fabrication skill\n\nThe course site for Neil Gershenfeld's famous MIT class: a single semester spanning CAD, PCB milling, 3D printing, molding, casting, and embedded programming, ending with students building a working machine. The full syllabus and lecture notes are open.\n\nSource: https://pub.cba.mit.edu/863.26/site/\nHN Discuss: https://news.ycombinator.com/item?id=50514470\n524 pts / 97 comments",
+          "3": "3. One click, universal XSS in uBlock Origin — fixed, but the trick is instructive\n\nA researcher found a one-click universal XSS in uBlock Origin's Firefox element picker: a malicious site could embed the picker's privileged iframe invisibly, trick the user into clicking 'Create', and plant a trusted filter that runs JS on any site. Fixed now; uBO Lite had a milder variant.\n\nSource: https://iter.ca/post/ubo-uxss/\nHN Discuss: https://news.ycombinator.com/item?id=50513160\n495 pts / 142 comments",
+          "4": "4. Self-hosting map tiles is now cheap and easy — one file, one bucket\n\nPMTiles packs a whole map into a single file served over HTTP Range requests — no tile server needed. Download a daily world build, drop it in a storage bucket behind a CDN that caches Range requests, and embed it. The contrast: Mapbox charges $5 per 1k loads past the free tier.\n\nSource: https://bruceroettgers.eu/blog/protomaps/\nHN Discuss: https://news.ycombinator.com/item?id=50509837\n408 pts / 72 comments",
+          "5": "5. Turn your handwriting into a working font — Ductus\n\nDuctus is a web tool that turns your handwriting into a usable font: trace each character in the browser, tweak the shapes, and export. No install, just a stylus or mouse — neat for notes, comics, or personal branding.\n\nSource: https://ductus.sorenblank.com\nHN Discuss: https://news.ycombinator.com/item?id=50509972\n380 pts / 65 comments",
+          "6": "6. What's next for Nvidia after Jensen Huang's exit\n\nSteve Blank's take on Nvidia post-Huang: the biggest threat isn't a rival chipmaker but Nvidia's own customers — hyperscalers building custom silicon with Broadcom — plus AI agents that can spin up CUDA alternatives. The squeeze lands on margins, not technology.\n\nSource: https://steveblank.com/2026/11/15/whats-next-for-nvidia/\nHN Discuss: https://news.ycombinator.com/item?id=50512235\n358 pts / 450 comments",
+          "7": "7. Old Bitly links hijacked — Burger King, McDonald's, even Trump tweets\n\nAttackers re-registered expired domains behind old bit.ly links, redirecting decades-old posts from Burger King, McDonald's, Trump, Bill Gates, the FBI and the DoD to unrelated content. Bitly confirmed it Nov 15, suspended the accounts, and is disabling the links.\n\nSource: https://ransomnews.com/burger-king-tweet-bitly-link-hijack-2026/\nHN Discuss: https://news.ycombinator.com/item?id=50511395\n333 pts / 168 comments",
+          "8": "8. Crows make decisions faster than we can — and it's not just instinct\n\nNew research covered by the NYT finds crows making decisions faster than humans — another data point in a long run of corvid cognition studies showing planning, tool use, and fast judgment. The 'birdbrain' insult looks increasingly wrong.\n\nSource: https://www.nytimes.com/2026/11/15/science/birdbrain-crows-birds-research-decision.html\nHN Discuss: https://news.ycombinator.com/item?id=50509023\n271 pts / 181 comments",
+          "9": "9. El Niño, explained in 10 minutes — and what it means for winter 2026–27\n\nA short video explainer on how El Niño works: warm Pacific water, shifted trade winds, and the knock-on effects for weather worldwide. Commenters note the real title is 'El Niño Winter 2026–27: What Pilots Should Expect' — and that this one arrives in a record-warm climate.\n\nSource: https://www.youtube.com/watch?v=7_JF3etiAv8\nHN Discuss: https://news.ycombinator.com/item?id=50509308\n268 pts / 152 comments",
+          "10": "10. Tor ships rapid-response DoS fix as DDoS hammers the network\n\nTor 0.4.9.17, released Nov 13, is a rapid-response security release aimed at a sustained DDoS flooding relays with client circuits — including an IPv6-related relay DoS defense fix. Relay operators should upgrade now; more releases are expected as defenses are evaluated.\n\nSource: https://forum.torproject.org/t/security-release-0-4-9-17/22454\nHN Discuss: https://news.ycombinator.com/item?id=50512441\n200 pts / 55 comments"
+};
+
+        function fallbackCopy(text) {
+          var ta = document.createElement("textarea");
+          ta.value = text;
+          ta.setAttribute("readonly", "");
+          ta.style.position = "absolute";
+          ta.style.left = "-9999px";
+          document.body.appendChild(ta);
+          ta.select();
+          var ok = false;
+          try { ok = document.execCommand("copy"); } catch (e) { ok = false; }
+          document.body.removeChild(ta);
+          return ok;
+        }
+
+        var buttons = document.querySelectorAll(".copy-btn");
+        Array.prototype.forEach.call(buttons, function (btn) {
+          btn.addEventListener("click", function () {
+            var text = copyData[btn.getAttribute("data-copy")] || "";
+            function done() {
+              var original = "Copy";
+              btn.textContent = "Copied ✓";
+              btn.classList.add("copied");
+              setTimeout(function () {
+                btn.textContent = original;
+                btn.classList.remove("copied");
+              }, 1600);
+            }
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+              navigator.clipboard.writeText(text).then(done, function () {
+                if (fallbackCopy(text)) done();
+              });
+            } else if (fallbackCopy(text)) {
+              done();
+            }
+          });
+        });
+      })();
+    </script>
+  </body>
+</html>
