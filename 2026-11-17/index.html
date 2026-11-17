@@ -1,0 +1,535 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="light dark" />
+    <link rel="icon" href="data:," />
+    <title>HN Daily — Tuesday, November 17, 2026</title>
+    <style>
+      :root {
+        --bg: #f3f1eb;
+        --surface: #fbf9f4;
+        --ink: #1c1a16;
+        --ink-soft: #4a463e;
+        --ink-faint: #6f6a5e;
+        --line: #d8d2c4;
+        --accent: #ff6600;
+        --accent-ink: #b34700;
+        --comment-bg: #efe9dc;
+        --focus: #b34700;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root:not([data-theme="light"]) {
+          --bg: #16140f;
+          --surface: #1f1c16;
+          --ink: #f0ead9;
+          --ink-soft: #c9c2b0;
+          --ink-faint: #9a937f;
+          --line: #3a362b;
+          --accent: #ff7a1a;
+          --accent-ink: #ff9440;
+          --comment-bg: #262219;
+          --focus: #ff9440;
+        }
+      }
+      :root[data-theme="dark"] {
+        --bg: #16140f;
+        --surface: #1f1c16;
+        --ink: #f0ead9;
+        --ink-soft: #c9c2b0;
+        --ink-faint: #9a937f;
+        --line: #3a362b;
+        --accent: #ff7a1a;
+        --accent-ink: #ff9440;
+        --comment-bg: #262219;
+        --focus: #ff9440;
+      }
+
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--ink);
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: 17px;
+        line-height: 1.55;
+        -webkit-font-smoothing: antialiased;
+      }
+      a { color: var(--accent-ink); text-decoration: underline; text-underline-offset: 2px; }
+      a:hover { color: var(--accent); }
+      a:focus-visible, button:focus-visible {
+        outline: 2px solid var(--focus);
+        outline-offset: 2px;
+        border-radius: 2px;
+      }
+
+      .wrap {
+        max-width: 1080px;
+        margin: 0 auto;
+        padding: 32px 24px 64px;
+      }
+
+      header.masthead {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 20px;
+        border-bottom: 3px solid var(--ink);
+        padding-bottom: 20px;
+        margin-bottom: 8px;
+      }
+      .masthead h1 {
+        margin: 0 0 6px;
+        font-size: clamp(30px, 5vw, 46px);
+        line-height: 1.1;
+        font-weight: 700;
+        letter-spacing: -0.01em;
+      }
+      .masthead .subtitle {
+        margin: 0;
+        font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+        font-size: 14px;
+        color: var(--ink-soft);
+      }
+      .masthead .kicker {
+        margin: 0 0 10px;
+        font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+        font-size: 12px;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--accent-ink);
+      }
+
+      .theme-toggle {
+        flex: 0 0 auto;
+        width: 86px;
+        height: 40px;
+        min-height: 40px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        background: var(--surface);
+        color: var(--ink);
+        border: 1.5px solid var(--ink);
+        border-radius: 999px;
+        font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+        font-size: 13px;
+        cursor: pointer;
+        padding: 0 10px;
+      }
+      .theme-toggle .dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: var(--accent);
+        flex: 0 0 auto;
+      }
+      .theme-toggle:hover { border-color: var(--accent); }
+
+      .story {
+        display: grid;
+        grid-template-columns: 72px 1fr;
+        gap: 4px 20px;
+        padding: 28px 0 26px;
+        border-bottom: 1px solid var(--line);
+        scroll-margin-top: 16px;
+      }
+      .story .num {
+        font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+        font-size: 40px;
+        font-weight: 700;
+        line-height: 1;
+        color: var(--accent);
+        padding-top: 2px;
+      }
+      .story h2 {
+        margin: 0 0 10px;
+        font-size: clamp(21px, 3vw, 26px);
+        line-height: 1.25;
+        font-weight: 700;
+      }
+      .story .body { margin: 0 0 14px; color: var(--ink); max-width: 68ch; }
+
+      .meta {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 8px 18px;
+        font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+        font-size: 13.5px;
+        color: var(--ink-soft);
+        margin-bottom: 16px;
+      }
+      .meta a { min-height: 36px; display: inline-flex; align-items: center; }
+      .meta .stats { color: var(--ink-faint); white-space: nowrap; }
+      .copy-btn {
+        margin-left: auto;
+        min-height: 36px;
+        padding: 6px 14px;
+        background: transparent;
+        color: var(--ink);
+        border: 1px solid var(--line);
+        border-radius: 6px;
+        font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+        font-size: 13px;
+        cursor: pointer;
+      }
+      .copy-btn:hover { border-color: var(--accent); color: var(--accent-ink); }
+      .copy-btn.copied { border-color: var(--accent); color: var(--accent-ink); }
+
+      .commenters {
+        background: var(--comment-bg);
+        border-radius: 6px;
+        padding: 14px 18px;
+        max-width: 72ch;
+      }
+      .commenters .label {
+        display: block;
+        font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+        font-size: 11.5px;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--accent-ink);
+        margin-bottom: 6px;
+      }
+      .commenters p { margin: 0; font-size: 15.5px; color: var(--ink-soft); }
+
+      footer {
+        margin-top: 36px;
+        padding-top: 20px;
+        border-top: 3px solid var(--ink);
+        font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+        font-size: 13.5px;
+        color: var(--ink-soft);
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px 24px;
+        align-items: center;
+      }
+      footer a { min-height: 36px; display: inline-flex; align-items: center; }
+
+      @media (max-width: 600px) {
+        .wrap { padding: 22px 16px 48px; }
+        .story { grid-template-columns: 46px 1fr; gap: 2px 12px; padding: 22px 0 20px; }
+        .story .num { font-size: 28px; }
+        header.masthead { flex-wrap: wrap; }
+        .copy-btn { margin-left: 0; }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        html { scroll-behavior: auto; }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <header class="masthead">
+        <div>
+          <p class="kicker">Hacker News · Daily Digest</p>
+          <h1>HN Daily — Tuesday, November 17, 2026</h1>
+          <p class="subtitle">HN Top 10 — 2026-11-17 07:00 PT (hottest by points)</p>
+        </div>
+        <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle dark mode" aria-pressed="false">
+          <span class="dot" aria-hidden="true"></span><span id="themeLabel">Dark</span>
+        </button>
+      </header>
+
+      <main>
+        <article class="story" id="story-1">
+          <div class="num" aria-hidden="true">1</div>
+          <div>
+            <h2 class="tagline">CMU puts full computer science courses on YouTube — free</h2>
+            <p class="body">Carnegie Mellon&#x27;s CS Learn launches today with full semesters of lectures from current CMU computer science courses, one new course premiering each day this week and more coming in January. MIT&#x27;s OpenCourseWare got here 25 years ago; CMU&#x27;s pitch is student-built tooling that automates production.</p>
+            <div class="meta">
+              <a class="source" href="https://www.cs.cmu.edu/learn/" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50522980" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">1913 pts · 263 comments</span>
+              <button class="copy-btn" type="button" data-copy="1">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>The course lead, Phillip Compeau, showed up in the thread himself. Readers want advanced topics — database internals, distributed systems — plus slide decks and notes, not just video. Andy Pavlo&#x27;s database lectures are already online, and others point to CMU&#x27;s AI agents and diffusion courses as well.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="story" id="story-2">
+          <div class="num" aria-hidden="true">2</div>
+          <div>
+            <h2 class="tagline">BugMeNot has closed — the old internet loses another shared-login stalwart</h2>
+            <p class="body">BugMeNot, the 2003-era site for sharing logins to bypass registration walls, has shut down. No reason is given on the page; commenters guess that agent traffic hammering the service finished it off.</p>
+            <div class="meta">
+              <a class="source" href="https://www.bugmenot.com/" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50523601" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">644 pts · 286 comments</span>
+              <button class="copy-btn" type="button" data-copy="2">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>Nostalgia for the old internet dominates, and the founders later built RetailMeNot off BugMeNot&#x27;s PageRank and took it to IPO. Debate over when the old internet actually ended — Eternal September, MySpace, WordPress — and several readers only discovered the closure when they needed a login today.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="story" id="story-3">
+          <div class="num" aria-hidden="true">3</div>
+          <div>
+            <h2 class="tagline">Optimizely compromise served malware on Zoom and GitLab</h2>
+            <p class="body">A compromise at Optimizely let attackers push malicious code through its experimentation platform onto major sites including Zoom and GitLab. Client-side A/B testing hands a third party arbitrary code execution on your pages — one compromised account becomes a massive incident.</p>
+            <div class="meta">
+              <a class="source" href="https://blog.report-uri.com/worlds-largest-brands-infected-with-malware-via-optimizely/" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50524767" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">492 pts · 200 comments</span>
+              <button class="copy-btn" type="button" data-copy="3">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>Consensus: third-party tags are the root problem — marketing adds 30 trackers via Google Tag Manager and a Content Security Policy becomes unmanageable. The counter: server-side A/B testing avoids this entirely. Others say vet everything, self-host analytics, and cut down to two or three services.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="story" id="story-4">
+          <div class="num" aria-hidden="true">4</div>
+          <div>
+            <h2 class="tagline">Frame: a 31.5-inch color e-paper display from TRMNL</h2>
+            <p class="body">TRMNL&#x27;s Frame is a 31.5-inch color e-paper display — a wall-sized dashboard for calendars, metrics, and art. The hardware is the draw; the thread is dominated by something else entirely.</p>
+            <div class="meta">
+              <a class="source" href="https://trmnl.com/blog/introducing-frame" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50519354" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">480 pts · 334 comments</span>
+              <button class="copy-btn" type="button" data-copy="4">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>The top thread is not about the display: readers dug up the founder&#x27;s deleted blog posts and call the views unhinged, with many saying they will not buy now. Others push back that anti-vax views alone would not stop them, but the fuller archive changed minds. The product itself gets little discussion.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="story" id="story-5">
+          <div class="num" aria-hidden="true">5</div>
+          <div>
+            <h2 class="tagline">School phone bans are gradually lifting test scores, new evidence shows</h2>
+            <p class="body">New evidence finds school phone bans are gradually improving test scores. Parents in the thread report kids actually liking the bans — lunch and study hall are social again instead of everyone staring at phones.</p>
+            <div class="meta">
+              <a class="source" href="https://www.nytimes.com/2026/11/17/upshot/school-phone-bans-study-scores.html" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50530163" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">440 pts · 218 comments</span>
+              <button class="copy-btn" type="button" data-copy="5">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>Broad agreement, with the disagreement over why bans took so long: parents demanded contact for safety, others say that was never a safety issue — though school-shooting anxiety makes it real for this generation. One data point: 2023 was a record year for school shootings, and the trend is still rising.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="story" id="story-6">
+          <div class="num" aria-hidden="true">6</div>
+          <div>
+            <h2 class="tagline">Jiff 1.0 — a datetime library for Rust, from the author of ripgrep</h2>
+            <p class="body">Jiff 1.0 is out: a new Rust datetime library from BurntSushi, designed as the successor to chrono with a cleaner API — separate date, time, and datetime types and sane timezone handling. The chrono maintainer shows up in the thread.</p>
+            <div class="meta">
+              <a class="source" href="https://burntsushi.net/jiff/" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50519744" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">413 pts · 88 comments</span>
+              <button class="copy-btn" type="button" data-copy="6">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>The former chrono maintainer explains he quit from burnout after years of resistance to API improvements; the chrono author thanks him for his service. Consensus: datetime APIs are brutally hard — daylight saving is political — and Jiff&#x27;s separate date/time types fix real modelling mistakes that Arrow and Moment make.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="story" id="story-7">
+          <div class="num" aria-hidden="true">7</div>
+          <div>
+            <h2 class="tagline">Microsoft blames its monster email outage on a defect from a July fix</h2>
+            <p class="body">Microsoft says the huge email outage traces to a software defect introduced in a July fix — and restoring service was a slow, chaotic &#x27;black start&#x27; across hundreds of teams. The thread&#x27;s engineers are unsurprised: big outages always look like this.</p>
+            <div class="meta">
+              <a class="source" href="https://www.theregister.com/saas/2026/11/16/microsoft-blames-monster-email-outage-on-software-defect-introduced-in-july-fix/" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50517321" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">388 pts · 293 comments</span>
+              <button class="copy-btn" type="button" data-copy="7">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>The black-start analogy sparks a long engineering digression — power-grid restarts, motor constants, solar inverters. Insiders say there is no such thing as a clean Microsoft black start: build-outs are human-driven, tribal-knowledge affairs taking weeks. Skeptics ask why cold-starting services was never planned for.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="story" id="story-8">
+          <div class="num" aria-hidden="true">8</div>
+          <div>
+            <h2 class="tagline">What is w2rt6byl5nf1opmc-a.com? A weird-site rabbit hole, explained</h2>
+            <p class="body">A blog post dissects a strange-looking domain — w2rt6byl5nf1opmc-a.com — tracing what it is, how it got there, and the three-day exploit chain around it. The thread mostly argues about the writing style.</p>
+            <div class="meta">
+              <a class="source" href="https://jack.cab/blog/siterate" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50517602" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">382 pts · 155 comments</span>
+              <button class="copy-btn" type="button" data-copy="8">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>Readers split between the mystery itself — Tranco, Majestic, favicon tricks — and the author&#x27;s voice: &#x27;AI gonzo,&#x27; &#x27;jackslop,&#x27; Hunter S. Thompson by way of an image board. Several try to get their own models to write in the same style; mescaline is suggested as a prompt ingredient.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="story" id="story-9">
+          <div class="num" aria-hidden="true">9</div>
+          <div>
+            <h2 class="tagline">OpenCode Browse — the agent harness now browses the web for you</h2>
+            <p class="body">OpenCode shipped Browse, a web-browsing capability for its AI coding agent. The launch lands in the middle of a running argument about whether agent harnesses should enforce security at all.</p>
+            <div class="meta">
+              <a class="source" href="https://opencode.ai/product/browse" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50523459" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">311 pts · 191 comments</span>
+              <button class="copy-btn" type="button" data-copy="9">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>The thread is really about sandboxing: one camp says security belongs outside the harness — a sandbox, not permission popups, since permission fatigue is bad UX. The other says most users never configure a sandbox, so harnesses marketed to average users must ship strict-by-default permissions. Both agree sandboxing should be default-on and composable.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="story" id="story-10">
+          <div class="num" aria-hidden="true">10</div>
+          <div>
+            <h2 class="tagline">Sheep grazing under solar panels — a win for farmers and the land</h2>
+            <p class="body">Cornell research finds grazing sheep in solar fields brings economic and ecological gains: farmers get lease income plus grazing revenue, panels get shade-tolerant vegetation management, and the land stays productive.</p>
+            <div class="meta">
+              <a class="source" href="https://news.cornell.edu/stories/2026/10/sheep-grazing-solar-fields-offers-farmers-economic-ecological-gains" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50520182" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">304 pts · 302 comments</span>
+              <button class="copy-btn" type="button" data-copy="10">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>The thread drifts to cattle: a vivid tangent about cows baking without shade along I-5 near Harris Ranch, and whether shade should be mandated. On sheep-plus-solar itself, readers are broadly positive — trees take too long to grow, but panels plus grazing is a practical pairing.</p>
+            </div>
+          </div>
+        </article>
+      </main>
+
+      <footer>
+        <a href="../">&larr; HN Daily archive</a>
+        <a href="https://tk3369.github.io/hn-daily/">tk3369.github.io/hn-daily</a>
+        <span>Press T to toggle theme.</span>
+      </footer>
+    </div>
+
+    <script>
+      (function () {
+        var KEY = "hn-daily-theme";
+        var root = document.documentElement;
+        var toggle = document.getElementById("themeToggle");
+        var label = document.getElementById("themeLabel");
+
+        function storedTheme() {
+          try { return window.localStorage.getItem(KEY); } catch (e) { return null; }
+        }
+        function systemDark() {
+          return window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+        }
+        function isDark() {
+          var t = root.getAttribute("data-theme");
+          if (t === "dark") return true;
+          if (t === "light") return false;
+          return systemDark();
+        }
+        function render() {
+          var dark = isDark();
+          label.textContent = dark ? "Light" : "Dark";
+          toggle.setAttribute("aria-pressed", dark ? "true" : "false");
+        }
+        function setTheme(theme) {
+          root.setAttribute("data-theme", theme);
+          try { window.localStorage.setItem(KEY, theme); } catch (e) {}
+          render();
+        }
+        function flip() {
+          setTheme(isDark() ? "light" : "dark");
+        }
+
+        var saved = storedTheme();
+        if (saved === "dark" || saved === "light") {
+          root.setAttribute("data-theme", saved);
+        }
+        render();
+
+        toggle.addEventListener("click", flip);
+        document.addEventListener("keydown", function (e) {
+          if (e.key === "t" || e.key === "T") {
+            var tag = (e.target && e.target.tagName) || "";
+            if (tag === "INPUT" || tag === "TEXTAREA") return;
+            if (e.metaKey || e.ctrlKey || e.altKey) return;
+            flip();
+          }
+        });
+        if (window.matchMedia) {
+          var mq = window.matchMedia("(prefers-color-scheme: dark)");
+          if (mq.addEventListener) mq.addEventListener("change", render);
+        }
+
+        // Copy buttons: number + tagline + body + source + HN link + points/comments.
+        // The "What HN commenters are saying" paragraph is deliberately excluded.
+        var copyData = {
+          "1": "1. CMU puts full computer science courses on YouTube — free\n\nCarnegie Mellon's CS Learn launches today with full semesters of lectures from current CMU computer science courses, one new course premiering each day this week and more coming in January. MIT's OpenCourseWare got here 25 years ago; CMU's pitch is student-built tooling that automates production.\n\nSource: https://www.cs.cmu.edu/learn/\nHN Discuss: https://news.ycombinator.com/item?id=50522980\n1913 pts / 263 comments",
+          "2": "2. BugMeNot has closed — the old internet loses another shared-login stalwart\n\nBugMeNot, the 2003-era site for sharing logins to bypass registration walls, has shut down. No reason is given on the page; commenters guess that agent traffic hammering the service finished it off.\n\nSource: https://www.bugmenot.com/\nHN Discuss: https://news.ycombinator.com/item?id=50523601\n644 pts / 286 comments",
+          "3": "3. Optimizely compromise served malware on Zoom and GitLab\n\nA compromise at Optimizely let attackers push malicious code through its experimentation platform onto major sites including Zoom and GitLab. Client-side A/B testing hands a third party arbitrary code execution on your pages — one compromised account becomes a massive incident.\n\nSource: https://blog.report-uri.com/worlds-largest-brands-infected-with-malware-via-optimizely/\nHN Discuss: https://news.ycombinator.com/item?id=50524767\n492 pts / 200 comments",
+          "4": "4. Frame: a 31.5-inch color e-paper display from TRMNL\n\nTRMNL's Frame is a 31.5-inch color e-paper display — a wall-sized dashboard for calendars, metrics, and art. The hardware is the draw; the thread is dominated by something else entirely.\n\nSource: https://trmnl.com/blog/introducing-frame\nHN Discuss: https://news.ycombinator.com/item?id=50519354\n480 pts / 334 comments",
+          "5": "5. School phone bans are gradually lifting test scores, new evidence shows\n\nNew evidence finds school phone bans are gradually improving test scores. Parents in the thread report kids actually liking the bans — lunch and study hall are social again instead of everyone staring at phones.\n\nSource: https://www.nytimes.com/2026/11/17/upshot/school-phone-bans-study-scores.html\nHN Discuss: https://news.ycombinator.com/item?id=50530163\n440 pts / 218 comments",
+          "6": "6. Jiff 1.0 — a datetime library for Rust, from the author of ripgrep\n\nJiff 1.0 is out: a new Rust datetime library from BurntSushi, designed as the successor to chrono with a cleaner API — separate date, time, and datetime types and sane timezone handling. The chrono maintainer shows up in the thread.\n\nSource: https://burntsushi.net/jiff/\nHN Discuss: https://news.ycombinator.com/item?id=50519744\n413 pts / 88 comments",
+          "7": "7. Microsoft blames its monster email outage on a defect from a July fix\n\nMicrosoft says the huge email outage traces to a software defect introduced in a July fix — and restoring service was a slow, chaotic 'black start' across hundreds of teams. The thread's engineers are unsurprised: big outages always look like this.\n\nSource: https://www.theregister.com/saas/2026/11/16/microsoft-blames-monster-email-outage-on-software-defect-introduced-in-july-fix/\nHN Discuss: https://news.ycombinator.com/item?id=50517321\n388 pts / 293 comments",
+          "8": "8. What is w2rt6byl5nf1opmc-a.com? A weird-site rabbit hole, explained\n\nA blog post dissects a strange-looking domain — w2rt6byl5nf1opmc-a.com — tracing what it is, how it got there, and the three-day exploit chain around it. The thread mostly argues about the writing style.\n\nSource: https://jack.cab/blog/siterate\nHN Discuss: https://news.ycombinator.com/item?id=50517602\n382 pts / 155 comments",
+          "9": "9. OpenCode Browse — the agent harness now browses the web for you\n\nOpenCode shipped Browse, a web-browsing capability for its AI coding agent. The launch lands in the middle of a running argument about whether agent harnesses should enforce security at all.\n\nSource: https://opencode.ai/product/browse\nHN Discuss: https://news.ycombinator.com/item?id=50523459\n311 pts / 191 comments",
+          "10": "10. Sheep grazing under solar panels — a win for farmers and the land\n\nCornell research finds grazing sheep in solar fields brings economic and ecological gains: farmers get lease income plus grazing revenue, panels get shade-tolerant vegetation management, and the land stays productive.\n\nSource: https://news.cornell.edu/stories/2026/10/sheep-grazing-solar-fields-offers-farmers-economic-ecological-gains\nHN Discuss: https://news.ycombinator.com/item?id=50520182\n304 pts / 302 comments"
+};
+
+        function fallbackCopy(text) {
+          var ta = document.createElement("textarea");
+          ta.value = text;
+          ta.setAttribute("readonly", "");
+          ta.style.position = "absolute";
+          ta.style.left = "-9999px";
+          document.body.appendChild(ta);
+          ta.select();
+          var ok = false;
+          try { ok = document.execCommand("copy"); } catch (e) { ok = false; }
+          document.body.removeChild(ta);
+          return ok;
+        }
+
+        var buttons = document.querySelectorAll(".copy-btn");
+        Array.prototype.forEach.call(buttons, function (btn) {
+          btn.addEventListener("click", function () {
+            var text = copyData[btn.getAttribute("data-copy")] || "";
+            function done() {
+              var original = "Copy";
+              btn.textContent = "Copied ✓";
+              btn.classList.add("copied");
+              setTimeout(function () {
+                btn.textContent = original;
+                btn.classList.remove("copied");
+              }, 1600);
+            }
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+              navigator.clipboard.writeText(text).then(done, function () {
+                if (fallbackCopy(text)) done();
+              });
+            } else if (fallbackCopy(text)) {
+              done();
+            }
+          });
+        });
+      })();
+    </script>
+  </body>
+</html>
