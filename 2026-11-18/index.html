@@ -1,0 +1,535 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="light dark" />
+    <link rel="icon" href="data:," />
+    <title>HN Daily — Wednesday, November 18, 2026</title>
+    <style>
+      :root {
+        --bg: #f3f1eb;
+        --surface: #fbf9f4;
+        --ink: #1c1a16;
+        --ink-soft: #4a463e;
+        --ink-faint: #6f6a5e;
+        --line: #d8d2c4;
+        --accent: #ff6600;
+        --accent-ink: #b34700;
+        --comment-bg: #efe9dc;
+        --focus: #b34700;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root:not([data-theme="light"]) {
+          --bg: #16140f;
+          --surface: #1f1c16;
+          --ink: #f0ead9;
+          --ink-soft: #c9c2b0;
+          --ink-faint: #9a937f;
+          --line: #3a362b;
+          --accent: #ff7a1a;
+          --accent-ink: #ff9440;
+          --comment-bg: #262219;
+          --focus: #ff9440;
+        }
+      }
+      :root[data-theme="dark"] {
+        --bg: #16140f;
+        --surface: #1f1c16;
+        --ink: #f0ead9;
+        --ink-soft: #c9c2b0;
+        --ink-faint: #9a937f;
+        --line: #3a362b;
+        --accent: #ff7a1a;
+        --accent-ink: #ff9440;
+        --comment-bg: #262219;
+        --focus: #ff9440;
+      }
+
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--ink);
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: 17px;
+        line-height: 1.55;
+        -webkit-font-smoothing: antialiased;
+      }
+      a { color: var(--accent-ink); text-decoration: underline; text-underline-offset: 2px; }
+      a:hover { color: var(--accent); }
+      a:focus-visible, button:focus-visible {
+        outline: 2px solid var(--focus);
+        outline-offset: 2px;
+        border-radius: 2px;
+      }
+
+      .wrap {
+        max-width: 1080px;
+        margin: 0 auto;
+        padding: 32px 24px 64px;
+      }
+
+      header.masthead {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 20px;
+        border-bottom: 3px solid var(--ink);
+        padding-bottom: 20px;
+        margin-bottom: 8px;
+      }
+      .masthead h1 {
+        margin: 0 0 6px;
+        font-size: clamp(30px, 5vw, 46px);
+        line-height: 1.1;
+        font-weight: 700;
+        letter-spacing: -0.01em;
+      }
+      .masthead .subtitle {
+        margin: 0;
+        font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+        font-size: 14px;
+        color: var(--ink-soft);
+      }
+      .masthead .kicker {
+        margin: 0 0 10px;
+        font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+        font-size: 12px;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--accent-ink);
+      }
+
+      .theme-toggle {
+        flex: 0 0 auto;
+        width: 86px;
+        height: 40px;
+        min-height: 40px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        background: var(--surface);
+        color: var(--ink);
+        border: 1.5px solid var(--ink);
+        border-radius: 999px;
+        font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+        font-size: 13px;
+        cursor: pointer;
+        padding: 0 10px;
+      }
+      .theme-toggle .dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: var(--accent);
+        flex: 0 0 auto;
+      }
+      .theme-toggle:hover { border-color: var(--accent); }
+
+      .story {
+        display: grid;
+        grid-template-columns: 72px 1fr;
+        gap: 4px 20px;
+        padding: 28px 0 26px;
+        border-bottom: 1px solid var(--line);
+        scroll-margin-top: 16px;
+      }
+      .story .num {
+        font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+        font-size: 40px;
+        font-weight: 700;
+        line-height: 1;
+        color: var(--accent);
+        padding-top: 2px;
+      }
+      .story h2 {
+        margin: 0 0 10px;
+        font-size: clamp(21px, 3vw, 26px);
+        line-height: 1.25;
+        font-weight: 700;
+      }
+      .story .body { margin: 0 0 14px; color: var(--ink); max-width: 68ch; }
+
+      .meta {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 8px 18px;
+        font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+        font-size: 13.5px;
+        color: var(--ink-soft);
+        margin-bottom: 16px;
+      }
+      .meta a { min-height: 36px; display: inline-flex; align-items: center; }
+      .meta .stats { color: var(--ink-faint); white-space: nowrap; }
+      .copy-btn {
+        margin-left: auto;
+        min-height: 36px;
+        padding: 6px 14px;
+        background: transparent;
+        color: var(--ink);
+        border: 1px solid var(--line);
+        border-radius: 6px;
+        font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+        font-size: 13px;
+        cursor: pointer;
+      }
+      .copy-btn:hover { border-color: var(--accent); color: var(--accent-ink); }
+      .copy-btn.copied { border-color: var(--accent); color: var(--accent-ink); }
+
+      .commenters {
+        background: var(--comment-bg);
+        border-radius: 6px;
+        padding: 14px 18px;
+        max-width: 72ch;
+      }
+      .commenters .label {
+        display: block;
+        font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+        font-size: 11.5px;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--accent-ink);
+        margin-bottom: 6px;
+      }
+      .commenters p { margin: 0; font-size: 15.5px; color: var(--ink-soft); }
+
+      footer {
+        margin-top: 36px;
+        padding-top: 20px;
+        border-top: 3px solid var(--ink);
+        font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+        font-size: 13.5px;
+        color: var(--ink-soft);
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px 24px;
+        align-items: center;
+      }
+      footer a { min-height: 36px; display: inline-flex; align-items: center; }
+
+      @media (max-width: 600px) {
+        .wrap { padding: 22px 16px 48px; }
+        .story { grid-template-columns: 46px 1fr; gap: 2px 12px; padding: 22px 0 20px; }
+        .story .num { font-size: 28px; }
+        header.masthead { flex-wrap: wrap; }
+        .copy-btn { margin-left: 0; }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        html { scroll-behavior: auto; }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <header class="masthead">
+        <div>
+          <p class="kicker">Hacker News · Daily Digest</p>
+          <h1>HN Daily — Wednesday, November 18, 2026</h1>
+          <p class="subtitle">HN Top 10 — 2026-11-18 07:00 PT (hottest by points)</p>
+        </div>
+        <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle dark mode" aria-pressed="false">
+          <span class="dot" aria-hidden="true"></span><span id="themeLabel">Dark</span>
+        </button>
+      </header>
+
+      <main>
+        <article class="story" id="story-1">
+          <div class="num" aria-hidden="true">1</div>
+          <div>
+            <h2 class="tagline">OpenAI ships GPT-6.2 Astra and Sol — faster, cheaper, cyber-rated Critical</h2>
+            <p class="body">OpenAI released GPT-6.2 Astra and Sol on Nov 17 for ChatGPT Work, Codex and the API. Astra is the new frontier model, 20% cheaper than GPT-6 Astra at $8/$40 per million tokens; Sol is the everyday model at $2/$10. Independent tests put Astra near the top on capability, with real cost-per-task savings of 36–50% — real, but smaller than OpenAI&#x27;s headline claim.</p>
+            <div class="meta">
+              <a class="source" href="https://openai.com/index/introducing-gpt-6-2-astra-sol/" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50535230" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">1318 pts · 823 comments</span>
+              <button class="copy-btn" type="button" data-copy="1">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>Timing is the joke — it landed the day Anthropic prices its IPO. Early testers report the launch site itself is laggy, and one demo racing game crashed browsers. Benchmark watchers say Astra is at the frontier; hands-on users say it feels strange, and almost nothing has been published yet on Sol, the model most teams would actually deploy.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="story" id="story-2">
+          <div class="num" aria-hidden="true">2</div>
+          <div>
+            <h2 class="tagline">Java4Shell: critical RCE in OpenJDK&#x27;s Base64 decoder — patch now</h2>
+            <p class="body">Researchers disclosed CVE-2026-114938, a memory-corruption bug in OpenJDK&#x27;s AVX-512-optimized Base64 decoder, rated CVSS 9.2. A remote, unauthenticated attacker can corrupt heap memory and reach code execution; the trigger is 64 &#x27;A&#x27;s followed by &#x27;=&#x27;. Java powers 90% of the Fortune 500, and Base64 is everywhere — cookies, JWTs, certs. Patched builds are out; a workaround is -XX:UseAVX=2.</p>
+            <div class="meta">
+              <a class="source" href="https://calif.io/java4shell/" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50538240" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">1068 pts · 282 comments</span>
+              <button class="copy-btn" type="button" data-copy="2">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>Full details were still emerging when the story broke — the write-up promised them hours after the patch. Unverified reports say only x86-64 is affected and ARM/Graviton escapes it. The recurring theme: hand-written assembly intrinsics are where &#x27;many eyeballs&#x27; stops working, because few eyeballs understand the code.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="story" id="story-3">
+          <div class="num" aria-hidden="true">3</div>
+          <div>
+            <h2 class="tagline">Quad9 quits France over piracy-blocking order — a canary for the open internet</h2>
+            <p class="body">Quad9 will stop serving France on Nov 24 after a Paris court ordered it to block domains in a beIN Sports piracy case, with a €1,000/day penalty. Quad9 says it can&#x27;t block for French users only without tracking them, and won&#x27;t apply a French order worldwide. Cloudflare warns hospitals, schools and government offices relying on Quad9 face disruption.</p>
+            <div class="meta">
+              <a class="source" href="https://blog.cloudflare.com/quad9-withdrawal-from-france/" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50538994" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">807 pts · 365 comments</span>
+              <button class="copy-btn" type="button" data-copy="3">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>Split between &#x27;the balkanization of the internet is here&#x27; and &#x27;it was never truly free — the Great Firewall, Minitel and export controls predate this by decades.&#x27; Others note Cisco&#x27;s OpenDNS left France the same way, and a Belgian order now looms over Cloudflare, Google and Cisco, due January 2027.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="story" id="story-4">
+          <div class="num" aria-hidden="true">4</div>
+          <div>
+            <h2 class="tagline">A highly classified US national security network went down, CNN reports</h2>
+            <p class="body">CNN reports a highly classified US communications network used for national security went down, citing sources. Public details are thin: which system, how long it was down and what caused it are not disclosed — and the nature of the network means they may stay that way.</p>
+            <div class="meta">
+              <a class="source" href="https://www.cnn.com/2026/11/17/politics/highly-classified-national-security-communications-network-goes-down" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50532849" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">643 pts · 718 comments</span>
+              <button class="copy-btn" type="button" data-copy="4">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>Mostly jokes — &#x27;so much for classified&#x27; — and a parody blame game. Nobody has the backend docs, and nobody expects to get them; one commenter suggests joining a certain Signal chat for the details.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="story" id="story-5">
+          <div class="num" aria-hidden="true">5</div>
+          <div>
+            <h2 class="tagline">Nvidia stops breaking out Singapore sales as revenue hits $104B</h2>
+            <p class="body">The FT reports Nvidia has stopped disclosing Singapore sales just as revenue hit $104B. Singapore had accounted for about half of Nvidia&#x27;s revenue, and the country has been alleged as a route for AI chips — or compute — reaching China despite export controls. The timing invites questions about how much of that revenue was really Singaporean demand.</p>
+            <div class="meta">
+              <a class="source" href="https://www.ft.com/content/dbde7a30-548c-4f9d-a4be-7898a0c24dcf" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50534631" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">629 pts · 274 comments</span>
+              <button class="copy-btn" type="button" data-copy="5">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>Split between smuggling and the legal-ish workaround: renting Singapore-based compute to Chinese customers. Megaspeed did exactly that, and some note no verified reports of large-scale physical smuggling exist — renting compute at a fat margin beats risking a smuggling charge.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="story" id="story-6">
+          <div class="num" aria-hidden="true">6</div>
+          <div>
+            <h2 class="tagline">AI search is killing All About Berlin — and the open web with it</h2>
+            <p class="body">The Berlin expat guide All About Berlin says AI search summaries are gutting its traffic — Google answers the question, nobody clicks through. The post is from May but resurfaced as the canonical example of the pattern. The site is winding down a resource thousands of newcomers relied on.</p>
+            <div class="meta">
+              <a class="source" href="https://nicolasbouliane.com/blog/death-by-ai" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50542705" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">606 pts · 567 comments</span>
+              <button class="copy-btn" type="button" data-copy="6">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>Some flag that it&#x27;s a May repost; others say Google was suffocating search long before AI. The deeper worry is recursive: AI trains on human sources it is simultaneously starving, and the web converges on same-looking AI content — &#x27;the average of the average.&#x27;</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="story" id="story-7">
+          <div class="num" aria-hidden="true">7</div>
+          <div>
+            <h2 class="tagline">Google&#x27;s AI answers cut clicks to websites by 40%, experiment finds</h2>
+            <p class="body">A randomized experiment by RevScope and DataForSEO hid AI Overviews from some US desktop users: where an Overview appears, clicks to outside sites fall about 40%. Overviews now show on 61% of tracked US keywords, up from 6% two years ago, while AI assistants send sites just 0.3% of their traffic. The industry&#x27;s answer, GEO, has little evidence it compensates.</p>
+            <div class="meta">
+              <a class="source" href="https://revscope.co/blog/search-seo-geo-2026/" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50540178" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">580 pts · 439 comments</span>
+              <button class="copy-btn" type="button" data-copy="7">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>The post&#x27;s author shows up in the thread. Consensus is Google had to self-disrupt before rivals did — and did it without hurting ad revenue. Skeptics note search users came for links, not a weaker Gemini; one proposes markdown files plus MCP as the future content format.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="story" id="story-8">
+          <div class="num" aria-hidden="true">8</div>
+          <div>
+            <h2 class="tagline">Phrack 73 is out — the hacker zine keeps the fire burning</h2>
+            <p class="body">Issue 73 of Phrack, the hacker magazine running since 1985, is out — with a &#x27;Phrack World History&#x27; feature documenting forgotten stories from the scene. Forty years in, the zine is still publishing technical deep-dives and history that never makes it into mainstream security writing.</p>
+            <div class="meta">
+              <a class="source" href="https://phrack.org/issues/73/introduction_md" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50535992" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">437 pts · 60 comments</span>
+              <button class="copy-btn" type="button" data-copy="8">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>Nostalgia dominates — issue 49&#x27;s &#x27;Smashing the Stack for Fun and Profit&#x27; (1996) is the consensus classic. Readers trade favorite issues and the shenanigans they inspired, from magnetic-stripe tech to remote code execution via Adobe Shockwave.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="story" id="story-9">
+          <div class="num" aria-hidden="true">9</div>
+          <div>
+            <h2 class="tagline">IRS sign-in now runs through ID.me&#x27;s terms — and users want to know why</h2>
+            <p class="body">Signing in to the IRS now requires accepting ID.me&#x27;s terms, including sending ID and a face scan to the private company — even for existing accounts. Login.gov, the government&#x27;s own service, now works for the IRS too, but ID.me remains the path most people hit. The question in the thread: why does a citizen need a for-profit middleman to reach their own government?</p>
+            <div class="meta">
+              <a class="source" href="https://consumerrights.wiki/w/ID.me_terms_required_for_IRS_sign-in" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50540437" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">420 pts · 218 comments</span>
+              <button class="copy-btn" type="button" data-copy="9">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>Many ask why login.gov isn&#x27;t the default — less intrusive and government-run. One account says the IRS had verification requirements and a timeline login.gov couldn&#x27;t meet. Others note login.gov&#x27;s in-person verification via the post office isn&#x27;t supported for the IRS.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="story" id="story-10">
+          <div class="num" aria-hidden="true">10</div>
+          <div>
+            <h2 class="tagline">Microsoft&#x27;s ONNX Runtime vanished from GitHub with no warning</h2>
+            <p class="body">Microsoft&#x27;s ONNX Runtime repo — 22k stars, a core piece of ML infrastructure — disappeared from GitHub without notice, breaking pipelines and evals that depend on it. No explanation has surfaced. The leading guess is a security-driven takedown, but Microsoft has said nothing, and sketchy forks are already filling the gap.</p>
+            <div class="meta">
+              <a class="source" href="https://github.com/microsoft/onnxruntime" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50539610" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">394 pts · 81 comments</span>
+              <button class="copy-btn" type="button" data-copy="10">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>Engineers report evals failing that morning with no advance warning. Speculation runs from a supply-chain attack to a quiet security takedown; the consensus is the silence is the problem — a repo that big should be able to leave a note.</p>
+            </div>
+          </div>
+        </article>
+      </main>
+
+      <footer>
+        <a href="../">&larr; HN Daily archive</a>
+        <a href="https://tk3369.github.io/hn-daily/">tk3369.github.io/hn-daily</a>
+        <span>Press T to toggle theme.</span>
+      </footer>
+    </div>
+
+    <script>
+      (function () {
+        var KEY = "hn-daily-theme";
+        var root = document.documentElement;
+        var toggle = document.getElementById("themeToggle");
+        var label = document.getElementById("themeLabel");
+
+        function storedTheme() {
+          try { return window.localStorage.getItem(KEY); } catch (e) { return null; }
+        }
+        function systemDark() {
+          return window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+        }
+        function isDark() {
+          var t = root.getAttribute("data-theme");
+          if (t === "dark") return true;
+          if (t === "light") return false;
+          return systemDark();
+        }
+        function render() {
+          var dark = isDark();
+          label.textContent = dark ? "Light" : "Dark";
+          toggle.setAttribute("aria-pressed", dark ? "true" : "false");
+        }
+        function setTheme(theme) {
+          root.setAttribute("data-theme", theme);
+          try { window.localStorage.setItem(KEY, theme); } catch (e) {}
+          render();
+        }
+        function flip() {
+          setTheme(isDark() ? "light" : "dark");
+        }
+
+        var saved = storedTheme();
+        if (saved === "dark" || saved === "light") {
+          root.setAttribute("data-theme", saved);
+        }
+        render();
+
+        toggle.addEventListener("click", flip);
+        document.addEventListener("keydown", function (e) {
+          if (e.key === "t" || e.key === "T") {
+            var tag = (e.target && e.target.tagName) || "";
+            if (tag === "INPUT" || tag === "TEXTAREA") return;
+            if (e.metaKey || e.ctrlKey || e.altKey) return;
+            flip();
+          }
+        });
+        if (window.matchMedia) {
+          var mq = window.matchMedia("(prefers-color-scheme: dark)");
+          if (mq.addEventListener) mq.addEventListener("change", render);
+        }
+
+        // Copy buttons: number + tagline + body + source + HN link + points/comments.
+        // The "What HN commenters are saying" paragraph is deliberately excluded.
+        var copyData = {
+          "1": "1. OpenAI ships GPT-6.2 Astra and Sol \u2014 faster, cheaper, cyber-rated Critical\n\nOpenAI released GPT-6.2 Astra and Sol on Nov 17 for ChatGPT Work, Codex and the API. Astra is the new frontier model, 20% cheaper than GPT-6 Astra at $8/$40 per million tokens; Sol is the everyday model at $2/$10. Independent tests put Astra near the top on capability, with real cost-per-task savings of 36\u201350% \u2014 real, but smaller than OpenAI's headline claim.\n\nSource: https://openai.com/index/introducing-gpt-6-2-astra-sol/\nHN Discuss: https://news.ycombinator.com/item?id=50535230\n1318 pts / 823 comments",
+          "2": "2. Java4Shell: critical RCE in OpenJDK's Base64 decoder \u2014 patch now\n\nResearchers disclosed CVE-2026-114938, a memory-corruption bug in OpenJDK's AVX-512-optimized Base64 decoder, rated CVSS 9.2. A remote, unauthenticated attacker can corrupt heap memory and reach code execution; the trigger is 64 'A's followed by '='. Java powers 90% of the Fortune 500, and Base64 is everywhere \u2014 cookies, JWTs, certs. Patched builds are out; a workaround is -XX:UseAVX=2.\n\nSource: https://calif.io/java4shell/\nHN Discuss: https://news.ycombinator.com/item?id=50538240\n1068 pts / 282 comments",
+          "3": "3. Quad9 quits France over piracy-blocking order \u2014 a canary for the open internet\n\nQuad9 will stop serving France on Nov 24 after a Paris court ordered it to block domains in a beIN Sports piracy case, with a \u20ac1,000/day penalty. Quad9 says it can't block for French users only without tracking them, and won't apply a French order worldwide. Cloudflare warns hospitals, schools and government offices relying on Quad9 face disruption.\n\nSource: https://blog.cloudflare.com/quad9-withdrawal-from-france/\nHN Discuss: https://news.ycombinator.com/item?id=50538994\n807 pts / 365 comments",
+          "4": "4. A highly classified US national security network went down, CNN reports\n\nCNN reports a highly classified US communications network used for national security went down, citing sources. Public details are thin: which system, how long it was down and what caused it are not disclosed \u2014 and the nature of the network means they may stay that way.\n\nSource: https://www.cnn.com/2026/11/17/politics/highly-classified-national-security-communications-network-goes-down\nHN Discuss: https://news.ycombinator.com/item?id=50532849\n643 pts / 718 comments",
+          "5": "5. Nvidia stops breaking out Singapore sales as revenue hits $104B\n\nThe FT reports Nvidia has stopped disclosing Singapore sales just as revenue hit $104B. Singapore had accounted for about half of Nvidia's revenue, and the country has been alleged as a route for AI chips \u2014 or compute \u2014 reaching China despite export controls. The timing invites questions about how much of that revenue was really Singaporean demand.\n\nSource: https://www.ft.com/content/dbde7a30-548c-4f9d-a4be-7898a0c24dcf\nHN Discuss: https://news.ycombinator.com/item?id=50534631\n629 pts / 274 comments",
+          "6": "6. AI search is killing All About Berlin \u2014 and the open web with it\n\nThe Berlin expat guide All About Berlin says AI search summaries are gutting its traffic \u2014 Google answers the question, nobody clicks through. The post is from May but resurfaced as the canonical example of the pattern. The site is winding down a resource thousands of newcomers relied on.\n\nSource: https://nicolasbouliane.com/blog/death-by-ai\nHN Discuss: https://news.ycombinator.com/item?id=50542705\n606 pts / 567 comments",
+          "7": "7. Google's AI answers cut clicks to websites by 40%, experiment finds\n\nA randomized experiment by RevScope and DataForSEO hid AI Overviews from some US desktop users: where an Overview appears, clicks to outside sites fall about 40%. Overviews now show on 61% of tracked US keywords, up from 6% two years ago, while AI assistants send sites just 0.3% of their traffic. The industry's answer, GEO, has little evidence it compensates.\n\nSource: https://revscope.co/blog/search-seo-geo-2026/\nHN Discuss: https://news.ycombinator.com/item?id=50540178\n580 pts / 439 comments",
+          "8": "8. Phrack 73 is out \u2014 the hacker zine keeps the fire burning\n\nIssue 73 of Phrack, the hacker magazine running since 1985, is out \u2014 with a 'Phrack World History' feature documenting forgotten stories from the scene. Forty years in, the zine is still publishing technical deep-dives and history that never makes it into mainstream security writing.\n\nSource: https://phrack.org/issues/73/introduction_md\nHN Discuss: https://news.ycombinator.com/item?id=50535992\n437 pts / 60 comments",
+          "9": "9. IRS sign-in now runs through ID.me's terms \u2014 and users want to know why\n\nSigning in to the IRS now requires accepting ID.me's terms, including sending ID and a face scan to the private company \u2014 even for existing accounts. Login.gov, the government's own service, now works for the IRS too, but ID.me remains the path most people hit. The question in the thread: why does a citizen need a for-profit middleman to reach their own government?\n\nSource: https://consumerrights.wiki/w/ID.me_terms_required_for_IRS_sign-in\nHN Discuss: https://news.ycombinator.com/item?id=50540437\n420 pts / 218 comments",
+          "10": "10. Microsoft's ONNX Runtime vanished from GitHub with no warning\n\nMicrosoft's ONNX Runtime repo \u2014 22k stars, a core piece of ML infrastructure \u2014 disappeared from GitHub without notice, breaking pipelines and evals that depend on it. No explanation has surfaced. The leading guess is a security-driven takedown, but Microsoft has said nothing, and sketchy forks are already filling the gap.\n\nSource: https://github.com/microsoft/onnxruntime\nHN Discuss: https://news.ycombinator.com/item?id=50539610\n394 pts / 81 comments"
+};
+
+        function fallbackCopy(text) {
+          var ta = document.createElement("textarea");
+          ta.value = text;
+          ta.setAttribute("readonly", "");
+          ta.style.position = "absolute";
+          ta.style.left = "-9999px";
+          document.body.appendChild(ta);
+          ta.select();
+          var ok = false;
+          try { ok = document.execCommand("copy"); } catch (e) { ok = false; }
+          document.body.removeChild(ta);
+          return ok;
+        }
+
+        var buttons = document.querySelectorAll(".copy-btn");
+        Array.prototype.forEach.call(buttons, function (btn) {
+          btn.addEventListener("click", function () {
+            var text = copyData[btn.getAttribute("data-copy")] || "";
+            function done() {
+              var original = "Copy";
+              btn.textContent = "Copied ✓";
+              btn.classList.add("copied");
+              setTimeout(function () {
+                btn.textContent = original;
+                btn.classList.remove("copied");
+              }, 1600);
+            }
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+              navigator.clipboard.writeText(text).then(done, function () {
+                if (fallbackCopy(text)) done();
+              });
+            } else if (fallbackCopy(text)) {
+              done();
+            }
+          });
+        });
+      })();
+    </script>
+  </body>
+</html>
