@@ -1,0 +1,535 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="light dark" />
+    <link rel="icon" href="data:," />
+    <title>HN Daily — Thursday, November 19, 2026</title>
+    <style>
+      :root {
+        --bg: #f3f1eb;
+        --surface: #fbf9f4;
+        --ink: #1c1a16;
+        --ink-soft: #4a463e;
+        --ink-faint: #6f6a5e;
+        --line: #d8d2c4;
+        --accent: #ff6600;
+        --accent-ink: #b34700;
+        --comment-bg: #efe9dc;
+        --focus: #b34700;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root:not([data-theme="light"]) {
+          --bg: #16140f;
+          --surface: #1f1c16;
+          --ink: #f0ead9;
+          --ink-soft: #c9c2b0;
+          --ink-faint: #9a937f;
+          --line: #3a362b;
+          --accent: #ff7a1a;
+          --accent-ink: #ff9440;
+          --comment-bg: #262219;
+          --focus: #ff9440;
+        }
+      }
+      :root[data-theme="dark"] {
+        --bg: #16140f;
+        --surface: #1f1c16;
+        --ink: #f0ead9;
+        --ink-soft: #c9c2b0;
+        --ink-faint: #9a937f;
+        --line: #3a362b;
+        --accent: #ff7a1a;
+        --accent-ink: #ff9440;
+        --comment-bg: #262219;
+        --focus: #ff9440;
+      }
+
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--ink);
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: 17px;
+        line-height: 1.55;
+        -webkit-font-smoothing: antialiased;
+      }
+      a { color: var(--accent-ink); text-decoration: underline; text-underline-offset: 2px; }
+      a:hover { color: var(--accent); }
+      a:focus-visible, button:focus-visible {
+        outline: 2px solid var(--focus);
+        outline-offset: 2px;
+        border-radius: 2px;
+      }
+
+      .wrap {
+        max-width: 1080px;
+        margin: 0 auto;
+        padding: 32px 24px 64px;
+      }
+
+      header.masthead {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 20px;
+        border-bottom: 3px solid var(--ink);
+        padding-bottom: 20px;
+        margin-bottom: 8px;
+      }
+      .masthead h1 {
+        margin: 0 0 6px;
+        font-size: clamp(30px, 5vw, 46px);
+        line-height: 1.1;
+        font-weight: 700;
+        letter-spacing: -0.01em;
+      }
+      .masthead .subtitle {
+        margin: 0;
+        font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+        font-size: 14px;
+        color: var(--ink-soft);
+      }
+      .masthead .kicker {
+        margin: 0 0 10px;
+        font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+        font-size: 12px;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--accent-ink);
+      }
+
+      .theme-toggle {
+        flex: 0 0 auto;
+        width: 86px;
+        height: 40px;
+        min-height: 40px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        background: var(--surface);
+        color: var(--ink);
+        border: 1.5px solid var(--ink);
+        border-radius: 999px;
+        font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+        font-size: 13px;
+        cursor: pointer;
+        padding: 0 10px;
+      }
+      .theme-toggle .dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: var(--accent);
+        flex: 0 0 auto;
+      }
+      .theme-toggle:hover { border-color: var(--accent); }
+
+      .story {
+        display: grid;
+        grid-template-columns: 72px 1fr;
+        gap: 4px 20px;
+        padding: 28px 0 26px;
+        border-bottom: 1px solid var(--line);
+        scroll-margin-top: 16px;
+      }
+      .story .num {
+        font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+        font-size: 40px;
+        font-weight: 700;
+        line-height: 1;
+        color: var(--accent);
+        padding-top: 2px;
+      }
+      .story h2 {
+        margin: 0 0 10px;
+        font-size: clamp(21px, 3vw, 26px);
+        line-height: 1.25;
+        font-weight: 700;
+      }
+      .story .body { margin: 0 0 14px; color: var(--ink); max-width: 68ch; }
+
+      .meta {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 8px 18px;
+        font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+        font-size: 13.5px;
+        color: var(--ink-soft);
+        margin-bottom: 16px;
+      }
+      .meta a { min-height: 36px; display: inline-flex; align-items: center; }
+      .meta .stats { color: var(--ink-faint); white-space: nowrap; }
+      .copy-btn {
+        margin-left: auto;
+        min-height: 36px;
+        padding: 6px 14px;
+        background: transparent;
+        color: var(--ink);
+        border: 1px solid var(--line);
+        border-radius: 6px;
+        font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+        font-size: 13px;
+        cursor: pointer;
+      }
+      .copy-btn:hover { border-color: var(--accent); color: var(--accent-ink); }
+      .copy-btn.copied { border-color: var(--accent); color: var(--accent-ink); }
+
+      .commenters {
+        background: var(--comment-bg);
+        border-radius: 6px;
+        padding: 14px 18px;
+        max-width: 72ch;
+      }
+      .commenters .label {
+        display: block;
+        font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+        font-size: 11.5px;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--accent-ink);
+        margin-bottom: 6px;
+      }
+      .commenters p { margin: 0; font-size: 15.5px; color: var(--ink-soft); }
+
+      footer {
+        margin-top: 36px;
+        padding-top: 20px;
+        border-top: 3px solid var(--ink);
+        font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+        font-size: 13.5px;
+        color: var(--ink-soft);
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px 24px;
+        align-items: center;
+      }
+      footer a { min-height: 36px; display: inline-flex; align-items: center; }
+
+      @media (max-width: 600px) {
+        .wrap { padding: 22px 16px 48px; }
+        .story { grid-template-columns: 46px 1fr; gap: 2px 12px; padding: 22px 0 20px; }
+        .story .num { font-size: 28px; }
+        header.masthead { flex-wrap: wrap; }
+        .copy-btn { margin-left: 0; }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        html { scroll-behavior: auto; }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <header class="masthead">
+        <div>
+          <p class="kicker">Hacker News · Daily Digest</p>
+          <h1>HN Daily — Thursday, November 19, 2026</h1>
+          <p class="subtitle">HN Top 10 — 2026-11-19 07:00 PT (hottest by points)</p>
+        </div>
+        <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle dark mode" aria-pressed="false">
+          <span class="dot" aria-hidden="true"></span><span id="themeLabel">Dark</span>
+        </button>
+      </header>
+
+      <main>
+        <article class="story" id="story-1">
+          <div class="num" aria-hidden="true">1</div>
+          <div>
+            <h2 class="tagline">Unauthenticated RCE in Nginx — two critical HTTP/2 flaws, patch now</h2>
+            <p class="body">Wiz disclosed CVE-2026-123633 and CVE-2026-123007, two unauthenticated remote code execution flaws in Nginx&#x27;s HTTP/2 handling, both rated CVSS 9.2. A remote attacker can compromise the server running Nginx — and the websites, APIs and data behind it — without logging in. Patches were released the same day; only HTTP/2-enabled servers are exposed.</p>
+            <div class="meta">
+              <a class="source" href="https://www.wiz.io/blog/nginx-http2-rce-vulnerabilities" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50547374" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">1461 pts · 613 comments</span>
+              <button class="copy-btn" type="button" data-copy="1">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>How long before this is exploited in the wild? is the dominant question — the write-up is unusually detailed. Some note it always seems to be HTTP/2 with Nginx. Others asked why full details dropped before patches were ready; the patches landed within 30 minutes. Five research groups independently found the same bugs, which one commenter calls a record for bug collision.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="story" id="story-2">
+          <div class="num" aria-hidden="true">2</div>
+          <div>
+            <h2 class="tagline">Google ships Gemini 4 Neon — a mid-size model that nearly tops the charts</h2>
+            <p class="body">Google launched Gemini 4 Neon, the mid-size tier of the Gemini 4 family. Independent evaluations rank it #2 on the Vals Index at 70.9%, and #1 on both the Legal Research Bench and Tax Agent Bench — strong for a model meant to balance cost and capability. It sits below the flagship tier, aimed at everyday high-volume work rather than frontier tasks.</p>
+            <div class="meta">
+              <a class="source" href="https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-neon/" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50552424" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">923 pts · 718 comments</span>
+              <button class="copy-btn" type="button" data-copy="2">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>The naming churn is the joke — &#x27;at this point you just use roulette on which Gemini model you&#x27;ll use.&#x27; Several call it the long-awaited successor to 3.1 Pro and note it only loses to the flagship tier. Others flag access friction: it works in some paid tiers but student accounts reportedly can&#x27;t use it.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="story" id="story-3">
+          <div class="num" aria-hidden="true">3</div>
+          <div>
+            <h2 class="tagline">Inside Deutsche Bank — a curated archive of the bank&#x27;s scandals</h2>
+            <p class="body">Inside Deutsche Bank collects reporting on the bank&#x27;s long trail of scandals — from propping up a default-prone American developer in the 1880s to laundering money for Eastern Bloc authoritarians and the modern era&#x27;s fines. The site links out to the underlying articles rather than summarizing them, so it reads as a research starting point, not a quick briefing.</p>
+            <div class="meta">
+              <a class="source" href="https://www.inside-db.com/" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50547620" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">741 pts · 247 comments</span>
+              <button class="copy-btn" type="button" data-copy="3">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>The site got hugged to death within hours, so many commenters couldn&#x27;t load it at all. Those who did point to David Enrich&#x27;s Dark Towers as the essential companion read. The recurring criticism: the page needs a high-level summary — most readers won&#x27;t click through a dozen long articles to find the point.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="story" id="story-4">
+          <div class="num" aria-hidden="true">4</div>
+          <div>
+            <h2 class="tagline">Microsoft launches seven models at Ignite — big claims, thin details</h2>
+            <p class="body">Microsoft announced seven new models at Ignite 2026, headlined by MAI Code 2 Flash and the Decision 1.1 decision model, pitched on scalable price-performance. The headline numbers are aggressive — Decision 1.1 is claimed 50x faster and 79x cheaper than GPT-6.1 Sol — but Microsoft published no technical reports or open weights, so the claims can&#x27;t be checked yet.</p>
+            <div class="meta">
+              <a class="source" href="https://microsoft.ai/news/microsoft-ignite-2026/" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50548021" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">576 pts · 362 comments</span>
+              <button class="copy-btn" type="button" data-copy="4">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>Skepticism dominates. &#x27;50x faster and 79x cheaper&#x27; against an unnamed baseline reads as marketing, not measurement. Several say Microsoft should open-source the weights if it wants market share — &#x27;otherwise it&#x27;s Windows Phone OS all over again.&#x27; The crowd, as one commenter put it, &#x27;goes mild.&#x27;</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="story" id="story-5">
+          <div class="num" aria-hidden="true">5</div>
+          <div>
+            <h2 class="tagline">The European Commission moved 40,000 staff onto Matrix</h2>
+            <p class="body">The European Commission has rolled out Matrix — the open, federated messaging protocol — to more than 40,000 staff, one of the largest deployments of its kind. The move is part of Europe&#x27;s push to cut dependence on US tech for internal communications. Element, which builds Matrix clients, published the case study.</p>
+            <div class="meta">
+              <a class="source" href="https://element.io/blog/how-the-european-commission-rolled-out-matrix-to-more-than-40-000-staff/" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50558533" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">361 pts · 166 comments</span>
+              <button class="copy-btn" type="button" data-copy="5">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>Sympathy for the 40,000 staff runs high — device verification and Matrix&#x27;s rough edges multiplied by that headcount. Others defend the price: sovereignty is worth paying for, even if the tooling is clunkier than the American alternatives it replaces. A few bet the Commission migrates to something else within a year.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="story" id="story-6">
+          <div class="num" aria-hidden="true">6</div>
+          <div>
+            <h2 class="tagline">Anthropic prices its IPO at $83 — debuts Thursday at about $1.4T</h2>
+            <p class="body">Anthropic priced its IPO at $83.00 a share — 980 million Class A shares, up from the 825 million first offered, plus a private placement to Google, Nvidia and others. Trading starts Thursday, Nov 19 on Nasdaq as ANT, at a valuation near $1.4T. Founded in 2021, it would be one of the largest tech listings ever, five years after incorporation.</p>
+            <div class="meta">
+              <a class="source" href="https://www.anthropic.com/news/anthropic-prices-initial-public-offering" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50553843" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">329 pts · 610 comments</span>
+              <button class="copy-btn" type="button" data-copy="6">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>The math gets checked first: 980M shares at $83 is about $81B from the offering, plus about $26B from Google, Nvidia and others. Retail buyers are told &#x27;good luck.&#x27; The disbelief is the valuation — a company formed in 2021 reaching a $1.5T market cap, a level Apple didn&#x27;t hit until 2020.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="story" id="story-7">
+          <div class="num" aria-hidden="true">7</div>
+          <div>
+            <h2 class="tagline">Ruby patches multiple Regexp and String case-conversion flaws</h2>
+            <p class="body">Ruby disclosed multiple vulnerabilities in Regexp and in String case conversion, all C-level memory-corruption bugs. The sharpest is the German ß: upcasing it expands to &#x27;SS&#x27;, growing the string by one character, and the Windows-1252 conversion code didn&#x27;t handle the extra length. Patches are out for supported Ruby versions.</p>
+            <div class="meta">
+              <a class="source" href="https://www.ruby-lang.org/en/news/2026/11/18/multiple-vulnerabilities-in-regexp-and-string/" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50554038" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">304 pts · 113 comments</span>
+              <button class="copy-btn" type="button" data-copy="7">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>The ß bug fascinates the thread — a one-character length change in a buffer that assumed conversion never grows a string. Several note the bugs were found by autonomous AI models, including one credited to Anthropic: &#x27;imagine attackers using [such] models at scale.&#x27; Others ask whether regexes could just be replaced with plain conditionals.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="story" id="story-8">
+          <div class="num" aria-hidden="true">8</div>
+          <div>
+            <h2 class="tagline">LLM-assisted reverse engineering — a field guide that actually works</h2>
+            <p class="body">A practical walkthrough of using LLMs for reverse engineering: disassembly, hypothesis-driven experiments, and steering the model to write periodic reports, then wiping context to stop it going in circles. The author&#x27;s verdict is that the scientific method — definitive experiments instead of endless guessing — is what makes agents useful on hard targets.</p>
+            <div class="meta">
+              <a class="source" href="https://www.slowchronicle.com/posts/llm-assisted-reverse-engineering" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50553225" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">276 pts · 70 comments</span>
+              <button class="copy-btn" type="button" data-copy="8">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>Practitioners swap tooling notes: IDA Pro steers better than Ghidra, and forcing the model into experiments breaks the &#x27;guessing loops&#x27; that plague Claude on harder targets. One warning recurs — reverse engineering has legal limits, and Apple&#x27;s developer agreement bans it in some cases. Model guardrails are another friction: several use DeepSeek when Claude or OpenAI refuse.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="story" id="story-9">
+          <div class="num" aria-hidden="true">9</div>
+          <div>
+            <h2 class="tagline">Ruby2ßhell: pre-auth RCE on stock Rails from one character</h2>
+            <p class="body">Ruby2ßhell is a pre-authentication remote code execution bug in stock Rails, and it&#x27;s the same ß→SS case-conversion flaw from the Ruby advisory — upcasing &#x27;ß&#x27; expands to &#x27;SS&#x27; and overflows a buffer that assumed length never grows. The name was crowd-chosen on HN. It lands alongside six other Ruby vulnerabilities disclosed the same day.</p>
+            <div class="meta">
+              <a class="source" href="https://verialabs.com/ruby2shell/" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50556287" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">262 pts · 103 comments</span>
+              <button class="copy-btn" type="button" data-copy="9">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>Mostly relief mixed with amusement: it&#x27;s not a second, separate Rails disaster — it&#x27;s the advisory&#x27;s headline bug with a good name. &#x27;For once a bug name that&#x27;s cool,&#x27; one commenter says; another offers &#x27;Scheiße2Shell.&#x27; The underlying lesson is the same as the advisory&#x27;s: case conversion that changes string length was added without testing the assumption it broke.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="story" id="story-10">
+          <div class="num" aria-hidden="true">10</div>
+          <div>
+            <h2 class="tagline">15 million web servers on one VM — smoltcp, DPDK and AF_XDP</h2>
+            <p class="body">One VM, 15 million web servers: a hands-on experiment that strips away the usual networking stack and runs smoltcp on DPDK with AF_XDP to serve a tiny HTTP server per connection. It&#x27;s a demonstration of how much headroom modern hardware has once abstractions are removed — and a fun read, by the thread&#x27;s account.</p>
+            <div class="meta">
+              <a class="source" href="https://kapteko.com/15-million-webservers/" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50556533" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">259 pts · 30 comments</span>
+              <button class="copy-btn" type="button" data-copy="10">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>The tone wins the thread: readers call it rare — technical, funny, easy to read, and &#x27;most importantly not written by AI.&#x27; Several say it made them want to subscribe to more. The main technical quibble is the HOST header, which the author handles — wait till he hears about it, one commenter jokes.</p>
+            </div>
+          </div>
+        </article>
+      </main>
+
+      <footer>
+        <a href="../">&larr; HN Daily archive</a>
+        <a href="https://tk3369.github.io/hn-daily/">tk3369.github.io/hn-daily</a>
+        <span>Press T to toggle theme.</span>
+      </footer>
+    </div>
+
+    <script>
+      (function () {
+        var KEY = "hn-daily-theme";
+        var root = document.documentElement;
+        var toggle = document.getElementById("themeToggle");
+        var label = document.getElementById("themeLabel");
+
+        function storedTheme() {
+          try { return window.localStorage.getItem(KEY); } catch (e) { return null; }
+        }
+        function systemDark() {
+          return window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+        }
+        function isDark() {
+          var t = root.getAttribute("data-theme");
+          if (t === "dark") return true;
+          if (t === "light") return false;
+          return systemDark();
+        }
+        function render() {
+          var dark = isDark();
+          label.textContent = dark ? "Light" : "Dark";
+          toggle.setAttribute("aria-pressed", dark ? "true" : "false");
+        }
+        function setTheme(theme) {
+          root.setAttribute("data-theme", theme);
+          try { window.localStorage.setItem(KEY, theme); } catch (e) {}
+          render();
+        }
+        function flip() {
+          setTheme(isDark() ? "light" : "dark");
+        }
+
+        var saved = storedTheme();
+        if (saved === "dark" || saved === "light") {
+          root.setAttribute("data-theme", saved);
+        }
+        render();
+
+        toggle.addEventListener("click", flip);
+        document.addEventListener("keydown", function (e) {
+          if (e.key === "t" || e.key === "T") {
+            var tag = (e.target && e.target.tagName) || "";
+            if (tag === "INPUT" || tag === "TEXTAREA") return;
+            if (e.metaKey || e.ctrlKey || e.altKey) return;
+            flip();
+          }
+        });
+        if (window.matchMedia) {
+          var mq = window.matchMedia("(prefers-color-scheme: dark)");
+          if (mq.addEventListener) mq.addEventListener("change", render);
+        }
+
+        // Copy buttons: number + tagline + body + source + HN link + points/comments.
+        // The "What HN commenters are saying" paragraph is deliberately excluded.
+        var copyData = {
+          "1": "1. Unauthenticated RCE in Nginx \u2014 two critical HTTP/2 flaws, patch now\n\nWiz disclosed CVE-2026-123633 and CVE-2026-123007, two unauthenticated remote code execution flaws in Nginx's HTTP/2 handling, both rated CVSS 9.2. A remote attacker can compromise the server running Nginx \u2014 and the websites, APIs and data behind it \u2014 without logging in. Patches were released the same day; only HTTP/2-enabled servers are exposed.\n\nSource: https://www.wiz.io/blog/nginx-http2-rce-vulnerabilities\nHN Discuss: https://news.ycombinator.com/item?id=50547374\n1461 pts / 613 comments",
+          "2": "2. Google ships Gemini 4 Neon \u2014 a mid-size model that nearly tops the charts\n\nGoogle launched Gemini 4 Neon, the mid-size tier of the Gemini 4 family. Independent evaluations rank it #2 on the Vals Index at 70.9%, and #1 on both the Legal Research Bench and Tax Agent Bench \u2014 strong for a model meant to balance cost and capability. It sits below the flagship tier, aimed at everyday high-volume work rather than frontier tasks.\n\nSource: https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-neon/\nHN Discuss: https://news.ycombinator.com/item?id=50552424\n923 pts / 718 comments",
+          "3": "3. Inside Deutsche Bank \u2014 a curated archive of the bank's scandals\n\nInside Deutsche Bank collects reporting on the bank's long trail of scandals \u2014 from propping up a default-prone American developer in the 1880s to laundering money for Eastern Bloc authoritarians and the modern era's fines. The site links out to the underlying articles rather than summarizing them, so it reads as a research starting point, not a quick briefing.\n\nSource: https://www.inside-db.com/\nHN Discuss: https://news.ycombinator.com/item?id=50547620\n741 pts / 247 comments",
+          "4": "4. Microsoft launches seven models at Ignite \u2014 big claims, thin details\n\nMicrosoft announced seven new models at Ignite 2026, headlined by MAI Code 2 Flash and the Decision 1.1 decision model, pitched on scalable price-performance. The headline numbers are aggressive \u2014 Decision 1.1 is claimed 50x faster and 79x cheaper than GPT-6.1 Sol \u2014 but Microsoft published no technical reports or open weights, so the claims can't be checked yet.\n\nSource: https://microsoft.ai/news/microsoft-ignite-2026/\nHN Discuss: https://news.ycombinator.com/item?id=50548021\n576 pts / 362 comments",
+          "5": "5. The European Commission moved 40,000 staff onto Matrix\n\nThe European Commission has rolled out Matrix \u2014 the open, federated messaging protocol \u2014 to more than 40,000 staff, one of the largest deployments of its kind. The move is part of Europe's push to cut dependence on US tech for internal communications. Element, which builds Matrix clients, published the case study.\n\nSource: https://element.io/blog/how-the-european-commission-rolled-out-matrix-to-more-than-40-000-staff/\nHN Discuss: https://news.ycombinator.com/item?id=50558533\n361 pts / 166 comments",
+          "6": "6. Anthropic prices its IPO at $83 \u2014 debuts Thursday at about $1.4T\n\nAnthropic priced its IPO at $83.00 a share \u2014 980 million Class A shares, up from the 825 million first offered, plus a private placement to Google, Nvidia and others. Trading starts Thursday, Nov 19 on Nasdaq as ANT, at a valuation near $1.4T. Founded in 2021, it would be one of the largest tech listings ever, five years after incorporation.\n\nSource: https://www.anthropic.com/news/anthropic-prices-initial-public-offering\nHN Discuss: https://news.ycombinator.com/item?id=50553843\n329 pts / 610 comments",
+          "7": "7. Ruby patches multiple Regexp and String case-conversion flaws\n\nRuby disclosed multiple vulnerabilities in Regexp and in String case conversion, all C-level memory-corruption bugs. The sharpest is the German \u00df: upcasing it expands to 'SS', growing the string by one character, and the Windows-1252 conversion code didn't handle the extra length. Patches are out for supported Ruby versions.\n\nSource: https://www.ruby-lang.org/en/news/2026/11/18/multiple-vulnerabilities-in-regexp-and-string/\nHN Discuss: https://news.ycombinator.com/item?id=50554038\n304 pts / 113 comments",
+          "8": "8. LLM-assisted reverse engineering \u2014 a field guide that actually works\n\nA practical walkthrough of using LLMs for reverse engineering: disassembly, hypothesis-driven experiments, and steering the model to write periodic reports, then wiping context to stop it going in circles. The author's verdict is that the scientific method \u2014 definitive experiments instead of endless guessing \u2014 is what makes agents useful on hard targets.\n\nSource: https://www.slowchronicle.com/posts/llm-assisted-reverse-engineering\nHN Discuss: https://news.ycombinator.com/item?id=50553225\n276 pts / 70 comments",
+          "9": "9. Ruby2\u00dfhell: pre-auth RCE on stock Rails from one character\n\nRuby2\u00dfhell is a pre-authentication remote code execution bug in stock Rails, and it's the same \u00df\u2192SS case-conversion flaw from the Ruby advisory \u2014 upcasing '\u00df' expands to 'SS' and overflows a buffer that assumed length never grows. The name was crowd-chosen on HN. It lands alongside six other Ruby vulnerabilities disclosed the same day.\n\nSource: https://verialabs.com/ruby2shell/\nHN Discuss: https://news.ycombinator.com/item?id=50556287\n262 pts / 103 comments",
+          "10": "10. 15 million web servers on one VM \u2014 smoltcp, DPDK and AF_XDP\n\nOne VM, 15 million web servers: a hands-on experiment that strips away the usual networking stack and runs smoltcp on DPDK with AF_XDP to serve a tiny HTTP server per connection. It's a demonstration of how much headroom modern hardware has once abstractions are removed \u2014 and a fun read, by the thread's account.\n\nSource: https://kapteko.com/15-million-webservers/\nHN Discuss: https://news.ycombinator.com/item?id=50556533\n259 pts / 30 comments"
+};
+
+        function fallbackCopy(text) {
+          var ta = document.createElement("textarea");
+          ta.value = text;
+          ta.setAttribute("readonly", "");
+          ta.style.position = "absolute";
+          ta.style.left = "-9999px";
+          document.body.appendChild(ta);
+          ta.select();
+          var ok = false;
+          try { ok = document.execCommand("copy"); } catch (e) { ok = false; }
+          document.body.removeChild(ta);
+          return ok;
+        }
+
+        var buttons = document.querySelectorAll(".copy-btn");
+        Array.prototype.forEach.call(buttons, function (btn) {
+          btn.addEventListener("click", function () {
+            var text = copyData[btn.getAttribute("data-copy")] || "";
+            function done() {
+              var original = "Copy";
+              btn.textContent = "Copied ✓";
+              btn.classList.add("copied");
+              setTimeout(function () {
+                btn.textContent = original;
+                btn.classList.remove("copied");
+              }, 1600);
+            }
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+              navigator.clipboard.writeText(text).then(done, function () {
+                if (fallbackCopy(text)) done();
+              });
+            } else if (fallbackCopy(text)) {
+              done();
+            }
+          });
+        });
+      })();
+    </script>
+  </body>
+</html>
