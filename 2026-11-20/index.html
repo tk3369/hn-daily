@@ -1,0 +1,535 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="light dark" />
+    <link rel="icon" href="data:," />
+    <title>HN Daily — Friday, November 20, 2026</title>
+    <style>
+      :root {
+        --bg: #f3f1eb;
+        --surface: #fbf9f4;
+        --ink: #1c1a16;
+        --ink-soft: #4a463e;
+        --ink-faint: #6f6a5e;
+        --line: #d8d2c4;
+        --accent: #ff6600;
+        --accent-ink: #b34700;
+        --comment-bg: #efe9dc;
+        --focus: #b34700;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root:not([data-theme="light"]) {
+          --bg: #16140f;
+          --surface: #1f1c16;
+          --ink: #f0ead9;
+          --ink-soft: #c9c2b0;
+          --ink-faint: #9a937f;
+          --line: #3a362b;
+          --accent: #ff7a1a;
+          --accent-ink: #ff9440;
+          --comment-bg: #262219;
+          --focus: #ff9440;
+        }
+      }
+      :root[data-theme="dark"] {
+        --bg: #16140f;
+        --surface: #1f1c16;
+        --ink: #f0ead9;
+        --ink-soft: #c9c2b0;
+        --ink-faint: #9a937f;
+        --line: #3a362b;
+        --accent: #ff7a1a;
+        --accent-ink: #ff9440;
+        --comment-bg: #262219;
+        --focus: #ff9440;
+      }
+
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--ink);
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: 17px;
+        line-height: 1.55;
+        -webkit-font-smoothing: antialiased;
+      }
+      a { color: var(--accent-ink); text-decoration: underline; text-underline-offset: 2px; }
+      a:hover { color: var(--accent); }
+      a:focus-visible, button:focus-visible {
+        outline: 2px solid var(--focus);
+        outline-offset: 2px;
+        border-radius: 2px;
+      }
+
+      .wrap {
+        max-width: 1080px;
+        margin: 0 auto;
+        padding: 32px 24px 64px;
+      }
+
+      header.masthead {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 20px;
+        border-bottom: 3px solid var(--ink);
+        padding-bottom: 20px;
+        margin-bottom: 8px;
+      }
+      .masthead h1 {
+        margin: 0 0 6px;
+        font-size: clamp(30px, 5vw, 46px);
+        line-height: 1.1;
+        font-weight: 700;
+        letter-spacing: -0.01em;
+      }
+      .masthead .subtitle {
+        margin: 0;
+        font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+        font-size: 14px;
+        color: var(--ink-soft);
+      }
+      .masthead .kicker {
+        margin: 0 0 10px;
+        font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+        font-size: 12px;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--accent-ink);
+      }
+
+      .theme-toggle {
+        flex: 0 0 auto;
+        width: 86px;
+        height: 40px;
+        min-height: 40px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        background: var(--surface);
+        color: var(--ink);
+        border: 1.5px solid var(--ink);
+        border-radius: 999px;
+        font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+        font-size: 13px;
+        cursor: pointer;
+        padding: 0 10px;
+      }
+      .theme-toggle .dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: var(--accent);
+        flex: 0 0 auto;
+      }
+      .theme-toggle:hover { border-color: var(--accent); }
+
+      .story {
+        display: grid;
+        grid-template-columns: 72px 1fr;
+        gap: 4px 20px;
+        padding: 28px 0 26px;
+        border-bottom: 1px solid var(--line);
+        scroll-margin-top: 16px;
+      }
+      .story .num {
+        font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+        font-size: 40px;
+        font-weight: 700;
+        line-height: 1;
+        color: var(--accent);
+        padding-top: 2px;
+      }
+      .story h2 {
+        margin: 0 0 10px;
+        font-size: clamp(21px, 3vw, 26px);
+        line-height: 1.25;
+        font-weight: 700;
+      }
+      .story .body { margin: 0 0 14px; color: var(--ink); max-width: 68ch; }
+
+      .meta {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 8px 18px;
+        font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+        font-size: 13.5px;
+        color: var(--ink-soft);
+        margin-bottom: 16px;
+      }
+      .meta a { min-height: 36px; display: inline-flex; align-items: center; }
+      .meta .stats { color: var(--ink-faint); white-space: nowrap; }
+      .copy-btn {
+        margin-left: auto;
+        min-height: 36px;
+        padding: 6px 14px;
+        background: transparent;
+        color: var(--ink);
+        border: 1px solid var(--line);
+        border-radius: 6px;
+        font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+        font-size: 13px;
+        cursor: pointer;
+      }
+      .copy-btn:hover { border-color: var(--accent); color: var(--accent-ink); }
+      .copy-btn.copied { border-color: var(--accent); color: var(--accent-ink); }
+
+      .commenters {
+        background: var(--comment-bg);
+        border-radius: 6px;
+        padding: 14px 18px;
+        max-width: 72ch;
+      }
+      .commenters .label {
+        display: block;
+        font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+        font-size: 11.5px;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--accent-ink);
+        margin-bottom: 6px;
+      }
+      .commenters p { margin: 0; font-size: 15.5px; color: var(--ink-soft); }
+
+      footer {
+        margin-top: 36px;
+        padding-top: 20px;
+        border-top: 3px solid var(--ink);
+        font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+        font-size: 13.5px;
+        color: var(--ink-soft);
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px 24px;
+        align-items: center;
+      }
+      footer a { min-height: 36px; display: inline-flex; align-items: center; }
+
+      @media (max-width: 600px) {
+        .wrap { padding: 22px 16px 48px; }
+        .story { grid-template-columns: 46px 1fr; gap: 2px 12px; padding: 22px 0 20px; }
+        .story .num { font-size: 28px; }
+        header.masthead { flex-wrap: wrap; }
+        .copy-btn { margin-left: 0; }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        html { scroll-behavior: auto; }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <header class="masthead">
+        <div>
+          <p class="kicker">Hacker News · Daily Digest</p>
+          <h1>HN Daily — Friday, November 20, 2026</h1>
+          <p class="subtitle">HN Top 10 — 2026-11-20 07:00 PT (hottest by points)</p>
+        </div>
+        <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle dark mode" aria-pressed="false">
+          <span class="dot" aria-hidden="true"></span><span id="themeLabel">Dark</span>
+        </button>
+      </header>
+
+      <main>
+        <article class="story" id="story-1">
+          <div class="num" aria-hidden="true">1</div>
+          <div>
+            <h2 class="tagline">Frostbite: an AI-designed CPU that claims 4.59× perf-per-watt</h2>
+            <p class="body">Architect Labs says its AI systems designed, verified and took to GDS a new general-purpose CPU built on interaction nets — no shared mutable state, so parallelism falls out of the program instead of being dug out by out-of-order hardware. The headline is 4.59× performance-per-watt over 25 workloads versus a dual-issue in-order core: a modest baseline, and pre-silicon numbers, so read the multiple as a claim, not a measurement.</p>
+            <div class="meta">
+              <a class="source" href="https://architectlabs.com/blog/frostbite" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50572503" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">352 pts · 228 comments</span>
+              <button class="copy-btn" type="button" data-copy="1">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>The thread splits between the value chain and the verification. Several argue the HDL was never the hard part — the bottleneck is fabs, materials and manufacturing, and ask why the ASI wouldn&#x27;t just design a TSMC too. Others say the formal verification is the real story: 800k+ lines of Lean contracts as the single source of truth is a stronger claim than the perf number. The 4.59× figure gets the usual caveat — it is against an in-order baseline, on the vendor&#x27;s own workloads.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="story" id="story-2">
+          <div class="num" aria-hidden="true">2</div>
+          <div>
+            <h2 class="tagline">MIT&#x27;s free &#x27;How to CAD Almost Anything&#x27; course, in full</h2>
+            <p class="body">MIT OpenCourseWare published the complete IAP 2024 course on CAD — lectures and material for going from zero to designing real parts. It is a solid grounding in traditional CAD, but don&#x27;t expect AI-assisted workflows: the course predates them, and the thread&#x27;s practitioners say the hard part was never the tooling anyway, it is design judgment — tolerances, draft angles, what will actually change.</p>
+            <div class="meta">
+              <a class="source" href="https://ocw.mit.edu/courses/res-16-002-how-to-cad-almost-anything-january-iap-2024/" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50528119" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">325 pts · 109 comments</span>
+              <button class="copy-btn" type="button" data-copy="2">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>Practitioners call the course a good intro to traditional CAD, but the AI question dominates: at even very AI-forward companies, the consensus is AI-first CAD isn&#x27;t production-ready yet. The hard part, several working MEs repeat, is mechanical design itself — design-for-manufacturing checks, tolerances, and parametric models that anticipate what will change — not drawing the geometry. One builder in the thread is working on exactly that gap and asking what to fix first.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="story" id="story-3">
+          <div class="num" aria-hidden="true">3</div>
+          <div>
+            <h2 class="tagline">OpenSSL buffer overflow in EVP_EncodeBlock — CVSS 9.8, fix not yet merged</h2>
+            <p class="body">A buffer overflow in EVP_EncodeBlock(), OpenSSL&#x27;s base64 encoder, is rated CVSS 9.8: a crafted length can overflow the output-size calculation. A fix PR guards the encode/decode paths and the HTTP client&#x27;s base64 helper, but it&#x27;s still open and the advisory is pending. The thread&#x27;s one comfort: no enterprise distro has shipped OpenSSL 4, where the affected AVX2 path lives — check your own builds, don&#x27;t assume you&#x27;re clear.</p>
+            <div class="meta">
+              <a class="source" href="https://github.com/openssl/openssl/pull/33652" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50569226" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">320 pts · 268 comments</span>
+              <button class="copy-btn" type="button" data-copy="3">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>Patch fatigue is the mood — &#x27;I really need a day off from patching servers&#x27; — with several noting this follows a run of out-of-band patches. The technical question is what the 9.8 actually means in practice, and one commenter draws the parallel to Java4Shell: another base64 encoder with attacker-controlled lengths. The mitigating read is that no enterprise distro has shipped OpenSSL 4, so the blast radius is narrow until it does.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="story" id="story-4">
+          <div class="num" aria-hidden="true">4</div>
+          <div>
+            <h2 class="tagline">&#x27;I can tell you wrote this yourself&#x27; — the case for imperfect prose</h2>
+            <p class="body">An essay argues that human writing is recognisable precisely by its imperfections — the odd typo, the uneven rhythm — and that flawless AI-polished prose now reads as a tell. The thread mostly agrees but lands on a middle ground: grammar checks are fine, full generation is where the voice dies, and several note that perfectly polished text was never proof of understanding in the first place.</p>
+            <div class="meta">
+              <a class="source" href="https://em-online.bearblog.dev/i-can-tell-you-wrote-this-yourself/" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50571189" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">305 pts · 295 comments</span>
+              <button class="copy-btn" type="button" data-copy="4">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>The middle ground wins the thread: grammar and spelling checks are fine, full generation is where the voice goes, and several point out grammar checkers predate LLMs by decades. The sharpest disagreement is over the essay&#x27;s core claim — one side says human imperfection is what drives change, the other answers that imperfection also means medical errors and false convictions, and &#x27;perfect-ness is the enemy of human ingenuity&#x27; is a straw man when the stakes are real.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="story" id="story-5">
+          <div class="num" aria-hidden="true">5</div>
+          <div>
+            <h2 class="tagline">One cruise line emits 10× the sulphur oxide of all Europe&#x27;s cars (2019)</h2>
+            <p class="body">A 2019 analysis found Carnival Cruises emitted ten times more sulphur oxide than all of Europe&#x27;s cars combined — the ships burn heavy fuel oil, the thick, high-sulphur residue left after refining. The thread&#x27;s pushback is that container ships run the same fuel and have done for decades; the difference is that nobody books a container ship for fun, so cruises draw the outrage while the cargo fleet draws a shrug.</p>
+            <div class="meta">
+              <a class="source" href="https://ecohustler.com/article/one-corporation-to-pollute-them-all/" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50572116" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">301 pts · 176 comments</span>
+              <button class="copy-btn" type="button" data-copy="5">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>The fuel is the story: heavy fuel oil is the cheapest, dirtiest residue of refining, and ships have burned it for decades — this is not news to anyone in shipping. The disagreement is about the framing: several say container ships are the same problem at larger scale and get a pass because civilization depends on them, while others say cruises are fair game precisely because they&#x27;re discretionary. A side thread argues Carnival isn&#x27;t even a luxury line — &#x27;a two-star hotel that happens to float.&#x27;</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="story" id="story-6">
+          <div class="num" aria-hidden="true">6</div>
+          <div>
+            <h2 class="tagline">PostgreSQL 19 is out — REPACK, planner advice, and JIT off by default</h2>
+            <p class="body">PostgreSQL 19 landed November 19 with a new REPACK command that reclaims space without blocking reads and writes, planner-advice extensions, auto-scaling I/O workers, and logical replication that no longer needs a restart. Two changes to note before upgrading: JIT is now disabled by default, and MD5 password auth draws a warning. The thread&#x27;s advice is the usual: let it soak, wait for 19.1 for production.</p>
+            <div class="meta">
+              <a class="source" href="https://www.postgresql.org/docs/release/19.0/" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50569890" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">300 pts · 16 comments</span>
+              <button class="copy-btn" type="button" data-copy="6">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>Only 16 comments, and the whole thread is one question: should I wait for 19.1? The consensus is yes for critical production — more installs shake out more bugs — but test it now in staging, since load-specific bugs won&#x27;t show up by waiting. One early tester calls it the most bug-free .0 release yet; another notes the real lesson is that if everybody waits for .1, nobody finds the .0 bugs.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="story" id="story-7">
+          <div class="num" aria-hidden="true">7</div>
+          <div>
+            <h2 class="tagline">If you can&#x27;t explain it simply, you don&#x27;t understand it (2017)</h2>
+            <p class="body">A 2017 piece restates the Feynman test: explaining something in plain language is the check on whether you actually understand it. The thread applies it to the present — Claude&#x27;s explanations expose the same gap, since it is easy to judge code correctness but hard to judge a muddled document — with the counterpoint that confident simple explanations can be flat wrong, so simplicity is necessary, not sufficient.</p>
+            <div class="meta">
+              <a class="source" href="https://kottke.org/17/06/if-you-cant-explain-something-in-simple-terms-you-dont-understand-it" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50572355" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">268 pts · 162 comments</span>
+              <button class="copy-btn" type="button" data-copy="7">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>The thread turns the piece on Claude itself: several say the gap shows up fastest when the model writes documents or organizes requirements, where correctness is hard to judge — code at least fails loudly. Others push back on the premise, noting people confidently explain things simply while understanding nothing, so the test cuts both ways. A practical note recurs: Feynman-technique skills for Claude Code exist, and forcing the model to explain is a decent check on its work.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="story" id="story-8">
+          <div class="num" aria-hidden="true">8</div>
+          <div>
+            <h2 class="tagline">FFmpeg 9.1 &#x27;Gauss&#x27; — better AAC, ASTC, and libcurl support</h2>
+            <p class="body">FFmpeg 9.1 &#x27;Gauss&#x27; is out, with a much-improved AAC encoder, ASTC image encode and decode, an APV Vulkan encoder, and first-class libcurl protocol support alongside the long-standing built-in HTTP code. The changelog reads like steady maintenance rather than a headline release — which, for a tool this load-bearing, is exactly the point.</p>
+            <div class="meta">
+              <a class="source" href="https://ffmpeg.org/download.html#release_9.1" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50569998" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">223 pts · 30 comments</span>
+              <button class="copy-btn" type="button" data-copy="8">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>The changelog gets the thanks — one commenter pasted it in full and got thanked for it. The questions are about the new protocol support: what the libcurl protocol and Windows handle protocol are actually for, with the answers pointing at streaming and shell integration. The tone is affectionate throughout: &#x27;Love ffmpeg, can&#x27;t live without it.&#x27;</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="story" id="story-9">
+          <div class="num" aria-hidden="true">9</div>
+          <div>
+            <h2 class="tagline">Anthropic researcher claims a proof of the Riemann Hypothesis — verification pending</h2>
+            <p class="body">An Anthropic researcher says he and Claude proved the Riemann Hypothesis — and the generalized version too — via iterated theta lifts mimicking Stepanov&#x27;s multiplicity argument, with a Lean formalization in 14 parts. Nothing is verified yet: the formalization would run to 250,000+ printed pages, and the author says he hasn&#x27;t mastered the argument&#x27;s neighborhood. Extraordinary claim, evidence still to be checked.</p>
+            <div class="meta">
+              <a class="source" href="https://alpo.ge/remark.pdf" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50574968" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">191 pts · 56 comments</span>
+              <button class="copy-btn" type="button" data-copy="9">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>&#x27;Insane if true&#x27; is the opening line, immediately followed by the caution that prolific mathematicians have claimed big results before and been wrong. The Lean formalization is linked — 14 parts — but nobody has a machine with the 10TB of RAM one commenter jokes it would take to check, and the author&#x27;s own note concedes he hasn&#x27;t mastered the argument yet. The mood is wait-and-see: if the formalization checks out, it&#x27;s the story of the decade; until then, it&#x27;s a claim.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="story" id="story-10">
+          <div class="num" aria-hidden="true">10</div>
+          <div>
+            <h2 class="tagline">Jujutsu primer — the Git-compatible VCS that keeps winning converts</h2>
+            <p class="body">A primer on Jujutsu, the version control system that keeps Git repos but replaces the interface — working-copy commits, no staging area, operations as a log you can undo. Long-time users in the thread call it the first VCS they&#x27;d pick for a large monorepo, while the recurring objection is GitHub: Mercurial died partly on hosting incompatibility, and Jujutsu&#x27;s answer is to stay Git-compatible underneath.</p>
+            <div class="meta">
+              <a class="source" href="https://ethanlowman.com/posts/jj-primer/" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50570628" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">177 pts · 115 comments</span>
+              <button class="copy-btn" type="button" data-copy="10">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>Two-year daily users vouch for it — one runs it on a large monorepo and calls it fantastic. The debate is the old one: whether GitHub compatibility decides a VCS&#x27;s fate, with Mercurial&#x27;s decline as the cautionary tale and Git&#x27;s own break from CVS as the counter-example. Several note the thread conflates Git and GitHub, and that Jujutsu sidesteps the question by keeping Git repos underneath.</p>
+            </div>
+          </div>
+        </article>
+      </main>
+
+      <footer>
+        <a href="../">&larr; HN Daily archive</a>
+        <a href="https://tk3369.github.io/hn-daily/">tk3369.github.io/hn-daily</a>
+        <span>Press T to toggle theme.</span>
+      </footer>
+    </div>
+
+    <script>
+      (function () {
+        var KEY = "hn-daily-theme";
+        var root = document.documentElement;
+        var toggle = document.getElementById("themeToggle");
+        var label = document.getElementById("themeLabel");
+
+        function storedTheme() {
+          try { return window.localStorage.getItem(KEY); } catch (e) { return null; }
+        }
+        function systemDark() {
+          return window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+        }
+        function isDark() {
+          var t = root.getAttribute("data-theme");
+          if (t === "dark") return true;
+          if (t === "light") return false;
+          return systemDark();
+        }
+        function render() {
+          var dark = isDark();
+          label.textContent = dark ? "Light" : "Dark";
+          toggle.setAttribute("aria-pressed", dark ? "true" : "false");
+        }
+        function setTheme(theme) {
+          root.setAttribute("data-theme", theme);
+          try { window.localStorage.setItem(KEY, theme); } catch (e) {}
+          render();
+        }
+        function flip() {
+          setTheme(isDark() ? "light" : "dark");
+        }
+
+        var saved = storedTheme();
+        if (saved === "dark" || saved === "light") {
+          root.setAttribute("data-theme", saved);
+        }
+        render();
+
+        toggle.addEventListener("click", flip);
+        document.addEventListener("keydown", function (e) {
+          if (e.key === "t" || e.key === "T") {
+            var tag = (e.target && e.target.tagName) || "";
+            if (tag === "INPUT" || tag === "TEXTAREA") return;
+            if (e.metaKey || e.ctrlKey || e.altKey) return;
+            flip();
+          }
+        });
+        if (window.matchMedia) {
+          var mq = window.matchMedia("(prefers-color-scheme: dark)");
+          if (mq.addEventListener) mq.addEventListener("change", render);
+        }
+
+        // Copy buttons: number + tagline + body + source + HN link + points/comments.
+        // The "What HN commenters are saying" paragraph is deliberately excluded.
+        var copyData = {
+          "1": "1. Frostbite: an AI-designed CPU that claims 4.59\u00d7 perf-per-watt\n\nArchitect Labs says its AI systems designed, verified and took to GDS a new general-purpose CPU built on interaction nets \u2014 no shared mutable state, so parallelism falls out of the program instead of being dug out by out-of-order hardware. The headline is 4.59\u00d7 performance-per-watt over 25 workloads versus a dual-issue in-order core: a modest baseline, and pre-silicon numbers, so read the multiple as a claim, not a measurement.\n\nSource: https://architectlabs.com/blog/frostbite\nHN Discuss: https://news.ycombinator.com/item?id=50572503\n352 pts / 228 comments",
+          "2": "2. MIT's free 'How to CAD Almost Anything' course, in full\n\nMIT OpenCourseWare published the complete IAP 2024 course on CAD \u2014 lectures and material for going from zero to designing real parts. It is a solid grounding in traditional CAD, but don't expect AI-assisted workflows: the course predates them, and the thread's practitioners say the hard part was never the tooling anyway, it is design judgment \u2014 tolerances, draft angles, what will actually change.\n\nSource: https://ocw.mit.edu/courses/res-16-002-how-to-cad-almost-anything-january-iap-2024/\nHN Discuss: https://news.ycombinator.com/item?id=50528119\n325 pts / 109 comments",
+          "3": "3. OpenSSL buffer overflow in EVP_EncodeBlock \u2014 CVSS 9.8, fix not yet merged\n\nA buffer overflow in EVP_EncodeBlock(), OpenSSL's base64 encoder, is rated CVSS 9.8: a crafted length can overflow the output-size calculation. A fix PR guards the encode/decode paths and the HTTP client's base64 helper, but it's still open and the advisory is pending. The thread's one comfort: no enterprise distro has shipped OpenSSL 4, where the affected AVX2 path lives \u2014 check your own builds, don't assume you're clear.\n\nSource: https://github.com/openssl/openssl/pull/33652\nHN Discuss: https://news.ycombinator.com/item?id=50569226\n320 pts / 268 comments",
+          "4": "4. 'I can tell you wrote this yourself' \u2014 the case for imperfect prose\n\nAn essay argues that human writing is recognisable precisely by its imperfections \u2014 the odd typo, the uneven rhythm \u2014 and that flawless AI-polished prose now reads as a tell. The thread mostly agrees but lands on a middle ground: grammar checks are fine, full generation is where the voice dies, and several note that perfectly polished text was never proof of understanding in the first place.\n\nSource: https://em-online.bearblog.dev/i-can-tell-you-wrote-this-yourself/\nHN Discuss: https://news.ycombinator.com/item?id=50571189\n305 pts / 295 comments",
+          "5": "5. One cruise line emits 10\u00d7 the sulphur oxide of all Europe's cars (2019)\n\nA 2019 analysis found Carnival Cruises emitted ten times more sulphur oxide than all of Europe's cars combined \u2014 the ships burn heavy fuel oil, the thick, high-sulphur residue left after refining. The thread's pushback is that container ships run the same fuel and have done for decades; the difference is that nobody books a container ship for fun, so cruises draw the outrage while the cargo fleet draws a shrug.\n\nSource: https://ecohustler.com/article/one-corporation-to-pollute-them-all/\nHN Discuss: https://news.ycombinator.com/item?id=50572116\n301 pts / 176 comments",
+          "6": "6. PostgreSQL 19 is out \u2014 REPACK, planner advice, and JIT off by default\n\nPostgreSQL 19 landed November 19 with a new REPACK command that reclaims space without blocking reads and writes, planner-advice extensions, auto-scaling I/O workers, and logical replication that no longer needs a restart. Two changes to note before upgrading: JIT is now disabled by default, and MD5 password auth draws a warning. The thread's advice is the usual: let it soak, wait for 19.1 for production.\n\nSource: https://www.postgresql.org/docs/release/19.0/\nHN Discuss: https://news.ycombinator.com/item?id=50569890\n300 pts / 16 comments",
+          "7": "7. If you can't explain it simply, you don't understand it (2017)\n\nA 2017 piece restates the Feynman test: explaining something in plain language is the check on whether you actually understand it. The thread applies it to the present \u2014 Claude's explanations expose the same gap, since it is easy to judge code correctness but hard to judge a muddled document \u2014 with the counterpoint that confident simple explanations can be flat wrong, so simplicity is necessary, not sufficient.\n\nSource: https://kottke.org/17/06/if-you-cant-explain-something-in-simple-terms-you-dont-understand-it\nHN Discuss: https://news.ycombinator.com/item?id=50572355\n268 pts / 162 comments",
+          "8": "8. FFmpeg 9.1 'Gauss' \u2014 better AAC, ASTC, and libcurl support\n\nFFmpeg 9.1 'Gauss' is out, with a much-improved AAC encoder, ASTC image encode and decode, an APV Vulkan encoder, and first-class libcurl protocol support alongside the long-standing built-in HTTP code. The changelog reads like steady maintenance rather than a headline release \u2014 which, for a tool this load-bearing, is exactly the point.\n\nSource: https://ffmpeg.org/download.html#release_9.1\nHN Discuss: https://news.ycombinator.com/item?id=50569998\n223 pts / 30 comments",
+          "9": "9. Anthropic researcher claims a proof of the Riemann Hypothesis \u2014 verification pending\n\nAn Anthropic researcher says he and Claude proved the Riemann Hypothesis \u2014 and the generalized version too \u2014 via iterated theta lifts mimicking Stepanov's multiplicity argument, with a Lean formalization in 14 parts. Nothing is verified yet: the formalization would run to 250,000+ printed pages, and the author says he hasn't mastered the argument's neighborhood. Extraordinary claim, evidence still to be checked.\n\nSource: https://alpo.ge/remark.pdf\nHN Discuss: https://news.ycombinator.com/item?id=50574968\n191 pts / 56 comments",
+          "10": "10. Jujutsu primer \u2014 the Git-compatible VCS that keeps winning converts\n\nA primer on Jujutsu, the version control system that keeps Git repos but replaces the interface \u2014 working-copy commits, no staging area, operations as a log you can undo. Long-time users in the thread call it the first VCS they'd pick for a large monorepo, while the recurring objection is GitHub: Mercurial died partly on hosting incompatibility, and Jujutsu's answer is to stay Git-compatible underneath.\n\nSource: https://ethanlowman.com/posts/jj-primer/\nHN Discuss: https://news.ycombinator.com/item?id=50570628\n177 pts / 115 comments"
+};
+
+        function fallbackCopy(text) {
+          var ta = document.createElement("textarea");
+          ta.value = text;
+          ta.setAttribute("readonly", "");
+          ta.style.position = "absolute";
+          ta.style.left = "-9999px";
+          document.body.appendChild(ta);
+          ta.select();
+          var ok = false;
+          try { ok = document.execCommand("copy"); } catch (e) { ok = false; }
+          document.body.removeChild(ta);
+          return ok;
+        }
+
+        var buttons = document.querySelectorAll(".copy-btn");
+        Array.prototype.forEach.call(buttons, function (btn) {
+          btn.addEventListener("click", function () {
+            var text = copyData[btn.getAttribute("data-copy")] || "";
+            function done() {
+              var original = "Copy";
+              btn.textContent = "Copied ✓";
+              btn.classList.add("copied");
+              setTimeout(function () {
+                btn.textContent = original;
+                btn.classList.remove("copied");
+              }, 1600);
+            }
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+              navigator.clipboard.writeText(text).then(done, function () {
+                if (fallbackCopy(text)) done();
+              });
+            } else if (fallbackCopy(text)) {
+              done();
+            }
+          });
+        });
+      })();
+    </script>
+  </body>
+</html>
