@@ -1,0 +1,535 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="light dark" />
+    <link rel="icon" href="data:," />
+    <title>HN Daily — Saturday, November 21, 2026</title>
+    <style>
+      :root {
+        --bg: #f3f1eb;
+        --surface: #fbf9f4;
+        --ink: #1c1a16;
+        --ink-soft: #4a463e;
+        --ink-faint: #6f6a5e;
+        --line: #d8d2c4;
+        --accent: #ff6600;
+        --accent-ink: #b34700;
+        --comment-bg: #efe9dc;
+        --focus: #b34700;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root:not([data-theme="light"]) {
+          --bg: #16140f;
+          --surface: #1f1c16;
+          --ink: #f0ead9;
+          --ink-soft: #c9c2b0;
+          --ink-faint: #9a937f;
+          --line: #3a362b;
+          --accent: #ff7a1a;
+          --accent-ink: #ff9440;
+          --comment-bg: #262219;
+          --focus: #ff9440;
+        }
+      }
+      :root[data-theme="dark"] {
+        --bg: #16140f;
+        --surface: #1f1c16;
+        --ink: #f0ead9;
+        --ink-soft: #c9c2b0;
+        --ink-faint: #9a937f;
+        --line: #3a362b;
+        --accent: #ff7a1a;
+        --accent-ink: #ff9440;
+        --comment-bg: #262219;
+        --focus: #ff9440;
+      }
+
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--ink);
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: 17px;
+        line-height: 1.55;
+        -webkit-font-smoothing: antialiased;
+      }
+      a { color: var(--accent-ink); text-decoration: underline; text-underline-offset: 2px; }
+      a:hover { color: var(--accent); }
+      a:focus-visible, button:focus-visible {
+        outline: 2px solid var(--focus);
+        outline-offset: 2px;
+        border-radius: 2px;
+      }
+
+      .wrap {
+        max-width: 1080px;
+        margin: 0 auto;
+        padding: 32px 24px 64px;
+      }
+
+      header.masthead {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 20px;
+        border-bottom: 3px solid var(--ink);
+        padding-bottom: 20px;
+        margin-bottom: 8px;
+      }
+      .masthead h1 {
+        margin: 0 0 6px;
+        font-size: clamp(30px, 5vw, 46px);
+        line-height: 1.1;
+        font-weight: 700;
+        letter-spacing: -0.01em;
+      }
+      .masthead .subtitle {
+        margin: 0;
+        font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+        font-size: 14px;
+        color: var(--ink-soft);
+      }
+      .masthead .kicker {
+        margin: 0 0 10px;
+        font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+        font-size: 12px;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--accent-ink);
+      }
+
+      .theme-toggle {
+        flex: 0 0 auto;
+        width: 86px;
+        height: 40px;
+        min-height: 40px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        background: var(--surface);
+        color: var(--ink);
+        border: 1.5px solid var(--ink);
+        border-radius: 999px;
+        font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+        font-size: 13px;
+        cursor: pointer;
+        padding: 0 10px;
+      }
+      .theme-toggle .dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: var(--accent);
+        flex: 0 0 auto;
+      }
+      .theme-toggle:hover { border-color: var(--accent); }
+
+      .story {
+        display: grid;
+        grid-template-columns: 72px 1fr;
+        gap: 4px 20px;
+        padding: 28px 0 26px;
+        border-bottom: 1px solid var(--line);
+        scroll-margin-top: 16px;
+      }
+      .story .num {
+        font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+        font-size: 40px;
+        font-weight: 700;
+        line-height: 1;
+        color: var(--accent);
+        padding-top: 2px;
+      }
+      .story h2 {
+        margin: 0 0 10px;
+        font-size: clamp(21px, 3vw, 26px);
+        line-height: 1.25;
+        font-weight: 700;
+      }
+      .story .body { margin: 0 0 14px; color: var(--ink); max-width: 68ch; }
+
+      .meta {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 8px 18px;
+        font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+        font-size: 13.5px;
+        color: var(--ink-soft);
+        margin-bottom: 16px;
+      }
+      .meta a { min-height: 36px; display: inline-flex; align-items: center; }
+      .meta .stats { color: var(--ink-faint); white-space: nowrap; }
+      .copy-btn {
+        margin-left: auto;
+        min-height: 36px;
+        padding: 6px 14px;
+        background: transparent;
+        color: var(--ink);
+        border: 1px solid var(--line);
+        border-radius: 6px;
+        font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+        font-size: 13px;
+        cursor: pointer;
+      }
+      .copy-btn:hover { border-color: var(--accent); color: var(--accent-ink); }
+      .copy-btn.copied { border-color: var(--accent); color: var(--accent-ink); }
+
+      .commenters {
+        background: var(--comment-bg);
+        border-radius: 6px;
+        padding: 14px 18px;
+        max-width: 72ch;
+      }
+      .commenters .label {
+        display: block;
+        font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+        font-size: 11.5px;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--accent-ink);
+        margin-bottom: 6px;
+      }
+      .commenters p { margin: 0; font-size: 15.5px; color: var(--ink-soft); }
+
+      footer {
+        margin-top: 36px;
+        padding-top: 20px;
+        border-top: 3px solid var(--ink);
+        font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+        font-size: 13.5px;
+        color: var(--ink-soft);
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px 24px;
+        align-items: center;
+      }
+      footer a { min-height: 36px; display: inline-flex; align-items: center; }
+
+      @media (max-width: 600px) {
+        .wrap { padding: 22px 16px 48px; }
+        .story { grid-template-columns: 46px 1fr; gap: 2px 12px; padding: 22px 0 20px; }
+        .story .num { font-size: 28px; }
+        header.masthead { flex-wrap: wrap; }
+        .copy-btn { margin-left: 0; }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        html { scroll-behavior: auto; }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <header class="masthead">
+        <div>
+          <p class="kicker">Hacker News · Daily Digest</p>
+          <h1>HN Daily — Saturday, November 21, 2026</h1>
+          <p class="subtitle">HN Top 10 — 2026-11-21 07:00 PT (hottest by points)</p>
+        </div>
+        <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle dark mode" aria-pressed="false">
+          <span class="dot" aria-hidden="true"></span><span id="themeLabel">Dark</span>
+        </button>
+      </header>
+
+      <main>
+        <article class="story" id="story-1">
+          <div class="num" aria-hidden="true">1</div>
+          <div>
+            <h2 class="tagline">Anthropic researcher claims a proof of the Generalized Riemann Hypothesis</h2>
+            <p class="body">Levent Alpöge, working with an internal Anthropic AI model, generated a Lean-only proof of the Generalized Riemann Hypothesis. Terence Tao says the strategy appears to use the full power of the Langlands program and modern arithmetic geometry. Nothing is verified yet: the formalization is enormous, and digestion will take weeks at best.</p>
+            <div class="meta">
+              <a class="source" href="https://alpo.ge/remark.pdf" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50574968" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">2756 pts · 1932 comments</span>
+              <button class="copy-btn" type="button" data-copy="1">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>The thread is a mix of awe and disciplined skepticism. The top comments try to explain what GRH even says — one uses a grid of 1s to show how primes fall out of the pattern — while others note the Lean formalization is public for anyone to check. The recurring caution: prolific mathematicians have claimed big results before and been wrong, and &#x27;insane if true&#x27; is not a verification. A side thread asks why a maths story with no news hook is on the front page at all; the answer is that the Lean proof is available to read now.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="story" id="story-2">
+          <div class="num" aria-hidden="true">2</div>
+          <div>
+            <h2 class="tagline">A second, all-human proof of the Generalized Riemann Hypothesis surfaces the same day</h2>
+            <p class="body">Hours after the Anthropic announcement, Ravi Vakil rushed out Alessandro Masullo&#x27;s fully human GRH proof. Brian Conrad had been checking it for months and it looked good so far, but the plan had been a year of polishing first. Within about eight hours, mathematicians reported problems in the draft, found with AI assistance. It stays unproven until the community resolves them.</p>
+            <div class="meta">
+              <a class="source" href="https://math216.wordpress.com/2026/11/20/hurried-announcement-alessandro-masullo-grh/" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50579568" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">2255 pts · 1066 comments</span>
+              <button class="copy-btn" type="button" data-copy="2">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>The human story dominates: Masullo worked on the problem for 12 years, and commenters imagine the feeling of seeing the Anthropic announcement land first. The strategy debate is sharp — keep it tight with a few trusted reviewers, or publish fast and claim a tie? Several point out the cruel asymmetry: formalizing a proof yourself costs millions in compute, while your rival&#x27;s lab can throw models at it. Others note the irony that AI tools are now the ones finding holes in the human proof.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="story" id="story-3">
+          <div class="num" aria-hidden="true">3</div>
+          <div>
+            <h2 class="tagline">Thinking Machines&#x27; Inkling 2 Mini: a looped 26B model that runs on a laptop</h2>
+            <p class="body">Inkling 2 Mini is a mixture-of-experts model — 26.4B total parameters, 3.4B active — that runs its middle layers three times per token, reasoning longer without writing its reasoning down. It leads every open-weights model under 100B parameters on DeepSWE v1.1 (48.2%) and Vals Index v2.2 (46.5%), and it is sized to run locally.</p>
+            <div class="meta">
+              <a class="source" href="https://thinkingmachines.ai/news/inkling-2-mini/" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50581260" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">1146 pts · 217 comments</span>
+              <button class="copy-btn" type="button" data-copy="3">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>Local-model users are the loudest fans: a model this capable at this size is &#x27;bonkers good if the benchmarks hold up in the real world.&#x27; The looped-transformer design draws the technical interest — more reasoning per token without a longer chain of thought — and one commenter reports grafting reasoning into a 6.5M-parameter model of their own. The sizing was explicitly informed by what the local-running community asks for most.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="story" id="story-4">
+          <div class="num" aria-hidden="true">4</div>
+          <div>
+            <h2 class="tagline">We promoted developers into architects without informing them</h2>
+            <p class="body">An essay argues the architect title landed on developers by default: as AI writes more of the code, the job is now design decisions, data models, and pushing back on requirements — whether or not anyone announced the promotion. The thread mostly agrees the work was always the job; the title just caught up, and the hands-on-keyboard part was never the core of it.</p>
+            <div class="meta">
+              <a class="source" href="https://manidoraisamy.com/developer-to-architect.html" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50579331" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">503 pts · 281 comments</span>
+              <button class="copy-btn" type="button" data-copy="4">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>Mostly agreement, with the pushback coming from people who say every healthy team already expected this: architects were often figureheads, and the dev picking up the ticket made the design calls anyway. The sharper thread is about AI&#x27;s role — several say the software was never the core part of the job; finding people with interesting problems and solving them was. &#x27;Architects are a bad meme, along the same lines as scrum masters,&#x27; one commenter adds, to some applause.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="story" id="story-5">
+          <div class="num" aria-hidden="true">5</div>
+          <div>
+            <h2 class="tagline">Tao confirms three AI-assisted breakthroughs: Euler, Navier-Stokes, and GRH</h2>
+            <p class="body">Terence Tao reports that Alpöge, Tristan Buckmaster and Matei Coiculescu produced Lean-formalized proofs of finite-time blowup for the unforced Euler and unforced Navier-Stokes equations in three dimensions — plus Alpöge&#x27;s Lean-only GRH proof. All three used heavy AI assistance. The Navier-Stokes paper is technically readable; a professionally written version still needs work.</p>
+            <div class="meta">
+              <a class="source" href="https://terrytao.wordpress.com/2026/11/20/unforced-euler-singularity-unforced-navier-stokes-singularity-and-the-generalized-riemann-hypothesis/" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50578358" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">489 pts · 210 comments</span>
+              <button class="copy-btn" type="button" data-copy="5">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>The thread wrestles with what AI can and cannot do yet. The consensus guess: models can&#x27;t build new theory, but their brute-force verification turns out to be surprisingly powerful — and theory-building may follow. Several expect the next two weeks of digestion to settle whether the GRH proof holds, and whether the concurrent human announcement muddies the story. One commenter quotes a mathematician&#x27;s take that models work at such a high level of abstraction they don&#x27;t need theory; theory is for us, so we can understand what they did.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="story" id="story-6">
+          <div class="num" aria-hidden="true">6</div>
+          <div>
+            <h2 class="tagline">Language models can now rewrite their own weights — no gradients, no training</h2>
+            <p class="body">An open 27B model, given its own weights and graded answers, diagnoses its failures and edits its weights by reasoning alone — no gradients, no training run. It gained 6.6 points on unseen problems, improved across eight consecutive sessions, and repaired a damaged copy of itself to over 80% of original accuracy without ever seeing the original weights.</p>
+            <div class="meta">
+              <a class="source" href="https://arxiv.org/abs/2611.21885" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50577265" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">443 pts · 128 comments</span>
+              <button class="copy-btn" type="button" data-copy="6">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>The thread is careful about the headline: the only fix the model made was shortening its reasoning traces to avoid hitting the token limit — an obvious flaw, and the same pattern as earlier weight-space programming work. Still, the mechanism impresses: the agent finds a common error category, computes the aggregated difference between error and non-error states, and pushes weights along it — gradient descent approximated without gradients. The open question is whether this scales past trivial flaws.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="story" id="story-7">
+          <div class="num" aria-hidden="true">7</div>
+          <div>
+            <h2 class="tagline">Nasdaq erases all 2026 gains as the AI sell-off hits Anthropic&#x27;s second day</h2>
+            <p class="body">Global markets slumped as the AI-spending payback question deepened: the Nasdaq gave back all of its 2026 gains, and Anthropic fell on its second day of trading after its blockbuster IPO. The sell-off is broad, not one company&#x27;s story — the question now is whether AI capex ever pays for itself.</p>
+            <div class="meta">
+              <a class="source" href="https://www.theguardian.com/business/2026/nov/20/global-stock-markets-slump-anthropic-ipo-ai-sell-off" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50574383" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">400 pts · 716 comments</span>
+              <button class="copy-btn" type="button" data-copy="7">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>The biggest thread is economics, not markets: if commodity AI automates a $1B industry, does GDP fall? The careful answer is no — GDP counts output, not headcount — but the follow-up lands harder: who buys anything when most of the country is unemployed? Several argue the only number worth optimizing is happiness, not GDP, and that the middle class gets forgotten when cost-cutting is the whole strategy.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="story" id="story-8">
+          <div class="num" aria-hidden="true">8</div>
+          <div>
+            <h2 class="tagline">Slopstrap: make your site look hastily vibecoded</h2>
+            <p class="body">Slopstrap is a CSS gag that dresses any site up as a rushed AI-generated page — blinking status indicators, &#x27;Made with&#x27; badges, the works. It is a joke, but it lands because the aesthetic is instantly recognizable to anyone who has seen a vibecoded landing page in the wild.</p>
+            <div class="meta">
+              <a class="source" href="https://slopstrap.mikelacher.com/" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50576012" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">385 pts · 69 comments</span>
+              <button class="copy-btn" type="button" data-copy="8">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>Short and delighted. &#x27;Finally, I can make my site look like the new Firefox style,&#x27; opens the thread, and the jokes write themselves — one commenter values the gag at a billion in VC money. The &#x27;Made with&#x27; blinking red status indicator at the end is the detail everyone quotes. Nobody is pretending this is a tool; it is a punchline that happens to ship as CSS.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="story" id="story-9">
+          <div class="num" aria-hidden="true">9</div>
+          <div>
+            <h2 class="tagline">Ask HN: unemployed for 2 years with 15 years of experience — what to do?</h2>
+            <p class="body">A veteran engineer asks how to get back in after two years out, with caregiving in the gap. The thread splits: frame the gap as an AI-powered solo venture with a product to show, or skip the spin entirely and be honest — every hiring manager has now seen every version of the embellished story, and LLMs make the claims cheap to check.</p>
+            <div class="meta">
+              <span class="source">Ask HN — no external source</span>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50583761" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">339 pts · 343 comments</span>
+              <button class="copy-btn" type="button" data-copy="9">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>The advice fight is the thread. One camp says the gap needs a story: an AI-powered SaaS built solo, lessons learned, traction attempted. The other calls that hopelessly naive — everyone is doing the same embellishment, and without a press trail or real clients it is noise. The honest camp wins the upvotes: do the work everyone did to find a job, treat the caregiving gap as what it was, and don&#x27;t treat hiring like a video game with a cheat code.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="story" id="story-10">
+          <div class="num" aria-hidden="true">10</div>
+          <div>
+            <h2 class="tagline">NINLIVE: the Nine Inch Nails live archive</h2>
+            <p class="body">NINLIVE is a fan archive of Nine Inch Nails live recordings. It exists because Reznor spent decades encouraging taping and sharing — handing out HD camcorders to fans in the Year Zero era instead of cracking down on bootlegs — and the live show itself is famously theatrical, with hidden audience cameras streamed on stage.</p>
+            <div class="meta">
+              <a class="source" href="https://ninlive.com/" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50583274" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">303 pts · 80 comments</span>
+              <button class="copy-btn" type="button" data-copy="10">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>Affectionate and a little awestruck. Long-time fans praise the sound quality and the multimedia staging — in one show, hidden cameras pointed at the audience were streamed live on stage. Several note Reznor built his legacy the opposite way from the industry: while other bands cracked down on bootlegs, he gave fans the tools to record. The verdict is unanimous: the output has only improved with time.</p>
+            </div>
+          </div>
+        </article>
+      </main>
+
+      <footer>
+        <a href="../">&larr; HN Daily archive</a>
+        <a href="https://tk3369.github.io/hn-daily/">tk3369.github.io/hn-daily</a>
+        <span>Press T to toggle theme.</span>
+      </footer>
+    </div>
+
+    <script>
+      (function () {
+        var KEY = "hn-daily-theme";
+        var root = document.documentElement;
+        var toggle = document.getElementById("themeToggle");
+        var label = document.getElementById("themeLabel");
+
+        function storedTheme() {
+          try { return window.localStorage.getItem(KEY); } catch (e) { return null; }
+        }
+        function systemDark() {
+          return window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+        }
+        function isDark() {
+          var t = root.getAttribute("data-theme");
+          if (t === "dark") return true;
+          if (t === "light") return false;
+          return systemDark();
+        }
+        function render() {
+          var dark = isDark();
+          label.textContent = dark ? "Light" : "Dark";
+          toggle.setAttribute("aria-pressed", dark ? "true" : "false");
+        }
+        function setTheme(theme) {
+          root.setAttribute("data-theme", theme);
+          try { window.localStorage.setItem(KEY, theme); } catch (e) {}
+          render();
+        }
+        function flip() {
+          setTheme(isDark() ? "light" : "dark");
+        }
+
+        var saved = storedTheme();
+        if (saved === "dark" || saved === "light") {
+          root.setAttribute("data-theme", saved);
+        }
+        render();
+
+        toggle.addEventListener("click", flip);
+        document.addEventListener("keydown", function (e) {
+          if (e.key === "t" || e.key === "T") {
+            var tag = (e.target && e.target.tagName) || "";
+            if (tag === "INPUT" || tag === "TEXTAREA") return;
+            if (e.metaKey || e.ctrlKey || e.altKey) return;
+            flip();
+          }
+        });
+        if (window.matchMedia) {
+          var mq = window.matchMedia("(prefers-color-scheme: dark)");
+          if (mq.addEventListener) mq.addEventListener("change", render);
+        }
+
+        // Copy buttons: number + tagline + body + source + HN link + points/comments.
+        // The "What HN commenters are saying" paragraph is deliberately excluded.
+        var copyData = {
+          "1": "1. Anthropic researcher claims a proof of the Generalized Riemann Hypothesis\n\nLevent Alp\u00f6ge, working with an internal Anthropic AI model, generated a Lean-only proof of the Generalized Riemann Hypothesis. Terence Tao says the strategy appears to use the full power of the Langlands program and modern arithmetic geometry. Nothing is verified yet: the formalization is enormous, and digestion will take weeks at best.\n\nSource: https://alpo.ge/remark.pdf\nHN Discuss: https://news.ycombinator.com/item?id=50574968\n2756 pts / 1932 comments",
+          "2": "2. A second, all-human proof of the Generalized Riemann Hypothesis surfaces the same day\n\nHours after the Anthropic announcement, Ravi Vakil rushed out Alessandro Masullo's fully human GRH proof. Brian Conrad had been checking it for months and it looked good so far, but the plan had been a year of polishing first. Within about eight hours, mathematicians reported problems in the draft, found with AI assistance. It stays unproven until the community resolves them.\n\nSource: https://math216.wordpress.com/2026/11/20/hurried-announcement-alessandro-masullo-grh/\nHN Discuss: https://news.ycombinator.com/item?id=50579568\n2255 pts / 1066 comments",
+          "3": "3. Thinking Machines' Inkling 2 Mini: a looped 26B model that runs on a laptop\n\nInkling 2 Mini is a mixture-of-experts model \u2014 26.4B total parameters, 3.4B active \u2014 that runs its middle layers three times per token, reasoning longer without writing its reasoning down. It leads every open-weights model under 100B parameters on DeepSWE v1.1 (48.2%) and Vals Index v2.2 (46.5%), and it is sized to run locally.\n\nSource: https://thinkingmachines.ai/news/inkling-2-mini/\nHN Discuss: https://news.ycombinator.com/item?id=50581260\n1146 pts / 217 comments",
+          "4": "4. We promoted developers into architects without informing them\n\nAn essay argues the architect title landed on developers by default: as AI writes more of the code, the job is now design decisions, data models, and pushing back on requirements \u2014 whether or not anyone announced the promotion. The thread mostly agrees the work was always the job; the title just caught up, and the hands-on-keyboard part was never the core of it.\n\nSource: https://manidoraisamy.com/developer-to-architect.html\nHN Discuss: https://news.ycombinator.com/item?id=50579331\n503 pts / 281 comments",
+          "5": "5. Tao confirms three AI-assisted breakthroughs: Euler, Navier-Stokes, and GRH\n\nTerence Tao reports that Alp\u00f6ge, Tristan Buckmaster and Matei Coiculescu produced Lean-formalized proofs of finite-time blowup for the unforced Euler and unforced Navier-Stokes equations in three dimensions \u2014 plus Alp\u00f6ge's Lean-only GRH proof. All three used heavy AI assistance. The Navier-Stokes paper is technically readable; a professionally written version still needs work.\n\nSource: https://terrytao.wordpress.com/2026/11/20/unforced-euler-singularity-unforced-navier-stokes-singularity-and-the-generalized-riemann-hypothesis/\nHN Discuss: https://news.ycombinator.com/item?id=50578358\n489 pts / 210 comments",
+          "6": "6. Language models can now rewrite their own weights \u2014 no gradients, no training\n\nAn open 27B model, given its own weights and graded answers, diagnoses its failures and edits its weights by reasoning alone \u2014 no gradients, no training run. It gained 6.6 points on unseen problems, improved across eight consecutive sessions, and repaired a damaged copy of itself to over 80% of original accuracy without ever seeing the original weights.\n\nSource: https://arxiv.org/abs/2611.21885\nHN Discuss: https://news.ycombinator.com/item?id=50577265\n443 pts / 128 comments",
+          "7": "7. Nasdaq erases all 2026 gains as the AI sell-off hits Anthropic's second day\n\nGlobal markets slumped as the AI-spending payback question deepened: the Nasdaq gave back all of its 2026 gains, and Anthropic fell on its second day of trading after its blockbuster IPO. The sell-off is broad, not one company's story \u2014 the question now is whether AI capex ever pays for itself.\n\nSource: https://www.theguardian.com/business/2026/nov/20/global-stock-markets-slump-anthropic-ipo-ai-sell-off\nHN Discuss: https://news.ycombinator.com/item?id=50574383\n400 pts / 716 comments",
+          "8": "8. Slopstrap: make your site look hastily vibecoded\n\nSlopstrap is a CSS gag that dresses any site up as a rushed AI-generated page \u2014 blinking status indicators, 'Made with' badges, the works. It is a joke, but it lands because the aesthetic is instantly recognizable to anyone who has seen a vibecoded landing page in the wild.\n\nSource: https://slopstrap.mikelacher.com/\nHN Discuss: https://news.ycombinator.com/item?id=50576012\n385 pts / 69 comments",
+          "9": "9. Ask HN: unemployed for 2 years with 15 years of experience \u2014 what to do?\n\nA veteran engineer asks how to get back in after two years out, with caregiving in the gap. The thread splits: frame the gap as an AI-powered solo venture with a product to show, or skip the spin entirely and be honest \u2014 every hiring manager has now seen every version of the embellished story, and LLMs make the claims cheap to check.\n\nHN Discuss: https://news.ycombinator.com/item?id=50583761\n339 pts / 343 comments",
+          "10": "10. NINLIVE: the Nine Inch Nails live archive\n\nNINLIVE is a fan archive of Nine Inch Nails live recordings. It exists because Reznor spent decades encouraging taping and sharing \u2014 handing out HD camcorders to fans in the Year Zero era instead of cracking down on bootlegs \u2014 and the live show itself is famously theatrical, with hidden audience cameras streamed on stage.\n\nSource: https://ninlive.com/\nHN Discuss: https://news.ycombinator.com/item?id=50583274\n303 pts / 80 comments"
+};
+
+        function fallbackCopy(text) {
+          var ta = document.createElement("textarea");
+          ta.value = text;
+          ta.setAttribute("readonly", "");
+          ta.style.position = "absolute";
+          ta.style.left = "-9999px";
+          document.body.appendChild(ta);
+          ta.select();
+          var ok = false;
+          try { ok = document.execCommand("copy"); } catch (e) { ok = false; }
+          document.body.removeChild(ta);
+          return ok;
+        }
+
+        var buttons = document.querySelectorAll(".copy-btn");
+        Array.prototype.forEach.call(buttons, function (btn) {
+          btn.addEventListener("click", function () {
+            var text = copyData[btn.getAttribute("data-copy")] || "";
+            function done() {
+              var original = "Copy";
+              btn.textContent = "Copied ✓";
+              btn.classList.add("copied");
+              setTimeout(function () {
+                btn.textContent = original;
+                btn.classList.remove("copied");
+              }, 1600);
+            }
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+              navigator.clipboard.writeText(text).then(done, function () {
+                if (fallbackCopy(text)) done();
+              });
+            } else if (fallbackCopy(text)) {
+              done();
+            }
+          });
+        });
+      })();
+    </script>
+  </body>
+</html>
