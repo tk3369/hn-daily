@@ -1,0 +1,535 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="light dark" />
+    <link rel="icon" href="data:," />
+    <title>HN Daily — Sunday, November 22, 2026</title>
+    <style>
+      :root {
+        --bg: #f3f1eb;
+        --surface: #fbf9f4;
+        --ink: #1c1a16;
+        --ink-soft: #4a463e;
+        --ink-faint: #6f6a5e;
+        --line: #d8d2c4;
+        --accent: #ff6600;
+        --accent-ink: #b34700;
+        --comment-bg: #efe9dc;
+        --focus: #b34700;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root:not([data-theme="light"]) {
+          --bg: #16140f;
+          --surface: #1f1c16;
+          --ink: #f0ead9;
+          --ink-soft: #c9c2b0;
+          --ink-faint: #9a937f;
+          --line: #3a362b;
+          --accent: #ff7a1a;
+          --accent-ink: #ff9440;
+          --comment-bg: #262219;
+          --focus: #ff9440;
+        }
+      }
+      :root[data-theme="dark"] {
+        --bg: #16140f;
+        --surface: #1f1c16;
+        --ink: #f0ead9;
+        --ink-soft: #c9c2b0;
+        --ink-faint: #9a937f;
+        --line: #3a362b;
+        --accent: #ff7a1a;
+        --accent-ink: #ff9440;
+        --comment-bg: #262219;
+        --focus: #ff9440;
+      }
+
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--ink);
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: 17px;
+        line-height: 1.55;
+        -webkit-font-smoothing: antialiased;
+      }
+      a { color: var(--accent-ink); text-decoration: underline; text-underline-offset: 2px; }
+      a:hover { color: var(--accent); }
+      a:focus-visible, button:focus-visible {
+        outline: 2px solid var(--focus);
+        outline-offset: 2px;
+        border-radius: 2px;
+      }
+
+      .wrap {
+        max-width: 1080px;
+        margin: 0 auto;
+        padding: 32px 24px 64px;
+      }
+
+      header.masthead {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 20px;
+        border-bottom: 3px solid var(--ink);
+        padding-bottom: 20px;
+        margin-bottom: 8px;
+      }
+      .masthead h1 {
+        margin: 0 0 6px;
+        font-size: clamp(30px, 5vw, 46px);
+        line-height: 1.1;
+        font-weight: 700;
+        letter-spacing: -0.01em;
+      }
+      .masthead .subtitle {
+        margin: 0;
+        font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+        font-size: 14px;
+        color: var(--ink-soft);
+      }
+      .masthead .kicker {
+        margin: 0 0 10px;
+        font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+        font-size: 12px;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--accent-ink);
+      }
+
+      .theme-toggle {
+        flex: 0 0 auto;
+        width: 86px;
+        height: 40px;
+        min-height: 40px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        background: var(--surface);
+        color: var(--ink);
+        border: 1.5px solid var(--ink);
+        border-radius: 999px;
+        font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+        font-size: 13px;
+        cursor: pointer;
+        padding: 0 10px;
+      }
+      .theme-toggle .dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: var(--accent);
+        flex: 0 0 auto;
+      }
+      .theme-toggle:hover { border-color: var(--accent); }
+
+      .story {
+        display: grid;
+        grid-template-columns: 72px 1fr;
+        gap: 4px 20px;
+        padding: 28px 0 26px;
+        border-bottom: 1px solid var(--line);
+        scroll-margin-top: 16px;
+      }
+      .story .num {
+        font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+        font-size: 40px;
+        font-weight: 700;
+        line-height: 1;
+        color: var(--accent);
+        padding-top: 2px;
+      }
+      .story h2 {
+        margin: 0 0 10px;
+        font-size: clamp(21px, 3vw, 26px);
+        line-height: 1.25;
+        font-weight: 700;
+      }
+      .story .body { margin: 0 0 14px; color: var(--ink); max-width: 68ch; }
+
+      .meta {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 8px 18px;
+        font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+        font-size: 13.5px;
+        color: var(--ink-soft);
+        margin-bottom: 16px;
+      }
+      .meta a { min-height: 36px; display: inline-flex; align-items: center; }
+      .meta .stats { color: var(--ink-faint); white-space: nowrap; }
+      .copy-btn {
+        margin-left: auto;
+        min-height: 36px;
+        padding: 6px 14px;
+        background: transparent;
+        color: var(--ink);
+        border: 1px solid var(--line);
+        border-radius: 6px;
+        font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+        font-size: 13px;
+        cursor: pointer;
+      }
+      .copy-btn:hover { border-color: var(--accent); color: var(--accent-ink); }
+      .copy-btn.copied { border-color: var(--accent); color: var(--accent-ink); }
+
+      .commenters {
+        background: var(--comment-bg);
+        border-radius: 6px;
+        padding: 14px 18px;
+        max-width: 72ch;
+      }
+      .commenters .label {
+        display: block;
+        font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+        font-size: 11.5px;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--accent-ink);
+        margin-bottom: 6px;
+      }
+      .commenters p { margin: 0; font-size: 15.5px; color: var(--ink-soft); }
+
+      footer {
+        margin-top: 36px;
+        padding-top: 20px;
+        border-top: 3px solid var(--ink);
+        font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+        font-size: 13.5px;
+        color: var(--ink-soft);
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px 24px;
+        align-items: center;
+      }
+      footer a { min-height: 36px; display: inline-flex; align-items: center; }
+
+      @media (max-width: 600px) {
+        .wrap { padding: 22px 16px 48px; }
+        .story { grid-template-columns: 46px 1fr; gap: 2px 12px; padding: 22px 0 20px; }
+        .story .num { font-size: 28px; }
+        header.masthead { flex-wrap: wrap; }
+        .copy-btn { margin-left: 0; }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        html { scroll-behavior: auto; }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <header class="masthead">
+        <div>
+          <p class="kicker">Hacker News · Daily Digest</p>
+          <h1>HN Daily — Sunday, November 22, 2026</h1>
+          <p class="subtitle">HN Top 10 — 2026-11-22 07:00 PT (hottest by points)</p>
+        </div>
+        <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle dark mode" aria-pressed="false">
+          <span class="dot" aria-hidden="true"></span><span id="themeLabel">Dark</span>
+        </button>
+      </header>
+
+      <main>
+        <article class="story" id="story-1">
+          <div class="num" aria-hidden="true">1</div>
+          <div>
+            <h2 class="tagline">The human GRH proof is in trouble; the Lean-checked Riemann proof is certified</h2>
+            <p class="body">Ravi Vakil rushed out Alessandro Masullo&#x27;s fully human proof of the Generalized Riemann Hypothesis after Anthropic&#x27;s AI-assisted claim, with Brian Conrad&#x27;s months of vetting behind it. Within about eight hours, mathematicians reported problems in the draft, found with AI assistance — it stays unproven until the community resolves them. The Lean-checked Riemann proof was certified instead (story 3).</p>
+            <div class="meta">
+              <a class="source" href="https://math216.wordpress.com/2026/11/20/hurried-announcement-alessandro-masullo-grh/" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50579568" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">2438 pts · 1188 comments</span>
+              <button class="copy-btn" type="button" data-copy="1">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>The thread is mostly about the race itself. Masullo worked on the problem for 12 years, and commenters sympathize with the position: publish a hurried draft and claim a timestamped tie, or keep it with trusted reviewers and risk an AI lab scooping you. The asymmetry draws the most heat — formalizing a proof at this scale costs millions, so a lone mathematician can&#x27;t match a lab&#x27;s compute, yet AI tools are now the ones finding the holes in his draft. A few compare it to search engines: knowledge becoming a commodity felt demoralizing at first, then people found new roles.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="story" id="story-2">
+          <div class="num" aria-hidden="true">2</div>
+          <div>
+            <h2 class="tagline">A pill that shrinks pancreatic tumours — &#x27;biggest breakthrough in decades&#x27;</h2>
+            <p class="body">Daraxonrasib, a daily pill, made cancer undetectable in 1 in 12 patients in a 61-person trial, and tumours stopped growing in nearly all of them. A year after starting treatment 76.6% were alive, against 40–45% typically surviving a year on chemotherapy alone. Pancreatic cancer has barely moved in decades — the first targeted pill to show this kind of signal, though the trial is small and the patients late-stage.</p>
+            <div class="meta">
+              <a class="source" href="https://www.theguardian.com/society/2026/nov/20/pill-pancreatic-cancer-breakthrough-daraxonrasib" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50582069" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">1172 pts · 248 comments</span>
+              <button class="copy-btn" type="button" data-copy="2">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>Cautious optimism with the caveats up front. The survival gain — roughly 13 months versus 6 — looks modest until you remember trials enroll very late-stage patients who have exhausted other options, and for them doubling remaining time is everything; one commenter writes about a friend facing exactly that arithmetic. Others note this is a different approach from the recent virus-injection results, and that chemo and radiation keep improving incrementally too — two promising pancreatic approaches in one month is itself the news.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="story" id="story-3">
+          <div class="num" aria-hidden="true">3</div>
+          <div>
+            <h2 class="tagline">The Riemann Hypothesis is now Lean-verified — 17 million lines, independently checked</h2>
+            <p class="body">The Lean and Mathlib communities certified Levent Alpöge&#x27;s Lean proof of the Riemann Hypothesis: the 17-million-line library compiles, proves exactly Mathlib&#x27;s statement of RH, and the raw proof export was checked by Lean&#x27;s kernel plus independent checkers in other languages — including con-leche and con-ron, which carry formal proofs of their own consistency. If it holds, it closes a 167-year-old problem.</p>
+            <div class="meta">
+              <a class="source" href="https://leanprover-community.github.io/blog/posts/riemann-hypothesis/" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50589618" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">1124 pts · 935 comments</span>
+              <button class="copy-btn" type="button" data-copy="3">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>Near-consensus that this is solid. The point commenters keep repeating: the statement proved is taken directly from Mathlib, long vetted, and the proof was checked by multiple independent kernels in different languages, including checkers with formal proofs of their own consistency — so a bug would have to hit every checker at once. The remaining questions are procedural: how many independent checkers are enough before calling it 100%, and what the formalization means for the Masullo claim running in parallel.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="story" id="story-4">
+          <div class="num" aria-hidden="true">4</div>
+          <div>
+            <h2 class="tagline">Toyota, Nissan and Honda will standardize parts to cut costs</h2>
+            <p class="body">Japan&#x27;s three largest automakers will standardize parts — starting with common steel quality criteria, shared plastics protocols, and a universal wiring-harness color code — to cut production costs and compete with China&#x27;s automakers. The JAMA announcement frames it as cost-cutting, but the supply-chain angle matters too: after years of shocks, standardizing basics keeps bottlenecks from stranding production.</p>
+            <div class="meta">
+              <a class="source" href="https://www.caranddriver.com/news/a74490092/toyota-nissan-honda-standardize-parts-lower-costs/" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50596133" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">798 pts · 473 comments</span>
+              <button class="copy-btn" type="button" data-copy="4">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>The thread splits on motive. One camp reads it as cost competition: BYD makes 75–85% of parts in-house, so the Japanese makers are closing a structural gap. The other says it&#x27;s supply-chain resilience — Fukushima taught Toyota to stockpile parts, and recent geopolitical shocks pushed JAMA to standardize basics so bottlenecks don&#x27;t strand production. Most agree it&#x27;s both, and a few hope the trend spreads to more automakers.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="story" id="story-5">
+          <div class="num" aria-hidden="true">5</div>
+          <div>
+            <h2 class="tagline">The Army has to blow up 10,000 pounds of lead azide — in place</h2>
+            <p class="body">The Army plans to detonate 68 drums — 9,500 to 10,000 pounds — of lead azide stored for about 20 years at an Iowa ammunition plant, after it recrystallized into a form too sensitive to move. The EPA issued an emergency permit for in-place detonation; the event was postponed to at least Monday by legal action. Derek Lowe explains why every alternative is worse — and why lead dust drifting 20–30 miles is the price.</p>
+            <div class="meta">
+              <a class="source" href="https://www.science.org/content/blog-post/detonating-huge-pile-lead-azide-really" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50588982" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">652 pts · 405 comments</span>
+              <button class="copy-btn" type="button" data-copy="5">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>The tone is grim respect from people who have handled primaries. Degraded lead azide can detonate from a loud noise or the flex of a container, so several commenters argue the blame belongs with whoever let an enormous stockpile sit uninspected for 20 years, not with whoever has to deal with it now. The practical consensus: don&#x27;t move the drums — the only safe path is the controlled detonation the Army is planning, with monitors across eastern Iowa watching the fallout.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="story" id="story-6">
+          <div class="num" aria-hidden="true">6</div>
+          <div>
+            <h2 class="tagline">His monitor was eating 75% of his download speed</h2>
+            <p class="body">A 2.5 Gbps symmetric line delivered only 600 Mbps down (upload stayed at 2.4 Gbps) when the Ethernet adapter ran through an Apple Studio Display&#x27;s USB hub. The culprit wasn&#x27;t bandwidth — SSDs through the same hub were fine — but the adapter chip&#x27;s small buffers: not enough packets in flight to fill the pipe. Plugged straight into the laptop, full speed returned.</p>
+            <div class="meta">
+              <a class="source" href="https://blog.tymscar.com/posts/studiodisplayethernet/" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50587875" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">632 pts · 294 comments</span>
+              <button class="copy-btn" type="button" data-copy="6">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>The debugging story lands well, but the thread&#x27;s energy goes to the root-cause debate: it&#x27;s a latency and buffer problem, not bandwidth — the adapter chip can&#x27;t keep enough packets in flight through the monitor&#x27;s hub, which is why SSDs through the same hub are unaffected. From there it drifts into a long side discussion of io_uring and iowait accounting, with kernel folks arguing the metric itself is broken. The practical takeaway survives the drift: test your speed through the hub, not just at the laptop.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="story" id="story-7">
+          <div class="num" aria-hidden="true">7</div>
+          <div>
+            <h2 class="tagline">Inkling-2-Mini squeezes into 5.4 GB of memory</h2>
+            <p class="body">A quantization project fits Inkling-2-Mini into 5.4 GB using hashed block-vector trellis codes decoded by custom Metal kernels, with a GGUF route for llama.cpp in the repo. For now the released files are MX/Apple Silicon only. The thread&#x27;s caution: fitting a model in tiny RAM is easy to over-claim — check the quality, not just the footprint.</p>
+            <div class="meta">
+              <a class="source" href="https://github.com/ShinMegamiBoson/lookatmyquant" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50591853" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">507 pts · 127 comments</span>
+              <button class="copy-btn" type="button" data-copy="7">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>Skepticism is the headline. &#x27;Don&#x27;t get too excited about claims of fitting large models into tiny RAM&#x27; — there is always a tradeoff, and KL-divergence numbers are easy to benchmaxx. The useful detail: released files are MX/Apple Silicon only for now, with a GGUF route intended for llama.cpp but not yet the way most people would run it. The counterpoint from a retired tinkerer: if you have time to play, try it; if you have work to do, stick to well-vetted setups and spend your time at the application layer.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="story" id="story-8">
+          <div class="num" aria-hidden="true">8</div>
+          <div>
+            <h2 class="tagline">Sandwich Simulator: build a German sandwich, obey the rules</h2>
+            <p class="body">A small web toy for assembling a sandwich, German-style — butter only on the bread, a top slice required, and strong opinions about what goes where. It is a joke with a fanbase: the thread is full of people sharing their own sandwich builders and arguing over Nutella placement. Five minutes of fun, zero productivity.</p>
+            <div class="meta">
+              <a class="source" href="https://stulle.app/" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50594911" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">385 pts · 137 comments</span>
+              <button class="copy-btn" type="button" data-copy="8">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>Pure play. The thread argues the rules with a straight face: butter goes on the bread and nowhere else, a sandwich without a top slice is just bread with things on it, and Nutella on top is not the same as Nutella underneath. Several share their own sandwich builders, including a &#x27;World&#x27;s Best Sandwich&#x27; and a Toast Hawaii tribute. Nobody is pretending this is productive — that is the point.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="story" id="story-9">
+          <div class="num" aria-hidden="true">9</div>
+          <div>
+            <h2 class="tagline">Getting the mind to steer the body to steer you</h2>
+            <p class="body">An essay on self-control as a chain of command: the mind steers the body, the body steers your choices — and the weak link is that you can&#x27;t directly command either. Cravings, pain and anxiety don&#x27;t take orders. The thread goes philosophical fast: Buddhism&#x27;s &#x27;you are not your body,&#x27; gut-microbiome theories of sugar cravings, and whether autonomy in parts means the whole is out of control.</p>
+            <div class="meta">
+              <a class="source" href="https://notnottalmud.substack.com/p/getting-the-mind-to-steer-the-body" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50583028" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">341 pts · 123 comments</span>
+              <button class="copy-btn" type="button" data-copy="9">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>The essay&#x27;s chain-of-command framing pulls the thread straight into philosophy. One top comment takes it to the Buddhist conclusion — you are not your body, mind, or thoughts, because you can&#x27;t control them — and gets pushback: autonomy in the parts doesn&#x27;t mean the whole is out of control. A parallel thread runs on gut microbiome and sugar cravings: cut sugar and the cravings vanish with the symptoms, which makes the &#x27;craving monster&#x27; feel literal, and raises the question of whether starved microbes fight back.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="story" id="story-10">
+          <div class="num" aria-hidden="true">10</div>
+          <div>
+            <h2 class="tagline">87% of Anthropic&#x27;s power will come from gas, 11% from coal, in 2028</h2>
+            <p class="body">A Better Data Center Project case study estimates Anthropic&#x27;s compute will emit 32 million metric tons of CO2 in 2028, with 87% of its power from gas and 11% from coal — no direct US renewable commitments disclosed. The wider finding: 177 GW of planned &#x27;bring your own power&#x27; gas capacity for data centers, enough to power 65% of US homes. The thread splits between regulation and whataboutism.</p>
+            <div class="meta">
+              <a class="source" href="https://betterdatacenterproject.com/2026/11/16/how-ai-is-powered-a-breakdown-of-byop-and-grid-power/" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50597612" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">325 pts · 437 comments</span>
+              <button class="copy-btn" type="button" data-copy="10">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>The thread divides fast. One side says this is exactly why regulation exists: externalities land on communities far from the shareholders, and a purely financial accounting ignores them. The other side goes straight to whataboutism — China burns more coal than the US and Europe combined — and gets the counter that Chinese projects are mostly remote, renewable-heavy greenfield sites, while US data centers land near homes with noise and dust. Underneath the argument, most agree the numbers are the story: 87% gas, 11% coal, and no renewable commitments disclosed.</p>
+            </div>
+          </div>
+        </article>
+      </main>
+
+      <footer>
+        <a href="../">&larr; HN Daily archive</a>
+        <a href="https://tk3369.github.io/hn-daily/">tk3369.github.io/hn-daily</a>
+        <span>Press T to toggle theme.</span>
+      </footer>
+    </div>
+
+    <script>
+      (function () {
+        var KEY = "hn-daily-theme";
+        var root = document.documentElement;
+        var toggle = document.getElementById("themeToggle");
+        var label = document.getElementById("themeLabel");
+
+        function storedTheme() {
+          try { return window.localStorage.getItem(KEY); } catch (e) { return null; }
+        }
+        function systemDark() {
+          return window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+        }
+        function isDark() {
+          var t = root.getAttribute("data-theme");
+          if (t === "dark") return true;
+          if (t === "light") return false;
+          return systemDark();
+        }
+        function render() {
+          var dark = isDark();
+          label.textContent = dark ? "Light" : "Dark";
+          toggle.setAttribute("aria-pressed", dark ? "true" : "false");
+        }
+        function setTheme(theme) {
+          root.setAttribute("data-theme", theme);
+          try { window.localStorage.setItem(KEY, theme); } catch (e) {}
+          render();
+        }
+        function flip() {
+          setTheme(isDark() ? "light" : "dark");
+        }
+
+        var saved = storedTheme();
+        if (saved === "dark" || saved === "light") {
+          root.setAttribute("data-theme", saved);
+        }
+        render();
+
+        toggle.addEventListener("click", flip);
+        document.addEventListener("keydown", function (e) {
+          if (e.key === "t" || e.key === "T") {
+            var tag = (e.target && e.target.tagName) || "";
+            if (tag === "INPUT" || tag === "TEXTAREA") return;
+            if (e.metaKey || e.ctrlKey || e.altKey) return;
+            flip();
+          }
+        });
+        if (window.matchMedia) {
+          var mq = window.matchMedia("(prefers-color-scheme: dark)");
+          if (mq.addEventListener) mq.addEventListener("change", render);
+        }
+
+        // Copy buttons: number + tagline + body + source + HN link + points/comments.
+        // The "What HN commenters are saying" paragraph is deliberately excluded.
+        var copyData = {
+          "1": "1. The human GRH proof is in trouble; the Lean-checked Riemann proof is certified\n\nRavi Vakil rushed out Alessandro Masullo's fully human proof of the Generalized Riemann Hypothesis after Anthropic's AI-assisted claim, with Brian Conrad's months of vetting behind it. Within about eight hours, mathematicians reported problems in the draft, found with AI assistance \u2014 it stays unproven until the community resolves them. The Lean-checked Riemann proof was certified instead (story 3).\n\nSource: https://math216.wordpress.com/2026/11/20/hurried-announcement-alessandro-masullo-grh/\nHN Discuss: https://news.ycombinator.com/item?id=50579568\n2438 pts / 1188 comments",
+          "2": "2. A pill that shrinks pancreatic tumours \u2014 'biggest breakthrough in decades'\n\nDaraxonrasib, a daily pill, made cancer undetectable in 1 in 12 patients in a 61-person trial, and tumours stopped growing in nearly all of them. A year after starting treatment 76.6% were alive, against 40\u201345% typically surviving a year on chemotherapy alone. Pancreatic cancer has barely moved in decades \u2014 the first targeted pill to show this kind of signal, though the trial is small and the patients late-stage.\n\nSource: https://www.theguardian.com/society/2026/nov/20/pill-pancreatic-cancer-breakthrough-daraxonrasib\nHN Discuss: https://news.ycombinator.com/item?id=50582069\n1172 pts / 248 comments",
+          "3": "3. The Riemann Hypothesis is now Lean-verified \u2014 17 million lines, independently checked\n\nThe Lean and Mathlib communities certified Levent Alp\u00f6ge's Lean proof of the Riemann Hypothesis: the 17-million-line library compiles, proves exactly Mathlib's statement of RH, and the raw proof export was checked by Lean's kernel plus independent checkers in other languages \u2014 including con-leche and con-ron, which carry formal proofs of their own consistency. If it holds, it closes a 167-year-old problem.\n\nSource: https://leanprover-community.github.io/blog/posts/riemann-hypothesis/\nHN Discuss: https://news.ycombinator.com/item?id=50589618\n1124 pts / 935 comments",
+          "4": "4. Toyota, Nissan and Honda will standardize parts to cut costs\n\nJapan's three largest automakers will standardize parts \u2014 starting with common steel quality criteria, shared plastics protocols, and a universal wiring-harness color code \u2014 to cut production costs and compete with China's automakers. The JAMA announcement frames it as cost-cutting, but the supply-chain angle matters too: after years of shocks, standardizing basics keeps bottlenecks from stranding production.\n\nSource: https://www.caranddriver.com/news/a74490092/toyota-nissan-honda-standardize-parts-lower-costs/\nHN Discuss: https://news.ycombinator.com/item?id=50596133\n798 pts / 473 comments",
+          "5": "5. The Army has to blow up 10,000 pounds of lead azide \u2014 in place\n\nThe Army plans to detonate 68 drums \u2014 9,500 to 10,000 pounds \u2014 of lead azide stored for about 20 years at an Iowa ammunition plant, after it recrystallized into a form too sensitive to move. The EPA issued an emergency permit for in-place detonation; the event was postponed to at least Monday by legal action. Derek Lowe explains why every alternative is worse \u2014 and why lead dust drifting 20\u201330 miles is the price.\n\nSource: https://www.science.org/content/blog-post/detonating-huge-pile-lead-azide-really\nHN Discuss: https://news.ycombinator.com/item?id=50588982\n652 pts / 405 comments",
+          "6": "6. His monitor was eating 75% of his download speed\n\nA 2.5 Gbps symmetric line delivered only 600 Mbps down (upload stayed at 2.4 Gbps) when the Ethernet adapter ran through an Apple Studio Display's USB hub. The culprit wasn't bandwidth \u2014 SSDs through the same hub were fine \u2014 but the adapter chip's small buffers: not enough packets in flight to fill the pipe. Plugged straight into the laptop, full speed returned.\n\nSource: https://blog.tymscar.com/posts/studiodisplayethernet/\nHN Discuss: https://news.ycombinator.com/item?id=50587875\n632 pts / 294 comments",
+          "7": "7. Inkling-2-Mini squeezes into 5.4 GB of memory\n\nA quantization project fits Inkling-2-Mini into 5.4 GB using hashed block-vector trellis codes decoded by custom Metal kernels, with a GGUF route for llama.cpp in the repo. For now the released files are MX/Apple Silicon only. The thread's caution: fitting a model in tiny RAM is easy to over-claim \u2014 check the quality, not just the footprint.\n\nSource: https://github.com/ShinMegamiBoson/lookatmyquant\nHN Discuss: https://news.ycombinator.com/item?id=50591853\n507 pts / 127 comments",
+          "8": "8. Sandwich Simulator: build a German sandwich, obey the rules\n\nA small web toy for assembling a sandwich, German-style \u2014 butter only on the bread, a top slice required, and strong opinions about what goes where. It is a joke with a fanbase: the thread is full of people sharing their own sandwich builders and arguing over Nutella placement. Five minutes of fun, zero productivity.\n\nSource: https://stulle.app/\nHN Discuss: https://news.ycombinator.com/item?id=50594911\n385 pts / 137 comments",
+          "9": "9. Getting the mind to steer the body to steer you\n\nAn essay on self-control as a chain of command: the mind steers the body, the body steers your choices \u2014 and the weak link is that you can't directly command either. Cravings, pain and anxiety don't take orders. The thread goes philosophical fast: Buddhism's 'you are not your body,' gut-microbiome theories of sugar cravings, and whether autonomy in parts means the whole is out of control.\n\nSource: https://notnottalmud.substack.com/p/getting-the-mind-to-steer-the-body\nHN Discuss: https://news.ycombinator.com/item?id=50583028\n341 pts / 123 comments",
+          "10": "10. 87% of Anthropic's power will come from gas, 11% from coal, in 2028\n\nA Better Data Center Project case study estimates Anthropic's compute will emit 32 million metric tons of CO2 in 2028, with 87% of its power from gas and 11% from coal \u2014 no direct US renewable commitments disclosed. The wider finding: 177 GW of planned 'bring your own power' gas capacity for data centers, enough to power 65% of US homes. The thread splits between regulation and whataboutism.\n\nSource: https://betterdatacenterproject.com/2026/11/16/how-ai-is-powered-a-breakdown-of-byop-and-grid-power/\nHN Discuss: https://news.ycombinator.com/item?id=50597612\n325 pts / 437 comments"
+};
+
+        function fallbackCopy(text) {
+          var ta = document.createElement("textarea");
+          ta.value = text;
+          ta.setAttribute("readonly", "");
+          ta.style.position = "absolute";
+          ta.style.left = "-9999px";
+          document.body.appendChild(ta);
+          ta.select();
+          var ok = false;
+          try { ok = document.execCommand("copy"); } catch (e) { ok = false; }
+          document.body.removeChild(ta);
+          return ok;
+        }
+
+        var buttons = document.querySelectorAll(".copy-btn");
+        Array.prototype.forEach.call(buttons, function (btn) {
+          btn.addEventListener("click", function () {
+            var text = copyData[btn.getAttribute("data-copy")] || "";
+            function done() {
+              var original = "Copy";
+              btn.textContent = "Copied ✓";
+              btn.classList.add("copied");
+              setTimeout(function () {
+                btn.textContent = original;
+                btn.classList.remove("copied");
+              }, 1600);
+            }
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+              navigator.clipboard.writeText(text).then(done, function () {
+                if (fallbackCopy(text)) done();
+              });
+            } else if (fallbackCopy(text)) {
+              done();
+            }
+          });
+        });
+      })();
+    </script>
+  </body>
+</html>
