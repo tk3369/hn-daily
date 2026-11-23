@@ -1,0 +1,535 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="light dark" />
+    <link rel="icon" href="data:," />
+    <title>HN Daily — Monday, November 23, 2026</title>
+    <style>
+      :root {
+        --bg: #f3f1eb;
+        --surface: #fbf9f4;
+        --ink: #1c1a16;
+        --ink-soft: #4a463e;
+        --ink-faint: #6f6a5e;
+        --line: #d8d2c4;
+        --accent: #ff6600;
+        --accent-ink: #b34700;
+        --comment-bg: #efe9dc;
+        --focus: #b34700;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root:not([data-theme="light"]) {
+          --bg: #16140f;
+          --surface: #1f1c16;
+          --ink: #f0ead9;
+          --ink-soft: #c9c2b0;
+          --ink-faint: #9a937f;
+          --line: #3a362b;
+          --accent: #ff7a1a;
+          --accent-ink: #ff9440;
+          --comment-bg: #262219;
+          --focus: #ff9440;
+        }
+      }
+      :root[data-theme="dark"] {
+        --bg: #16140f;
+        --surface: #1f1c16;
+        --ink: #f0ead9;
+        --ink-soft: #c9c2b0;
+        --ink-faint: #9a937f;
+        --line: #3a362b;
+        --accent: #ff7a1a;
+        --accent-ink: #ff9440;
+        --comment-bg: #262219;
+        --focus: #ff9440;
+      }
+
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--ink);
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: 17px;
+        line-height: 1.55;
+        -webkit-font-smoothing: antialiased;
+      }
+      a { color: var(--accent-ink); text-decoration: underline; text-underline-offset: 2px; }
+      a:hover { color: var(--accent); }
+      a:focus-visible, button:focus-visible {
+        outline: 2px solid var(--focus);
+        outline-offset: 2px;
+        border-radius: 2px;
+      }
+
+      .wrap {
+        max-width: 1080px;
+        margin: 0 auto;
+        padding: 32px 24px 64px;
+      }
+
+      header.masthead {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 20px;
+        border-bottom: 3px solid var(--ink);
+        padding-bottom: 20px;
+        margin-bottom: 8px;
+      }
+      .masthead h1 {
+        margin: 0 0 6px;
+        font-size: clamp(30px, 5vw, 46px);
+        line-height: 1.1;
+        font-weight: 700;
+        letter-spacing: -0.01em;
+      }
+      .masthead .subtitle {
+        margin: 0;
+        font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+        font-size: 14px;
+        color: var(--ink-soft);
+      }
+      .masthead .kicker {
+        margin: 0 0 10px;
+        font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+        font-size: 12px;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--accent-ink);
+      }
+
+      .theme-toggle {
+        flex: 0 0 auto;
+        width: 86px;
+        height: 40px;
+        min-height: 40px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        background: var(--surface);
+        color: var(--ink);
+        border: 1.5px solid var(--ink);
+        border-radius: 999px;
+        font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+        font-size: 13px;
+        cursor: pointer;
+        padding: 0 10px;
+      }
+      .theme-toggle .dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: var(--accent);
+        flex: 0 0 auto;
+      }
+      .theme-toggle:hover { border-color: var(--accent); }
+
+      .story {
+        display: grid;
+        grid-template-columns: 72px 1fr;
+        gap: 4px 20px;
+        padding: 28px 0 26px;
+        border-bottom: 1px solid var(--line);
+        scroll-margin-top: 16px;
+      }
+      .story .num {
+        font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+        font-size: 40px;
+        font-weight: 700;
+        line-height: 1;
+        color: var(--accent);
+        padding-top: 2px;
+      }
+      .story h2 {
+        margin: 0 0 10px;
+        font-size: clamp(21px, 3vw, 26px);
+        line-height: 1.25;
+        font-weight: 700;
+      }
+      .story .body { margin: 0 0 14px; color: var(--ink); max-width: 68ch; }
+
+      .meta {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 8px 18px;
+        font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+        font-size: 13.5px;
+        color: var(--ink-soft);
+        margin-bottom: 16px;
+      }
+      .meta a { min-height: 36px; display: inline-flex; align-items: center; }
+      .meta .stats { color: var(--ink-faint); white-space: nowrap; }
+      .copy-btn {
+        margin-left: auto;
+        min-height: 36px;
+        padding: 6px 14px;
+        background: transparent;
+        color: var(--ink);
+        border: 1px solid var(--line);
+        border-radius: 6px;
+        font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+        font-size: 13px;
+        cursor: pointer;
+      }
+      .copy-btn:hover { border-color: var(--accent); color: var(--accent-ink); }
+      .copy-btn.copied { border-color: var(--accent); color: var(--accent-ink); }
+
+      .commenters {
+        background: var(--comment-bg);
+        border-radius: 6px;
+        padding: 14px 18px;
+        max-width: 72ch;
+      }
+      .commenters .label {
+        display: block;
+        font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+        font-size: 11.5px;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--accent-ink);
+        margin-bottom: 6px;
+      }
+      .commenters p { margin: 0; font-size: 15.5px; color: var(--ink-soft); }
+
+      footer {
+        margin-top: 36px;
+        padding-top: 20px;
+        border-top: 3px solid var(--ink);
+        font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+        font-size: 13.5px;
+        color: var(--ink-soft);
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px 24px;
+        align-items: center;
+      }
+      footer a { min-height: 36px; display: inline-flex; align-items: center; }
+
+      @media (max-width: 600px) {
+        .wrap { padding: 22px 16px 48px; }
+        .story { grid-template-columns: 46px 1fr; gap: 2px 12px; padding: 22px 0 20px; }
+        .story .num { font-size: 28px; }
+        header.masthead { flex-wrap: wrap; }
+        .copy-btn { margin-left: 0; }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        html { scroll-behavior: auto; }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <header class="masthead">
+        <div>
+          <p class="kicker">Hacker News · Daily Digest</p>
+          <h1>HN Daily — Monday, November 23, 2026</h1>
+          <p class="subtitle">HN Top 10 — 2026-11-23 07:00 PT (hottest by points)</p>
+        </div>
+        <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle dark mode" aria-pressed="false">
+          <span class="dot" aria-hidden="true"></span><span id="themeLabel">Dark</span>
+        </button>
+      </header>
+
+      <main>
+                <article class="story" id="story-1">
+          <div class="num" aria-hidden="true">1</div>
+          <div>
+            <h2 class="tagline">Jensen Huang is Nvidia CEO again — board votes unanimously to reinstate him</h2>
+            <p class="body">Nvidia&#x27;s board voted unanimously to reinstate Jensen Huang as president, CEO and board director, effective immediately, 11 days after his November 12 resignation. The board says it is satisfied with his candor and ability to lead, and that input from senior US government levels gives confidence the move poses no national security risk. The independent committee&#x27;s investigation continues.</p>
+            <div class="meta">
+              <a class="source" href="https://nvidianews.nvidia.com/news/nvidia-board-reinstates-jensen-huang-as-president-ceo-and-board-director" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50611588" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">940 pts · 705 comments</span>
+              <button class="copy-btn" type="button" data-copy="1">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>Cynicism dominates the top of the thread — ‘too big to fail’ and the observation that enough money being made or lost erases consequences. The board’s own language draws the scrutiny: ‘satisfied with respect to candor’ and government input leave the underlying foreign-intelligence questions unanswered, and the investigation proceeding to conclusion is the open thread everyone is watching.</p>
+            </div>
+          </div>
+        </article>
+
+                <article class="story" id="story-2">
+          <div class="num" aria-hidden="true">2</div>
+          <div>
+            <h2 class="tagline">Spelunkr: a free TV network built from the Internet Archive&#x27;s forgotten videos</h2>
+            <p class="body">Spelunkr.tv turns the Internet Archive&#x27;s public-domain video trove into scheduled TV channels — old anime, black-and-white horror and other forgotten footage, playing on a broadcast schedule instead of an on-demand feed. No account, no ads: you tune in and watch what&#x27;s on. The charm is the constraint — television the way it used to work.</p>
+            <div class="meta">
+              <a class="source" href="https://spelunkr.tv" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50606192" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">703 pts · 132 comments</span>
+              <button class="copy-btn" type="button" data-copy="2">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>Delight, mostly. People report finding Macross on the old anime channel and Vincent Price horror on another, and several call it a cool anachronism — internet video without the algorithm. The requests are practical: show descriptions for upcoming programs, and explain how it was built.</p>
+            </div>
+          </div>
+        </article>
+
+                <article class="story" id="story-3">
+          <div class="num" aria-hidden="true">3</div>
+          <div>
+            <h2 class="tagline">OpenAI: perplexity is the metric that matters — and it should pace AI development</h2>
+            <p class="body">OpenAI argues pretraining perplexity — how well a model predicts the next token — is the single metric tracking the emergence of new capabilities, from GPT-2&#x27;s coherent paragraphs to reasoning at GPT-4. It publishes its internal numbers (GPT-3.5 ~0.99, GPT-4 ~0.91, now below 0.8) and proposes shared industry limits: don&#x27;t cross a perplexity threshold until safety monitoring catches up.</p>
+            <div class="meta">
+              <a class="source" href="https://openai.com/index/perplexity-and-intelligence/" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50601525" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">639 pts · 417 comments</span>
+              <button class="copy-btn" type="button" data-copy="3">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>The thread mostly plays the game itself: humans are terrible at next-token prediction, and beating even a small LLM at it is basically impossible — one commenter links the paper showing exactly that. The serious debate is whether perplexity can be a shared yardstick at all, given different labs use different datasets, and that chain-of-thought gains don&#x27;t show up in perplexity.</p>
+            </div>
+          </div>
+        </article>
+
+                <article class="story" id="story-4">
+          <div class="num" aria-hidden="true">4</div>
+          <div>
+            <h2 class="tagline">A beginner&#x27;s guide to local AI: Inkling, Qwen and Unsloth on your own hardware</h2>
+            <p class="body">A practical walkthrough for running capable models locally — Inkling as the interface, Qwen models, Unsloth for fine-tuning — for people who want AI without sending prompts to a cloud. The thread&#x27;s real content is the hardware Q&amp;A: how much VRAM before Qwen stops feeling sluggish, and what a 16 GB card actually delivers in tokens per second.</p>
+            <div class="meta">
+              <a class="source" href="https://www.gpupartner.com/blog/beginners-guide-local-ai-inkling-qwen-unsloth" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50603845" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">626 pts · 259 comments</span>
+              <button class="copy-btn" type="button" data-copy="4">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>VRAM questions dominate — ‘how much VRAM do you need before Qwen stops feeling sluggish on a normal laptop’ is the top thread. One user reports ~100 tok/s generation running Qwen 3 8B on a 5070 Ti with 16 GB VRAM, and several push back on the guide&#x27;s claim that 32 GB+ is needed for a 35B model at Q4.</p>
+            </div>
+          </div>
+        </article>
+
+                <article class="story" id="story-5">
+          <div class="num" aria-hidden="true">5</div>
+          <div>
+            <h2 class="tagline">The birds of GTA 6: Audubon&#x27;s field guide to Vice City wildlife</h2>
+            <p class="body">Audubon magazine catalogues the birds of GTA 6&#x27;s Leonida — the species Rockstar modelled, and how faithfully — in a straight-faced field guide to a fictional ecosystem. It&#x27;s the latest proof of the game&#x27;s absurd attention to detail: wildlife most players will never stop to identify, rendered well enough for ornithologists to write about.</p>
+            <div class="meta">
+              <a class="source" href="https://www.audubon.org/magazine/birds-of-gta-6-field-guide-vice-city-wildlife" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50602843" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">575 pts · 315 comments</span>
+              <button class="copy-btn" type="button" data-copy="5">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>Amusement that Rockstar may have paid a Cornell ornithologist to get the birds right. The thread drifts into the game&#x27;s design: story-focused with sandbox detail mostly unused in missions, and the expectation that GTA 6 Online, arriving next year, is where the obsessive detail actually pays off.</p>
+            </div>
+          </div>
+        </article>
+
+                <article class="story" id="story-6">
+          <div class="num" aria-hidden="true">6</div>
+          <div>
+            <h2 class="tagline">GLM-5.4: a Loop Transformer that reasons deeper without more parameters</h2>
+            <p class="body">Z.ai&#x27;s GLM-5.4 is its first flagship on the Loop Transformer: 28 layers of the 750B base model run twice per pass, reusing weights, so it reasons more deeply at the same parameter count — claimed comparable to 2–3T-parameter models. It ships with higher subscription limits and up to 200 tok/s off-peak. The catch: the post publishes no benchmark scores.</p>
+            <div class="meta">
+              <a class="source" href="https://z.ai/blog/glm-5.4" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50609685" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">514 pts · 200 comments</span>
+              <button class="copy-btn" type="button" data-copy="6">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>The missing benchmarks are the whole thread. Either the scores aren&#x27;t impressive or they&#x27;d have included them — or they&#x27;re being held for a second news cycle. Others argue benchmarks have become marketing anyway, and one suspects the cyber-safety hardening will lower scores later, so the drop is better left unquantified.</p>
+            </div>
+          </div>
+        </article>
+
+                <article class="story" id="story-7">
+          <div class="num" aria-hidden="true">7</div>
+          <div>
+            <h2 class="tagline">XNU Linux: the full macOS desktop running as a kernel module inside Linux</h2>
+            <p class="body">XNU Linux builds Apple&#x27;s open-source XNU kernel as a loadable module (xnu.ko) inside an unmodified arm64 Linux kernel, booting a real macOS 27 system disk to the desktop — Finder, Dock, Safari — next to Linux processes on the same CPUs, no hypervisor. It boots in 31–48 seconds on Apple Silicon VMs and runs bare-metal on a DGX Spark.</p>
+            <div class="meta">
+              <a class="source" href="https://github.com/AFK-surf/xnulinux" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50607261" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">465 pts · 199 comments</span>
+              <button class="copy-btn" type="button" data-copy="7">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>Awe, plus the legal question: will Apple object? Most say no — it&#x27;s built from Apple&#x27;s published sources, and Apple never went after Hackintosh hobbyists, only resellers. The practical question is ‘cool, but why?’ — answered, for most of the thread, by the demo itself: a macOS desktop and a Linux shell side by side.</p>
+            </div>
+          </div>
+        </article>
+
+                <article class="story" id="story-8">
+          <div class="num" aria-hidden="true">8</div>
+          <div>
+            <h2 class="tagline">Show HN: a game where you are an LLM&#x27;s subagent</h2>
+            <p class="body">A game that flips the usual script: you play the subagent, taking tasks from an LLM ‘principal’ and doing the work. The joke lands because it mirrors the real agent-tooling world — context, delegation, and doing what you&#x27;re told without knowing the bigger picture. The thread immediately reaches for Dune: ‘Butlerian Jihad now.’</p>
+            <div class="meta">
+              <a class="source" href="https://github.com/gulivan/worker755" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50599762" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">345 pts · 83 comments</span>
+              <button class="copy-btn" type="button" data-copy="8">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>Dune jokes dominate — Butlerian Jihad references, and one commenter who named the assistant in their own software factory ‘The Butler.’ A darker thread runs underneath: it&#x27;s worse than the Matrix, because as a subagent you know you&#x27;re being used — in the Matrix you at least get to believe you&#x27;re free.</p>
+            </div>
+          </div>
+        </article>
+
+                <article class="story" id="story-9">
+          <div class="num" aria-hidden="true">9</div>
+          <div>
+            <h2 class="tagline">A miniature San Francisco with live buses, planes and boats</h2>
+            <p class="body">SmallSF is a live miniature of San Francisco — buses, planes and boats moving in real time, fed by GTFS real-time transit data and ADS-B flight tracking, rendered as a tiny city you can zoom into. It&#x27;s a demo with a real engineering question underneath: how do you interpolate between sparse position updates so motion stays smooth at street zoom?</p>
+            <div class="meta">
+              <a class="source" href="https://smallsf.com/" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50603589" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">314 pts · 101 comments</span>
+              <button class="copy-btn" type="button" data-copy="9">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>The top question is exactly that engineering one — client-side dead reckoning or a fixed tick buffer between GTFS-RT bus updates and ADS-B plane feeds? Plus the observation that car traffic is janky, and a debate over whether pixel-art miniatures are ‘empty slop’ or whether that&#x27;s precisely the point of a miniature.</p>
+            </div>
+          </div>
+        </article>
+
+                <article class="story" id="story-10">
+          <div class="num" aria-hidden="true">10</div>
+          <div>
+            <h2 class="tagline">A medieval cathedral floor emerges in Sudan — one of the biggest ever found</h2>
+            <p class="body">Archaeologists in Old Dongola, northern Sudan, uncovered the original floor of the Great Church of Jesus, a medieval cathedral estimated at 47 by 57 metres — larger than the White House, and possibly the largest church in medieval Nubia. The Polish-Sudanese team reached it via an 11-metre-high staircase; the church was first found in 2021 but most of it is still buried.</p>
+            <div class="meta">
+              <a class="source" href="https://apnews.com/article/sudan-antiquities-nubia-cathedral-1b16f67da881ee5592de4481ee55c527" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50547698" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">304 pts · 104 comments</span>
+              <button class="copy-btn" type="button" data-copy="10">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>History buffs take over — comparisons to Hagia Sophia, Notre-Dame and Córdoba, with corrections flying: Notre-Dame started in 1163, Córdoba wasn&#x27;t conquered until 1236, the Armada was 1588. The deeper debate is whether pointed arches came from Syria after the First Crusade or evolved independently in several places at once.</p>
+            </div>
+          </div>
+        </article>
+      </main>
+
+      <footer>
+        <a href="../">&larr; HN Daily archive</a>
+        <a href="https://tk3369.github.io/hn-daily/">tk3369.github.io/hn-daily</a>
+        <span>Press T to toggle theme.</span>
+      </footer>
+    </div>
+
+    <script>
+      (function () {
+        var KEY = "hn-daily-theme";
+        var root = document.documentElement;
+        var toggle = document.getElementById("themeToggle");
+        var label = document.getElementById("themeLabel");
+
+        function storedTheme() {
+          try { return window.localStorage.getItem(KEY); } catch (e) { return null; }
+        }
+        function systemDark() {
+          return window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+        }
+        function isDark() {
+          var t = root.getAttribute("data-theme");
+          if (t === "dark") return true;
+          if (t === "light") return false;
+          return systemDark();
+        }
+        function render() {
+          var dark = isDark();
+          label.textContent = dark ? "Light" : "Dark";
+          toggle.setAttribute("aria-pressed", dark ? "true" : "false");
+        }
+        function setTheme(theme) {
+          root.setAttribute("data-theme", theme);
+          try { window.localStorage.setItem(KEY, theme); } catch (e) {}
+          render();
+        }
+        function flip() {
+          setTheme(isDark() ? "light" : "dark");
+        }
+
+        var saved = storedTheme();
+        if (saved === "dark" || saved === "light") {
+          root.setAttribute("data-theme", saved);
+        }
+        render();
+
+        toggle.addEventListener("click", flip);
+        document.addEventListener("keydown", function (e) {
+          if (e.key === "t" || e.key === "T") {
+            var tag = (e.target && e.target.tagName) || "";
+            if (tag === "INPUT" || tag === "TEXTAREA") return;
+            if (e.metaKey || e.ctrlKey || e.altKey) return;
+            flip();
+          }
+        });
+        if (window.matchMedia) {
+          var mq = window.matchMedia("(prefers-color-scheme: dark)");
+          if (mq.addEventListener) mq.addEventListener("change", render);
+        }
+
+        // Copy buttons: number + tagline + body + source + HN link + points/comments.
+        // The "What HN commenters are saying" paragraph is deliberately excluded.
+        var copyData = {
+          "1": "1. Jensen Huang is Nvidia CEO again \u2014 board votes unanimously to reinstate him\n\nNvidia's board voted unanimously to reinstate Jensen Huang as president, CEO and board director, effective immediately, 11 days after his November 12 resignation. The board says it is satisfied with his candor and ability to lead, and that input from senior US government levels gives confidence the move poses no national security risk. The independent committee's investigation continues.\n\nSource: https://nvidianews.nvidia.com/news/nvidia-board-reinstates-jensen-huang-as-president-ceo-and-board-director\nHN Discuss: https://news.ycombinator.com/item?id=50611588\n940 pts / 705 comments",
+          "2": "2. Spelunkr: a free TV network built from the Internet Archive's forgotten videos\n\nSpelunkr.tv turns the Internet Archive's public-domain video trove into scheduled TV channels \u2014 old anime, black-and-white horror and other forgotten footage, playing on a broadcast schedule instead of an on-demand feed. No account, no ads: you tune in and watch what's on. The charm is the constraint \u2014 television the way it used to work.\n\nSource: https://spelunkr.tv\nHN Discuss: https://news.ycombinator.com/item?id=50606192\n703 pts / 132 comments",
+          "3": "3. OpenAI: perplexity is the metric that matters \u2014 and it should pace AI development\n\nOpenAI argues pretraining perplexity \u2014 how well a model predicts the next token \u2014 is the single metric tracking the emergence of new capabilities, from GPT-2's coherent paragraphs to reasoning at GPT-4. It publishes its internal numbers (GPT-3.5 ~0.99, GPT-4 ~0.91, now below 0.8) and proposes shared industry limits: don't cross a perplexity threshold until safety monitoring catches up.\n\nSource: https://openai.com/index/perplexity-and-intelligence/\nHN Discuss: https://news.ycombinator.com/item?id=50601525\n639 pts / 417 comments",
+          "4": "4. A beginner's guide to local AI: Inkling, Qwen and Unsloth on your own hardware\n\nA practical walkthrough for running capable models locally \u2014 Inkling as the interface, Qwen models, Unsloth for fine-tuning \u2014 for people who want AI without sending prompts to a cloud. The thread's real content is the hardware Q&A: how much VRAM before Qwen stops feeling sluggish, and what a 16 GB card actually delivers in tokens per second.\n\nSource: https://www.gpupartner.com/blog/beginners-guide-local-ai-inkling-qwen-unsloth\nHN Discuss: https://news.ycombinator.com/item?id=50603845\n626 pts / 259 comments",
+          "5": "5. The birds of GTA 6: Audubon's field guide to Vice City wildlife\n\nAudubon magazine catalogues the birds of GTA 6's Leonida \u2014 the species Rockstar modelled, and how faithfully \u2014 in a straight-faced field guide to a fictional ecosystem. It's the latest proof of the game's absurd attention to detail: wildlife most players will never stop to identify, rendered well enough for ornithologists to write about.\n\nSource: https://www.audubon.org/magazine/birds-of-gta-6-field-guide-vice-city-wildlife\nHN Discuss: https://news.ycombinator.com/item?id=50602843\n575 pts / 315 comments",
+          "6": "6. GLM-5.4: a Loop Transformer that reasons deeper without more parameters\n\nZ.ai's GLM-5.4 is its first flagship on the Loop Transformer: 28 layers of the 750B base model run twice per pass, reusing weights, so it reasons more deeply at the same parameter count \u2014 claimed comparable to 2\u20133T-parameter models. It ships with higher subscription limits and up to 200 tok/s off-peak. The catch: the post publishes no benchmark scores.\n\nSource: https://z.ai/blog/glm-5.4\nHN Discuss: https://news.ycombinator.com/item?id=50609685\n514 pts / 200 comments",
+          "7": "7. XNU Linux: the full macOS desktop running as a kernel module inside Linux\n\nXNU Linux builds Apple's open-source XNU kernel as a loadable module (xnu.ko) inside an unmodified arm64 Linux kernel, booting a real macOS 27 system disk to the desktop \u2014 Finder, Dock, Safari \u2014 next to Linux processes on the same CPUs, no hypervisor. It boots in 31\u201348 seconds on Apple Silicon VMs and runs bare-metal on a DGX Spark.\n\nSource: https://github.com/AFK-surf/xnulinux\nHN Discuss: https://news.ycombinator.com/item?id=50607261\n465 pts / 199 comments",
+          "8": "8. Show HN: a game where you are an LLM's subagent\n\nA game that flips the usual script: you play the subagent, taking tasks from an LLM \u2018principal\u2019 and doing the work. The joke lands because it mirrors the real agent-tooling world \u2014 context, delegation, and doing what you're told without knowing the bigger picture. The thread immediately reaches for Dune: \u2018Butlerian Jihad now.\u2019\n\nSource: https://github.com/gulivan/worker755\nHN Discuss: https://news.ycombinator.com/item?id=50599762\n345 pts / 83 comments",
+          "9": "9. A miniature San Francisco with live buses, planes and boats\n\nSmallSF is a live miniature of San Francisco \u2014 buses, planes and boats moving in real time, fed by GTFS real-time transit data and ADS-B flight tracking, rendered as a tiny city you can zoom into. It's a demo with a real engineering question underneath: how do you interpolate between sparse position updates so motion stays smooth at street zoom?\n\nSource: https://smallsf.com/\nHN Discuss: https://news.ycombinator.com/item?id=50603589\n314 pts / 101 comments",
+          "10": "10. A medieval cathedral floor emerges in Sudan \u2014 one of the biggest ever found\n\nArchaeologists in Old Dongola, northern Sudan, uncovered the original floor of the Great Church of Jesus, a medieval cathedral estimated at 47 by 57 metres \u2014 larger than the White House, and possibly the largest church in medieval Nubia. The Polish-Sudanese team reached it via an 11-metre-high staircase; the church was first found in 2021 but most of it is still buried.\n\nSource: https://apnews.com/article/sudan-antiquities-nubia-cathedral-1b16f67da881ee5592de4481ee55c527\nHN Discuss: https://news.ycombinator.com/item?id=50547698\n304 pts / 104 comments"
+};
+
+        function fallbackCopy(text) {
+          var ta = document.createElement("textarea");
+          ta.value = text;
+          ta.setAttribute("readonly", "");
+          ta.style.position = "absolute";
+          ta.style.left = "-9999px";
+          document.body.appendChild(ta);
+          ta.select();
+          var ok = false;
+          try { ok = document.execCommand("copy"); } catch (e) { ok = false; }
+          document.body.removeChild(ta);
+          return ok;
+        }
+
+        var buttons = document.querySelectorAll(".copy-btn");
+        Array.prototype.forEach.call(buttons, function (btn) {
+          btn.addEventListener("click", function () {
+            var text = copyData[btn.getAttribute("data-copy")] || "";
+            function done() {
+              var original = "Copy";
+              btn.textContent = "Copied ✓";
+              btn.classList.add("copied");
+              setTimeout(function () {
+                btn.textContent = original;
+                btn.classList.remove("copied");
+              }, 1600);
+            }
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+              navigator.clipboard.writeText(text).then(done, function () {
+                if (fallbackCopy(text)) done();
+              });
+            } else if (fallbackCopy(text)) {
+              done();
+            }
+          });
+        });
+      })();
+    </script>
+  </body>
+</html>
