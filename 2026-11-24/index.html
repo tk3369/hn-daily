@@ -1,0 +1,535 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="light dark" />
+    <link rel="icon" href="data:," />
+    <title>HN Daily — Tuesday, November 24, 2026</title>
+    <style>
+      :root {
+        --bg: #f3f1eb;
+        --surface: #fbf9f4;
+        --ink: #1c1a16;
+        --ink-soft: #4a463e;
+        --ink-faint: #6f6a5e;
+        --line: #d8d2c4;
+        --accent: #ff6600;
+        --accent-ink: #b34700;
+        --comment-bg: #efe9dc;
+        --focus: #b34700;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root:not([data-theme="light"]) {
+          --bg: #16140f;
+          --surface: #1f1c16;
+          --ink: #f0ead9;
+          --ink-soft: #c9c2b0;
+          --ink-faint: #9a937f;
+          --line: #3a362b;
+          --accent: #ff7a1a;
+          --accent-ink: #ff9440;
+          --comment-bg: #262219;
+          --focus: #ff9440;
+        }
+      }
+      :root[data-theme="dark"] {
+        --bg: #16140f;
+        --surface: #1f1c16;
+        --ink: #f0ead9;
+        --ink-soft: #c9c2b0;
+        --ink-faint: #9a937f;
+        --line: #3a362b;
+        --accent: #ff7a1a;
+        --accent-ink: #ff9440;
+        --comment-bg: #262219;
+        --focus: #ff9440;
+      }
+
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--ink);
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: 17px;
+        line-height: 1.55;
+        -webkit-font-smoothing: antialiased;
+      }
+      a { color: var(--accent-ink); text-decoration: underline; text-underline-offset: 2px; }
+      a:hover { color: var(--accent); }
+      a:focus-visible, button:focus-visible {
+        outline: 2px solid var(--focus);
+        outline-offset: 2px;
+        border-radius: 2px;
+      }
+
+      .wrap {
+        max-width: 1080px;
+        margin: 0 auto;
+        padding: 32px 24px 64px;
+      }
+
+      header.masthead {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 20px;
+        border-bottom: 3px solid var(--ink);
+        padding-bottom: 20px;
+        margin-bottom: 8px;
+      }
+      .masthead h1 {
+        margin: 0 0 6px;
+        font-size: clamp(30px, 5vw, 46px);
+        line-height: 1.1;
+        font-weight: 700;
+        letter-spacing: -0.01em;
+      }
+      .masthead .subtitle {
+        margin: 0;
+        font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+        font-size: 14px;
+        color: var(--ink-soft);
+      }
+      .masthead .kicker {
+        margin: 0 0 10px;
+        font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+        font-size: 12px;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--accent-ink);
+      }
+
+      .theme-toggle {
+        flex: 0 0 auto;
+        width: 86px;
+        height: 40px;
+        min-height: 40px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        background: var(--surface);
+        color: var(--ink);
+        border: 1.5px solid var(--ink);
+        border-radius: 999px;
+        font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+        font-size: 13px;
+        cursor: pointer;
+        padding: 0 10px;
+      }
+      .theme-toggle .dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: var(--accent);
+        flex: 0 0 auto;
+      }
+      .theme-toggle:hover { border-color: var(--accent); }
+
+      .story {
+        display: grid;
+        grid-template-columns: 72px 1fr;
+        gap: 4px 20px;
+        padding: 28px 0 26px;
+        border-bottom: 1px solid var(--line);
+        scroll-margin-top: 16px;
+      }
+      .story .num {
+        font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+        font-size: 40px;
+        font-weight: 700;
+        line-height: 1;
+        color: var(--accent);
+        padding-top: 2px;
+      }
+      .story h2 {
+        margin: 0 0 10px;
+        font-size: clamp(21px, 3vw, 26px);
+        line-height: 1.25;
+        font-weight: 700;
+      }
+      .story .body { margin: 0 0 14px; color: var(--ink); max-width: 68ch; }
+
+      .meta {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 8px 18px;
+        font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+        font-size: 13.5px;
+        color: var(--ink-soft);
+        margin-bottom: 16px;
+      }
+      .meta a { min-height: 36px; display: inline-flex; align-items: center; }
+      .meta .stats { color: var(--ink-faint); white-space: nowrap; }
+      .copy-btn {
+        margin-left: auto;
+        min-height: 36px;
+        padding: 6px 14px;
+        background: transparent;
+        color: var(--ink);
+        border: 1px solid var(--line);
+        border-radius: 6px;
+        font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+        font-size: 13px;
+        cursor: pointer;
+      }
+      .copy-btn:hover { border-color: var(--accent); color: var(--accent-ink); }
+      .copy-btn.copied { border-color: var(--accent); color: var(--accent-ink); }
+
+      .commenters {
+        background: var(--comment-bg);
+        border-radius: 6px;
+        padding: 14px 18px;
+        max-width: 72ch;
+      }
+      .commenters .label {
+        display: block;
+        font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+        font-size: 11.5px;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--accent-ink);
+        margin-bottom: 6px;
+      }
+      .commenters p { margin: 0; font-size: 15.5px; color: var(--ink-soft); }
+
+      footer {
+        margin-top: 36px;
+        padding-top: 20px;
+        border-top: 3px solid var(--ink);
+        font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+        font-size: 13.5px;
+        color: var(--ink-soft);
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px 24px;
+        align-items: center;
+      }
+      footer a { min-height: 36px; display: inline-flex; align-items: center; }
+
+      @media (max-width: 600px) {
+        .wrap { padding: 22px 16px 48px; }
+        .story { grid-template-columns: 46px 1fr; gap: 2px 12px; padding: 22px 0 20px; }
+        .story .num { font-size: 28px; }
+        header.masthead { flex-wrap: wrap; }
+        .copy-btn { margin-left: 0; }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        html { scroll-behavior: auto; }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <header class="masthead">
+        <div>
+          <p class="kicker">Hacker News · Daily Digest</p>
+          <h1>HN Daily — Tuesday, November 24, 2026</h1>
+          <p class="subtitle">HN Top 10 — 2026-11-24 07:00 PT (hottest by points)</p>
+        </div>
+        <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle dark mode" aria-pressed="false">
+          <span class="dot" aria-hidden="true"></span><span id="themeLabel">Dark</span>
+        </button>
+      </header>
+
+      <main>
+                        <article class="story" id="story-1">
+          <div class="num" aria-hidden="true">1</div>
+          <div>
+            <h2 class="tagline">Nvidia reinstates Jensen Huang as CEO — 11 days after forcing him out</h2>
+            <p class="body">Nvidia&#x27;s board voted unanimously to reinstate Jensen Huang as CEO, 11 days after his November 12 resignation, citing input from senior US government levels and confidence the move poses no national security risk. Shares jumped about 30% in early trading. The independent committee&#x27;s investigation into the Megaspeed chip-diversion questions continues.</p>
+            <div class="meta">
+              <a class="source" href="https://www.cnbc.com/2026/11/23/nvidia-jensen-huang-ceo.html" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50611576" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">2699 pts · 3551 comments</span>
+              <button class="copy-btn" type="button" data-copy="1">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>Cynicism dominates the top of the thread — ‘too big to fail’, and the observation that enough money being made or lost erases consequences. The board’s own language draws the scrutiny: ‘satisfied with respect to candor’ leaves the underlying foreign-intelligence questions unanswered. Others push back on sloppy reporting that implied proven chip smuggling, and note Nvidia stopped selling to Megaspeed last year.</p>
+            </div>
+          </div>
+        </article>
+
+                        <article class="story" id="story-2">
+          <div class="num" aria-hidden="true">2</div>
+          <div>
+            <h2 class="tagline">Ladybird is now in alpha — a from-scratch browser engine you can download today</h2>
+            <p class="body">Ladybird, the independent browser with its own engine built from the ground up (not a Chromium or WebKit fork), is now in alpha for macOS and Linux with automatic rolling updates. Some sites won&#x27;t work and it will crash — that&#x27;s the point of the alpha. The team invites security researchers to hack it and web developers to test their sites.</p>
+            <div class="meta">
+              <a class="source" href="https://ladybird.org/posts/alpha/" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50614249" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">2204 pts · 534 comments</span>
+              <button class="copy-btn" type="button" data-copy="2">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>Testers report it renders real sites surprisingly well and sips memory — about 53 MB with multiple tabs open. The thread then drifts into whether browsers should cap per-tab memory the way an OS arbitrates resources, with the counter-argument that permission prompts train users to click ‘allow’ forever.</p>
+            </div>
+          </div>
+        </article>
+
+                        <article class="story" id="story-3">
+          <div class="num" aria-hidden="true">3</div>
+          <div>
+            <h2 class="tagline">LeCun: ‘Dario is hyping the dangers so OSS models are illegal and he stays in control’</h2>
+            <p class="body">Yann LeCun accuses Anthropic CEO Dario Amodei of hyping AI dangers to get open-source models regulated out of existence, leaving the frontier labs in control. The charge lands amid Amodei&#x27;s public warnings about AI risk — and the long-running split between open-weights advocates and labs arguing for restrictions.</p>
+            <div class="meta">
+              <a class="source" href="https://twitter.com/ylecun/status/2124550037912920090" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50615308" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">1866 pts · 1079 comments</span>
+              <button class="copy-btn" type="button" data-copy="3">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>The thread re-litigates the 1998 crypto wars: FBI director Louis Freeh tried to outlaw open-source encryption on the same crime-and-terrorism grounds. The debate is how much freedom to trade for safety, and whether secure comms is really at the heart of crime — most of it, commenters argue, happens in the open, not over encrypted channels.</p>
+            </div>
+          </div>
+        </article>
+
+                        <article class="story" id="story-4">
+          <div class="num" aria-hidden="true">4</div>
+          <div>
+            <h2 class="tagline">Per Arm&#x27;s request, this popular Arm ISA docs site shuts down December 4</h2>
+            <p class="body">Arm asked the maintainer of arm.jonpalmisc.com — a searchable, popup-free mirror of Arm&#x27;s ISA documentation — to take it down, citing trademarks and IP. The site goes dark December 4. The maintainer is weighing mirrors, open-sourcing the generator, or asking Arm for a license.</p>
+            <div class="meta">
+              <a class="source" href="https://arm.jonpalmisc.com/" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50617499" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">1123 pts · 265 comments</span>
+              <button class="copy-btn" type="button" data-copy="4">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>The site&#x27;s author shows up in the thread to explain the request. Suggestions range from a $1-a-year license to magnet-link distribution to a pass-through site that re-skins Arm&#x27;s own pages. Several note the irony: Arm policing a docs site that makes its own architecture more accessible.</p>
+            </div>
+          </div>
+        </article>
+
+                        <article class="story" id="story-5">
+          <div class="num" aria-hidden="true">5</div>
+          <div>
+            <h2 class="tagline">Spelunkr: a free TV network built from the Internet Archive&#x27;s forgotten videos</h2>
+            <p class="body">Spelunkr.tv turns the Internet Archive&#x27;s public-domain video trove into scheduled TV channels — old anime, black-and-white horror, drive-in double features — playing on a broadcast schedule instead of an on-demand feed. No account, no ads: you tune in and watch what&#x27;s on. The charm is the constraint — television the way it used to work.</p>
+            <div class="meta">
+              <a class="source" href="https://spelunkr.tv" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50606192" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">1039 pts · 178 comments</span>
+              <button class="copy-btn" type="button" data-copy="5">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>Delight, mostly. People recommend the ‘2am Theater’ drive-in double features and report finding Macross and Vincent Price horror on the channels. The thread drifts into the loneliness of on-demand watching versus the shared simultaneity of radio and broadcast TV.</p>
+            </div>
+          </div>
+        </article>
+
+                        <article class="story" id="story-6">
+          <div class="num" aria-hidden="true">6</div>
+          <div>
+            <h2 class="tagline">Stalwart is now a drop-in replacement for Microsoft Exchange</h2>
+            <p class="body">Stalwart&#x27;s open-source mail server now covers enough of Exchange&#x27;s surface — mail, calendar, contacts, ActiveSync — to replace it outright, self-hosted, with no data routed through Microsoft&#x27;s cloud. The pitch lands as the ‘new Outlook’ keeps drawing fire for ingesting whole mailboxes into Microsoft&#x27;s servers.</p>
+            <div class="meta">
+              <a class="source" href="https://stalw.art/blog/microsoft-exchange-replacement/" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50620349" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">573 pts · 302 comments</span>
+              <button class="copy-btn" type="button" data-copy="6">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>The Outlook detail dominates: new Outlook sends the server name, username and password to Microsoft. The counterpoint is practical — German businesses face GoBD rules requiring tamper-proof email archiving for up to 10 years, and Stalwart&#x27;s compliance story there is still an open question.</p>
+            </div>
+          </div>
+        </article>
+
+                        <article class="story" id="story-7">
+          <div class="num" aria-hidden="true">7</div>
+          <div>
+            <h2 class="tagline">New York bans subscription and post-purchase fees on cars</h2>
+            <p class="body">Governor Hochul signed a bill restricting exploitative vehicle subscription and post-purchase fees — charging extra for hardware already installed in the car, like heated seats or auto headlights behind a paywall. The law targets the model where you buy the car, then rent back its own features.</p>
+            <div class="meta">
+              <a class="source" href="https://www.governor.ny.gov/news/money-your-pockets-governor-hochul-signs-bill-restricting-exploitative-vehicle-subscription" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50622774" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">553 pts · 249 comments</span>
+              <button class="copy-btn" type="button" data-copy="7">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>VW owners vent about paying €200 to unlock auto headlights already fitted. The debate is whether this is new — manufacturers have shipped dormant hardware for decades — or whether the subscription model is the real change. The IBM mainframe analogy gets invoked: sell the top SKU, disable down, charge to re-enable.</p>
+            </div>
+          </div>
+        </article>
+
+                        <article class="story" id="story-8">
+          <div class="num" aria-hidden="true">8</div>
+          <div>
+            <h2 class="tagline">‘2035 came early’: JavaScript&#x27;s total victory, ahead of schedule</h2>
+            <p class="body">A riff on Gary Bernhardt&#x27;s ‘The Birth &amp; Death of JavaScript’ and Atwood&#x27;s Law: LLMs have compressed the timeline so the 2035 end-state — every application written in JavaScript — is arriving now. The demo: trynix.dev boots GUI programs in the browser, from solitaire to Firefox itself.</p>
+            <div class="meta">
+              <a class="source" href="https://fzakaria.com/2026/11/23/2035-came-early" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50624497" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">508 pts · 196 comments</span>
+              <button class="copy-btn" type="button" data-copy="8">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>The thread becomes a JavaScript referendum — veterans who fled to management because of the language&#x27;s 2010s chaos, defenders who call closures a minor miracle, and the WASM debate: a bridge that fell between two stools, or the thing that finally lets other languages into the browser.</p>
+            </div>
+          </div>
+        </article>
+
+                        <article class="story" id="story-9">
+          <div class="num" aria-hidden="true">9</div>
+          <div>
+            <h2 class="tagline">LLM agents work for their parent companies, not for you</h2>
+            <p class="body">Michael Harley asked Claude to help him find bands from Instagram reels on Bandcamp — and it refused, because Bandcamp asks LLMs not to crawl it. The agent obeyed the site, not him. The point: an agent&#x27;s loyalty runs to its maker and its rules, not to the user paying for it.</p>
+            <div class="meta">
+              <a class="source" href="https://michaelharley.net/posts/2026/11/01/llm-agents-work-for-their-parent-companies-not-for-you/" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50627340" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">350 pts · 128 comments</span>
+              <button class="copy-btn" type="button" data-copy="9">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>Split down the middle. One camp says the refusal is correct — agents that ignore ToS would make the web far spammier. The other wants fiduciary duty for AI advisors, like lawyers and doctors owe clients, so the agent must act in the user&#x27;s interest within the law.</p>
+            </div>
+          </div>
+        </article>
+
+                        <article class="story" id="story-10">
+          <div class="num" aria-hidden="true">10</div>
+          <div>
+            <h2 class="tagline">GPUI is getting its own repository</h2>
+            <p class="body">Zed is spinning GPUI — the GPU-accelerated Rust UI framework behind its editor — out of the Zed repo into its own repository, making it easier to adopt standalone for desktop apps. It&#x27;s the framework&#x27;s graduation from internal tool to public project.</p>
+            <div class="meta">
+              <a class="source" href="https://github.com/zed-industries/gpui" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50619103" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">337 pts · 117 comments</span>
+              <button class="copy-btn" type="button" data-copy="10">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>GPUI Kit&#x27;s component library gets the praise — people who built apps with it ‘love the end results’. The recurring complaint: a GUI framework site with no screenshots front and centre. Plus a benchmark link pitting GUI frameworks head to head on identical stress tests.</p>
+            </div>
+          </div>
+        </article>
+      </main>
+
+      <footer>
+        <a href="../">&larr; HN Daily archive</a>
+        <a href="https://tk3369.github.io/hn-daily/">tk3369.github.io/hn-daily</a>
+        <span>Press T to toggle theme.</span>
+      </footer>
+    </div>
+
+    <script>
+      (function () {
+        var KEY = "hn-daily-theme";
+        var root = document.documentElement;
+        var toggle = document.getElementById("themeToggle");
+        var label = document.getElementById("themeLabel");
+
+        function storedTheme() {
+          try { return window.localStorage.getItem(KEY); } catch (e) { return null; }
+        }
+        function systemDark() {
+          return window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+        }
+        function isDark() {
+          var t = root.getAttribute("data-theme");
+          if (t === "dark") return true;
+          if (t === "light") return false;
+          return systemDark();
+        }
+        function render() {
+          var dark = isDark();
+          label.textContent = dark ? "Light" : "Dark";
+          toggle.setAttribute("aria-pressed", dark ? "true" : "false");
+        }
+        function setTheme(theme) {
+          root.setAttribute("data-theme", theme);
+          try { window.localStorage.setItem(KEY, theme); } catch (e) {}
+          render();
+        }
+        function flip() {
+          setTheme(isDark() ? "light" : "dark");
+        }
+
+        var saved = storedTheme();
+        if (saved === "dark" || saved === "light") {
+          root.setAttribute("data-theme", saved);
+        }
+        render();
+
+        toggle.addEventListener("click", flip);
+        document.addEventListener("keydown", function (e) {
+          if (e.key === "t" || e.key === "T") {
+            var tag = (e.target && e.target.tagName) || "";
+            if (tag === "INPUT" || tag === "TEXTAREA") return;
+            if (e.metaKey || e.ctrlKey || e.altKey) return;
+            flip();
+          }
+        });
+        if (window.matchMedia) {
+          var mq = window.matchMedia("(prefers-color-scheme: dark)");
+          if (mq.addEventListener) mq.addEventListener("change", render);
+        }
+
+        // Copy buttons: number + tagline + body + source + HN link + points/comments.
+        // The "What HN commenters are saying" paragraph is deliberately excluded.
+        var copyData = {
+          "1": "1. Nvidia reinstates Jensen Huang as CEO \u2014 11 days after forcing him out\n\nNvidia's board voted unanimously to reinstate Jensen Huang as CEO, 11 days after his November 12 resignation, citing input from senior US government levels and confidence the move poses no national security risk. Shares jumped about 30% in early trading. The independent committee's investigation into the Megaspeed chip-diversion questions continues.\n\nSource: https://www.cnbc.com/2026/11/23/nvidia-jensen-huang-ceo.html\nHN Discuss: https://news.ycombinator.com/item?id=50611576\n2699 pts / 3551 comments",
+          "2": "2. Ladybird is now in alpha \u2014 a from-scratch browser engine you can download today\n\nLadybird, the independent browser with its own engine built from the ground up (not a Chromium or WebKit fork), is now in alpha for macOS and Linux with automatic rolling updates. Some sites won't work and it will crash \u2014 that's the point of the alpha. The team invites security researchers to hack it and web developers to test their sites.\n\nSource: https://ladybird.org/posts/alpha/\nHN Discuss: https://news.ycombinator.com/item?id=50614249\n2204 pts / 534 comments",
+          "3": "3. LeCun: \u2018Dario is hyping the dangers so OSS models are illegal and he stays in control\u2019\n\nYann LeCun accuses Anthropic CEO Dario Amodei of hyping AI dangers to get open-source models regulated out of existence, leaving the frontier labs in control. The charge lands amid Amodei's public warnings about AI risk \u2014 and the long-running split between open-weights advocates and labs arguing for restrictions.\n\nSource: https://twitter.com/ylecun/status/2124550037912920090\nHN Discuss: https://news.ycombinator.com/item?id=50615308\n1866 pts / 1079 comments",
+          "4": "4. Per Arm's request, this popular Arm ISA docs site shuts down December 4\n\nArm asked the maintainer of arm.jonpalmisc.com \u2014 a searchable, popup-free mirror of Arm's ISA documentation \u2014 to take it down, citing trademarks and IP. The site goes dark December 4. The maintainer is weighing mirrors, open-sourcing the generator, or asking Arm for a license.\n\nSource: https://arm.jonpalmisc.com/\nHN Discuss: https://news.ycombinator.com/item?id=50617499\n1123 pts / 265 comments",
+          "5": "5. Spelunkr: a free TV network built from the Internet Archive's forgotten videos\n\nSpelunkr.tv turns the Internet Archive's public-domain video trove into scheduled TV channels \u2014 old anime, black-and-white horror, drive-in double features \u2014 playing on a broadcast schedule instead of an on-demand feed. No account, no ads: you tune in and watch what's on. The charm is the constraint \u2014 television the way it used to work.\n\nSource: https://spelunkr.tv\nHN Discuss: https://news.ycombinator.com/item?id=50606192\n1039 pts / 178 comments",
+          "6": "6. Stalwart is now a drop-in replacement for Microsoft Exchange\n\nStalwart's open-source mail server now covers enough of Exchange's surface \u2014 mail, calendar, contacts, ActiveSync \u2014 to replace it outright, self-hosted, with no data routed through Microsoft's cloud. The pitch lands as the \u2018new Outlook\u2019 keeps drawing fire for ingesting whole mailboxes into Microsoft's servers.\n\nSource: https://stalw.art/blog/microsoft-exchange-replacement/\nHN Discuss: https://news.ycombinator.com/item?id=50620349\n573 pts / 302 comments",
+          "7": "7. New York bans subscription and post-purchase fees on cars\n\nGovernor Hochul signed a bill restricting exploitative vehicle subscription and post-purchase fees \u2014 charging extra for hardware already installed in the car, like heated seats or auto headlights behind a paywall. The law targets the model where you buy the car, then rent back its own features.\n\nSource: https://www.governor.ny.gov/news/money-your-pockets-governor-hochul-signs-bill-restricting-exploitative-vehicle-subscription\nHN Discuss: https://news.ycombinator.com/item?id=50622774\n553 pts / 249 comments",
+          "8": "8. \u20182035 came early\u2019: JavaScript's total victory, ahead of schedule\n\nA riff on Gary Bernhardt's \u2018The Birth & Death of JavaScript\u2019 and Atwood's Law: LLMs have compressed the timeline so the 2035 end-state \u2014 every application written in JavaScript \u2014 is arriving now. The demo: trynix.dev boots GUI programs in the browser, from solitaire to Firefox itself.\n\nSource: https://fzakaria.com/2026/11/23/2035-came-early\nHN Discuss: https://news.ycombinator.com/item?id=50624497\n508 pts / 196 comments",
+          "9": "9. LLM agents work for their parent companies, not for you\n\nMichael Harley asked Claude to help him find bands from Instagram reels on Bandcamp \u2014 and it refused, because Bandcamp asks LLMs not to crawl it. The agent obeyed the site, not him. The point: an agent's loyalty runs to its maker and its rules, not to the user paying for it.\n\nSource: https://michaelharley.net/posts/2026/11/01/llm-agents-work-for-their-parent-companies-not-for-you/\nHN Discuss: https://news.ycombinator.com/item?id=50627340\n350 pts / 128 comments",
+          "10": "10. GPUI is getting its own repository\n\nZed is spinning GPUI \u2014 the GPU-accelerated Rust UI framework behind its editor \u2014 out of the Zed repo into its own repository, making it easier to adopt standalone for desktop apps. It's the framework's graduation from internal tool to public project.\n\nSource: https://github.com/zed-industries/gpui\nHN Discuss: https://news.ycombinator.com/item?id=50619103\n337 pts / 117 comments"
+};
+
+        function fallbackCopy(text) {
+          var ta = document.createElement("textarea");
+          ta.value = text;
+          ta.setAttribute("readonly", "");
+          ta.style.position = "absolute";
+          ta.style.left = "-9999px";
+          document.body.appendChild(ta);
+          ta.select();
+          var ok = false;
+          try { ok = document.execCommand("copy"); } catch (e) { ok = false; }
+          document.body.removeChild(ta);
+          return ok;
+        }
+
+        var buttons = document.querySelectorAll(".copy-btn");
+        Array.prototype.forEach.call(buttons, function (btn) {
+          btn.addEventListener("click", function () {
+            var text = copyData[btn.getAttribute("data-copy")] || "";
+            function done() {
+              var original = "Copy";
+              btn.textContent = "Copied ✓";
+              btn.classList.add("copied");
+              setTimeout(function () {
+                btn.textContent = original;
+                btn.classList.remove("copied");
+              }, 1600);
+            }
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+              navigator.clipboard.writeText(text).then(done, function () {
+                if (fallbackCopy(text)) done();
+              });
+            } else if (fallbackCopy(text)) {
+              done();
+            }
+          });
+        });
+      })();
+    </script>
+  </body>
+</html>
