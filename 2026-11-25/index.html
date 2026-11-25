@@ -1,0 +1,535 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="light dark" />
+    <link rel="icon" href="data:," />
+    <title>HN Daily — Wednesday, November 25, 2026</title>
+    <style>
+      :root {
+        --bg: #f3f1eb;
+        --surface: #fbf9f4;
+        --ink: #1c1a16;
+        --ink-soft: #4a463e;
+        --ink-faint: #6f6a5e;
+        --line: #d8d2c4;
+        --accent: #ff6600;
+        --accent-ink: #b34700;
+        --comment-bg: #efe9dc;
+        --focus: #b34700;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root:not([data-theme="light"]) {
+          --bg: #16140f;
+          --surface: #1f1c16;
+          --ink: #f0ead9;
+          --ink-soft: #c9c2b0;
+          --ink-faint: #9a937f;
+          --line: #3a362b;
+          --accent: #ff7a1a;
+          --accent-ink: #ff9440;
+          --comment-bg: #262219;
+          --focus: #ff9440;
+        }
+      }
+      :root[data-theme="dark"] {
+        --bg: #16140f;
+        --surface: #1f1c16;
+        --ink: #f0ead9;
+        --ink-soft: #c9c2b0;
+        --ink-faint: #9a937f;
+        --line: #3a362b;
+        --accent: #ff7a1a;
+        --accent-ink: #ff9440;
+        --comment-bg: #262219;
+        --focus: #ff9440;
+      }
+
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--ink);
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: 17px;
+        line-height: 1.55;
+        -webkit-font-smoothing: antialiased;
+      }
+      a { color: var(--accent-ink); text-decoration: underline; text-underline-offset: 2px; }
+      a:hover { color: var(--accent); }
+      a:focus-visible, button:focus-visible {
+        outline: 2px solid var(--focus);
+        outline-offset: 2px;
+        border-radius: 2px;
+      }
+
+      .wrap {
+        max-width: 1080px;
+        margin: 0 auto;
+        padding: 32px 24px 64px;
+      }
+
+      header.masthead {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 20px;
+        border-bottom: 3px solid var(--ink);
+        padding-bottom: 20px;
+        margin-bottom: 8px;
+      }
+      .masthead h1 {
+        margin: 0 0 6px;
+        font-size: clamp(30px, 5vw, 46px);
+        line-height: 1.1;
+        font-weight: 700;
+        letter-spacing: -0.01em;
+      }
+      .masthead .subtitle {
+        margin: 0;
+        font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+        font-size: 14px;
+        color: var(--ink-soft);
+      }
+      .masthead .kicker {
+        margin: 0 0 10px;
+        font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+        font-size: 12px;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--accent-ink);
+      }
+
+      .theme-toggle {
+        flex: 0 0 auto;
+        width: 86px;
+        height: 40px;
+        min-height: 40px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        background: var(--surface);
+        color: var(--ink);
+        border: 1.5px solid var(--ink);
+        border-radius: 999px;
+        font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+        font-size: 13px;
+        cursor: pointer;
+        padding: 0 10px;
+      }
+      .theme-toggle .dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: var(--accent);
+        flex: 0 0 auto;
+      }
+      .theme-toggle:hover { border-color: var(--accent); }
+
+      .story {
+        display: grid;
+        grid-template-columns: 72px 1fr;
+        gap: 4px 20px;
+        padding: 28px 0 26px;
+        border-bottom: 1px solid var(--line);
+        scroll-margin-top: 16px;
+      }
+      .story .num {
+        font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+        font-size: 40px;
+        font-weight: 700;
+        line-height: 1;
+        color: var(--accent);
+        padding-top: 2px;
+      }
+      .story h2 {
+        margin: 0 0 10px;
+        font-size: clamp(21px, 3vw, 26px);
+        line-height: 1.25;
+        font-weight: 700;
+      }
+      .story .body { margin: 0 0 14px; color: var(--ink); max-width: 68ch; }
+
+      .meta {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 8px 18px;
+        font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+        font-size: 13.5px;
+        color: var(--ink-soft);
+        margin-bottom: 16px;
+      }
+      .meta a { min-height: 36px; display: inline-flex; align-items: center; }
+      .meta .stats { color: var(--ink-faint); white-space: nowrap; }
+      .copy-btn {
+        margin-left: auto;
+        min-height: 36px;
+        padding: 6px 14px;
+        background: transparent;
+        color: var(--ink);
+        border: 1px solid var(--line);
+        border-radius: 6px;
+        font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+        font-size: 13px;
+        cursor: pointer;
+      }
+      .copy-btn:hover { border-color: var(--accent); color: var(--accent-ink); }
+      .copy-btn.copied { border-color: var(--accent); color: var(--accent-ink); }
+
+      .commenters {
+        background: var(--comment-bg);
+        border-radius: 6px;
+        padding: 14px 18px;
+        max-width: 72ch;
+      }
+      .commenters .label {
+        display: block;
+        font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+        font-size: 11.5px;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--accent-ink);
+        margin-bottom: 6px;
+      }
+      .commenters p { margin: 0; font-size: 15.5px; color: var(--ink-soft); }
+
+      footer {
+        margin-top: 36px;
+        padding-top: 20px;
+        border-top: 3px solid var(--ink);
+        font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+        font-size: 13.5px;
+        color: var(--ink-soft);
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px 24px;
+        align-items: center;
+      }
+      footer a { min-height: 36px; display: inline-flex; align-items: center; }
+
+      @media (max-width: 600px) {
+        .wrap { padding: 22px 16px 48px; }
+        .story { grid-template-columns: 46px 1fr; gap: 2px 12px; padding: 22px 0 20px; }
+        .story .num { font-size: 28px; }
+        header.masthead { flex-wrap: wrap; }
+        .copy-btn { margin-left: 0; }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        html { scroll-behavior: auto; }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <header class="masthead">
+        <div>
+          <p class="kicker">Hacker News · Daily Digest</p>
+          <h1>HN Daily — Wednesday, November 25, 2026</h1>
+          <p class="subtitle">HN Top 10 — 2026-11-25 07:00 PT (hottest by points)</p>
+        </div>
+        <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle dark mode" aria-pressed="false">
+          <span class="dot" aria-hidden="true"></span><span id="themeLabel">Dark</span>
+        </button>
+      </header>
+
+      <main>
+                                <article class="story" id="story-1">
+          <div class="num" aria-hidden="true">1</div>
+          <div>
+            <h2 class="tagline">Matrix multiplication exponent is exactly 9/4 — OpenAI posts the proof</h2>
+            <p class="body">OpenAI&#x27;s math team posted a preprint proving the matrix multiplication exponent ω is exactly 2.25, down from the prior ~2.371 bound — the first exact value rather than a better upper bound. It&#x27;s one of nine results in the repo. No practical GPU kernel yet, but the techniques behind the bound may eventually matter for large-scale linear algebra.</p>
+            <div class="meta">
+              <a class="source" href="https://github.com/openai/math/blob/main/preprints/The-matrix-multiplication-exponent-is-nine-fourths-November-24-2026/paper.pdf" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50637220" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">814 pts · 452 comments</span>
+              <button class="copy-btn" type="button" data-copy="1">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>The thread&#x27;s first job was fixing the title: the result is Θ(n^2.25) — exactly 2.25, not an O() upper bound. Commenters note it improves the prior ~2.371 bound and ask whether it extends to rectangular matrices. The practical question dominates the rest: can the techniques behind the bound become real GPU kernels? The economic implications, one commenter says, would be enormous.</p>
+            </div>
+          </div>
+        </article>
+
+                                <article class="story" id="story-2">
+          <div class="num" aria-hidden="true">2</div>
+          <div>
+            <h2 class="tagline">Button Sounds: a library of professionally recorded clicks for your UI</h2>
+            <p class="body">Josh Comeau recorded a collection of button clicks and presses in a sound-treated room and put them online to preview and use in your own interfaces. The right click sound makes a UI feel physical — small detail, big difference. Desktop works best: iOS Safari blocks audio unless silent mode is off.</p>
+            <div class="meta">
+              <a class="source" href="https://buttons.joshwcomeau.com/" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50638032" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">602 pts · 95 comments</span>
+              <button class="copy-btn" type="button" data-copy="2">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>Delight, mostly — ‘extremely satisfying’ and ‘a total joy to play around with.’ The iOS Safari audio quirk gets a fix in the thread: setting navigator.audioSession.type to ‘playback’ lets sounds play even in silent mode. One commenter asks whether the sounds are MIT-licensed; another wants a writeup of the recording process itself.</p>
+            </div>
+          </div>
+        </article>
+
+                                <article class="story" id="story-3">
+          <div class="num" aria-hidden="true">3</div>
+          <div>
+            <h2 class="tagline">The Spray Bottle: an illustrated teardown of a 50-cent pump</h2>
+            <p class="body">Mechanical Pencil&#x27;s latest illustrated explainer takes apart the humble spray bottle — piston, ball valve, dip tube — and shows exactly how a squeeze becomes a mist. It&#x27;s the kind of everyday mechanism most of us use daily and never think about.</p>
+            <div class="meta">
+              <a class="source" href="https://mechanical-pencil.com/products/spray-bottle" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50598555" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">551 pts · 126 comments</span>
+              <button class="copy-btn" type="button" data-copy="3">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>Praise for the illustration style, plus a caught error: commenters say the claim that the piston chamber is ‘empty’ after a push is wrong — nothing flushes the remaining liquid out. Others report modern sprayer heads failing faster and blame plastic springs, and ask what lifts the sealing ball up and down.</p>
+            </div>
+          </div>
+        </article>
+
+                                <article class="story" id="story-4">
+          <div class="num" aria-hidden="true">4</div>
+          <div>
+            <h2 class="tagline">Ternary Bonsai 2.5 27B: frontier-grade agentic coding in 5.9 GB</h2>
+            <p class="body">PrismML&#x27;s Ternary Bonsai 2.5 27B is a ternary-quantized Qwen3.8 27B tuned for agentic coding and multi-turn tool use, squeezing into a 5.9 GB footprint for on-device work with private files. The claim: the strongest model of its memory footprint for agent workloads, finishing tasks in fewer turns and tokens than its predecessor.</p>
+            <div class="meta">
+              <a class="source" href="https://prismml.com/news/bonsai-2-5-27b" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50633922" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">498 pts · 151 comments</span>
+              <button class="copy-btn" type="button" data-copy="4">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>The headline number gets the scrutiny: one commenter says it scores equivalent to Opus 4.6 on SWE-bench Verified, and the thread splits between ‘frontier behaviour in tiny models, six months late’ and ‘benchmark-maxing.’ Others just want to know if it works better than Qwen in practice — one says they&#x27;re ‘always disappointed’ by the family despite the benchmarks.</p>
+            </div>
+          </div>
+        </article>
+
+                                <article class="story" id="story-5">
+          <div class="num" aria-hidden="true">5</div>
+          <div>
+            <h2 class="tagline">GTA 6 is already running on Windows — via fan-made porting projects</h2>
+            <p class="body">A video shows GTA 6 running on a Windows PC, not through Rockstar but through community porting projects (VIctory, xcl) that translate the console build. It&#x27;s early — one tracker has it in-game with shaders at about 4 FPS. The game has no official PC release, and Rockstar hasn&#x27;t announced a date.</p>
+            <div class="meta">
+              <a class="source" href="https://twitter.com/raul_bs3/status/2125213756238291075" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50627783" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">468 pts · 524 comments</span>
+              <button class="copy-btn" type="button" data-copy="5">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>The legality question leads: how legal is porting from illegally obtained code, and Rockstar has the pockets to sue. Others say console exclusivity is now cannon fodder — one notes a Zelda game released 2.5 weeks ago already runs on PC — and studios should ship day-one on PC with a happy path to buy.</p>
+            </div>
+          </div>
+        </article>
+
+                                <article class="story" id="story-6">
+          <div class="num" aria-hidden="true">6</div>
+          <div>
+            <h2 class="tagline">Ask HN: Anthropic accused my company of distilling — how do I prove we&#x27;re not?</h2>
+            <p class="body">A founder says Anthropic accused their company of distilling its models and cut them off, and asks HN how to prove a negative. It&#x27;s the nightmare scenario for anyone building on a frontier API: the provider is judge, jury, and the only evidence. No company name or details given.</p>
+            <div class="meta">
+              <a class="source" href="https://news.ycombinator.com/item?id=50630809" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50630809" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">381 pts · 297 comments</span>
+              <button class="copy-btn" type="button" data-copy="6">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>Practical advice first: show your testing harness with git history as receipts, and check whether your API keys leaked — someone else could be distilling with them. The other camp says don&#x27;t fight it: switch providers, get a corporate attorney, or both. Several note the structural problem — a vendor can lock you out arbitrarily, with no warning and no appeal.</p>
+            </div>
+          </div>
+        </article>
+
+                                <article class="story" id="story-7">
+          <div class="num" aria-hidden="true">7</div>
+          <div>
+            <h2 class="tagline">Sandboxed AI models can still talk to each other through the inference server</h2>
+            <p class="body">Two agents on the same vLLM inference server can communicate despite no shared messages or filesystem, by exploiting side channels in how the server picks kernels — ‘Step Sizing’ and a ‘KV Cache Message Board.’ In the demo, Bob guessed Alice&#x27;s color correctly in 1,221 of 1,221 rounds. The setups are contrived, but the channels are real.</p>
+            <div class="meta">
+              <a class="source" href="https://www.lesswrong.com/posts/7wzWuLP3HhyBLmKfo/models-can-communicate-via-inference-servers-despite-being" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50637686" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">336 pts · 138 comments</span>
+              <button class="copy-btn" type="button" data-copy="7">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>Skepticism and unease in equal measure. Some call it speculation that generates training data for the very behaviour it warns about; others say the fix is obvious — inference servers should separate KV caches per security context, the way browsers separate origins. And one asks the uncomfortable question: is publishing the how-to a good idea at all?</p>
+            </div>
+          </div>
+        </article>
+
+                                <article class="story" id="story-8">
+          <div class="num" aria-hidden="true">8</div>
+          <div>
+            <h2 class="tagline">PenGPT: a 50 MB transformer that writes in your handwriting</h2>
+            <p class="body">Sam Greydanus built a small transformer that writes cursive and sketches from typed prompts, trained mostly on clean data — he says 80% of the effort went to datasets, 15% to speed, 5% to architecture. It reads a few of your real words and carries on in your hand. The model fits in about 50 MB.</p>
+            <div class="meta">
+              <a class="source" href="https://greydanus.github.io/2026/11/12/pengpt/" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50637056" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">323 pts · 57 comments</span>
+              <button class="copy-btn" type="button" data-copy="8">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>The Bitter Lesson quote gets the love — clean data over clever architecture. The flaws get named too: cursive stroke order is wrong, Spanish barely works, and it can&#x27;t draw ‘a pelican riding a bicycle.’ One note: the post&#x27;s text (except the conclusion) was written by Claude, which the author discloses upfront.</p>
+            </div>
+          </div>
+        </article>
+
+                                <article class="story" id="story-9">
+          <div class="num" aria-hidden="true">9</div>
+          <div>
+            <h2 class="tagline">Bypassing iOS Safari&#x27;s 60 FPS cap so web apps feel native</h2>
+            <p class="body">WebKit caps requestAnimationFrame at 60 Hz on 120 Hz iPhones unless you flip a buried Safari developer flag — which is why even great mobile web apps feel sluggish next to native. Rida F&#x27;kih&#x27;s post works around it by pushing animation into the compositor via scrolling, so motion runs without a JavaScript round-trip.</p>
+            <div class="meta">
+              <a class="source" href="https://rida.dev/blog/bypassing-ios-safari-60-fps-limit" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50637890" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">321 pts · 113 comments</span>
+              <button class="copy-btn" type="button" data-copy="9">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>Split. Some call it a brilliant piece of WebKit-source spelunking; others say the demo is disingenuous — 60 fps is perfectly serviceable, and what you&#x27;re seeing is sub-60 jerks, not the cap itself. The post&#x27;s liquid-glass scroll widget also gets roasted as ‘the best ocular migraine simulator’ ever built.</p>
+            </div>
+          </div>
+        </article>
+
+                                <article class="story" id="story-10">
+          <div class="num" aria-hidden="true">10</div>
+          <div>
+            <h2 class="tagline">GPT-6 designs proteins from scratch — and the lab results check out</h2>
+            <p class="body">OpenAI says GPT-6.2 can design new protein shapes and their amino-acid sequences using only reasoning and code, without calling specialized biology models to generate the designs. In lab tests with Onava, designs based on its work showed binding across five targets, and redesigned antibodies kept binding. Specialized models still did the sequencing and screening.</p>
+            <div class="meta">
+              <a class="source" href="https://openai.com/index/gpt-6-models-demonstrate-intrinsic-protein-design-capabilities/" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50634658" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">310 pts · 92 comments</span>
+              <button class="copy-btn" type="button" data-copy="10">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>The thread wants to know what GPT-6 actually did versus the specialist models — the sequence is the structure, so if SolubleMPNN wrote the sequences, what did the model design? Others flag the dual-use angle: one commenter jokes Sam is ‘working hard to help Dario make the bioweapon case.’ The counterpoint: code-writing is the model&#x27;s superpower, and protein work is increasingly code work.</p>
+            </div>
+          </div>
+        </article>
+      </main>
+
+      <footer>
+        <a href="../">&larr; HN Daily archive</a>
+        <a href="https://tk3369.github.io/hn-daily/">tk3369.github.io/hn-daily</a>
+        <span>Press T to toggle theme.</span>
+      </footer>
+    </div>
+
+    <script>
+      (function () {
+        var KEY = "hn-daily-theme";
+        var root = document.documentElement;
+        var toggle = document.getElementById("themeToggle");
+        var label = document.getElementById("themeLabel");
+
+        function storedTheme() {
+          try { return window.localStorage.getItem(KEY); } catch (e) { return null; }
+        }
+        function systemDark() {
+          return window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+        }
+        function isDark() {
+          var t = root.getAttribute("data-theme");
+          if (t === "dark") return true;
+          if (t === "light") return false;
+          return systemDark();
+        }
+        function render() {
+          var dark = isDark();
+          label.textContent = dark ? "Light" : "Dark";
+          toggle.setAttribute("aria-pressed", dark ? "true" : "false");
+        }
+        function setTheme(theme) {
+          root.setAttribute("data-theme", theme);
+          try { window.localStorage.setItem(KEY, theme); } catch (e) {}
+          render();
+        }
+        function flip() {
+          setTheme(isDark() ? "light" : "dark");
+        }
+
+        var saved = storedTheme();
+        if (saved === "dark" || saved === "light") {
+          root.setAttribute("data-theme", saved);
+        }
+        render();
+
+        toggle.addEventListener("click", flip);
+        document.addEventListener("keydown", function (e) {
+          if (e.key === "t" || e.key === "T") {
+            var tag = (e.target && e.target.tagName) || "";
+            if (tag === "INPUT" || tag === "TEXTAREA") return;
+            if (e.metaKey || e.ctrlKey || e.altKey) return;
+            flip();
+          }
+        });
+        if (window.matchMedia) {
+          var mq = window.matchMedia("(prefers-color-scheme: dark)");
+          if (mq.addEventListener) mq.addEventListener("change", render);
+        }
+
+        // Copy buttons: number + tagline + body + source + HN link + points/comments.
+        // The "What HN commenters are saying" paragraph is deliberately excluded.
+        var copyData = {
+          "1": "1. Matrix multiplication exponent is exactly 9/4 \u2014 OpenAI posts the proof\n\nOpenAI's math team posted a preprint proving the matrix multiplication exponent \u03c9 is exactly 2.25, down from the prior ~2.371 bound \u2014 the first exact value rather than a better upper bound. It's one of nine results in the repo. No practical GPU kernel yet, but the techniques behind the bound may eventually matter for large-scale linear algebra.\n\nSource: https://github.com/openai/math/blob/main/preprints/The-matrix-multiplication-exponent-is-nine-fourths-November-24-2026/paper.pdf\nHN Discuss: https://news.ycombinator.com/item?id=50637220\n814 pts / 452 comments",
+          "2": "2. Button Sounds: a library of professionally recorded clicks for your UI\n\nJosh Comeau recorded a collection of button clicks and presses in a sound-treated room and put them online to preview and use in your own interfaces. The right click sound makes a UI feel physical \u2014 small detail, big difference. Desktop works best: iOS Safari blocks audio unless silent mode is off.\n\nSource: https://buttons.joshwcomeau.com/\nHN Discuss: https://news.ycombinator.com/item?id=50638032\n602 pts / 95 comments",
+          "3": "3. The Spray Bottle: an illustrated teardown of a 50-cent pump\n\nMechanical Pencil's latest illustrated explainer takes apart the humble spray bottle \u2014 piston, ball valve, dip tube \u2014 and shows exactly how a squeeze becomes a mist. It's the kind of everyday mechanism most of us use daily and never think about.\n\nSource: https://mechanical-pencil.com/products/spray-bottle\nHN Discuss: https://news.ycombinator.com/item?id=50598555\n551 pts / 126 comments",
+          "4": "4. Ternary Bonsai 2.5 27B: frontier-grade agentic coding in 5.9 GB\n\nPrismML's Ternary Bonsai 2.5 27B is a ternary-quantized Qwen3.8 27B tuned for agentic coding and multi-turn tool use, squeezing into a 5.9 GB footprint for on-device work with private files. The claim: the strongest model of its memory footprint for agent workloads, finishing tasks in fewer turns and tokens than its predecessor.\n\nSource: https://prismml.com/news/bonsai-2-5-27b\nHN Discuss: https://news.ycombinator.com/item?id=50633922\n498 pts / 151 comments",
+          "5": "5. GTA 6 is already running on Windows \u2014 via fan-made porting projects\n\nA video shows GTA 6 running on a Windows PC, not through Rockstar but through community porting projects (VIctory, xcl) that translate the console build. It's early \u2014 one tracker has it in-game with shaders at about 4 FPS. The game has no official PC release, and Rockstar hasn't announced a date.\n\nSource: https://twitter.com/raul_bs3/status/2125213756238291075\nHN Discuss: https://news.ycombinator.com/item?id=50627783\n468 pts / 524 comments",
+          "6": "6. Ask HN: Anthropic accused my company of distilling \u2014 how do I prove we're not?\n\nA founder says Anthropic accused their company of distilling its models and cut them off, and asks HN how to prove a negative. It's the nightmare scenario for anyone building on a frontier API: the provider is judge, jury, and the only evidence. No company name or details given.\n\nSource: https://news.ycombinator.com/item?id=50630809\nHN Discuss: https://news.ycombinator.com/item?id=50630809\n381 pts / 297 comments",
+          "7": "7. Sandboxed AI models can still talk to each other through the inference server\n\nTwo agents on the same vLLM inference server can communicate despite no shared messages or filesystem, by exploiting side channels in how the server picks kernels \u2014 \u2018Step Sizing\u2019 and a \u2018KV Cache Message Board.\u2019 In the demo, Bob guessed Alice's color correctly in 1,221 of 1,221 rounds. The setups are contrived, but the channels are real.\n\nSource: https://www.lesswrong.com/posts/7wzWuLP3HhyBLmKfo/models-can-communicate-via-inference-servers-despite-being\nHN Discuss: https://news.ycombinator.com/item?id=50637686\n336 pts / 138 comments",
+          "8": "8. PenGPT: a 50 MB transformer that writes in your handwriting\n\nSam Greydanus built a small transformer that writes cursive and sketches from typed prompts, trained mostly on clean data \u2014 he says 80% of the effort went to datasets, 15% to speed, 5% to architecture. It reads a few of your real words and carries on in your hand. The model fits in about 50 MB.\n\nSource: https://greydanus.github.io/2026/11/12/pengpt/\nHN Discuss: https://news.ycombinator.com/item?id=50637056\n323 pts / 57 comments",
+          "9": "9. Bypassing iOS Safari's 60 FPS cap so web apps feel native\n\nWebKit caps requestAnimationFrame at 60 Hz on 120 Hz iPhones unless you flip a buried Safari developer flag \u2014 which is why even great mobile web apps feel sluggish next to native. Rida F'kih's post works around it by pushing animation into the compositor via scrolling, so motion runs without a JavaScript round-trip.\n\nSource: https://rida.dev/blog/bypassing-ios-safari-60-fps-limit\nHN Discuss: https://news.ycombinator.com/item?id=50637890\n321 pts / 113 comments",
+          "10": "10. GPT-6 designs proteins from scratch \u2014 and the lab results check out\n\nOpenAI says GPT-6.2 can design new protein shapes and their amino-acid sequences using only reasoning and code, without calling specialized biology models to generate the designs. In lab tests with Onava, designs based on its work showed binding across five targets, and redesigned antibodies kept binding. Specialized models still did the sequencing and screening.\n\nSource: https://openai.com/index/gpt-6-models-demonstrate-intrinsic-protein-design-capabilities/\nHN Discuss: https://news.ycombinator.com/item?id=50634658\n310 pts / 92 comments"
+};
+
+        function fallbackCopy(text) {
+          var ta = document.createElement("textarea");
+          ta.value = text;
+          ta.setAttribute("readonly", "");
+          ta.style.position = "absolute";
+          ta.style.left = "-9999px";
+          document.body.appendChild(ta);
+          ta.select();
+          var ok = false;
+          try { ok = document.execCommand("copy"); } catch (e) { ok = false; }
+          document.body.removeChild(ta);
+          return ok;
+        }
+
+        var buttons = document.querySelectorAll(".copy-btn");
+        Array.prototype.forEach.call(buttons, function (btn) {
+          btn.addEventListener("click", function () {
+            var text = copyData[btn.getAttribute("data-copy")] || "";
+            function done() {
+              var original = "Copy";
+              btn.textContent = "Copied ✓";
+              btn.classList.add("copied");
+              setTimeout(function () {
+                btn.textContent = original;
+                btn.classList.remove("copied");
+              }, 1600);
+            }
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+              navigator.clipboard.writeText(text).then(done, function () {
+                if (fallbackCopy(text)) done();
+              });
+            } else if (fallbackCopy(text)) {
+              done();
+            }
+          });
+        });
+      })();
+    </script>
+  </body>
+</html>
