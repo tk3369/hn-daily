@@ -1,0 +1,535 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="light dark" />
+    <link rel="icon" href="data:," />
+    <title>HN Daily — Thursday, November 26, 2026</title>
+    <style>
+      :root {
+        --bg: #f3f1eb;
+        --surface: #fbf9f4;
+        --ink: #1c1a16;
+        --ink-soft: #4a463e;
+        --ink-faint: #6f6a5e;
+        --line: #d8d2c4;
+        --accent: #ff6600;
+        --accent-ink: #b34700;
+        --comment-bg: #efe9dc;
+        --focus: #b34700;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root:not([data-theme="light"]) {
+          --bg: #16140f;
+          --surface: #1f1c16;
+          --ink: #f0ead9;
+          --ink-soft: #c9c2b0;
+          --ink-faint: #9a937f;
+          --line: #3a362b;
+          --accent: #ff7a1a;
+          --accent-ink: #ff9440;
+          --comment-bg: #262219;
+          --focus: #ff9440;
+        }
+      }
+      :root[data-theme="dark"] {
+        --bg: #16140f;
+        --surface: #1f1c16;
+        --ink: #f0ead9;
+        --ink-soft: #c9c2b0;
+        --ink-faint: #9a937f;
+        --line: #3a362b;
+        --accent: #ff7a1a;
+        --accent-ink: #ff9440;
+        --comment-bg: #262219;
+        --focus: #ff9440;
+      }
+
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--ink);
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: 17px;
+        line-height: 1.55;
+        -webkit-font-smoothing: antialiased;
+      }
+      a { color: var(--accent-ink); text-decoration: underline; text-underline-offset: 2px; }
+      a:hover { color: var(--accent); }
+      a:focus-visible, button:focus-visible {
+        outline: 2px solid var(--focus);
+        outline-offset: 2px;
+        border-radius: 2px;
+      }
+
+      .wrap {
+        max-width: 1080px;
+        margin: 0 auto;
+        padding: 32px 24px 64px;
+      }
+
+      header.masthead {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 20px;
+        border-bottom: 3px solid var(--ink);
+        padding-bottom: 20px;
+        margin-bottom: 8px;
+      }
+      .masthead h1 {
+        margin: 0 0 6px;
+        font-size: clamp(30px, 5vw, 46px);
+        line-height: 1.1;
+        font-weight: 700;
+        letter-spacing: -0.01em;
+      }
+      .masthead .subtitle {
+        margin: 0;
+        font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+        font-size: 14px;
+        color: var(--ink-soft);
+      }
+      .masthead .kicker {
+        margin: 0 0 10px;
+        font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+        font-size: 12px;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--accent-ink);
+      }
+
+      .theme-toggle {
+        flex: 0 0 auto;
+        width: 86px;
+        height: 40px;
+        min-height: 40px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        background: var(--surface);
+        color: var(--ink);
+        border: 1.5px solid var(--ink);
+        border-radius: 999px;
+        font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+        font-size: 13px;
+        cursor: pointer;
+        padding: 0 10px;
+      }
+      .theme-toggle .dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: var(--accent);
+        flex: 0 0 auto;
+      }
+      .theme-toggle:hover { border-color: var(--accent); }
+
+      .story {
+        display: grid;
+        grid-template-columns: 72px 1fr;
+        gap: 4px 20px;
+        padding: 28px 0 26px;
+        border-bottom: 1px solid var(--line);
+        scroll-margin-top: 16px;
+      }
+      .story .num {
+        font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+        font-size: 40px;
+        font-weight: 700;
+        line-height: 1;
+        color: var(--accent);
+        padding-top: 2px;
+      }
+      .story h2 {
+        margin: 0 0 10px;
+        font-size: clamp(21px, 3vw, 26px);
+        line-height: 1.25;
+        font-weight: 700;
+      }
+      .story .body { margin: 0 0 14px; color: var(--ink); max-width: 68ch; }
+
+      .meta {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 8px 18px;
+        font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+        font-size: 13.5px;
+        color: var(--ink-soft);
+        margin-bottom: 16px;
+      }
+      .meta a { min-height: 36px; display: inline-flex; align-items: center; }
+      .meta .stats { color: var(--ink-faint); white-space: nowrap; }
+      .copy-btn {
+        margin-left: auto;
+        min-height: 36px;
+        padding: 6px 14px;
+        background: transparent;
+        color: var(--ink);
+        border: 1px solid var(--line);
+        border-radius: 6px;
+        font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+        font-size: 13px;
+        cursor: pointer;
+      }
+      .copy-btn:hover { border-color: var(--accent); color: var(--accent-ink); }
+      .copy-btn.copied { border-color: var(--accent); color: var(--accent-ink); }
+
+      .commenters {
+        background: var(--comment-bg);
+        border-radius: 6px;
+        padding: 14px 18px;
+        max-width: 72ch;
+      }
+      .commenters .label {
+        display: block;
+        font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+        font-size: 11.5px;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--accent-ink);
+        margin-bottom: 6px;
+      }
+      .commenters p { margin: 0; font-size: 15.5px; color: var(--ink-soft); }
+
+      footer {
+        margin-top: 36px;
+        padding-top: 20px;
+        border-top: 3px solid var(--ink);
+        font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+        font-size: 13.5px;
+        color: var(--ink-soft);
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px 24px;
+        align-items: center;
+      }
+      footer a { min-height: 36px; display: inline-flex; align-items: center; }
+
+      @media (max-width: 600px) {
+        .wrap { padding: 22px 16px 48px; }
+        .story { grid-template-columns: 46px 1fr; gap: 2px 12px; padding: 22px 0 20px; }
+        .story .num { font-size: 28px; }
+        header.masthead { flex-wrap: wrap; }
+        .copy-btn { margin-left: 0; }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        html { scroll-behavior: auto; }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <header class="masthead">
+        <div>
+          <p class="kicker">Hacker News · Daily Digest</p>
+          <h1>HN Daily — Thursday, November 26, 2026</h1>
+          <p class="subtitle">HN Top 10 — 2026-11-26 07:00 PT (hottest by points)</p>
+        </div>
+        <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle dark mode" aria-pressed="false">
+          <span class="dot" aria-hidden="true"></span><span id="themeLabel">Dark</span>
+        </button>
+      </header>
+
+      <main>
+                                        <article class="story" id="story-1">
+          <div class="num" aria-hidden="true">1</div>
+          <div>
+            <h2 class="tagline">The Mathocalypse continues: AI proves VP ≠ VNP, Riemann, and ω = 9/4</h2>
+            <p class="body">Scott Aaronson on a week of AI math proofs: OpenAI and Anthropic proved VP ≠ VNP, after the Alpöge/Anthropic Riemann Hypothesis proof — then OpenAI claimed ω, the matrix multiplication exponent, is exactly 9/4, with a matching lower bound, plus a faster FFT gate count. Ancient questions are getting answered outright. The shock isn&#x27;t just the answers — it&#x27;s that lower bounds, long thought near-impossible, are falling too.</p>
+            <div class="meta">
+              <a class="source" href="https://scottaaronson.blog/?p=10379" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50646108" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">1760 pts · 1604 comments</span>
+              <button class="copy-btn" type="button" data-copy="1">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>The thread splits on whether the labs hold secret crypto-breaking capability. Skeptics say a breakthrough that big couldn&#x27;t stay secret in a massive lab — whistleblowers would talk. Others note the cutting-edge math came from internal models the public never sees, and open-weight models may lag badly. The math itself isn&#x27;t disputed; what it implies about hidden capability is.</p>
+            </div>
+          </div>
+        </article>
+
+                                        <article class="story" id="story-2">
+          <div class="num" aria-hidden="true">2</div>
+          <div>
+            <h2 class="tagline">1Password breach: backend systems hit, vaults untouched</h2>
+            <p class="body">An attacker got into some of 1Password&#x27;s backend systems and copied limited customer account info — names and email addresses — from a subset of customers. Vault contents and the keys protecting them were not affected; 1Password says it has no access to your password or secret keys. Containment is done and clean versions restored. The pattern is the classic SaaS breach: one compromised laptop, code pushed, deployed.</p>
+            <div class="meta">
+              <a class="source" href="https://1password.com/blog/update-on-nov-2026-security-incident" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50644817" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">1546 pts · 665 comments</span>
+              <button class="copy-btn" type="button" data-copy="2">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>HN calls this the single most important SaaS attack vector — with enough employees, a compromised laptop approaches certainty. The thread then turns on AI-era shipping velocity: PR rates are up, but is the product actually improving? Several say 1Password&#x27;s consumer product has gotten worse year over year while B2B gets the updates.</p>
+            </div>
+          </div>
+        </article>
+
+                                        <article class="story" id="story-3">
+          <div class="num" aria-hidden="true">3</div>
+          <div>
+            <h2 class="tagline">Anthropic&#x27;s Riemann proof, now in a readable 300k lines of Lean</h2>
+            <p class="body">A much shorter, human-readable version of the Generalized Riemann Hypothesis Lean verification — 300k lines instead of 17M, with a clear split between &#x27;known math&#x27; and &#x27;new math&#x27; and documentation throughout. You can verify it at home in a couple of hours; 18 independent validators have already run it, with a public leaderboard tracking them.</p>
+            <div class="meta">
+              <a class="source" href="https://github.com/lsernau/grh-lean" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50648050" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">497 pts · 309 comments</span>
+              <button class="copy-btn" type="button" data-copy="3">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>Praise for readability — the shorter proof should make the result digestible. The trust question recurs: nobody doubts the Lean code compiles, but running it yourself is the point. SETI@home nostalgia in the replies, plus one commenter building the proof out in their own theorem language.</p>
+            </div>
+          </div>
+        </article>
+
+                                        <article class="story" id="story-4">
+          <div class="num" aria-hidden="true">4</div>
+          <div>
+            <h2 class="tagline">NYT tells photographers: don&#x27;t update Photoshop — the AI features will flag you</h2>
+            <p class="body">The New York Times is warning photographers not to update Photoshop, because its AI features risk getting photos flagged as AI-generated — a credibility killer for an authoritative source. The problem: you can&#x27;t separate &#x27;fully AI-generated&#x27; from &#x27;minor color edit or cutout&#x27; once the pixels are final.</p>
+            <div class="meta">
+              <a class="source" href="https://www.theverge.com/ai-artificial-intelligence/1041227/the-new-york-times-warns-photographers-not-to-update-photoshop-over-ai-features" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50647673" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">495 pts · 414 comments</span>
+              <button class="copy-btn" type="button" data-copy="4">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>The creative-tools problem is real — an &#x27;AI generated&#x27; tag on Instagram or Facebook is a death blow to credibility. The thread extends it to text: grammar-polish tools leave nearly as many fingerprints as full generation. AI detectors get debated — one says Pangram measures authorship, not understanding, and penalizes non-native speakers who had AI polish their own research.</p>
+            </div>
+          </div>
+        </article>
+
+                                        <article class="story" id="story-5">
+          <div class="num" aria-hidden="true">5</div>
+          <div>
+            <h2 class="tagline">GPT-6.2 Astra beats Googlers&#x27; code golf records</h2>
+            <p class="body">GPT-6.2 Astra is the first model to beat the code-golf records set by Google engineers, per a public benchmark leaderboard. One commenter says it&#x27;s the first model that beats them squarely at any programming task — previously there was always a mind-bender where a human found the better solution. That edge, they say, has now evaporated.</p>
+            <div class="meta">
+              <a class="source" href="https://bjin.github.io/go-codegolf-benchmark/#leaderboard" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50601280" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">418 pts · 118 comments</span>
+              <button class="copy-btn" type="button" data-copy="5">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>The leaderboard tells a subtler story — Astra is #1 in coding win rate (65%) but last in writing/discussion (30%), a statistically significant split. Others note it&#x27;s trained for code, not chat; Sol handles the chat product. Fable 5.2 still leads on aggregate Elo, within margin of error.</p>
+            </div>
+          </div>
+        </article>
+
+                                        <article class="story" id="story-6">
+          <div class="num" aria-hidden="true">6</div>
+          <div>
+            <h2 class="tagline">OpenAI tightens GPT-6.2 limits — Astra burns 40% faster</h2>
+            <p class="body">OpenAI has cut GPT-6.2 usage allowances: Astra hits its limits 40% faster and Sol 25% faster than before, per a user report circulating on X. The subscription that felt limitless in August–September now runs out mid-week for heavy coders. Anthropic&#x27;s Opus 5.5, with no reset games, is suddenly the better value for coding.</p>
+            <div class="meta">
+              <a class="source" href="https://twitter.com/thsottiaux/status/2125784147889393806" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50651117" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">377 pts · 208 comments</span>
+              <button class="copy-btn" type="button" data-copy="6">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>The pendulum keeps swinging — OpenAI was generous when Claude struggled with demand, then tightened. Several report burning through three resets in a week. Others say Sol 6.2 also feels lazier and more overcautious than 5.6, and wonder if synthetic training data is the cause. A few are going local.</p>
+            </div>
+          </div>
+        </article>
+
+                                        <article class="story" id="story-7">
+          <div class="num" aria-hidden="true">7</div>
+          <div>
+            <h2 class="tagline">Ubuntu&#x27;s kernel security response is too slow, says oss-security</h2>
+            <p class="body">An oss-security post flags slow Ubuntu security response times on kernel patches. The stable kernel team ships 1,700–3,300 patches per release across seven concurrent kernels; Ubuntu maintains something like 100 kernel variants and has to backport the flood itself. Cherry-picking is the norm — and grsecurity keeps a running list of backports done wrong or missed entirely.</p>
+            <div class="meta">
+              <a class="source" href="https://www.openwall.com/lists/oss-security/2026/11/25/9" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50647181" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">351 pts · 195 comments</span>
+              <button class="copy-btn" type="button" data-copy="7">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>The stable maintainer&#x27;s line gets quoted — take stable releases in order, don&#x27;t cherry-pick, or you end up less secure. The thread relitigates monolithic vs microkernel and whether Ubuntu picked the wrong maintenance model. Debian gets it too: weekly kernel drops leave no time for adequate testing.</p>
+            </div>
+          </div>
+        </article>
+
+                                        <article class="story" id="story-8">
+          <div class="num" aria-hidden="true">8</div>
+          <div>
+            <h2 class="tagline">Tell HN: too many Ask HNs again — and nobody agrees on the fix</h2>
+            <p class="body">A Tell HN thread notes the front page is filling up with Ask HNs again and asks what to do about it. The replies split: a regular Friday Show HN thread, a monthly &#x27;what are you working on&#x27; thread, a general thread for stuff that doesn&#x27;t deserve its own post. The deeper split is about AI: some stopped reading Show HN because the average post is now &#x27;I prompted this thing.&#x27;</p>
+            <div class="meta">
+              <a class="source" href="https://news.ycombinator.com/item?id=50649864" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50649864" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">331 pts · 130 comments</span>
+              <button class="copy-btn" type="button" data-copy="8">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>Proposals range from a weekly Show HN to a no-AI honor system. Others say the filter can&#x27;t be enforced — what matters is whether the poster understands what was built, not whether AI helped. One suggests separate commercial and open-source threads.</p>
+            </div>
+          </div>
+        </article>
+
+                                        <article class="story" id="story-9">
+          <div class="num" aria-hidden="true">9</div>
+          <div>
+            <h2 class="tagline">A museum of preserved UI style guides, from Amiga to today</h2>
+            <p class="body">A collection of preserved UI style guides — the design bibles companies once shipped to keep their interfaces consistent — gathered in one place. The 1991 Amiga guide is the standout: it changes pronouns at random through the text, noting that no business can afford to alienate a customer by being unaware of her.</p>
+            <div class="meta">
+              <a class="source" href="https://aresluna.org/ui-style-guides/" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50649834" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">302 pts · 50 comments</span>
+              <button class="copy-btn" type="button" data-copy="9">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>The Amiga pronoun passage sparks a grammar debate — singular &#x27;they&#x27; has been in use since the 14th century, says one commenter; another notes English prescriptivism has a long history of being stupid and wrong. The guides themselves get praise as a record of how seriously consistency was once taken.</p>
+            </div>
+          </div>
+        </article>
+
+                                        <article class="story" id="story-10">
+          <div class="num" aria-hidden="true">10</div>
+          <div>
+            <h2 class="tagline">Intel One Mono: a new open font for code</h2>
+            <p class="body">Intel released One Mono, a monospace font for code, on GitHub. It&#x27;s the latest in a long line of programming fonts — and the thread mostly agrees the differences barely matter anymore. Defaults are good now; the l/1 and O/0 confusion that once broke a Fortran program is a solved problem for most people.</p>
+            <div class="meta">
+              <a class="source" href="https://github.com/intel/intel-one-mono" target="_blank" rel="noopener">Source</a>
+              <a class="discuss" href="https://news.ycombinator.com/item?id=50653667" target="_blank" rel="noopener">HN Discuss</a>
+              <span class="stats">240 pts · 150 comments</span>
+              <button class="copy-btn" type="button" data-copy="10">Copy</button>
+            </div>
+            <div class="commenters">
+              <span class="label">What HN commenters are saying</span>
+              <p>The font wars get a shrug — one veteran says in forty years of coding, ambiguous glyphs bit them exactly once, as an undergraduate. Others defend the craft: when you stare at text all day, comfort matters, and ligatures genuinely helped. Comic Code, the Comic Sans-inspired coding font, gets an affectionate mention.</p>
+            </div>
+          </div>
+        </article>
+      </main>
+
+      <footer>
+        <a href="../">&larr; HN Daily archive</a>
+        <a href="https://tk3369.github.io/hn-daily/">tk3369.github.io/hn-daily</a>
+        <span>Press T to toggle theme.</span>
+      </footer>
+    </div>
+
+    <script>
+      (function () {
+        var KEY = "hn-daily-theme";
+        var root = document.documentElement;
+        var toggle = document.getElementById("themeToggle");
+        var label = document.getElementById("themeLabel");
+
+        function storedTheme() {
+          try { return window.localStorage.getItem(KEY); } catch (e) { return null; }
+        }
+        function systemDark() {
+          return window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+        }
+        function isDark() {
+          var t = root.getAttribute("data-theme");
+          if (t === "dark") return true;
+          if (t === "light") return false;
+          return systemDark();
+        }
+        function render() {
+          var dark = isDark();
+          label.textContent = dark ? "Light" : "Dark";
+          toggle.setAttribute("aria-pressed", dark ? "true" : "false");
+        }
+        function setTheme(theme) {
+          root.setAttribute("data-theme", theme);
+          try { window.localStorage.setItem(KEY, theme); } catch (e) {}
+          render();
+        }
+        function flip() {
+          setTheme(isDark() ? "light" : "dark");
+        }
+
+        var saved = storedTheme();
+        if (saved === "dark" || saved === "light") {
+          root.setAttribute("data-theme", saved);
+        }
+        render();
+
+        toggle.addEventListener("click", flip);
+        document.addEventListener("keydown", function (e) {
+          if (e.key === "t" || e.key === "T") {
+            var tag = (e.target && e.target.tagName) || "";
+            if (tag === "INPUT" || tag === "TEXTAREA") return;
+            if (e.metaKey || e.ctrlKey || e.altKey) return;
+            flip();
+          }
+        });
+        if (window.matchMedia) {
+          var mq = window.matchMedia("(prefers-color-scheme: dark)");
+          if (mq.addEventListener) mq.addEventListener("change", render);
+        }
+
+        // Copy buttons: number + tagline + body + source + HN link + points/comments.
+        // The "What HN commenters are saying" paragraph is deliberately excluded.
+        var copyData = {
+          "1": "1. The Mathocalypse continues: AI proves VP \u2260 VNP, Riemann, and \u03c9 = 9/4\n\nScott Aaronson on a week of AI math proofs: OpenAI and Anthropic proved VP \u2260 VNP, after the Alp\u00f6ge/Anthropic Riemann Hypothesis proof \u2014 then OpenAI claimed \u03c9, the matrix multiplication exponent, is exactly 9/4, with a matching lower bound, plus a faster FFT gate count. Ancient questions are getting answered outright. The shock isn't just the answers \u2014 it's that lower bounds, long thought near-impossible, are falling too.\n\nSource: https://scottaaronson.blog/?p=10379\nHN Discuss: https://news.ycombinator.com/item?id=50646108\n1760 pts / 1604 comments",
+          "2": "2. 1Password breach: backend systems hit, vaults untouched\n\nAn attacker got into some of 1Password's backend systems and copied limited customer account info \u2014 names and email addresses \u2014 from a subset of customers. Vault contents and the keys protecting them were not affected; 1Password says it has no access to your password or secret keys. Containment is done and clean versions restored. The pattern is the classic SaaS breach: one compromised laptop, code pushed, deployed.\n\nSource: https://1password.com/blog/update-on-nov-2026-security-incident\nHN Discuss: https://news.ycombinator.com/item?id=50644817\n1546 pts / 665 comments",
+          "3": "3. Anthropic's Riemann proof, now in a readable 300k lines of Lean\n\nA much shorter, human-readable version of the Generalized Riemann Hypothesis Lean verification \u2014 300k lines instead of 17M, with a clear split between 'known math' and 'new math' and documentation throughout. You can verify it at home in a couple of hours; 18 independent validators have already run it, with a public leaderboard tracking them.\n\nSource: https://github.com/lsernau/grh-lean\nHN Discuss: https://news.ycombinator.com/item?id=50648050\n497 pts / 309 comments",
+          "4": "4. NYT tells photographers: don't update Photoshop \u2014 the AI features will flag you\n\nThe New York Times is warning photographers not to update Photoshop, because its AI features risk getting photos flagged as AI-generated \u2014 a credibility killer for an authoritative source. The problem: you can't separate 'fully AI-generated' from 'minor color edit or cutout' once the pixels are final.\n\nSource: https://www.theverge.com/ai-artificial-intelligence/1041227/the-new-york-times-warns-photographers-not-to-update-photoshop-over-ai-features\nHN Discuss: https://news.ycombinator.com/item?id=50647673\n495 pts / 414 comments",
+          "5": "5. GPT-6.2 Astra beats Googlers' code golf records\n\nGPT-6.2 Astra is the first model to beat the code-golf records set by Google engineers, per a public benchmark leaderboard. One commenter says it's the first model that beats them squarely at any programming task \u2014 previously there was always a mind-bender where a human found the better solution. That edge, they say, has now evaporated.\n\nSource: https://bjin.github.io/go-codegolf-benchmark/#leaderboard\nHN Discuss: https://news.ycombinator.com/item?id=50601280\n418 pts / 118 comments",
+          "6": "6. OpenAI tightens GPT-6.2 limits \u2014 Astra burns 40% faster\n\nOpenAI has cut GPT-6.2 usage allowances: Astra hits its limits 40% faster and Sol 25% faster than before, per a user report circulating on X. The subscription that felt limitless in August\u2013September now runs out mid-week for heavy coders. Anthropic's Opus 5.5, with no reset games, is suddenly the better value for coding.\n\nSource: https://twitter.com/thsottiaux/status/2125784147889393806\nHN Discuss: https://news.ycombinator.com/item?id=50651117\n377 pts / 208 comments",
+          "7": "7. Ubuntu's kernel security response is too slow, says oss-security\n\nAn oss-security post flags slow Ubuntu security response times on kernel patches. The stable kernel team ships 1,700\u20133,300 patches per release across seven concurrent kernels; Ubuntu maintains something like 100 kernel variants and has to backport the flood itself. Cherry-picking is the norm \u2014 and grsecurity keeps a running list of backports done wrong or missed entirely.\n\nSource: https://www.openwall.com/lists/oss-security/2026/11/25/9\nHN Discuss: https://news.ycombinator.com/item?id=50647181\n351 pts / 195 comments",
+          "8": "8. Tell HN: too many Ask HNs again \u2014 and nobody agrees on the fix\n\nA Tell HN thread notes the front page is filling up with Ask HNs again and asks what to do about it. The replies split: a regular Friday Show HN thread, a monthly 'what are you working on' thread, a general thread for stuff that doesn't deserve its own post. The deeper split is about AI: some stopped reading Show HN because the average post is now 'I prompted this thing.'\n\nSource: https://news.ycombinator.com/item?id=50649864\nHN Discuss: https://news.ycombinator.com/item?id=50649864\n331 pts / 130 comments",
+          "9": "9. A museum of preserved UI style guides, from Amiga to today\n\nA collection of preserved UI style guides \u2014 the design bibles companies once shipped to keep their interfaces consistent \u2014 gathered in one place. The 1991 Amiga guide is the standout: it changes pronouns at random through the text, noting that no business can afford to alienate a customer by being unaware of her.\n\nSource: https://aresluna.org/ui-style-guides/\nHN Discuss: https://news.ycombinator.com/item?id=50649834\n302 pts / 50 comments",
+          "10": "10. Intel One Mono: a new open font for code\n\nIntel released One Mono, a monospace font for code, on GitHub. It's the latest in a long line of programming fonts \u2014 and the thread mostly agrees the differences barely matter anymore. Defaults are good now; the l/1 and O/0 confusion that once broke a Fortran program is a solved problem for most people.\n\nSource: https://github.com/intel/intel-one-mono\nHN Discuss: https://news.ycombinator.com/item?id=50653667\n240 pts / 150 comments"
+};
+
+        function fallbackCopy(text) {
+          var ta = document.createElement("textarea");
+          ta.value = text;
+          ta.setAttribute("readonly", "");
+          ta.style.position = "absolute";
+          ta.style.left = "-9999px";
+          document.body.appendChild(ta);
+          ta.select();
+          var ok = false;
+          try { ok = document.execCommand("copy"); } catch (e) { ok = false; }
+          document.body.removeChild(ta);
+          return ok;
+        }
+
+        var buttons = document.querySelectorAll(".copy-btn");
+        Array.prototype.forEach.call(buttons, function (btn) {
+          btn.addEventListener("click", function () {
+            var text = copyData[btn.getAttribute("data-copy")] || "";
+            function done() {
+              var original = "Copy";
+              btn.textContent = "Copied ✓";
+              btn.classList.add("copied");
+              setTimeout(function () {
+                btn.textContent = original;
+                btn.classList.remove("copied");
+              }, 1600);
+            }
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+              navigator.clipboard.writeText(text).then(done, function () {
+                if (fallbackCopy(text)) done();
+              });
+            } else if (fallbackCopy(text)) {
+              done();
+            }
+          });
+        });
+      })();
+    </script>
+  </body>
+</html>
